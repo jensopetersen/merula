@@ -51,9 +51,13 @@ declare function local:get-top-level-elements($input as element(), $skip, $editi
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name target="#JM" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <name target="#AK" type="person">Alexis Korner</name> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
-let $filter-away := ('rdg', 'del', 'reg')
+let $filter-away := ('rdg', 'del', 'reg', 'note')(:NB: note should only be removed if it is not an original note, so the value of @resp has to be part of the filter.:)
 let $edition-layer := ('app', 'choice')
 
 
 return 
     <annotations>{local:get-top-level-elements($input, $filter-away, $edition-layer)}</annotations>
+    (:local:get-base-text($input, $filter-away):)
+    (:returns the base text::)
+    (:I meet Steve Winwood and Alexis Korner in the pub.:)
+    (:I meet Ste<10>ve Winwood<20> and Alexi<30>s Korner i<40>n the pub.:)
