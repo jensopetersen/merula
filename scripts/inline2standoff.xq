@@ -17,6 +17,8 @@ declare function local:get-base-text($input, $filter-away) {
 
 declare function local:get-top-level-elements($input as element(), $skip, $edition-layer) {
     for $node in $input/node()
+    let $position-start := string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), ''))
+    let $position-end := string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), '')) + string-length(string-join(local:get-base-text($node, $skip)))
     return
         if ($node instance of element())
         then     
@@ -24,12 +26,11 @@ declare function local:get-top-level-elements($input as element(), $skip, $editi
                 <target type="range" layer="{if (local-name($node) = $edition-layer) then 'edition' else 'feature'}">
                     <start>
                         <id>{$node/../@xml:id}</id>
-                        <position>{string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), ''))}</position>
+                        <position>{$position-start + 1}</position>
                     </start>
                     <end>
                         <id>{$node/../@xml:id}</id>
-                        <position>{
-                            string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), '')) + string-length(string-join(local:get-base-text($node, $skip)))}</position>
+                        <position>{$position-end}</position>
                     </end>
                 </target>
                 <body>
