@@ -67,13 +67,13 @@ let $top-level-annotations :=
 (: these are the base units in the annotation interface, i.e. an app and a choice are annotated as a whole :)
 let $termina := ('app', 'name', 'choice')
 
-(: annotations are finished if they have string contents, if they have empty node elements or if they correspond to termina, i.e. units in the interface that do not contain other termina:)
+(: annotations are finished if they have string contents, if they have empty node elements or if they are termina, i.e. units in the interface that do not below them contain other termina:)
 let $finished-top-level-annotations :=    
-        for $top-level-annotation in $top-level-annotations/node()
+        for $top-level-annotation in $top-level-annotations/*
         where 
             normalize-space($top-level-annotation/body/contents/string()) 
             or normalize-space($top-level-annotation/body/node/string()) eq ''
-            or ($top-level-annotation/body/node/local-name(*) = $termina and count($top-level-annotation/body/node//local-name(*) = $termina) eq 1)(:the last part does not filter correctly:)
+            or ($top-level-annotation/body/node/*/local-name(.) = $termina and count($top-level-annotation/body/node/descendant::element()/local-name(.) = $termina) eq 1)(:NB: the last part does not filter correctly:)
                 return $top-level-annotation
 (: 
 <annotations>
