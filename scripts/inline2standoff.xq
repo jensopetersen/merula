@@ -57,7 +57,7 @@ let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><r
 let $filter-away := ('rdg', 'del', 'reg', 'note')
 (:NB: note should only be removed if it is not an original note, so the value of @resp has to be part of the filter. 
  : The same goes for rdg: a reading might be part of the base text if there is no lemma; a base text reading would be
- : identified by a @wit value.:)
+ : identified by a @wit value.:)(:add callback to get-base-text:)
 
 let $edition-layer := ('app', 'choice')
 
@@ -70,156 +70,20 @@ let $top-level-annotations :=
 
     <annotations>{local:get-top-level-elements($input, $filter-away, $edition-layer)}</annotations>    
 
-(: these are the base units in the annotation interface, i.e. an app and a choice are annotated as a whole :)
-let $termina := ('app', 'name', 'choice')
-
-(: annotations are finished if they have string contents, if they have empty node elements or if they are termina, i.e. units in the interface that do not below them contain other termina:)
+(: annotations are finished if they have string contents, if they have empty elements:)
 let $finished-top-level-annotations :=    
         for $top-level-annotation in $top-level-annotations/*
         where 
             normalize-space($top-level-annotation/body/contents/string()) 
             or normalize-space($top-level-annotation/body/node/string()) eq ''
-            or ($top-level-annotation/body/node/*/local-name(.) = $termina and count($top-level-annotation/body/node/descendant::element()/local-name(.) = $termina) eq 1)(:NB: the last part does not filter correctly:)
                 return <annotations>{$top-level-annotation}</annotations>
-(: gives:
-<annotations>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-8956c7d9-5617-4f3a-af06-a4753c8cd6ee">
-        <target type="range" layer="feature">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>26</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>38</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <name target="#AK" type="person"/>
-            </node>
-            <contents>Alexis Korner</contents>
-        </body>
-    </annotation>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-21e2df00-90f4-43d5-a558-276c09d51565">
-        <target type="range" layer="feature">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>40</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>39</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <pb n="3"/>
-            </node>
-            <contents/>
-        </body>
-    </annotation>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-35285c3a-df48-4ab7-a693-a175889ec029">
-        <target type="range" layer="feature">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>43</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>49</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <rs/>
-            </node>
-            <contents>the pub</contents>
-        </body>
-    </annotation>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-f9df61ca-8919-44c0-a945-d92c129faef5">
-        <target type="range" layer="feature">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>50</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>83</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <note resp="#JØP"/>
-            </node>
-            <contents>The author is probably wrong here.</contents>
-        </body>
-    </annotation>
-</annotations>
 
- :)
+let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* except $finished-top-level-annotations}</annotations>
 
-let $unfinished-top-level-annotations := $top-level-annotations/* except $finished-top-level-annotations
-
-(: <annotations>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-28e61928-facd-4109-823a-bcd35875bdc1">
-        <target type="range" layer="edition">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>3</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>6</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <choice>
-                    <reg>met</reg>
-                    <sic>meet</sic>
-                </choice>
-            </node>
-            <contents/>
-        </body>
-    </annotation>
-    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-        xml:id="uuid-92d5d711-3340-4421-be59-3af64d971e07">
-        <target type="range" layer="feature">
-            <start>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>8</position>
-            </start>
-            <end>
-                <id xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf"/>
-                <position>20</position>
-            </end>
-        </target>
-        <body>
-            <node>
-                <name target="#JM" type="person">
-                    <forename>
-                        <app>
-                            <lem wit="#a">Steve</lem>
-                            <rdg wit="#b">Stephen</rdg>
-                        </app>
-                    </forename>
-                    <surname>Winwood</surname>
-                </name>
-            </node>
-            <contents/>
-        </body>
-    </annotation>
-</annotations>
- :)
-
-
-            (:return $base-text:)
-            (:return $finished-top-level-annotations:)
-            (:return $unfinished-top-level-annotations:)
-            return $top-level-annotations
+     return 
+            <result>
+                <div type="base text">{$base-text}</div>
+                <div type="top-level-annotations">{$top-level-annotations}</div>
+                <div type="finished-top-level-annotations">{$finished-top-level-annotations}</div>
+                <div type="unfinished-top-level-annotations">{$unfinished-top-level-annotations}</div>
+            </result>
