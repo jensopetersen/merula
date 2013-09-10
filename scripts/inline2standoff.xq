@@ -51,6 +51,21 @@ declare function local:get-top-level-elements($input as element(), $skip, $editi
     
 };
 
+declare function local:separate-layers($nodes as node()*, $target) as item()* {
+    for $node in $nodes/node()
+        return
+        typeswitch($node)
+            case text() return $node
+            case element(lem) return if ($target eq 'base') then () else $node/text()
+            case element(rdg) return if ($target eq 'base') then $node/text() else ()
+            
+            case element(reg) return if ($target eq 'base') then () else $node/text()
+            case element(sic) return if ($target eq 'base') then $node/text() else ()
+            
+            case element(note) return if ($target eq 'base') then if($node/@resp/string() eq 'author') then $node else () else ()
+                default return local:separate-layers($node, $target)
+};
+
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name target="#JM" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <name target="#AK" type="person">Alexis Korner</name> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
 
@@ -62,18 +77,17 @@ let $filter-in := ('rdg', 'sic', 'note')
 
 let $edition-layer := ('app', 'choice')
 
-let $base-text := local:get-base-text($input, $filter-away)
+let $base-text := local:separate-layers($input, 'base')
 (:returns the base text::)
 (:I meet Steve Winwood and Alexis Korner in the pub.:)
 (:I meet Ste<10>ve Winwood<20> and Alexi<30>s Korner i<40>n the pub.:)
     
-let $authoritative-text := local:get-base-text($input, $filter-in)
+let $authoritative-text := local:separate-layers($input, 'authoritative')
 
 let $top-level-annotations :=
-
     <annotations>{local:get-top-level-elements($input, $filter-away, $edition-layer)}</annotations>    
 
-(: annotations are finished if they have string contents, if they have empty elements:)
+(: annotations are finished if they have string contents or if they have empty elements:)
 let $finished-top-level-annotations :=    
         for $top-level-annotation in $top-level-annotations/*
         where 
