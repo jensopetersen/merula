@@ -18,7 +18,7 @@ declare function local:get-base-text($input, $filter-away) {
 declare function local:get-top-level-elements($input as element(), $skip, $edition-layer) {
     for $node in $input/node()
     let $position-start := string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), ''))
-    let $position-end := string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), '')) + string-length(string-join(local:get-base-text($node, $skip)))
+    let $position-end := string-length(string-join(local:get-base-text($node/preceding-sibling::node(), $skip))) + string-length(string-join($node/preceding-sibling::text(), '')) + string-length(string-join(local:get-base-text($node[not(name(.) = $skip)], $skip)))
     return
         if ($node instance of element())
         then     
@@ -30,7 +30,7 @@ declare function local:get-top-level-elements($input as element(), $skip, $editi
                     </start>
                     <end>
                         <id>{$node/../@xml:id}</id>
-                        <position>{$position-end}</position>
+                        <position>{if ($position-end eq $position-start) then $position-start +1 else $position-end}</position>
                     </end>
                 </target>
                 <body>
@@ -53,16 +53,22 @@ declare function local:get-top-level-elements($input as element(), $skip, $editi
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name target="#JM" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <name target="#AK" type="person">Alexis Korner</name> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
-let $filter-away := ('rdg', 'del', 'reg', 'note')(:NB: note should only be removed if it is not an original note, so the value of @resp has to be part of the filter.:)
+
+let $filter-away := ('rdg', 'del', 'reg', 'note')
+(:NB: note should only be removed if it is not an original note, so the value of @resp has to be part of the filter. 
+ : The same goes for rdg: a reading might be part of the base text if there is no lemma; a base text reading would be
+ : identified by a @wit value.:)
+
 let $edition-layer := ('app', 'choice')
 
+let $base-text := local:get-base-text($input, $filter-away)
+(:returns the base text::)
+(:I meet Steve Winwood and Alexis Korner in the pub.:)
+(:I meet Ste<10>ve Winwood<20> and Alexi<30>s Korner i<40>n the pub.:)
+    
 let $top-level-annotations :=
 
-    <annotations>{local:get-top-level-elements($input, $filter-away, $edition-layer)}</annotations>
-    (:local:get-base-text($input, $filter-away):)
-    (:returns the base text::)
-    (:I meet Steve Winwood and Alexis Korner in the pub.:)
-    (:I meet Ste<10>ve Winwood<20> and Alexi<30>s Korner i<40>n the pub.:)
+    <annotations>{local:get-top-level-elements($input, $filter-away, $edition-layer)}</annotations>    
 
 (: these are the base units in the annotation interface, i.e. an app and a choice are annotated as a whole :)
 let $termina := ('app', 'name', 'choice')
@@ -74,8 +80,8 @@ let $finished-top-level-annotations :=
             normalize-space($top-level-annotation/body/contents/string()) 
             or normalize-space($top-level-annotation/body/node/string()) eq ''
             or ($top-level-annotation/body/node/*/local-name(.) = $termina and count($top-level-annotation/body/node/descendant::element()/local-name(.) = $termina) eq 1)(:NB: the last part does not filter correctly:)
-                return $top-level-annotation
-(: 
+                return <annotations>{$top-level-annotation}</annotations>
+(: gives:
 <annotations>
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
         xml:id="uuid-8956c7d9-5617-4f3a-af06-a4753c8cd6ee">
@@ -158,6 +164,7 @@ let $finished-top-level-annotations :=
  :)
 
 let $unfinished-top-level-annotations := $top-level-annotations/* except $finished-top-level-annotations
+
 (: <annotations>
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
         xml:id="uuid-28e61928-facd-4109-823a-bcd35875bdc1">
@@ -212,5 +219,7 @@ let $unfinished-top-level-annotations := $top-level-annotations/* except $finish
  :)
 
 
-
-            return $finished-top-level-annotations
+            (:return $base-text:)
+            (:return $finished-top-level-annotations:)
+            (:return $unfinished-top-level-annotations:)
+            return $top-level-annotations
