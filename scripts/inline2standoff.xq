@@ -8,26 +8,14 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
         let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
             if ($node instance of element())
-            then     
+            then
                 <annotation type="element" xml:id="{concat('uuid-', util:uuid())}">
                     <target type="range" layer="{if (local-name($node) = $edition-layer) then 'edition' else 'feature'}">
                         <id>{$node/../@xml:id}</id>
-                        <start>{$position-start + 1}</start>
+                        <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
                         <offset>{$position-end - $position-start}</offset>
                     </target>
-                    <body>
-                        <node>{
-                            if ($node/node() instance of text() and not($node/node() instance of element())) 
-                            then 
-                                element {node-name($node)} 
-                                {for $attribute in $node/@* 
-                                    return 
-                                        attribute {node-name($attribute)} {$attribute/string()}}
-                            else $node}        
-                        </node>
-                        <contents>{if ($node/node() instance of text() and not($node/node() instance of element())) then $node/text() else ()}</contents>
-                    </body>
-                        
+                    <body>{$node}</body>
                 </annotation> 
                 else ()    
 };
@@ -49,7 +37,7 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                     default return local:separate-layers($node, $target)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name target="#JM" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <name target="#AK" type="person">Alexis Korner</name> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
+let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
 let $edition-layer := ('app', 'choice')
 
