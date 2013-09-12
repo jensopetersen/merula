@@ -7,18 +7,92 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
         let $position-start := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text()))
         let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
-            if ($node instance of element())
-            then
+            
                 <annotation type="element" xml:id="{concat('uuid-', util:uuid())}">
-                    <target type="range" layer="{if (local-name($node) = $edition-layer) then 'edition' else 'feature'}">
+                    <target type="range" layer="{
+                        if (local-name($node) = $edition-layer) 
+                        then 'edition' 
+                        else 
+                            if ($node instance of element())
+                            then 'feature'
+                            else 'text'}">
                         <id>{$node/../@xml:id}</id>
                         <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
                         <offset>{$position-end - $position-start}</offset>
                     </target>
-                    <body>{$node}</body>
-                </annotation> 
-                else ()    
+                    <body>{
+                        if ($node instance of text()) 
+                        then replace($node, ' ', '<space/>') 
+                        else $node}</body>
+                        <layer-length-offset>{
+                                if (name($node) = $edition-layer or $node//app or $node//choice) 
+                                then 
+                                    if ($node//app and $node//lem) 
+                                    then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
+                                    else 
+                                        if ($node//app and $node//rdg) 
+                                        then string-length(string-join($node//rdg[@wit ne '#base'])) - string-length(string-join($node//rdg[@wit eq '#base']))(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
+                                        else
+                                            if ($node//choice) 
+                                            then string-length($node//reg) - string-length($node//sic)
+                                            else 0
+                                else 0}</layer-length-offset>
+                </annotation>
 };
+
+declare function local:insert-element($node as node()?, $new-node as node(), 
+    $element-name-to-check as xs:string, $location as xs:string) { 
+        if (local-name($node) eq $element-name-to-check)
+        then
+            if ($location eq 'before')
+            then ($new-node, $node) 
+            else 
+                if ($location eq 'after')
+                then ($node, $new-node)
+                else
+                    if ($location eq 'first-child')
+                    then element { node-name($node) } { 
+                        $node/@*
+                        ,
+                        $new-node
+                        ,
+                        for $child in $node/node()
+                            return 
+                                (:local:insert-element($child, $new-node, $element-name-to-check, $location):)
+                                $child
+                    }
+                    else
+                        if ($location eq 'last-child')
+                        then element { node-name($node) } { 
+                            $node/@*
+                            ,
+                            for $child in $node/node()
+                                return 
+                                    (:local:insert-element($child, $new-node, $element-name-to-check, $location):)
+                                    $child 
+                            ,
+                            $new-node
+                        }
+                        else () (:The $element-to-check is removed if none of the four options are used.:)
+        else
+            if ($node instance of element()) 
+            then
+                element { node-name($node) } { 
+                    $node/@*
+                    , 
+                    for $child in $node/node()
+                        return 
+                            local:insert-element($child, $new-node, $element-name-to-check, $location) 
+             }
+         else $node
+};
+
+declare function local:insert-layer-start-offset($nodes as node()*) as element()* {
+    for $annotation in $nodes/*
+    let $layer-start-offset := $annotation/preceding-sibling
+    return $annotation
+    
+    };
 
 declare function local:separate-layers($nodes as node()*, $target) as item()* {
     for $node in $nodes/node()
