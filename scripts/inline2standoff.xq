@@ -8,17 +8,17 @@ declare function local:get-top-level-nodes($input as element(), $edition-layer) 
         let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
             <node type="element" xml:id="{concat('uuid-', util:uuid())}">
-                <base-layer><target type="range" layer="{
+                <target type="range" layer="{
                     if (local-name($node) = $edition-layer) 
                     then 'edition' 
                     else 
                         if ($node instance of element())
                         then 'feature'
                         else 'text'}">
-                    <id>{$node/../@xml:id}</id>
+                    <base-layer><id>{$node/../@xml:id}</id>
                     <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
                     <offset>{$position-end - $position-start}</offset>
-                </target></base-layer>
+                </base-layer></target>
                 <body>{
                     if ($node instance of text()) 
                     then replace($node, ' ', '<space/>') 
@@ -96,29 +96,29 @@ declare function local:insert-element($node as node()?, $new-node as node(),
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
     for $node in $nodes/*
     
-        let $id := concat('uuid-', util:uuid($node/base-layer/target/id/@xml:id))
+        let $id := concat('uuid-', util:uuid($node/target/base-layer/id/@xml:id))
         
         let $previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
-        let $present-start := $node/base-layer/target/start cast as xs:integer
+        let $present-start := $node/target/base-layer/start cast as xs:integer
         let $authoritative-layer-start := $present-start + $previous-offsets
     
-        let $layer-offset := $node/base-layer/target/offset/number() + $node/layer-offset-difference
+        let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
     
-        let $authoritative-layer := <authoritative-layer><target><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></target></authoritative-layer>
+        let $authoritative-layer := <authoritative-layer><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
 
-            return local:insert-element($node, $authoritative-layer, 'node', 'last-child')
+            return local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
     
 };
-
+(: 
 declare function local:insert-layer-offset-difference($nodes as element()*) as element()* {
     for $node in $nodes/*
-    let $layer-offset := $node/base-layer/target/offset/number() + $node/layer-offset-difference
+    let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
     let $layer-offset := <layer-offset>{$layer-offset}</layer-offset>
     
-        return local:insert-element($node, $layer-offset, 'node', 'last-child')
+        return local:insert-element($node, $layer-offset, 'base-layer', 'after')
     
 };
-
+:)
 declare function local:separate-layers($nodes as node()*, $target) as item()* {
     for $node in $nodes/node()
             return
@@ -156,7 +156,7 @@ let $authoritative-text := local:separate-layers($input, 'authoritative')
 let $top-level-nodes-base-layer :=
     <nodes>{local:get-top-level-nodes($input, $edition-layer)}</nodes>
 
-let $top-level-nodes := local:insert-layer-offset-difference($top-level-nodes-base-layer)
+(: let $top-level-nodes := local:insert-layer-offset-difference($top-level-nodes-base-layer):)
 
 let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
 
