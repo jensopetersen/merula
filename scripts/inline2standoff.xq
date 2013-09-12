@@ -7,9 +7,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
         let $position-start := 
             string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + 
             string-length(string-join($node/preceding-sibling::text()))
-        let $log := util:log("DEBUG", ("##position-start): ", $position-start))
         let $position-end := $position-start + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
-        let $log := util:log("DEBUG", ("##position-end): ", $position-end))
         return
             <node type="element" xml:id="{concat('uuid-', util:uuid())}">
                 <target type="range" layer="{
@@ -102,15 +100,16 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
     
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id/@xml:id))
         
-        let $previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
-        let $present-start := $node/target/base-layer/start cast as xs:integer
-        let $authoritative-layer-start := $present-start + $previous-offsets
+        let $sum-of-previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
+        let $base-level-start := $node/target/base-layer/start cast as xs:integer
+        let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
     
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
     
         let $authoritative-layer := <authoritative-layer><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
-
-            return local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
+        
+            return 
+                local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
     
 };
 
@@ -136,6 +135,7 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                 case element(sic) return if ($target eq 'base') then $node/string() else ()
                 
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
+                
                     default return local:separate-layers($node, $target)
 };
 
@@ -147,14 +147,13 @@ let $base-text := local:separate-layers($input, 'base')
     
 let $authoritative-text := local:separate-layers($input, 'authoritative')
 
-let $top-level-nodes-base-layer :=
-    <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
+let $top-level-nodes-base-layer := <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
-let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
+let $top-level-nodes-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-nodes-base-layer)
 
         return 
             <result>
                 <div type="base-text">{string-join($base-text)}</div>
                 <div type="authoritative-text">{string-join($authoritative-text)}</div>
-                <div type="top-level-nodes">{$top-level-nodes}</div>
+                <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
             </result>
