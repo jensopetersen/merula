@@ -27,11 +27,16 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
                         <layer-length-offset>{
                                 if (name($node) = $edition-layer or $node//app or $node//choice) 
                                 then 
-                                    if ($node//app and $node//lem) 
+                                    if (($node//app or name($node) = $edition-layer) and $node//lem) 
                                     then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
                                     else 
-                                        if ($node//app and $node//rdg) 
-                                        then string-length(string-join($node//rdg[@wit ne '#base'])) - string-length(string-join($node//rdg[@wit eq '#base']))(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
+                                        if (($node//app or name($node) = $edition-layer) and $node//rdg) 
+                                        then 
+                                            let $non-base := string-length($node//rdg[@wit ne '#base'])
+                                            let $log := util:log("DEBUG", ("##$non-base): ", $non-base))
+                                            let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
+                                            let $log := util:log("DEBUG", ("##$base): ", $base))
+                                            return $non-base - $base
                                         else
                                             if ($node//choice) 
                                             then string-length($node//reg) - string-length($node//sic)
@@ -87,10 +92,14 @@ declare function local:insert-element($node as node()?, $new-node as node(),
          else $node
 };
 
-declare function local:insert-layer-start-offset($nodes as node()*) as element()* {
+declare function local:insert-layer-start-offset($nodes as element()*) as element()* {
     for $annotation in $nodes/*
-    let $layer-start-offset := $annotation/preceding-sibling
-    return $annotation
+    let $previous-start := $annotation/preceding-sibling::annotation[1]/target/start/number()
+    let $present-offset := $annotation/layer-length-offset/number()
+    (:let $log := util:log("DEBUG", ("##$present-offset): ", $present-offset)):)
+    let $layer-start-offset := <layer-start-offset>{$annotation/preceding-sibling::annotation[1]/target/start/number() + $annotation/layer-offset/number()}</layer-start-offset>
+    
+        return local:insert-element($annotation, $layer-start-offset, 'annotation', 'last-child')
     
     };
 
@@ -122,6 +131,8 @@ let $authoritative-text := local:separate-layers($input, 'authoritative')
 let $top-level-annotations :=
     <annotations>{local:get-top-level-elements($input, $edition-layer)}</annotations>    
 
+let $top-level-nodes := local:insert-layer-start-offset($top-level-annotations)
+
 (: annotations are finished if they have string contents or if they have empty elements:)
 let $finished-top-level-annotations :=    
         for $top-level-annotation in $top-level-annotations/*
@@ -138,5 +149,6 @@ let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* 
                 <div type="base-text">{$base-text}</div>
                 <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-annotations">{$top-level-annotations}</div>
+                <div type="top-level-nodes">{$top-level-nodes}</div>
                 
             </result>
