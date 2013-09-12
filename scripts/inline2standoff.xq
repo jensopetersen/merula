@@ -151,9 +151,10 @@ let $top-level-nodes-base-layer :=
     <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
 let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
+
         return 
             <result>
-                <div type="base-text">{normalize-space(string-join($base-text))}</div>
-                <div type="authoritative-text">{normalize-space(string-join($authoritative-text))}</div>
+                <div type="base-text">{string-join($base-text)}</div>
+                <div type="authoritative-text">{string-join($authoritative-text)}</div>
                 <div type="top-level-nodes">{$top-level-nodes}</div>
             </result>
