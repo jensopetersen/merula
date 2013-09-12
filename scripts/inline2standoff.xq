@@ -7,44 +7,43 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
         let $position-start := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text()))
         let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
-            
-                <annotation type="element" xml:id="{concat('uuid-', util:uuid())}">
-                    <target type="range" layer="{
-                        if (local-name($node) = $edition-layer) 
-                        then 'edition' 
-                        else 
-                            if ($node instance of element())
-                            then 'feature'
-                            else 'text'}">
-                        <id>{$node/../@xml:id}</id>
-                        <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
-                        <offset>{$position-end - $position-start}</offset>
-                    </target>
-                    <body>{
-                        if ($node instance of text()) 
-                        then replace($node, ' ', '<space/>') 
-                        else $node}</body>
-                            <authoritative-layer-offset-difference>{
-                                let $off-set-difference :=
-                                    if (name($node) = $edition-layer or $node//app or $node//choice) 
-                                    then 
-                                        if (($node//app or name($node) = 'app') and $node//lem) 
-                                        then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
-                                        else 
-                                            if (($node//app or name($node) = 'app') and $node//rdg) 
-                                            then 
-                                                let $non-base := string-length($node//rdg[@wit ne '#base'])
-                                                let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
-                                                    return 
-                                                        $non-base - $base
-                                            else
-                                                if ($node//choice or name($node) = 'choice') 
-                                                then string-length($node//reg) - string-length($node//sic)
-                                                else 0
-                                    else 0
-                                let $log := util:log("DEBUG", ("##$off-set-difference): ", $off-set-difference))
-                                    return $off-set-difference}</authoritative-layer-offset-difference>
-                </annotation>
+            <annotation type="element" xml:id="{concat('uuid-', util:uuid())}">
+                <target type="range" layer="{
+                    if (local-name($node) = $edition-layer) 
+                    then 'edition' 
+                    else 
+                        if ($node instance of element())
+                        then 'feature'
+                        else 'text'}">
+                    <id>{$node/../@xml:id}</id>
+                    <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
+                    <offset>{$position-end - $position-start}</offset>
+                </target>
+                <body>{
+                    if ($node instance of text()) 
+                    then replace($node, ' ', '<space/>') 
+                    else $node}</body>
+                        <layer-offset-difference>{
+                            let $off-set-difference :=
+                                if (name($node) = $edition-layer or $node//app or $node//choice) 
+                                then 
+                                    if (($node//app or name($node) = 'app') and $node//lem) 
+                                    then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
+                                    else 
+                                        if (($node//app or name($node) = 'app') and $node//rdg) 
+                                        then 
+                                            let $non-base := string-length($node//rdg[@wit ne '#base'])
+                                            let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
+                                                return 
+                                                    $non-base - $base
+                                        else
+                                            if ($node//choice or name($node) = 'choice') 
+                                            then string-length($node//reg) - string-length($node//sic)
+                                            else 0
+                                else 0
+                            let $log := util:log("DEBUG", ("##$off-set-difference): ", $off-set-difference))
+                                return $off-set-difference}</layer-offset-difference>
+            </annotation>
 };
 
 declare function local:insert-element($node as node()?, $new-node as node(), 
@@ -96,27 +95,27 @@ declare function local:insert-element($node as node()?, $new-node as node(),
 
 declare function local:insert-authoritative-layer-start($nodes as element()*) as element()* {
     for $annotation in $nodes/*
-    let $previous-offsets := sum($annotation/preceding-sibling::annotation/authoritative-layer-offset-difference, 0)
-    let $log := util:log("DEBUG", ("##previous-offsets): ", $previous-offsets))
-    let $present-start := $annotation/target/start cast as xs:integer
-    let $log := util:log("DEBUG", ("##present-start): ", $present-start))
-    let $authoritative-layer-start := $present-start + $previous-offsets
-    let $authoritative-layer-start := <start>{$authoritative-layer-start}</start>
     
-    let $authoritative-layer-offset := $annotation/target/offset/number() + $annotation/authoritative-layer-offset-difference
-    let $authoritative-layer-offset := <offset>{$authoritative-layer-offset}</offset>
+        let $id := concat('uuid-', util:uuid($annotation/target/id/@xml:id))
+        
+        let $previous-offsets := sum($annotation/preceding-sibling::annotation/layer-offset-difference, 0)
+        let $present-start := $annotation/target/start cast as xs:integer
+        let $authoritative-layer-start := $present-start + $previous-offsets
     
-    let $authoritative-layer := <authoritative-layer><target>{$authoritative-layer-start}{$authoritative-layer-offset}</target></authoritative-layer>
-        return local:insert-element($annotation, $authoritative-layer, 'annotation', 'last-child')
+        let $layer-offset := $annotation/target/offset/number() + $annotation/layer-offset-difference
+    
+        let $authoritative-layer := <authoritative-layer><target><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></target></authoritative-layer>
+
+            return local:insert-element($annotation, $authoritative-layer, 'annotation', 'last-child')
     
 };
 
-declare function local:insert-authoritative-layer-offset($nodes as element()*) as element()* {
+declare function local:insert-layer-offset($nodes as element()*) as element()* {
     for $annotation in $nodes/*
-    let $authoritative-layer-offset := $annotation/target/offset/number() + $annotation/authoritative-layer-offset-difference
-    let $authoritative-layer-offset := <authoritative-layer-offset>{$authoritative-layer-offset}</authoritative-layer-offset>
+    let $layer-offset := $annotation/target/offset/number() + $annotation/layer-offset-difference
+    let $layer-offset := <layer-offset>{$layer-offset}</layer-offset>
     
-        return local:insert-element($annotation, $authoritative-layer-offset, 'annotation', 'last-child')
+        return local:insert-element($annotation, $layer-offset, 'annotation', 'last-child')
     
 };
 
@@ -157,7 +156,7 @@ let $authoritative-text := local:separate-layers($input, 'authoritative')
 let $top-level-annotations :=
     <annotations>{local:get-top-level-elements($input, $edition-layer)}</annotations>    
 
-let $top-level-nodes := local:insert-authoritative-layer-offset($top-level-annotations)
+let $top-level-nodes := local:insert-layer-offset($top-level-annotations)
 let $top-level-nodes := local:insert-authoritative-layer-start($top-level-annotations)
 
 
@@ -178,5 +177,4 @@ let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* 
                 <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-annotations">{$top-level-annotations}</div>
                 <div type="top-level-nodes">{$top-level-nodes}</div>
-                
             </result>
