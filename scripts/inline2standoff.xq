@@ -135,14 +135,6 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                 case element(reg) return if ($target eq 'base') then () else $node/string()
                 case element(sic) return if ($target eq 'base') then $node/string() else ()
                 
-                case element(note) 
-                    return 
-                        if ($target eq 'base') 
-                        then 
-                            if ($node/@resp eq '#author') 
-                            then () 
-                            else () 
-                        else ()
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
                     default return local:separate-layers($node, $target)
 };
@@ -159,16 +151,9 @@ let $top-level-nodes-base-layer :=
     <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
 let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
-let $nodes := <p><em>a</em><note resp="#JØP">The author is probably wrong here.</note>.</p>
-     
-        (:for $node in $nodes/node():)
         return 
-            (:local:separate-layers($node/preceding-sibling::node(), 'base'):)
-            (:string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())):)
             <result>
-                <div type="inlined-text">{$input}</div>
-                <div type="base-text">{$base-text}</div>
-                <div type="authoritative-text">{$authoritative-text}</div>
-                <div type="top-level-nodes-base-layer">{$top-level-nodes-base-layer}</div>
+                <div type="base-text">{normalize-space(string-join($base-text))}</div>
+                <div type="authoritative-text">{normalize-space(string-join($authoritative-text))}</div>
                 <div type="top-level-nodes">{$top-level-nodes}</div>
             </result>
