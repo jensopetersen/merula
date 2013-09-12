@@ -2,14 +2,18 @@ xquery version "3.0";
 
 declare boundary-space preserve;
 
-declare function local:get-top-level-nodes($input as element(), $edition-layer) {
+declare function local:get-top-level-nodes-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
-        let $position-start := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text()))
-        let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
+        let $position-start := 
+            string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + 
+            string-length(string-join($node/preceding-sibling::text()))
+        let $log := util:log("DEBUG", ("##position-start): ", $position-start))
+        let $position-end := $position-start + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
+        let $log := util:log("DEBUG", ("##position-end): ", $position-end))
         return
             <node type="element" xml:id="{concat('uuid-', util:uuid())}">
                 <target type="range" layer="{
-                    if (local-name($node) = $edition-layer) 
+                    if (local-name($node) = $edition-layer-elements) 
                     then 'edition' 
                     else 
                         if ($node instance of element())
@@ -25,7 +29,7 @@ declare function local:get-top-level-nodes($input as element(), $edition-layer) 
                     else $node}</body>
                         <layer-offset-difference>{
                             let $off-set-difference :=
-                                if (name($node) = $edition-layer or $node//app or $node//choice) 
+                                if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
                                 then 
                                     if (($node//app or name($node) = 'app') and $node//lem) 
                                     then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
@@ -109,29 +113,20 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
             return local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
     
 };
-(: 
-declare function local:insert-layer-offset-difference($nodes as element()*) as element()* {
-    for $node in $nodes/*
-    let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
-    let $layer-offset := <layer-offset>{$layer-offset}</layer-offset>
-    
-        return local:insert-element($node, $layer-offset, 'base-layer', 'after')
-    
-};
-:)
+
 declare function local:separate-layers($nodes as node()*, $target) as item()* {
     for $node in $nodes/node()
             return
             typeswitch($node)
-                case text() return $node
+                case text() return if (local-name($node/..) eq 'note') then () else $node/string()
                 
                 case element(lem) return if ($target eq 'base') then () else $node/string()
                 case element(rdg) return 
                     if ($target eq 'base' and not($node/../lem))
-                    then $node[@wit ne '#base']/string() 
+                    then $node[@wit eq '#base']/string() 
                     else
                         if ($target ne 'base' and not($node/../lem))
-                        then $node[@wit eq '#base']/string() 
+                        then $node[@wit ne '#base']/string() 
                         else
                             if ($target eq 'base' and $node/../lem)
                             then $node/string()
@@ -140,37 +135,36 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                 case element(reg) return if ($target eq 'base') then () else $node/string()
                 case element(sic) return if ($target eq 'base') then $node/string() else ()
                 
-                case element(note) return if ($target eq 'base') then if ($node/@resp eq '#author') then $node/text() else () else ()
+                case element(note) 
+                    return 
+                        if ($target eq 'base') 
+                        then 
+                            if ($node/@resp eq '#author') 
+                            then () 
+                            else () 
+                        else ()
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
                     default return local:separate-layers($node, $target)
 };
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
-let $edition-layer := ('app', 'choice')
+let $edition-layer-elements := ('app', 'choice')
 
 let $base-text := local:separate-layers($input, 'base')
     
 let $authoritative-text := local:separate-layers($input, 'authoritative')
 
 let $top-level-nodes-base-layer :=
-    <nodes>{local:get-top-level-nodes($input, $edition-layer)}</nodes>
-
-(: let $top-level-nodes := local:insert-layer-offset-difference($top-level-nodes-base-layer):)
+    <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
 let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
-
-(: annotations are finished if they have string contents or if they have empty elements:)
-(:let $finished-top-level-annotations :=    
-        for $top-level-annotation in $top-level-annotations/*
-        where 
-            normalize-space($top-level-annotation/body/contents/string()) 
-            or normalize-space($top-level-annotation/body/node/string()) eq ''
-                return <annotations>{$top-level-annotation}</annotations>
-:)
-(:let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* except $finished-top-level-annotations}</annotations>:)
-
-     return 
+let $nodes := <p><em>a</em><note resp="#JØP">The author is probably wrong here.</note>.</p>
+     
+        (:for $node in $nodes/node():)
+        return 
+            (:local:separate-layers($node/preceding-sibling::node(), 'base'):)
+            (:string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())):)
             <result>
                 <div type="inlined-text">{$input}</div>
                 <div type="base-text">{$base-text}</div>
