@@ -33,10 +33,9 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
                                         if (($node//app or name($node) = $edition-layer) and $node//rdg) 
                                         then 
                                             let $non-base := string-length($node//rdg[@wit ne '#base'])
-                                            let $log := util:log("DEBUG", ("##$non-base): ", $non-base))
                                             let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
-                                            let $log := util:log("DEBUG", ("##$base): ", $base))
-                                            return $non-base - $base
+                                            return 
+                                                $non-base - $base
                                         else
                                             if ($node//choice) 
                                             then string-length($node//reg) - string-length($node//sic)
@@ -94,10 +93,12 @@ declare function local:insert-element($node as node()?, $new-node as node(),
 
 declare function local:insert-layer-start-offset($nodes as element()*) as element()* {
     for $annotation in $nodes/*
-    let $previous-start := $annotation/preceding-sibling::annotation[1]/target/start/number()
-    let $present-offset := $annotation/layer-length-offset/number()
-    (:let $log := util:log("DEBUG", ("##$present-offset): ", $present-offset)):)
-    let $layer-start-offset := <layer-start-offset>{$annotation/preceding-sibling::annotation[1]/target/start/number() + $annotation/layer-offset/number()}</layer-start-offset>
+    let $previous-offsets := sum($annotation/preceding-sibling::annotation/layer-length-offset, 0)
+    let $log := util:log("DEBUG", ("##$previous-offsets): ", $previous-offsets))
+    let $present-start := $annotation/target/start cast as xs:integer
+    let $log := util:log("DEBUG", ("##$present-start): ", $present-start))
+    let $authoritative-layer-start := $present-start - $previous-offsets
+    let $layer-start-offset := <authoritative-layer-start>{$authoritative-layer-start}</authoritative-layer-start>
     
         return local:insert-element($annotation, $layer-start-offset, 'annotation', 'last-child')
     
@@ -109,14 +110,23 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
             typeswitch($node)
                 case text() return $node
                 
-                case element(lem) return if ($target eq 'base') then () else $node/text()
-                case element(rdg) return if ($target eq 'base') then $node/text() else ()
+                case element(lem) return if ($target eq 'base') then () else $node/string()
+                case element(rdg) return 
+                    if ($target eq 'base' and not($node/../lem))
+                    then $node[@wit ne '#base']/string() 
+                    else
+                        if ($target ne 'base' and not($node/../lem))
+                        then $node[@wit eq '#base']/string() 
+                        else
+                            if ($target eq 'base' and $node/../lem)
+                            then $node/string()
+                            else ()
                 
-                case element(reg) return if ($target eq 'base') then () else $node/text()
-                case element(sic) return if ($target eq 'base') then $node/text() else ()
+                case element(reg) return if ($target eq 'base') then () else $node/string()
+                case element(sic) return if ($target eq 'base') then $node/string() else ()
                 
                 case element(note) return if ($target eq 'base') then if ($node/@resp eq '#author') then $node/text() else () else ()
-                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected alongon the same level as "edition" and "feature":)
+                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
                     default return local:separate-layers($node, $target)
 };
 
