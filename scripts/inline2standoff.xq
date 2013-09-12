@@ -24,23 +24,26 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
                         if ($node instance of text()) 
                         then replace($node, ' ', '<space/>') 
                         else $node}</body>
-                        <layer-length-offset>{
-                                if (name($node) = $edition-layer or $node//app or $node//choice) 
-                                then 
-                                    if (($node//app or name($node) = $edition-layer) and $node//lem) 
-                                    then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
-                                    else 
-                                        if (($node//app or name($node) = $edition-layer) and $node//rdg) 
-                                        then 
-                                            let $non-base := string-length($node//rdg[@wit ne '#base'])
-                                            let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
-                                            return 
-                                                $non-base - $base
-                                        else
-                                            if ($node//choice) 
-                                            then string-length($node//reg) - string-length($node//sic)
-                                            else 0
-                                else 0}</layer-length-offset>
+                            <authoritative-layer-offset-difference>{
+                                let $off-set-difference :=
+                                    if (name($node) = $edition-layer or $node//app or $node//choice) 
+                                    then 
+                                        if (($node//app or name($node) = 'app') and $node//lem) 
+                                        then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
+                                        else 
+                                            if (($node//app or name($node) = 'app') and $node//rdg) 
+                                            then 
+                                                let $non-base := string-length($node//rdg[@wit ne '#base'])
+                                                let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
+                                                    return 
+                                                        $non-base - $base
+                                            else
+                                                if ($node//choice or name($node) = 'choice') 
+                                                then string-length($node//reg) - string-length($node//sic)
+                                                else 0
+                                    else 0
+                                let $log := util:log("DEBUG", ("##$off-set-difference): ", $off-set-difference))
+                                    return $off-set-difference}</authoritative-layer-offset-difference>
                 </annotation>
 };
 
@@ -91,18 +94,31 @@ declare function local:insert-element($node as node()?, $new-node as node(),
          else $node
 };
 
-declare function local:insert-layer-start-offset($nodes as element()*) as element()* {
+declare function local:insert-authoritative-layer-start($nodes as element()*) as element()* {
     for $annotation in $nodes/*
-    let $previous-offsets := sum($annotation/preceding-sibling::annotation/layer-length-offset, 0)
-    let $log := util:log("DEBUG", ("##$previous-offsets): ", $previous-offsets))
+    let $previous-offsets := sum($annotation/preceding-sibling::annotation/authoritative-layer-offset-difference, 0)
+    let $log := util:log("DEBUG", ("##previous-offsets): ", $previous-offsets))
     let $present-start := $annotation/target/start cast as xs:integer
-    let $log := util:log("DEBUG", ("##$present-start): ", $present-start))
-    let $authoritative-layer-start := $present-start - $previous-offsets
-    let $layer-start-offset := <authoritative-layer-start>{$authoritative-layer-start}</authoritative-layer-start>
+    let $log := util:log("DEBUG", ("##present-start): ", $present-start))
+    let $authoritative-layer-start := $present-start + $previous-offsets
+    let $authoritative-layer-start := <start>{$authoritative-layer-start}</start>
     
-        return local:insert-element($annotation, $layer-start-offset, 'annotation', 'last-child')
+    let $authoritative-layer-offset := $annotation/target/offset/number() + $annotation/authoritative-layer-offset-difference
+    let $authoritative-layer-offset := <offset>{$authoritative-layer-offset}</offset>
     
-    };
+    let $authoritative-layer := <authoritative-layer><target>{$authoritative-layer-start}{$authoritative-layer-offset}</target></authoritative-layer>
+        return local:insert-element($annotation, $authoritative-layer, 'annotation', 'last-child')
+    
+};
+
+declare function local:insert-authoritative-layer-offset($nodes as element()*) as element()* {
+    for $annotation in $nodes/*
+    let $authoritative-layer-offset := $annotation/target/offset/number() + $annotation/authoritative-layer-offset-difference
+    let $authoritative-layer-offset := <authoritative-layer-offset>{$authoritative-layer-offset}</authoritative-layer-offset>
+    
+        return local:insert-element($annotation, $authoritative-layer-offset, 'annotation', 'last-child')
+    
+};
 
 declare function local:separate-layers($nodes as node()*, $target) as item()* {
     for $node in $nodes/node()
@@ -141,7 +157,9 @@ let $authoritative-text := local:separate-layers($input, 'authoritative')
 let $top-level-annotations :=
     <annotations>{local:get-top-level-elements($input, $edition-layer)}</annotations>    
 
-let $top-level-nodes := local:insert-layer-start-offset($top-level-annotations)
+let $top-level-nodes := local:insert-authoritative-layer-offset($top-level-annotations)
+let $top-level-nodes := local:insert-authoritative-layer-start($top-level-annotations)
+
 
 (: annotations are finished if they have string contents or if they have empty elements:)
 let $finished-top-level-annotations :=    
