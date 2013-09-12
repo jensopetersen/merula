@@ -2,12 +2,12 @@ xquery version "3.0";
 
 declare boundary-space preserve;
 
-declare function local:get-top-level-elements($input as element(), $edition-layer) {
+declare function local:get-top-level-nodes($input as element(), $edition-layer) {
     for $node in $input/node()
         let $position-start := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text()))
         let $position-end := string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + string-length(string-join($node/preceding-sibling::text())) + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
-            <annotation type="element" xml:id="{concat('uuid-', util:uuid())}">
+            <node type="element" xml:id="{concat('uuid-', util:uuid())}">
                 <base-layer><target type="range" layer="{
                     if (local-name($node) = $edition-layer) 
                     then 'edition' 
@@ -43,7 +43,7 @@ declare function local:get-top-level-elements($input as element(), $edition-laye
                                 else 0
                             let $log := util:log("DEBUG", ("##$off-set-difference): ", $off-set-difference))
                                 return $off-set-difference}</layer-offset-difference>
-            </annotation>
+            </node>
 };
 
 declare function local:insert-element($node as node()?, $new-node as node(), 
@@ -93,29 +93,29 @@ declare function local:insert-element($node as node()?, $new-node as node(),
          else $node
 };
 
-declare function local:insert-authoritative-layer-start($nodes as element()*) as element()* {
-    for $annotation in $nodes/*
+declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
+    for $node in $nodes/*
     
-        let $id := concat('uuid-', util:uuid($annotation/base-layer/target/id/@xml:id))
+        let $id := concat('uuid-', util:uuid($node/base-layer/target/id/@xml:id))
         
-        let $previous-offsets := sum($annotation/preceding-sibling::annotation/layer-offset-difference, 0)
-        let $present-start := $annotation/base-layer/target/start cast as xs:integer
+        let $previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
+        let $present-start := $node/base-layer/target/start cast as xs:integer
         let $authoritative-layer-start := $present-start + $previous-offsets
     
-        let $layer-offset := $annotation/base-layer/target/offset/number() + $annotation/layer-offset-difference
+        let $layer-offset := $node/base-layer/target/offset/number() + $node/layer-offset-difference
     
         let $authoritative-layer := <authoritative-layer><target><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></target></authoritative-layer>
 
-            return local:insert-element($annotation, $authoritative-layer, 'annotation', 'last-child')
+            return local:insert-element($node, $authoritative-layer, 'node', 'last-child')
     
 };
 
-declare function local:insert-layer-offset($nodes as element()*) as element()* {
-    for $annotation in $nodes/*
-    let $layer-offset := $annotation/base-layer/target/offset/number() + $annotation/layer-offset-difference
+declare function local:insert-layer-offset-difference($nodes as element()*) as element()* {
+    for $node in $nodes/*
+    let $layer-offset := $node/base-layer/target/offset/number() + $node/layer-offset-difference
     let $layer-offset := <layer-offset>{$layer-offset}</layer-offset>
     
-        return local:insert-element($annotation, $layer-offset, 'annotation', 'last-child')
+        return local:insert-element($node, $layer-offset, 'node', 'last-child')
     
 };
 
@@ -153,28 +153,28 @@ let $base-text := local:separate-layers($input, 'base')
     
 let $authoritative-text := local:separate-layers($input, 'authoritative')
 
-let $top-level-annotations :=
-    <annotations>{local:get-top-level-elements($input, $edition-layer)}</annotations>    
+let $top-level-nodes-base-layer :=
+    <nodes>{local:get-top-level-nodes($input, $edition-layer)}</nodes>
 
-let $top-level-nodes := local:insert-layer-offset($top-level-annotations)
-let $top-level-nodes := local:insert-authoritative-layer-start($top-level-annotations)
+let $top-level-nodes := local:insert-layer-offset-difference($top-level-nodes-base-layer)
 
+let $top-level-nodes := local:insert-authoritative-layer($top-level-nodes-base-layer)
 
 (: annotations are finished if they have string contents or if they have empty elements:)
-let $finished-top-level-annotations :=    
+(:let $finished-top-level-annotations :=    
         for $top-level-annotation in $top-level-annotations/*
         where 
             normalize-space($top-level-annotation/body/contents/string()) 
             or normalize-space($top-level-annotation/body/node/string()) eq ''
                 return <annotations>{$top-level-annotation}</annotations>
-
-let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* except $finished-top-level-annotations}</annotations>
+:)
+(:let $unfinished-top-level-annotations := <annotations>{$top-level-annotations/* except $finished-top-level-annotations}</annotations>:)
 
      return 
             <result>
                 <div type="inlined-text">{$input}</div>
                 <div type="base-text">{$base-text}</div>
                 <div type="authoritative-text">{$authoritative-text}</div>
-                <div type="top-level-annotations">{$top-level-annotations}</div>
+                <div type="top-level-nodes-base-layer">{$top-level-nodes-base-layer}</div>
                 <div type="top-level-nodes">{$top-level-nodes}</div>
             </result>
