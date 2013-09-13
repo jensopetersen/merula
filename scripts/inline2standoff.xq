@@ -9,7 +9,14 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
             string-length(string-join($node/preceding-sibling::text()))
         let $position-end := $position-start + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
         return
-            <node type="element" xml:id="{concat('uuid-', util:uuid())}">
+            <node type="{
+                if ($node instance of text())
+                then 'text'
+                else 
+                    if ($node instance of element())
+                    then 'element'
+                    else ()
+                }" xml:id="{concat('uuid-', util:uuid())}">
                 <target type="range" layer="{
                     if (local-name($node) = $edition-layer-elements) 
                     then 'edition' 
@@ -17,34 +24,38 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                         if ($node instance of element())
                         then 'feature'
                         else 'text'}">
-                    <base-layer><id>{$node/../@xml:id}</id>
-                    <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
-                    <offset>{$position-end - $position-start}</offset>
-                </base-layer></target>
+                    <base-layer>
+                        <id>{$node/../@xml:id}</id>
+                        <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
+                        <offset>{$position-end - $position-start}</offset>
+                    </base-layer>
+                </target>
                 <body>{
                     if ($node instance of text()) 
                     then replace($node, ' ', '<space/>') 
-                    else $node}</body>
-                        <layer-offset-difference>{
-                            let $off-set-difference :=
-                                if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
+                    else $node}
+                </body>
+                <layer-offset-difference>{
+                    let $off-set-difference :=
+                        if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
+                        then 
+                            if (($node//app or name($node) = 'app') and $node//lem) 
+                            then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
+                            else 
+                                if (($node//app or name($node) = 'app') and $node//rdg) 
                                 then 
-                                    if (($node//app or name($node) = 'app') and $node//lem) 
-                                    then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
-                                    else 
-                                        if (($node//app or name($node) = 'app') and $node//rdg) 
-                                        then 
-                                            let $non-base := string-length($node//rdg[@wit ne '#base'])
-                                            let $base := string-length($node//rdg[@wit eq '#base'])(:NB: assumes only 2 rdg - one is the target rdg used instead of lem:)
-                                                return 
-                                                    $non-base - $base
-                                        else
-                                            if ($node//choice or name($node) = 'choice') 
-                                            then string-length($node//reg) - string-length($node//sic)
-                                            else 0
-                                else 0
-                            let $log := util:log("DEBUG", ("##$off-set-difference): ", $off-set-difference))
-                                return $off-set-difference}</layer-offset-difference>
+                                    let $non-base := string-length($node//rdg[@wit ne '#base'])
+                                    let $base := string-length($node//rdg[@wit eq '#base'])
+                                        return 
+                                            $non-base - $base
+                                else
+                                    if ($node//choice or name($node) = 'choice') 
+                                    then string-length($node//reg) - string-length($node//sic)
+                                    else 0
+                        else 0
+                    
+                            return $off-set-difference}
+                </layer-offset-difference>
             </node>
 };
 
@@ -117,7 +128,9 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
     for $node in $nodes/node()
             return
             typeswitch($node)
+                
                 case text() return if (local-name($node/..) eq 'note') then () else $node/string()
+                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
                 
                 case element(lem) return if ($target eq 'base') then () else $node/string()
                 case element(rdg) return 
@@ -134,18 +147,16 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                 case element(reg) return if ($target eq 'base') then () else $node/string()
                 case element(sic) return if ($target eq 'base') then $node/string() else ()
                 
-                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
-                
                     default return local:separate-layers($node, $target)
 };
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
 
-let $edition-layer-elements := ('app', 'choice')
-
-let $base-text := local:separate-layers($input, 'base')
+let $base-text := string-join(local:separate-layers($input, 'base'))
     
-let $authoritative-text := local:separate-layers($input, 'authoritative')
+let $authoritative-text := string-join(local:separate-layers($input, 'authoritative'))
+
+let $edition-layer-elements := ('app', 'choice')
 
 let $top-level-nodes-base-layer := <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
@@ -153,7 +164,7 @@ let $top-level-nodes-base-and-authoritative-layer := local:insert-authoritative-
 
         return 
             <result>
-                <div type="base-text">{string-join($base-text)}</div>
-                <div type="authoritative-text">{string-join($authoritative-text)}</div>
+                <div type="base-text">{$base-text}</div>
+                <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
             </result>
