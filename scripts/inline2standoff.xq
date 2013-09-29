@@ -4,10 +4,13 @@ declare boundary-space preserve;
 
 declare function local:get-top-level-nodes-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
+        let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
+        let $base-before-text := string-join($node/preceding-sibling::text())
+        let $marked-up-string := string-join(local:separate-layers(<node>{$node}</node>, 'base'))
         let $position-start := 
-            string-length(string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))) + 
-            string-length(string-join($node/preceding-sibling::text()))
-        let $position-end := $position-start + string-length(string-join(local:separate-layers(<node>{$node}</node>, 'base')))
+            string-length($base-before-element) + 
+            string-length($base-before-text)
+        let $position-end := $position-start + string-length($marked-up-string)
         return
             <node type="{
                 if ($node instance of text())
@@ -16,7 +19,14 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                     if ($node instance of element())
                     then 'element'
                     else ()
-                }" xml:id="{concat('uuid-', util:uuid())}">
+                }" xml:id="{concat('uuid-', util:uuid())}" status="{
+                    let $base-text := string-join(local:separate-layers($input, 'base'))
+                    let $before := substring($base-text, $position-start, 1)
+                    let $after := substring($base-text, $position-end + 1, 1)
+                    let $before-after := concat($before, $after)
+                    let $before-after := replace($before-after, '\s|\p{P}', '')
+                    return
+                    if ($before-after) then "string" else "token"}">
                 <target type="range" layer="{
                     if (local-name($node) = $edition-layer-elements) 
                     then 'edition' 
@@ -33,8 +43,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                 <body>{
                     if ($node instance of text()) 
                     then replace($node, ' ', '<space/>') 
-                    else $node}
-                </body>
+                    else $node}</body>
                 <layer-offset-difference>{
                     let $off-set-difference :=
                         if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
@@ -54,8 +63,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                                     else 0
                         else 0
                     
-                            return $off-set-difference}
-                </layer-offset-difference>
+                            return $off-set-difference}</layer-offset-difference>
             </node>
 };
 
