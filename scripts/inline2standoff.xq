@@ -42,7 +42,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                 </target>
                 <body>{
                     if ($node instance of text()) 
-                    then replace($node, ' ', '<space/>') 
+                    then replace($node, ' ', '&#x20;') 
                     else $node}</body>
                 <layer-offset-difference>{
                     let $off-set-difference :=
@@ -170,9 +170,22 @@ let $top-level-nodes-base-layer := <nodes>{local:get-top-level-nodes-base-layer(
 
 let $top-level-nodes-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-nodes-base-layer)
 
+let $top-level-text-nodes := 
+    for $node in $top-level-nodes-base-and-authoritative-layer
+    return 
+        if ($node/body/text() and not($node/body/element())) then $node else ()
+
+let $top-level-empty-element-nodes := 
+    for $node in $top-level-nodes-base-and-authoritative-layer
+    return 
+        if (not($node/body//text()) and $node/body/element()) then $node else ()
+    
+
         return 
             <result>
                 <div type="base-text">{$base-text}</div>
                 <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
+                <div type="top-level-text-nodes">{$top-level-text-nodes}</div>
+                <div type="top-level-empty-element-nodes">{$top-level-empty-element-nodes}</div>
             </result>
