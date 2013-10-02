@@ -2,6 +2,22 @@ xquery version "3.0";
 
 declare boundary-space preserve;
 
+declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
+   for $node in $nodes
+   return
+     if ($node instance of element())
+     then 
+        if ((local-name($node) = $remove))
+        then ()
+        else element { node-name($node)}
+                { $node/@*,
+                  local:remove-elements($node/node(), $remove)}
+     else 
+        if ($node instance of document-node())
+        then local:remove-elements($node/node(), $remove)
+        else $node
+ } ;
+
 declare function local:get-top-level-nodes-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
@@ -124,7 +140,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
     
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
     
-        let $authoritative-layer := <authoritative-layer><id>{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
+        let $authoritative-layer := <authoritative-layer><id>{$id}></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
         
             return
                 local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
@@ -183,20 +199,48 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                     default return local:separate-layers($node, $target)
 };
 
+declare function local:handle-element-annotations($node as node()) as item()* {
+            let $layer-1-body-contents := $node//body/*
+            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
+       for $attribute in $layer-1-body-contents/@*
+            return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
+            let $layer-1 := local:remove-elements($node, 'body')
+            let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')
+            return $layer-1
+            ,
+            let $layer-1-id := $node/@xml:id/string()
+            let $layer-1-status := $node/@status/string()
+            let $layer-2-body-contents := $node//body/*/*
+            for $element at $i in $layer-2-body-contents
+                return
+                    <node type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
+                        <target type="element" layer="annotation">
+                            <annotation-layer>
+                                <id>{$layer-1-id}</id>
+                                <order>{$i}</order>
+                            </annotation-layer>
+                        </target>
+                        <body>{$element}</body>
+                    </node>
+
+};
+
+declare function local:handle-mixed-content-annotations($node as node()) as item()* {
+            if ($node)
+            then $node
+            else ()                
+};
+
 declare function local:whittle-down-annotations($node as node()) as item()* {
-    
             if (not($node//body/string())) (:no text node: - empty element:)
             then $node
             else 
                 if ($node//body/*/node() instance of text()) (:one level until text node - also filters away mixed contents:)
                 then $node
                 else 
-                    if ($node//body/*/node() instance of element()) (:element(s) on next level:)
-                    then $node
-                    else 
-                        if ($node//body/*/*[../text()[normalize-space()]]) (:mixed contents:)
-                        then $node
-                        else ()
+                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (:mixed contents - if there is an element (second *) and it parent (first *)  is a text node, then we are dealing with mixed contents:)
+                    then local:handle-mixed-content-annotations($node)
+                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and , if it is not exclusively anone or more element nodes, then it is mixed contents :)
                 
 };
 
@@ -220,7 +264,7 @@ let $top-level-text-nodes :=
 
 let $top-level-element-nodes :=
     for $node in $top-level-nodes-base-and-authoritative-layer
-        where $node/body/node() instance of element()
+        where $node/body/node() instance of element() (:filters away pure text nodes:)
     return 
         local:whittle-down-annotations($node)
         
@@ -231,5 +275,5 @@ let $top-level-element-nodes :=
                 <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
                 <div type="top-level-text-nodes">{$top-level-text-nodes}</div>
-                <div type="top-level-element-nodes">{$top-level-element-nodes}</div>
+                <div type="annotations">{$top-level-element-nodes}</div>
             </result>
