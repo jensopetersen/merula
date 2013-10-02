@@ -194,9 +194,23 @@ declare function local:handle-element-annotations($node as node()) as item()* {
 
 declare function local:handle-mixed-content-annotations($node as node()) as item()* {
     (:Basically, an annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input:)
-            if ($node)
-            then $node
-            else ()                
+            let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
+            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
+                for $attribute in $layer-1-body-contents/@*
+                    return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
+            let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
+            let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
+            return $layer-1
+            ,
+            let $layer-2-body-contents := local:get-top-level-nodes-base-layer($node//body/*, '')
+            let $layer-1-id := <id>{$node/@xml:id/string()}</id>
+            for $layer-2-body-content in $layer-2-body-contents
+                return
+                    let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-offset-difference'))
+                    let $layer-2-body-content := local:insert-element($layer-2-body-content, $layer-1-id, 'start', 'before')
+                        return
+                            $layer-2-body-content
+                            (:the layer attribute should be removed:)
 };
 
 declare function local:whittle-down-annotations($node as node()) as item()* {
@@ -230,7 +244,7 @@ let $top-level-text-nodes :=
     return 
         if ($node/body/text() and not($node/body/element())) then $node else ()
 
-let $top-level-element-nodes :=
+let $annotations :=
     for $node in $top-level-nodes-base-and-authoritative-layer
         where $node/body/node() instance of element() (:filters away pure text nodes:)
     return 
@@ -238,9 +252,8 @@ let $top-level-element-nodes :=
         
         return 
             <result>
+                <div type="input">{$input}</div>
                 <div type="base-text">{$base-text}</div>
                 <div type="authoritative-text">{$authoritative-text}</div>
-                <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
-                <div type="top-level-text-nodes">{$top-level-text-nodes}</div>
-                <div type="annotations">{$top-level-element-nodes}</div>
+                <div type="annotations">{$annotations}</div>
             </result>
