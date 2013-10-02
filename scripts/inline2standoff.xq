@@ -35,7 +35,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                         then 'feature'
                         else 'text'}">
                     <base-layer>
-                        <id>{$node/../@xml:id}</id>
+                        <id>{string($node/../@xml:id)}</id>
                         <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
                         <offset>{$position-end - $position-start}</offset>
                     </base-layer>
@@ -61,8 +61,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
                                     if ($node//choice or name($node) = 'choice') 
                                     then string-length($node//reg) - string-length($node//sic)
                                     else 0
-                        else 0
-                    
+                        else 0            
                             return $off-set-difference}</layer-offset-difference>
             </node>
 };
@@ -117,7 +116,7 @@ declare function local:insert-element($node as node()?, $new-node as node(),
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
     for $node in $nodes/*
     
-        let $id := concat('uuid-', util:uuid($node/target/base-layer/id/@xml:id))
+        let $id := concat('uuid-', util:uuid($node/target/base-layer/id))
         
         let $sum-of-previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
@@ -125,9 +124,9 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
     
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
     
-        let $authoritative-layer := <authoritative-layer><id xml:id="{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
+        let $authoritative-layer := <authoritative-layer><id>{$id}"></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
         
-            return 
+            return
                 local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
     
 };
@@ -137,8 +136,8 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
             return
             typeswitch($node)
                 
-                case text() return if (local-name($node/..) eq 'note') then () else $node/string()
-                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature":)
+                case text() return if ($node/ancestor-or-self::element(note)) then () else $node/string()
+                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature". Here we strip out all notes.:)
                 
                 case element(lem) return if ($target eq 'base') then () else $node/string()
                 case element(rdg) return 
@@ -158,7 +157,50 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                     default return local:separate-layers($node, $target)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is probably wrong here.</note>.</p>
+declare function local:separate-layers($nodes as node()*, $target) as item()* {
+    for $node in $nodes/node()
+            return
+            typeswitch($node)
+                
+                case text() return if ($node/ancestor-or-self::element(note)) then () else $node/string()
+                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature". Here we strip out all notes.:)
+                
+                case element(lem) return if ($target eq 'base') then () else $node/string()
+                case element(rdg) return 
+                    if ($target eq 'base' and not($node/../lem))
+                    then $node[@wit eq '#base']/string() 
+                    else
+                        if ($target ne 'base' and not($node/../lem))
+                        then $node[@wit ne '#base']/string() 
+                        else
+                            if ($target eq 'base' and $node/../lem)
+                            then $node/string()
+                            else ()
+                
+                case element(reg) return if ($target eq 'base') then () else $node/string()
+                case element(sic) return if ($target eq 'base') then $node/string() else ()
+                
+                    default return local:separate-layers($node, $target)
+};
+
+declare function local:whittle-down-annotations($node as node()) as item()* {
+    
+            if (not($node//body/string())) (:no text node: - empty element:)
+            then $node
+            else 
+                if ($node//body/*/node() instance of text()) (:one level until text node - also filters away mixed contents:)
+                then $node
+                else 
+                    if ($node//body/*/node() instance of element()) (:element(s) on next level:)
+                    then $node
+                    else 
+                        if ($node//body/*/*[../text()[normalize-space()]]) (:mixed contents:)
+                        then $node
+                        else ()
+                
+};
+
+let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>probably</emph> wrong here.</note>.</p>
 
 let $base-text := string-join(local:separate-layers($input, 'base'))
     
@@ -170,16 +212,18 @@ let $top-level-nodes-base-layer := <nodes>{local:get-top-level-nodes-base-layer(
 
 let $top-level-nodes-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-nodes-base-layer)
 
+(: actually, we don't need the text nodes, so they can be left out above this. :)
 let $top-level-text-nodes := 
     for $node in $top-level-nodes-base-and-authoritative-layer
     return 
         if ($node/body/text() and not($node/body/element())) then $node else ()
 
-let $top-level-empty-element-nodes := 
+let $top-level-element-nodes :=
     for $node in $top-level-nodes-base-and-authoritative-layer
+        where $node/body/node() instance of element()
     return 
-        if (not($node/body//text()) and $node/body/element()) then $node else ()
-    
+        local:whittle-down-annotations($node)
+        
 
         return 
             <result>
@@ -187,5 +231,5 @@ let $top-level-empty-element-nodes :=
                 <div type="authoritative-text">{$authoritative-text}</div>
                 <div type="top-level-nodes-base-and-authoritative-layer">{$top-level-nodes-base-and-authoritative-layer}</div>
                 <div type="top-level-text-nodes">{$top-level-text-nodes}</div>
-                <div type="top-level-empty-element-nodes">{$top-level-empty-element-nodes}</div>
+                <div type="top-level-element-nodes">{$top-level-element-nodes}</div>
             </result>
