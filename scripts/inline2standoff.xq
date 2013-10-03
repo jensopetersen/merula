@@ -174,13 +174,13 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
             let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
-            return $layer-1
+                return $layer-1
             ,(:return the old annotation, with empty element below body and the new ones, with contents below this split over several annotations:)
             let $layer-1-id := $node/@xml:id/string()(:get id and:)
             let $layer-1-status := $node/@status/string()(:status of original annotation:)
             let $layer-2-body-contents := $node//body/*/*(:get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
-                return
+                let $result :=
                     <node type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
@@ -190,6 +190,10 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                         </target>
                         <body>{$element}</body>
                     </node>
+                    return
+                        if (not($result//body/string()) or $result//body/*/node() instance of text() or $result//body/node() instance of text())
+                        then $result 
+                        else local:whittle-down-annotations($result)
 };
 
 declare function local:handle-mixed-content-annotations($node as node()) as item()* {
@@ -200,32 +204,35 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
             let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
-            return $layer-1
+                return $layer-1
             ,
             let $layer-2-body-contents := local:get-top-level-nodes-base-layer($node//body/*, '')
             let $layer-1-id := <id>{$node/@xml:id/string()}</id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
                     let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-offset-difference'))
-                    let $layer-2-body-content := local:insert-element($layer-2-body-content, $layer-1-id, 'start', 'before')
+                    let $layer-2 := local:insert-element($layer-2-body-content, $layer-1-id, 'start', 'before')
+                    let $log := util:log("DEBUG", ("##$layer-2): ", $layer-2))
                         return
-                            $layer-2-body-content
+                            if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
+                        then $layer-2
+                        else local:whittle-down-annotations($layer-2)
                             (:the layer attribute should be removed:)
 };
 
 declare function local:whittle-down-annotations($node as node()) as item()* {
-            if (not($node//body/string())) (:no text node - an empty element:)
+            if (not($node//body/string())) (:no text node - an empty element - pass through:)
             then $node
             else 
-                if ($node//body/*/node() instance of text()) (: one level until text node - also filters away mixed contents:)
+                if ($node//body/*/node() instance of text()) (: one level until text node  - pass through - also filters away mixed contents:)
                 then $node
                 else 
-                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (:mixed contents - if there is an element (second *) and its parent (first *) is a text node, then we are dealing with mixed contents:)
+                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (:mixed contents - send on and receive back - if there is an element (second *) and its parent (first *) is a text node, then we are dealing with mixed contents:)
                     then local:handle-mixed-content-annotations($node)
-                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not exclusively one or more element nodes, then it is mixed contents :)
+                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes - send on and receive back :)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>probably</emph> wrong here.</note>.</p>
+let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
 
 let $base-text := string-join(local:separate-layers($input, 'base'))
     
