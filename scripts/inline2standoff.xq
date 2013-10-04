@@ -47,12 +47,15 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                     return
                     if ($before-after) then "string" else "token"}">
                 <target type="range" layer="{
-                    if (local-name($node) = $edition-layer-elements) 
-                    then 'edition' 
-                    else 
-                        if ($node instance of element())
-                        then 'feature'
-                        else 'text'}">
+                    if ($node instance of text())
+                    then 'text'
+                    else
+                        if (local-name($node) = $edition-layer-elements) 
+                        then 'edition' 
+                        else 
+                            if ($node instance of element())
+                            then 'feature'
+                            else 'unknown'}">
                     <base-layer>
                         <id>{string($node/../@xml:id)}</id>
                         <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
@@ -234,7 +237,6 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                             if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
                         then $layer-2
                         else local:whittle-down-annotations($layer-2)
-                            (:the layer attribute should be removed:)
 };
 
 (: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element exclusively with a text node :)
