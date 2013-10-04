@@ -127,10 +127,10 @@ declare function local:insert-element($node as node()?, $new-node as node(),
          else $node
 };
 
+(: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
     for $node in $nodes/*
-    
-        let $id := concat('uuid-', util:uuid($node/target/base-layer/id))
+        let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
         let $sum-of-previous-offsets := sum($node/preceding-sibling::node/layer-offset-difference, 0)
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
         let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
@@ -147,7 +147,7 @@ declare function local:separate-layers($nodes as node()*, $target) as item()* {
                 
                 case text() return if ($node/ancestor-or-self::element(note)) then () else $node/string()
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text"). 
-                Here we strip out all notes.:)
+                Here we strip out all notes from the text itself and put it into annotations.:)
                 
                 case element(lem) return if ($target eq 'base') then () else $node/string()
                 case element(rdg) return 
@@ -175,11 +175,13 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
             let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
-            ,(:return the old annotation, with empty element below body and the new ones, with contents below this split over several annotations:)
-            let $layer-1-id := $node/@xml:id/string()(:get id and:)
-            let $layer-1-status := $node/@status/string()(:status of original annotation:)
-            let $layer-2-body-contents := $node//body/*/*(:get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
+                (:return the old annotation, with an empty element below body:)
+            ,
+            let $layer-1-id := $node/@xml:id/string() (: get id :)
+            let $layer-1-status := $node/@status/string() (: get the status of original annotation :)
+            let $layer-2-body-contents := $node//body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
+            (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
                 let $result :=
                     <node type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
@@ -220,26 +222,28 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                             (:the layer attribute should be removed:)
 };
 
+(: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element exclusively with a text node :)
 declare function local:whittle-down-annotations($node as node()) as item()* {
-            if (not($node//body/string())) (:no text node - an empty element - pass through:)
+            if (not($node//body/string())) (: there is no text anywhere (an empty element), so pass through:)
             then $node
             else 
-                if ($node//body/*/node() instance of text()) (: one level until text node  - pass through - also filters away mixed contents:)
+                if ($node//body/*/node() instance of text()) (: there is one level until text node (but no mixed contents), so pass through :)
                 then $node
                 else 
-                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (:mixed contents - send on and receive back - if there is an element (second *) and its parent (first *) is a text node, then we are dealing with mixed contents:)
+                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (backtracking to the first '*') is a text node, then we are dealing with mixed contents:)
                     then local:handle-mixed-content-annotations($node)
-                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes - send on and receive back :)
+                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
+(: NB: There is the problem with $input that edition annotation occurs inside feature annotation; perhaps a function should first invert such cases, so all edition annotation is on upper level? :)
 
 let $base-text-output := 
     element {node-name($input)}{
        for $attribute in $input/@*
        return
         if (name($attribute) eq 'xml:id')
-        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $input/@xml:id)))}
+        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $input/@xml:id)))} (: construct a new UUID based on old one :)
         else attribute {name($attribute)} {$attribute}
     ,
     string-join(local:separate-layers($input, 'base'))
@@ -250,27 +254,25 @@ let $authoritative-text-output :=
        for $attribute in $input/@*
        return
         if (name($attribute) eq 'xml:id')
-        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('authoritative-text', $input/@xml:id)))}
+        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('authoritative-text', $input/@xml:id)))} (: construct a new UUID based on old one :)
         else attribute {name($attribute)} {$attribute}
     ,
     string-join(local:separate-layers($input, 'authoritative'))
 }
 
-let $edition-layer-elements := ('app', 'choice')
+let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 
-let $top-level-nodes-base-layer := <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
+let $top-level-annotations-keyed-to-base-layer := <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
 
-let $top-level-nodes-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-nodes-base-layer)
+let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
 
-(: actually, we don't need the text nodes, so they can be left out above this. :)
-(: We do actually need text nodes in the broken down annotations. :)
-let $top-level-text-nodes := 
-    for $node in $top-level-nodes-base-and-authoritative-layer
+(: let $top-level-text-nodes := 
+    for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
     return 
-        if ($node/body/text() and not($node/body/element())) then $node else ()
+        if ($node/body/text() and not($node/body/element())) then $node else ():)
 
 let $annotations :=
-    for $node in $top-level-nodes-base-and-authoritative-layer
+    for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
         where $node/body/node() instance of element() (:filters away pure text nodes:)
     return 
         local:whittle-down-annotations($node)
