@@ -2,6 +2,7 @@ xquery version "3.0";
 
 declare boundary-space preserve;
 
+(: Removes elements named (identity transform) :)
 declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
    for $node in $nodes
    return
@@ -18,7 +19,9 @@ declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomi
         else $node
 } ;
 
-declare function local:get-top-level-nodes-base-layer($input as element(), $edition-layer-elements) {
+(: Scrapes off all upper-level element (and text) nodes and records their position in relation to the base layer:)
+(: NB: the text nodes are later filtered away and should be removed, but they are nice to have since they allow reconstructing the whole process :)
+declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
@@ -82,6 +85,7 @@ declare function local:get-top-level-nodes-base-layer($input as element(), $edit
             </node>
 };
 
+(: Inserts elements supplied at a certain position (identity transform) :)
 declare function local:insert-element($node as node()?, $new-node as node(), 
     $element-name-to-check as xs:string, $location as xs:string) {
         if (local-name($node) eq $element-name-to-check)
@@ -140,29 +144,40 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
                 local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
 };
 
-declare function local:separate-layers($nodes as node()*, $target) as item()* {
-    for $node in $nodes/node()
+(: Based on the list of TEI elements that alter the text stream, construct the altered (authoritative) or the unaltered (base) form, according to the target set :)
+declare function local:separate-layers($input as node()*, $target) as item()* {
+    for $node in $input/node()
         return
             typeswitch($node)
                 
-                case text() return if ($node/ancestor-or-self::element(note)) then () else $node/string()
+                case text() return 
+                    if ($node/ancestor-or-self::element(note)) 
+                    then () 
+                    else $node
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text"). 
                 Here we strip out all notes from the text itself and put it into annotations.:)
-                
-                case element(lem) return if ($target eq 'base') then () else $node/string()
+                case element(lem) return 
+                    if ($target eq 'base') 
+                    then () 
+                    else $node
                 case element(rdg) return 
                     if ($target eq 'base' and not($node/../lem))
-                    then $node[@wit eq '#base']/string() 
+                    then $node[@wit eq '#base']
                     else
                         if ($target ne 'base' and not($node/../lem))
-                        then $node[@wit ne '#base']/string() 
+                        then $node[@wit ne '#base']
                         else
                             if ($target eq 'base' and $node/../lem)
-                            then $node/string()
+                            then $node
                             else ()
-                
-                case element(reg) return if ($target eq 'base') then () else $node/string()
-                case element(sic) return if ($target eq 'base') then $node/string() else ()
+                case element(reg) return 
+                    if ($target eq 'base') 
+                    then () 
+                    else $node
+                case element(sic) return 
+                    if ($target eq 'base') 
+                    then $node
+                    else ()
                 
                     default return local:separate-layers($node, $target)
 };
@@ -208,7 +223,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
             let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
-            let $layer-2-body-contents := local:get-top-level-nodes-base-layer($node//body/*, '')
+            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-layer($node//body/*, '')
             let $layer-1-id := <id>{$node/@xml:id/string()}</id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
@@ -262,7 +277,7 @@ let $authoritative-text-output :=
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 
-let $top-level-annotations-keyed-to-base-layer := <nodes>{local:get-top-level-nodes-base-layer($input, $edition-layer-elements)}</nodes>
+let $top-level-annotations-keyed-to-base-layer := <nodes>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</nodes>
 
 let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
 
