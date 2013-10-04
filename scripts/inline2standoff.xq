@@ -234,9 +234,27 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
 
 let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
 
-let $base-text := string-join(local:separate-layers($input, 'base'))
+let $base-text-output := 
+    element {node-name($input)}{
+       for $attribute in $input/@*
+       return
+        if (name($attribute) eq 'xml:id')
+        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $input/@xml:id)))}
+        else attribute {name($attribute)} {$attribute}
+    ,
+    string-join(local:separate-layers($input, 'base'))
+}
     
-let $authoritative-text := string-join(local:separate-layers($input, 'authoritative'))
+let $authoritative-text-output := 
+    element {node-name($input)}{
+       for $attribute in $input/@*
+       return
+        if (name($attribute) eq 'xml:id')
+        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('authoritative-text', $input/@xml:id)))}
+        else attribute {name($attribute)} {$attribute}
+    ,
+    string-join(local:separate-layers($input, 'authoritative'))
+}
 
 let $edition-layer-elements := ('app', 'choice')
 
@@ -260,7 +278,7 @@ let $annotations :=
         return 
             <result>
                 <div type="input">{$input}</div>
-                <div type="base-text">{$base-text}</div>
-                <div type="authoritative-text">{$authoritative-text}</div>
+                <div type="base-text">{$base-text-output}</div>
+                <div type="authoritative-text">{$authoritative-text-output}</div>
                 <div type="annotations">{$annotations}</div>
             </result>
