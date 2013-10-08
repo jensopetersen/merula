@@ -11,7 +11,7 @@
     </authoritative-text>
     <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc" status="token">
+            xml:id="uuid-721f4acf-97d0-4a60-b0b4-f291d62e4aac" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -29,11 +29,11 @@
             </body>
             <layer-offset-difference>-1</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-479a7017-9d68-4e78-b230-96b5b97efc39" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
+                    <id>uuid-721f4acf-97d0-4a60-b0b4-f291d62e4aac</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -41,11 +41,11 @@
                 <reg>met</reg>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996b" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-06169424-8676-4224-92fb-a36122d46d49" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
+                    <id>uuid-721f4acf-97d0-4a60-b0b4-f291d62e4aac</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -54,7 +54,7 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c" status="token">
+            xml:id="uuid-cbc0c5ae-a290-42cd-907e-c672c2cee176" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -72,11 +72,11 @@
             </body>
             <layer-offset-difference>-2</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-37438e07-709a-4fcb-a364-2f4f1da85fe0" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
+                    <id>uuid-cbc0c5ae-a290-42cd-907e-c672c2cee176</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -84,11 +84,11 @@
                 <lem wit="#a"/>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-7826f967-aa26-45a2-9358-480a782b5efe" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba</id>
+                    <id>uuid-37438e07-709a-4fcb-a364-2f4f1da85fe0</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -96,11 +96,11 @@
                 <name ref="#SW" type="person"/>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-0f3e2942-7f86-4a85-a3ae-72d42e57306b" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-f87b74b4-56d4-46c6-989e-e0cb5a00ba97" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e</id>
+                    <id>uuid-7826f967-aa26-45a2-9358-480a782b5efe</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -108,59 +108,11 @@
                 <forename>Steve</forename>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-7a124001-e642-4c30-b381-8b787b2bec3c" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-94dbb89b-d512-4ac5-a2d7-77d1ceeafafe" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e</id>
-                    <order>2</order>
-                </annotation-layer>
-            </target>
-            <body>
-                <surname>Winwood</surname>
-            </body>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-018636fc-c659-4426-a2eb-11863365465d" status="token">
-            <target type="element" layer="annotation">
-                <annotation-layer>
-                    <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
-                    <order>2</order>
-                </annotation-layer>
-            </target>
-            <body>
-                <rdg wit="#b"/>
-            </body>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-5bcb9234-6d17-4416-98cc-416698c916ba" status="token">
-            <target type="element" layer="annotation">
-                <annotation-layer>
-                    <id>uuid-018636fc-c659-4426-a2eb-11863365465d</id>
-                    <order>1</order>
-                </annotation-layer>
-            </target>
-            <body>
-                <name ref="#SW" type="person"/>
-            </body>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-f5b5cdc3-a9de-41a4-988b-6cb7b1d93a29" status="token">
-            <target type="element" layer="annotation">
-                <annotation-layer>
-                    <id>uuid-5bcb9234-6d17-4416-98cc-416698c916ba</id>
-                    <order>1</order>
-                </annotation-layer>
-            </target>
-            <body>
-                <forename>Stephen</forename>
-            </body>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-9a566fff-274e-4d03-8046-d7508612edb4" status="token">
-            <target type="element" layer="annotation">
-                <annotation-layer>
-                    <id>uuid-5bcb9234-6d17-4416-98cc-416698c916ba</id>
+                    <id>uuid-7826f967-aa26-45a2-9358-480a782b5efe</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -169,7 +121,55 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc" status="token">
+            xml:id="uuid-d0f6d713-b3e1-4616-a53d-02b814441ed1" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-cbc0c5ae-a290-42cd-907e-c672c2cee176</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg wit="#b"/>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-1617140e-34d4-4535-828b-5a62b983bc9b" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-d0f6d713-b3e1-4616-a53d-02b814441ed1</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <name ref="#SW" type="person"/>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-828d1b13-6fab-42be-91f1-d563ecf079b3" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-1617140e-34d4-4535-828b-5a62b983bc9b</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <forename>Stephen</forename>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c95125bd-0db9-4307-956e-82e1ea9a7e61" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-1617140e-34d4-4535-828b-5a62b983bc9b</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <surname>Winwood</surname>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-124ded27-ccbc-4c6b-be26-8f8de7125632" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -187,11 +187,11 @@
             </body>
             <layer-offset-difference>-2</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-06c94ca9-5795-4868-8192-8a2128703113" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-451287f0-26ae-4e23-8693-b4e52c583b61" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc</id>
+                    <id>uuid-124ded27-ccbc-4c6b-be26-8f8de7125632</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -199,11 +199,11 @@
                 <rdg wit="#base"/>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-27091a6a-1ff6-42cd-99a3-3bb809e0bbc3" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-b9a0fc06-7a70-48a4-bd11-60cf6b921914" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-06c94ca9-5795-4868-8192-8a2128703113</id>
+                    <id>uuid-451287f0-26ae-4e23-8693-b4e52c583b61</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -211,11 +211,11 @@
                 <name ref="#AK" type="person">Alexis Korner</name>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-8438215a-30ae-48e8-b3c0-33f200ea6745" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-41975b6c-ee38-47c2-a512-90cb9d56f7c2" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc</id>
+                    <id>uuid-124ded27-ccbc-4c6b-be26-8f8de7125632</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -223,11 +223,11 @@
                 <rdg wit="#c"/>
             </body>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element'"
-            xml:id="uuid-d8ae2c43-4f9f-46d1-bc07-b9d3122801b7" status="token">
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c586bd56-6aa4-4690-b9fb-66243e990478" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-8438215a-30ae-48e8-b3c0-33f200ea6745</id>
+                    <id>uuid-41975b6c-ee38-47c2-a512-90cb9d56f7c2</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -236,7 +236,7 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-fa784d06-4eb0-42e9-9a6c-9c480b54f87a" status="string">
+            xml:id="uuid-a43f351f-e435-4a3f-9fee-69d0a0ecb376" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -255,7 +255,7 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b85a56fb-6d78-42c0-9533-dd399306f793" status="token">
+            xml:id="uuid-c51cdc7e-327c-4e6c-b3ca-373e4ccf5747" status="token">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -274,7 +274,7 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-4ae90f43-95f9-47c2-8fdd-20f9ee210457" status="string">
+            xml:id="uuid-1e4e63f9-a73b-402a-9e44-66199006bec7" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
@@ -293,10 +293,10 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-0b9c587b-2d3c-47d1-a5c3-2ece39790db8" status="token">
+            xml:id="uuid-ee9ab1d1-f7a8-4ec6-bd2e-900023050923" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-4ae90f43-95f9-47c2-8fdd-20f9ee210457</id>
+                    <id>uuid-1e4e63f9-a73b-402a-9e44-66199006bec7</id>
                     <start>1</start>
                     <offset>14</offset>
                 </base-layer>
@@ -304,10 +304,10 @@
             <body>The author is </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-698789b1-7df5-4730-b51a-193d31152b8e" status="token">
+            xml:id="uuid-85172b4d-5cb8-48ac-a172-761ed63b271f" status="token">
             <target type="range" layer="feature">
                 <base-layer>
-                    <id>uuid-4ae90f43-95f9-47c2-8fdd-20f9ee210457</id>
+                    <id>uuid-1e4e63f9-a73b-402a-9e44-66199006bec7</id>
                     <start>15</start>
                     <offset>9</offset>
                 </base-layer>
@@ -317,10 +317,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-9117307c-9769-4f5b-8feb-c3600338ff5a" status="string">
+            xml:id="uuid-d54bf9d4-6cec-4324-8fcb-c1269369d8a3" status="string">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-698789b1-7df5-4730-b51a-193d31152b8e</id>
+                    <id>uuid-85172b4d-5cb8-48ac-a172-761ed63b271f</id>
                     <start>1</start>
                     <offset>4</offset>
                 </base-layer>
@@ -328,10 +328,10 @@
             <body>pro-</body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-5fc67ed3-4f41-4781-b63c-8e296c7f0deb" status="string">
+            xml:id="uuid-28779b99-ee53-4cec-94ce-9e8c0a851bf5" status="string">
             <target type="range" layer="feature">
                 <base-layer>
-                    <id>uuid-698789b1-7df5-4730-b51a-193d31152b8e</id>
+                    <id>uuid-85172b4d-5cb8-48ac-a172-761ed63b271f</id>
                     <start>4</start>
                     <offset>0</offset>
                 </base-layer>
@@ -341,10 +341,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-114d21ca-b04d-4c7a-b731-cbfeb30db1f6" status="token">
+            xml:id="uuid-aed219af-6b08-4aa4-b035-2ad0f03c69d2" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-698789b1-7df5-4730-b51a-193d31152b8e</id>
+                    <id>uuid-85172b4d-5cb8-48ac-a172-761ed63b271f</id>
                     <start>5</start>
                     <offset>5</offset>
                 </base-layer>
@@ -352,10 +352,10 @@
             <body>bably</body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-05553dfa-8fe9-4b2c-b98c-d9ef1714ee13" status="token">
+            xml:id="uuid-09b97408-124e-45a7-a4aa-d0b595afd4b1" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-4ae90f43-95f9-47c2-8fdd-20f9ee210457</id>
+                    <id>uuid-1e4e63f9-a73b-402a-9e44-66199006bec7</id>
                     <start>15</start>
                     <offset>12</offset>
                 </base-layer>

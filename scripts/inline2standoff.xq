@@ -199,7 +199,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             for $element at $i in $layer-2-body-contents
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
                 let $result :=
-                    <annotation type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
+                    <annotation type="element" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
                                 <id>{$layer-1-id}</id>
