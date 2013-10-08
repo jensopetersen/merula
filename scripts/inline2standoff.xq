@@ -25,13 +25,13 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
     for $node in $input/node()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
-        let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
+        let $marked-up-string := string-join(local:separate-layers(<node>{$node}</node>, 'base'))
         let $position-start := 
             string-length($base-before-element) + 
             string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
         return
-            <annotation type="{
+            <node type="{
                 if ($node instance of text())
                 then 'text'
                 else 
@@ -40,12 +40,12 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                     else ()
                 }" xml:id="{concat('uuid-', util:uuid())}" status="{
                     let $base-text := string-join(local:separate-layers($input, 'base'))
-                    let $character-before := substring($base-text, $position-start, 1)
-                    let $character-after := substring($base-text, $position-end + 1, 1)
-                    let $characters-before-and-after := concat($character-before, $character-after)
-                    let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
+                    let $before := substring($base-text, $position-start, 1)
+                    let $after := substring($base-text, $position-end + 1, 1)
+                    let $before-after := concat($before, $after)
+                    let $before-after := replace($before-after, '\s|\p{P}', '')
                     return
-                    if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                    if ($before-after) then "string" else "token"}">
                 <target type="range" layer="{
                     if ($node instance of text())
                     then 'text'
@@ -62,7 +62,10 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                         <offset>{$position-end - $position-start}</offset>
                     </base-layer>
                 </target>
-                <body>{$node}</body>
+                <body>{
+                    if ($node instance of text()) 
+                    then replace($node, ' ', '&#x20;') 
+                    else $node}</body>
                 <layer-offset-difference>{
                     let $off-set-difference :=
                         if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
@@ -82,7 +85,7 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                                     else 0
                         else 0            
                             return $off-set-difference}</layer-offset-difference>
-            </annotation>
+            </node>
 };
 
 (: Inserts elements supplied at a certain position (identity transform) :)
@@ -132,7 +135,6 @@ declare function local:insert-element($node as node()?, $new-node as node(),
 };
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
-(: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-layer():)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
     for $node in $nodes/*
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
@@ -199,7 +201,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             for $element at $i in $layer-2-body-contents
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
                 let $result :=
-                    <annotation type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
+                    <node type="element'" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
                                 <id>{$layer-1-id}</id>
@@ -207,7 +209,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                             </annotation-layer>
                         </target>
                         <body>{$element}</body>
-                    </annotation>
+                    </node>
                     return
                         if (not($result//body/string()) or $result//body/*/node() instance of text() or $result//body/node() instance of text())
                         then $result 
@@ -250,7 +252,7 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                     else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
+let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename><surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
 (: NB: There is the problem with $input that if edition annotation occurs inside feature annotation, a function should first invert the annotation, so all edition annotation is on upper level? The problem only relates to inline4standoff, not to the editor. :)
 
 let $base-text-output := 
@@ -277,7 +279,7 @@ let $authoritative-text-output :=
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 
-let $top-level-annotations-keyed-to-base-layer := <annotations>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</annotations>
+let $top-level-annotations-keyed-to-base-layer := <nodes>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</nodes>
 
 let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
 
@@ -294,7 +296,7 @@ let $annotations :=
         
         return 
             <result>
-                <base-text>{$base-text-output}</base-text>
-                <authoritative-text>{$authoritative-text-output}</authoritative-text>
-                <annotations>{$annotations}</annotations>
+                <div type="base-text">{$base-text-output}</div>
+                <div type="authoritative-text">{$authoritative-text-output}</div>
+                <div type="annotations">{$annotations}</div>
             </result>
