@@ -252,8 +252,8 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                     else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <name ref="#SW" type="person"><forename><app><lem wit="#a">Steve</lem><rdg wit="#b">Stephen</rdg></app></forename> <surname>Winwood</surname></name> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
-(: NB: There is the problem with $input that edition annotation occurs inside feature annotation; perhaps a function should first invert such cases, so all edition annotation is on upper level? :)
+let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename><surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename><surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
+(: NB: There is the problem with $input that if edition annotation occurs inside feature annotation, a function should first invert the annotation, so all edition annotation is on upper level? The problem only relates to inline4standoff, not to the editor. :)
 
 let $base-text-output := 
     element {node-name($input)}{
@@ -296,7 +296,6 @@ let $annotations :=
         
         return 
             <result>
-                <div type="input">{$input}</div>
                 <div type="base-text">{$base-text-output}</div>
                 <div type="authoritative-text">{$authoritative-text-output}</div>
                 <div type="annotations">{$annotations}</div>
