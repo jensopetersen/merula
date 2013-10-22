@@ -70,11 +70,13 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
             $annotations/annotation[target/annotation-layer/id = $annotation-id]
     let $log := util:log("DEBUG", ("##$children1): ", $children))
     let $children :=
-                <children>{(
+                <children>{
                     for $child in $children
                     let $child-id := $annotation/@xml:id
                         return
-                            local:build-up-annotations($child, $annotations))}</children>
+                            if ($annotation/annotation[target/annotation-layer/id = $child-id])
+                            then local:build-up-annotations($child, $annotations)
+                            else $child}</children>
     let $log := util:log("DEBUG", ("##$children2): ", $children))
         return 
             local:insert-element($annotation, $children, $annotation-element-name,  'first-child')
