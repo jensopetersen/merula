@@ -1,22 +1,22 @@
 xquery version "3.0";
 
 (: Inserts elements supplied at a certain position (identity transform) :)
-declare function local:insert-element($node as node()?, $new-node as node(), 
-    $element-name-to-check as xs:string, $location as xs:string) {
-        if (local-name($node) eq $element-name-to-check)
+declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, 
+    $element-names-to-check as xs:string+, $location as xs:string) {
+        if (local-name($node) = $element-names-to-check)
         then
             if ($location eq 'before')
-            then ($new-node, $node) 
+            then ($new-nodes, $node) 
             else 
                 if ($location eq 'after')
-                then ($node, $new-node)
+                then ($node, $new-nodes)
                 else
                     if ($location eq 'first-child')
                     then element {node-name($node)}
                         {
                             $node/@*
                             ,
-                            $new-node
+                            $new-nodes
                             ,
                             for $child in $node/node()
                                 return  $child
@@ -30,9 +30,9 @@ declare function local:insert-element($node as node()?, $new-node as node(),
                                 for $child in $node/node()
                                     return $child 
                                 ,
-                                $new-node
+                                $new-nodes
                             }
-                        else () (:The $element-to-check is removed if none of the four options are used.:)
+                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
         else
             if ($node instance of element()) 
             then
@@ -41,26 +41,10 @@ declare function local:insert-element($node as node()?, $new-node as node(),
                     , 
                     for $child in $node/node()
                         return 
-                            local:insert-element($child, $new-node, $element-name-to-check, $location) 
+                            local:insert-or-remove-nodes($child, $new-nodes, $element-names-to-check, $location) 
             }
-         else $node
+            else $node
 };
-
-declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
-   for $node in $nodes
-   return
-     if ($node instance of element())
-     then 
-        if ((local-name($node) = $remove))
-        then ()
-        else element {node-name($node)}
-                {$node/@*,
-                  local:remove-elements($node/node(), $remove)}
-     else 
-        if ($node instance of document-node())
-        then local:remove-elements($node/node(), $remove)
-        else $node
-} ;
 
 declare function local:build-up-annotations($top-level-critical-annotations as element()+, $annotations as element()) as element()* {
     for $annotation in $top-level-critical-annotations
@@ -69,8 +53,6 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
     let $children :=
             $annotations/annotation[target/annotation-layer/id = $annotation-id]
     let $children :=
-                <children>
-                {
                     for $child in $children
                     let $child-id := $annotation/@xml:id/string()
                     let $log := util:log("DEBUG", ("##$child-id): ", $child-id))
@@ -78,10 +60,8 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
                             if ($annotations/annotation[target/annotation-layer/id = $child-id]) (:something is wrong here - this does not catch cases where there is a further annotation, leaving empty <children> at dead ends:)
                             then local:build-up-annotations($child, $annotations)
                             else $child
-                }
-                </children>
         return 
-            local:insert-element($annotation, $children, $annotation-element-name,  'first-child')            
+            local:insert-or-remove-nodes($annotation, $children, $annotation-element-name,  'first-child')            
 };
 
 declare function local:collapse-annotations($built-up-critical-annotations as element()+) {
@@ -93,8 +73,7 @@ declare function local:collapse-annotations($built-up-critical-annotations as el
         let $child := $child/body
             return $child
     let $log := util:log("DEBUG", ("##$children): ", $children))
-    let $bare := local:remove-elements($annotation, 'children')
-    let $full := local:insert-element($bare, $children, $annotation-element-name,  'first-child')
+    let $full := local:insert-or-remove-nodes($bare, $children, $annotation-element-name,  'first-child')
         return 
             $full
 };
