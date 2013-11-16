@@ -2,269 +2,51 @@
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
         xml:id="uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc" status="token">
         <target type="range" layer="edition">
-            <base-layer>
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>3</start>
-                <offset>4</offset>
-            </base-layer>
-            <authoritative-layer>
-                <id>uuid-5f44133c-728d-30a5-a296-c5603f5218c3></id>
-                <start>3</start>
-                <offset>3</offset>
-            </authoritative-layer>
+            <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
+            <start>3</start>
+            <offset>4</offset>
         </target>
-        <body>
-            <choice>
-                <children>
-                    <annotation type="element" xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
-                                <order>1</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <reg>
-                                <children/> met</reg>
-                        </body>
-                    </annotation>
-                    <annotation type="element" xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996b"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
-                                <order>2</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <sic>
-                                <children/> meet</sic>
-                        </body>
-                    </annotation>
-                </children>
-            </choice>
-        </body>
-        <layer-offset-difference>-1</layer-offset-difference>
+        <choice>
+            <reg>met</reg>
+            <sic>meet</sic>
+        </choice>
     </annotation>
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
         xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c" status="token">
         <target type="range" layer="edition">
-            <base-layer>
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>8</start>
-                <offset>15</offset>
-            </base-layer>
-            <authoritative-layer>
-                <id>uuid-5f44133c-728d-30a5-a296-c5603f5218c3></id>
-                <start>7</start>
-                <offset>13</offset>
-            </authoritative-layer>
+            <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
+            <start>8</start>
+            <offset>15</offset>
         </target>
-        <body>
-            <app>
-                <children>
-                    <annotation type="element" xml:id="uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
-                                <order>1</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <lem wit="#a">
-                                <children>
-                                    <annotation type="element"
-                                        xml:id="uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e"
-                                        status="token">
-                                        <target type="element" layer="annotation">
-                                            <annotation-layer>
-                                                <id>uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba</id>
-                                                <order>1</order>
-                                            </annotation-layer>
-                                        </target>
-                                        <body>
-                                            <name ref="#SW" type="person">
-                                                <children>
-                                                  <annotation type="element"
-                                                  xml:id="uuid-0f3e2942-7f86-4a85-a3ae-72d42e57306b"
-                                                  status="token">
-                                                  <target type="element" layer="annotation">
-                                                  <annotation-layer>
-                                                  <id>uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e</id>
-                                                  <order>1</order>
-                                                  </annotation-layer>
-                                                  </target>
-                                                  <body>
-                                                  <forename>
-                                                  <children/> Steve</forename>
-                                                  </body>
-                                                  </annotation>
-                                                  <annotation type="element"
-                                                  xml:id="uuid-7a124001-e642-4c30-b381-8b787b2bec3c"
-                                                  status="token">
-                                                  <target type="element" layer="annotation">
-                                                  <annotation-layer>
-                                                  <id>uuid-f12feba1-ef16-4a6a-ab13-c41f5dfaf42e</id>
-                                                  <order>2</order>
-                                                  </annotation-layer>
-                                                  </target>
-                                                  <body>
-                                                  <surname>
-                                                  <children/> Winwood</surname>
-                                                  </body>
-                                                  </annotation>
-                                                </children>
-                                            </name>
-                                        </body>
-                                    </annotation>
-                                </children>
-                            </lem>
-                        </body>
-                    </annotation>
-                    <annotation type="element" xml:id="uuid-018636fc-c659-4426-a2eb-11863365465d"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
-                                <order>2</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <rdg wit="#b">
-                                <children>
-                                    <annotation type="element"
-                                        xml:id="uuid-5bcb9234-6d17-4416-98cc-416698c916ba"
-                                        status="token">
-                                        <target type="element" layer="annotation">
-                                            <annotation-layer>
-                                                <id>uuid-018636fc-c659-4426-a2eb-11863365465d</id>
-                                                <order>1</order>
-                                            </annotation-layer>
-                                        </target>
-                                        <body>
-                                            <name ref="#SW" type="person">
-                                                <children>
-                                                  <annotation type="element"
-                                                  xml:id="uuid-f5b5cdc3-a9de-41a4-988b-6cb7b1d93a29"
-                                                  status="token">
-                                                  <target type="element" layer="annotation">
-                                                  <annotation-layer>
-                                                  <id>uuid-5bcb9234-6d17-4416-98cc-416698c916ba</id>
-                                                  <order>1</order>
-                                                  </annotation-layer>
-                                                  </target>
-                                                  <body>
-                                                  <forename>
-                                                  <children/> Stephen</forename>
-                                                  </body>
-                                                  </annotation>
-                                                  <annotation type="element"
-                                                  xml:id="uuid-9a566fff-274e-4d03-8046-d7508612edb4"
-                                                  status="token">
-                                                  <target type="element" layer="annotation">
-                                                  <annotation-layer>
-                                                  <id>uuid-5bcb9234-6d17-4416-98cc-416698c916ba</id>
-                                                  <order>2</order>
-                                                  </annotation-layer>
-                                                  </target>
-                                                  <body>
-                                                  <surname>
-                                                  <children/> Winwood</surname>
-                                                  </body>
-                                                  </annotation>
-                                                </children>
-                                            </name>
-                                        </body>
-                                    </annotation>
-                                </children>
-                            </rdg>
-                        </body>
-                    </annotation>
-                </children>
-            </app>
-        </body>
-        <layer-offset-difference>-2</layer-offset-difference>
+        <app>
+            <lem wit="#a">
+                <name ref="#SW" type="person">
+                    <forename>Steve</forename>
+                    <surname>Winwood</surname>
+                </name>
+            </lem>
+            <rdg wit="#b">
+                <name ref="#SW" type="person">
+                    <forename>Stephen</forename>
+                    <surname>Winwood</surname>
+                </name>
+            </rdg>
+        </app>
     </annotation>
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
         xml:id="uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc" status="token">
         <target type="range" layer="edition">
-            <base-layer>
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>28</start>
-                <offset>13</offset>
-            </base-layer>
-            <authoritative-layer>
-                <id>uuid-5f44133c-728d-30a5-a296-c5603f5218c3></id>
-                <start>25</start>
-                <offset>11</offset>
-            </authoritative-layer>
+            <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
+            <start>28</start>
+            <offset>13</offset>
         </target>
-        <body>
-            <app>
-                <children>
-                    <annotation type="element" xml:id="uuid-06c94ca9-5795-4868-8192-8a2128703113"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc</id>
-                                <order>1</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <rdg wit="#base">
-                                <children>
-                                    <annotation type="element"
-                                        xml:id="uuid-27091a6a-1ff6-42cd-99a3-3bb809e0bbc3"
-                                        status="token">
-                                        <target type="element" layer="annotation">
-                                            <annotation-layer>
-                                                <id>uuid-06c94ca9-5795-4868-8192-8a2128703113</id>
-                                                <order>1</order>
-                                            </annotation-layer>
-                                        </target>
-                                        <body>
-                                            <name ref="#AK" type="person">
-                                                <children/> Alexis Korner</name>
-                                        </body>
-                                    </annotation>
-                                </children>
-                            </rdg>
-                        </body>
-                    </annotation>
-                    <annotation type="element" xml:id="uuid-8438215a-30ae-48e8-b3c0-33f200ea6745"
-                        status="token">
-                        <target type="element" layer="annotation">
-                            <annotation-layer>
-                                <id>uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc</id>
-                                <order>2</order>
-                            </annotation-layer>
-                        </target>
-                        <body>
-                            <rdg wit="#c">
-                                <children>
-                                    <annotation type="element"
-                                        xml:id="uuid-d8ae2c43-4f9f-46d1-bc07-b9d3122801b7"
-                                        status="token">
-                                        <target type="element" layer="annotation">
-                                            <annotation-layer>
-                                                <id>uuid-8438215a-30ae-48e8-b3c0-33f200ea6745</id>
-                                                <order>1</order>
-                                            </annotation-layer>
-                                        </target>
-                                        <body>
-                                            <name ref="#JM" type="person">
-                                                <children/> John Mayall</name>
-                                        </body>
-                                    </annotation>
-                                </children>
-                            </rdg>
-                        </body>
-                    </annotation>
-                </children>
-            </app>
-        </body>
-        <layer-offset-difference>-2</layer-offset-difference>
+        <app>
+            <rdg wit="#base">
+                <name ref="#AK" type="person">Alexis Korner</name>
+            </rdg>
+            <rdg wit="#c">
+                <name ref="#JM" type="person">John Mayall</name>
+            </rdg>
+        </app>
     </annotation>
 </annotations>

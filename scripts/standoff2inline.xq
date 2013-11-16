@@ -46,6 +46,26 @@ declare function local:insert-or-remove-nodes($node as node(), $new-nodes as nod
             else $node
 };
 
+declare function local:strip-elements($element as element(), $strip as xs:string+) as element() {
+    element {node-name($element)}
+    {$element/@*,
+        for $child in $element/node()
+            return
+                if ($child instance of element() and local-name($child) = $strip)
+                then for $c in $child/* return local:strip-elements(($c), $strip)
+                else
+                    if ($child instance of element() and local-name($child) = ('layer-offset-difference', 'authoritative-layer'))
+                then ()
+                else
+                    if ($child instance of element() and local-name($child) = 'target' and local-name($child/parent::element()) ne 'annotation')
+                then ()
+                else
+                    if ($child instance of text())
+                    then $child
+                    else local:strip-elements($child, $strip)
+      }
+};
+
 declare function local:build-up-annotations($top-level-critical-annotations as element()+, $annotations as element()) as element()* {
     for $annotation in $top-level-critical-annotations
     let $annotation-id := $annotation/@xml:id
@@ -55,7 +75,6 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
     let $children :=
                     for $child in $children
                     let $child-id := $annotation/@xml:id/string()
-                    let $log := util:log("DEBUG", ("##$child-id): ", $child-id))
                         return
                             if ($annotations/annotation[target/annotation-layer/id = $child-id]) (:something is wrong here - this does not catch cases where there is a further annotation, leaving empty <children> at dead ends:)
                             then local:build-up-annotations($child, $annotations)
@@ -66,16 +85,9 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
 
 declare function local:collapse-annotations($built-up-critical-annotations as element()+) {
     for $annotation in $built-up-critical-annotations
-    let $annotation-element-name := local-name($annotation/body/*)
-    let $log := util:log("DEBUG", ("##$annotation-element-name): ", $annotation-element-name))
-    let $children := 
-        for $child in $annotation/body/*/children/*
-        let $child := $child/body
-            return $child
-    let $log := util:log("DEBUG", ("##$children): ", $children))
-    let $full := local:insert-or-remove-nodes($bare, $children, $annotation-element-name,  'first-child')
+
         return 
-            $full
+            local:strip-elements(local:strip-elements(local:strip-elements($annotation, 'annotation'), 'body'), 'base-layer')
 };
 
 let $base-text := <p xml:id="uuid-8227bf23-decc-3181-aed6-4148e2121d25">I meet Stephen Winwood and Alexis Korner in the pub.</p>
@@ -86,5 +98,5 @@ let $annotations := <annotations><annotation type="element" xml:id="uuid-4abd36a
 
 let $top-level-critical-annotations := $annotations/annotation[target/@type eq 'range'][target/@layer eq 'edition']
 let $built-up-annotations := local:build-up-annotations($top-level-critical-annotations, $annotations)
-(:let $collapsed-annotations := local:collapse-annotations($built-up-annotations):)
-return $built-up-annotations
+let $collapsed-annotations := local:collapse-annotations($built-up-annotations)
+return $collapsed-annotations
