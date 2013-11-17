@@ -19,18 +19,8 @@
             <offset>15</offset>
         </target>
         <app>
-            <lem wit="#a">
-                <name ref="#SW" type="person">
-                    <forename>Steve</forename>
-                    <surname>Winwood</surname>
-                </name>
-            </lem>
-            <rdg wit="#b">
-                <name ref="#SW" type="person">
-                    <forename>Stephen</forename>
-                    <surname>Winwood</surname>
-                </name>
-            </rdg>
+            <lem wit="#a">Steve Winwood</lem>
+            <rdg wit="#b">Stephen Winwood</rdg>
         </app>
     </annotation>
     <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
@@ -41,12 +31,8 @@
             <offset>13</offset>
         </target>
         <app>
-            <rdg wit="#base">
-                <name ref="#AK" type="person">Alexis Korner</name>
-            </rdg>
-            <rdg wit="#c">
-                <name ref="#JM" type="person">John Mayall</name>
-            </rdg>
+            <rdg wit="#base">Alexis Korner</rdg>
+            <rdg wit="#c">John Mayall</rdg>
         </app>
     </annotation>
 </annotations>

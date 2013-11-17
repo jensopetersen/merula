@@ -52,17 +52,23 @@ declare function local:strip-elements($element as element(), $strip as xs:string
         for $child in $element/node()
             return
                 if ($child instance of element() and local-name($child) = $strip)
-                then for $c in $child/* return local:strip-elements(($c), $strip)
+                then for $child in $child/* 
+                    return 
+                        local:strip-elements(($child), $strip)
                 else
-                    if ($child instance of element() and local-name($child) = ('layer-offset-difference', 'authoritative-layer'))
-                then ()
-                else
-                    if ($child instance of element() and local-name($child) = 'target' and local-name($child/parent::element()) ne 'annotation')
-                then ()
-                else
-                    if ($child instance of text())
-                    then $child
-                    else local:strip-elements($child, $strip)
+                    if ($child instance of element() and local-name($child) = ('layer-offset-difference', 'authoritative-layer')) (:we have no need for these two elements:)
+                    then ()
+                    else
+                        if ($child instance of element() and local-name($child) = 'target' and local-name($child/parent::element()) ne 'annotation') (:remove all targets that not at the base level:)
+                        then ()
+                        else
+                            if ($child instance of element() and local-name($child/..) = ('lem', 'rdg', 'sic', 'reg') ) (:take string value of elements that below terminal elements concerned with edition:)
+                            then 
+                                string-join($child//text(), ' ') (:NB: hack - @token should be used:)
+                            else
+                                if ($child instance of text())
+                                then $child
+                                else local:strip-elements($child, $strip)
       }
 };
 
