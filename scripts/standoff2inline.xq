@@ -1,8 +1,7 @@
 xquery version "3.0";
 
 (: Inserts elements supplied at a certain position (identity transform) :)
-declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, 
-    $element-names-to-check as xs:string+, $location as xs:string) {
+declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
         if (local-name($node) = $element-names-to-check)
         then
             if ($location eq 'before')
@@ -46,7 +45,7 @@ declare function local:insert-or-remove-nodes($node as node(), $new-nodes as nod
             else $node
 };
 
-declare function local:strip-elements($element as element(), $strip as xs:string+) as element() {
+declare function local:collapse-annotation($element as element(), $strip as xs:string+) as element() {
     element {node-name($element)}
     {$element/@*,
         for $child in $element/node()
@@ -54,7 +53,7 @@ declare function local:strip-elements($element as element(), $strip as xs:string
                 if ($child instance of element() and local-name($child) = $strip)
                 then for $child in $child/* 
                     return 
-                        local:strip-elements(($child), $strip)
+                        local:collapse-annotation(($child), $strip)
                 else
                     if ($child instance of element() and local-name($child) = ('layer-offset-difference', 'authoritative-layer')) (:we have no need for these two elements:)
                     then ()
@@ -68,7 +67,7 @@ declare function local:strip-elements($element as element(), $strip as xs:string
                             else
                                 if ($child instance of text())
                                 then $child
-                                else local:strip-elements($child, $strip)
+                                else local:collapse-annotation($child, $strip)
       }
 };
 
@@ -93,7 +92,48 @@ declare function local:collapse-annotations($built-up-critical-annotations as el
     for $annotation in $built-up-critical-annotations
 
         return 
-            local:strip-elements(local:strip-elements(local:strip-elements($annotation, 'annotation'), 'body'), 'base-layer')
+            local:collapse-annotation(local:collapse-annotation(local:collapse-annotation($annotation, 'annotation'), 'body'), 'base-layer')
+};
+
+declare function local:mesh-annotations($base-text as element(), $annotations as element()+) as element()+ {
+let $segment-count := (count($annotations) * 2) + 1
+let $segments :=
+    for $segment at $i in 1 to $segment-count
+    return
+        <text>{attribute n {$i}}</text>
+let $segments := 
+    <p>{
+        for $segment in $segments
+        let $log := util:log("DEBUG", ("##$segment): ", $segment))
+        let $log := util:log("DEBUG", ("##$segment-n): ", number($segment/@n)))
+            return
+                if (number($segment/@n) mod 2 eq 0)
+                then 
+                    local:insert-or-remove-nodes($segment, $annotations[$segment/@n/number() div 2], 'text', 'first-child')
+                else 
+                    <text n="{$segment/@n}">
+                        {
+                            let $start := 
+                                if ($segment/@n/number() eq count($segments)) 
+                                then string-length($base-text) - $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is the last text node, the start position is the lenth of of the bast text minus the end position of the previous annotation plus 1:)
+                                else
+                                    if (number($segment/@n) eq 1)
+                                    then 1 (:if it is the first text node, start with position 1:)
+                                    else $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is not the first or last text node, start with the position of the previous annotation plus its offset plus 1:)
+                            let $offset := 
+                                if ($segment/@n/number() eq count($segments)) 
+                                then string-length($base-text) - $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is the last text node, then the offset is the length of the bast etx minus the end position of the last annotation plus 1:)
+                                else
+                                    if ($segment/@n/number() eq 1)
+                                    then $annotations[$segment/@n/number() + 1]/target/start/number() - 1 (:if it is the first text node, the the offset is the start position of the following annotation minus 1:)
+                                    else $annotations[$segment/@n/number() + 1]/target/start/number() - ($annotations[number($segment/@n)]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number()) (:if it is not the first or the last text node, then the offset is the start position of the following annotation minus the end position of the previous annotation :)
+                            return
+                                substring($base-text, $start, $offset)
+                        }
+                    </text>
+        }</p>
+    return
+        $segments
 };
 
 let $base-text := <p xml:id="uuid-8227bf23-decc-3181-aed6-4148e2121d25">I meet Stephen Winwood and Alexis Korner in the pub.</p>
@@ -105,4 +145,5 @@ let $annotations := <annotations><annotation type="element" xml:id="uuid-4abd36a
 let $top-level-critical-annotations := $annotations/annotation[target/@type eq 'range'][target/@layer eq 'edition']
 let $built-up-annotations := local:build-up-annotations($top-level-critical-annotations, $annotations)
 let $collapsed-annotations := local:collapse-annotations($built-up-annotations)
-return $collapsed-annotations
+let $meshed-annotations := local:mesh-annotations($base-text, $collapsed-annotations)
+    return $meshed-annotations
