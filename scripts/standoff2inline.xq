@@ -97,40 +97,71 @@ declare function local:collapse-annotations($built-up-critical-annotations as el
 
 declare function local:mesh-annotations($base-text as element(), $annotations as element()+) as element()+ {
 let $segment-count := (count($annotations) * 2) + 1
+let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count))
 let $segments :=
-    for $segment at $i in 1 to $segment-count
+    for $segment at $i in 1 to 7
+    (:$segment-count:)
     return
-        <text>{attribute n {$i}}</text>
+        <segment>{attribute n {$i}}</segment>
+let $log := util:log("DEBUG", ("##$segments-1): ", $segments))
 let $segments := 
     <p>{
         for $segment in $segments
-        let $log := util:log("DEBUG", ("##$segment): ", $segment))
-        let $log := util:log("DEBUG", ("##$segment-n): ", number($segment/@n)))
             return
                 if (number($segment/@n) mod 2 eq 0)
                 then 
-                    local:insert-or-remove-nodes($segment, $annotations[$segment/@n/number() div 2], 'text', 'first-child')
+                    let $annotation-n := $segment/@n/number() div 2
+                    return
+                        local:insert-or-remove-nodes($segment, $annotations[$annotation-n], 'segment', 'first-child')
                 else 
-                    <text n="{$segment/@n}">
+                    <segment n="{$segment/@n/string()}">
                         {
+                            let $segment-n := number($segment/@n)
+                            let $log := util:log("DEBUG", ("##$segment-n-1): ", $segment-n))
+                            let $previous-annotation-n := ($segment-n - 1) div 2
+                            let $log := util:log("DEBUG", ("##$previous-annotation-n-1): ", $previous-annotation-n))
+                            let $following-annotation-n := ($segment-n + 1) div 2
+                            let $log := util:log("DEBUG", ("##$following-annotation-n-1): ", $following-annotation-n))
                             let $start := 
-                                if ($segment/@n/number() eq count($segments)) 
-                                then string-length($base-text) - $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is the last text node, the start position is the lenth of of the bast text minus the end position of the previous annotation plus 1:)
+                                if ($segment-n eq $segment-count) (:if it is the last text node:)
+                                then 
+                                    let $start-last := string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 4 (:the start position is the length of of the base text minus the end position of the previous annotation plus 1:)
+                                    let $log := util:log("DEBUG", ("##$start-last-1): ", $start-last))
+                                    return $start-last
                                 else
-                                    if (number($segment/@n) eq 1)
-                                    then 1 (:if it is the first text node, start with position 1:)
-                                    else $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is not the first or last text node, start with the position of the previous annotation plus its offset plus 1:)
+                                    if (number($segment/@n) eq 1) (:if it is the first text node:)
+                                    then 
+                                        let $start-first := 1 (:start with position 1:)
+                                        let $log := util:log("DEBUG", ("##$start-first-1): ", $start-first))
+                                        return $start-first
+                                    else 
+                                        let $start-middle := $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() (:if it is not the first or last text node, start with the position of the previous annotation plus its offset plus 1:)
+                                        let $log := util:log("DEBUG", ("##$start-middle-1): ", $start-middle))
+                                            return $start-middle
+                                let $log := util:log("DEBUG", ("##$start-1): ", $start))
                             let $offset := 
-                                if ($segment/@n/number() eq count($segments)) 
-                                then string-length($base-text) - $annotations[number($segment/@n) - 1]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number() + 1 (:if it is the last text node, then the offset is the length of the bast etx minus the end position of the last annotation plus 1:)
+                                if ($segment-n eq count($segments)) 
+                                then 
+                                    let $offset-last := string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 1 (:if it is the last text node, then the offset is the length of the bast etx minus the end position of the last annotation plus 1:)
+                                    let $log := util:log("DEBUG", ("##$offset-last-1): ", $offset-last))
+                                    return $offset-last
                                 else
-                                    if ($segment/@n/number() eq 1)
-                                    then $annotations[$segment/@n/number() + 1]/target/start/number() - 1 (:if it is the first text node, the the offset is the start position of the following annotation minus 1:)
-                                    else $annotations[$segment/@n/number() + 1]/target/start/number() - ($annotations[number($segment/@n)]/target/start/number() + $annotations[number($segment/@n) - 1]/target/offset/number()) (:if it is not the first or the last text node, then the offset is the start position of the following annotation minus the end position of the previous annotation :)
-                            return
-                                substring($base-text, $start, $offset)
+                                    if ($segment-n eq 1)
+                                    then 
+                                        let $offset-first := $annotations[$following-annotation-n]/target/start/number() - 1 (:if it is the first text node, the the offset is the start position of the following annotation minus 1:)
+                                        let $log := util:log("DEBUG", ("##$offset-first-1): ", $offset-first))
+                                        return $offset-first
+                                    else 
+                                        let $offset-middle := $annotations[$following-annotation-n]/target/start/number() - ($annotations[number($previous-annotation-n)]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number()) (:if it is not the first or the last text node, then the offset is the start position of the following annotation minus the end position of the previous annotation :)
+                                        let $log := util:log("DEBUG", ("##$offset-middle-1): ", $offset-middle))
+                                        return $offset-middle
+                            let $log := util:log("DEBUG", ("##$offset-1): ", $offset))
+                            let $offset := if ($offset) then $offset else 2
+                            let $log := util:log("DEBUG", ("##$offset-1): ", $offset))
+                                return
+                                    substring($base-text, $start, $offset)
                         }
-                    </text>
+                    </segment>
         }</p>
     return
         $segments
