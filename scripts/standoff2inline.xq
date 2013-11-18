@@ -109,7 +109,7 @@ let $segments :=
                 then 
                     let $annotation-n := $segment/@n/number() div 2
                     return
-                        local:insert-or-remove-nodes($segment, $annotations[$annotation-n], 'segment', 'first-child')
+                        local:insert-or-remove-nodes($segment, $annotations[$annotation-n]/(* except target), 'segment', 'first-child')
                 else 
                     <segment n="{$segment/@n/string()}">
                         {

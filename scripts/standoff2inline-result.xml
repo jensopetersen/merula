@@ -1,45 +1,24 @@
 <p>
     <segment n="1">I </segment>
     <segment n="2">
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element" xml:id="uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc" status="token">
-            <target type="range" layer="edition">
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>3</start>
-                <offset>4</offset>
-            </target>
-            <choice>
-                <reg>met</reg>
-                <sic>meet</sic>
-            </choice>
-        </annotation>
+        <choice>
+            <reg>met</reg>
+            <sic>meet</sic>
+        </choice>
     </segment>
     <segment n="3"> </segment>
     <segment n="4">
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element" xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c" status="token">
-            <target type="range" layer="edition">
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>8</start>
-                <offset>15</offset>
-            </target>
-            <app>
-                <lem wit="#a">Steve Winwood</lem>
-                <rdg wit="#b">Stephen Winwood</rdg>
-            </app>
-        </annotation>
+        <app>
+            <lem wit="#a">Steve Winwood</lem>
+            <rdg wit="#b">Stephen Winwood</rdg>
+        </app>
     </segment>
     <segment n="5"> and </segment>
     <segment n="6">
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element" xml:id="uuid-eb6bbeaa-75f4-4b3d-8dfe-312ca12cbacc" status="token">
-            <target type="range" layer="edition">
-                <id>uuid-538a6e13-f88b-462c-a965-f523c3e02bbf</id>
-                <start>28</start>
-                <offset>13</offset>
-            </target>
-            <app>
-                <rdg wit="#base">Alexis Korner</rdg>
-                <rdg wit="#c">John Mayall</rdg>
-            </app>
-        </annotation>
+        <app>
+            <rdg wit="#base">Alexis Korner</rdg>
+            <rdg wit="#c">John Mayall</rdg>
+        </app>
     </segment>
     <segment n="7"> in the pub.</segment>
 </p>
