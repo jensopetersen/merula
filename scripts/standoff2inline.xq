@@ -195,4 +195,5 @@ let $built-up-annotations := local:build-up-annotations($top-level-critical-anno
 let $collapsed-annotations := local:collapse-annotations($built-up-annotations)
 let $meshed-annotations := local:mesh-annotations($base-text, $collapsed-annotations)
 let $base-text-reconstructed := local:separate-layers($meshed-annotations, 'base')
-    return element {node-name($base-text)}{$base-text/@*, string-join($base-text-reconstructed)}
+let $target-text-reconstructed := local:separate-layers($meshed-annotations, 'target')
+    return element {node-name($base-text)}{$base-text/@*, string-join($target-text-reconstructed)}
