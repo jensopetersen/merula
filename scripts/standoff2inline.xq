@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+(: This module takes a sequence of text-critical annotations created with inline2standoff.xq and inserts them into the base text, also created with created with inline2standoff.xq, thereby generating the target text into which feature annotations are inserted, recreating the inlined markup that served as point of departure for inline2standoff.xq. :)
+
 (: Inserts elements supplied at a certain position or removes elements globally :)
 declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
         if (local-name($node) = $element-names-to-check)
