@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-(: Inserts elements supplied at a certain position (identity transform) :)
+(: Inserts elements supplied at a certain position or removes elements globally :)
 declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
         if (local-name($node) = $element-names-to-check)
         then
@@ -45,25 +45,49 @@ declare function local:insert-or-remove-nodes($node as node(), $new-nodes as nod
             else $node
 };
 
+(: This function takes a sequence of top-level text-critical annotations, i.e annotations of @type 'range' and @layer 'edition', and inserts as children all annotations that refer to them through their @xml:id, recursively:)
+declare function local:build-up-annotations($top-level-critical-annotations as element()+, $annotations as element()) as element()* {
+    for $annotation in $top-level-critical-annotations
+        let $annotation-id := $annotation/@xml:id
+        let $annotation-element-name := local-name($annotation//body/*)
+        let $children := $annotations/annotation[target/annotation-layer/id = $annotation-id]
+        let $children :=
+            for $child in $children
+                let $child-id := $annotation/@xml:id/string()
+                    return
+                        if ($annotations/annotation[target/annotation-layer/id = $child-id])
+                        then local:build-up-annotations($child, $annotations)
+                        else $child
+            return 
+                local:insert-or-remove-nodes($annotation, $children, $annotation-element-name,  'first-child')            
+};
+
+(: This function iterates through the built-up annotations and calls collapse-annotation() with information about which elements to remove from the hierarchy. It has to be called repeatedly, since the elements to be removed may be children of each other. NB: check! :)
+declare function local:collapse-annotations($built-up-critical-annotations as element()+) {
+    for $annotation in $built-up-critical-annotations
+        return 
+            local:collapse-annotation(local:collapse-annotation(local:collapse-annotation($annotation, 'annotation'), 'body'), 'base-layer')
+};
+
+(: This function takes a built-up annotation and 1) collapses it, i.e. removes levels from the hierarchy by substituting elements with their children, 2) removes unneeded elements, and 3) takes the string values of terminal text-critical elements that have child feature annotations. :)
 declare function local:collapse-annotation($element as element(), $strip as xs:string+) as element() {
     element {node-name($element)}
     {$element/@*,
         for $child in $element/node()
             return
                 if ($child instance of element() and local-name($child) = $strip)
-                then for $child in $child/* 
+                then for $child in $child/*
                     return 
                         local:collapse-annotation(($child), $strip)
                 else
                     if ($child instance of element() and local-name($child) = ('layer-offset-difference', 'authoritative-layer')) (:we have no need for these two elements:)
                     then ()
                     else
-                        if ($child instance of element() and local-name($child) = 'target' and local-name($child/parent::element()) ne 'annotation') (:remove all targets that not at the base level:)
+                        if ($child instance of element() and local-name($child) = 'target' and local-name($child/parent::element()) ne 'annotation') (:remove all target elements that are not at the base level:)
                         then ()
                         else
-                            if ($child instance of element() and local-name($child/..) = ('lem', 'rdg', 'sic', 'reg') ) (:take string value of elements that below terminal elements concerned with edition:)
-                            then 
-                                string-join($child//text(), ' ') (:NB: hack - @token should be used:)
+                            if ($child instance of element() and local-name($child/..) = ('lem', 'rdg', 'sic', 'reg') ) (:take string value of elements that are below terminal elements concerned with edition:)
+                            then string-join($child//text(), ' ') (:This is a hack (@token should be used) but in real life text-critical annotations will not have sibling children with text nodes, so this is only relevant to round-tripping with annotations that mix text-critical and feature annotations.:)
                             else
                                 if ($child instance of text())
                                 then $child
@@ -71,38 +95,14 @@ declare function local:collapse-annotation($element as element(), $strip as xs:s
       }
 };
 
-declare function local:build-up-annotations($top-level-critical-annotations as element()+, $annotations as element()) as element()* {
-    for $annotation in $top-level-critical-annotations
-    let $annotation-id := $annotation/@xml:id
-    let $annotation-element-name := local-name($annotation//body/*)
-    let $children :=
-            $annotations/annotation[target/annotation-layer/id = $annotation-id]
-    let $children :=
-                    for $child in $children
-                    let $child-id := $annotation/@xml:id/string()
-                        return
-                            if ($annotations/annotation[target/annotation-layer/id = $child-id]) (:something is wrong here - this does not catch cases where there is a further annotation, leaving empty <children> at dead ends:)
-                            then local:build-up-annotations($child, $annotations)
-                            else $child
-        return 
-            local:insert-or-remove-nodes($annotation, $children, $annotation-element-name,  'first-child')            
-};
-
-declare function local:collapse-annotations($built-up-critical-annotations as element()+) {
-    for $annotation in $built-up-critical-annotations
-
-        return 
-            local:collapse-annotation(local:collapse-annotation(local:collapse-annotation($annotation, 'annotation'), 'body'), 'base-layer')
-};
-
-declare function local:mesh-annotations($base-text as element(), $annotations as element()+) as element()+ {
+declare function local:mesh-annotations($base-text as element(), $annotations as element()+) as node()+ {
 let $segment-count := (count($annotations) * 2) + 1
 let $segments :=
     for $segment at $i in 1 to $segment-count
     return
         <segment>{attribute n {$i}}</segment>
 let $segments := 
-    <p>{
+    
         for $segment in $segments
             return
                 if (number($segment/@n) mod 2 eq 0)
@@ -118,14 +118,14 @@ let $segments :=
                             let $following-annotation-n := ($segment-n + 1) div 2
                             let $start := 
                                 if ($segment-n eq $segment-count) (:if it is the last text node:)
-                                then string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 4 (:the start position is the length of of the base text minus the end position of the previous annotation plus 1:)
+                                then string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 4 (:the start position is the length of of the base text minus the end position of the previous annotation plus 1:)(:NB: why 4?:)
                                 else
                                     if (number($segment/@n) eq 1) (:if it is the first text node:)
                                     then 1 (:start with position 1:)
                                     else $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() (:if it is not the first or last text node, start with the position of the previous annotation plus its offset plus 1:)
                             let $offset := 
                                 if ($segment-n eq count($segments)) 
-                                then string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 1 (:if it is the last text node, then the offset is the length of the bast etx minus the end position of the last annotation plus 1:)
+                                then string-length($base-text) - $annotations[$previous-annotation-n]/target/start/number() + $annotations[$previous-annotation-n]/target/offset/number() + 1 (:if it is the last text node, then the offset is the length of the base text minus the end position of the last annotation plus 1:)
                                 else
                                     if ($segment-n eq 1)
                                     then $annotations[$following-annotation-n]/target/start/number() - 1 (:if it is the first text node, the the offset is the start position of the following annotation minus 1:)
@@ -134,9 +134,13 @@ let $segments :=
                                     substring($base-text, $start, $offset)
                         }
                     </segment>
-        }</p>
-    return
-        $segments
+        
+    return $segments
+        (:for $segment in $segments
+            return
+                if ($segment instance of text())
+                then replace($segment/string(), ' ', <space/>)
+                else $segment/node():)
 };
 
 let $base-text := <p xml:id="uuid-8227bf23-decc-3181-aed6-4148e2121d25">I meet Stephen Winwood and Alexis Korner in the pub.</p>
