@@ -136,15 +136,52 @@ let $segments :=
                                     substring($base-text, $start, $offset)
                         }
                     </segment>
-        
+let $segments :=
+    for $segment in $segments
+            return
+                if ($segment/@n mod 2 eq 0)
+                then $segment
+                else $segment/string()
     return 
         element {node-name($base-text)}{$base-text/@*, $segments}
-    
-        (:for $segment in $segments
-            return
-                if ($segment instance of text())
-                then replace($segment/string(), ' ', <space/>)
-                else $segment/node():)
+};
+
+(: From inline2standoff.xq :)
+declare function local:separate-layers($input as node()*, $target) as item()* {
+    for $node in $input/node()
+        return
+            typeswitch($node)
+                
+                case text() return 
+                    if ($node/ancestor-or-self::element(note)) 
+                    then () 
+                    else $node
+                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text"). 
+                Here we strip out all notes from the text itself and put it into annotations.:)
+                case element(lem) return 
+                    if ($target eq 'base') 
+                    then () 
+                    else $node
+                case element(rdg) return 
+                    if ($target eq 'base' and not($node/../lem))
+                    then $node[@wit eq '#base']
+                    else
+                        if ($target ne 'base' and not($node/../lem))
+                        then $node[@wit ne '#base']
+                        else
+                            if ($target eq 'base' and $node/../lem)
+                            then $node
+                            else ()
+                case element(reg) return 
+                    if ($target eq 'base') 
+                    then () 
+                    else $node
+                case element(sic) return 
+                    if ($target eq 'base') 
+                    then $node
+                    else ()
+                
+                    default return local:separate-layers($node, $target)
 };
 
 let $base-text := <p xml:id="uuid-8227bf23-decc-3181-aed6-4148e2121d25">I meet Stephen Winwood and Alexis Korner in the pub.</p>
@@ -157,4 +194,5 @@ let $top-level-critical-annotations := $annotations/annotation[target/@type eq '
 let $built-up-annotations := local:build-up-annotations($top-level-critical-annotations, $annotations)
 let $collapsed-annotations := local:collapse-annotations($built-up-annotations)
 let $meshed-annotations := local:mesh-annotations($base-text, $collapsed-annotations)
-    return $meshed-annotations
+let $base-text-reconstructed := local:separate-layers($meshed-annotations, 'base')
+    return element {node-name($base-text)}{$base-text/@*, string-join($base-text-reconstructed)}
