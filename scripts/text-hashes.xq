@@ -1,25 +1,27 @@
 xquery version "3.0";
 
-declare function local:hash-leaves($element as element()) as element() {
-   element {node-name($element)}
-      {$element/@*,
+declare function local:hash-leaves($element as element()) as element()* {
         for $child in $element/node()
             return
                 if ($child instance of element())
                 then 
                     if ($child/text())
-                    then local:hash-leaves(
-                        element {node-name($child)}
-                        {attribute {'hash'} {util:hash($child,"SHA-1")},
-                        $child/@*, $child/node()}
-                    )
+                    then 
+                        <annotation type="element" xml:id="{concat("uuid-",util:uuid())}" status="block">
+                            <target type="element" layer="hash">
+                                <id>{$child/@xml:id/string()}</id>
+                            </target>
+                            <body>
+                                <hash>{util:hash($child,"SHA-1")}</hash>
+                                <text>{$child/text()}</text>
+                            </body>
+                        </annotation>
                     else local:hash-leaves($child)
-                else $child
-      }
+                else ()
 };
 
 let $input := 
-<elements>
+<elements xml:id="b">
     <a1 xml:id="a">
         <b1 xml:id="q">
             <x1 xml:id="uuid-47b5356a-0d63-4916-8216-ae42f87423b6">text-x1</x1>
@@ -39,6 +41,19 @@ let $input :=
 </elements>
 
 let $hashed-leaves := local:hash-leaves($input)
-let $general-hash := util:hash(string-join($hashed-leaves//@hash),"SHA-1")
+let $hashed-whole := util:hash(string-join($hashed-leaves//hash),"SHA-1")
+let $hashed-whole := (
+                        <annotation type="element" xml:id="{concat("uuid-",util:uuid())}" status="block">
+                            <target type="element" layer="hash">
+                                <id>{$input/@xml:id/string()}</id>
+                            </target>
+                            <body>
+                                <hash>{util:hash(string-join($hashed-leaves//hash),"SHA-1")}</hash>
+                            </body>
+                        </annotation>
+                        ,
+                        $hashed-leaves
+                        )
+                        
 return 
-    $general-hash
+    $hashed-whole
