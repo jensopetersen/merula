@@ -2,9 +2,9 @@ xquery version "3.0";
 
 (: This module takes a sequence of text-critical annotations created with inline2standoff.xq and inserts them into the base text, also created with created with inline2standoff.xq, thereby generating the target text into which feature annotations are inserted, recreating the inlined markup that served as point of departure for inline2standoff.xq. :)
 
-(: This module inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes elements globally :)
-declare function local:insert-or-remove-nodes($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
-        if (local-name($node) = $element-names-to-check)
+(: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
+declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
+        if ($node instance of element() and local-name($node) = $element-names-to-check)
         then
             if ($location eq 'before')
             then ($new-nodes, $node) 
@@ -37,13 +37,14 @@ declare function local:insert-or-remove-nodes($node as node(), $new-nodes as nod
         else
             if ($node instance of element()) 
             then
-                element {node-name($node)} {
+                element {node-name($node)} 
+                {
                     $node/@*
-                    , 
+                    ,
                     for $child in $node/node()
                         return 
-                            local:insert-or-remove-nodes($child, $new-nodes, $element-names-to-check, $location) 
-            }
+                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
+                }
             else $node
 };
 
@@ -61,7 +62,7 @@ declare function local:build-up-annotations($top-level-critical-annotations as e
                         then local:build-up-annotations($child, $annotations)
                         else $child
             return 
-                local:insert-or-remove-nodes($annotation, $children, $annotation-element-name,  'first-child')            
+                local:insert-elements($annotation, $children, $annotation-element-name,  'first-child')            
 };
 
 (: This function iterates through the built-up annotations and calls collapse-annotation() with information about which elements to remove from the hierarchy. It has to be called repeatedly, since the elements to be removed may be children of each other. NB: check! :)
@@ -111,7 +112,7 @@ let $segments :=
                 then 
                     let $annotation-n := $segment/@n/number() div 2
                     return
-                        local:insert-or-remove-nodes($segment, $annotations[$annotation-n]/(* except target), 'segment', 'first-child')
+                        local:insert-elements($segment, $annotations[$annotation-n]/(* except target), 'segment', 'first-child')
                 else 
                     <segment n="{$segment/@n/string()}">
                         {

@@ -85,26 +85,25 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
             </annotation>
 };
 
-(: Inserts elements supplied at a certain position (identity transform) :)
-declare function local:insert-element($node as node()?, $new-node as node(), 
-    $element-name-to-check as xs:string, $location as xs:string) {
-        if (local-name($node) eq $element-name-to-check)
+(: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
+declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
+        if ($node instance of element() and local-name($node) = $element-names-to-check)
         then
             if ($location eq 'before')
-            then ($new-node, $node) 
+            then ($new-nodes, $node) 
             else 
                 if ($location eq 'after')
-                then ($node, $new-node)
+                then ($node, $new-nodes)
                 else
                     if ($location eq 'first-child')
                     then element {node-name($node)}
                         {
                             $node/@*
                             ,
-                            $new-node
+                            $new-nodes
                             ,
                             for $child in $node/node()
-                                return  $child
+                                return $child
                         }
                     else
                         if ($location eq 'last-child')
@@ -115,20 +114,21 @@ declare function local:insert-element($node as node()?, $new-node as node(),
                                 for $child in $node/node()
                                     return $child 
                                 ,
-                                $new-node
+                                $new-nodes
                             }
-                        else () (:The $element-to-check is removed if none of the four options are used.:)
+                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
         else
             if ($node instance of element()) 
             then
-                element {node-name($node)} {
+                element {node-name($node)} 
+                {
                     $node/@*
-                    , 
+                    ,
                     for $child in $node/node()
                         return 
-                            local:insert-element($child, $new-node, $element-name-to-check, $location) 
-            }
-         else $node
+                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
+                }
+            else $node
 };
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
@@ -142,7 +142,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
         let $authoritative-layer := <authoritative-layer><id>{$id}></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
             return
-                local:insert-element($node, $authoritative-layer, 'base-layer', 'after')
+                local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
 };
 
 (: Based on the list of TEI elements that alter the text stream, construct the altered (authoritative) or the unaltered (base) form, according to the target set :)
@@ -189,7 +189,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                 for $attribute in $layer-1-body-contents/@*
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
-            let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
                 (:return the old annotation, with an empty element below body:)
             ,
@@ -221,7 +221,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                 for $attribute in $layer-1-body-contents/@*
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
-            let $layer-1 := local:insert-element($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
             let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-layer($node//body/*, '')
@@ -229,7 +229,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
             for $layer-2-body-content in $layer-2-body-contents
                 return
                     let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-offset-difference'))
-                    let $layer-2 := local:insert-element($layer-2-body-content, $layer-1-id, 'start', 'before')
+                    let $layer-2 := local:insert-elements($layer-2-body-content, $layer-1-id, 'start', 'before')
                     let $log := util:log("DEBUG", ("##$layer-2): ", $layer-2))
                         return
                             if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
