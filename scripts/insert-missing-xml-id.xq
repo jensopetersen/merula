@@ -1,5 +1,9 @@
 xquery version "3.0";
 
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+
+declare variable $out-collection := 'xmldb:exist:///db/test/out';
+
 declare function local:insert-missing-xml-id($element as element()) as element() {
    element {node-name($element)}
       {$element/@*,
@@ -17,27 +21,9 @@ declare function local:insert-missing-xml-id($element as element()) as element()
                 else $child
       }
 };
-
-let $input := 
-<elements>
-    <a1  xml:id="a">
-        <b1 xml:id="q">
-            <x1>text-x1</x1>
-            <y1>text-y1</y1>
-        </b1>
-    </a1>
-    <a2>
-        <b2> text-b2 </b2>
-    </a2>
-    <a3>
-        <b3>
-            <c3 xml:id="c">
-                <d3>text-b2</d3>
-            </c3>
-        </b3>
-    </a3>
-</elements>
-
-return 
-    local:insert-missing-xml-id($input)
-    
+let $doc-title := 'sample_MTDP10363.xml'
+let $doc := doc(concat('/db/test/in/', $doc-title))/*
+(: http://www.marktwainproject.org/sample_MTDP10363.xml:)
+let $doc:= element{node-name($doc)}{($doc/@*, $doc/tei:teiHeader, local:insert-missing-xml-id($doc/tei:text))}
+(: NB: how can one maintain unused namepsaces?:)
+    return xmldb:store($out-collection, $doc-title, $doc)
