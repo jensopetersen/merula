@@ -71,13 +71,19 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 (: NB: the text nodes are later filtered away and should be removed, but they are nice to have since they allow reconstructing the whole process :)
 declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
+        let $log := util:log("DEBUG", ("##$node): ", $node))
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
+        let $log := util:log("DEBUG", ("##$base-before-element): ", $base-before-element))
         let $base-before-text := string-join($node/preceding-sibling::text())
+        let $log := util:log("DEBUG", ("##$base-before-text): ", $base-before-text))
         let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
+        let $log := util:log("DEBUG", ("##$marked-up-string): ", $marked-up-string))
         let $position-start := 
             string-length($base-before-element) + 
             string-length($base-before-text)
+        let $log := util:log("DEBUG", ("##$position-start): ", $position-start))
         let $position-end := $position-start + string-length($marked-up-string)
+        let $log := util:log("DEBUG", ("##$position-end): ", $position-end))
         return
             <annotation type="{
                 if ($node instance of text())
@@ -276,6 +282,19 @@ declare function local:generate-text($element as element(), $target as xs:string
     }
 };
 
+declare function local:generate-top-level-annotations($element as element()*, $edition-layer-elements as xs:string+) as element()* {
+    
+    for $child in $element
+        return
+            if ($child instance of element() and $child/text())
+            then local:get-top-level-annotations-keyed-to-base-layer($child, $edition-layer-elements)
+            else 
+                if ($child instance of element())
+                then local:generate-top-level-annotations($child, $edition-layer-elements)
+                else ()
+    
+};
+
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
 let $doc := $doc//tei:text
@@ -288,8 +307,11 @@ let $authoritative-text-output := local:generate-text($doc, 'authoritative')
 
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
-
-(: let $top-level-annotations-keyed-to-base-layer := <annotations>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</annotations>:)
+let $block-elements := ('p', 'head')
+(: get all the block-level elements that have edition-layer-elements as children :)
+let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
+let $log := util:log("DEBUG", ("##$doc-elements-with-annotations): ", $doc-elements-with-annotations))
+let $top-level-annotations-keyed-to-base-layer := local:generate-top-level-annotations($doc-elements-with-annotations, $edition-layer-elements)
 
 (: let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer):)
 
@@ -308,4 +330,5 @@ let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
             <result>
                 <base-text>{$base-text-output}</base-text>
                 <authoritative-text>{$authoritative-text-output}</authoritative-text>
+                <top-level-annotations>{$top-level-annotations-keyed-to-base-layer}</top-level-annotations>
             </result>
