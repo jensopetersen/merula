@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+
 declare boundary-space preserve;
 
 (: Removes elements named (identity transform) :)
@@ -18,6 +20,52 @@ declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomi
         then local:remove-elements($node/node(), $remove)
         else $node
 } ;
+
+(: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
+declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
+        if ($node instance of element() and local-name($node) = $element-names-to-check)
+        then
+            if ($location eq 'before')
+            then ($new-nodes, $node) 
+            else 
+                if ($location eq 'after')
+                then ($node, $new-nodes)
+                else
+                    if ($location eq 'first-child')
+                    then element {node-name($node)}
+                        {
+                            $node/@*
+                            ,
+                            $new-nodes
+                            ,
+                            for $child in $node/node()
+                                return $child
+                        }
+                    else
+                        if ($location eq 'last-child')
+                        then element {node-name($node)}
+                            {
+                                $node/@*
+                                ,
+                                for $child in $node/node()
+                                    return $child 
+                                ,
+                                $new-nodes
+                            }
+                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
+        else
+            if ($node instance of element()) 
+            then
+                element {node-name($node)} 
+                {
+                    $node/@*
+                    ,
+                    for $child in $node/node()
+                        return 
+                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
+                }
+            else $node
+};
 
 (: Scrapes off all upper-level element (and text) nodes and records their position in relation to the base layer:)
 (: NB: the text nodes are later filtered away and should be removed, but they are nice to have since they allow reconstructing the whole process :)
@@ -67,69 +115,24 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                     let $off-set-difference :=
                         if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
                         then 
-                            if (($node//app or name($node) = 'app') and $node//lem) 
-                            then string-length(string-join($node//lem)) - string-length(string-join($node//rdg))
+                            if (($node//app or name($node) = 'app') and $node//tei:lem) 
+                            then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg))
                             else 
-                                if (($node//app or name($node) = 'app') and $node//rdg) 
+                                if (($node//tei:app or name($node) = 'app') and $node//tei:rdg) 
                                 then 
-                                    let $non-base := string-length($node//rdg[@wit ne '#base'])
-                                    let $base := string-length($node//rdg[@wit eq '#base'])
+                                    let $non-base := string-length($node//tei:rdg[@wit ne '#base'])
+                                    let $base := string-length($node//tei:rdg[@wit eq '#base'])
                                         return 
                                             $non-base - $base
                                 else
-                                    if ($node//choice or name($node) = 'choice') 
-                                    then string-length($node//reg) - string-length($node//sic)
+                                    if ($node//tei:choice or name($node) = 'choice') 
+                                    then string-length($node//tei:reg) - string-length($node//tei:sic)
                                     else 0
                         else 0            
                             return $off-set-difference}</layer-offset-difference>
             </annotation>
 };
 
-(: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
-declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
-        if ($node instance of element() and local-name($node) = $element-names-to-check)
-        then
-            if ($location eq 'before')
-            then ($new-nodes, $node) 
-            else 
-                if ($location eq 'after')
-                then ($node, $new-nodes)
-                else
-                    if ($location eq 'first-child')
-                    then element {node-name($node)}
-                        {
-                            $node/@*
-                            ,
-                            $new-nodes
-                            ,
-                            for $child in $node/node()
-                                return $child
-                        }
-                    else
-                        if ($location eq 'last-child')
-                        then element {node-name($node)}
-                            {
-                                $node/@*
-                                ,
-                                for $child in $node/node()
-                                    return $child 
-                                ,
-                                $new-nodes
-                            }
-                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
-        else
-            if ($node instance of element()) 
-            then
-                element {node-name($node)} 
-                {
-                    $node/@*
-                    ,
-                    for $child in $node/node()
-                        return 
-                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
-                }
-            else $node
-};
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-layer():)
@@ -152,34 +155,33 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
             typeswitch($node)
                 
                 case text() return 
-                    if ($node/ancestor-or-self::element(note)) 
+                    if ($node/ancestor-or-self::element(tei:note)) 
                     then () 
                     else $node
                 (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text"). 
                 Here we strip out all notes from the text itself and put it into annotations.:)
-                case element(lem) return 
+                case element(tei:lem) return 
                     if ($target eq 'base') 
                     then () 
                     else $node
-                case element(rdg) return 
-                    if ($target eq 'base' and not($node/../lem))
-                    then $node[@wit eq '#base']
+                case element(tei:rdg) return 
+                    if ($target eq 'base' and not($node/../tei:lem)) (:if there is no lem, choose among the rdg for the base text:)
+                    then $node[contains(@wit/string(), 'TS1')]
                     else
-                        if ($target ne 'base' and not($node/../lem))
-                        then $node[@wit ne '#base']
+                        if ($target ne 'base' and not($node/../tei:lem)) (:if there is no lem, choose among the rdg for the target text:)
+                        then $node[not(contains(@wit/string(), 'TS2'))]
                         else
-                            if ($target eq 'base' and $node/../lem)
-                            then $node
+                            if ($target eq 'base' and $node/../tei:lem)
+                            then $node[contains(@wit/string(), 'TS1')]
                             else ()
-                case element(reg) return 
+                case element(tei:reg) return
                     if ($target eq 'base') 
                     then () 
                     else $node
-                case element(sic) return 
+                case element(tei:sic) return 
                     if ($target eq 'base') 
                     then $node
                     else ()
-                
                     default return local:separate-layers($node, $target)
 };
 
@@ -250,51 +252,60 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                     else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
-let $input := <p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>
+declare function local:generate-text($element as element(), $target as xs:string) as element() {
+    element {node-name($element)}
+    {$element/@*,
+    for $child in $element/node()
+        return
+            if ($child instance of element() and not($child/text()))
+            then local:generate-text($child, $target)
+            else
+                if ($child instance of element() and exists($child/text()))
+                then 
+                    element {node-name($child)}
+                    {
+                        for $attribute in $child/@*
+                            return
+                                if (name($attribute) eq 'xml:id')
+                                then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $child/@xml:id)))} (: construct a new UUID based on old one :)
+                                else attribute {name($attribute)} {$attribute}
+                            ,
+                            string-join(local:separate-layers($child, $target))
+                    }
+                else $child
+    }
+};
+
+let $doc-title := 'sample_MTDP10363.xml'
+let $doc := doc(concat('/db/test/out/', $doc-title))
+let $doc := $doc//tei:text
+
+let $base-text-output := local:generate-text($doc, 'base')
+let $authoritative-text-output := local:generate-text($doc, 'authoritative')
+
+(:<p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>:)
 (: NB: There is the problem with $input that if edition annotation occurs inside feature annotation, a function should first invert the annotation, so all edition annotation is on upper level? The problem only relates to inline4standoff, not to the editor. :)
 
-let $base-text-output := 
-    element {node-name($input)}{
-       for $attribute in $input/@*
-       return
-        if (name($attribute) eq 'xml:id')
-        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $input/@xml:id)))} (: construct a new UUID based on old one :)
-        else attribute {name($attribute)} {$attribute}
-    ,
-    string-join(local:separate-layers($input, 'base'))
-}
-    
-let $authoritative-text-output := 
-    element {node-name($input)}{
-       for $attribute in $input/@*
-       return
-        if (name($attribute) eq 'xml:id')
-        then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('authoritative-text', $input/@xml:id)))} (: construct a new UUID based on old one :)
-        else attribute {name($attribute)} {$attribute}
-    ,
-    string-join(local:separate-layers($input, 'authoritative'))
-}
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 
-let $top-level-annotations-keyed-to-base-layer := <annotations>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</annotations>
+(: let $top-level-annotations-keyed-to-base-layer := <annotations>{local:get-top-level-annotations-keyed-to-base-layer($input, $edition-layer-elements)}</annotations>:)
 
-let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
+(: let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer):)
 
 (: let $top-level-text-nodes := 
     for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
     return 
         if ($node/body/text() and not($node/body/element())) then $node else ():)
 
-let $annotations :=
+(: let $annotations :=
     for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
         where $node/body/node() instance of element() (:filters away pure text nodes:)
     return 
         local:whittle-down-annotations($node)
-        
+:)        
         return 
             <result>
                 <base-text>{$base-text-output}</base-text>
                 <authoritative-text>{$authoritative-text-output}</authoritative-text>
-                <annotations>{$annotations}</annotations>
             </result>
