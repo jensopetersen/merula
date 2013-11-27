@@ -143,13 +143,14 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-layer():)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
-    for $node in $nodes/*
+    for $node in $nodes
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
         let $sum-of-previous-offsets := sum($node/preceding-sibling::annotation/layer-offset-difference, 0)
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
         let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
         let $authoritative-layer := <authoritative-layer><id>{$id}></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
+        let $log := util:log("DEBUG", ("##$authoritative-layer): ", $authoritative-layer))
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
 };
@@ -310,10 +311,9 @@ let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head')
 (: get all the block-level elements that have edition-layer-elements as children :)
 let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
-let $log := util:log("DEBUG", ("##$doc-elements-with-annotations): ", $doc-elements-with-annotations))
 let $top-level-annotations-keyed-to-base-layer := local:generate-top-level-annotations($doc-elements-with-annotations, $edition-layer-elements)
 
-(: let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer):)
+let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
 
 (: let $top-level-text-nodes := 
     for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
@@ -330,5 +330,6 @@ let $top-level-annotations-keyed-to-base-layer := local:generate-top-level-annot
             <result>
                 <base-text>{$base-text-output}</base-text>
                 <authoritative-text>{$authoritative-text-output}</authoritative-text>
-                <top-level-annotations>{$top-level-annotations-keyed-to-base-layer}</top-level-annotations>
+                <top-level-annotations>{$top-level-annotations-keyed-to-base-and-authoritative-layer}</top-level-annotations>
+                
             </result>

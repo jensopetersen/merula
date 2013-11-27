@@ -34,25 +34,35 @@
     </authoritative-text>
     <top-level-annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-5e64ee74-1e3e-420b-affa-69846085f77e" status="string">
+            xml:id="uuid-e79a6263-fde5-4627-8cb6-2dc1f69f1bc1" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>1</start>
                     <offset>71</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>1</start>
+                    <offset>71</offset>
+                </authoritative-layer>
             </target>
             <body>Government of new Territory of Nevada—Governor Nye </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-05c78874-03d8-48af-8316-ecb86e78fcbf" status="string">
+            xml:id="uuid-4acec6fd-7d0c-446e-8164-c9c6966785da" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>71</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>71</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
@@ -61,25 +71,35 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-7afd9f1f-5859-4e43-ab9a-471f026c0bfc" status="string">
+            xml:id="uuid-2afc29f0-17fd-4429-b181-5e5367045f96" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>72</start>
                     <offset>82</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>72</start>
+                    <offset>82</offset>
+                </authoritative-layer>
             </target>
             <body>and the practical jokers—Mr. Clemens begins journalistic life </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-7ff65e0c-b66d-49eb-909b-327f71aabf53" status="string">
+            xml:id="uuid-08c6a420-2a97-4e30-8e45-c4224f31b481" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>153</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>153</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
@@ -88,25 +108,35 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-a37f2ebb-a497-4e62-8f3e-7b6ff46a31cd" status="string">
+            xml:id="uuid-b77940c9-5bb6-4c6a-987f-2cae2a528873" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>154</start>
                     <offset>17</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>154</start>
+                    <offset>17</offset>
+                </authoritative-layer>
             </target>
             <body>on Virginia City </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-0f571056-21d1-4023-9d11-697f1d92c7af" status="string">
+            xml:id="uuid-645e912f-4830-4426-849d-8b53b78f1a7e" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>170</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>170</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0000"/>
@@ -114,13 +144,18 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-6d144e23-d17e-40b9-8dc3-55c7ad3ffe02" status="token">
+            xml:id="uuid-a785bc3b-1d51-4f7e-9328-ca620fb96ecb" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
                     <start>171</start>
                     <offset>10</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>171</start>
+                    <offset>10</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0000" type="aet" xml:id="ap0000">
@@ -135,25 +170,35 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-feab9f6f-bb96-4a48-af83-6126b5c2a597" status="string">
+            xml:id="uuid-d288e17a-8814-4b15-b617-a174bdad99d6" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>181</start>
                     <offset>30</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>181</start>
+                    <offset>30</offset>
+                </authoritative-layer>
             </target>
             <body>—Reports legislative sessions—</body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-583d39d3-0a72-476a-9c5f-bdd460b41980" status="string">
+            xml:id="uuid-e626f0c7-17b5-4c75-86d4-0e021d329baf" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>210</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>210</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
@@ -162,25 +207,35 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-647a6392-1a8a-44eb-aad1-27658e80e672" status="string">
+            xml:id="uuid-8a709676-7300-4c42-bed3-8231baec1a4b" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>211</start>
                     <offset>54</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>211</start>
+                    <offset>54</offset>
+                </authoritative-layer>
             </target>
             <body>He and Orion prosper—Orion builds </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ec340e13-0b35-4998-9e63-595cb02f6eda" status="string">
+            xml:id="uuid-41e33916-0df4-407d-8759-9c41d63288f9" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>264</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>264</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0001"/>
@@ -188,13 +243,18 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-c016ed65-635d-4fdb-a023-1cab35a74087" status="token">
+            xml:id="uuid-3896f6a4-de30-4cbd-a7fe-4315ed28c6a5" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
                     <start>265</start>
                     <offset>8</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>265</start>
+                    <offset>15</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0001" type="aet" xml:id="ap0001">
@@ -207,25 +267,35 @@
             <layer-offset-difference>7</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-a2e908b8-4235-4fee-8c99-3da78441493e" status="string">
+            xml:id="uuid-904d1353-9e5f-4803-bf62-e70c3a7c837d" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>273</start>
                     <offset>7</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>273</start>
+                    <offset>7</offset>
+                </authoritative-layer>
             </target>
             <body> house—</body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-7935ab07-034e-4537-a9da-0112538c5fd5" status="string">
+            xml:id="uuid-5e3c93fd-e363-4fe4-9288-caf79e9eebd3" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>279</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>279</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0002"/>
@@ -233,13 +303,18 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-42ecd014-efea-4771-bdde-445b1a90f890" status="token">
+            xml:id="uuid-c2e15716-5163-4cae-a446-c54243c21aac" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
                     <start>280</start>
                     <offset>4</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>280</start>
+                    <offset>8</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0002" type="aet" xml:id="ap0002">
@@ -251,25 +326,35 @@
             <layer-offset-difference>4</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-80768ac9-bd6b-4f17-9b5e-ade201ab381f" status="string">
+            xml:id="uuid-070e1520-4ef8-4429-9522-3ac60ba41b5c" status="string">
             <target type="range" layer="text">
                 <base-layer>
                     <id>pa000001</id>
                     <start>284</start>
                     <offset>38</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>284</start>
+                    <offset>38</offset>
+                </authoritative-layer>
             </target>
             <body> Nye turns Territory of Nevada into a </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-12da1345-a931-40bf-b978-70d423843764" status="string">
+            xml:id="uuid-bd512a79-f09c-40d1-96da-407ab96ab21c" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
                     <start>321</start>
                     <offset>0</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>321</start>
+                    <offset>0</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0003"/>
@@ -277,13 +362,18 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-46882e46-a48d-4511-ace8-53ece7601008" status="token">
+            xml:id="uuid-dd742cba-02e9-4afd-8f7f-9c65263fbb75" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
                     <start>322</start>
                     <offset>178</offset>
                 </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a></id>
+                    <start>322</start>
+                    <offset>6</offset>
+                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0003" type="aet" xml:id="ap0003">
