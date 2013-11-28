@@ -295,15 +295,14 @@ declare function local:generate-top-level-annotations($element as element()*, $e
                 if ($child instance of element())
                 then local:generate-top-level-annotations($child, $edition-layer-elements)
                 else ()
-    
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
-let $doc := $doc//tei:text
+let $doc := $doc//tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
 
-let $base-text-output := local:generate-text($doc, 'base')
-let $authoritative-text-output := local:generate-text($doc, 'authoritative')
+let $base-text := local:generate-text($doc, 'base')
+let $authoritative-text := local:generate-text($doc, 'authoritative')
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head')
@@ -323,7 +322,7 @@ let $annotations :=
 
         return 
             <result>
-                <base-text>{$base-text-output}</base-text>
-                <authoritative-text>{$authoritative-text-output}</authoritative-text>
+                <base-text>{$base-text}</base-text>
+                <authoritative-text>{$authoritative-text}</authoritative-text>
                 <annotations>{$annotations}</annotations>
             </result>
