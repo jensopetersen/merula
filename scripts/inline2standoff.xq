@@ -67,23 +67,17 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Scrapes off all upper-level element (and text) nodes and records their position in relation to the base layer:)
-(: NB: the text nodes are later filtered away and should be removed, but they are nice to have since they allow reconstructing the whole process :)
+(: Lifts off all upper-level element (and text) nodes and records their position in relation to the base layer. :)
+(: NB: the text nodes are later filtered away and should later be removed, but they are nice to have since they allow reconstructing the whole process :)
 declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
     for $node in $input/node()
-        let $log := util:log("DEBUG", ("##$node): ", $node))
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
-        let $log := util:log("DEBUG", ("##$base-before-element): ", $base-before-element))
         let $base-before-text := string-join($node/preceding-sibling::text())
-        let $log := util:log("DEBUG", ("##$base-before-text): ", $base-before-text))
         let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
-        let $log := util:log("DEBUG", ("##$marked-up-string): ", $marked-up-string))
         let $position-start := 
             string-length($base-before-element) + 
             string-length($base-before-text)
-        let $log := util:log("DEBUG", ("##$position-start): ", $position-start))
         let $position-end := $position-start + string-length($marked-up-string)
-        let $log := util:log("DEBUG", ("##$position-end): ", $position-end))
         return
             <annotation type="{
                 if ($node instance of text())
@@ -91,7 +85,7 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                 else 
                     if ($node instance of element())
                     then 'element'
-                    else ()
+                    else 'unknown'
                 }" xml:id="{concat('uuid-', util:uuid())}" status="{
                     let $base-text := string-join(local:separate-layers($input, 'base'))
                     let $character-before := substring($base-text, $position-start, 1)
@@ -120,14 +114,14 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                 <layer-offset-difference>{
                     let $off-set-difference :=
                         if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
-                        then 
+                        then
                             if (($node//app or name($node) = 'app') and $node//tei:lem) 
-                            then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg))
+                            then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
                             else 
                                 if (($node//tei:app or name($node) = 'app') and $node//tei:rdg) 
                                 then 
-                                    let $non-base := string-length($node//tei:rdg[@wit ne '#base'])
-                                    let $base := string-length($node//tei:rdg[@wit eq '#base'])
+                                    let $non-base := string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))])
+                                    let $base := string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
                                         return 
                                             $non-base - $base
                                 else
@@ -149,7 +143,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
         let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
-        let $authoritative-layer := <authoritative-layer><id>{$id}></id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
+        let $authoritative-layer := <authoritative-layer><id>{$id}</id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
         let $log := util:log("DEBUG", ("##$authoritative-layer): ", $authoritative-layer))
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
@@ -303,7 +297,7 @@ let $doc := $doc//tei:text
 let $base-text-output := local:generate-text($doc, 'base')
 let $authoritative-text-output := local:generate-text($doc, 'authoritative')
 let $base-text-goal := <p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor Nye<count n="50"/> and the practical jokers—Mr. Clemens begins journ<count n="100"/>alistic life on Virginia City Enterprise—Reports l<count n="150"/>egislative sessions—He and Orion prosper—Orion bui<count n="200"/>lds $12,000. house—Gov. Nye turns Territory of Neva<count n="250"/>da into a State. (Miss Hobby, please paste this in<count n="300"/> at this point, in record of April 1st, but I may <count n="350"/>not comment on it until later.) <count n="382"/></p>
-(:<p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>:)
+(:<p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="contains"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>:)
 (: NB: There is the problem with $input that if edition annotation occurs inside feature annotation, a function should first invert the annotation, so all edition annotation is on upper level? The problem only relates to inline4standoff, not to the editor. :)
 let $authoritative-text-goal := <p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor Nye<count n="50"/> and the practical jokers—Mr. Clemens begins journ<count n="100"/>alistic life on Virginia City Enterprise—Reports l<count n="150"/>egislative sessions—He and Orion prosper—Orion bui<count n="200"/>lds twelve-thousand-dollar house—Governor Nye turn<count n="250"/>s Territory of Nevada into a State.<count n="285"/></p>
 
