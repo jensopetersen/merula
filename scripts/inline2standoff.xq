@@ -309,22 +309,22 @@ let $top-level-annotations-keyed-to-base-layer := local:generate-top-level-annot
 
 let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert-authoritative-layer($top-level-annotations-keyed-to-base-layer)
 
-(: let $top-level-text-nodes := 
+let $top-level-text-nodes := 
     for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
     return 
-        if ($node/body/text() and not($node/body/element())) then $node else ():)
+        if ($node/body/text() and not($node/body/element())) then $node else ()
 
-(: let $annotations :=
+let $annotations :=
     for $node in $top-level-annotations-keyed-to-base-and-authoritative-layer
         where $node/body/node() instance of element() (:filters away pure text nodes:)
     return 
         local:whittle-down-annotations($node)
-:)        
+
         return 
             <result>
                 <base-text>{$base-text-output}</base-text>
                 <base-text-goal>{$base-text-goal}</base-text-goal>
                 <authoritative-text>{$authoritative-text-output}</authoritative-text>
                 <authoritative-text-goal>{$authoritative-text-goal}</authoritative-text-goal>
-                <top-level-annotations>{$top-level-annotations-keyed-to-base-and-authoritative-layer}</top-level-annotations>
+                <annotations>{$annotations}</annotations>
             </result>
