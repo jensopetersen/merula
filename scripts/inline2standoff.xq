@@ -302,10 +302,10 @@ let $doc := $doc//tei:text
 
 let $base-text-output := local:generate-text($doc, 'base')
 let $authoritative-text-output := local:generate-text($doc, 'authoritative')
-
+let $base-text-goal := <p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor Nye<count n="50"/> and the practical jokers—Mr. Clemens begins journ<count n="100"/>alistic life on Virginia City Enterprise—Reports l<count n="150"/>egislative sessions—He and Orion prosper—Orion bui<count n="200"/>lds $12,000. house—Gov. Nye turns Territory of Neva<count n="250"/>da into a State. (Miss Hobby, please paste this in<count n="300"/> at this point, in record of April 1st, but I may <count n="350"/>not comment on it until later.) <count n="382"/></p>
 (:<p xml:id="uuid-538a6e13-f88b-462c-a965-f523c3e02bbf">I <choice><reg>met</reg><sic>meet</sic></choice> <app><lem wit="#a"><name ref="#SW" type="person"><forename>Steve</forename> <surname>Winwood</surname></name></lem><rdg wit="#b"><name ref="#SW" type="person"><forename>Stephen</forename> <surname>Winwood</surname></name></rdg></app> and <app><rdg wit="#base"><name ref="#AK" type="person">Alexis Korner</name></rdg><rdg wit="#c" ><name ref="#JM" type="person">John Mayall</name></rdg></app> <pb n="3"></pb>in <rs>the pub</rs><note resp="#JØP">The author is <emph>pro-<pb n="3"/>bably</emph> wrong here.</note>.</p>:)
 (: NB: There is the problem with $input that if edition annotation occurs inside feature annotation, a function should first invert the annotation, so all edition annotation is on upper level? The problem only relates to inline4standoff, not to the editor. :)
-
+let $authoritative-text-goal := <p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor Nye<count n="50"/> and the practical jokers—Mr. Clemens begins journ<count n="100"/>alistic life on Virginia City Enterprise—Reports l<count n="150"/>egislative sessions—He and Orion prosper—Orion bui<count n="200"/>lds twelve-thousand-dollar house—Governor Nye turn<count n="250"/>s Territory of Nevada into a State.<count n="285"/></p>
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head')
@@ -329,7 +329,8 @@ let $top-level-annotations-keyed-to-base-and-authoritative-layer := local:insert
         return 
             <result>
                 <base-text>{$base-text-output}</base-text>
+                <base-text-goal>{$base-text-goal}</base-text-goal>
                 <authoritative-text>{$authoritative-text-output}</authoritative-text>
+                <authoritative-text-goal>{$authoritative-text-goal}</authoritative-text-goal>
                 <top-level-annotations>{$top-level-annotations-keyed-to-base-and-authoritative-layer}</top-level-annotations>
-                
             </result>
