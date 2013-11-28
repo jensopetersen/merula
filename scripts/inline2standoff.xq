@@ -149,7 +149,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
 };
 
-(: Based on the list of TEI elements that alter the text stream, construct the altered (authoritative) or the unaltered (base) form, according to the target set :)
+(: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) form :)
 declare function local:separate-layers($input as node()*, $target) as item()* {
     for $node in $input/node()
         return
@@ -159,40 +159,48 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
                     if ($node/ancestor-or-self::element(tei:note)) 
                     then () 
                     else $node
-                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text"). 
-                Here we strip out all notes from the text itself and put it into annotations.:)
+                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text")
+                    Here we strip out all notes from the text itself and put them into the annotations.:)
+                
                 case element(tei:lem) return 
                     if ($target eq 'base') 
                     then () 
                     else $node
-                case element(tei:rdg) return 
-                    if ($target eq 'base' and not($node/../tei:lem)) (:if there is no lem, choose among the rdg for the base text:)
-                    then $node[contains(@wit/string(), 'TS1')]
-                    else
-                        if ($target ne 'base' and not($node/../tei:lem)) (:if there is no lem, choose among the rdg for the target text:)
-                        then $node[not(contains(@wit/string(), 'TS2'))]
+                
+                case element(tei:rdg) return
+                    if (not($node/../tei:lem))
+                    then
+                        if ($target eq 'base')
+                        then $node[contains(@wit/string(), 'TS1')] (:if there is no lem, choose a rdg for the base text:)
                         else
-                            if ($target eq 'base' and $node/../tei:lem)
-                            then $node[contains(@wit/string(), 'TS1')]
+                            if ($target ne 'base')
+                            then $node[contains(@wit/string(), 'TS2')] (:if there is no lem, choose a rdg for the target text:)
                             else ()
+                    else
+                        if ($target eq 'base')
+                        then $node[contains(@wit/string(), 'TS1')] (:if there is a lem, choose a rdg for the base text:)
+                        else ()
+                
                 case element(tei:reg) return
                     if ($target eq 'base') 
                     then () 
                     else $node
+                
                 case element(tei:sic) return 
                     if ($target eq 'base') 
                     then $node
                     else ()
-                    default return local:separate-layers($node, $target)
+                        
+                        default return local:separate-layers($node, $target)
 };
 
 declare function local:handle-element-annotations($node as node()) as item()* {
-            let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
+            let $layer-1-body-contents := $node//body/* (:get the element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
                 for $attribute in $layer-1-body-contents/@*
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
-            let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
-            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
+            let $layer-1 := local:remove-elements($node, 'body') (:remove the body,:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (:and insert the new body:)
                 return $layer-1
                 (:return the old annotation, with an empty element below body:)
             ,
