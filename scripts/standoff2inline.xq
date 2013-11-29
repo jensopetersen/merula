@@ -141,7 +141,7 @@ let $segments :=
     for $segment in $segments
             return
                 if ($segment/@n mod 2 eq 0)
-                then $segment
+                then $segment/*
                 else $segment/string()
     return 
         element {node-name($base-text)}{$base-text/@*, $segments}
@@ -153,7 +153,7 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
         return
             typeswitch($node)
                 
-                case text() return 
+                case text() return
                     if ($node/ancestor-or-self::element(note)) 
                     then () 
                     else $node
@@ -197,4 +197,4 @@ let $collapsed-annotations := local:collapse-annotations($built-up-annotations)
 let $meshed-annotations := local:mesh-annotations($base-text, $collapsed-annotations)
 let $base-text-reconstructed := local:separate-layers($meshed-annotations, 'base')
 let $target-text-reconstructed := local:separate-layers($meshed-annotations, 'target')
-    return element {node-name($base-text)}{$base-text/@*, string-join($target-text-reconstructed)}
+        return element {node-name($base-text)}{$base-text/@*, string-join($target-text-reconstructed)}
