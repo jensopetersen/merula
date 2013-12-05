@@ -153,7 +153,6 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
         let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
         let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
         let $authoritative-layer := <authoritative-layer><id>{$id}</id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
-        let $log := util:log("DEBUG", ("##$authoritative-layer): ", $authoritative-layer))
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
 };
@@ -269,7 +268,6 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                 return
                     let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-offset-difference'))
                     let $layer-2 := local:insert-elements($layer-2-body-content, $layer-1-id, 'start', 'before')
-                    let $log := util:log("DEBUG", ("##$layer-2): ", $layer-2))
                         return
                             if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
                         then $layer-2
@@ -328,17 +326,17 @@ declare function local:generate-top-level-annotations($element as element()*, $e
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
 let $doc-element := $doc/*
-let $header := $doc-element/tei:teiHeader
-let $text := $doc-element/tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
+let $doc-header := $doc-element/tei:teiHeader
+let $doc-text := $doc-element/tei:text
 
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
 
-let $base-text := local:generate-text($text, 'base')
+let $base-text := local:generate-text($doc-text, 'base')
 let $base-text := local:collapse-inline-elements($base-text, $block-elements)
 
-let $authoritative-text := local:generate-text($text, 'authoritative')
+let $authoritative-text := local:generate-text($doc-text, 'authoritative')
 let $authoritative-text := local:collapse-inline-elements($authoritative-text, $block-elements)
 
 (: get all the block-level elements that have edition-layer-elements as children :)
@@ -356,7 +354,7 @@ let $annotations :=
 
         return 
             <result>
-                <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$header}{element {node-name($text)}{$text/@*, $base-text}}</base-text>
-                <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$header}{element {node-name($text)}{$text/@*, $authoritative-text}}</authoritative-text>
+                <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
+                <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
             </result>
