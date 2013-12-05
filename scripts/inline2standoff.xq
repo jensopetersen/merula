@@ -327,8 +327,9 @@ declare function local:generate-top-level-annotations($element as element()*, $e
 
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
-let $header := $doc/tei:teiHeader
-let $text := $doc//tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
+let $doc-element := $doc/*
+let $header := $doc-element/tei:teiHeader
+let $text := $doc-element/tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
 
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
@@ -355,7 +356,7 @@ let $annotations :=
 
         return 
             <result>
-                <base-text>{element {node-name($text)}{$text/@*, $base-text}}</base-text>
-                <authoritative-text>{element {node-name($text)}{$text/@*, $authoritative-text}}</authoritative-text>
+                <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$header}{element {node-name($text)}{$text/@*, $base-text}}</base-text>
+                <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$header}{element {node-name($text)}{$text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
             </result>

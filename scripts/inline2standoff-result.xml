@@ -1,5 +1,400 @@
 <result>
     <base-text>
+        <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="MTDP10363"/>
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0" type="CDL-TEI:MTP">
+            <fileDesc>
+                <titleStmt>
+                    <title>Sample from Autobiography of Mark Twain, Volume 2 : an electronic
+                        text</title>
+                    <author>
+                        <name ref="#bioCL028">Mark Twain</name>
+                    </author>
+                    <editor>
+                        <name ref="#bioGR365">Benjamin Griffin</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioSM656">Harriet Elinor Smith</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioFI102">Victor Fischer</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioFR644">Michael B. Frank</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                    </editor>
+                    <principal>
+                        <name ref="#bioHI202">Robert H. Hirst</name>
+                    </principal>
+                    <sponsor>University of California</sponsor>
+                    <funder>National Endowment for the Humanities, an independent federal
+                        agency</funder>
+                    <funder>Generous contributions from individuals, foundations, and other
+                        institutions</funder>
+                    <respStmt>
+                        <resp>Encoded by</resp>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                    </respStmt>
+                </titleStmt>
+                <extent>ca. 4.8 Mb ; ca. 140 images</extent>
+                <publicationStmt>
+                    <publisher>Mark Twain Project, The Bancroft Library, University of
+                        California</publisher>
+                    <publisher>University of California Press</publisher>
+                    <publisher>California Digital Library</publisher>
+                    <pubPlace>Berkeley, Calif.</pubPlace>
+                    <date type="pub" when-iso="2013-10-05">2013</date>
+                    <idno type="ARK"/>
+                    <idno type="LOCAL">MTDP10363</idno>
+                    <availability>
+                        <p>All words written or dictated by Samuel L. Clemens (Mark Twain) are in
+                            the public domain if they were first published before 1924. All words
+                            written or dictated by Mark Twain which were published between 1924 and
+                            2002, and their copyrights renewed where required by law, are copyright
+                            © by Richard A. Watson and J.P. Morgan Chase Manhattan Bank as trustees
+                            of the Mark Twain Foundation, which reserves all reproduction or
+                            dramatization rights in every medium. All editorial transcriptions,
+                            reconstructions, decipherments, explanatory comments, identifications of
+                            correspondents, places, and dates are copyright © 1988, 1990, 1992,
+                            1995, 1997, 2002, 2006, 2007, and 2009 by The Regents of the University
+                            of California.</p>
+                    </availability>
+                </publicationStmt>
+                <seriesStmt>
+                    <title level="s">Mark Twain Project Online</title>
+                    <respStmt>
+                        <resp>General Editor</resp>
+                        <name ref="#bioHI202">Robert H. Hirst</name>
+                    </respStmt>
+                    <respStmt>
+                        <resp>Editors</resp>
+                        <name ref="#bioFI102">Victor Fischer</name>
+                        <name ref="#bioFR644">Michael B. Frank</name>
+                        <name ref="#bio16088">Amanda Gagel</name>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                        <name ref="#bioGR365">Benjamin Griffin</name>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                        <name ref="#bioSM656">Harriet Elinor Smith</name>
+                    </respStmt>
+                </seriesStmt>
+                <sourceDesc>
+                    <biblStruct n="conv">
+                        <monogr>
+                            <title>Autobiography of Mark Twain, Volume 2</title>
+                            <respStmt>
+                                <resp>General Editor</resp>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Editors</resp>
+                                <name ref="#bioGR365">Benjamin Griffin</name>
+                                <name ref="#bioSM656">Harriet Elinor Smith</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Associate Editors</resp>
+                                <name ref="#bioFI102">Victor Fischer</name>
+                                <name ref="#bioFR644">Michael B. Frank</name>
+                                <name ref="#bioGO790">Sharon K. Goetz</name>
+                                <name ref="#bioMY004">Leslie Diane Myrick</name>
+                            </respStmt>
+                            <edition>1st ed.</edition>
+                            <imprint>
+                                <publisher>University of California Press</publisher>
+                                <pubPlace>Berkeley, Calif.</pubPlace>
+                                <date when-iso="2013-10-05">2013</date>
+                                <biblScope type="pages">xix + 736</biblScope>
+                            </imprint>
+                        </monogr>
+                        <series>
+                            <title level="s">The Mark Twain Papers</title>
+                            <respStmt>
+                                <resp>General Editor</resp>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Editors</resp>
+                                <name ref="#bioAN086">Frederick Anderson</name>
+                                <name ref="#bioAR201">Dahlia Armon</name>
+                                <name ref="#bioBA527">Paul Baender</name>
+                                <name ref="#bioBA528">Howard G. Baetzhold</name>
+                                <name ref="#bioBL251">Walter Blair</name>
+                                <name ref="#bioBR900">Edgar Marquess Branch</name>
+                                <name ref="#bioBR901">Robert Pack Browning</name>
+                                <name ref="#bioBU351">Richard Bucci</name>
+                                <name ref="#bioBU352">Louis J. Budd</name>
+                                <name ref="#bioBU353">Anh Q. Bui</name>
+                                <name ref="#bioCA503">Gregg Camfield</name>
+                                <name ref="#bioCO370">Hennig Cohen</name>
+                                <name ref="#bioDI018">Leon T. Dickinson</name>
+                                <name ref="#bioFI101">Terry Firkins</name>
+                                <name ref="#bioFI102">Victor Fischer</name>
+                                <name ref="#bioFR644">Michael B. Frank</name>
+                                <name ref="#bio16088">Amanda Gagel</name>
+                                <name ref="#bioGE756">John C. Gerber</name>
+                                <name ref="#bioGI044">William M. Gibson</name>
+                                <name ref="#bioGO790">Sharon K. Goetz</name>
+                                <name ref="#bioGR365">Benjamin Griffin</name>
+                                <name ref="#bioHI201">Hamlin Hill</name>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                                <name ref="#bioJO301">Mary Jane Jones</name>
+                                <name ref="#bioLE656">Lewis Leary</name>
+                                <name ref="#bioMA251">Paul Machlis</name>
+                                <name ref="#bioMA252">Francis V. Madigan</name>
+                                <name ref="#bioMY004">Leslie Myrick</name>
+                                <name ref="#bioPA600">Hershel Parker</name>
+                                <name ref="#bioRE900">Robert Regan</name>
+                                <name ref="#bioRO568">Franklin R. Rogers</name>
+                                <name ref="#bioSA514">Lin Salamo</name>
+                                <name ref="#bioSA515">Kenneth M. Sanderson</name>
+                                <name ref="#bioSM656">Harriet Elinor Smith</name>
+                                <name ref="#bioSM300">Henry Nash Smith</name>
+                                <name ref="#bioST401">Bernard L. Stein</name>
+                                <name ref="#bioST402">Albert E. Stone</name>
+                                <name ref="#bioTU013">John S. Tuckey</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Board of Directors</resp>
+                                <name ref="#bioCR301">Frederick Crews</name>
+                                <name ref="#bio16116">Mary C. Francis</name>
+                                <name ref="#bioHA202">Peter E. Hanff</name>
+                                <name key="#bioLE201">Thomas C. Leonard</name>
+                                <name ref="#bioMI201">Michael Millgate</name>
+                                <name ref="#bio16114">Alison Mudditt</name>
+                                <name ref="#bioST403">George A. Starr</name>
+                                <name ref="#bioTA101">G. Thomas Tanselle</name>
+                                <name ref="#bio16115">Elaine Tennant</name>
+                            </respStmt>
+                        </series>
+                        <note>Editorial work for this volume has been supported by a generous gift
+                            to the Mark Twain Project of The Bancroft Library from the Koret
+                            Foundation and by matching and outright grants from the National
+                            Endowment for the Humanities, an independent federal agency. Without
+                            that support, this volume could not have been produced.</note>
+                    </biblStruct>
+                    <listPerson>
+                        <person>
+                            <persName key="bioCL028" type="reg">Twain, Mark, 1835-1910</persName>
+                        </person>
+                        <person>
+                            <persName key="bioAN086" type="reg">Anderson, Frederick,
+                                1926-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioAR201" type="reg">Armon, Dahlia</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBA527" type="reg">Baender, Paul</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBA528" type="reg">Baetzhold, Howard G.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBL251" type="reg">Blair, Walter, 1900-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBO516" type="reg">Boydston, Jo Ann, 1924-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBR900" type="reg">Branch, Edgar Marquess,
+                                1913-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBR901" type="reg">Browning, Robert Pack</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU351" type="reg">Bucci, Richard</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU352" type="reg">Budd, Louis J.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU353" type="reg">Bui, Anh Q.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCA503" type="reg">Camfield, Gregg</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCE006" type="reg">Cerruti, Laura</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCO370" type="reg">Cohen, Hennig</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCO371" type="reg">Cook, Don L.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCR301" type="reg">Crews, Frederick C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioDI018" type="reg">Dickinson, Leon T. (Leon Townsend),
+                                1912-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFA201" type="reg">Faulhaber, Charles</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFI101" type="reg">Firkins, Terry</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFI102" type="reg">Fischer, Victor, 1942-</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16116" type="reg">Francis, Mary C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFR644" type="reg">Frank, Michael B.</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16088" type="reg">Gagel, Amanda</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGE756" type="reg">Gerber, John C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGI044" type="reg">Gibson, William Merriam,
+                                1912-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGO790" type="reg">Goetz, Sharon K.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGR201" type="reg">Gregor, Dorothy, 1939-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGR365" type="reg">Griffin, Benjamin, 1968-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHA202" type="reg">Hanff, Peter E.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHA352" type="reg">Hart, James David, 1911-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHI201" type="reg">Hill, Hamlin Lewis, 1931-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHI202" type="reg">Hirst, Robert H.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioJO301" type="reg">Jones, Mary Jane, 1938-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLA301" type="reg">Laue, Andrea K.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLE656" type="reg">Leary, Lewis Gaston,
+                                1906-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLE201" type="reg">Leonard, Thomas C., 1944-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMA251" type="reg">Machlis, Paul</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMA252" type="reg">Madigan, Francis V.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMC301" type="reg">McClung, William J.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMI201" type="reg">Millgate, Michael</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16114" type="reg">Mudditt, Alison</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMY004" type="reg">Myrick, Leslie</persName>
+                        </person>
+                        <person>
+                            <persName key="bioPA600" type="reg">Parker, Hershel</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRA566" type="reg">Ray, Gordon Norton, 1915-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRE900" type="reg">Regan, Robert</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO567" type="reg">Robertson, Charlotte</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO568" type="reg">Rogers, Franklin R.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO569" type="reg">Rosenthal, Joseph A.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSA514" type="reg">Salamo, Lin</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSA515" type="reg">Sanderson, Kenneth M.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSM656" type="reg">Smith, Harriet Elinor</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSM300" type="reg">Smith, Henry Nash</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST403" type="reg">Starr, G. A. (George A.)</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST401" type="reg">Stein, Bernard L.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST402" type="reg">Stone, Albert E.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioTA101" type="reg">Tanselle, G. Thomas (George Thomas),
+                                1934-</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16115" type="reg">Tennant, Elaine</persName>
+                        </person>
+                        <person>
+                            <persName key="bioTU013" type="reg">Tuckey, John Sutton,
+                                1921-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioWI201" type="reg">Witherell, Elizabeth Hall</persName>
+                        </person>
+                        <person>
+                            <persName key="bio15050" type="reg">Withey, Lynne</persName>
+                        </person>
+                    </listPerson>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <projectDesc>
+                    <p>This digital document was produced as part of Mark Twain Project Online
+                        (MTPO), a digital critical edition of all of Mark Twain’s writings. It was
+                        encoded in accordance with the Mark Twain Project TEI DTD version 4.0, a
+                        modified version of Text Encoding Initiative (TEI) P5 DTD
+                        (http://www.tei-c.org). Initial transcription of the text was performed in
+                        Corel WordPerfect X5. XML encoding was performed using <oXygen/> XML
+                        Editor.</p>
+                </projectDesc>
+                <editorialDecl>
+                    <p>For information about the editorial policy of the Mark Twain Project, see the
+                        guide to editorial practice published with this text.</p>
+                </editorialDecl>
+                <variantEncoding location="internal" method="double-end-point"/>
+            </encodingDesc>
+            <revisionDesc>
+                <listChange>
+                    <change when="2013-11-14" who="#bioGO790">Enhanced explanatory notes through 13
+                        Aug 1906 with cross-reference links; corrected minor errors.</change>
+                    <change/>
+                </listChange>
+            </revisionDesc>
+        </teiHeader>
         <text xmlns="http://www.tei-c.org/ns/1.0">
             <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
             <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -62,6 +457,401 @@
         </text>
     </base-text>
     <authoritative-text>
+        <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="MTDP10363"/>
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0" type="CDL-TEI:MTP">
+            <fileDesc>
+                <titleStmt>
+                    <title>Sample from Autobiography of Mark Twain, Volume 2 : an electronic
+                        text</title>
+                    <author>
+                        <name ref="#bioCL028">Mark Twain</name>
+                    </author>
+                    <editor>
+                        <name ref="#bioGR365">Benjamin Griffin</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioSM656">Harriet Elinor Smith</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioFI102">Victor Fischer</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioFR644">Michael B. Frank</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                    </editor>
+                    <editor>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                    </editor>
+                    <principal>
+                        <name ref="#bioHI202">Robert H. Hirst</name>
+                    </principal>
+                    <sponsor>University of California</sponsor>
+                    <funder>National Endowment for the Humanities, an independent federal
+                        agency</funder>
+                    <funder>Generous contributions from individuals, foundations, and other
+                        institutions</funder>
+                    <respStmt>
+                        <resp>Encoded by</resp>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                    </respStmt>
+                </titleStmt>
+                <extent>ca. 4.8 Mb ; ca. 140 images</extent>
+                <publicationStmt>
+                    <publisher>Mark Twain Project, The Bancroft Library, University of
+                        California</publisher>
+                    <publisher>University of California Press</publisher>
+                    <publisher>California Digital Library</publisher>
+                    <pubPlace>Berkeley, Calif.</pubPlace>
+                    <date type="pub" when-iso="2013-10-05">2013</date>
+                    <idno type="ARK"/>
+                    <idno type="LOCAL">MTDP10363</idno>
+                    <availability>
+                        <p>All words written or dictated by Samuel L. Clemens (Mark Twain) are in
+                            the public domain if they were first published before 1924. All words
+                            written or dictated by Mark Twain which were published between 1924 and
+                            2002, and their copyrights renewed where required by law, are copyright
+                            © by Richard A. Watson and J.P. Morgan Chase Manhattan Bank as trustees
+                            of the Mark Twain Foundation, which reserves all reproduction or
+                            dramatization rights in every medium. All editorial transcriptions,
+                            reconstructions, decipherments, explanatory comments, identifications of
+                            correspondents, places, and dates are copyright © 1988, 1990, 1992,
+                            1995, 1997, 2002, 2006, 2007, and 2009 by The Regents of the University
+                            of California.</p>
+                    </availability>
+                </publicationStmt>
+                <seriesStmt>
+                    <title level="s">Mark Twain Project Online</title>
+                    <respStmt>
+                        <resp>General Editor</resp>
+                        <name ref="#bioHI202">Robert H. Hirst</name>
+                    </respStmt>
+                    <respStmt>
+                        <resp>Editors</resp>
+                        <name ref="#bioFI102">Victor Fischer</name>
+                        <name ref="#bioFR644">Michael B. Frank</name>
+                        <name ref="#bio16088">Amanda Gagel</name>
+                        <name ref="#bioGO790">Sharon K. Goetz</name>
+                        <name ref="#bioGR365">Benjamin Griffin</name>
+                        <name ref="#bioMY004">Leslie Myrick</name>
+                        <name ref="#bioSM656">Harriet Elinor Smith</name>
+                    </respStmt>
+                </seriesStmt>
+                <sourceDesc>
+                    <biblStruct n="conv">
+                        <monogr>
+                            <title>Autobiography of Mark Twain, Volume 2</title>
+                            <respStmt>
+                                <resp>General Editor</resp>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Editors</resp>
+                                <name ref="#bioGR365">Benjamin Griffin</name>
+                                <name ref="#bioSM656">Harriet Elinor Smith</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Associate Editors</resp>
+                                <name ref="#bioFI102">Victor Fischer</name>
+                                <name ref="#bioFR644">Michael B. Frank</name>
+                                <name ref="#bioGO790">Sharon K. Goetz</name>
+                                <name ref="#bioMY004">Leslie Diane Myrick</name>
+                            </respStmt>
+                            <edition>1st ed.</edition>
+                            <imprint>
+                                <publisher>University of California Press</publisher>
+                                <pubPlace>Berkeley, Calif.</pubPlace>
+                                <date when-iso="2013-10-05">2013</date>
+                                <biblScope type="pages">xix + 736</biblScope>
+                            </imprint>
+                        </monogr>
+                        <series>
+                            <title level="s">The Mark Twain Papers</title>
+                            <respStmt>
+                                <resp>General Editor</resp>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Editors</resp>
+                                <name ref="#bioAN086">Frederick Anderson</name>
+                                <name ref="#bioAR201">Dahlia Armon</name>
+                                <name ref="#bioBA527">Paul Baender</name>
+                                <name ref="#bioBA528">Howard G. Baetzhold</name>
+                                <name ref="#bioBL251">Walter Blair</name>
+                                <name ref="#bioBR900">Edgar Marquess Branch</name>
+                                <name ref="#bioBR901">Robert Pack Browning</name>
+                                <name ref="#bioBU351">Richard Bucci</name>
+                                <name ref="#bioBU352">Louis J. Budd</name>
+                                <name ref="#bioBU353">Anh Q. Bui</name>
+                                <name ref="#bioCA503">Gregg Camfield</name>
+                                <name ref="#bioCO370">Hennig Cohen</name>
+                                <name ref="#bioDI018">Leon T. Dickinson</name>
+                                <name ref="#bioFI101">Terry Firkins</name>
+                                <name ref="#bioFI102">Victor Fischer</name>
+                                <name ref="#bioFR644">Michael B. Frank</name>
+                                <name ref="#bio16088">Amanda Gagel</name>
+                                <name ref="#bioGE756">John C. Gerber</name>
+                                <name ref="#bioGI044">William M. Gibson</name>
+                                <name ref="#bioGO790">Sharon K. Goetz</name>
+                                <name ref="#bioGR365">Benjamin Griffin</name>
+                                <name ref="#bioHI201">Hamlin Hill</name>
+                                <name ref="#bioHI202">Robert H. Hirst</name>
+                                <name ref="#bioJO301">Mary Jane Jones</name>
+                                <name ref="#bioLE656">Lewis Leary</name>
+                                <name ref="#bioMA251">Paul Machlis</name>
+                                <name ref="#bioMA252">Francis V. Madigan</name>
+                                <name ref="#bioMY004">Leslie Myrick</name>
+                                <name ref="#bioPA600">Hershel Parker</name>
+                                <name ref="#bioRE900">Robert Regan</name>
+                                <name ref="#bioRO568">Franklin R. Rogers</name>
+                                <name ref="#bioSA514">Lin Salamo</name>
+                                <name ref="#bioSA515">Kenneth M. Sanderson</name>
+                                <name ref="#bioSM656">Harriet Elinor Smith</name>
+                                <name ref="#bioSM300">Henry Nash Smith</name>
+                                <name ref="#bioST401">Bernard L. Stein</name>
+                                <name ref="#bioST402">Albert E. Stone</name>
+                                <name ref="#bioTU013">John S. Tuckey</name>
+                            </respStmt>
+                            <respStmt>
+                                <resp>Board of Directors</resp>
+                                <name ref="#bioCR301">Frederick Crews</name>
+                                <name ref="#bio16116">Mary C. Francis</name>
+                                <name ref="#bioHA202">Peter E. Hanff</name>
+                                <name key="#bioLE201">Thomas C. Leonard</name>
+                                <name ref="#bioMI201">Michael Millgate</name>
+                                <name ref="#bio16114">Alison Mudditt</name>
+                                <name ref="#bioST403">George A. Starr</name>
+                                <name ref="#bioTA101">G. Thomas Tanselle</name>
+                                <name ref="#bio16115">Elaine Tennant</name>
+                            </respStmt>
+                        </series>
+                        <note>Editorial work for this volume has been supported by a generous gift
+                            to the Mark Twain Project of The Bancroft Library from the Koret
+                            Foundation and by matching and outright grants from the National
+                            Endowment for the Humanities, an independent federal agency. Without
+                            that support, this volume could not have been produced.</note>
+                    </biblStruct>
+                    <listPerson>
+                        <person>
+                            <persName key="bioCL028" type="reg">Twain, Mark, 1835-1910</persName>
+                        </person>
+                        <person>
+                            <persName key="bioAN086" type="reg">Anderson, Frederick,
+                                1926-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioAR201" type="reg">Armon, Dahlia</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBA527" type="reg">Baender, Paul</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBA528" type="reg">Baetzhold, Howard G.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBL251" type="reg">Blair, Walter, 1900-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBO516" type="reg">Boydston, Jo Ann, 1924-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBR900" type="reg">Branch, Edgar Marquess,
+                                1913-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBR901" type="reg">Browning, Robert Pack</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU351" type="reg">Bucci, Richard</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU352" type="reg">Budd, Louis J.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioBU353" type="reg">Bui, Anh Q.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCA503" type="reg">Camfield, Gregg</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCE006" type="reg">Cerruti, Laura</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCO370" type="reg">Cohen, Hennig</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCO371" type="reg">Cook, Don L.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioCR301" type="reg">Crews, Frederick C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioDI018" type="reg">Dickinson, Leon T. (Leon Townsend),
+                                1912-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFA201" type="reg">Faulhaber, Charles</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFI101" type="reg">Firkins, Terry</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFI102" type="reg">Fischer, Victor, 1942-</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16116" type="reg">Francis, Mary C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioFR644" type="reg">Frank, Michael B.</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16088" type="reg">Gagel, Amanda</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGE756" type="reg">Gerber, John C.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGI044" type="reg">Gibson, William Merriam,
+                                1912-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGO790" type="reg">Goetz, Sharon K.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGR201" type="reg">Gregor, Dorothy, 1939-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioGR365" type="reg">Griffin, Benjamin, 1968-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHA202" type="reg">Hanff, Peter E.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHA352" type="reg">Hart, James David, 1911-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHI201" type="reg">Hill, Hamlin Lewis, 1931-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioHI202" type="reg">Hirst, Robert H.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioJO301" type="reg">Jones, Mary Jane, 1938-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLA301" type="reg">Laue, Andrea K.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLE656" type="reg">Leary, Lewis Gaston,
+                                1906-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioLE201" type="reg">Leonard, Thomas C., 1944-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMA251" type="reg">Machlis, Paul</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMA252" type="reg">Madigan, Francis V.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMC301" type="reg">McClung, William J.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMI201" type="reg">Millgate, Michael</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16114" type="reg">Mudditt, Alison</persName>
+                        </person>
+                        <person>
+                            <persName key="bioMY004" type="reg">Myrick, Leslie</persName>
+                        </person>
+                        <person>
+                            <persName key="bioPA600" type="reg">Parker, Hershel</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRA566" type="reg">Ray, Gordon Norton, 1915-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRE900" type="reg">Regan, Robert</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO567" type="reg">Robertson, Charlotte</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO568" type="reg">Rogers, Franklin R.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioRO569" type="reg">Rosenthal, Joseph A.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSA514" type="reg">Salamo, Lin</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSA515" type="reg">Sanderson, Kenneth M.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSM656" type="reg">Smith, Harriet Elinor</persName>
+                        </person>
+                        <person>
+                            <persName key="bioSM300" type="reg">Smith, Henry Nash</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST403" type="reg">Starr, G. A. (George A.)</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST401" type="reg">Stein, Bernard L.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioST402" type="reg">Stone, Albert E.</persName>
+                        </person>
+                        <person>
+                            <persName key="bioTA101" type="reg">Tanselle, G. Thomas (George Thomas),
+                                1934-</persName>
+                        </person>
+                        <person>
+                            <persName key="bio16115" type="reg">Tennant, Elaine</persName>
+                        </person>
+                        <person>
+                            <persName key="bioTU013" type="reg">Tuckey, John Sutton,
+                                1921-</persName>
+                        </person>
+                        <person>
+                            <persName key="bioWI201" type="reg">Witherell, Elizabeth Hall</persName>
+                        </person>
+                        <person>
+                            <persName key="bio15050" type="reg">Withey, Lynne</persName>
+                        </person>
+                    </listPerson>
+                </sourceDesc>
+            </fileDesc>
+            <encodingDesc>
+                <projectDesc>
+                    <p>This digital document was produced as part of Mark Twain Project Online
+                        (MTPO), a digital critical edition of all of Mark Twain’s writings. It was
+                        encoded in accordance with the Mark Twain Project TEI DTD version 4.0, a
+                        modified version of Text Encoding Initiative (TEI) P5 DTD
+                        (http://www.tei-c.org). Initial transcription of the text was performed in
+                        Corel WordPerfect X5. XML encoding was performed using <oXygen/> XML
+                        Editor.</p>
+                </projectDesc>
+                <editorialDecl>
+                    <p>For information about the editorial policy of the Mark Twain Project, see the
+                        guide to editorial practice published with this text.</p>
+                </editorialDecl>
+                <variantEncoding location="internal" method="double-end-point"/>
+            </encodingDesc>
+            <revisionDesc>
+                <listChange>
+                    <change when="2013-11-14" who="#bioGO790">Enhanced explanatory notes through 13
+                        Aug 1906 with cross-reference links; corrected minor errors.</change>
+                    <change/>
+                </listChange>
+            </revisionDesc>
+        </teiHeader>
         <text xmlns="http://www.tei-c.org/ns/1.0">
             <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
             <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
@@ -124,7 +914,7 @@
     </authoritative-text>
     <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-401418a3-791c-4b11-bca4-57f23ab8f5ec" status="string">
+            xml:id="uuid-84a5363f-906f-4654-af93-99899d7bdeac" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -145,7 +935,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -160,7 +950,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-43303dd9-791f-468d-9df1-2f715baecd5b" status="string">
+            xml:id="uuid-e3beeec4-5b4a-49ec-b89a-1d41fb40b796" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -181,7 +971,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -196,7 +986,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-dbe5178a-e15b-4d90-8700-bb7a0d58f304" status="token">
+            xml:id="uuid-b80b694f-701d-4bf0-8186-5d03b5fad2fe" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -216,7 +1006,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -231,10 +1021,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f14ecd1f-ab93-4ed1-8519-ab189735c687" status="token">
+            xml:id="uuid-3cfaf471-14f9-46b1-814d-b2a4df7faf0a" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-dbe5178a-e15b-4d90-8700-bb7a0d58f304</id>
+                    <id>uuid-b80b694f-701d-4bf0-8186-5d03b5fad2fe</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -245,7 +1035,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -260,10 +1050,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-886ef44e-5c59-4734-a23d-232d65f8b70e" status="token">
+            xml:id="uuid-60f27b1e-7275-4ea9-afca-87e7910d308b" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f14ecd1f-ab93-4ed1-8519-ab189735c687</id>
+                    <id>uuid-3cfaf471-14f9-46b1-814d-b2a4df7faf0a</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -274,7 +1064,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -289,10 +1079,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-06e6b393-250b-4640-b9ee-4ca4808ca81c" status="token">
+            xml:id="uuid-6f18f4e0-6ab0-4228-84ba-22f491488361" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-dbe5178a-e15b-4d90-8700-bb7a0d58f304</id>
+                    <id>uuid-b80b694f-701d-4bf0-8186-5d03b5fad2fe</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -304,7 +1094,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -319,7 +1109,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-71c5be73-149c-4126-b18c-46df60542f33" status="string">
+            xml:id="uuid-c0207ce0-9ad1-461c-a3ae-578dd1c384ef" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -340,7 +1130,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -355,7 +1145,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-9cbab196-86ea-4766-997f-4d27e50cc7b7" status="token">
+            xml:id="uuid-e45ee026-253f-4170-8d04-e498792f4e79" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -375,7 +1165,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -390,10 +1180,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-74a4f1ab-d8bf-402b-a751-bd8fbbb2f82c" status="token">
+            xml:id="uuid-229d5fad-129a-45d4-9164-24abed533ec1" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-9cbab196-86ea-4766-997f-4d27e50cc7b7</id>
+                    <id>uuid-e45ee026-253f-4170-8d04-e498792f4e79</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -404,7 +1194,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -419,10 +1209,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-28cd7d0c-f854-4a7c-91d1-d9e7c3029363" status="token">
+            xml:id="uuid-b71a488b-0a43-4338-8a51-8810b67c0e66" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-9cbab196-86ea-4766-997f-4d27e50cc7b7</id>
+                    <id>uuid-e45ee026-253f-4170-8d04-e498792f4e79</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -433,7 +1223,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -448,10 +1238,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-8c18f7c1-5493-45a0-b296-37242400efd8" status="token">
+            xml:id="uuid-465d75ee-5ced-45f5-9a81-fd6ab30a49e2" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-9cbab196-86ea-4766-997f-4d27e50cc7b7</id>
+                    <id>uuid-e45ee026-253f-4170-8d04-e498792f4e79</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -462,7 +1252,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -477,7 +1267,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b6b12ec5-7418-4424-b9d3-767e88f64b2a" status="token">
+            xml:id="uuid-77d79bc9-fa5f-456c-9ba0-ec4e29ffdc6f" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -497,7 +1287,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -512,10 +1302,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-80e393d3-1cc6-4667-9b3c-d22e18e589be" status="token">
+            xml:id="uuid-19943a32-fed8-449d-9c3b-004dc739ac80" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b6b12ec5-7418-4424-b9d3-767e88f64b2a</id>
+                    <id>uuid-77d79bc9-fa5f-456c-9ba0-ec4e29ffdc6f</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -526,7 +1316,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -541,10 +1331,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a43c68a5-77c0-4191-91e5-b45920b6198b" status="token">
+            xml:id="uuid-1e6e8f7b-b236-4fa2-950c-957b6d5ba34f" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b6b12ec5-7418-4424-b9d3-767e88f64b2a</id>
+                    <id>uuid-77d79bc9-fa5f-456c-9ba0-ec4e29ffdc6f</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -555,7 +1345,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -570,7 +1360,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-fb63ede2-28c0-4954-9fb7-2157dbf66fa1" status="token">
+            xml:id="uuid-e4395662-3b78-44f0-a954-c0e83054b662" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -590,7 +1380,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -605,10 +1395,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-2f97d609-2bc8-4eac-8450-52bdc2504c9f" status="token">
+            xml:id="uuid-1cc5a13c-6947-44ff-874b-96c8f7f56fb2" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fb63ede2-28c0-4954-9fb7-2157dbf66fa1</id>
+                    <id>uuid-e4395662-3b78-44f0-a954-c0e83054b662</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -619,7 +1409,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -634,10 +1424,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-120e689e-f243-48ba-acca-e58256138d7c" status="token">
+            xml:id="uuid-4dace1a0-7c4d-41d1-9a4b-16e745ad5b11" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fb63ede2-28c0-4954-9fb7-2157dbf66fa1</id>
+                    <id>uuid-e4395662-3b78-44f0-a954-c0e83054b662</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -648,7 +1438,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -663,10 +1453,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-36fcf421-3b27-4b8e-8a01-f3b6c26395c6" status="token">
+            xml:id="uuid-cbbe4cb6-d73b-46b2-8ca3-2b4592fe2d57" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-120e689e-f243-48ba-acca-e58256138d7c</id>
+                    <id>uuid-4dace1a0-7c4d-41d1-9a4b-16e745ad5b11</id>
                     <start>1</start>
                     <offset>7</offset>
                 </base-layer>
@@ -675,7 +1465,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -690,10 +1480,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-27068f25-457c-4944-922a-a00ff6834154" status="token">
+            xml:id="uuid-16709099-1666-452e-a3b8-f202d8823858" status="token">
             <target type="range" layer="feature">
                 <base-layer>
-                    <id>uuid-120e689e-f243-48ba-acca-e58256138d7c</id>
+                    <id>uuid-4dace1a0-7c4d-41d1-9a4b-16e745ad5b11</id>
                     <start>7</start>
                     <offset>0</offset>
                 </base-layer>
@@ -705,7 +1495,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -720,10 +1510,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-6fbd30d3-d901-4b74-9d01-8e02ca93154c" status="token">
+            xml:id="uuid-52021297-c444-406a-98e9-c4828358679c" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-120e689e-f243-48ba-acca-e58256138d7c</id>
+                    <id>uuid-4dace1a0-7c4d-41d1-9a4b-16e745ad5b11</id>
                     <start>8</start>
                     <offset>115</offset>
                 </base-layer>
@@ -733,7 +1523,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -748,7 +1538,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-fba91053-4e67-4e98-9a7d-bf6c7385047c" status="token">
+            xml:id="uuid-4e03960e-7c81-41a3-942d-fd2fb8c2f318" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000011</id>
@@ -768,7 +1558,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -783,10 +1573,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ac8b5f35-b889-4bae-b069-0025b6641763" status="token">
+            xml:id="uuid-1a96eec4-0885-45f0-bba8-5d8e3ecd4076" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fba91053-4e67-4e98-9a7d-bf6c7385047c</id>
+                    <id>uuid-4e03960e-7c81-41a3-942d-fd2fb8c2f318</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -797,7 +1587,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -812,10 +1602,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-d08688b0-a651-40d9-8f5c-d5dd387f72bd" status="token">
+            xml:id="uuid-b7e62db1-9b1b-4875-a03f-a145541f2e57" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fba91053-4e67-4e98-9a7d-bf6c7385047c</id>
+                    <id>uuid-4e03960e-7c81-41a3-942d-fd2fb8c2f318</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -826,7 +1616,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -841,10 +1631,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-3ca3f6c5-9e8d-4433-adea-04d4b2fb9665" status="token">
+            xml:id="uuid-4ceab537-7204-4b55-81a7-a6610aaccbb2" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fba91053-4e67-4e98-9a7d-bf6c7385047c</id>
+                    <id>uuid-4e03960e-7c81-41a3-942d-fd2fb8c2f318</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -855,7 +1645,7 @@
             <admin>
                 <creation>
                     <user>admin</user>
-                    <time>2013-12-05T14:43:39.142+01:00</time>
+                    <time>2013-12-05T14:59:05.586+01:00</time>
                     <note/>
                 </creation>
                 <review>
