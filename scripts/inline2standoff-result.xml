@@ -1,7 +1,7 @@
 <result>
     <base-text>
         <text xmlns="http://www.tei-c.org/ns/1.0">
-            <!-- removed all between anchor and app; anchor not used, could be removed -->
+            <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
             <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
                 xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
                 <div type="chapter" xml:id="dv0001">
@@ -9,12 +9,11 @@
                         >Government of new Territory of Nevada—Governor Nye and the practical
                         jokers—Mr. Clemens begins journalistic life on Virginia City
                         Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
-                        $12,000. house—Gov. Nye turns Territory of Nevada into a State. (Miss Hobby,
-                        please paste this in at this point, in record of April 1st, but I may not
-                        comment on it until later.)</p>
+                        $12,000. house— Gov. Nye turns Territory of Nevada into a State. (Miss
+                        Hobby, please paste this in at this point, in record of April 1st, but I may
+                        not comment on it until later.)</p>
                     <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
                         <p rend="center" xml:id="pa000002">
-                            <anchor type="an" xml:id="vn0001"/>
                             <hi xml:id="uuid-0a3cd8ec-c871-36f4-9ed9-125f95d978a1" rend="bold"
                                 >PROMOTION FOR BARNES, WHOM TILLMAN BERATED</hi>
                             <ptr target="#en0001" type="an" xml:id="nv0001"/>
@@ -28,8 +27,89 @@
                         <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"
                             rend="lightrule" unit="section"/>
                         <p rend="center" xml:id="pa000004">
-                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold"
-                                >MERRITT GETS NEW PLACE</hi>
+                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold">
+                                MERRITT GETS NEW PLACE</hi>
+                        </p>
+                        <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"
+                            rend="lightrule" unit="section"/>
+                        <p rend="center" xml:id="pa000005">
+                            <hi xml:id="uuid-28ccdb66-33ed-3da5-b158-4c589f93b810" rend="bold"
+                                >Present Postmaster at Washington to be MadeCollector at
+                                Niagara—Platt Not Consulted.</hi>
+                        </p>
+                        <p rend="center" xml:id="pa000006">
+                            <hi xml:id="uuid-5e7cc915-aeb9-3a2c-b461-b48d10b6cf8e" rend="italic"
+                                >Special to The New York Times.</hi>
+                        </p>
+                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
+                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
+                            afternoon by announcing that he would appoint Benjamin F. Barnes as
+                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
+                            Merritt, who for several years has been Postmaster here, has been chosen
+                            for Collector of the Port of Niagara, succeeding the late Major James
+                            Low.</p>
+                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
+                            >Mr. Barnes is at present assistant secretary to the President. Only a
+                            short time ago he figured extensively in the newspapers for having
+                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
+                            a Washington woman who had called to see the President. What attracted
+                            attention to the case was not the ejection itself, but the violence with
+                            which it was performed.</p>
+                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
+                            >Mrs. Morris, who had been talking to Barnes in an ordinary
+                            conversational tone, and with no indications of excitement, so far as
+                            the spectators observed, was seized by two policemen and dragged by the
+                            arms out of the building and across the asphalt walk in front of the
+                            White House, a distance corresponding to that of two ordinary city
+                            blocks. During a part of the journey a negro carried her by the feet.
+                            Her dress was torn and trampled.</p>
+                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
+                            >She was locked up on a charge of disorderly conduct, and when it was
+                            learned that she would be released on that charge a policeman, a
+                            relative of Barnes’s, was sent to the House of Detention to prefer a
+                            charge of insanity against her so that she would have to be held. She
+                            was held accordingly until two physicians had examined her and
+                            pronounced her sane. He was denounced by Mrs. Morris, by various
+                            newspapers, and by Mr. Tillman in the Senate.</p>
+                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
+                            >The appointment of Barnes to be Postmaster soon after this incident has
+                            created endless talk here. It is taken to be the President’s way of
+                            expressing confidence in Barnes and repaying him for the pain he
+                            suffered as a result of the newspaper criticisms of his course.</p>
+                    </quote>
+                </div>
+            </body>
+        </text>
+    </base-text>
+    <authoritative-text>
+        <text xmlns="http://www.tei-c.org/ns/1.0">
+            <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
+            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
+                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
+                <div type="chapter" xml:id="dv0001">
+                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
+                        >Government of new Territory of Nevada—Governor Nye and the practical
+                        jokers—Mr. Clemens begins journalistic life on Virginia City
+                        Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
+                        twelve-thousand-dollar house— Governor Nye turns Territory of Nevada into a
+                        State.</p>
+                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
+                        <p rend="center" xml:id="pa000002">
+                            <hi xml:id="uuid-0a3cd8ec-c871-36f4-9ed9-125f95d978a1" rend="bold"
+                                >PROMOTION FOR BARNES, WHOM TILLMAN BERATED</hi>
+                            <ptr target="#en0001" type="an" xml:id="nv0001"/>
+                        </p>
+                        <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284"
+                            rend="lightrule" unit="section"/>
+                        <p rend="center" xml:id="pa000003">
+                            <hi xml:id="uuid-52917ac1-fe05-3ea1-9f2a-8013cf1a9532" rend="bold">Had
+                                Woman Ejected from White House; to be Postmaster.</hi>
+                        </p>
+                        <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"
+                            rend="lightrule" unit="section"/>
+                        <p rend="center" xml:id="pa000004">
+                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold">
+                                MERRITT GETS NEW PLACE</hi>
                         </p>
                         <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"
                             rend="lightrule" unit="section"/>
@@ -81,130 +161,10 @@
                 </div>
             </body>
         </text>
-    </base-text>
-    <base-text-goal>
-        <p xmlns:xml="http://www.w3.org/XML/1998/namespace" rend="centerautosum" xml:id="pa000001"
-            >Government of new Territory of Nevada—Governor Nye <count n="50"/> and the practical
-            jokers—Mr. Clemens begins journ <count n="100"/> alistic life on Virginia City
-            Enterprise—Reports l <count n="150"/> egislative sessions—He and Orion prosper—Orion bui
-                <count n="200"/> lds $12,000. house—Gov. Nye turns Territory of Neva <count n="250"
-            /> da into a State. (Miss Hobby, please paste this in <count n="300"/> at this point, in
-            record of April 1st, but I may <count n="350"/> not comment on it until later.) <count
-                n="382"/>
-        </p>
-    </base-text-goal>
-    <authoritative-text>
-        <text xmlns="http://www.tei-c.org/ns/1.0">
-            <!-- removed all between anchor and app; anchor not used, could be removed -->
-            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
-                <div type="chapter" xml:id="dv0001">
-                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
-                        >Government of new Territory of Nevada—Governor Nye and the practical
-                        jokers—Mr. Clemens begins journalistic life on Virginia City
-                        Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
-                        twelve-thousand-dollar house—Governor Nye turns Territory of Nevada into a
-                        State.</p>
-                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
-                        <p rend="center" xml:id="pa000002">
-                            <anchor type="an" xml:id="vn0001"/>
-                            <hi xml:id="uuid-0a3cd8ec-c871-36f4-9ed9-125f95d978a1" rend="bold"
-                                >PROMOTION FOR BARNES, WHOM TILLMAN BERATED</hi>
-                            <ptr target="#en0001" type="an" xml:id="nv0001"/>
-                        </p>
-                        <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000003">
-                            <hi xml:id="uuid-52917ac1-fe05-3ea1-9f2a-8013cf1a9532" rend="bold">Had
-                                Woman Ejected from White House; to be Postmaster.</hi>
-                        </p>
-                        <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000004">
-                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold"
-                                >MERRITT GETS NEW PLACE</hi>
-                        </p>
-                        <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000005">
-                            <hi xml:id="uuid-28ccdb66-33ed-3da5-b158-4c589f93b810" rend="bold"
-                                >Present Postmaster at Washington to be MadeCollector at
-                                Niagara—Platt Not Consulted.</hi>
-                        </p>
-                        <p rend="center" xml:id="pa000006">
-                            <hi xml:id="uuid-5e7cc915-aeb9-3a2c-b461-b48d10b6cf8e" rend="italic"
-                                >Special to The New York Times.</hi>
-                        </p>
-                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
-                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
-                            afternoon by announcing that he would appoint Benjamin F. Barnes as
-                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
-                            Merritt, who for several years has been Postmaster here, has been chosen
-                            for Collector of the Port of Niagara, succeeding the late Major James
-                            Low.</p>
-                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
-                            >Mr. Barnes is at present assistant secretary to the President. Only a
-                            short time ago he figured extensively in the newspapers for having
-                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
-                            a Washington woman who had called to see the President. What attracted
-                            attention to the case was not the ejection itself, but the violence with
-                            which it was performed.</p>
-                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
-                            >Mrs. Morris, who had been talking to Barnes in an ordinary
-                            conversational tone, and with no indications of excitement, so far as
-                            the spectators observed, was seized by two policemen and dragged by the
-                            arms out of the building and across the asphalt walk in front of the
-                            White House, a distance corresponding to that of two ordinary city
-                            blocks. During a part of the journey a negro carried her by the feet.
-                            Her dress was torn and trampled.</p>
-                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
-                            >She was locked up on a charge of disorderly conduct, and when it was
-                            learned that she would be released on that charge a policeman, a
-                            relative of Barnes’s, was sent to the House of Detention to prefer a
-                            charge of insanity against her so that she would have to be held. She
-                            was held accordingly until two physicians had examined her and
-                            pronounced her sane. He was denounced by Mrs. Morris, by various
-                            newspapers, and by Mr. Tillman in the Senate.</p>
-                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
-                            >The appointment of Barnes to be Postmaster soso soon after this
-                            incident has created endless talk here. It is taken to be the
-                            President’s way of expressing confidence in Barnes and repaying him for
-                            the pain he suffered as a result of the newspaper criticisms of his
-                            course.</p>
-                    </quote>
-                </div>
-            </body>
-        </text>
     </authoritative-text>
-    <authoritative-text-goal>
-        <p xmlns:xml="http://www.w3.org/XML/1998/namespace" rend="centerautosum" xml:id="pa000001"
-            >Government of new Territory of Nevada—Governor Nye <count n="50"/> and the practical
-            jokers—Mr. Clemens begins journ <count n="100"/> alistic life on Virginia City
-            Enterprise—Reports l <count n="150"/> egislative sessions—He and Orion prosper—Orion bui
-                <count n="200"/> lds twelve-thousand-dollar house—Governor Nye turn <count n="250"/>
-            s Territory of Nevada into a State. <count n="285"/>
-        </p>
-    </authoritative-text-goal>
-    <top-level-annotations>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-66d0f29b-f842-4895-9818-9fca8ef20d55" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>1</start>
-                    <offset>51</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>1</start>
-                    <offset>51</offset>
-                </authoritative-layer>
-            </target>
-            <body>Government of new Territory of Nevada—Governor Nye </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
+    <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a2bb3d2d-2a6f-44a6-8468-381923c2ec7b" status="string">
+            xml:id="uuid-e0fb38b5-f126-442e-90c6-e7e4588649e1" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -223,25 +183,8 @@
             </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-1088a0bf-e87b-4f1a-9691-76e5d3562ba3" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>52</start>
-                    <offset>62</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>52</start>
-                    <offset>62</offset>
-                </authoritative-layer>
-            </target>
-            <body>and the practical jokers—Mr. Clemens begins journalistic life </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a625c4bf-8052-4d1f-a383-7fc605e0474d" status="string">
+            xml:id="uuid-0188118b-f8a5-475c-9e8d-f97e2dfb4528" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -260,44 +203,8 @@
             </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-6af9ad1e-1134-4456-85b8-23726c1ae4be" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>114</start>
-                    <offset>17</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>114</start>
-                    <offset>17</offset>
-                </authoritative-layer>
-            </target>
-            <body>on Virginia City </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f74352be-3470-4363-a9da-6f16f03c74f7" status="string">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>130</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>130</start>
-                    <offset>0</offset>
-                </authoritative-layer>
-            </target>
-            <body>
-                <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0000"/>
-            </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-e8ae442e-8c59-4228-89fb-15ff17fa8b27" status="token">
+            xml:id="uuid-e21e4390-de41-4738-8769-f078acbbf37e" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -311,36 +218,52 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0000" type="aet" xml:id="ap0000">
-                    <lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568">
-                        <hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic"
-                            >Enterprise</hi>
-                    </lem>
-                    <rdg xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2"
-                        >Enterprise</rdg>
-                </app>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0000" type="aet" xml:id="ap0000"/>
             </body>
             <layer-offset-difference>10</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-22ffad57-692d-4d6c-adbe-80af3bfeb77d" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>141</start>
-                    <offset>30</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>141</start>
-                    <offset>30</offset>
-                </authoritative-layer>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c2d40d95-06f9-47ef-bb89-46654431c142" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-e21e4390-de41-4738-8769-f078acbbf37e</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
-            <body>—Reports legislative sessions—</body>
-            <layer-offset-difference>0</layer-offset-difference>
+            <body>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568"/>
+            </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-fe507701-124b-41c3-a53c-0a89e75f876b" status="string">
+            xml:id="uuid-03b4fe87-0d5a-461a-94fd-381e8cd8eb8f" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c2d40d95-06f9-47ef-bb89-46654431c142</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-a43c1d9b-de5c-403d-96f1-703ede5bde94" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-e21e4390-de41-4738-8769-f078acbbf37e</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2"
+                    >Enterprise</rdg>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-ed433bd9-48ae-4580-be4b-d75c3900fab1" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -359,44 +282,8 @@
             </body>
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-437e5a6d-65d8-4915-b8bc-ea1b67c7f65a" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>171</start>
-                    <offset>34</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>171</start>
-                    <offset>34</offset>
-                </authoritative-layer>
-            </target>
-            <body>He and Orion prosper—Orion builds </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-c9ce2672-e598-4311-a17d-84e7b026cd70" status="string">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>204</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>204</start>
-                    <offset>0</offset>
-                </authoritative-layer>
-            </target>
-            <body>
-                <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0001"/>
-            </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-06cd80d0-236c-44cb-8f0b-ff67b339d60b" status="token">
+            xml:id="uuid-b667d537-3798-4d18-9c7d-841688765624" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -410,229 +297,233 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0001" type="aet" xml:id="ap0001">
-                    <lem xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa"
-                        >twelve-thousand-dollar</lem>
-                    <rdg xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg>
-                    <rdg xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg>
-                </app>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0001" type="aet" xml:id="ap0001"/>
             </body>
             <layer-offset-difference>15</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-72171e71-1fef-47eb-9075-69089c0c90c8" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>213</start>
-                    <offset>7</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>213</start>
-                    <offset>7</offset>
-                </authoritative-layer>
-            </target>
-            <body> house—</body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-8aceb0af-e566-472e-8d2d-59013e1e1052" status="string">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>219</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>219</start>
-                    <offset>0</offset>
-                </authoritative-layer>
+            xml:id="uuid-8da8a9c6-2c1b-42fb-911c-ce38c029075f" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
             <body>
-                <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0002"/>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-470b1f68-890c-473b-9a41-e3294e37e1e4" status="token">
+            xml:id="uuid-ef996119-51ff-4263-b524-c46b4a381f71" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-ca045d34-8ab9-4901-820d-cc9b45da430f" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <order>3</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
-                    <start>220</start>
+                    <start>221</start>
                     <offset>4</offset>
                 </base-layer>
                 <authoritative-layer>
                     <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>220</start>
+                    <start>221</start>
                     <offset>12</offset>
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0002" type="aet" xml:id="ap0002">
-                    <lem xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem>
-                    <rdg xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2"
-                        >Gov.</rdg>
-                </app>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0002" type="aet" xml:id="ap0002"/>
             </body>
             <layer-offset-difference>8</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-e65aa212-20e5-4009-81bd-6fe5d1618ef1" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>224</start>
-                    <offset>38</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>224</start>
-                    <offset>38</offset>
-                </authoritative-layer>
-            </target>
-            <body> Nye turns Territory of Nevada into a </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a36d2b09-86e5-4c19-b518-02359bef4045" status="string">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>261</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>261</start>
-                    <offset>0</offset>
-                </authoritative-layer>
+            xml:id="uuid-1a6eea47-fac7-4025-9848-cee4a2bb2de8" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
             <body>
-                <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0003"/>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-781962d4-35e6-4d3b-bef9-0bb402d19b99" status="token">
+            xml:id="uuid-75053ac3-2959-4914-916b-dc599b58d2f6" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2">Gov.</rdg>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
-                    <start>262</start>
+                    <start>263</start>
                     <offset>122</offset>
                 </base-layer>
                 <authoritative-layer>
                     <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>262</start>
+                    <start>263</start>
                     <offset>128</offset>
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0003" type="aet" xml:id="ap0003">
-                    <lem xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem>
-                    <rdg xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="TS1, TS2">State.
-                            <lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/> (Miss Hobby,
-                        please paste this in at this point, in record of April 1st, but I may not
-                        comment on it until later.)</rdg>
-                </app>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0003" type="aet" xml:id="ap0003"/>
             </body>
             <layer-offset-difference>6</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-57e8ddce-3779-4b60-87bd-5a696c5018b1" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000011</id>
-                    <start>1</start>
-                    <offset>43</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>1</start>
-                    <offset>43</offset>
-                </authoritative-layer>
-            </target>
-            <body>The appointment of Barnes to be Postmaster </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-54aa00a9-1b7d-4621-828d-0da896b7d891" status="string">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>pa000011</id>
-                    <start>43</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>43</start>
-                    <offset>0</offset>
-                </authoritative-layer>
+            xml:id="uuid-ee8e2611-739c-4a65-8185-93c674d7589e" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
             <body>
-                <anchor xmlns="http://www.tei-c.org/ns/1.0" type="aet" xml:id="dg0005"/>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-f9d47646-114f-4e5c-b6b9-ce4de2279c2f" status="token">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000011</id>
-                    <start>44</start>
-                    <offset>2</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>44</start>
-                    <offset>2</offset>
-                </authoritative-layer>
-            </target>
-            <body>so</body>
-            <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-44146c10-22a1-4ccf-9dd7-8ecf35f15f70" status="string">
+            xml:id="uuid-17931992-5cd1-4abd-a84e-62a77b6351ae" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="TS1, TS2"/>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
+            xml:id="uuid-6fe7d51c-a13c-45be-9025-3c42fd1e2301" status="token">
+            <target type="range" layer="text">
+                <base-layer>
+                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <start>1</start>
+                    <offset>7</offset>
+                </base-layer>
+            </target>
+            <body>State. </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-3d106089-b50e-4948-bbd8-0fd3cec4140a" status="token">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <start>7</start>
+                    <offset>0</offset>
+                </base-layer>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
+            xml:id="uuid-e5990d5d-f6ec-4b42-b7d5-18e0fcacf0c4" status="token">
+            <target type="range" layer="text">
+                <base-layer>
+                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <start>8</start>
+                    <offset>115</offset>
+                </base-layer>
+            </target>
+            <body> (Miss Hobby, please paste this in at this point, in record of April 1st, but I
+                may not comment on it until later.)</body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000011</id>
-                    <start>45</start>
+                    <start>43</start>
                     <offset>0</offset>
                 </base-layer>
                 <authoritative-layer>
                     <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>45</start>
+                    <start>43</start>
                     <offset>-5</offset>
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0005" type="aet" xml:id="ap0004">
-                    <lem xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba">so</lem>
-                    <rdg xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb" wit="Times">so so</rdg>
-                    <rdg xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d" wit="TS2">so</rdg>
-                </app>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0005" type="aet" xml:id="ap0004"/>
             </body>
             <layer-offset-difference>-5</layer-offset-difference>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-ddab528a-d5bc-4348-9583-ba4d65aba092" status="string">
-            <target type="range" layer="text">
-                <base-layer>
-                    <id>pa000011</id>
-                    <start>46</start>
-                    <offset>226</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>46</start>
-                    <offset>226</offset>
-                </authoritative-layer>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-4546ecd6-ec90-4a0b-92e2-9a8248519023" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
-            <body> soon after this incident has created endless talk here. It is taken to be the
-                President’s way of expressing confidence in Barnes and repaying him for the pain he
-                suffered as a result of the newspaper criticisms of his course.</body>
-            <layer-offset-difference>0</layer-offset-difference>
+            <body>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba">so</lem>
+            </body>
         </annotation>
-    </top-level-annotations>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-f8da96a6-9eff-4148-a094-588c07ade9a2" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb" wit="Times">so so</rdg>
+            </body>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-d6734428-cbf8-40ac-83ec-be1ab80ff0c2" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <order>3</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d" wit="TS2">so</rdg>
+            </body>
+        </annotation>
+    </annotations>
 </result>

@@ -149,7 +149,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
 };
 
-(: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) form :)
+(: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) text :)
 declare function local:separate-layers($input as node()*, $target) as item()* {
     for $node in $input/node()
         return
@@ -190,8 +190,25 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
                     if ($target eq 'base') 
                     then $node
                     else ()
-                        
+                
                         default return local:separate-layers($node, $target)
+};
+
+(: operates on result of separate-layers :)
+declare function local:collapse-inline-elements($nodes as node()*, $block-elements as xs:string+) as node()* {
+   for $node in $nodes/node()
+   return
+     if ($node instance of element())
+     then
+        if (local-name($node) = $block-elements)
+        then element {node-name($node)}
+                {$node/@*,
+                  local:collapse-inline-elements($node, $block-elements)}
+        else $node/node()
+     else 
+        if ($node instance of document-node())
+        then local:collapse-inline-elements($node, $block-elements)
+        else $node
 };
 
 declare function local:handle-element-annotations($node as node()) as item()* {
@@ -226,7 +243,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
 };
 
 declare function local:handle-mixed-content-annotations($node as node()) as item()* {
-    (:Basically, an annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input:)
+    (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input:)
             let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
                 for $attribute in $layer-1-body-contents/@*
@@ -301,11 +318,14 @@ let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
 let $doc := $doc//tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
 
-let $base-text := local:generate-text($doc, 'base')
-let $authoritative-text := local:generate-text($doc, 'authoritative')
-
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
-let $block-elements := ('p', 'head')
+let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
+
+let $base-text := local:generate-text($doc, 'base')
+let $base-text := local:collapse-inline-elements($base-text, $block-elements)
+
+let $authoritative-text := local:generate-text($doc, 'authoritative')
+let $authoritative-text := local:collapse-inline-elements($authoritative-text, $block-elements)
 
 (: get all the block-level elements that have edition-layer-elements as children :)
 let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
