@@ -130,6 +130,15 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                                     else 0
                         else 0            
                             return $off-set-difference}</layer-offset-difference>
+                <admin>
+                    <creation>
+                        <user>{xmldb:get-current-user()}</user>
+                        <time>{current-dateTime()}</time>
+                        <note/>
+                    </creation>
+                    <review><user/><time/><note/></review>
+                    <imprimatur><user/><time/></imprimatur>
+                </admin>
             </annotation>
 };
 
@@ -223,6 +232,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             ,
             let $layer-1-id := $node/@xml:id/string() (: get id :)
             let $layer-1-status := $node/@status/string() (: get the status of original annotation :)
+            let $layer-1-admin-contents := $node//admin/* (:get the elements below admin:)
             let $layer-2-body-contents := $node//body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
@@ -235,6 +245,7 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                             </annotation-layer>
                         </target>
                         <body>{$element}</body>
+                        <admin>{$layer-1-admin-contents}</admin>
                     </annotation>
                     return
                         if (not($result//body/string()) or $result//body/*/node() instance of text() or $result//body/node() instance of text())
@@ -316,15 +327,17 @@ declare function local:generate-top-level-annotations($element as element()*, $e
 
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
-let $doc := $doc//tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
+let $header := $doc/tei:teiHeader
+let $text := $doc//tei:text (:NB: the TEI document as a whole, with the header, needs to be assembled again :)
+
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
 
-let $base-text := local:generate-text($doc, 'base')
+let $base-text := local:generate-text($text, 'base')
 let $base-text := local:collapse-inline-elements($base-text, $block-elements)
 
-let $authoritative-text := local:generate-text($doc, 'authoritative')
+let $authoritative-text := local:generate-text($text, 'authoritative')
 let $authoritative-text := local:collapse-inline-elements($authoritative-text, $block-elements)
 
 (: get all the block-level elements that have edition-layer-elements as children :)
@@ -342,7 +355,7 @@ let $annotations :=
 
         return 
             <result>
-                <base-text>{$base-text}</base-text>
-                <authoritative-text>{$authoritative-text}</authoritative-text>
+                <base-text>{element {node-name($text)}{$text/@*, $base-text}}</base-text>
+                <authoritative-text>{element {node-name($text)}{$text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
             </result>
