@@ -1,170 +1,120 @@
 <result>
     <base-text>
-        <text xmlns="http://www.tei-c.org/ns/1.0">
-            <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
-            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
-                <div type="chapter" xml:id="dv0001">
-                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
-                        >Government of new Territory of Nevada—Governor Nye and the practical
-                        jokers—Mr. Clemens begins journalistic life on Virginia City
-                        Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
-                        $12,000. house— Gov. Nye turns Territory of Nevada into a State. (Miss
-                        Hobby, please paste this in at this point, in record of April 1st, but I may
-                        not comment on it until later.)</p>
-                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
-                        <p rend="center" xml:id="pa000002">
-                            <hi xml:id="uuid-0a3cd8ec-c871-36f4-9ed9-125f95d978a1" rend="bold"
-                                >PROMOTION FOR BARNES, WHOM TILLMAN BERATED</hi>
-                            <ptr target="#en0001" type="an" xml:id="nv0001"/>
-                        </p>
-                        <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000003">
-                            <hi xml:id="uuid-52917ac1-fe05-3ea1-9f2a-8013cf1a9532" rend="bold">Had
-                                Woman Ejected from White House; to be Postmaster.</hi>
-                        </p>
-                        <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000004">
-                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold">
-                                MERRITT GETS NEW PLACE</hi>
-                        </p>
-                        <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000005">
-                            <hi xml:id="uuid-28ccdb66-33ed-3da5-b158-4c589f93b810" rend="bold"
-                                >Present Postmaster at Washington to be MadeCollector at
-                                Niagara—Platt Not Consulted.</hi>
-                        </p>
-                        <p rend="center" xml:id="pa000006">
-                            <hi xml:id="uuid-5e7cc915-aeb9-3a2c-b461-b48d10b6cf8e" rend="italic"
-                                >Special to The New York Times.</hi>
-                        </p>
-                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
-                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
-                            afternoon by announcing that he would appoint Benjamin F. Barnes as
-                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
-                            Merritt, who for several years has been Postmaster here, has been chosen
-                            for Collector of the Port of Niagara, succeeding the late Major James
-                            Low.</p>
-                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
-                            >Mr. Barnes is at present assistant secretary to the President. Only a
-                            short time ago he figured extensively in the newspapers for having
-                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
-                            a Washington woman who had called to see the President. What attracted
-                            attention to the case was not the ejection itself, but the violence with
-                            which it was performed.</p>
-                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
-                            >Mrs. Morris, who had been talking to Barnes in an ordinary
-                            conversational tone, and with no indications of excitement, so far as
-                            the spectators observed, was seized by two policemen and dragged by the
-                            arms out of the building and across the asphalt walk in front of the
-                            White House, a distance corresponding to that of two ordinary city
-                            blocks. During a part of the journey a negro carried her by the feet.
-                            Her dress was torn and trampled.</p>
-                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
-                            >She was locked up on a charge of disorderly conduct, and when it was
-                            learned that she would be released on that charge a policeman, a
-                            relative of Barnes’s, was sent to the House of Detention to prefer a
-                            charge of insanity against her so that she would have to be held. She
-                            was held accordingly until two physicians had examined her and
-                            pronounced her sane. He was denounced by Mrs. Morris, by various
-                            newspapers, and by Mr. Tillman in the Senate.</p>
-                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
-                            >The appointment of Barnes to be Postmaster soon after this incident has
-                            created endless talk here. It is taken to be the President’s way of
-                            expressing confidence in Barnes and repaying him for the pain he
-                            suffered as a result of the newspaper criticisms of his course.</p>
-                    </quote>
-                </div>
-            </body>
-        </text>
+        <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
+        <body xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
+            <div type="chapter" xml:id="dv0001">
+                <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
+                    >Government of new Territory of Nevada—Governor Nye and the practical jokers—Mr.
+                    Clemens begins journalistic life on Virginia City Enterprise—Reports legislative
+                    sessions—He and Orion prosper—Orion builds $12,000. house—Gov. Nye turns
+                    Territory of Nevada into a State. (Miss Hobby, please paste this in at this
+                    point, in record of April 1st, but I may not comment on it until later.)</p>
+                <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
+                    <p rend="center" xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN
+                        BERATED</p>
+                    <p rend="center" xml:id="pa000003">Had Woman Ejected from White House; to be
+                        Postmaster.</p>
+                    <p rend="center" xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
+                    <p rend="center" xml:id="pa000005">Present Postmaster at Washington to be
+                        MadeCollector at Niagara—Platt Not Consulted.</p>
+                    <p rend="center" xml:id="pa000006">Special to The New York Times.</p>
+                    <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
+                        >WASHINGTON, March 31.—President Roosevelt surprised the capital this
+                        afternoon by announcing that he would appoint Benjamin F. Barnes as
+                        Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
+                        Merritt, who for several years has been Postmaster here, has been chosen for
+                        Collector of the Port of Niagara, succeeding the late Major James Low.</p>
+                    <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee">Mr.
+                        Barnes is at present assistant secretary to the President. Only a short time
+                        ago he figured extensively in the newspapers for having ordered the forcible
+                        ejection from the White House of Mrs. Minor Morris, a Washington woman who
+                        had called to see the President. What attracted attention to the case was
+                        not the ejection itself, but the violence with which it was performed.</p>
+                    <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5">Mrs.
+                        Morris, who had been talking to Barnes in an ordinary conversational tone,
+                        and with no indications of excitement, so far as the spectators observed,
+                        was seized by two policemen and dragged by the arms out of the building and
+                        across the asphalt walk in front of the White House, a distance
+                        corresponding to that of two ordinary city blocks. During a part of the
+                        journey a negro carried her by the feet. Her dress was torn and
+                        trampled.</p>
+                    <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22">She
+                        was locked up on a charge of disorderly conduct, and when it was learned
+                        that she would be released on that charge a policeman, a relative of
+                        Barnes’s, was sent to the House of Detention to prefer a charge of insanity
+                        against her so that she would have to be held. She was held accordingly
+                        until two physicians had examined her and pronounced her sane. He was
+                        denounced by Mrs. Morris, by various newspapers, and by Mr. Tillman in the
+                        Senate.</p>
+                    <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b">The
+                        appointment of Barnes to be Postmaster soon after this incident has created
+                        endless talk here. It is taken to be the President’s way of expressing
+                        confidence in Barnes and repaying him for the pain he suffered as a result
+                        of the newspaper criticisms of his course.</p>
+                </quote>
+            </div>
+        </body>
     </base-text>
     <authoritative-text>
-        <text xmlns="http://www.tei-c.org/ns/1.0">
-            <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
-            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
-                <div type="chapter" xml:id="dv0001">
-                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
-                        >Government of new Territory of Nevada—Governor Nye and the practical
-                        jokers—Mr. Clemens begins journalistic life on Virginia City
-                        Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
-                        twelve-thousand-dollar house— Governor Nye turns Territory of Nevada into a
-                        State.</p>
-                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
-                        <p rend="center" xml:id="pa000002">
-                            <hi xml:id="uuid-0a3cd8ec-c871-36f4-9ed9-125f95d978a1" rend="bold"
-                                >PROMOTION FOR BARNES, WHOM TILLMAN BERATED</hi>
-                            <ptr target="#en0001" type="an" xml:id="nv0001"/>
-                        </p>
-                        <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000003">
-                            <hi xml:id="uuid-52917ac1-fe05-3ea1-9f2a-8013cf1a9532" rend="bold">Had
-                                Woman Ejected from White House; to be Postmaster.</hi>
-                        </p>
-                        <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000004">
-                            <hi xml:id="uuid-6ce470dc-b396-331a-91fb-7e292e291a77" rend="bold">
-                                MERRITT GETS NEW PLACE</hi>
-                        </p>
-                        <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"
-                            rend="lightrule" unit="section"/>
-                        <p rend="center" xml:id="pa000005">
-                            <hi xml:id="uuid-28ccdb66-33ed-3da5-b158-4c589f93b810" rend="bold"
-                                >Present Postmaster at Washington to be MadeCollector at
-                                Niagara—Platt Not Consulted.</hi>
-                        </p>
-                        <p rend="center" xml:id="pa000006">
-                            <hi xml:id="uuid-5e7cc915-aeb9-3a2c-b461-b48d10b6cf8e" rend="italic"
-                                >Special to The New York Times.</hi>
-                        </p>
-                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
-                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
-                            afternoon by announcing that he would appoint Benjamin F. Barnes as
-                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
-                            Merritt, who for several years has been Postmaster here, has been chosen
-                            for Collector of the Port of Niagara, succeeding the late Major James
-                            Low.</p>
-                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
-                            >Mr. Barnes is at present assistant secretary to the President. Only a
-                            short time ago he figured extensively in the newspapers for having
-                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
-                            a Washington woman who had called to see the President. What attracted
-                            attention to the case was not the ejection itself, but the violence with
-                            which it was performed.</p>
-                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
-                            >Mrs. Morris, who had been talking to Barnes in an ordinary
-                            conversational tone, and with no indications of excitement, so far as
-                            the spectators observed, was seized by two policemen and dragged by the
-                            arms out of the building and across the asphalt walk in front of the
-                            White House, a distance corresponding to that of two ordinary city
-                            blocks. During a part of the journey a negro carried her by the feet.
-                            Her dress was torn and trampled.</p>
-                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
-                            >She was locked up on a charge of disorderly conduct, and when it was
-                            learned that she would be released on that charge a policeman, a
-                            relative of Barnes’s, was sent to the House of Detention to prefer a
-                            charge of insanity against her so that she would have to be held. She
-                            was held accordingly until two physicians had examined her and
-                            pronounced her sane. He was denounced by Mrs. Morris, by various
-                            newspapers, and by Mr. Tillman in the Senate.</p>
-                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
-                            >The appointment of Barnes to be Postmaster so soon after this incident
-                            has created endless talk here. It is taken to be the President’s way of
-                            expressing confidence in Barnes and repaying him for the pain he
-                            suffered as a result of the newspaper criticisms of his course.</p>
-                    </quote>
-                </div>
-            </body>
-        </text>
+        <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
+        <body xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
+            <div type="chapter" xml:id="dv0001">
+                <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
+                    >Government of new Territory of Nevada—Governor Nye and the practical jokers—Mr.
+                    Clemens begins journalistic life on Virginia City Enterprise—Reports legislative
+                    sessions—He and Orion prosper—Orion builds twelve-thousand-dollar house—Governor
+                    Nye turns Territory of Nevada into a State.</p>
+                <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
+                    <p rend="center" xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN
+                        BERATED</p>
+                    <p rend="center" xml:id="pa000003">Had Woman Ejected from White House; to be
+                        Postmaster.</p>
+                    <p rend="center" xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
+                    <p rend="center" xml:id="pa000005">Present Postmaster at Washington to be
+                        MadeCollector at Niagara—Platt Not Consulted.</p>
+                    <p rend="center" xml:id="pa000006">Special to The New York Times.</p>
+                    <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
+                        >WASHINGTON, March 31.—President Roosevelt surprised the capital this
+                        afternoon by announcing that he would appoint Benjamin F. Barnes as
+                        Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
+                        Merritt, who for several years has been Postmaster here, has been chosen for
+                        Collector of the Port of Niagara, succeeding the late Major James Low.</p>
+                    <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee">Mr.
+                        Barnes is at present assistant secretary to the President. Only a short time
+                        ago he figured extensively in the newspapers for having ordered the forcible
+                        ejection from the White House of Mrs. Minor Morris, a Washington woman who
+                        had called to see the President. What attracted attention to the case was
+                        not the ejection itself, but the violence with which it was performed.</p>
+                    <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5">Mrs.
+                        Morris, who had been talking to Barnes in an ordinary conversational tone,
+                        and with no indications of excitement, so far as the spectators observed,
+                        was seized by two policemen and dragged by the arms out of the building and
+                        across the asphalt walk in front of the White House, a distance
+                        corresponding to that of two ordinary city blocks. During a part of the
+                        journey a negro carried her by the feet. Her dress was torn and
+                        trampled.</p>
+                    <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22">She
+                        was locked up on a charge of disorderly conduct, and when it was learned
+                        that she would be released on that charge a policeman, a relative of
+                        Barnes’s, was sent to the House of Detention to prefer a charge of insanity
+                        against her so that she would have to be held. She was held accordingly
+                        until two physicians had examined her and pronounced her sane. He was
+                        denounced by Mrs. Morris, by various newspapers, and by Mr. Tillman in the
+                        Senate.</p>
+                    <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b">The
+                        appointment of Barnes to be Postmaster so soon after this incident has
+                        created endless talk here. It is taken to be the President’s way of
+                        expressing confidence in Barnes and repaying him for the pain he suffered as
+                        a result of the newspaper criticisms of his course.</p>
+                </quote>
+            </div>
+        </body>
     </authoritative-text>
     <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-e0fb38b5-f126-442e-90c6-e7e4588649e1" status="string">
+            xml:id="uuid-6cefbaf9-2da5-4582-acbe-f6ff3b13c341" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -184,7 +134,7 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-0188118b-f8a5-475c-9e8d-f97e2dfb4528" status="string">
+            xml:id="uuid-9e4ab724-f579-4ca5-bc95-079233ddeb09" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -204,7 +154,7 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-e21e4390-de41-4738-8769-f078acbbf37e" status="token">
+            xml:id="uuid-c6a8b780-8334-4a18-bb2f-ab1df29e2c06" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -223,10 +173,10 @@
             <layer-offset-difference>10</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-c2d40d95-06f9-47ef-bb89-46654431c142" status="token">
+            xml:id="uuid-ee28c45d-e301-4bbe-b89f-1b74618e2bd5" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-e21e4390-de41-4738-8769-f078acbbf37e</id>
+                    <id>uuid-c6a8b780-8334-4a18-bb2f-ab1df29e2c06</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -236,10 +186,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-03b4fe87-0d5a-461a-94fd-381e8cd8eb8f" status="token">
+            xml:id="uuid-4060eac5-f72f-42d9-9c71-e31268cf3615" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-c2d40d95-06f9-47ef-bb89-46654431c142</id>
+                    <id>uuid-ee28c45d-e301-4bbe-b89f-1b74618e2bd5</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -249,10 +199,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a43c1d9b-de5c-403d-96f1-703ede5bde94" status="token">
+            xml:id="uuid-eed3bc16-ef51-466b-9d6b-c65c25f44bea" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-e21e4390-de41-4738-8769-f078acbbf37e</id>
+                    <id>uuid-c6a8b780-8334-4a18-bb2f-ab1df29e2c06</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -263,7 +213,7 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ed433bd9-48ae-4580-be4b-d75c3900fab1" status="string">
+            xml:id="uuid-ab8f26cd-99ec-4b28-8b1e-eafa537a3aeb" status="string">
             <target type="range" layer="feature">
                 <base-layer>
                     <id>pa000001</id>
@@ -283,7 +233,7 @@
             <layer-offset-difference>0</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b667d537-3798-4d18-9c7d-841688765624" status="token">
+            xml:id="uuid-84a193d4-ca80-4c5e-9339-b2fefed33ca5" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -302,10 +252,10 @@
             <layer-offset-difference>15</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-8da8a9c6-2c1b-42fb-911c-ce38c029075f" status="token">
+            xml:id="uuid-ff3fcecb-84a1-4ad5-9e6a-3a214945ae44" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <id>uuid-84a193d4-ca80-4c5e-9339-b2fefed33ca5</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -315,10 +265,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ef996119-51ff-4263-b524-c46b4a381f71" status="token">
+            xml:id="uuid-d4607332-c630-436b-ab11-88480647ebef" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <id>uuid-84a193d4-ca80-4c5e-9339-b2fefed33ca5</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -328,10 +278,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ca045d34-8ab9-4901-820d-cc9b45da430f" status="token">
+            xml:id="uuid-41c81a9f-57f1-453e-aafe-81867aecf2df" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b667d537-3798-4d18-9c7d-841688765624</id>
+                    <id>uuid-84a193d4-ca80-4c5e-9339-b2fefed33ca5</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -341,16 +291,16 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c" status="token">
+            xml:id="uuid-7f6467e9-d293-4402-bb23-010511f18ea8" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
-                    <start>221</start>
+                    <start>220</start>
                     <offset>4</offset>
                 </base-layer>
                 <authoritative-layer>
                     <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>221</start>
+                    <start>220</start>
                     <offset>12</offset>
                 </authoritative-layer>
             </target>
@@ -360,10 +310,10 @@
             <layer-offset-difference>8</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-1a6eea47-fac7-4025-9848-cee4a2bb2de8" status="token">
+            xml:id="uuid-a283f3c7-6fcf-4c24-ad45-11972c6fc5b3" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c</id>
+                    <id>uuid-7f6467e9-d293-4402-bb23-010511f18ea8</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -373,10 +323,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-75053ac3-2959-4914-916b-dc599b58d2f6" status="token">
+            xml:id="uuid-7572586f-2a0a-4961-a3d1-2b7030604b07" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b772f87a-a71f-4f35-af8b-4994affcdc8c</id>
+                    <id>uuid-7f6467e9-d293-4402-bb23-010511f18ea8</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -386,16 +336,16 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9" status="token">
+            xml:id="uuid-a68d3b2c-053c-4c63-91b6-26ba15eb1735" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
-                    <start>263</start>
+                    <start>262</start>
                     <offset>122</offset>
                 </base-layer>
                 <authoritative-layer>
                     <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>263</start>
+                    <start>262</start>
                     <offset>128</offset>
                 </authoritative-layer>
             </target>
@@ -405,10 +355,10 @@
             <layer-offset-difference>6</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ee8e2611-739c-4a65-8185-93c674d7589e" status="token">
+            xml:id="uuid-99e76812-fff5-4bf0-ad0d-96cd8b2c2d60" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9</id>
+                    <id>uuid-a68d3b2c-053c-4c63-91b6-26ba15eb1735</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -418,10 +368,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-17931992-5cd1-4abd-a84e-62a77b6351ae" status="token">
+            xml:id="uuid-1c7d98d3-7735-404f-aef6-bbf3a32068be" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-cd3fa628-8060-45f0-b801-6519a61dd9b9</id>
+                    <id>uuid-a68d3b2c-053c-4c63-91b6-26ba15eb1735</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -431,10 +381,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-6fe7d51c-a13c-45be-9025-3c42fd1e2301" status="token">
+            xml:id="uuid-f11c2179-4756-47ef-907e-39a69f79fa3c" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <id>uuid-1c7d98d3-7735-404f-aef6-bbf3a32068be</id>
                     <start>1</start>
                     <offset>7</offset>
                 </base-layer>
@@ -442,10 +392,10 @@
             <body>State. </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-3d106089-b50e-4948-bbd8-0fd3cec4140a" status="token">
+            xml:id="uuid-e7d0ff3e-1aaa-4643-aa0c-649ca75a5fec" status="token">
             <target type="range" layer="feature">
                 <base-layer>
-                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <id>uuid-1c7d98d3-7735-404f-aef6-bbf3a32068be</id>
                     <start>7</start>
                     <offset>0</offset>
                 </base-layer>
@@ -456,10 +406,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="text"
-            xml:id="uuid-e5990d5d-f6ec-4b42-b7d5-18e0fcacf0c4" status="token">
+            xml:id="uuid-c9cf3f6c-bd9c-4e76-892e-0b43123af032" status="token">
             <target type="range" layer="text">
                 <base-layer>
-                    <id>uuid-17931992-5cd1-4abd-a84e-62a77b6351ae</id>
+                    <id>uuid-1c7d98d3-7735-404f-aef6-bbf3a32068be</id>
                     <start>8</start>
                     <offset>115</offset>
                 </base-layer>
@@ -468,7 +418,7 @@
                 may not comment on it until later.)</body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35" status="token">
+            xml:id="uuid-4a1c9dc4-e202-4622-af55-ea0a001d36b4" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000011</id>
@@ -487,10 +437,10 @@
             <layer-offset-difference>-5</layer-offset-difference>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-4546ecd6-ec90-4a0b-92e2-9a8248519023" status="token">
+            xml:id="uuid-d2590cbc-92ce-4cba-9979-28fc37cc261a" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <id>uuid-4a1c9dc4-e202-4622-af55-ea0a001d36b4</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -500,10 +450,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f8da96a6-9eff-4148-a094-588c07ade9a2" status="token">
+            xml:id="uuid-f990d94d-53a2-42ef-bcf3-cc03c0b10557" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <id>uuid-4a1c9dc4-e202-4622-af55-ea0a001d36b4</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -513,10 +463,10 @@
             </body>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-d6734428-cbf8-40ac-83ec-be1ab80ff0c2" status="token">
+            xml:id="uuid-50d5588f-30f5-4299-bbc5-7a9c1dd4cce7" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-7a108b46-f70b-4205-a0be-5dcd9dfd3f35</id>
+                    <id>uuid-4a1c9dc4-e202-4622-af55-ea0a001d36b4</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
