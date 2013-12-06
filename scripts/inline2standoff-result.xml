@@ -914,8 +914,8 @@
     </authoritative-text>
     <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ca38304c-53fc-4a99-af07-f9c345728b9e" status="string">
-            <target type="range" layer="feature">
+            xml:id="uuid-0b402d83-386d-456b-be7e-145f1f99d030" status="string">
+            <target type="range" layer="document">
                 <base-layer>
                     <id>pa000001</id>
                     <start>51</start>
@@ -935,7 +935,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -950,8 +950,8 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-bb4f85fb-0752-4484-878b-a40f19b4b49d" status="string">
-            <target type="range" layer="feature">
+            xml:id="uuid-24a38b20-99e9-4ee5-bc01-6ac793243879" status="string">
+            <target type="range" layer="document">
                 <base-layer>
                     <id>pa000001</id>
                     <start>113</start>
@@ -971,7 +971,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -986,7 +986,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-24f61e36-6406-46ca-8213-680db1fd13f6" status="token">
+            xml:id="uuid-8064c813-bfbb-4535-937c-5091ac133991" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -1000,13 +1000,13 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0"/>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0000" type="aet" xml:id="ap0000"/>
             </body>
             <layer-offset-difference>10</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1021,10 +1021,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-26b5dd80-a14a-400d-903f-48cdbc7b9a6f" status="token">
+            xml:id="uuid-946adf15-a4e5-4a20-a381-0ae49707a763" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-24f61e36-6406-46ca-8213-680db1fd13f6</id>
+                    <id>uuid-8064c813-bfbb-4535-937c-5091ac133991</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1034,7 +1034,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1048,22 +1048,18 @@
                 </imprimatur>
             </admin>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a68c5284-0e6a-43d4-a2d5-d9302da1ad9e" status="token">
-            <target type="element" layer="annotation">
-                <annotation-layer>
-                    <id>uuid-26b5dd80-a14a-400d-903f-48cdbc7b9a6f</id>
-                    <order>1</order>
-                </annotation-layer>
-            </target>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-2a1f09f4-db1e-44ce-93e5-0e46e930dcc5">
+            <target type="element" layer="annotation"
+                >uuid-8064c813-bfbb-4535-937c-5091ac133991</target>
             <body>
-                <hi xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi>
+                <name>xml:id</name>
+                <value>uuid-f3fc4683-b570-403f-ae10-3d976c8f4568</value>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1078,22 +1074,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-e18a215a-87e0-4dcc-a71b-a26440ad729d" status="token">
+            xml:id="uuid-b70a3aba-b98f-4fd1-93fb-2232586c0423" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-24f61e36-6406-46ca-8213-680db1fd13f6</id>
+                    <id>uuid-8064c813-bfbb-4535-937c-5091ac133991</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2"
-                    >Enterprise</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-f2c1f8a6-0470-477b-ba06-d5d1adc77e3c">
+            <target type="element" layer="annotation"
+                >uuid-8064c813-bfbb-4535-937c-5091ac133991</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-84373048-eedc-4429-b40e-5c90725a4673">
+            <target type="element" layer="annotation"
+                >uuid-8064c813-bfbb-4535-937c-5091ac133991</target>
+            <body>
+                <name>wit</name>
+                <value>TS1, TS2</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1108,8 +1152,8 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-c411c48d-43b7-4a32-a01b-4d735c646a16" status="string">
-            <target type="range" layer="feature">
+            xml:id="uuid-97d0cbae-5c08-4f00-87c1-2beb39964836" status="string">
+            <target type="range" layer="document">
                 <base-layer>
                     <id>pa000001</id>
                     <start>170</start>
@@ -1129,7 +1173,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1144,7 +1188,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-26823419-ffcc-4cf9-9a52-8173b95c8184" status="token">
+            xml:id="uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -1158,13 +1202,13 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0"/>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0001" type="aet" xml:id="ap0001"/>
             </body>
             <layer-offset-difference>15</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1179,21 +1223,45 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f5bf6d66-2898-4521-ae86-8156096c7e96" status="token">
+            xml:id="uuid-c69f78e0-0dc9-46cd-bf0c-9ae999dc4df6" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-26823419-ffcc-4cf9-9a52-8173b95c8184</id>
+                    <id>uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
             <body>
-                <lem xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-837e7d4f-85ee-48b5-97f0-930c0d636f3c">
+            <target type="element" layer="annotation"
+                >uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1208,21 +1276,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ac56da1a-66ad-441d-b571-a2153d4113ec" status="token">
+            xml:id="uuid-d07113c5-ca39-4124-9563-585afb3aec1a" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-26823419-ffcc-4cf9-9a52-8173b95c8184</id>
+                    <id>uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-3effc077-813a-4279-9787-45c4abaa0a4c">
+            <target type="element" layer="annotation"
+                >uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-94c2d45c-526a-4ed3-81d0-2a8bb5f97cdb">
+            <target type="element" layer="annotation"
+                >uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</target>
+            <body>
+                <name>wit</name>
+                <value>TS1</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1237,21 +1354,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-397c0d2d-27ee-4181-8cf3-8994fe2fad68" status="token">
+            xml:id="uuid-33fed902-39ba-4fcf-b85b-f2995da085f4" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-26823419-ffcc-4cf9-9a52-8173b95c8184</id>
+                    <id>uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-3557b843-e9e5-4d9c-bc4b-a8325cbdb33e">
+            <target type="element" layer="annotation"
+                >uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-a267c729-30d2-4e1e-93c6-7b732bc559b0">
+            <target type="element" layer="annotation"
+                >uuid-1a1436b0-092e-4947-b8c9-592c11efbdf6</target>
+            <body>
+                <name>wit</name>
+                <value>TS2</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1266,7 +1432,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-68523bac-b5f1-4433-a6a8-2f53316a8875" status="token">
+            xml:id="uuid-777a8749-4c09-448d-b39b-eed263189546" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -1280,13 +1446,13 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0"/>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0002" type="aet" xml:id="ap0002"/>
             </body>
             <layer-offset-difference>8</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1301,21 +1467,45 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-04e5f6ea-ea43-453f-bf26-7ae8edcf1268" status="token">
+            xml:id="uuid-1d73d6a2-1dae-4322-8cc8-bbccfe3146df" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-68523bac-b5f1-4433-a6a8-2f53316a8875</id>
+                    <id>uuid-777a8749-4c09-448d-b39b-eed263189546</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
             <body>
-                <lem xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-596daa2a-913c-4b3c-bdc6-5a25de9ac7d1">
+            <target type="element" layer="annotation"
+                >uuid-777a8749-4c09-448d-b39b-eed263189546</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-54d08490-608c-402a-a0e3-4ddaab0be26c</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1330,21 +1520,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-ae169baf-5633-468e-a5a9-be5dcfcea88c" status="token">
+            xml:id="uuid-928dabcc-c85d-48f3-b7a1-4acff5a28376" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-68523bac-b5f1-4433-a6a8-2f53316a8875</id>
+                    <id>uuid-777a8749-4c09-448d-b39b-eed263189546</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2">Gov.</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-f2198259-2937-4353-9bcc-e665575c6f9b">
+            <target type="element" layer="annotation"
+                >uuid-777a8749-4c09-448d-b39b-eed263189546</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-7c692127-56e0-4730-a978-f7e1d4ab697a</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-00bdfdd1-9ee1-439e-8e4c-06e68c105fca">
+            <target type="element" layer="annotation"
+                >uuid-777a8749-4c09-448d-b39b-eed263189546</target>
+            <body>
+                <name>wit</name>
+                <value>TS1, TS2</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1359,7 +1598,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-525bc08f-acfb-4381-a73b-6e8c9b1d1572" status="token">
+            xml:id="uuid-722e789b-7cd4-4312-a054-c88a43b2ab25" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000001</id>
@@ -1373,13 +1612,13 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0"/>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0003" type="aet" xml:id="ap0003"/>
             </body>
             <layer-offset-difference>6</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1394,21 +1633,45 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b65829d0-4fb4-4a93-bcf3-fba050376f54" status="token">
+            xml:id="uuid-2ccf35c1-2376-4e13-bd69-7b376598bf77" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-525bc08f-acfb-4381-a73b-6e8c9b1d1572</id>
+                    <id>uuid-722e789b-7cd4-4312-a054-c88a43b2ab25</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
             <body>
-                <lem xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-c77c77ab-ac1a-4bc7-ba6a-86fea000b4fa">
+            <target type="element" layer="annotation"
+                >uuid-722e789b-7cd4-4312-a054-c88a43b2ab25</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-cee18fca-11cc-4316-a0d6-55be002299ba</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1423,21 +1686,20 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-972e1f7a-4e73-4c2b-b715-0367cc107521" status="token">
+            xml:id="uuid-9453d49e-8523-433f-8b76-04af718d4d23" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-525bc08f-acfb-4381-a73b-6e8c9b1d1572</id>
+                    <id>uuid-722e789b-7cd4-4312-a054-c88a43b2ab25</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="TS1, TS2"/>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1451,23 +1713,43 @@
                 </imprimatur>
             </admin>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-74862cc3-f987-4305-a25a-9018eb15306d" status="token">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>uuid-972e1f7a-4e73-4c2b-b715-0367cc107521</id>
-                    <start>7</start>
-                    <offset>0</offset>
-                </base-layer>
-            </target>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-35855ec8-ebb4-4f38-b2b4-077a119b068c">
+            <target type="element" layer="annotation"
+                >uuid-722e789b-7cd4-4312-a054-c88a43b2ab25</target>
             <body>
-                <lb xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/>
+                <name>xml:id</name>
+                <value>uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae</value>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-88469542-f934-4d4b-868a-1f6694c97bd9">
+            <target type="element" layer="annotation"
+                >uuid-722e789b-7cd4-4312-a054-c88a43b2ab25</target>
+            <body>
+                <name>wit</name>
+                <value>TS1, TS2</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1482,7 +1764,7 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f67ee3e2-1cb5-44ea-90c5-c9a4bc3cb6a6" status="token">
+            xml:id="uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0" status="token">
             <target type="range" layer="edition">
                 <base-layer>
                     <id>pa000011</id>
@@ -1496,13 +1778,13 @@
                 </authoritative-layer>
             </target>
             <body>
-                <app xmlns="http://www.tei-c.org/ns/1.0"/>
+                <app xmlns="http://www.tei-c.org/ns/1.0" from="dg0005" type="aet" xml:id="ap0004"/>
             </body>
             <layer-offset-difference>-5</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1517,21 +1799,45 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-967ff1c4-6515-4405-a0e0-cd65cfbed4b4" status="token">
+            xml:id="uuid-91c1bb94-9106-4444-a527-a1443c53c76e" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f67ee3e2-1cb5-44ea-90c5-c9a4bc3cb6a6</id>
+                    <id>uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
             <body>
-                <lem xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba">so</lem>
+                <lem xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-e49fe566-4e90-4c0d-92c8-75fd035045f4">
+            <target type="element" layer="annotation"
+                >uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-db312f17-7f15-4041-99f7-6a96b3e60fba</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1546,21 +1852,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-3cb54b51-73a4-4698-b449-00d622a4415c" status="token">
+            xml:id="uuid-159ec62e-7659-454b-9996-d61858fbf3cf" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f67ee3e2-1cb5-44ea-90c5-c9a4bc3cb6a6</id>
+                    <id>uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb" wit="Times">so so</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-7fc8018e-a8b9-4419-8b99-c89c1609b869">
+            <target type="element" layer="annotation"
+                >uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-2d6f2bf3-6446-4b1f-aa2d-8c981f5b2654">
+            <target type="element" layer="annotation"
+                >uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</target>
+            <body>
+                <name>wit</name>
+                <value>Times</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1575,21 +1930,70 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-015af1e5-21fc-4d90-bec3-2755b1875214" status="token">
+            xml:id="uuid-2a26c3fd-01c2-4151-a113-ef6cea3ad7c6" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-f67ee3e2-1cb5-44ea-90c5-c9a4bc3cb6a6</id>
+                    <id>uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
             <body>
-                <rdg xmlns="http://www.tei-c.org/ns/1.0"
-                    xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d" wit="TS2">so</rdg>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T13:45:43.606+01:00</time>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-d3c22b5f-3e71-4b06-a6a1-22b85392c8cd">
+            <target type="element" layer="annotation"
+                >uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</target>
+            <body>
+                <name>xml:id</name>
+                <value>uuid-37300be1-2a22-4621-b292-e672fa264a5d</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-440c7a4b-17a1-472b-b93f-10a223114f47">
+            <target type="element" layer="annotation"
+                >uuid-a41fcb7b-fe18-43a4-978f-9651a30e6ce0</target>
+            <body>
+                <name>wit</name>
+                <value>TS2</value>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-06T20:55:40.47+01:00</time>
                     <note/>
                 </creation>
                 <review>

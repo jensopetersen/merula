@@ -68,7 +68,7 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 };
 
 (: Lifts off all upper-level element nodes and records their position in relation to the base layer. :)
-declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
+declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
@@ -97,7 +97,7 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                     if (local-name($node) = $edition-layer-elements) 
                     then 'edition' 
                     else 
-                        if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements be used?:)
+                        if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
                         then 'document' 
                         else 'feature'}">
                     <base-layer>
@@ -138,9 +138,8 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
             </annotation>
 };
 
-
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
-(: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-layer():)
+(: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
     for $node in $nodes
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
@@ -199,7 +198,7 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
 };
 
 (: operates on result of separate-layers :)
-declare function local:collapse-inline-elements($nodes as node()*, $block-elements as xs:string+) as node()* {
+declare function local:remove-inline-elements($nodes as node()*, $block-elements as xs:string+) as node()* {
    for $node in $nodes/node()
    return
      if ($node instance of element())
@@ -207,22 +206,23 @@ declare function local:collapse-inline-elements($nodes as node()*, $block-elemen
         if (local-name($node) = $block-elements)
         then element {node-name($node)}
                 {$node/@*,
-                  local:collapse-inline-elements($node, $block-elements)}
+                  local:remove-inline-elements($node, $block-elements)}
         else $node/node()
      else 
         if ($node instance of document-node())
-        then local:collapse-inline-elements($node, $block-elements)
+        then local:remove-inline-elements($node, $block-elements)
         else $node
 };
 
-declare function local:handle-element-annotations($node as node()) as item()* {
+declare function local:handle-element-only-annotations($node as node()) as item()* {
             let $layer-1-body-contents := $node//body/* (:get the element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
                 for $attribute in $layer-1-body-contents/@*
-                    return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
-            let $layer-1-body-contents-empty := element {node-name($layer-1-body-contents)}{''} (:construct empty element with no attributes:)
+                    return
+                        attribute {name($attribute)} {$attribute}
+                        } (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body') (:remove the body,:)
-            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents-empty}</body>, 'target', 'after') (:and insert the new body:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (:and insert the new body:)
                 return $layer-1
                 (:return the old annotation, with an empty element below body:)
             ,
@@ -233,7 +233,17 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             for $element at $i in $layer-2-body-contents
                 let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
-                let $result :=
+                let $attribute-result := 
+                    for $attribute in $element/@*
+                        return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                        <target type="element" layer="annotation">{$layer-1-id}</target>
+                            <body>
+                                <name>{name($attribute)}</name>
+                                <value>{$attribute/string()}</value>
+                            </body>
+                            <admin>{$layer-1-admin-contents}</admin>
+                        </annotation>
+                let $element-result :=
                     <annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
@@ -241,13 +251,15 @@ declare function local:handle-element-annotations($node as node()) as item()* {
                                 <order>{$i}</order>
                             </annotation-layer>
                         </target>
-                        <body>{$element}</body>
+                        <body>{element {node-name($element)}{''}}</body>
                         <admin>{$layer-1-admin-contents}</admin>
                     </annotation>
                     return
-                        if (not($result//body/string()) or $result//body/*/node() instance of text() or $result//body/node() instance of text())
-                        then $result 
-                        else local:whittle-down-annotations($result)
+                        (if (not($element-result//body/string()) or $element-result//body/*/node() instance of text() or $element-result//body/node() instance of text())
+                        then $element-result 
+                        else local:whittle-down-annotations($element-result)
+                        ,
+                        $attribute-result)
 };
 
 declare function local:handle-mixed-content-annotations($node as node()) as item()* {
@@ -260,7 +272,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
-            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-layer($node//body/*, '')
+            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//body/*, '')
             let $layer-1-id := <id>{$node/@xml:id/string()}</id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
@@ -280,9 +292,9 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                 if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node :)
                 then $node
                 else 
-                    if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (backtracking to the first '*') is a text node, then we are dealing with mixed contents:)
+                    if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
                     then local:handle-mixed-content-annotations($node)
-                    else local:handle-element-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
+                    else local:handle-element-only-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
 declare function local:generate-text($element as element(), $target as xs:string) as element() {
@@ -313,7 +325,7 @@ declare function local:generate-top-level-annotations($elements as element()*, $
     for $element in $elements
         return
             if ($element/text())
-            then local:get-top-level-annotations-keyed-to-base-layer($element, $edition-layer-elements)
+            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
             else local:generate-top-level-annotations($element, $edition-layer-elements)
 
 };
@@ -329,10 +341,10 @@ let $documentary-elements := ('milestone', 'pb', 'lb', 'hi')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
 
 let $base-text := local:generate-text($doc-text, 'base')
-let $base-text := local:collapse-inline-elements($base-text, $block-elements)
+let $base-text := local:remove-inline-elements($base-text, $block-elements)
 
 let $authoritative-text := local:generate-text($doc-text, 'authoritative')
-let $authoritative-text := local:collapse-inline-elements($authoritative-text, $block-elements)
+let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-elements)
 
 (: get all the block-level elements that have edition-layer-elements as children :)
 let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
