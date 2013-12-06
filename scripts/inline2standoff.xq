@@ -67,7 +67,7 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Lifts off all upper-level element nodes and records their position in relation to the base layer. :)
+(: Extracts all upper-level element nodes and records their position in relation to the base layer. :)
 declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
@@ -80,14 +80,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
         let $position-end := $position-start + string-length($marked-up-string)
         return
             let $element-result :=
-                <annotation type="{
-                    if ($node instance of text())
-                    then 'text'
-                    else 
-                        if ($node instance of element())
-                        then 'element'
-                        else 'something is wrong'
-                    }" xml:id="{$id}" status="{
+                <annotation type="element" xml:id="{$id}" status="{
                         let $base-text := string-join(local:separate-layers($input, 'base'))
                         let $character-before := substring($base-text, $position-start, 1)
                         let $character-after := substring($base-text, $position-end + 1, 1)
@@ -169,7 +162,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
         let $sum-of-previous-offsets := sum($node/preceding-sibling::annotation/layer-offset-difference, 0)
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
         let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
-        let $layer-offset := $node/target/base-layer/offset/number() + $node/layer-offset-difference
+        let $layer-offset := $node/target/base-layer/offset + $node/layer-offset-difference
         let $authoritative-layer := <authoritative-layer><id>{$id}</id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
@@ -220,33 +213,33 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
                         default return local:separate-layers($node, $target)
 };
 
-(: operates on result of separate-layers :)
+(: This function removes inline elements from the result of separate-layers :)
 declare function local:remove-inline-elements($nodes as node()*, $block-elements as xs:string+) as node()* {
-   for $node in $nodes/node()
-   return
-     if ($node instance of element())
-     then
-        if (local-name($node) = $block-elements)
-        then element {node-name($node)}
-                {$node/@*,
-                  local:remove-inline-elements($node, $block-elements)}
-        else $node/node()
-     else 
-        if ($node instance of document-node())
-        then local:remove-inline-elements($node, $block-elements)
+    for $node in $nodes/node()
+    return
+        if ($node instance of element())
+        then
+            if (local-name($node) = $block-elements)
+            then element {node-name($node)}
+                    {
+                    $node/@*
+                    ,
+                    local:remove-inline-elements($node, $block-elements)
+                    }
+            else $node/node()
         else $node
 };
 
 declare function local:handle-element-only-annotations($node as node()) as item()* {
             let $layer-1-body-contents := $node//body/* (:get the element below body - this can ony be a single element:)
-            let $log := util:log("DEBUG", ("##$layer-1-body-contents): ", $layer-1-body-contents))
-            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
+            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}
+                {
                 for $attribute in $layer-1-body-contents/@*
                     return
                         attribute {name($attribute)} {$attribute}
-                        } (:construct empty element with attributes:)
-            let $layer-1 := local:remove-elements($node, 'body') (:remove the body,:)
-            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (:and insert the new body:)
+                } (:construct empty element with attributes:)
+            let $layer-1 := local:remove-elements($node, 'body') (:remove the old body,:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (: and insert the new body:)
                 return $layer-1
                 (:return the old annotation, with an empty element below body:)
             ,
@@ -257,11 +250,11 @@ declare function local:handle-element-only-annotations($node as node()) as item(
             for $element at $i in $layer-2-body-contents
                 let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
-                let $attribute-result := 
+                let $attribute-annotations := 
                     for $attribute in $element/@*
                         return 
                             <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation">{$layer-1-id}</target>
+                                <target type="element" layer="annotation">{$layer-1-id}</target>
                                 <body>
                                     <attribute>
                                         <name>{name($attribute)}</name>
@@ -270,7 +263,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                                 </body>
                                 <admin>{$layer-1-admin-contents}</admin>
                             </annotation>
-                let $element-result :=
+                let $element-annotations :=
                     <annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
@@ -283,11 +276,11 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                     </annotation>
                     return
                         (
-                        if (not($element-result//body/string()) or $element-result//body/*/node() instance of text() or $element-result//body/node() instance of text())
-                        then $element-result 
-                        else local:whittle-down-annotations($element-result)
+                        if (not($element-annotations//body/string()) or $element-annotations//body/*/node() instance of text() or $element-annotations//body/node() instance of text())
+                        then $element-annotations 
+                        else local:whittle-down-annotations($element-annotations)
                         ,
-                        $attribute-result
+                        $attribute-annotations
                         )
 };
 
@@ -313,7 +306,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                         else local:whittle-down-annotations($layer-2)
 };
 
-(: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element exclusively with a text node :)
+(: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element with a text node :)
 declare function local:whittle-down-annotations($node as node()) as item()* {
             if (not($node//body/string())) (: there is no text anywhere (an empty element), so pass through:)
             then $node
@@ -329,24 +322,24 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
 declare function local:generate-text($element as element(), $target as xs:string) as element() {
     element {node-name($element)}
     {$element/@*,
-    for $child in $element/node()
+    for $node in $element/node()
         return
-            if ($child instance of element() and not($child/text()))
-            then local:generate-text($child, $target)
+            if ($node instance of element() and not($node/text()))
+            then local:generate-text($node, $target)
             else
-                if ($child instance of element() and exists($child/text()))
+                if ($node instance of element() and exists($node/text()))
                 then 
-                    element {node-name($child)}
+                    element {node-name($node)}
                     {
-                        for $attribute in $child/@*
+                        for $attribute in $node/@*
                             return
                                 if (name($attribute) eq 'xml:id')
-                                then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $child/@xml:id)))} (: construct a new UUID based on old one :)
+                                then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $node/@xml:id)))} (: construct a new UUID based on the old one :)
                                 else attribute {name($attribute)} {$attribute}
-                            ,
-                            string-join(local:separate-layers($child, $target))
+                                ,
+                                string-join(local:separate-layers($node, $target))
                     }
-                else $child
+                else $node
     }
 };
 
