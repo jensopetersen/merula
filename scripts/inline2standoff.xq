@@ -67,10 +67,10 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Lifts off all upper-level element (and text) nodes and records their position in relation to the base layer. :)
-(: NB: the text nodes are later filtered away and should later be removed, but they are nice to have since they allow reconstructing the whole process :)
+(: Lifts off all upper-level element nodes and records their position in relation to the base layer. :)
+
 declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
-    for $node in $input/node()
+    for $node in ($input/element(), $input/comment())
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
         let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
@@ -224,8 +224,9 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
                 for $attribute in $layer-1-body-contents/@*
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
+            let $layer-1-body-contents-empty := element {node-name($layer-1-body-contents)}{''} (:construct empty element with no attributes:)
             let $layer-1 := local:remove-elements($node, 'body') (:remove the body,:)
-            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (:and insert the new body:)
+            let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents-empty}</body>, 'target', 'after') (:and insert the new body:)
                 return $layer-1
                 (:return the old annotation, with an empty element below body:)
             ,
@@ -234,9 +235,10 @@ declare function local:handle-element-annotations($node as node()) as item()* {
             let $layer-1-admin-contents := $node//admin/* (:get the elements below admin:)
             let $layer-2-body-contents := $node//body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
+                let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
                 let $result :=
-                    <annotation type="element" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
+                    <annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
                                 <id>{$layer-1-id}</id>
@@ -311,15 +313,14 @@ declare function local:generate-text($element as element(), $target as xs:string
     }
 };
 
-declare function local:generate-top-level-annotations($element as element()*, $edition-layer-elements as xs:string+) as element()* {
-    
-    for $child in $element
+declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
+    for $element in $elements
         return
-            if ($child instance of element() and $child/text())
-            then local:get-top-level-annotations-keyed-to-base-layer($child, $edition-layer-elements)
+            if ($element instance of element() and $element/text())
+            then local:get-top-level-annotations-keyed-to-base-layer($element, $edition-layer-elements)
             else 
-                if ($child instance of element())
-                then local:generate-top-level-annotations($child, $edition-layer-elements)
+                if ($element instance of element())
+                then local:generate-top-level-annotations($element, $edition-layer-elements)
                 else ()
 };
 
@@ -328,7 +329,6 @@ let $doc := doc(concat('/db/test/out/', $doc-title))
 let $doc-element := $doc/*
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
-
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
@@ -348,9 +348,7 @@ let $top-level-annotations := local:insert-authoritative-layer($top-level-annota
 
 let $annotations :=
     for $node in $top-level-annotations
-        where $node/body/node() instance of element() (:filters away pure text nodes:)
-    return 
-        local:whittle-down-annotations($node)
+        return local:whittle-down-annotations($node)
 
         return 
             <result>
