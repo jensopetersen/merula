@@ -68,9 +68,8 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 };
 
 (: Lifts off all upper-level element nodes and records their position in relation to the base layer. :)
-
 declare function local:get-top-level-annotations-keyed-to-base-layer($input as element(), $edition-layer-elements) {
-    for $node in ($input/element(), $input/comment())
+    for $node in $input/element()
         let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
         let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
@@ -85,7 +84,7 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                 else 
                     if ($node instance of element())
                     then 'element'
-                    else 'unknown'
+                    else 'something is wrong'
                 }" xml:id="{concat('uuid-', util:uuid())}" status="{
                     let $base-text := string-join(local:separate-layers($input, 'base'))
                     let $character-before := substring($base-text, $position-start, 1)
@@ -95,15 +94,12 @@ declare function local:get-top-level-annotations-keyed-to-base-layer($input as e
                     return
                     if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
                 <target type="range" layer="{
-                    if ($node instance of text())
-                    then 'text'
-                    else
-                        if (local-name($node) = $edition-layer-elements) 
-                        then 'edition' 
-                        else 
-                            if ($node instance of element())
-                            then 'feature'
-                            else 'unknown'}">
+                    if (local-name($node) = $edition-layer-elements) 
+                    then 'edition' 
+                    else 
+                        if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements be used?:)
+                        then 'document' 
+                        else 'feature'}">
                     <base-layer>
                         <id>{string($node/../@xml:id)}</id>
                         <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
@@ -281,12 +277,12 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
             if (not($node//body/string())) (: there is no text anywhere (an empty element), so pass through:)
             then $node
             else 
-                if ($node//body/*/node() instance of text()) (: there is one level until text node (but no mixed contents), so pass through :)
+                if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node :)
                 then $node
                 else 
                     if (count($node//body/*/*) eq 1 and $node//body/*/*[../text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (backtracking to the first '*') is a text node, then we are dealing with mixed contents:)
                     then local:handle-mixed-content-annotations($node)
-                    else local:handle-element-annotations($node) (:if it is not an empty element, if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
+                    else local:handle-element-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
 };
 
 declare function local:generate-text($element as element(), $target as xs:string) as element() {
@@ -316,12 +312,10 @@ declare function local:generate-text($element as element(), $target as xs:string
 declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
     for $element in $elements
         return
-            if ($element instance of element() and $element/text())
+            if ($element/text())
             then local:get-top-level-annotations-keyed-to-base-layer($element, $edition-layer-elements)
-            else 
-                if ($element instance of element())
-                then local:generate-top-level-annotations($element, $edition-layer-elements)
-                else ()
+            else local:generate-top-level-annotations($element, $edition-layer-elements)
+
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
@@ -331,6 +325,7 @@ let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
+let $documentary-elements := ('milestone', 'pb', 'lb', 'hi')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
 
 let $base-text := local:generate-text($doc-text, 'base')
@@ -343,7 +338,6 @@ let $authoritative-text := local:collapse-inline-elements($authoritative-text, $
 let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
 
 let $top-level-annotations := local:generate-top-level-annotations($doc-elements-with-annotations, $edition-layer-elements)
-
 let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
 
 let $annotations :=
