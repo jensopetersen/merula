@@ -2,455 +2,69 @@
     <base-text>
         <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
             xml:id="MTDP10363"/>
-        <teiHeader xmlns="http://www.tei-c.org/ns/1.0" type="CDL-TEI:MTP">
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
             <fileDesc>
                 <titleStmt>
-                    <title>Sample from Autobiography of Mark Twain, Volume 2 : an electronic
-                        text</title>
-                    <author>
-                        <name ref="#bioCL028">Mark Twain</name>
-                    </author>
-                    <editor>
-                        <name ref="#bioGR365">Benjamin Griffin</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioSM656">Harriet Elinor Smith</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioFI102">Victor Fischer</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioFR644">Michael B. Frank</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                    </editor>
-                    <principal>
-                        <name ref="#bioHI202">Robert H. Hirst</name>
-                    </principal>
-                    <sponsor>University of California</sponsor>
-                    <funder>National Endowment for the Humanities, an independent federal
-                        agency</funder>
-                    <funder>Generous contributions from individuals, foundations, and other
-                        institutions</funder>
-                    <respStmt>
-                        <resp>Encoded by</resp>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                    </respStmt>
+                    <title>Title</title>
                 </titleStmt>
-                <extent>ca. 4.8 Mb ; ca. 140 images</extent>
                 <publicationStmt>
-                    <publisher>Mark Twain Project, The Bancroft Library, University of
-                        California</publisher>
-                    <publisher>University of California Press</publisher>
-                    <publisher>California Digital Library</publisher>
-                    <pubPlace>Berkeley, Calif.</pubPlace>
-                    <date type="pub" when-iso="2013-10-05">2013</date>
-                    <idno type="ARK"/>
-                    <idno type="LOCAL">MTDP10363</idno>
-                    <availability>
-                        <p>All words written or dictated by Samuel L. Clemens (Mark Twain) are in
-                            the public domain if they were first published before 1924. All words
-                            written or dictated by Mark Twain which were published between 1924 and
-                            2002, and their copyrights renewed where required by law, are copyright
-                            © by Richard A. Watson and J.P. Morgan Chase Manhattan Bank as trustees
-                            of the Mark Twain Foundation, which reserves all reproduction or
-                            dramatization rights in every medium. All editorial transcriptions,
-                            reconstructions, decipherments, explanatory comments, identifications of
-                            correspondents, places, and dates are copyright © 1988, 1990, 1992,
-                            1995, 1997, 2002, 2006, 2007, and 2009 by The Regents of the University
-                            of California.</p>
-                    </availability>
+                    <p>Publication Information</p>
                 </publicationStmt>
-                <seriesStmt>
-                    <title level="s">Mark Twain Project Online</title>
-                    <respStmt>
-                        <resp>General Editor</resp>
-                        <name ref="#bioHI202">Robert H. Hirst</name>
-                    </respStmt>
-                    <respStmt>
-                        <resp>Editors</resp>
-                        <name ref="#bioFI102">Victor Fischer</name>
-                        <name ref="#bioFR644">Michael B. Frank</name>
-                        <name ref="#bio16088">Amanda Gagel</name>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                        <name ref="#bioGR365">Benjamin Griffin</name>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                        <name ref="#bioSM656">Harriet Elinor Smith</name>
-                    </respStmt>
-                </seriesStmt>
                 <sourceDesc>
-                    <biblStruct n="conv">
-                        <monogr>
-                            <title>Autobiography of Mark Twain, Volume 2</title>
-                            <respStmt>
-                                <resp>General Editor</resp>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Editors</resp>
-                                <name ref="#bioGR365">Benjamin Griffin</name>
-                                <name ref="#bioSM656">Harriet Elinor Smith</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Associate Editors</resp>
-                                <name ref="#bioFI102">Victor Fischer</name>
-                                <name ref="#bioFR644">Michael B. Frank</name>
-                                <name ref="#bioGO790">Sharon K. Goetz</name>
-                                <name ref="#bioMY004">Leslie Diane Myrick</name>
-                            </respStmt>
-                            <edition>1st ed.</edition>
-                            <imprint>
-                                <publisher>University of California Press</publisher>
-                                <pubPlace>Berkeley, Calif.</pubPlace>
-                                <date when-iso="2013-10-05">2013</date>
-                                <biblScope type="pages">xix + 736</biblScope>
-                            </imprint>
-                        </monogr>
-                        <series>
-                            <title level="s">The Mark Twain Papers</title>
-                            <respStmt>
-                                <resp>General Editor</resp>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Editors</resp>
-                                <name ref="#bioAN086">Frederick Anderson</name>
-                                <name ref="#bioAR201">Dahlia Armon</name>
-                                <name ref="#bioBA527">Paul Baender</name>
-                                <name ref="#bioBA528">Howard G. Baetzhold</name>
-                                <name ref="#bioBL251">Walter Blair</name>
-                                <name ref="#bioBR900">Edgar Marquess Branch</name>
-                                <name ref="#bioBR901">Robert Pack Browning</name>
-                                <name ref="#bioBU351">Richard Bucci</name>
-                                <name ref="#bioBU352">Louis J. Budd</name>
-                                <name ref="#bioBU353">Anh Q. Bui</name>
-                                <name ref="#bioCA503">Gregg Camfield</name>
-                                <name ref="#bioCO370">Hennig Cohen</name>
-                                <name ref="#bioDI018">Leon T. Dickinson</name>
-                                <name ref="#bioFI101">Terry Firkins</name>
-                                <name ref="#bioFI102">Victor Fischer</name>
-                                <name ref="#bioFR644">Michael B. Frank</name>
-                                <name ref="#bio16088">Amanda Gagel</name>
-                                <name ref="#bioGE756">John C. Gerber</name>
-                                <name ref="#bioGI044">William M. Gibson</name>
-                                <name ref="#bioGO790">Sharon K. Goetz</name>
-                                <name ref="#bioGR365">Benjamin Griffin</name>
-                                <name ref="#bioHI201">Hamlin Hill</name>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                                <name ref="#bioJO301">Mary Jane Jones</name>
-                                <name ref="#bioLE656">Lewis Leary</name>
-                                <name ref="#bioMA251">Paul Machlis</name>
-                                <name ref="#bioMA252">Francis V. Madigan</name>
-                                <name ref="#bioMY004">Leslie Myrick</name>
-                                <name ref="#bioPA600">Hershel Parker</name>
-                                <name ref="#bioRE900">Robert Regan</name>
-                                <name ref="#bioRO568">Franklin R. Rogers</name>
-                                <name ref="#bioSA514">Lin Salamo</name>
-                                <name ref="#bioSA515">Kenneth M. Sanderson</name>
-                                <name ref="#bioSM656">Harriet Elinor Smith</name>
-                                <name ref="#bioSM300">Henry Nash Smith</name>
-                                <name ref="#bioST401">Bernard L. Stein</name>
-                                <name ref="#bioST402">Albert E. Stone</name>
-                                <name ref="#bioTU013">John S. Tuckey</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Board of Directors</resp>
-                                <name ref="#bioCR301">Frederick Crews</name>
-                                <name ref="#bio16116">Mary C. Francis</name>
-                                <name ref="#bioHA202">Peter E. Hanff</name>
-                                <name key="#bioLE201">Thomas C. Leonard</name>
-                                <name ref="#bioMI201">Michael Millgate</name>
-                                <name ref="#bio16114">Alison Mudditt</name>
-                                <name ref="#bioST403">George A. Starr</name>
-                                <name ref="#bioTA101">G. Thomas Tanselle</name>
-                                <name ref="#bio16115">Elaine Tennant</name>
-                            </respStmt>
-                        </series>
-                        <note>Editorial work for this volume has been supported by a generous gift
-                            to the Mark Twain Project of The Bancroft Library from the Koret
-                            Foundation and by matching and outright grants from the National
-                            Endowment for the Humanities, an independent federal agency. Without
-                            that support, this volume could not have been produced.</note>
-                    </biblStruct>
-                    <listPerson>
-                        <person>
-                            <persName key="bioCL028" type="reg">Twain, Mark, 1835-1910</persName>
-                        </person>
-                        <person>
-                            <persName key="bioAN086" type="reg">Anderson, Frederick,
-                                1926-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioAR201" type="reg">Armon, Dahlia</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBA527" type="reg">Baender, Paul</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBA528" type="reg">Baetzhold, Howard G.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBL251" type="reg">Blair, Walter, 1900-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBO516" type="reg">Boydston, Jo Ann, 1924-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBR900" type="reg">Branch, Edgar Marquess,
-                                1913-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBR901" type="reg">Browning, Robert Pack</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU351" type="reg">Bucci, Richard</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU352" type="reg">Budd, Louis J.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU353" type="reg">Bui, Anh Q.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCA503" type="reg">Camfield, Gregg</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCE006" type="reg">Cerruti, Laura</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCO370" type="reg">Cohen, Hennig</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCO371" type="reg">Cook, Don L.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCR301" type="reg">Crews, Frederick C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioDI018" type="reg">Dickinson, Leon T. (Leon Townsend),
-                                1912-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFA201" type="reg">Faulhaber, Charles</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFI101" type="reg">Firkins, Terry</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFI102" type="reg">Fischer, Victor, 1942-</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16116" type="reg">Francis, Mary C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFR644" type="reg">Frank, Michael B.</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16088" type="reg">Gagel, Amanda</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGE756" type="reg">Gerber, John C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGI044" type="reg">Gibson, William Merriam,
-                                1912-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGO790" type="reg">Goetz, Sharon K.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGR201" type="reg">Gregor, Dorothy, 1939-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGR365" type="reg">Griffin, Benjamin, 1968-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHA202" type="reg">Hanff, Peter E.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHA352" type="reg">Hart, James David, 1911-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHI201" type="reg">Hill, Hamlin Lewis, 1931-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHI202" type="reg">Hirst, Robert H.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioJO301" type="reg">Jones, Mary Jane, 1938-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLA301" type="reg">Laue, Andrea K.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLE656" type="reg">Leary, Lewis Gaston,
-                                1906-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLE201" type="reg">Leonard, Thomas C., 1944-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMA251" type="reg">Machlis, Paul</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMA252" type="reg">Madigan, Francis V.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMC301" type="reg">McClung, William J.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMI201" type="reg">Millgate, Michael</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16114" type="reg">Mudditt, Alison</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMY004" type="reg">Myrick, Leslie</persName>
-                        </person>
-                        <person>
-                            <persName key="bioPA600" type="reg">Parker, Hershel</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRA566" type="reg">Ray, Gordon Norton, 1915-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRE900" type="reg">Regan, Robert</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO567" type="reg">Robertson, Charlotte</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO568" type="reg">Rogers, Franklin R.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO569" type="reg">Rosenthal, Joseph A.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSA514" type="reg">Salamo, Lin</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSA515" type="reg">Sanderson, Kenneth M.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSM656" type="reg">Smith, Harriet Elinor</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSM300" type="reg">Smith, Henry Nash</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST403" type="reg">Starr, G. A. (George A.)</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST401" type="reg">Stein, Bernard L.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST402" type="reg">Stone, Albert E.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioTA101" type="reg">Tanselle, G. Thomas (George Thomas),
-                                1934-</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16115" type="reg">Tennant, Elaine</persName>
-                        </person>
-                        <person>
-                            <persName key="bioTU013" type="reg">Tuckey, John Sutton,
-                                1921-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioWI201" type="reg">Witherell, Elizabeth Hall</persName>
-                        </person>
-                        <person>
-                            <persName key="bio15050" type="reg">Withey, Lynne</persName>
-                        </person>
-                    </listPerson>
+                    <p>Information about the source</p>
                 </sourceDesc>
             </fileDesc>
-            <encodingDesc>
-                <projectDesc>
-                    <p>This digital document was produced as part of Mark Twain Project Online
-                        (MTPO), a digital critical edition of all of Mark Twain’s writings. It was
-                        encoded in accordance with the Mark Twain Project TEI DTD version 4.0, a
-                        modified version of Text Encoding Initiative (TEI) P5 DTD
-                        (http://www.tei-c.org). Initial transcription of the text was performed in
-                        Corel WordPerfect X5. XML encoding was performed using <oXygen/> XML
-                        Editor.</p>
-                </projectDesc>
-                <editorialDecl>
-                    <p>For information about the editorial policy of the Mark Twain Project, see the
-                        guide to editorial practice published with this text.</p>
-                </editorialDecl>
-                <variantEncoding location="internal" method="double-end-point"/>
-            </encodingDesc>
-            <revisionDesc>
-                <listChange>
-                    <change when="2013-11-14" who="#bioGO790">Enhanced explanatory notes through 13
-                        Aug 1906 with cross-reference links; corrected minor errors.</change>
-                    <change/>
-                </listChange>
-            </revisionDesc>
         </teiHeader>
-        <text xmlns="http://www.tei-c.org/ns/1.0">
+        <text xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="text1">
             <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
-            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
-                <div type="chapter" xml:id="dv0001">
-                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
-                        >Government of new Territory of Nevada—Governor Nye and the practical
-                        jokers—Mr. Clemens begins journalistic life on Virginia City
+            <body xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
+                <div xml:id="dv0001">
+                    <p xml:id="pa000001">Government of new Territory of Nevada—Governor Nye and the
+                        practical jokers—Mr. Clemens begins journalistic life on Virginia City
                         Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
                         $12,000. house—Gov. Nye turns Territory of Nevada into a State. (Miss Hobby,
                         please paste this in at this point, in record of April 1st, but I may not
                         comment on it until later.)</p>
-                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
-                        <p rend="center" xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN
-                            BERATED</p>
-                        <p rend="center" xml:id="pa000003">Had Woman Ejected from White House; to be
+                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2">
+                        <p xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN BERATED</p>
+                        <p xml:id="pa000003">Had Woman Ejected from White House; to be
                             Postmaster.</p>
-                        <p rend="center" xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
-                        <p rend="center" xml:id="pa000005">Present Postmaster at Washington to be
-                            MadeCollector at Niagara—Platt Not Consulted.</p>
-                        <p rend="center" xml:id="pa000006">Special to The New York Times.</p>
-                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
-                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
-                            afternoon by announcing that he would appoint Benjamin F. Barnes as
-                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
-                            Merritt, who for several years has been Postmaster here, has been chosen
-                            for Collector of the Port of Niagara, succeeding the late Major James
-                            Low.</p>
-                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
-                            >Mr. Barnes is at present assistant secretary to the President. Only a
-                            short time ago he figured extensively in the newspapers for having
-                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
-                            a Washington woman who had called to see the President. What attracted
-                            attention to the case was not the ejection itself, but the violence with
-                            which it was performed.</p>
-                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
-                            >Mrs. Morris, who had been talking to Barnes in an ordinary
-                            conversational tone, and with no indications of excitement, so far as
-                            the spectators observed, was seized by two policemen and dragged by the
-                            arms out of the building and across the asphalt walk in front of the
-                            White House, a distance corresponding to that of two ordinary city
+                        <p xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
+                        <p xml:id="pa000005">Present Postmaster at Washington to be MadeCollector at
+                            Niagara—Platt Not Consulted.</p>
+                        <p xml:id="pa000006">Special to The New York Times.</p>
+                        <p xml:id="pa000007">WASHINGTON, March 31.—President Roosevelt surprised the
+                            capital this afternoon by announcing that he would appoint Benjamin F.
+                            Barnes as Postmaster of Washington, to succeed John A. Merritt of New
+                            York. Mr. Merritt, who for several years has been Postmaster here, has
+                            been chosen for Collector of the Port of Niagara, succeeding the late
+                            Major James Low.</p>
+                        <p xml:id="pa000008">Mr. Barnes is at present assistant secretary to the
+                            President. Only a short time ago he figured extensively in the
+                            newspapers for having ordered the forcible ejection from the White House
+                            of Mrs. Minor Morris, a Washington woman who had called to see the
+                            President. What attracted attention to the case was not the ejection
+                            itself, but the violence with which it was performed.</p>
+                        <p xml:id="pa000009">Mrs. Morris, who had been talking to Barnes in an
+                            ordinary conversational tone, and with no indications of excitement, so
+                            far as the spectators observed, was seized by two policemen and dragged
+                            by the arms out of the building and across the asphalt walk in front of
+                            the White House, a distance corresponding to that of two ordinary city
                             blocks. During a part of the journey a negro carried her by the feet.
                             Her dress was torn and trampled.</p>
-                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
-                            >She was locked up on a charge of disorderly conduct, and when it was
-                            learned that she would be released on that charge a policeman, a
-                            relative of Barnes’s, was sent to the House of Detention to prefer a
-                            charge of insanity against her so that she would have to be held. She
-                            was held accordingly until two physicians had examined her and
+                        <p xml:id="pa000010">She was locked up on a charge of disorderly conduct,
+                            and when it was learned that she would be released on that charge a
+                            policeman, a relative of Barnes’s, was sent to the House of Detention to
+                            prefer a charge of insanity against her so that she would have to be
+                            held. She was held accordingly until two physicians had examined her and
                             pronounced her sane. He was denounced by Mrs. Morris, by various
                             newspapers, and by Mr. Tillman in the Senate.</p>
-                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
-                            >The appointment of Barnes to be Postmaster soon after this incident has
-                            created endless talk here. It is taken to be the President’s way of
-                            expressing confidence in Barnes and repaying him for the pain he
-                            suffered as a result of the newspaper criticisms of his course.</p>
+                        <p xml:id="pa000011">The appointment of Barnes to be Postmaster soon after
+                            this incident has created endless talk here. It is taken to be the
+                            President’s way of expressing confidence in Barnes and repaying him for
+                            the pain he suffered as a result of the newspaper criticisms of his
+                            course.</p>
                     </quote>
                 </div>
             </body>
@@ -459,454 +73,68 @@
     <authoritative-text>
         <TEI xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
             xml:id="MTDP10363"/>
-        <teiHeader xmlns="http://www.tei-c.org/ns/1.0" type="CDL-TEI:MTP">
+        <teiHeader xmlns="http://www.tei-c.org/ns/1.0">
             <fileDesc>
                 <titleStmt>
-                    <title>Sample from Autobiography of Mark Twain, Volume 2 : an electronic
-                        text</title>
-                    <author>
-                        <name ref="#bioCL028">Mark Twain</name>
-                    </author>
-                    <editor>
-                        <name ref="#bioGR365">Benjamin Griffin</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioSM656">Harriet Elinor Smith</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioFI102">Victor Fischer</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioFR644">Michael B. Frank</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                    </editor>
-                    <editor>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                    </editor>
-                    <principal>
-                        <name ref="#bioHI202">Robert H. Hirst</name>
-                    </principal>
-                    <sponsor>University of California</sponsor>
-                    <funder>National Endowment for the Humanities, an independent federal
-                        agency</funder>
-                    <funder>Generous contributions from individuals, foundations, and other
-                        institutions</funder>
-                    <respStmt>
-                        <resp>Encoded by</resp>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                    </respStmt>
+                    <title>Title</title>
                 </titleStmt>
-                <extent>ca. 4.8 Mb ; ca. 140 images</extent>
                 <publicationStmt>
-                    <publisher>Mark Twain Project, The Bancroft Library, University of
-                        California</publisher>
-                    <publisher>University of California Press</publisher>
-                    <publisher>California Digital Library</publisher>
-                    <pubPlace>Berkeley, Calif.</pubPlace>
-                    <date type="pub" when-iso="2013-10-05">2013</date>
-                    <idno type="ARK"/>
-                    <idno type="LOCAL">MTDP10363</idno>
-                    <availability>
-                        <p>All words written or dictated by Samuel L. Clemens (Mark Twain) are in
-                            the public domain if they were first published before 1924. All words
-                            written or dictated by Mark Twain which were published between 1924 and
-                            2002, and their copyrights renewed where required by law, are copyright
-                            © by Richard A. Watson and J.P. Morgan Chase Manhattan Bank as trustees
-                            of the Mark Twain Foundation, which reserves all reproduction or
-                            dramatization rights in every medium. All editorial transcriptions,
-                            reconstructions, decipherments, explanatory comments, identifications of
-                            correspondents, places, and dates are copyright © 1988, 1990, 1992,
-                            1995, 1997, 2002, 2006, 2007, and 2009 by The Regents of the University
-                            of California.</p>
-                    </availability>
+                    <p>Publication Information</p>
                 </publicationStmt>
-                <seriesStmt>
-                    <title level="s">Mark Twain Project Online</title>
-                    <respStmt>
-                        <resp>General Editor</resp>
-                        <name ref="#bioHI202">Robert H. Hirst</name>
-                    </respStmt>
-                    <respStmt>
-                        <resp>Editors</resp>
-                        <name ref="#bioFI102">Victor Fischer</name>
-                        <name ref="#bioFR644">Michael B. Frank</name>
-                        <name ref="#bio16088">Amanda Gagel</name>
-                        <name ref="#bioGO790">Sharon K. Goetz</name>
-                        <name ref="#bioGR365">Benjamin Griffin</name>
-                        <name ref="#bioMY004">Leslie Myrick</name>
-                        <name ref="#bioSM656">Harriet Elinor Smith</name>
-                    </respStmt>
-                </seriesStmt>
                 <sourceDesc>
-                    <biblStruct n="conv">
-                        <monogr>
-                            <title>Autobiography of Mark Twain, Volume 2</title>
-                            <respStmt>
-                                <resp>General Editor</resp>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Editors</resp>
-                                <name ref="#bioGR365">Benjamin Griffin</name>
-                                <name ref="#bioSM656">Harriet Elinor Smith</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Associate Editors</resp>
-                                <name ref="#bioFI102">Victor Fischer</name>
-                                <name ref="#bioFR644">Michael B. Frank</name>
-                                <name ref="#bioGO790">Sharon K. Goetz</name>
-                                <name ref="#bioMY004">Leslie Diane Myrick</name>
-                            </respStmt>
-                            <edition>1st ed.</edition>
-                            <imprint>
-                                <publisher>University of California Press</publisher>
-                                <pubPlace>Berkeley, Calif.</pubPlace>
-                                <date when-iso="2013-10-05">2013</date>
-                                <biblScope type="pages">xix + 736</biblScope>
-                            </imprint>
-                        </monogr>
-                        <series>
-                            <title level="s">The Mark Twain Papers</title>
-                            <respStmt>
-                                <resp>General Editor</resp>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Editors</resp>
-                                <name ref="#bioAN086">Frederick Anderson</name>
-                                <name ref="#bioAR201">Dahlia Armon</name>
-                                <name ref="#bioBA527">Paul Baender</name>
-                                <name ref="#bioBA528">Howard G. Baetzhold</name>
-                                <name ref="#bioBL251">Walter Blair</name>
-                                <name ref="#bioBR900">Edgar Marquess Branch</name>
-                                <name ref="#bioBR901">Robert Pack Browning</name>
-                                <name ref="#bioBU351">Richard Bucci</name>
-                                <name ref="#bioBU352">Louis J. Budd</name>
-                                <name ref="#bioBU353">Anh Q. Bui</name>
-                                <name ref="#bioCA503">Gregg Camfield</name>
-                                <name ref="#bioCO370">Hennig Cohen</name>
-                                <name ref="#bioDI018">Leon T. Dickinson</name>
-                                <name ref="#bioFI101">Terry Firkins</name>
-                                <name ref="#bioFI102">Victor Fischer</name>
-                                <name ref="#bioFR644">Michael B. Frank</name>
-                                <name ref="#bio16088">Amanda Gagel</name>
-                                <name ref="#bioGE756">John C. Gerber</name>
-                                <name ref="#bioGI044">William M. Gibson</name>
-                                <name ref="#bioGO790">Sharon K. Goetz</name>
-                                <name ref="#bioGR365">Benjamin Griffin</name>
-                                <name ref="#bioHI201">Hamlin Hill</name>
-                                <name ref="#bioHI202">Robert H. Hirst</name>
-                                <name ref="#bioJO301">Mary Jane Jones</name>
-                                <name ref="#bioLE656">Lewis Leary</name>
-                                <name ref="#bioMA251">Paul Machlis</name>
-                                <name ref="#bioMA252">Francis V. Madigan</name>
-                                <name ref="#bioMY004">Leslie Myrick</name>
-                                <name ref="#bioPA600">Hershel Parker</name>
-                                <name ref="#bioRE900">Robert Regan</name>
-                                <name ref="#bioRO568">Franklin R. Rogers</name>
-                                <name ref="#bioSA514">Lin Salamo</name>
-                                <name ref="#bioSA515">Kenneth M. Sanderson</name>
-                                <name ref="#bioSM656">Harriet Elinor Smith</name>
-                                <name ref="#bioSM300">Henry Nash Smith</name>
-                                <name ref="#bioST401">Bernard L. Stein</name>
-                                <name ref="#bioST402">Albert E. Stone</name>
-                                <name ref="#bioTU013">John S. Tuckey</name>
-                            </respStmt>
-                            <respStmt>
-                                <resp>Board of Directors</resp>
-                                <name ref="#bioCR301">Frederick Crews</name>
-                                <name ref="#bio16116">Mary C. Francis</name>
-                                <name ref="#bioHA202">Peter E. Hanff</name>
-                                <name key="#bioLE201">Thomas C. Leonard</name>
-                                <name ref="#bioMI201">Michael Millgate</name>
-                                <name ref="#bio16114">Alison Mudditt</name>
-                                <name ref="#bioST403">George A. Starr</name>
-                                <name ref="#bioTA101">G. Thomas Tanselle</name>
-                                <name ref="#bio16115">Elaine Tennant</name>
-                            </respStmt>
-                        </series>
-                        <note>Editorial work for this volume has been supported by a generous gift
-                            to the Mark Twain Project of The Bancroft Library from the Koret
-                            Foundation and by matching and outright grants from the National
-                            Endowment for the Humanities, an independent federal agency. Without
-                            that support, this volume could not have been produced.</note>
-                    </biblStruct>
-                    <listPerson>
-                        <person>
-                            <persName key="bioCL028" type="reg">Twain, Mark, 1835-1910</persName>
-                        </person>
-                        <person>
-                            <persName key="bioAN086" type="reg">Anderson, Frederick,
-                                1926-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioAR201" type="reg">Armon, Dahlia</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBA527" type="reg">Baender, Paul</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBA528" type="reg">Baetzhold, Howard G.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBL251" type="reg">Blair, Walter, 1900-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBO516" type="reg">Boydston, Jo Ann, 1924-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBR900" type="reg">Branch, Edgar Marquess,
-                                1913-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBR901" type="reg">Browning, Robert Pack</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU351" type="reg">Bucci, Richard</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU352" type="reg">Budd, Louis J.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioBU353" type="reg">Bui, Anh Q.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCA503" type="reg">Camfield, Gregg</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCE006" type="reg">Cerruti, Laura</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCO370" type="reg">Cohen, Hennig</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCO371" type="reg">Cook, Don L.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioCR301" type="reg">Crews, Frederick C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioDI018" type="reg">Dickinson, Leon T. (Leon Townsend),
-                                1912-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFA201" type="reg">Faulhaber, Charles</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFI101" type="reg">Firkins, Terry</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFI102" type="reg">Fischer, Victor, 1942-</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16116" type="reg">Francis, Mary C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioFR644" type="reg">Frank, Michael B.</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16088" type="reg">Gagel, Amanda</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGE756" type="reg">Gerber, John C.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGI044" type="reg">Gibson, William Merriam,
-                                1912-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGO790" type="reg">Goetz, Sharon K.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGR201" type="reg">Gregor, Dorothy, 1939-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioGR365" type="reg">Griffin, Benjamin, 1968-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHA202" type="reg">Hanff, Peter E.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHA352" type="reg">Hart, James David, 1911-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHI201" type="reg">Hill, Hamlin Lewis, 1931-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioHI202" type="reg">Hirst, Robert H.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioJO301" type="reg">Jones, Mary Jane, 1938-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLA301" type="reg">Laue, Andrea K.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLE656" type="reg">Leary, Lewis Gaston,
-                                1906-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioLE201" type="reg">Leonard, Thomas C., 1944-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMA251" type="reg">Machlis, Paul</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMA252" type="reg">Madigan, Francis V.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMC301" type="reg">McClung, William J.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMI201" type="reg">Millgate, Michael</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16114" type="reg">Mudditt, Alison</persName>
-                        </person>
-                        <person>
-                            <persName key="bioMY004" type="reg">Myrick, Leslie</persName>
-                        </person>
-                        <person>
-                            <persName key="bioPA600" type="reg">Parker, Hershel</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRA566" type="reg">Ray, Gordon Norton, 1915-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRE900" type="reg">Regan, Robert</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO567" type="reg">Robertson, Charlotte</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO568" type="reg">Rogers, Franklin R.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioRO569" type="reg">Rosenthal, Joseph A.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSA514" type="reg">Salamo, Lin</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSA515" type="reg">Sanderson, Kenneth M.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSM656" type="reg">Smith, Harriet Elinor</persName>
-                        </person>
-                        <person>
-                            <persName key="bioSM300" type="reg">Smith, Henry Nash</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST403" type="reg">Starr, G. A. (George A.)</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST401" type="reg">Stein, Bernard L.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioST402" type="reg">Stone, Albert E.</persName>
-                        </person>
-                        <person>
-                            <persName key="bioTA101" type="reg">Tanselle, G. Thomas (George Thomas),
-                                1934-</persName>
-                        </person>
-                        <person>
-                            <persName key="bio16115" type="reg">Tennant, Elaine</persName>
-                        </person>
-                        <person>
-                            <persName key="bioTU013" type="reg">Tuckey, John Sutton,
-                                1921-</persName>
-                        </person>
-                        <person>
-                            <persName key="bioWI201" type="reg">Witherell, Elizabeth Hall</persName>
-                        </person>
-                        <person>
-                            <persName key="bio15050" type="reg">Withey, Lynne</persName>
-                        </person>
-                    </listPerson>
+                    <p>Information about the source</p>
                 </sourceDesc>
             </fileDesc>
-            <encodingDesc>
-                <projectDesc>
-                    <p>This digital document was produced as part of Mark Twain Project Online
-                        (MTPO), a digital critical edition of all of Mark Twain’s writings. It was
-                        encoded in accordance with the Mark Twain Project TEI DTD version 4.0, a
-                        modified version of Text Encoding Initiative (TEI) P5 DTD
-                        (http://www.tei-c.org). Initial transcription of the text was performed in
-                        Corel WordPerfect X5. XML encoding was performed using <oXygen/> XML
-                        Editor.</p>
-                </projectDesc>
-                <editorialDecl>
-                    <p>For information about the editorial policy of the Mark Twain Project, see the
-                        guide to editorial practice published with this text.</p>
-                </editorialDecl>
-                <variantEncoding location="internal" method="double-end-point"/>
-            </encodingDesc>
-            <revisionDesc>
-                <listChange>
-                    <change when="2013-11-14" who="#bioGO790">Enhanced explanatory notes through 13
-                        Aug 1906 with cross-reference links; corrected minor errors.</change>
-                    <change/>
-                </listChange>
-            </revisionDesc>
         </teiHeader>
-        <text xmlns="http://www.tei-c.org/ns/1.0">
+        <text xmlns="http://www.tei-c.org/ns/1.0" xmlns:xml="http://www.w3.org/XML/1998/namespace"
+            xml:id="text1">
             <!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
-            <body xmlns:xml="http://www.w3.org/XML/1998/namespace"
-                xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
-                <div type="chapter" xml:id="dv0001">
-                    <p rend="centerautosum" xml:id="uuid-d070e618-af48-3571-9c67-e5da608dbc76"
-                        >Government of new Territory of Nevada—Governor Nye and the practical
-                        jokers—Mr. Clemens begins journalistic life on Virginia City
+            <body xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
+                <div xml:id="dv0001">
+                    <p xml:id="pa000001">Government of new Territory of Nevada—Governor Nye and the
+                        practical jokers—Mr. Clemens begins journalistic life on Virginia City
                         Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds
                         twelve-thousand-dollar house—Governor Nye turns Territory of Nevada into a
                         State.</p>
-                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote">
-                        <p rend="center" xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN
-                            BERATED</p>
-                        <p rend="center" xml:id="pa000003">Had Woman Ejected from White House; to be
+                    <quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2">
+                        <p xml:id="pa000002">PROMOTION FOR BARNES, WHOM TILLMAN BERATED</p>
+                        <p xml:id="pa000003">Had Woman Ejected from White House; to be
                             Postmaster.</p>
-                        <p rend="center" xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
-                        <p rend="center" xml:id="pa000005">Present Postmaster at Washington to be
-                            MadeCollector at Niagara—Platt Not Consulted.</p>
-                        <p rend="center" xml:id="pa000006">Special to The New York Times.</p>
-                        <p rend="text-indent:2" xml:id="uuid-f417a920-5f77-30ae-b958-b662ce34276b"
-                            >WASHINGTON, March 31.—President Roosevelt surprised the capital this
-                            afternoon by announcing that he would appoint Benjamin F. Barnes as
-                            Postmaster of Washington, to succeed John A. Merritt of New York. Mr.
-                            Merritt, who for several years has been Postmaster here, has been chosen
-                            for Collector of the Port of Niagara, succeeding the late Major James
-                            Low.</p>
-                        <p rend="text-indent:2" xml:id="uuid-60b43f1d-c9fa-3611-8e01-00150fe78dee"
-                            >Mr. Barnes is at present assistant secretary to the President. Only a
-                            short time ago he figured extensively in the newspapers for having
-                            ordered the forcible ejection from the White House of Mrs. Minor Morris,
-                            a Washington woman who had called to see the President. What attracted
-                            attention to the case was not the ejection itself, but the violence with
-                            which it was performed.</p>
-                        <p rend="text-indent:2" xml:id="uuid-c73d0a10-c123-34c4-aba9-ec7f24deb2b5"
-                            >Mrs. Morris, who had been talking to Barnes in an ordinary
-                            conversational tone, and with no indications of excitement, so far as
-                            the spectators observed, was seized by two policemen and dragged by the
-                            arms out of the building and across the asphalt walk in front of the
-                            White House, a distance corresponding to that of two ordinary city
+                        <p xml:id="pa000004"> MERRITT GETS NEW PLACE</p>
+                        <p xml:id="pa000005">Present Postmaster at Washington to be MadeCollector at
+                            Niagara—Platt Not Consulted.</p>
+                        <p xml:id="pa000006">Special to The New York Times.</p>
+                        <p xml:id="pa000007">WASHINGTON, March 31.—President Roosevelt surprised the
+                            capital this afternoon by announcing that he would appoint Benjamin F.
+                            Barnes as Postmaster of Washington, to succeed John A. Merritt of New
+                            York. Mr. Merritt, who for several years has been Postmaster here, has
+                            been chosen for Collector of the Port of Niagara, succeeding the late
+                            Major James Low.</p>
+                        <p xml:id="pa000008">Mr. Barnes is at present assistant secretary to the
+                            President. Only a short time ago he figured extensively in the
+                            newspapers for having ordered the forcible ejection from the White House
+                            of Mrs. Minor Morris, a Washington woman who had called to see the
+                            President. What attracted attention to the case was not the ejection
+                            itself, but the violence with which it was performed.</p>
+                        <p xml:id="pa000009">Mrs. Morris, who had been talking to Barnes in an
+                            ordinary conversational tone, and with no indications of excitement, so
+                            far as the spectators observed, was seized by two policemen and dragged
+                            by the arms out of the building and across the asphalt walk in front of
+                            the White House, a distance corresponding to that of two ordinary city
                             blocks. During a part of the journey a negro carried her by the feet.
                             Her dress was torn and trampled.</p>
-                        <p rend="text-indent:2" xml:id="uuid-11bf2854-d350-3952-b8e4-04c182f6ef22"
-                            >She was locked up on a charge of disorderly conduct, and when it was
-                            learned that she would be released on that charge a policeman, a
-                            relative of Barnes’s, was sent to the House of Detention to prefer a
-                            charge of insanity against her so that she would have to be held. She
-                            was held accordingly until two physicians had examined her and
+                        <p xml:id="pa000010">She was locked up on a charge of disorderly conduct,
+                            and when it was learned that she would be released on that charge a
+                            policeman, a relative of Barnes’s, was sent to the House of Detention to
+                            prefer a charge of insanity against her so that she would have to be
+                            held. She was held accordingly until two physicians had examined her and
                             pronounced her sane. He was denounced by Mrs. Morris, by various
                             newspapers, and by Mr. Tillman in the Senate.</p>
-                        <p rend="text-indent:2" xml:id="uuid-d16a5e7e-6edd-3bbf-b2be-1cd42aeca54b"
-                            >The appointment of Barnes to be Postmaster so soon after this incident
-                            has created endless talk here. It is taken to be the President’s way of
-                            expressing confidence in Barnes and repaying him for the pain he
-                            suffered as a result of the newspaper criticisms of his course.</p>
+                        <p xml:id="pa000011">The appointment of Barnes to be Postmaster so soon
+                            after this incident has created endless talk here. It is taken to be the
+                            President’s way of expressing confidence in Barnes and repaying him for
+                            the pain he suffered as a result of the newspaper criticisms of his
+                            course.</p>
                     </quote>
                 </div>
             </body>
@@ -914,27 +142,54 @@
     </authoritative-text>
     <annotations>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f557dfec-0266-4365-b7a8-d069a6696b42" status="string">
-            <target type="range" layer="document">
+            xml:id="uuid-32815de6-217f-4ddb-8db5-ca813fd4bf08" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
-                    <start>51</start>
-                    <offset>0</offset>
+                    <id>text1</id>
+                    <start>10</start>
+                    <offset>2500</offset>
                 </base-layer>
                 <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>51</start>
-                    <offset>0</offset>
+                    <id>uuid-cef7ccd8-9dac-31ce-96f5-ec91d759953f</id>
+                    <start>10</start>
+                    <offset>2500</offset>
                 </authoritative-layer>
             </target>
             <body>
-                <lb xmlns="http://www.tei-c.org/ns/1.0"/>
+                <body xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <layer-offset-difference>0</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-bb7090c9-2b67-4804-b1af-8578d29f80b9">
+            <target type="element" layer="annotation"
+                >uuid-32815de6-217f-4ddb-8db5-ca813fd4bf08</target>
+            <body>
+                <attribute>
+                    <name>facs</name>
+                    <value>#MTDP10363</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -949,27 +204,20 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-62bf23ad-7e6d-4e60-834f-635d1d26d8d2" status="string">
-            <target type="range" layer="document">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>113</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>113</start>
-                    <offset>0</offset>
-                </authoritative-layer>
+            xml:id="uuid-c372934f-b138-4666-9c2c-57517ed6b14c" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-32815de6-217f-4ddb-8db5-ca813fd4bf08</id>
+                    <order>1</order>
+                </annotation-layer>
             </target>
             <body>
-                <lb xmlns="http://www.tei-c.org/ns/1.0"/>
+                <div xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -984,27 +232,163 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38" status="token">
-            <target type="range" layer="edition">
+            xml:id="uuid-5f992f3a-6033-49e4-99da-cb92f3712591" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c372934f-b138-4666-9c2c-57517ed6b14c</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-e934833b-e58f-4f8b-bf3a-685ec7e3e65b" status="string">
+            <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
+                    <start>51</start>
+                    <offset>0</offset>
+                </base-layer>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-20d6643b-0a9d-4ef9-9d19-41ea08d0a196"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-df8fd05c-d3c6-4224-81d9-9f2e498e8a84" status="string">
+            <target type="range" layer="document">
+                <base-layer>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
+                    <start>113</start>
+                    <offset>0</offset>
+                </base-layer>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-50dea63f-c4c1-425c-b883-b9e06ea7d4a9"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-82260bc4-3e69-46d6-ad35-5420e3891518" status="token">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
                     <start>131</start>
                     <offset>10</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>131</start>
-                    <offset>20</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>10</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-8e36aabd-8e27-41a8-8434-87ce911f2e09">
+            <target type="element" layer="annotation"
+                >uuid-82260bc4-3e69-46d6-ad35-5420e3891518</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0000</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-51592dda-e7d4-43ae-9585-c1181151ef90">
+            <target type="element" layer="annotation"
+                >uuid-82260bc4-3e69-46d6-ad35-5420e3891518</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1019,10 +403,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-9403ff88-132f-442c-9786-b48a0253f205" status="token">
+            xml:id="uuid-63e63ad5-9e22-4d9f-bbfa-7120867ca6e2" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38</id>
+                    <id>uuid-82260bc4-3e69-46d6-ad35-5420e3891518</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1032,7 +416,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1047,10 +431,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-593c3737-5cc5-4671-8f0f-431817194166" status="token">
+            xml:id="uuid-fdcdb6bf-c73b-4bab-9e28-5fd616cb2177" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-9403ff88-132f-442c-9786-b48a0253f205</id>
+                    <id>uuid-63e63ad5-9e22-4d9f-bbfa-7120867ca6e2</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1060,7 +444,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1075,36 +459,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-1ecc379a-70b8-480b-b9f7-c874e5b56a92">
+            xml:id="uuid-6f01cee2-90ec-4c89-9403-127c2d065866">
             <target type="element" layer="annotation"
-                >uuid-9403ff88-132f-442c-9786-b48a0253f205</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-98b78c33-a06c-4760-9f62-ff46166c8523</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-a2854f5b-7084-47d7-af72-d79c446d5617">
-            <target type="element" layer="annotation"
-                >uuid-9403ff88-132f-442c-9786-b48a0253f205</target>
+                >uuid-63e63ad5-9e22-4d9f-bbfa-7120867ca6e2</target>
             <body>
                 <attribute>
                     <name>rend</name>
@@ -1114,34 +471,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-0a7e69fd-ebec-42f6-b22c-636ad7ceba69">
-            <target type="element" layer="annotation"
-                >uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-f3fc4683-b570-403f-ae10-3d976c8f4568</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1156,10 +486,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-6542c3f9-f2aa-4fcb-be61-069b6469e80d" status="token">
+            xml:id="uuid-1b8b3760-ae08-45d2-b479-ef4e6c282bdc" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38</id>
+                    <id>uuid-82260bc4-3e69-46d6-ad35-5420e3891518</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -1169,7 +499,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1184,36 +514,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-84b59dc5-4e4a-4ad7-bf35-88e1b070ec78">
+            xml:id="uuid-d81a4495-5e26-4986-9b32-39f99481a900">
             <target type="element" layer="annotation"
-                >uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-231efef2-e413-43e3-a738-26b1cdefd0f1">
-            <target type="element" layer="annotation"
-                >uuid-3b11bf0a-9f33-4555-993b-99f8f29f9b38</target>
+                >uuid-82260bc4-3e69-46d6-ad35-5420e3891518</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -1223,7 +526,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1237,28 +540,47 @@
                 </imprimatur>
             </admin>
         </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-f721c986-d9c5-4ec3-8eef-b575ad512a08" status="string">
-            <target type="range" layer="document">
-                <base-layer>
-                    <id>pa000001</id>
-                    <start>170</start>
-                    <offset>0</offset>
-                </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>170</start>
-                    <offset>0</offset>
-                </authoritative-layer>
-            </target>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-5790dba0-e5d3-49e2-b364-88dfed1adef1">
+            <target type="element" layer="annotation"
+                >uuid-82260bc4-3e69-46d6-ad35-5420e3891518</target>
             <body>
-                <lb xmlns="http://www.tei-c.org/ns/1.0"/>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0000</value>
+                </attribute>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-a2e039d4-8616-41d0-a468-d70fa492bd73">
+            <target type="element" layer="annotation"
+                >uuid-82260bc4-3e69-46d6-ad35-5420e3891518</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1273,27 +595,105 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856" status="token">
-            <target type="range" layer="edition">
+            xml:id="uuid-7e42f455-a501-4f57-8c1f-448c378802df" status="string">
+            <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
+                    <start>170</start>
+                    <offset>0</offset>
+                </base-layer>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-ffd47ef8-dce4-4a4a-a82c-59fcc839d95a"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-63153c96-c9cd-49c9-8b96-269349503b1b" status="token">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
                     <start>205</start>
                     <offset>8</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>205</start>
-                    <offset>23</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>15</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-f6b24118-3445-4507-ad1a-9eb5b2727bfb">
+            <target type="element" layer="annotation"
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0001</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-a77d8be2-c289-4695-b0f3-93a9edeb1437">
+            <target type="element" layer="annotation"
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1308,10 +708,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-5e0e6624-7426-4597-ae4d-f62bae788d4e" status="token">
+            xml:id="uuid-059c14a1-5430-4876-9ed6-6dfb4310bf9f" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</id>
+                    <id>uuid-63153c96-c9cd-49c9-8b96-269349503b1b</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1321,34 +721,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-49c79782-b363-44c7-b3ab-16602eef7984">
-            <target type="element" layer="annotation"
-                >uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1363,10 +736,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a7f635ee-65f8-4d59-9c58-900abc1b7518" status="token">
+            xml:id="uuid-093c4854-69a6-47d7-92d7-509e2990ba7f" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</id>
+                    <id>uuid-63153c96-c9cd-49c9-8b96-269349503b1b</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -1376,7 +749,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1391,36 +764,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-bde2c72f-6cb5-444e-ba63-5c9de0de79cf">
+            xml:id="uuid-0af7b7c9-13c3-465c-bd64-57ea0c166a4e">
             <target type="element" layer="annotation"
-                >uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-51d94905-eb9f-4a76-a335-7c6d14f12378">
-            <target type="element" layer="annotation"
-                >uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</target>
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -1430,7 +776,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1445,10 +791,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-7cb9a66b-816d-4318-b5a6-3e639ac5b883" status="token">
+            xml:id="uuid-3f7f5fef-402b-49f5-a695-209113fb42ad" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</id>
+                    <id>uuid-63153c96-c9cd-49c9-8b96-269349503b1b</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -1458,7 +804,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1473,36 +819,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-b43ee76e-0be0-4da7-aebd-864aa35fee96">
+            xml:id="uuid-45ce409e-84a5-42ed-9f83-fee42afb15da">
             <target type="element" layer="annotation"
-                >uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-b1396b93-0c45-4266-891d-d71ec09440b1">
-            <target type="element" layer="annotation"
-                >uuid-b2ec2ab1-1b48-40bf-a24b-14ccca2fd856</target>
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -1512,7 +831,61 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-3f4fad33-a221-4aeb-8114-820fd52caa3e">
+            <target type="element" layer="annotation"
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0001</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-835e7bf5-b26c-430d-9882-8cfbfbe0a482">
+            <target type="element" layer="annotation"
+                >uuid-63153c96-c9cd-49c9-8b96-269349503b1b</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1527,27 +900,75 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-47cf569b-9608-40ef-acee-5e7e09a7541c" status="token">
-            <target type="range" layer="edition">
+            xml:id="uuid-d2c00465-0304-4078-b215-d864352b9e14" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
                     <start>220</start>
                     <offset>4</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>220</start>
-                    <offset>12</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>8</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-5dadcdcc-6b49-4568-b172-75d3d3243512">
+            <target type="element" layer="annotation"
+                >uuid-d2c00465-0304-4078-b215-d864352b9e14</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0002</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-50f36ad4-ab00-4a52-8571-2560d674f001">
+            <target type="element" layer="annotation"
+                >uuid-d2c00465-0304-4078-b215-d864352b9e14</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1562,10 +983,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-3d7952af-d1b9-4e44-aadf-8db50ca1f18a" status="token">
+            xml:id="uuid-4e9bd6fc-a83a-4402-83c9-09ae94988e4f" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-47cf569b-9608-40ef-acee-5e7e09a7541c</id>
+                    <id>uuid-d2c00465-0304-4078-b215-d864352b9e14</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1575,34 +996,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-ecdc8bf7-5411-4650-8b7f-d7e8fd76243d">
-            <target type="element" layer="annotation"
-                >uuid-47cf569b-9608-40ef-acee-5e7e09a7541c</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-54d08490-608c-402a-a0e3-4ddaab0be26c</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1617,10 +1011,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-21966d0b-6ea5-43de-9a8d-e3316e27f17b" status="token">
+            xml:id="uuid-e2b89516-60df-4d4d-967c-f18ef16878df" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-47cf569b-9608-40ef-acee-5e7e09a7541c</id>
+                    <id>uuid-d2c00465-0304-4078-b215-d864352b9e14</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -1630,7 +1024,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1645,36 +1039,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-7c850055-963e-4410-affc-d297a5759b39">
+            xml:id="uuid-5916cf73-ce83-4887-be92-ce7f0dabe62d">
             <target type="element" layer="annotation"
-                >uuid-47cf569b-9608-40ef-acee-5e7e09a7541c</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-7c692127-56e0-4730-a978-f7e1d4ab697a</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-afd0053a-98bf-4546-8570-c23469c21249">
-            <target type="element" layer="annotation"
-                >uuid-47cf569b-9608-40ef-acee-5e7e09a7541c</target>
+                >uuid-d2c00465-0304-4078-b215-d864352b9e14</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -1684,7 +1051,61 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-9534661a-90ee-4608-8425-ec6723ef8112">
+            <target type="element" layer="annotation"
+                >uuid-d2c00465-0304-4078-b215-d864352b9e14</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0002</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-8286c1ec-1800-42ae-bba4-abc8d2a13857">
+            <target type="element" layer="annotation"
+                >uuid-d2c00465-0304-4078-b215-d864352b9e14</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1699,27 +1120,75 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7" status="token">
-            <target type="range" layer="edition">
+            xml:id="uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-5f992f3a-6033-49e4-99da-cb92f3712591</id>
                     <start>262</start>
                     <offset>122</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>262</start>
-                    <offset>128</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>6</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-b063aeeb-f9bb-43a4-84a0-e467074ffab1">
+            <target type="element" layer="annotation"
+                >uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0003</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-d87e3871-4dc8-4a5e-90dd-bb1efacf5298">
+            <target type="element" layer="annotation"
+                >uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1734,10 +1203,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-b78f31f1-d1b1-4699-8f55-5dba517e6570" status="token">
+            xml:id="uuid-550b5bbc-52d5-426c-8401-8e7655cca0a0" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7</id>
+                    <id>uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -1747,34 +1216,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-8b2cd02c-5da2-41b5-b580-601e15634169">
-            <target type="element" layer="annotation"
-                >uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-cee18fca-11cc-4316-a0d6-55be002299ba</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1789,10 +1231,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-1a7f72df-b5ce-4202-9b23-000d69e82a24" status="token">
+            xml:id="uuid-4cda462e-23c7-4060-a2b8-91a0fd776c10" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7</id>
+                    <id>uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -1802,7 +1244,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1817,21 +1259,22 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-eb87cc9d-068e-4373-939c-9389891b5e8b" status="token">
+            xml:id="uuid-d9afa253-df35-43c0-bfcb-00b6680c49c1" status="token">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>uuid-1a7f72df-b5ce-4202-9b23-000d69e82a24</id>
+                    <id>uuid-4cda462e-23c7-4060-a2b8-91a0fd776c10</id>
                     <start>7</start>
                     <offset>0</offset>
                 </base-layer>
             </target>
             <body>
-                <lb xmlns="http://www.tei-c.org/ns/1.0"/>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/>
             </body>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1846,118 +1289,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-52563b71-f6f5-4cfa-b900-a5c3ba607880">
+            xml:id="uuid-c6e236dc-68ec-4b65-93da-d0edac9e61a3">
             <target type="element" layer="annotation"
-                >uuid-eb87cc9d-068e-4373-939c-9389891b5e8b</target>
-            <body>
-                <attribute/>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-785e1fdf-4998-47ef-a783-9f85458fadc5" status="token">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>uuid-52563b71-f6f5-4cfa-b900-a5c3ba607880</id>
-                    <start>34</start>
-                    <offset>6</offset>
-                </base-layer>
-            </target>
-            <body>
-                <name>xml:id</name>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a10418e3-35e9-4b55-994b-562468ac589e" status="token">
-            <target type="range" layer="feature">
-                <base-layer>
-                    <id>uuid-52563b71-f6f5-4cfa-b900-a5c3ba607880</id>
-                    <start>73</start>
-                    <offset>41</offset>
-                </base-layer>
-            </target>
-            <body>
-                <value>uuid-913f9666-6549-4d6b-b499-f5275431e97b</value>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-58e32205-2cdd-4500-8a7b-187beaae94e3">
-            <target type="element" layer="annotation"
-                >uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-9825da12-1618-4e96-a059-880546343d92">
-            <target type="element" layer="annotation"
-                >uuid-255550f6-0397-4ae1-893f-9f70c0c9c5c7</target>
+                >uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -1967,7 +1301,88 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-f58e3d2c-5efd-41af-b5de-b995d40096c2">
+            <target type="element" layer="annotation"
+                >uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0003</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-03752ccf-78a5-43b8-805c-5a98af26b3dd">
+            <target type="element" layer="annotation"
+                >uuid-e167e138-57fc-4fe8-8faf-6f2f5993aebd</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-a776349c-b2be-4141-adde-1613e063d151">
+            <target type="element" layer="annotation"
+                >uuid-c372934f-b138-4666-9c2c-57517ed6b14c</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>centerautosum</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -1982,27 +1397,1362 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1" status="token">
-            <target type="range" layer="edition">
+            xml:id="uuid-a7346055-05ff-4702-8c34-b91d5710ca99" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c372934f-b138-4666-9c2c-57517ed6b14c</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <quote xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c688a80a-6fb9-4930-a2bf-afb763cb62d7" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0">PROMOTION FOR BARNES, WHOM TILLMAN
+                    BERATED</hi>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-6b8579a2-0771-4bad-b0e5-7cc1427968ab">
+            <target type="element" layer="annotation"
+                >uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-185dbbc9-52d0-47fe-b8dc-c98c89e71f29" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <ptr xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-8e98ba1f-9c4f-4938-9f61-73e168b43098">
+            <target type="element" layer="annotation"
+                >uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf</target>
+            <body>
+                <attribute>
+                    <name>target</name>
+                    <value>#en0001</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-7b900fff-a82e-46d1-a009-6c30944094cd">
+            <target type="element" layer="annotation"
+                >uuid-a77c1a24-5ffc-4179-b4ce-a8769782f8cf</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>an</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-3941a86b-0bad-434b-8d86-8c31a897f45c">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-708ab9d4-5055-4514-8488-6c4836c96324" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-d0c3e75b-e3c0-4b48-bd8f-081a28e21daf">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-1c71f464-9d2a-437b-8fe5-e443ead2db9e">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-14f966f0-b904-4472-9828-9b5481988c1a" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>3</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-afc24add-ea48-483b-b5ed-542f2b3d522e" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-14f966f0-b904-4472-9828-9b5481988c1a</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0">Had Woman Ejected from White House; to be
+                    Postmaster.</hi>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-63d7563f-6288-4ec1-be20-20cc9627a0f2">
+            <target type="element" layer="annotation"
+                >uuid-14f966f0-b904-4472-9828-9b5481988c1a</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-903f568d-a0ca-40f1-be80-14dffb06902f">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-51675242-dd7e-48f6-9807-fe1af1e4c38a" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>4</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-f7df7043-4a17-4da6-a71f-8d06a180e38b">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-205e393c-ac8d-454b-90ca-fc7405ae3014">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-5347009d-0844-4c9a-b053-ecaadc97a55a" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>5</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-66e97deb-ff18-474f-9a67-7fe7571c9744" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-5347009d-0844-4c9a-b053-ecaadc97a55a</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"> MERRITT GETS NEW PLACE</hi>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-c397d6cf-e507-42cb-8b9b-cf5bc1f1fcf0">
+            <target type="element" layer="annotation"
+                >uuid-5347009d-0844-4c9a-b053-ecaadc97a55a</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-2824b98b-0a33-4018-aecc-5fafa68b5afd">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-42046f48-9ba4-4130-a798-8a7a1eb74c29" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>6</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-08e9b63c-b2e3-493a-9ddc-40f53fc41162">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-faf46857-43e3-4762-8c99-9ff884989640">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-829c7003-4e99-46b9-bc9b-20dba9ae7b09" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>7</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-e1f53a9b-f388-4817-9e6b-4f5c677a17b5" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-829c7003-4e99-46b9-bc9b-20dba9ae7b09</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-efcf7875-45e8-47f8-a4fe-3e77f8a7ab82" status="string">
+            <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000011</id>
+                    <id>uuid-e1f53a9b-f388-4817-9e6b-4f5c677a17b5</id>
                     <start>43</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-7cf5bd55-4a62-4559-997f-bb64abe9cbfb"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-6e8abc0f-67d7-4a2a-a315-fd464f8beb6c">
+            <target type="element" layer="annotation"
+                >uuid-829c7003-4e99-46b9-bc9b-20dba9ae7b09</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-c895bbac-4835-427a-ac27-439bcd4f5ecb">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-a70a3176-df8d-4534-8b11-5fc8b953eb10" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>8</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c1c30f25-f2ac-4210-b87f-14af0b6cd530" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a70a3176-df8d-4534-8b11-5fc8b953eb10</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0">Special to The New York Times.</hi>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-6e5d4090-1aa6-4a13-9669-33cc9f1ab56b">
+            <target type="element" layer="annotation"
+                >uuid-a70a3176-df8d-4534-8b11-5fc8b953eb10</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>italic</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-5619df39-caac-40cd-aa31-2b65b36d4144">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-5f75fc06-9340-42b3-b079-a6205b3720aa" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>9</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-f383a143-333e-48a3-a877-b7f47ac535ce" status="string">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-5f75fc06-9340-42b3-b079-a6205b3720aa</id>
+                    <start>353</start>
+                    <offset>0</offset>
+                </base-layer>
+            </target>
+            <body>
+                <ptr xmlns="http://www.tei-c.org/ns/1.0" target="#en0002" type="an" xml:id="nv0002"
+                />
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-e6d4e5c1-0dfa-4b7d-ba64-bbe5754c1b3c">
+            <target type="element" layer="annotation"
+                >uuid-f383a143-333e-48a3-a877-b7f47ac535ce</target>
+            <body>
+                <attribute>
+                    <name>target</name>
+                    <value>#en0002</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-4affd7ec-3997-44f4-b856-ca896dda1a48">
+            <target type="element" layer="annotation"
+                >uuid-f383a143-333e-48a3-a877-b7f47ac535ce</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>an</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-a7a1235f-0343-48d3-86e7-470414c21fe2">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-9ba9fcb2-2659-4a79-b68b-0f4370897d85" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>10</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0">Mr. Barnes is at present assistant secretary
+                    to the President. Only a short time ago he figured extensively in the newspapers
+                    for having ordered the forcible ejection from the White House of Mrs. Minor
+                    Morris, a Washington woman who had called to see the President. What attracted
+                    attention to the case was not the ejection itself, but the violence with which
+                    it was performed.</p>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-fd08a15e-b2bf-4613-9c39-a407c60376fa">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-3e65ce67-8e58-482d-8f21-92f795b9a288" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>11</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0">Mrs. Morris, who had been talking to Barnes
+                    in an ordinary conversational tone, and with no indications of excitement, so
+                    far as the spectators observed, was seized by two policemen and dragged by the
+                    arms out of the building and across the asphalt walk in front of the White
+                    House, a distance corresponding to that of two ordinary city blocks. During a
+                    part of the journey a negro carried her by the feet. Her dress was torn and
+                    trampled.</p>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-4c2e3e8d-4701-41b2-b916-f07cf95d3244">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-cad73403-8ad8-49ab-b4a1-d72564414ce7" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>12</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0">She was locked up on a charge of disorderly
+                    conduct, and when it was learned that she would be released on that charge a
+                    policeman, a relative of Barnes’s, was sent to the House of Detention to prefer
+                    a charge of insanity against her so that she would have to be held. She was held
+                    accordingly until two physicians had examined her and pronounced her sane. He
+                    was denounced by Mrs. Morris, by various newspapers, and by Mr. Tillman in the
+                    Senate.</p>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-885b0e08-9336-469b-b24d-3b91c98d794f">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-dffa6cf9-13f1-40db-a299-3ae2e616400d" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-a7346055-05ff-4702-8c34-b91d5710ca99</id>
+                    <order>13</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+            xml:id="uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0" status="token">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-dffa6cf9-13f1-40db-a299-3ae2e616400d</id>
                     <start>43</start>
-                    <offset>-5</offset>
-                </authoritative-layer>
+                    <offset>0</offset>
+                </base-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
-            <layer-offset-difference>-5</layer-offset-difference>
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-b482db00-10cf-49b1-b150-dc96552ff1e1">
+            <target type="element" layer="annotation"
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0005</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="xxxxuuid-98761426-bed7-4f65-9f4d-1fefd9e0674e">
+            <target type="element" layer="annotation"
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -2017,10 +2767,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-a8612c44-f8ae-4e8c-924b-3cc0e953c2d8" status="token">
+            xml:id="uuid-80492cf7-3f74-408d-8d3e-0b61104380d1" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</id>
+                    <id>uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -2030,34 +2780,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-e8b7231f-1d4f-4f84-8dc0-c2e07566005a">
-            <target type="element" layer="annotation"
-                >uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-db312f17-7f15-4041-99f7-6a96b3e60fba</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -2072,10 +2795,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-07469a4f-44fa-4698-8a25-380ac9ab2748" status="token">
+            xml:id="uuid-241e9b0e-2cce-40d5-8204-3dd68df8cd85" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</id>
+                    <id>uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -2085,7 +2808,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -2100,36 +2823,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-cfbbf11a-63f9-448f-a14d-1e3b965b47ee">
+            xml:id="uuid-fcfdfcef-e8e1-4292-9a6f-b613f462e984">
             <target type="element" layer="annotation"
-                >uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-0772d0eb-ef7d-4eb4-9e6d-28c9e921913f">
-            <target type="element" layer="annotation"
-                >uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</target>
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -2139,7 +2835,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -2154,10 +2850,10 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
-            xml:id="uuid-65990b21-1d8f-444a-b2c8-bf542d574bff" status="token">
+            xml:id="uuid-0de445de-743d-4faa-89d8-eb3b8d9f0364" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</id>
+                    <id>uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -2167,7 +2863,7 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>
@@ -2182,36 +2878,9 @@
             </admin>
         </annotation>
         <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-61dd2cc8-e5e5-4f5f-9a6a-2ccaa9282bc0">
+            xml:id="uuid-1acf9b34-104d-4172-8b2d-1d288823c9dd">
             <target type="element" layer="annotation"
-                >uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</target>
-            <body>
-                <attribute>
-                    <name>xml:id</name>
-                    <value>uuid-37300be1-2a22-4621-b292-e672fa264a5d</value>
-                </attribute>
-            </body>
-            <admin>
-                <creation>
-                    <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
-                    <note/>
-                </creation>
-                <review>
-                    <user/>
-                    <time/>
-                    <note/>
-                </review>
-                <imprimatur>
-                    <user/>
-                    <time/>
-                </imprimatur>
-            </admin>
-        </annotation>
-        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
-            xml:id="uuid-0bab34e1-7540-452c-b7d0-81493f05c631">
-            <target type="element" layer="annotation"
-                >uuid-6ef1346b-c0d6-41e2-9707-aedbba6ed9c1</target>
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -2221,7 +2890,142 @@
             <admin>
                 <creation>
                     <user>guest</user>
-                    <time>2013-12-06T22:40:00.251+01:00</time>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-aa0fbac3-d964-4b82-b8f1-7579be511af5">
+            <target type="element" layer="annotation"
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0005</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-5447c609-3131-44a4-ae08-f1c28589e77c">
+            <target type="element" layer="annotation"
+                >uuid-c472722b-f7f4-449b-b42b-f3e0e03c2ab0</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-941618eb-7340-4063-a0a1-bfb984a77ff1">
+            <target type="element" layer="annotation"
+                >uuid-a7346055-05ff-4702-8c34-b91d5710ca99</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-4a6cea8a-8ff6-4d47-816d-12f875c92a60">
+            <target type="element" layer="annotation"
+                >uuid-c372934f-b138-4666-9c2c-57517ed6b14c</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>blockquote</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
+                    <note/>
+                </creation>
+                <review>
+                    <user/>
+                    <time/>
+                    <note/>
+                </review>
+                <imprimatur>
+                    <user/>
+                    <time/>
+                </imprimatur>
+            </admin>
+        </annotation>
+        <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="attribute"
+            xml:id="uuid-6ad887db-fed9-4231-aaf8-8c3c90e9e439">
+            <target type="element" layer="annotation"
+                >uuid-32815de6-217f-4ddb-8db5-ca813fd4bf08</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>chapter</value>
+                </attribute>
+            </body>
+            <admin>
+                <creation>
+                    <user>guest</user>
+                    <time>2013-12-20T17:37:37.535+01:00</time>
                     <note/>
                 </creation>
                 <review>

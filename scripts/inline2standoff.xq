@@ -1,5 +1,5 @@
 xquery version "3.0";
-
+(:9467fbfa7dd957e3fe0b5cd4ffd7f59278da7e07- modified:)
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
@@ -67,12 +67,12 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Extracts all upper-level element nodes and records their position in relation to the base layer. :)
+(: Extracts all upper-level element nodes of the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
 declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
     for $node in $input/element()
-        let $base-before-element := string-join(local:separate-layers($node/preceding-sibling::node(), 'base'))
+        let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
-        let $marked-up-string := string-join(local:separate-layers(<annotation>{$node}</annotation>, 'base'))
+        let $marked-up-string := string-join(local:separate-text-layers(<annotation>{$node}</annotation>, 'base'))
         let $id := concat('uuid-', util:uuid())
         let $position-start := 
             string-length($base-before-element) + 
@@ -81,7 +81,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
         return
             let $element-result :=
                 <annotation type="element" xml:id="{$id}" status="{
-                        let $base-text := string-join(local:separate-layers($input, 'base'))
+                        let $base-text := string-join(local:separate-text-layers($input, 'base'))
                         let $character-before := substring($base-text, $position-start, 1)
                         let $character-after := substring($base-text, $position-end + 1, 1)
                         let $characters-before-and-after := concat($character-before, $character-after)
@@ -101,7 +101,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             <offset>{$position-end - $position-start}</offset>
                         </base-layer>
                     </target>
-                    <body>{element {node-name($node)}{$node/node()}}</body>
+                    <body>{element {node-name($node)}{$node/@*, $node/node()}}</body>
                     <layer-offset-difference>{
                         let $off-set-difference :=
                             if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
@@ -132,7 +132,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                     </admin>
                 </annotation>
             let $attribute-result := 
-                    for $attribute in $node/@*
+                    for $attribute in $node/(@* except @xml:id)
                         return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                         <target type="element" layer="annotation">{$id}</target>
                         <body>
@@ -169,7 +169,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
 };
 
 (: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) text :)
-declare function local:separate-layers($input as node()*, $target) as item()* {
+declare function local:separate-text-layers($input as node()*, $target) as item()* {
     for $node in $input/node()
         return
             typeswitch($node)
@@ -210,7 +210,7 @@ declare function local:separate-layers($input as node()*, $target) as item()* {
                     then $node
                     else ()
                 
-                        default return local:separate-layers($node, $target)
+                        default return local:separate-text-layers($node, $target)
 };
 
 (: This function removes inline elements from the result of separate-layers :)
@@ -231,16 +231,27 @@ declare function local:remove-inline-elements($nodes as node()*, $block-elements
 };
 
 declare function local:handle-element-only-annotations($node as node()) as item()* {
-            let $layer-1-body-contents := $node//body/* (:get the element below body - this can ony be a single element:)
-            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}
-                {
-                for $attribute in $layer-1-body-contents/@*
-                    return
-                        attribute {name($attribute)} {$attribute}
-                } (:construct empty element with attributes:)
+            let $layer-1-body-contents := $node//body/* (: get the element below body - this can ony be a single item :)
+            let $layer-1-admin-contents := $node//admin/* (: get the elements below admin :)
+            let $layer-1-id := $node/@xml:id/string() (: get id :)
+            let $layer-1-body-attributes :=
+                for $attribute in $layer-1-body-contents/(@* except @xml:id)
+                    return 
+                        <annotation type="attribute" xml:id="{concat('xxxxuuid-', util:uuid())}">
+                            <target type="element" layer="annotation">{$layer-1-id}</target>
+                            <body>
+                                <attribute>
+                                    <name>{name($attribute)}</name>
+                                    <value>{$attribute/string()}</value>
+                                </attribute>
+                            </body>
+                            <admin>{$layer-1-admin-contents}</admin>
+                        </annotation>
+            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{''}
+            (:construct empty element:)
             let $layer-1 := local:remove-elements($node, 'body') (:remove the old body,:)
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (: and insert the new body:)
-                return $layer-1
+                return ($layer-1, $layer-1-body-attributes)
                 (:return the old annotation, with an empty element below body:)
             ,
             let $layer-1-id := $node/@xml:id/string() (: get id :)
@@ -251,7 +262,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                 let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
                 let $attribute-annotations := 
-                    for $attribute in $element/@*
+                    for $attribute in $element/(@* except @xml:id)
                         return 
                             <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                                 <target type="element" layer="annotation">{$layer-1-id}</target>
@@ -285,10 +296,10 @@ declare function local:handle-element-only-annotations($node as node()) as item(
 };
 
 declare function local:handle-mixed-content-annotations($node as node()) as item()* {
-    (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input:)
+    (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input, except that no edition-layer-elements are relevant:)
             let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
-                for $attribute in $layer-1-body-contents/@*
+                for $attribute in $layer-1-body-contents/(@* except @xml:id)
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
             let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
@@ -311,35 +322,37 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
             if (not($node//body/string())) (: there is no text anywhere (an empty element), so pass through:)
             then $node
             else 
-                if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node :)
+                if (local-name($node//body/*) eq 'attribute') (: there is an attribute annotation, so do not split up, but pass through. :)
                 then $node
                 else 
-                    if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
-                    then local:handle-mixed-content-annotations($node)
-                    else local:handle-element-only-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node and if it is not mixed contents, then it is exclusively one or more element nodes, so send on and receive back in reduced form :)
+                    if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
+                    then $node
+                    else 
+                        if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
+                        then local:handle-mixed-content-annotations($node)
+                        else local:handle-element-only-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node, if it is not an attribute, and if it is not mixed contents, then it is an element node, so send it on and receive it back in reduced form :)
 };
 
-declare function local:generate-text($element as element(), $target as xs:string) as element() {
+declare function local:generate-text-layer($element as element(), $target as xs:string) as element() {
     element {node-name($element)}
-    {$element/@*,
+    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)
+    ,
     for $node in $element/node()
         return
-            if ($node instance of element() and not($node/text()))
-            then local:generate-text($node, $target)
+            if ($node instance of element() and not($node/text())) (: if the node is an element which does not have a child text node, then recurse. :)
+            then local:generate-text-layer($node, $target)
             else
-                if ($node instance of element() and exists($node/text()))
+                if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with an @xml:id and get its text layer. :)
                 then 
                     element {node-name($node)}
-                    {
-                        for $attribute in $node/@*
-                            return
-                                if (name($attribute) eq 'xml:id')
-                                then attribute {'xml:id'}{concat('uuid-', util:uuid(concat('base-text', $node/@xml:id)))} (: construct a new UUID based on the old one :)
-                                else attribute {name($attribute)} {$attribute}
-                                ,
-                                string-join(local:separate-layers($node, $target))
+                    {attribute{'xml:id'}{$node/@xml:id}(:{concat('uuid-', util:uuid(concat('base-text', $node/@xml:id)))} construct a new UUID based on the old one :)  (: all remaining attributes are saved as annotations :) (:NB???:)
+                    ,
+                    string-join(local:separate-text-layers($node, $target))
                     }
-                else $node
+                else 
+                    if ($node instance of comment()) (: pass through comments. :)
+                    then $node
+                    else ()
     }
 };
 
@@ -354,7 +367,7 @@ declare function local:generate-top-level-annotations($elements as element()*, $
 
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat('/db/test/out/', $doc-title))
-let $doc-element := $doc/*
+let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
@@ -362,16 +375,16 @@ let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $documentary-elements := ('milestone', 'pb', 'lb', 'hi')
 let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
 
-let $base-text := local:generate-text($doc-text, 'base')
+let $base-text := local:generate-text-layer($doc-text, 'base')
 let $base-text := local:remove-inline-elements($base-text, $block-elements)
 
-let $authoritative-text := local:generate-text($doc-text, 'authoritative')
+let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-elements)
 
 (: get all the block-level elements that have edition-layer-elements as children :)
-let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..
+(:let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..:)
 
-let $top-level-annotations := local:generate-top-level-annotations($doc-elements-with-annotations, $edition-layer-elements)
+let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements)
 let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
 
 let $annotations :=
