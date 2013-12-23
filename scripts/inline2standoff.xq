@@ -1,5 +1,5 @@
 xquery version "3.0";
-(:9467fbfa7dd957e3fe0b5cd4ffd7f59278da7e07- modified:)
+
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
@@ -67,80 +67,58 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Extracts all upper-level element nodes of the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
+(: Extracts all upper-level element nodes from the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
 declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
         let $marked-up-string := string-join(local:separate-text-layers(<annotation>{$node}</annotation>, 'base'))
         let $id := concat('uuid-', util:uuid())
-        let $position-start := 
-            string-length($base-before-element) + 
-            string-length($base-before-text)
+        let $position-start := string-length($base-before-element) + string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
-        return
-            let $element-result :=
-                <annotation type="element" xml:id="{$id}" status="{
-                        let $base-text := string-join(local:separate-text-layers($input, 'base'))
-                        let $character-before := substring($base-text, $position-start, 1)
-                        let $character-after := substring($base-text, $position-end + 1, 1)
-                        let $characters-before-and-after := concat($character-before, $character-after)
-                        let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
-                        return
-                        if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
-                    <target type="range" layer="{
-                        if (local-name($node) = $edition-layer-elements) 
-                        then 'edition' 
-                        else 
-                            if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
-                            then 'document' 
-                            else 'feature'}">
-                        <base-layer>
-                            <id>{string($node/../@xml:id)}</id>
-                            <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
-                            <offset>{$position-end - $position-start}</offset>
-                        </base-layer>
-                    </target>
-                    <body>{element {node-name($node)}{$node/@*, $node/node()}}</body>
-                    <layer-offset-difference>{
-                        let $off-set-difference :=
-                            if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
-                            then
-                                if (($node//app or name($node) = 'app') and $node//tei:lem) 
-                                then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
-                                else 
-                                    if (($node//tei:app or name($node) = 'app') and $node//tei:rdg) 
-                                    then 
-                                        let $non-base := string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))])
-                                        let $base := string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
-                                            return 
-                                                $non-base - $base
-                                    else
-                                        if ($node//tei:choice or name($node) = 'choice') 
-                                        then string-length($node//tei:reg) - string-length($node//tei:sic)
-                                        else 0
-                            else 0            
-                                return $off-set-difference}</layer-offset-difference>
-                    <admin>
-                        <creation>
-                            <user>{xmldb:get-current-user()}</user>
-                            <time>{current-dateTime()}</time>
-                            <note/>
-                        </creation>
-                        <review><user/><time/><note/></review>
-                        <imprimatur><user/><time/></imprimatur>
-                    </admin>
-                </annotation>
-            let $attribute-result := 
-                    for $attribute in $node/(@* except @xml:id)
-                        return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                        <target type="element" layer="annotation">{$id}</target>
-                        <body>
-                            <attribute>
-                                <name>{name($attribute)}</name>
-                                <value>{$attribute/string()}</value>
-                            </attribute>
-                        </body>
+            return
+                let $element-result :=
+                    <annotation type="element" xml:id="{$id}" status="{
+                            let $base-text := string-join(local:separate-text-layers($input, 'base'))
+                            let $character-before := substring($base-text, $position-start, 1)
+                            let $character-after := substring($base-text, $position-end + 1, 1)
+                            let $characters-before-and-after := concat($character-before, $character-after)
+                            let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
+                            return
+                            if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                        <target type="range" layer="{
+                            if (local-name($node) = $edition-layer-elements) 
+                            then 'edition' 
+                            else 
+                                if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
+                                then 'document' 
+                                else 'feature'}">
+                            <base-layer>
+                                <id>{string($node/../@xml:id)}</id>
+                                <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
+                                <offset>{$position-end - $position-start}</offset>
+                            </base-layer>
+                        </target>
+                        <body>{element {node-name($node)}{$node/@*, $node/node()}}</body>
+                        <layer-offset-difference>{
+                            let $off-set-difference :=
+                                if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
+                                then
+                                    if (($node//app or name($node) = 'app') and $node//tei:lem) 
+                                    then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
+                                    else 
+                                        if (($node//tei:app or name($node) = 'app') and $node//tei:rdg) 
+                                        then 
+                                            let $non-base := string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))])
+                                            let $base := string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
+                                                return 
+                                                    $non-base - $base
+                                        else
+                                            if ($node//tei:choice or name($node) = 'choice') 
+                                            then string-length($node//tei:reg) - string-length($node//tei:sic)
+                                            else 0
+                                else 0            
+                                    return $off-set-difference}</layer-offset-difference>
                         <admin>
                             <creation>
                                 <user>{xmldb:get-current-user()}</user>
@@ -150,8 +128,28 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             <review><user/><time/><note/></review>
                             <imprimatur><user/><time/></imprimatur>
                         </admin>
-                        </annotation>
-        return ($element-result, $attribute-result)
+                    </annotation>
+                let $attribute-result := 
+                        for $attribute in $node/(@* except @xml:id)
+                            return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                            <target type="element" layer="annotation">{$id}</target>
+                            <body>
+                                <attribute>
+                                    <name>{name($attribute)}</name>
+                                    <value>{$attribute/string()}</value>
+                                </attribute>
+                            </body>
+                            <admin>
+                                <creation>
+                                    <user>{xmldb:get-current-user()}</user>
+                                    <time>{current-dateTime()}</time>
+                                    <note/>
+                                </creation>
+                                <review><user/><time/><note/></review>
+                                <imprimatur><user/><time/></imprimatur>
+                            </admin>
+                            </annotation>
+            return ($element-result, $attribute-result)
 };
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
@@ -214,17 +212,17 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
 };
 
 (: This function removes inline elements from the result of separate-layers :)
-declare function local:remove-inline-elements($nodes as node()*, $block-elements as xs:string+) as node()* {
+declare function local:remove-inline-elements($nodes as node()*, $block-element-names as xs:string+) as node()* {
     for $node in $nodes/node()
     return
         if ($node instance of element())
         then
-            if (local-name($node) = $block-elements)
+            if (local-name($node) = $block-element-names)
             then element {node-name($node)}
                     {
                     $node/@*
                     ,
-                    local:remove-inline-elements($node, $block-elements)
+                    local:remove-inline-elements($node, $block-element-names)
                     }
             else $node/node()
         else $node
@@ -237,7 +235,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
             let $layer-1-body-attributes :=
                 for $attribute in $layer-1-body-contents/(@* except @xml:id)
                     return 
-                        <annotation type="attribute" xml:id="{concat('xxxxuuid-', util:uuid())}">
+                        <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                             <target type="element" layer="annotation">{$layer-1-id}</target>
                             <body>
                                 <attribute>
@@ -265,7 +263,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                     for $attribute in $element/(@* except @xml:id)
                         return 
                             <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                                <target type="element" layer="annotation">{$layer-1-id}</target>
+                                <target type="element" layer="annotation">{$annotation-id}</target>
                                 <body>
                                     <attribute>
                                         <name>{name($attribute)}</name>
@@ -357,12 +355,11 @@ declare function local:generate-text-layer($element as element(), $target as xs:
 };
 
 declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
-    for $element in $elements
+    for $element in $elements/*
         return
             if ($element/text())
             then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
             else local:generate-top-level-annotations($element, $edition-layer-elements)
-
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
@@ -373,18 +370,24 @@ let $doc-text := $doc-element/tei:text
 
 let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
 let $documentary-elements := ('milestone', 'pb', 'lb', 'hi')
-let $block-elements := ('p', 'head', 'quote', 'div', 'body', 'text')
+let $block-element-names := ('p', 'head', 'quote', 'div', 'body', 'text')
 
 let $base-text := local:generate-text-layer($doc-text, 'base')
-let $base-text := local:remove-inline-elements($base-text, $block-elements)
+let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
-let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-elements)
+let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
 
-(: get all the block-level elements that have edition-layer-elements as children :)
-(:let $doc-elements-with-annotations := $doc//*[local-name(.) = $edition-layer-elements][local-name(./..) = $block-elements]/..:)
+(: get all block-level elements :)
+let $block-elements := 
+    for $element in ($doc-text, $doc-text//*)[local-name(.) = $block-element-names]
+        return 
+            if (($element/text()) or ($element/element()) and not(string($element)))
+            then element { local-name($element) } { $element/@*, $element/node() }
+            else element { local-name($element) } { $element/@*, $element/text() }
+(:NB: if space is not normalized, this returns only the input (text) element?:)
 
-let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements)
+let $top-level-annotations := local:generate-top-level-annotations($block-elements, $edition-layer-elements)
 let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
 
 let $annotations :=
