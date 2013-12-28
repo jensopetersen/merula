@@ -95,7 +95,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 else 'feature'}">
                             <base-layer>
                                 <id>{string($node/../@xml:id)}</id>
-                                <start>{if ($position-end eq $position-start) then $position-start else $position-start + 1}</start>
+                                <start>{$position-start + 1}</start>
                                 <offset>{$position-end - $position-start}</offset>
                             </base-layer>
                         </target>
@@ -343,7 +343,7 @@ declare function local:generate-text-layer($element as element(), $target as xs:
                 if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with an @xml:id and get its text layer. :)
                 then 
                     element {node-name($node)}
-                    {attribute{'xml:id'}{$node/@xml:id}(:{concat('uuid-', util:uuid(concat('base-text', $node/@xml:id)))} construct a new UUID based on the old one :)  (: all remaining attributes are saved as annotations :) (:NB???:)
+                    {attribute{'xml:id'}{$node/@xml:id}
                     ,
                     string-join(local:separate-text-layers($node, $target))
                     }
