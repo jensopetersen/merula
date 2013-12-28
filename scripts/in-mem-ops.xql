@@ -14,6 +14,7 @@ declare function in-mem-ops:change-elements($node as node(), $new-content as ite
         
         if ($node instance of element() and name($node) = $target-element-names)
         then
+
             if ($action eq 'insert-before')
             then ($new-content, $node) 
             else
@@ -32,7 +33,7 @@ declare function in-mem-ops:change-elements($node as node(), $new-content as ite
                 for $child in $node/node()
                     return $child
                 }
-                else
+            else
             
             if ($action eq 'insert-as-last-child')
             then element {node-name($node)}
@@ -44,7 +45,7 @@ declare function in-mem-ops:change-elements($node as node(), $new-content as ite
                 ,
                 $new-content
                 }
-                else
+            else
                 
             if ($action eq 'substitute')
             then $new-content
@@ -78,7 +79,6 @@ declare function in-mem-ops:change-elements($node as node(), $new-content as ite
                     {$node/@*,
                 for $child in $node/node()
                     return $child}
-                
             else ()
         
         else
