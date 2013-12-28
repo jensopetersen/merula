@@ -132,7 +132,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
                             return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation">{$id}</target>
+                            <target type="element" layer="annotation(: 'annotation' here means that the annotation targets an element, i.e. that it is not of @type range:)">{$id}</target>
                             <body>
                                 <attribute>
                                     <name>{name($attribute)}</name>
@@ -155,7 +155,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
-    for $node in $nodes[@type ne 'attribute']
+    for $node in $nodes[@type eq 'element']
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
         let $sum-of-previous-offsets := sum($node/preceding-sibling::annotation/layer-offset-difference, 0)
         let $base-level-start := $node/target/base-layer/start cast as xs:integer
@@ -317,10 +317,10 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
 
 (: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element with a text node :)
 declare function local:whittle-down-annotations($node as node()) as item()* {
-            if (not($node//body/string())) (: there is no text anywhere (an empty element), so pass through:)
-            then $node
+            if (not($node//body/string())) (: there is no text anywhere, i.e it is an empty element, so extract its attributes:)
+            then local:handle-element-only-annotations($node)
             else 
-                if (local-name($node//body/*) eq 'attribute') (: there is an attribute annotation, so do not split up, but pass through. :)
+                if (local-name($node//body/*) eq 'attribute') (: it is an attribute annotation, so do not split it up, but pass through. :)
                 then $node
                 else 
                     if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
@@ -328,7 +328,7 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                     else 
                         if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
                         then local:handle-mixed-content-annotations($node)
-                        else local:handle-element-only-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node, if it is not an attribute, and if it is not mixed contents, then it is an element node, so send it on and receive it back in reduced form :)
+                        else local:handle-element-only-annotations($node) (:if it is not an empty element, and if it is not exclusively a text node, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on and receive it back in reduced form :)
 };
 
 declare function local:generate-text-layer($element as element(), $target as xs:string) as element() {
