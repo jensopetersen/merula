@@ -104,19 +104,23 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             let $off-set-difference :=
                                 if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
                                 then
-                                    if (($node//app or name($node) = 'app') and $node//tei:lem) 
+                                    if (($node//app or local-name($node) = 'app') and $node//tei:lem) 
                                     then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
                                     else 
-                                        if (($node//tei:app or name($node) = 'app') and $node//tei:rdg) 
+                                        if (($node//tei:app or local-name($node) = 'app') and $node//tei:rdg)
                                         then 
-                                            let $non-base := string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))])
-                                            let $base := string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
-                                                return 
-                                                    $non-base - $base
+                                            string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]) - string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
                                         else
-                                            if ($node//tei:choice or name($node) = 'choice') 
-                                            then string-length($node//tei:reg) - string-length($node//tei:sic)
-                                            else 0
+                                            if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
+                                            then string-length($node//tei:reg) - string-length($node//tei:orig)
+                                            else
+                                                if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:expanded and $node//tei:expanded)
+                                                then string-length($node//tei:expanded) - string-length($node//tei:abbr)
+                                                else
+                                                    if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
+                                                    then string-length($node//tei:corr) - string-length($node//tei:sic)
+                                                    else 0
+                                                
                                 else 0            
                                     return $off-set-difference}</layer-offset-difference>
                         <admin>
@@ -199,11 +203,26 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         else ()
                 
                 case element(tei:reg) return
+                    if ($target eq 'base')
+                    then () 
+                    else $node
+                case element(tei:corr) return
                     if ($target eq 'base') 
                     then () 
                     else $node
-                
-                case element(tei:sic) return 
+                case element(tei:expanded) return
+                    if ($target eq 'base') 
+                    then () 
+                    else $node
+                case element(tei:orig) return
+                    if ($target eq 'base') 
+                    then $node
+                    else ()
+                case element(tei:sic) return
+                    if ($target eq 'base') 
+                    then $node
+                    else ()
+                case element(tei:abbr) return
                     if ($target eq 'base') 
                     then $node
                     else ()
@@ -368,9 +387,9 @@ let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
-let $edition-layer-elements := ('app', 'choice', 'reg', 'sic', 'rdg', 'lem')
-let $documentary-elements := ('milestone', 'pb', 'lb', 'hi')
-let $block-element-names := ('p', 'head', 'quote', 'div', 'body', 'text')
+let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expanded')
+let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi')
+let $block-element-names := ('text', 'body', 'div', 'head', 'p', 'quote' )
 
 let $base-text := local:generate-text-layer($doc-text, 'base')
 let $base-text := local:remove-inline-elements($base-text, $block-element-names)
