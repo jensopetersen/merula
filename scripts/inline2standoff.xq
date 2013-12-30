@@ -99,7 +99,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 <offset>{$position-end - $position-start}</offset>
                             </base-layer>
                         </target>
-                        <body>{element {node-name($node)}{$node/@*, $node/node()}}</body>
+                        <body>{element {node-name($node)}{$node/@xml:id, $node/node()}}</body>
                         <layer-offset-difference>{
                             let $off-set-difference :=
                                 if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
@@ -303,7 +303,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                                 <order>{$i}</order>
                             </annotation-layer>
                         </target>
-                        <body>{element {node-name($element)}{$element/node()}}</body>
+                        <body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</body>
                         <admin>{$layer-1-admin-contents}</admin>
                     </annotation>
                     return
@@ -348,8 +348,6 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                 else 
                     if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
                     then $node
-(:                        element {node-name($node)}{$node/@xml:id, $node/text()}:)
-                    (:attributes have already been extracted, so they are output twice:)
                     else 
                         if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
                         then local:handle-mixed-content-annotations($node)
