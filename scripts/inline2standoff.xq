@@ -4,7 +4,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
 
-(: Removes elements named (identity transform) :)
+(: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
    for $node in $nodes
    return
@@ -136,7 +136,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
                             return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation(: 'annotation' here means that the annotation targets an element, i.e. that it is not of @type range:)">{$id}</target>
+                            <target type="element" layer="annotation">{$id}</target>
                             <body>
                                 <attribute>
                                     <name>{name($attribute)}</name>
@@ -159,6 +159,9 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
 declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
+    (
+    $nodes[@type ne 'element']
+    ,
     for $node in $nodes[@type eq 'element']
         let $id := concat('uuid-', util:uuid($node/target/base-layer/id)) (:create a UUID based on the UUID of the base layer:)
         let $sum-of-previous-offsets := sum($node/preceding-sibling::annotation/layer-offset-difference, 0)
@@ -168,6 +171,7 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
         let $authoritative-layer := <authoritative-layer><id>{$id}</id><start>{$authoritative-layer-start}</start><offset>{$layer-offset}</offset></authoritative-layer>
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
+    )
 };
 
 (: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) text :)
@@ -180,7 +184,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     if ($node/ancestor-or-self::element(tei:note)) 
                     then () 
                     else $node
-                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text")
+                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
                     Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return 
@@ -264,7 +268,7 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                             </body>
                             <admin>{$layer-1-admin-contents}</admin>
                         </annotation>
-            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{''}
+            let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{$layer-1-body-contents/@xml:id}
             (:construct empty element:)
             let $layer-1 := local:remove-elements($node, 'body') (:remove the old body,:)
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after') (: and insert the new body:)
@@ -344,6 +348,8 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                 else 
                     if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
                     then $node
+(:                        element {node-name($node)}{$node/@xml:id, $node/text()}:)
+                    (:attributes have already been extracted, so they are output twice:)
                     else 
                         if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
                         then local:handle-mixed-content-annotations($node)
@@ -397,16 +403,7 @@ let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
 
-(: get all block-level elements :)
-let $block-elements := 
-    for $element in ($doc-text, $doc-text//*)[local-name(.) = $block-element-names]
-        return 
-            if (($element/text()) or ($element/element()) and not(string($element)))
-            then element { local-name($element) } { $element/@*, $element/node() }
-            else element { local-name($element) } { $element/@*, $element/text() }
-(:NB: if space is not normalized, this returns only the input (text) element?:)
-
-let $top-level-annotations := local:generate-top-level-annotations($block-elements, $edition-layer-elements)
+let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements)
 let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
 
 let $annotations :=
