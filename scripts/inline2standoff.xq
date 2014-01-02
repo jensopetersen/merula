@@ -102,7 +102,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                         <body>{element {node-name($node)}{$node/@xml:id, $node/node()}}</body>
                         <layer-offset-difference>{
                             let $off-set-difference :=
-                                if (name($node) = $edition-layer-elements or $node//app or $node//choice) 
+                                if (local-name($node) = $edition-layer-elements or $node//app or $node//choice) 
                                 then
                                     if (($node//app or local-name($node) = 'app') and $node//tei:lem) 
                                     then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
@@ -177,10 +177,12 @@ declare function local:insert-authoritative-layer($nodes as element()*) as eleme
 (: Based on a list of TEI elements that alter the text, construct the altered (authoritative) or the unaltered (base) text :)
 declare function local:separate-text-layers($input as node()*, $target) as item()* {
     for $node in $input/node()
+    let $log := util:log("DEBUG", ("##$node): ", $node))
+    let $log := util:log("DEBUG", ("##$nodelength): ", string-length($node)))
         return
             typeswitch($node)
                 
-                case text() return 
+                case text() return
                     if ($node/ancestor-or-self::element(tei:note)) 
                     then () 
                     else $node
@@ -230,8 +232,8 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     if ($target eq 'base') 
                     then $node
                     else ()
-                
-                        default return local:separate-text-layers($node, $target)
+
+                    default return local:separate-text-layers($node, $target)
 };
 
 (: This function removes inline elements from the result of separate-layers :)
@@ -356,19 +358,19 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
 
 declare function local:generate-text-layer($element as element(), $target as xs:string) as element() {
     element {node-name($element)}
-    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)
+    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)(:NB: clean up - attribute declaration not needed:)
     ,
     for $node in $element/node()
         return
             if ($node instance of element() and not($node/text())) (: if the node is an element which does not have a child text node, then recurse. :)
             then local:generate-text-layer($node, $target)
             else
-                if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with an @xml:id and get its text layer. :)
+                if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with its @xml:id and get its text layer. :)
                 then 
                     element {node-name($node)}
-                    {attribute{'xml:id'}{$node/@xml:id}
+                    {attribute{'xml:id'}{$node/@xml:id}(:NB: clean up - attribute declaration not needed:)
                     ,
-                    string-join(local:separate-text-layers($node, $target))
+                    local:separate-text-layers($node, $target)
                     }
                 else 
                     if ($node instance of comment()) (: pass through comments. :)
@@ -385,17 +387,29 @@ declare function local:generate-top-level-annotations($elements as element()*, $
             else local:generate-top-level-annotations($element, $edition-layer-elements)
 };
 
-let $doc-title := 'sample_MTDP10363.xml'
-let $doc := doc(concat('/db/test/out/', $doc-title))
-let $doc-element := $doc/element()
+(:let $doc-title := 'sample_MTDP10363.xml':)
+(:let $doc := doc(concat('/db/test/out/', $doc-title)):)
+(:let $doc-element := $doc/element():)
+
+let $doc-element := 
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="MTDP10363">
+    <teiHeader> <fileDesc> <titleStmt> <title>Title</title> </titleStmt> <publicationStmt> <p>Publication Information</p> </publicationStmt> <sourceDesc> <p>Information about the source</p> </sourceDesc> </fileDesc> </teiHeader>
+<text xml:id="text1"><body xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee" facs="#MTDP10363">
+<div type="chapter" xml:id="dv0001">
+<p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor <name xml:id="xxx1" type="person">Nye</name> <lb xml:id="uuid-20d6643b-0a9d-4ef9-9d19-41ea08d0a196"/>and the practical jokers—<name xml:id="xxx2" type="person">Mr. Clemens</name> begins journalistic life <lb xml:id="uuid-50dea63f-c4c1-425c-b883-b9e06ea7d4a9"/>on <name xml:id="xxx3" type="place">Virginia City</name> <app from="dg0000" type="aet" xml:id="ap0000"><lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568"><hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic"><name xml:id="xxx4" type="publication">Enterprise</name></hi></lem><rdg xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2"><name xml:id="xxx5" type="publication">Enterprise</name></rdg></app>—Reports legislative sessions—<lb xml:id="uuid-ffd47ef8-dce4-4a4a-a82c-59fcc839d95a"/>He and <name xml:id="xxx6" type="person">Orion</name> prosper—<name xml:id="xxx7" type="person">Orion</name> builds <app from="dg0001" type="aet" xml:id="ap0001"><lem xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem><rdg xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg><rdg xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg></app> house—<app from="dg0002" type="aet" xml:id="ap0002"><lem xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem><rdg xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2">Gov.</rdg></app><name xml:id="xxx8" type="person">Nye</name> turns <name xml:id="xxx9" type="place">Territory of Nevada</name> into a <app from="dg0003" type="aet" xml:id="ap0003"><lem xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem><rdg xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="TS1, TS2">State. <lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/> (Miss Hobby, please paste this in at this point, in record of April 1st, but I may not comment on it until later.)</rdg></app></p>
+<quote xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2" rend="blockquote"><p rend="center" xml:id="pa000002"><hi xml:id="uuid-f391061f-7329-481f-8db8-ad1f42572a6f" rend="bold">PROMOTION FOR BARNES, WHOM TILLMAN&#160;BERATED</hi><ptr target="#en0001" type="an" xml:id="nv0001"/></p><milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284" rend="lightrule" unit="section"/><p rend="center" xml:id="pa000003"><hi xml:id="uuid-5888d6b7-48df-4d76-b01c-579cfbf2728d" rend="bold">Had Woman Ejected from White House; to be Postmaster.</hi></p><milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2" rend="lightrule" unit="section"/><p rend="center" xml:id="pa000004"><hi xml:id="uuid-046f291b-6922-42bf-a628-b569033170a9" rend="bold"> MERRITT GETS NEW PLACE</hi></p><milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412" rend="lightrule" unit="section"/><p rend="center" xml:id="pa000005"><hi xml:id="uuid-602b35c7-b4cf-472e-b1ba-a31e62be3998" rend="bold">Present Postmaster at Washington to be Made <lb xml:id="uuid-7cf5bd55-4a62-4559-997f-bb64abe9cbfb"/>Collector at Niagara—Platt Not Consulted.</hi></p><p rend="center" xml:id="pa000006"><hi xml:id="uuid-c5c9d69e-8f0d-4c24-95ab-15e916d8516b" rend="italic">Special to The New York Times.</hi></p><p rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.—President Roosevelt surprised the capital this afternoon by announcing that he would appoint Benjamin F. Barnes as Postmaster of Washington, to succeed John A. Merritt of New York. Mr. Merritt, who for several years has been Postmaster here, has been chosen for Collector of the Port of Niagara, succeeding the late Major James Low<ptr target="#en0002" type="an" xml:id="nv0002"/>.</p><p rend="text-indent:2" xml:id="pa000008">Mr. Barnes is at present assistant secretary to the President. Only a short time ago he figured extensively in the newspapers for having ordered the forcible ejection from the White House of Mrs. Minor Morris, a Washington woman who had called to see the President. What attracted attention to the case was not the ejection itself, but the violence with which it was performed.</p><p rend="text-indent:2" xml:id="pa000009">Mrs. Morris, who had been talking to Barnes in an ordinary conversational tone, and with no indications of excitement, so far as the spectators observed, was seized by two policemen and dragged by the arms out of the building and across the asphalt walk in front of the White House, a distance corresponding to that of two ordinary city blocks. During a part of the journey a negro carried her by the feet. Her dress was torn and trampled.</p><p rend="text-indent:2" xml:id="pa000010">She was locked up on a charge of disorderly conduct, and when it was learned that she would be released on that charge a policeman, a relative of Barnes’s, was sent to the House of Detention to prefer a charge of insanity against her so that she would have to be held. She was held accordingly until two physicians had examined her and pronounced her sane. He was denounced by Mrs. Morris, by various newspapers, and by Mr. Tillman in the Senate.</p> <p rend="text-indent:2" xml:id="pa000011">The appointment of Barnes to be Postmaster <app from="dg0005" type="aet" xml:id="ap0004"><lem xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba">so</lem><rdg xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb" wit="Times">so so</rdg><rdg xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d" wit="TS2">so</rdg></app> soon after this incident has created endless talk here. It is taken to be the President’s way of expressing confidence in Barnes and repaying him for the pain he suffered as a result of the newspaper criticisms of his course.</p></quote>
+</div>
+</body></text></TEI>
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
+
 let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expanded')
-let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi')
+let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $block-element-names := ('text', 'body', 'div', 'head', 'p', 'quote' )
 
 let $base-text := local:generate-text-layer($doc-text, 'base')
+let $log := util:log("DEBUG", ("##$base-text): ", $base-text))
 let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
