@@ -41,25 +41,27 @@ let $block-app :=
 let $block-elements := ('text','div', 'p', 'lg', 'l')
 
 let $base-text-elements :=
-    for $element in ($base-text//*)[local-name(.) = $block-elements]
+    for $element at $i in ($base-text//*)[local-name(.) = $block-elements]
     return 
         if ($element/text()) 
-        then element {local-name($element) }{ $element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, $element/node()}
-        else element {local-name($element) }{$element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1},  ''} 
+        then element {local-name($element) }{ $element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i}, $element/node()}
+        else element {local-name($element) }{$element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i},  ''} 
 
 let $app-in-base-text :=
     for $rdg in $block-app/*
     return $base-text-elements[@xml:id eq $rdg/target]
+    (:they have to get the order attribute from the app:)
 
 let $base-text-ids :=
     $base-text//@xml:id/string()
-let $log := util:log("DEBUG", ("##$base-text-ids): ", $base-text-ids))
 
 let $app-not-in-base-text :=
     for $rdg in $block-app/*[not(./target = $base-text-ids)]
-    return element {local-name($rdg/contents/*) }{ $rdg/@*, attribute{'depth'}{$rdg/level}, $rdg/contents/*}
+    return element {local-name($rdg/contents/*) }{ $rdg/@*, attribute{'depth'}{$rdg/level},  attribute{'order'}{$rdg/order}, $rdg/contents/*}
 
 let $reconstructed-text :=
-        ($app-not-in-base-text, $app-in-base-text)
+        for $element in ($app-not-in-base-text, $app-in-base-text)
+        order by number($element/@order)
+        return $element
 
 return $reconstructed-text
