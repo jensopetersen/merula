@@ -51,7 +51,10 @@ let $app-in-base-text :=
     for $rdg in $block-app/*
     return $base-text-elements[@xml:id eq $rdg/target]
     (:they have to get the order attribute from the app:)
-
+let $log := util:log("DEBUG", ("##$app-in-base-text1): ", $app-in-base-text))
+let $app-in-base-text :=
+    for $rdg in $app-in-base-text
+        return element {local-name($rdg) }{$rdg/(@* except @order), attribute{'order'}{$block-app/rdg[target = $rdg/@xml:id/string()]/order},  ''} 
 let $base-text-ids :=
     $base-text//@xml:id/string()
 
