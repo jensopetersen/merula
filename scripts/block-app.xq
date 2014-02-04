@@ -1,5 +1,126 @@
 xquery version "3.0";
 
+(:local:buildTree() and local:getLevel(): code by Jens Erat, https://stackoverflow.com/questions/21527660.:)
+
+declare namespace in-mem-ops = "http://exist-db.org/apps/mopane/in-mem-ops";
+
+declare function in-mem-ops:change-elements(
+    $node as node(), 
+    $new-content as item()*, 
+    $action as xs:string, 
+    $target-element-names as xs:string+
+) as node()* 
+{        
+        if ($node instance of element() and local-name($node) = $target-element-names)
+        then
+
+            if ($action eq 'insert-before')
+            then ($new-content, $node) 
+            else
+            
+            if ($action eq 'insert-after')
+            then ($node, $new-content)
+            else
+            
+            if ($action eq 'insert-as-first-child')
+            then element {node-name($node)}
+                {
+                $node/@*
+                ,
+                $new-content
+                ,
+                for $child in $node/node()
+                    return $child
+                }
+            else
+            
+            if ($action eq 'insert-as-last-child')
+            then element {node-name($node)}
+                {
+                $node/@*
+                ,
+                for $child in $node/node()
+                    return $child 
+                ,
+                $new-content
+                }
+            else
+                
+            if ($action eq 'substitute')
+            then $new-content
+            else 
+                
+            if ($action eq 'remove')
+            then ()
+            else 
+                
+            if ($action eq 'remove-if-empty')
+            then
+                if (normalize-space($node) eq '')
+                then ()
+                else $node
+            else
+
+            if ($action eq 'substitute-children-for-parent')
+            then $node/*
+            else
+            
+            if ($action eq 'substitute-content')
+            then
+                element {name($node)}
+                    {$node/@*,
+                $new-content}
+            else
+                
+            if ($action eq 'change-name')
+            then
+                element {$new-content[1]}
+                    {$node/@*,
+                for $child in $node/node()
+                    return $child}
+            else ()
+        
+        else
+        
+            if ($node instance of element()) 
+            then
+                element {node-name($node)} 
+                {
+                    $node/@*
+                    ,
+                    for $child in $node/node()
+                        return 
+                            in-mem-ops:change-elements($child, $new-content, $action, $target-element-names) 
+                }
+            else $node
+};
+
+declare function local:getLevel($node as element()) as xs:integer {
+    $node/@depth
+};
+
+declare function local:buildTree($nodes as element()*) as element()* {
+    for $node in $nodes
+    let $level := local:getLevel($nodes[1])
+    (: Find next node of current level, if available :)
+    let $next := ($node/following-sibling::*[local:getLevel(.) le $level])[1]
+    (: All nodes between the current node and the next node on same level are children :)
+    let $children := $node/following-sibling::*[$node << . and (not($next) or . << $next)]
+    where $level eq local:getLevel($node)
+    return
+    element { name($node) } {
+      (: Copy node attributes :)
+      $node/@*,
+      (: Copy all other subnodes, including text, pi, elements, comments :)
+      $node/node(),
+
+      (: If there are children, recursively build the subtree :)
+      if ($children)
+      then local:buildTree($children)
+      else ()
+    }
+};
+
 let $base-text :=
     <tei>
     <text n="x" xml:id="a">
@@ -47,24 +168,27 @@ let $base-text-elements :=
         then element {local-name($element) }{ $element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i}, $element/node()}
         else element {local-name($element) }{$element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i},  ''} 
 
-let $app-in-base-text :=
+let $rdg-in-base-text :=
     for $rdg in $block-app/*
     return $base-text-elements[@xml:id eq $rdg/target]
     (:they have to get the order attribute from the app:)
-let $log := util:log("DEBUG", ("##$app-in-base-text1): ", $app-in-base-text))
-let $app-in-base-text :=
-    for $rdg in $app-in-base-text
+let $log := util:log("DEBUG", ("##$rdg-in-base-text1): ", $rdg-in-base-text))
+let $rdg-in-base-text :=
+    for $rdg in $rdg-in-base-text
         return element {local-name($rdg) }{$rdg/(@* except @order), attribute{'order'}{$block-app/rdg[target = $rdg/@xml:id/string()]/order},  ''} 
 let $base-text-ids :=
     $base-text//@xml:id/string()
 
-let $app-not-in-base-text :=
+let $rdg-not-in-base-text :=
     for $rdg in $block-app/*[not(./target = $base-text-ids)]
     return element {local-name($rdg/contents/*) }{ $rdg/@*, attribute{'depth'}{$rdg/level},  attribute{'order'}{$rdg/order}, $rdg/contents/*}
 
 let $reconstructed-text :=
-        for $element in ($app-not-in-base-text, $app-in-base-text)
+        <reconstructed-text>{
+        for $element in ($rdg-not-in-base-text, $rdg-in-base-text)
         order by number($element/@order)
         return $element
+        }</reconstructed-text>
 
-return $reconstructed-text
+return
+    local:buildTree($reconstructed-text/*)
