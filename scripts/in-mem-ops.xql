@@ -10,9 +10,14 @@ module namespace in-mem-ops = "http://exist-db.org/apps/mopane/in-mem-ops";
  : If the action to be taken is 'substitute-content', any children of the target element(s) are substituted with the new content. 
  : Note that context-free functions, for instance current-date(), can be passed as new content.:)
  
-declare function in-mem-ops:change-elements($node as node(), $new-content as item()*, $action as xs:string, $target-element-names as xs:string+) as node()+ {
-        
-        if ($node instance of element() and name($node) = $target-element-names)
+declare function in-mem-ops:change-elements(
+    $node as node(), 
+    $new-content as item()*, 
+    $action as xs:string, 
+    $target-element-names as xs:string+
+) as node()* 
+{        
+        if ($node instance of element() and local-name($node) = $target-element-names)
         then
 
             if ($action eq 'insert-before')
@@ -105,7 +110,15 @@ declare function in-mem-ops:change-elements($node as node(), $new-content as ite
  : If you wish to remove an attribute from a specific element, you need to supply parameters for the element the attribute is to be attached to, the name of the attribute, as well as the action.
  : If you wish to change the name of an attribute attached to a specific element, you need to supply parameters for the element the attribute is attached to, the name the attribute has, the new the attribute is to have, as well as the action.:)
 
-declare function in-mem-ops:change-attributes($node as node(), $new-name as xs:string, $new-content as item(), $action as xs:string, $target-element-names as xs:string+, $target-attribute-names as xs:string+) as node()+ {
+declare function in-mem-ops:change-attributes(
+    $node as node(), 
+    $new-name as xs:string, 
+    $new-content as item(), 
+    $action as xs:string, 
+    $target-element-names as xs:string+, 
+    $target-attribute-names as xs:string+
+) as node()* 
+{
     
             if ($node instance of element()) 
             then
