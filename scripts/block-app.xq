@@ -1,6 +1,7 @@
 xquery version "3.0";
 
 (:local:buildTree() and local:getLevel(): code by Jens Erat, https://stackoverflow.com/questions/21527660.:)
+(:$base-text-elements: code based on code by Jens Erat, https://stackoverflow.com/questions/20729593.:)
 
 declare namespace in-mem-ops = "http://exist-db.org/apps/mopane/in-mem-ops";
 
