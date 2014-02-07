@@ -4,6 +4,13 @@ xquery version "3.0";
 (:$base-text-elements: code based on code by Jens Erat, https://stackoverflow.com/questions/20729593.:)
 
 declare namespace in-mem-ops = "http://exist-db.org/apps/mopane/in-mem-ops";
+declare namespace functx = "http://www.functx.com"; 
+
+declare function functx:path-to-node 
+  ( $nodes as node()* )  as xs:string* {
+       
+$nodes/string-join(ancestor-or-self::*/name(.), '/')
+ } ;
 
 declare function in-mem-ops:change-elements(
     $node as node(), 
@@ -146,6 +153,8 @@ let $base-text :=
         </text>
     </tei>
 
+(:let $base-text := doc('/db/test/dilthey.xml'):)
+
 let $block-app := 
 <text wit="y">
         <rdg><target>a</target><order>1</order><level>1</level><local-name>text</local-name></rdg>
@@ -160,23 +169,42 @@ let $block-app :=
         <rdg><target>l</target><order>10</order><level>5</level><local-name>l</local-name></rdg>
     </text>
 
-let $block-elements := ('text','div', 'p', 'lg', 'l')
+let $block-elements := ('body', 'head', 'text', 'lg', 'div', 'l', 'p', 'milestone', 'cit', 'fw', 'pb')
 
 let $base-text-elements :=
     for $element at $i in ($base-text//*)[local-name(.) = $block-elements]
-    return 
-        if ($element/text()) 
-        then element {local-name($element) }{ $element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i}, $element/node()}
-        else element {local-name($element) }{$element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i},  ''} 
+        let $child-text-node-exists := if ($element/text()) then 'yes' else 'no'
+        let $descendant-text-node-exists := 
+            if ($child-text-node-exists eq 'no')
+            then
+                let $path-to-element := functx:path-to-node($element)
+                let $text-ancestor-elements := functx:path-to-node($element//text())
+                let $text-ancestor-elements := 
+                    for $path in $text-ancestor-elements
+                        return substring-after($path, $path-to-element)
+                let $text-ancestor-elements := string-join($text-ancestor-elements)
+                let $text-ancestor-elements := tokenize($text-ancestor-elements, '/')
+                let $text-ancestor-elements := distinct-values($text-ancestor-elements)
+                return if (not($text-ancestor-elements = $block-elements))
+                then 'yes' else 'no'
+            else ()
+                return 
+                
+                (:either the element has a child text node or all descendant text nodes of the element have ancestors, up to the element node, all of which are all not block-level elements:)
+            
+                    if (($child-text-node-exists, $descendant-text-node-exists) = 'yes')
+                    then element {local-name($element) }{ $element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i}, $element/node()}
+                    else element {local-name($element) }{$element/@*, attribute{'depth'}{count($element/ancestor-or-self::node())-1}, attribute{'order'}{$i},  ''} 
 
 let $rdg-in-base-text :=
     for $rdg in $block-app/*
     return $base-text-elements[@xml:id eq $rdg/target]
     (:they have to get the order attribute from the app:)
-let $log := util:log("DEBUG", ("##$rdg-in-base-text1): ", $rdg-in-base-text))
+
 let $rdg-in-base-text :=
     for $rdg in $rdg-in-base-text
         return element {local-name($rdg) }{$rdg/(@* except @order), attribute{'order'}{$block-app/rdg[target = $rdg/@xml:id/string()]/order},  ''} 
+
 let $base-text-ids :=
     $base-text//@xml:id/string()
 
