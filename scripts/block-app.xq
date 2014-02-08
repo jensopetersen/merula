@@ -169,25 +169,36 @@ let $block-app :=
         <rdg><target>l</target><order>10</order><level>5</level><local-name>l</local-name></rdg>
     </text>
 
-let $block-elements := ('body', 'head', 'text', 'lg', 'div', 'l', 'p', 'milestone', 'cit', 'fw', 'pb')
+let $element-only-block-elements := ('body', 'text', 'lg', 'div')
+let $empty-block-like-elements := ('pb', 'milestone')
+let $mixed-contents-block-elements := ('head', 'l', 'p', 'cit', 'fw')
+
 
 let $base-text-elements :=
-    for $element at $i in ($base-text//*)[local-name(.) = $block-elements]
-        let $child-text-node-exists := if ($element/text()) then 'yes' else 'no'
+    for $element at $i in ($base-text//*)[local-name(.) = ($element-only-block-elements, $empty-block-like-elements, $mixed-contents-block-elements)]
+        let $child-text-node-exists := 
+            if ($element/text()) 
+            then 'yes' 
+            else 'no'
         let $descendant-text-node-exists := 
-            if ($child-text-node-exists eq 'no')
+            if ($child-text-node-exists eq 'no') 
             then
-                let $path-to-element := functx:path-to-node($element)
-                let $text-ancestor-elements := functx:path-to-node($element//text())
-                let $text-ancestor-elements := 
-                    for $path in $text-ancestor-elements
-                        return substring-after($path, $path-to-element)
-                let $text-ancestor-elements := string-join($text-ancestor-elements)
-                let $text-ancestor-elements := tokenize($text-ancestor-elements, '/')
-                let $text-ancestor-elements := distinct-values($text-ancestor-elements)
-                return if (not($text-ancestor-elements = $block-elements))
-                then 'yes' else 'no'
-            else ()
+                if (local-name($element) = ($element-only-block-elements, $empty-block-like-elements))
+                then 'no'
+                else
+                    let $path-to-element := functx:path-to-node($element)
+                    let $text-ancestor-elements := functx:path-to-node($element//text())
+                    let $text-ancestor-elements := 
+                        for $path in $text-ancestor-elements
+                            return substring-after($path, $path-to-element)
+                    let $text-ancestor-elements := string-join($text-ancestor-elements)
+                    let $text-ancestor-elements := tokenize($text-ancestor-elements, '/')
+                    let $text-ancestor-elements := distinct-values($text-ancestor-elements)
+                        return 
+                            if (not($text-ancestor-elements = ($element-only-block-elements, $empty-block-like-elements, $mixed-contents-block-elements)))
+                            then 'yes' 
+                            else 'no'
+                else ()    
                 return 
                 
                 (:either the element has a child text node or all descendant text nodes of the element have ancestors, up to the element node, all of which are all not block-level elements:)
