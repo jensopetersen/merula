@@ -170,12 +170,16 @@ let $block-app :=
     </text>
 
 let $element-only-block-elements := ('body', 'text', 'lg', 'div')
-let $empty-block-like-elements := ('pb', 'milestone')
+let $empty-block-like-elements := ('pb', 'milestone', 'lb')
 let $mixed-contents-block-elements := ('head', 'l', 'p', 'cit', 'fw')
 
-
 let $base-text-elements :=
-    for $element at $i in ($base-text//*)[local-name(.) = ($element-only-block-elements, $empty-block-like-elements, $mixed-contents-block-elements)]
+    for $element at $i in 
+        (
+            $base-text//*[local-name(.) = $element-only-block-elements]
+                union
+            $base-text//*[local-name(./parent::*) = $element-only-block-elements]
+        )
         let $child-text-node-exists := 
             if ($element/text()) 
             then 'yes' 
