@@ -126,7 +126,7 @@ declare function local:numerals-after-double-daṇḍas($element as element()) a
                 let $last-line-nos := functx:get-matches($last-line, '॥\s.*?\s॥')
                 let $last-line-nos := string-join($last-line-nos)
                 let $last-line-nos := replace($last-line-nos, ' ', '')
-                let $last-line-nos := replace($last-line-nos, '।', '')
+                let $last-line-nos := replace($last-line-nos, '॥', '')
                 let $last-line-nos := local:translate-devanagari-nos($last-line-nos)
                 let $id-value := ('ts_' || $last-line-nos)
                     return
