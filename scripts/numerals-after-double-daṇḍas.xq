@@ -144,5 +144,26 @@ declare function local:numerals-after-double-daṇḍas($element as element()) a
       }
 };
 
-let $doc := doc('/db/test/in/tsp-abbr.xml')/*
+let $frag :=
+
+<div xmlns="http://www.tei-c.org/ns/1.0">
+<lg n="3">
+    <l xml:id="b">धर्माधर्मपरिज्ञानं बुद्धादन्यस्य कस्य वा ॥ २८ ॥</l>
+    <l>सर्व एव हि विभ्रान्ताः स्थिरवस्त्वभिमानिनः ।</l>
+    <l>वस्तुसत्ताविवादेन न विपर्येति कुत्रचित् ॥ २९ ॥</l>
+</lg>
+<lg n="4">
+    <l xml:id="b">धर्माधर्मपरिज्ञानं बुद्धादन्यस्य कस्य वा ॥ २८ ॥</l>
+    <l>सर्व एव हि विभ्रान्ताः स्थिरवस्त्वभिमानिनः ।</l>
+    <l>वस्तुसत्ताविवादेन न विपर्येति कुत्रचित् ॥ ९२ ॥</l>
+</lg>
+<lg n="5" xml:id="i-have-one-already">
+    <l xml:id="b">धर्माधर्मपरिज्ञानं बुद्धादन्यस्य कस्य वा ॥ २८ ॥</l>
+    <l>सर्व एव हि विभ्रान्ताः स्थिरवस्त्वभिमानिनः ।</l>
+    <l>वस्तुसत्ताविवादेन न विपर्येति कुत्रचित् ॥ ९ ॥</l>
+</lg>
+</div>
+
+(:let $doc := doc('/db/test/in/tsp-abbr.xml')/*:)
+let $doc := $frag
     return local:numerals-after-double-daṇḍas($doc)
