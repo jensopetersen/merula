@@ -1,0 +1,11 @@
+<annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="attribute" xml:id="uuid-fa8308b6-660a-422c-a45a-4c9413207208" status="string">
+    <target type="element" layer="annotation">
+        <id>uuid-018636fc-c659-4426-a2eb-11863365465d</id>
+    </target>
+    <body>
+        <attribute>
+            <name>type</name>
+            <value>substantive</value>
+        </attribute>
+    </body>
+</annotation>

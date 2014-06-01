@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" class="templates:surround?with=templates/page.html&amp;at=main">
+    <h1>Simple expressions using the full-text index</h1>
+    <p>In the following example queries, the entire set of Shakespeare plays and works in this demo are queried.</p>
+    <section>
+        <h3>Find out where Juliet talks about love</h3>
+        <pre class="demo:display-source">
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+ 
+collection("@@path/data")//tei:sp[ft:query(., 'love')][tei:speaker = "Juliet"]
+        </pre>
+    </section>
+    <section>
+        <h3>Search for a phrase</h3>
+        <pre class="demo:display-source">
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+ 
+collection("@@path/data")//tei:sp[ft:query(., '"fenny snake"')]
+</pre>
+    </section>
+    <section>
+        <h3>Find speeches in which "love" and "father" occur closely together, using XML query syntax:</h3>
+        <pre class="demo:display-source">
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+ 
+let $query :=
+    &lt;query&gt;
+        &lt;near slop="20"&gt;&lt;term&gt;love&lt;/term&gt;&lt;near&gt;father&lt;/near&gt;&lt;/near&gt;
+    &lt;/query&gt;
+return 
+    collection("@@path/data")//tei:sp[ft:query(., $query)]
+            </pre>
+    </section>
+    <section>
+        <h3>Find speeches in which "boil" and "bubble" occur, ordering them by full-text match score</h3>
+        <pre class="demo:display-source">
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+ 
+for $m in collection("@@path/data")//tei:sp[ft:query(., "boil bubble")]
+let $score := ft:score($m)
+order by $score descending
+return 
+    &lt;m score="{$score}"&gt;{$m}&lt;/m&gt;
+</pre>
+    </section>
+    <section>
+        <h3>Find speeches and group them by play</h3>
+        <pre class="demo:display-source">xquery version "3.0";
+
+import module namespace kwic="http://exist-db.org/xquery/kwic";
+
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+
+declare function local:search($query) {
+    let $hits := //tei:sp[ft:query(., $query)]
+    return
+        local:display($hits)
+};
+
+declare function local:display($hits) {
+    for $speechInPlay in $hits
+    group by $play := $speechInPlay/ancestor::tei:TEI/@xml:id
+    return
+        &lt;div class="play"&gt;
+            &lt;h1&gt;{$play/../tei:teiHeader//tei:titleStmt/tei:title/text()}&lt;/h1&gt;
+            &lt;ul&gt;
+            {
+                for $speech in $speechInPlay
+                return
+                    &lt;li&gt;
+                        &lt;h4&gt;{$speech/tei:speaker/text()}&lt;/h4&gt;
+                        {
+                            kwic:summarize($speech, &lt;config width="40" table="no"/&gt;)
+                        }
+                    &lt;/li&gt;
+            }
+            &lt;/ul&gt;
+        &lt;/div&gt;
+};
+
+let $query := "'fenny snake'"
+return
+    local:search($query)</pre>
+    </section>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/ace.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-javascript.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-text.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-xquery.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-java.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-css.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/mode-xml.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/theme-tomorrow_night.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/ace/theme-dawn.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/highlight.js"/>
+    <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+    <script type="text/javascript" src="resources/scripts/demo.js"/>
+</div>

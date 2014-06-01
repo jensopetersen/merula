@@ -1,0 +1,9 @@
+#teiEditor {
+  display: none;
+  position: absolute;
+  padding: 10px;
+  background-color: limeGreen;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}

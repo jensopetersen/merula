@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ann="http://www.betterform.de/projects/mopane/annotation" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>TEI Annotation Editor</title>
+    </head>
+    <body>
+        <div style="display:none;">
+            <xf:model>
+                <xf:instance xmlns="http://www.betterform.de/projects/mopane/annotation">
+                    <annotation type="element" xml:id="uuid-0a8308b6-660a-422c-a45a-4c9413207205" status="string">
+                        <target type="element" layer="annotation">
+                            <id>3a8308b6-660a-422c-a45a-4c9413207208</id>
+                        </target>
+                        <body>
+                            <attribute>
+                                <name>type</name>
+                                <value>person</value>
+                            </attribute>
+                        </body>
+                    </annotation>
+                </xf:instance>
+            </xf:model>
+        </div>
+        <xf:group>
+            <xf:label>Annotation Editor</xf:label>
+            <xf:output ref="ann:target/ann:id">
+                <xf:label>id</xf:label>
+            </xf:output>
+        </xf:group>
+    </body>
+</html>

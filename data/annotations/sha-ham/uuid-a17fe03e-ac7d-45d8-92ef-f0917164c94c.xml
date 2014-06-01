@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="element" xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c" status="token">
+    <target type="range" layer="edition">
+        <id>sha-ham101003</id>
+        <start>1</start>
+        <offset>9</offset>
+    </target>
+    <body>
+        <app xmlns="http://www.tei-c.org/ns/1.0"/>
+    </body>
+</annotation>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="main">
+    <div class="span9">
+        <h1>Shakespeare's Works in TEI</h1>
+        <div id="content">
+            <h2>List of Works</h2>
+            <table class="toc">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Download</th>
+                        <th>Open</th>
+                    </tr>
+                </thead>
+                <tbody data-template="app:list-works">
+                    <tr data-template="templates:each" data-template-from="works" data-template-to="work">
+                        <td>
+                            <span data-template="app:work-id"/>
+                        </td>
+                        <td>
+                            <a href="" data-template="app:work-title"/>
+                        </td>
+                        <td>
+                            <a href="" data-template="app:epub-link">epub</a>, 
+                            <a href="" data-template="app:pdf-link">pdf</a>
+                        <td>
+                            <a href="" data-template="app:xml-link">XML</a>
+                        </td>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="span3">
+        <div class="well">
+            <form id="quicksearch" method="post" action="search.html">
+                <fieldset>
+                    <input type="search" name="query" placeholder="Search string" class="span12" data-template="templates:form-control"/>
+                    <input type="hidden" name="field" value="text"/>
+                </fieldset>
+                <a href="search.html">Advanced search</a>
+            </form>
+        </div>
+        <div class="box">
+            <p>This application is based on data provided by The WordHoard Shakespeare, a joint project of the Perseus 
+            Project at Tufts University, The Northwestern University Library, and Northwestern University
+            Academic Technologies.</p>
+            <img src="resources/images/nu-logo.gif"/>
+        </div>
+    </div>
+</div>

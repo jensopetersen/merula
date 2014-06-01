@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<collection xmlns="http://exist-db.org/collection-config/1.0">
+    <index xmlns:a8n="http://www.betterform.de/projects/mopane/annotation" xmlns:tei="http://www.tei-c.org/ns/1.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <fulltext default="none" attributes="false"/>
+        <lucene>
+            <analyzer class="org.apache.lucene.analysis.standard.StandardAnalyzer">
+                <param name="stopwords" type="org.apache.lucene.analysis.util.CharArraySet"/>
+            </analyzer>
+            <text qname="tei:sp"/>
+            <text qname="tei:l"/>
+            <text qname="tei:speaker"/>
+        </lucene>
+        <create qname="tei:speaker" type="xs:string"/>
+        <!--new-->
+        <create qname="@xml:id" type="xs:string"/>
+        <create qname="@type" type="xs:string"/>
+        <create qname="@layer" type="xs:string"/>
+        <create qname="@wit" type="xs:string"/>
+        <create qname="a8n:id" type="xs:string"/>
+    </index>
+</collection>

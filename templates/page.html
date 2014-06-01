@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title class="config:app-title">App Title</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta class="config:app-meta"/>
+        <link rel="shortcut icon" href="resources/images/favicon.ico"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/exist.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/tei.css"/>
+        <script type="text/javascript" src="resources/scripts/rangy-core.js"/>
+        <script type="text/javascript" src="resources/scripts/annotation.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery.scrollExtend.min.js"/>
+    </head>
+    <body id="grey-top" class="site:expand-links?base=http://exist-db.org/">
+        <div class="grey-bot">
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="span12" id="header">
+                        <a href="/" id="logo">eXistDB</a>
+                    </div>
+                    <!--/header-->
+                </div>
+                <div class="row-fluid">
+                    <div class="span12" id="navigation">
+                        <ul id="nav" class="dropdown dropdown-horizontal">
+                            <li class="dir" id="about">
+                                <span>Home</span>
+                                <ul>
+                                    <li>
+                                        <a href="{demo}/index.html">Demo App</a>
+                                    </li>
+                                    <li>
+                                        <a href="{dashboard}/index.html">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://exist-db.org">eXist-db.org</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dir" id="demo">
+                                <span>Shakespeare</span>
+                                <ul>
+                                    <li>
+                                        <a href="{shakes}/plays/">Overview of Plays</a>
+                                    </li>
+                                    <li>
+                                        <a href="{shakes}/demo-queries.html">Basic XQuery Examples</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dir" id="documentation">
+                                <span>Documentation</span>
+                                <ul>
+                                    <li>
+                                        <a href="{doc}/documentation.xml">Documentation</a>
+                                    </li>
+                                    <li>
+                                        <a href="{fundocs}/index.html">XQuery Functions</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://markmail.org/search/exist-db">Mailing List</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://atomic.exist-db.org">News / Wiki</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://en.wikibooks.org/wiki/XQuery">XQuery Wikibook</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dir" id="development">
+                                <span>Development</span>
+                                <ul>
+                                    <li>
+                                        <a href="{eXide}/index.html">eXide</a>
+                                    </li>
+                                    <li>
+                                        <a href="http://exist-db.org/api/index.html">Javadocs</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://github.com/eXist-db/exist">Github Repo</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="dir" id="administration">
+                                <span>Administration</span>
+                                <ul>
+                                    <li>
+                                        <a href="{dashboard}/index.html">Dashboard</a>
+                                    </li>
+                                    <li>
+                                        <a href="/webstart/exist.jnlp">Webstart Client</a>
+                                    </li>
+                                    <li>
+                                        <a href="/admin/">Admin Web Client</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    <div id="teiEditor">
+                        <form id="teiEditorForm">
+                            <label>TEI Type:</label>
+                            <div>
+                                <select id="teiTypeSelector">
+                                    <option value=""/>
+                                    <option value="emph">emphasis</option>
+                                    <option value="name">name</option>
+                                    <option value="rs">refers to</option>
+                                </select>
+                                <input id="teiTypeValue" type="text" value="" disabled="disabled"/>
+                                <input id="teiXmlId" type="hidden" value=""/>
+                            </div>
+                            <div>
+                                <input id="cancelTeiAnnotation" type="button" value="cancel"/>
+                                <span style="display: inline-block;width: 120px;"/>
+                                <input id="saveTeiAnnotation" type="button" value="save"/>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="main" class="row-fluid annotatable"/>
+                </div>
+            </div>
+            <div id="footer">
+                <div id="copyright">
+                    <p>Copyright eXist-db Project 2013</p>
+                </div><!--/copyright-->
+            </div><!--/footer-->
+        </div>
+        <script type="text/javascript">
+            var annotations = new Annotations.Selection(".play");
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="main">
+    <div class="span9">
+        <div id="content">
+            <a href="." class="nav-link">Back to all plays</a>
+            <div data-template="app:work">
+                <div data-template="app:header"/>
+                <div data-template="app:outline" data-template-details="yes"/>
+            </div>
+        </div>
+    </div>
+    <div class="span3">
+        <div class="well">
+            <form id="quicksearch" method="POST" action="search.html">
+                <fieldset>
+                    <input type="search" name="query" placeholder="Search string" class="span12" data-template="templates:form-control"/>
+                </fieldset>
+                <a href="search.html">Advanced search</a>
+            </form>
+        </div>
+    </div>
+</div>

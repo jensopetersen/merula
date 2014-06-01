@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="main">
+    <div data-template="app:work">
+        <div class="span9">
+            <div id="content">
+                <div data-template="app:navigation" class="bk-nav top"/>
+                <div data-template="app:view"/>
+                <div data-template="app:navigation" class="bk-nav bottom"/>
+            </div>
+        </div>
+        <div class="span3">
+            <div class="well">
+                <label style="font-weight:bold;">TEI Monitor:</label>
+                <div id="selectionMonitor" style="min-height: 30px;padding-bottom: 5px;padding-left: 10px;padding-top: 5px;"/>
+                <input type="button" value="edit"/>
+            </div>
+            <div class="well">
+                <form id="quicksearch" method="post" action="search.html">
+                    <fieldset>
+                        <input type="search" name="query" placeholder="Search string" class="span12" data-template="templates:form-control"/>
+                    </fieldset>
+                    <a href="search.html">Advanced search</a>
+                </form>
+            </div>
+            <div class="box">
+                <h3>Contents</h3>
+                <div data-template="app:outline" data-template-details="no"/>
+            </div>
+        </div>
+    </div>
+</div>

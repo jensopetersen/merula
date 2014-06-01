@@ -1,0 +1,84 @@
+@page {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    margin-left: 1em;
+    margin-right: 0;
+}
+
+body, div, span, p, h1, h2, h3, h4, h5, ol, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1em;
+    font: serif;
+    padding-right: 0.5em;
+}
+
+.act {
+    text-align: center;
+}
+
+h1, h2 {
+    font-family: sans-serif;
+    font-size: 1.8em;
+    line-height: 1.5em;
+    margin: 2.55em 0 2.55em 0;
+}
+
+h2 {
+    font-size: 1.4em;
+    font-weight: normal;
+    margin: 1.8em 0 1.4em;
+    text-align: center;
+}
+
+#title h1 {
+    text-align: center;
+    font-size: 225%;
+    font-family: serif;
+}
+
+.stage {
+    display: block;
+    text-align: center;
+    font-style: italic;
+    margin: .85em 0;
+}
+
+.speaker {
+    font-family: serif;
+    font-size: 1em;
+    font-weight: normal;
+    font-variant: small-caps;
+    margin: .85em 0 .55em;
+    text-align: left;
+}
+
+.p-ab {
+    margin-left: 2em;
+}
+
+p {
+    line-height: 145%;
+    text-align: justify;
+    margin: .85em 0 0;
+}
+
+ul {
+    list-style: none;
+    text-align: left;
+}
+
+.sp .line {
+    margin: 0 0 .45em 2em;
+}
+
+.resp {
+    margin-bottom: .45em;
+}
+
+.respRole {
+    font-variant: small-caps;
+}
