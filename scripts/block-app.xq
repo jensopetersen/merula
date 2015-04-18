@@ -169,7 +169,7 @@ let $block-app :=
         <rdg><target>l</target><order>10</order><level>5</level><local-name>l</local-name></rdg>
     </text>
 
-let $element-only-block-elements := ('body', 'text', 'lg', 'div')
+let $element-only-block-elements := ('body', 'text', 'lg', 'div', 'sp', 'castGroup', 'castList', 'titleStmt', 'sourceDesc', 'publicationStmt', 'fileDesc', 'respStmt', 'teiHeader', 'TEI')
 let $empty-block-like-elements := ('pb', 'milestone', 'lb')
 let $mixed-contents-block-elements := ('head', 'l', 'p', 'cit', 'fw')
 
