@@ -102,9 +102,9 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                         <body>{element {node-name($node)}{$node/@xml:id, $node/node()}}</body>
                         <layer-offset-difference>{
                             let $off-set-difference :=
-                                if (local-name($node) = $edition-layer-elements or $node//app or $node//choice) 
+                                if (local-name($node) = $edition-layer-elements or $node//tei:app or $node//tei:choice) 
                                 then
-                                    if (($node//app or local-name($node) = 'app') and $node//tei:lem) 
+                                    if (($node//tei:app or local-name($node) = 'app') and $node//tei:lem) 
                                     then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
                                     else 
                                         if (($node//tei:app or local-name($node) = 'app') and $node//tei:rdg)
