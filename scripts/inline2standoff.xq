@@ -4,22 +4,37 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
 
+declare variable $in-collection := '/db/test/in';
+declare variable $out-collection := 'xmldb:exist:///db/test/out';
+declare variable $chinese := 'yes';
+
+(: Removes space in text nodes (for Chinese texts):)
+declare function local:remove-space-in-text-nodes($element as element()) as element() {
+   element {node-name($element)}
+      {$element/@*,
+          for $child in $element/node()
+              return
+               if ($child instance of element())
+                 then local:remove-space-in-text-nodes($child)
+                 else replace($child, '\s', '')
+      }
+};
+
 (: Removes elements named :)
-declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
+declare function local:remove-elements($nodes as node()*, $elements-to-remove as xs:string+)  as node()* {
    for $node in $nodes
    return
      if ($node instance of element())
      then 
-        if ((local-name($node) = $remove))
+        if ((local-name($node) = $elements-to-remove))
         then ()
         else element {node-name($node)}
-                {$node/@*,
-                  local:remove-elements($node/node(), $remove)}
+                {$node/@*, local:remove-elements($node/node(), $elements-to-remove)}
      else 
         if ($node instance of document-node())
-        then local:remove-elements($node/node(), $remove)
+        then local:remove-elements($node/node(), $elements-to-remove)
         else $node
-} ;
+};
 
 (: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
 declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
@@ -68,7 +83,7 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 };
 
 (: Extracts all upper-level element nodes from the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
-declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
+declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) {
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
@@ -85,12 +100,14 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             let $characters-before-and-after := concat($character-before, $character-after)
                             let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
                             return
-                            if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                            if ($characters-before-and-after) then "string" else "token"}">
+                            (: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words.:)
+                            (:TODO: think of a better label than "string":)
                         <target type="range" layer="{
                             if (local-name($node) = $edition-layer-elements) 
                             then 'edition' 
                             else 
-                                if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
+                                if (local-name($node) = $documentary-elements)
                                 then 'document' 
                                 else 'feature'}">
                             <base-layer>
@@ -181,29 +198,33 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
             typeswitch($node)
                 
                 case text() return
-                    if ($node/ancestor-or-self::element(tei:note)) 
-                    then () 
+                    if ($node/ancestor-or-self::element(tei:note))
+                    then ()
                     else $node
-                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
-                    Here we strip out all notes from the text itself and put them into the annotations.:)
+                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature", along with other instances of "misplaced text", such as figure captions. Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return 
                     if ($target eq 'base') 
                     then () 
-                    else $node
+                    else if ($node/text()) then $node/text() else ()
                 
                 case element(tei:rdg) return
                     if (not($node/../tei:lem))
                     then
                         if ($target eq 'base')
-                        then $node[contains(@wit/string(), 'TS1')] (:if there is no lem, choose a rdg for the base text:)
+                        then $node[contains(@wit/string(), 'TS1')]
+                        (:if there is no lem, choose a rdg for the base text:)
                         else
                             if ($target ne 'base')
-                            then $node[contains(@wit/string(), 'TS2')] (:if there is no lem, choose a rdg for the target text:)
+                            then $node[contains(@wit/string(), 'TS2')]
+                            (:if there is no lem, choose a rdg for the target text:)
                             else ()
                     else
                         if ($target eq 'base')
-                        then $node[contains(@wit/string(), 'TS1')] (:if there is a lem, choose a rdg for the base text:)
+                        (:then $node[contains(@wit/string(), 'TS1')] :)
+                        (:if there is a lem, choose a rdg for the base text:)
+                        (:TODO: elaborate rdg attributes:)
+                        then $node/text()
                         else ()
                 
                 case element(tei:reg) return
@@ -234,6 +255,8 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     default return local:separate-text-layers($node, $target)
 };
 
+
+
 (: This function removes inline elements from the result of separate-layers :)
 declare function local:remove-inline-elements($nodes as node()*, $block-element-names as xs:string+) as node()* {
     for $node in $nodes/node()
@@ -251,7 +274,7 @@ declare function local:remove-inline-elements($nodes as node()*, $block-element-
         else $node
 };
 
-declare function local:handle-element-only-annotations($node as node()) as item()* {
+declare function local:handle-element-only-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
             let $layer-1-body-contents := $node//body/* (: get the element below body - this can ony be a single item :)
             let $layer-1-admin-contents := $node//admin/* (: get the elements below admin :)
             let $layer-1-id := $node/@xml:id/string() (: get id :)
@@ -310,13 +333,13 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                         (
                         if (not($element-annotations//body/string()) or $element-annotations//body/*/node() instance of text() or $element-annotations//body/node() instance of text())
                         then $element-annotations 
-                        else local:whittle-down-annotations($element-annotations)
+                        else local:whittle-down-annotations($element-annotations, $documentary-elements)
                         ,
                         $attribute-annotations
                         )
 };
 
-declare function local:handle-mixed-content-annotations($node as node()) as item()* {
+declare function local:handle-mixed-content-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
     (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input, except that no edition-layer-elements are relevant:)
             let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
@@ -326,7 +349,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
-            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//body/*, '')
+            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//body/*, '', $documentary-elements)
             let $layer-1-id := <id>{$node/@xml:id/string()}</id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
@@ -335,83 +358,97 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                         return
                             if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
                         then $layer-2
-                        else local:whittle-down-annotations($layer-2)
+                        else local:whittle-down-annotations($layer-2, $documentary-elements)
 };
 
 (: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element with a text node :)
-declare function local:whittle-down-annotations($node as node()) as item()* {
+declare function local:whittle-down-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
             if (not($node//body/string())) (: there is no text anywhere, i.e it is an empty element, so extract its attributes:)
-            then local:handle-element-only-annotations($node)
+            then local:handle-element-only-annotations($node, $documentary-elements)
             else 
                 if (local-name($node//body/*) eq 'attribute') (: it is an attribute annotation, so do not split it up, but pass through. :)
                 then $node
                 else
                     if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
-                    then local:handle-mixed-content-annotations($node)
+                    then local:handle-mixed-content-annotations($node, $documentary-elements)
                     else 
                         if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
                         then $node
-                        else local:handle-element-only-annotations($node) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
+                        else local:handle-element-only-annotations($node, $documentary-elements) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
 };
 
-declare function local:generate-text-layer($element as element(), $target as xs:string) as element() {
+(:generates either the base edition or the authoritative edition indicated in $target:)
+declare function local:generate-text-layer($element as element(), $target as xs:string, $block-element-names as xs:string+) as element() {
     element {node-name($element)}
-    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)(:NB: clean up - attribute declaration not needed:)
+    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)
     ,
     for $node in $element/node()
         return
-            if ($node instance of element() and not($node/text())) (: if the node is an element which does not have a child text node, then recurse. :)
-            then local:generate-text-layer($node, $target)
-            else
-                if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with its @xml:id and get its text layer. :)
-                then 
+            if ($node instance of element())
+            then 
+                if (local-name($node) = $block-element-names)
+                (: if the node is an element which does not have a child text node, then maintain the element and recurse to find some elements which are not block elements. :)
+                then local:generate-text-layer($node, $target, $block-element-names)
+                else
+                (:if the element is not a block element, then reconstruct it but separate its contents 
+                into base text or authoritative text according to the $target with local:separate-text-layers():)
                     element {node-name($node)}
                     {attribute{'xml:id'}{$node/@xml:id}(:NB: clean up - attribute declaration not needed:)
                     ,
                     local:separate-text-layers($node, $target)
                     }
-                else 
-                    if ($node instance of comment()) (: pass through comments. :)
-                    then $node
-                    else ()
+            else 
+                if ($node instance of comment()) 
+                (: pass through comments – text nodes are handled through local:separate-text-layers(). :)
+                then $node
+                else ()
     }
 };
 
-declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
+declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as element()* {
     for $element in $elements/*
         return
             if ($element/text())
-            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
-            else local:generate-top-level-annotations($element, $edition-layer-elements)
+            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
+            else local:generate-top-level-annotations($element, $edition-layer-elements, $documentary-elements)
 };
 
-let $doc-title := 'sample_MTDP10363.xml'
-let $doc := doc(concat('/db/test/out/', $doc-title))
+let $doc-title := 'shiji-with-ids-test.xml'
+let $doc := doc(concat($in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
-
 let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expanded')
 let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
-let $block-element-names := ('text', 'body', 'div', 'head', 'p', 'quote' )
+let $block-element-names := ('text', 'body', 'div', 'p', 'quote')
 
-let $base-text := local:generate-text-layer($doc-text, 'base')
+let $base-text := local:generate-text-layer($doc-text, 'base', $block-element-names)
 let $base-text := local:remove-inline-elements($base-text, $block-element-names)
+let $base-text := 
+    if ($chinese eq 'yes') 
+    then local:remove-space-in-text-nodes($base-text) (:remove space in Chinese text:)
+    else $base-text
 
-let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
+let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative', $block-element-names)
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
+let $authoritative-text := 
+    if ($chinese eq 'yes') 
+    then local:remove-space-in-text-nodes($authoritative-text) (:remove space in Chinese text:)
+    else $base-text
 
-let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements)
+let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements, $documentary-elements)
 let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
 
 let $annotations :=
     for $node in $top-level-annotations
-        return local:whittle-down-annotations($node)
+        return local:whittle-down-annotations($node, $documentary-elements)
 
-        return 
+let $result :=
             <result>
                 <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
                 <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
             </result>
+    
+    return xmldb:store($out-collection, $doc-title, $result)
