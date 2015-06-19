@@ -127,16 +127,19 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                     </annotation>
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
-                            return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation">{$node/@xml:id}</target>
-                            <body>
-                                <attribute>
-                                    <name>{name($attribute)}</name>
-                                    <value>{$attribute/string()}</value>
-                                </attribute>
-                            </body>
-                            <admin/>
-                            </annotation>
+                            return 
+                                <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                                    <target type="element" layer="annotation">
+                                        <id>{$node/@xml:id/string()}</id>
+                                        </target>
+                                    <body>
+                                        <attribute>
+                                            <name>{name($attribute)}</name>
+                                            <value>{$attribute/string()}</value>
+                                        </attribute>
+                                    </body>
+                                    <admin/>
+                                </annotation>
             return ($element-result, $attribute-result)
 };
 
@@ -251,7 +254,9 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                 for $attribute in $layer-1-body-contents/(@* except @xml:id)
                     return 
                         <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation">{$layer-1-id}</target>
+                            <target type="element" layer="annotation">
+                                <id>{$layer-1-id}</id>
+                                </target>
                             <body>
                                 <attribute>
                                     <name>{name($attribute)}</name>
@@ -278,7 +283,9 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                     for $attribute in $element/(@* except @xml:id)
                         return 
                             <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                                <target type="element" layer="annotation">{$annotation-id}</target>
+                                <target type="element" layer="annotation">
+                                    <id>{$annotation-id}</id>
+                                    </target>
                                 <body>
                                     <attribute>
                                         <name>{name($attribute)}</name>
@@ -427,8 +434,6 @@ let $annotations :=
 
         return 
             <result>
-                <top-level-annotations>{$top-level-annotations}</top-level-annotations>
-                <input>{$doc-text}</input>
                 <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
                 <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
