@@ -128,7 +128,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
                             return <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                            <target type="element" layer="annotation">{$id}</target>
+                            <target type="element" layer="annotation">{$node/@xml:id}</target>
                             <body>
                                 <attribute>
                                     <name>{name($attribute)}</name>
