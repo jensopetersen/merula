@@ -248,203 +248,95 @@
         </text>
     </authoritative-text>
     <annotations>
-        <annotation type="attribute" xml:id="uuid-9178f0b6-3da8-4756-8f36-955c3015217f">
+        <annotation type="attribute" xml:id="uuid-302c7a3c-b920-4350-8a15-b5ccc322a29f">
             <target type="element" layer="annotation"
-                >uuid-72dd69fc-8aa6-4fde-b39b-6a1468bcf26c</target>
-            <body>
-                <attribute>
-                    <name>from</name>
-                    <value>dg0000</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-7283ffd3-c8cc-48cd-8ad9-70bb45ae954e">
-            <target type="element" layer="annotation"
-                >uuid-72dd69fc-8aa6-4fde-b39b-6a1468bcf26c</target>
+                >uuid-2375df3f-1bba-4678-ae4c-733415b5e59a</target>
             <body>
                 <attribute>
                     <name>type</name>
-                    <value>aet</value>
+                    <value>chapter</value>
                 </attribute>
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-4ea68150-ceae-4734-aae9-a7bbb80fb913">
-            <target type="element" layer="annotation"
-                >uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825</target>
+        <annotation type="element" xml:id="uuid-2375df3f-1bba-4678-ae4c-733415b5e59a" status="token">
+            <target type="range" layer="feature">
+                <base-layer>
+                    <id>uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee</id>
+                    <start>1</start>
+                    <offset>2501</offset>
+                </base-layer>
+                <authoritative-layer>
+                    <id>uuid-1b194cc1-85e0-3ad2-af86-453a834bd25c</id>
+                    <start>1</start>
+                    <offset>2535</offset>
+                </authoritative-layer>
+            </target>
             <body>
-                <attribute>
-                    <name>from</name>
-                    <value>dg0001</value>
-                </attribute>
+                <div xmlns="http://www.tei-c.org/ns/1.0" xml:id="dv0001"/>
             </body>
+            <layer-offset-difference>34</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-25878d12-776a-477a-9868-b876a4fbbae7">
-            <target type="element" layer="annotation"
-                >uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825</target>
+        <annotation type="element" xml:id="uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-2375df3f-1bba-4678-ae4c-733415b5e59a</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
             <body>
-                <attribute>
-                    <name>type</name>
-                    <value>aet</value>
-                </attribute>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-e9f58fa3-5e0c-421d-b18b-a5cf75256a11">
-            <target type="element" layer="annotation"
-                >uuid-c0c962cb-d330-4ee2-bad3-325237952070</target>
-            <body>
-                <attribute>
-                    <name>from</name>
-                    <value>dg0002</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-a0f492c8-2948-4efb-991d-9a37e7abaf0e">
-            <target type="element" layer="annotation"
-                >uuid-c0c962cb-d330-4ee2-bad3-325237952070</target>
-            <body>
-                <attribute>
-                    <name>type</name>
-                    <value>aet</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-f5bd0677-7928-49e2-9dcf-5d3bd0399315">
-            <target type="element" layer="annotation"
-                >uuid-86442401-8b2e-42fc-9e40-7c31dd9d035a</target>
-            <body>
-                <attribute>
-                    <name>from</name>
-                    <value>dg0003</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-97f861f3-cdf0-4f99-9045-01b4ed589e1f">
-            <target type="element" layer="annotation"
-                >uuid-86442401-8b2e-42fc-9e40-7c31dd9d035a</target>
-            <body>
-                <attribute>
-                    <name>type</name>
-                    <value>aet</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-cd74f470-dacd-4bf6-a3b1-be2561b2deff">
-            <target type="element" layer="annotation"
-                >uuid-d2cce539-9e68-4611-9a3c-b59d8daf7865</target>
-            <body>
-                <attribute>
-                    <name>target</name>
-                    <value>#en0002</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-5603b0eb-cc82-41bd-911a-e84533edc414">
-            <target type="element" layer="annotation"
-                >uuid-d2cce539-9e68-4611-9a3c-b59d8daf7865</target>
-            <body>
-                <attribute>
-                    <name>type</name>
-                    <value>an</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-719018d1-4aa6-4573-8c7e-887689631070">
-            <target type="element" layer="annotation"
-                >uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e</target>
-            <body>
-                <attribute>
-                    <name>from</name>
-                    <value>dg0005</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="attribute" xml:id="uuid-d2374811-8a68-4bb2-afe5-e0c70849340d">
-            <target type="element" layer="annotation"
-                >uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e</target>
-            <body>
-                <attribute>
-                    <name>type</name>
-                    <value>aet</value>
-                </attribute>
-            </body>
-            <admin/>
-        </annotation>
-        <annotation type="element" xml:id="uuid-8d09cb72-f327-4d35-a8a6-a3f3ee831946"
+        <annotation type="element" xml:id="uuid-15e54590-0221-415d-b7cc-7da3c80fe127"
             status="string">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>52</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>52</start>
-                    <offset>0</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
                     xml:id="uuid-20d6643b-0a9d-4ef9-9d19-41ea08d0a196"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-a990fe7e-55b4-49b6-86b8-25210cd80e44"
+        <annotation type="element" xml:id="uuid-5d274131-2f8b-439a-b1a5-04ad6addfe8b"
             status="string">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>114</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>114</start>
-                    <offset>0</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
                     xml:id="uuid-50dea63f-c4c1-425c-b883-b9e06ea7d4a9"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-72dd69fc-8aa6-4fde-b39b-6a1468bcf26c" status="token">
-            <target type="range" layer="edition">
+        <annotation type="element" xml:id="uuid-bc3b9b0b-95db-421c-bccf-5808c448b8cf" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>131</start>
                     <offset>10</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>131</start>
-                    <offset>20</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0000"/>
             </body>
-            <layer-offset-difference>10</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-5e7cf5ef-d311-466b-bff0-c8674405cbaf" status="token">
+        <annotation type="element" xml:id="uuid-3bdbaab4-c986-496f-8463-9b8444ff6d9d" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-72dd69fc-8aa6-4fde-b39b-6a1468bcf26c</id>
+                    <id>uuid-bc3b9b0b-95db-421c-bccf-5808c448b8cf</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -454,10 +346,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-e9756738-6ce6-40da-a8d6-79eceb58ae3a" status="token">
+        <annotation type="element" xml:id="uuid-8ef283f4-f5f6-45c4-8088-4d33aeb14268" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-5e7cf5ef-d311-466b-bff0-c8674405cbaf</id>
+                    <id>uuid-3bdbaab4-c986-496f-8463-9b8444ff6d9d</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -467,9 +359,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-3cff1058-eaa5-4d87-8bbb-4735bd15b457">
+        <annotation type="attribute" xml:id="uuid-f3aa0d72-3d5b-4012-ab8b-6f3d12fe0cbb">
             <target type="element" layer="annotation"
-                >uuid-e9756738-6ce6-40da-a8d6-79eceb58ae3a</target>
+                >uuid-8ef283f4-f5f6-45c4-8088-4d33aeb14268</target>
             <body>
                 <attribute>
                     <name>rend</name>
@@ -478,10 +370,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-5f459b15-047d-4be1-96d2-f755def96661" status="token">
+        <annotation type="element" xml:id="uuid-7209c4d9-7110-43f1-bee8-4a8a0d1eb1c5" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-72dd69fc-8aa6-4fde-b39b-6a1468bcf26c</id>
+                    <id>uuid-bc3b9b0b-95db-421c-bccf-5808c448b8cf</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -491,9 +383,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-883e9bd7-4cff-4c4b-b931-c1b8536814d9">
+        <annotation type="attribute" xml:id="uuid-58308a23-d827-44d9-8c9f-985fc2f441d6">
             <target type="element" layer="annotation"
-                >uuid-5f459b15-047d-4be1-96d2-f755def96661</target>
+                >uuid-7209c4d9-7110-43f1-bee8-4a8a0d1eb1c5</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -502,50 +394,60 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-c5d907e9-2379-4ba3-a3da-9648373d161d"
+        <annotation type="attribute" xml:id="uuid-c4829686-2877-4d8b-88ae-8fa343316301">
+            <target type="element" layer="annotation"
+                >uuid-bc3b9b0b-95db-421c-bccf-5808c448b8cf</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0000</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-200a9dd0-e15f-47b9-9f06-f7605719a08f">
+            <target type="element" layer="annotation"
+                >uuid-bc3b9b0b-95db-421c-bccf-5808c448b8cf</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-4087faf0-737f-455f-8881-8617ca49251c"
             status="string">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>171</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>171</start>
-                    <offset>0</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
                     xml:id="uuid-ffd47ef8-dce4-4a4a-a82c-59fcc839d95a"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825" status="token">
-            <target type="range" layer="edition">
+        <annotation type="element" xml:id="uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>205</start>
                     <offset>8</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>205</start>
-                    <offset>23</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0001"/>
             </body>
-            <layer-offset-difference>15</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-b06c378d-2ffc-43eb-8f3e-45a95983dd29" status="token">
+        <annotation type="element" xml:id="uuid-66a6c4a9-6a07-4868-8e90-aab8bbf761db" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825</id>
+                    <id>uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -555,10 +457,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-e0e1341f-02cb-4284-8575-e4e1b4633992" status="token">
+        <annotation type="element" xml:id="uuid-c4c8c911-6607-4957-a6b3-9f58988b53fa" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825</id>
+                    <id>uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -568,9 +470,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-b3971c91-bffa-46e6-a37a-94ebe14f94ae">
+        <annotation type="attribute" xml:id="uuid-2a1b105f-4196-457c-b5ed-1ad93a58015f">
             <target type="element" layer="annotation"
-                >uuid-e0e1341f-02cb-4284-8575-e4e1b4633992</target>
+                >uuid-c4c8c911-6607-4957-a6b3-9f58988b53fa</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -579,10 +481,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-b4a92bf2-d952-4105-9849-b1b15b96d23a" status="token">
+        <annotation type="element" xml:id="uuid-14097f23-0047-4f71-8303-ba7bb579e133" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-629a1df2-8347-41d7-9d48-2fc76e2c7825</id>
+                    <id>uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -592,9 +494,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-f5e8a226-7e83-4776-939b-02af878b1224">
+        <annotation type="attribute" xml:id="uuid-85f64f52-d7c0-40c3-8084-e1e473d99c13">
             <target type="element" layer="annotation"
-                >uuid-b4a92bf2-d952-4105-9849-b1b15b96d23a</target>
+                >uuid-14097f23-0047-4f71-8303-ba7bb579e133</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -603,29 +505,45 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-c0c962cb-d330-4ee2-bad3-325237952070" status="token">
-            <target type="range" layer="edition">
+        <annotation type="attribute" xml:id="uuid-46d6346c-1b92-4367-beca-78530474b148">
+            <target type="element" layer="annotation"
+                >uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0001</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-c1d0ab24-86fa-4957-b956-b48b9d05c136">
+            <target type="element" layer="annotation"
+                >uuid-23178b8e-b90b-474b-b2e1-6c4c5a15e97a</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-2884f20c-3dec-4d67-a15c-d40c8168b917" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>221</start>
                     <offset>4</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>221</start>
-                    <offset>12</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0002"/>
             </body>
-            <layer-offset-difference>8</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-37bd9951-9fd5-4747-ada8-604d10f2629c" status="token">
+        <annotation type="element" xml:id="uuid-e4b0bead-5aa6-4509-932a-36ac8f6deb98" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-c0c962cb-d330-4ee2-bad3-325237952070</id>
+                    <id>uuid-2884f20c-3dec-4d67-a15c-d40c8168b917</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -635,10 +553,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-9aa98427-edc3-4a08-8d9f-eca37991c3a9" status="token">
+        <annotation type="element" xml:id="uuid-8a32ea62-caf8-4348-9890-7658ab1454fe" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-c0c962cb-d330-4ee2-bad3-325237952070</id>
+                    <id>uuid-2884f20c-3dec-4d67-a15c-d40c8168b917</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -648,9 +566,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-466d1524-45da-43f9-96c0-5f9ecf1be14b">
+        <annotation type="attribute" xml:id="uuid-ade21319-d125-4f18-8619-03c368243faa">
             <target type="element" layer="annotation"
-                >uuid-9aa98427-edc3-4a08-8d9f-eca37991c3a9</target>
+                >uuid-8a32ea62-caf8-4348-9890-7658ab1454fe</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -659,29 +577,45 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-86442401-8b2e-42fc-9e40-7c31dd9d035a" status="token">
-            <target type="range" layer="edition">
+        <annotation type="attribute" xml:id="uuid-020ebc85-1db4-439c-b8d0-72a681455b48">
+            <target type="element" layer="annotation"
+                >uuid-2884f20c-3dec-4d67-a15c-d40c8168b917</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0002</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-90ea6b26-f09f-4f9e-9a81-722103fbe464">
+            <target type="element" layer="annotation"
+                >uuid-2884f20c-3dec-4d67-a15c-d40c8168b917</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-d996c7f8-de97-449e-ac66-aceea8a4069b" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000001</id>
+                    <id>uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</id>
                     <start>263</start>
                     <offset>122</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
-                    <start>263</start>
-                    <offset>128</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0003"/>
             </body>
-            <layer-offset-difference>6</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-77f17a8b-d5da-40d0-a812-423ea42d0e3e" status="token">
+        <annotation type="element" xml:id="uuid-12815f68-c141-47a8-afe9-5e791dd10689" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-86442401-8b2e-42fc-9e40-7c31dd9d035a</id>
+                    <id>uuid-d996c7f8-de97-449e-ac66-aceea8a4069b</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -691,10 +625,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-3c742803-410a-468b-8ad5-7e7d80bcf846" status="token">
+        <annotation type="element" xml:id="uuid-4abca237-5621-480d-9882-825007e9e2a6" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-86442401-8b2e-42fc-9e40-7c31dd9d035a</id>
+                    <id>uuid-d996c7f8-de97-449e-ac66-aceea8a4069b</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -703,10 +637,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-67722098-71b1-4716-8e45-8d24be13c2ef" status="token">
+        <annotation type="element" xml:id="uuid-7b55ea06-5d93-4660-9625-2d941e804771" status="token">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>uuid-3c742803-410a-468b-8ad5-7e7d80bcf846</id>
+                    <id>uuid-4abca237-5621-480d-9882-825007e9e2a6</id>
                     <start>8</start>
                     <offset>0</offset>
                 </base-layer>
@@ -717,9 +651,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-9508d93b-495c-42b3-87bd-a52f7aa5602e">
+        <annotation type="attribute" xml:id="uuid-f679934c-2b80-4631-b275-0b3981207a4d">
             <target type="element" layer="annotation"
-                >uuid-3c742803-410a-468b-8ad5-7e7d80bcf846</target>
+                >uuid-4abca237-5621-480d-9882-825007e9e2a6</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -728,70 +662,617 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-7c7a846f-ce2e-4c00-9d3c-adf108dfa63e"
+        <annotation type="attribute" xml:id="uuid-dde8861d-aa05-47a9-b8fe-0175d12c3e93">
+            <target type="element" layer="annotation"
+                >uuid-d996c7f8-de97-449e-ac66-aceea8a4069b</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0003</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-c1e16806-dfc5-4ab6-9c9b-8fd148996fe7">
+            <target type="element" layer="annotation"
+                >uuid-d996c7f8-de97-449e-ac66-aceea8a4069b</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-e92b3f43-6c9a-4e4c-a3bb-f9c96e5552ff">
+            <target type="element" layer="annotation"
+                >uuid-fbe9b253-a53a-41d5-bb02-bd88227a14c2</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>centerautosum</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-c833fa84-d911-4980-abe4-aabd2bd1144d" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-2375df3f-1bba-4678-ae4c-733415b5e59a</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <quote xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-0150ce04-9901-4739-a767-a00b747953f2"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-7b5f6f5e-1575-4ab4-96d7-d9b1f57fbf32" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000002"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-77a992e9-a748-4ca9-8cbd-aa9e2ae7bf1e" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-7b5f6f5e-1575-4ab4-96d7-d9b1f57fbf32</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-f391061f-7329-481f-8db8-ad1f42572a6f">PROMOTION FOR BARNES, WHOM
+                    TILLMAN BERATED</hi>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-572f03dd-dd32-47be-860f-1e00e820d376">
+            <target type="element" layer="annotation"
+                >uuid-77a992e9-a748-4ca9-8cbd-aa9e2ae7bf1e</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-413bc509-1270-46d9-b21b-d7fe6c7ab5c0" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-7b5f6f5e-1575-4ab4-96d7-d9b1f57fbf32</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:id="nv0001"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-4be67b01-a19d-4216-95f9-98bcdec4d84b">
+            <target type="element" layer="annotation"
+                >uuid-413bc509-1270-46d9-b21b-d7fe6c7ab5c0</target>
+            <body>
+                <attribute>
+                    <name>target</name>
+                    <value>#en0001</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-81c11ffb-99e5-4aec-ac1d-fad3f8c170a4">
+            <target type="element" layer="annotation"
+                >uuid-413bc509-1270-46d9-b21b-d7fe6c7ab5c0</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>an</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-773213db-9835-4aaf-93ad-798488c08d94">
+            <target type="element" layer="annotation"
+                >uuid-7b5f6f5e-1575-4ab4-96d7-d9b1f57fbf32</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-cd39269c-8033-417e-8a3d-2be2b75e8e27" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>2</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-455eb0ad-f7f8-49c2-baed-6f44f321fac4">
+            <target type="element" layer="annotation"
+                >uuid-cd39269c-8033-417e-8a3d-2be2b75e8e27</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-63cf0cd5-bfef-4e4c-8f43-d283cd5b4fc5">
+            <target type="element" layer="annotation"
+                >uuid-cd39269c-8033-417e-8a3d-2be2b75e8e27</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-68570b4f-a003-4b6f-a374-c4a36ff0649e" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>3</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000003"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-9247bc13-1ae8-48a0-82c8-4906badca544" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-68570b4f-a003-4b6f-a374-c4a36ff0649e</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-5888d6b7-48df-4d76-b01c-579cfbf2728d">Had Woman Ejected from White
+                    House; to be Postmaster.</hi>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-8b4a7bf7-3cf8-4eff-ae61-8035a39adadd">
+            <target type="element" layer="annotation"
+                >uuid-9247bc13-1ae8-48a0-82c8-4906badca544</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-da9e1503-6083-4be5-be49-00904e280797">
+            <target type="element" layer="annotation"
+                >uuid-68570b4f-a003-4b6f-a374-c4a36ff0649e</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-5915b7fe-9e71-4919-9a94-9896cfecb2a3" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>4</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-b7dbfb42-0d26-41dc-b917-9d8660c11acf">
+            <target type="element" layer="annotation"
+                >uuid-5915b7fe-9e71-4919-9a94-9896cfecb2a3</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-88c10824-7942-4c44-ae48-f96a501592d8">
+            <target type="element" layer="annotation"
+                >uuid-5915b7fe-9e71-4919-9a94-9896cfecb2a3</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-8a2e7592-63a8-45f3-ad09-7ed09fb1ceaa" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>5</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000004"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-a635d96e-f0fb-4735-bc6d-adcf06b94b52" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-8a2e7592-63a8-45f3-ad09-7ed09fb1ceaa</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-046f291b-6922-42bf-a628-b569033170a9"> MERRITT GETS NEW PLACE</hi>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-c184a5d7-03cf-481e-a546-bd14a5f0d91b">
+            <target type="element" layer="annotation"
+                >uuid-a635d96e-f0fb-4735-bc6d-adcf06b94b52</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-487e90f6-cd63-4721-b0c7-6a08bab681f4">
+            <target type="element" layer="annotation"
+                >uuid-8a2e7592-63a8-45f3-ad09-7ed09fb1ceaa</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-87ca7534-a14d-467d-aa74-67d7b832f55b" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>6</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <milestone xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-e6f975e5-607b-46f9-82e8-e6d9f7eb50c9">
+            <target type="element" layer="annotation"
+                >uuid-87ca7534-a14d-467d-aa74-67d7b832f55b</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>lightrule</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-68b022bd-c72d-451c-8c1d-40ce70f460e9">
+            <target type="element" layer="annotation"
+                >uuid-87ca7534-a14d-467d-aa74-67d7b832f55b</target>
+            <body>
+                <attribute>
+                    <name>unit</name>
+                    <value>section</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-d7710a4f-017d-4214-b203-ed258f4a3fc4" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>7</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000005"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-e95ad2c1-6d1f-4ad5-b936-a3d14f9e915d" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-d7710a4f-017d-4214-b203-ed258f4a3fc4</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-e3295a03-d868-402b-b52c-17f0a987d4f1"
             status="string">
             <target type="range" layer="document">
                 <base-layer>
-                    <id>uuid-602b35c7-b4cf-472e-b1ba-a31e62be3998</id>
+                    <id>uuid-e95ad2c1-6d1f-4ad5-b936-a3d14f9e915d</id>
                     <start>44</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-94909cd2-7a23-3b84-8ff9-fb997a579413</id>
-                    <start>44</start>
-                    <offset>0</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0"
                     xml:id="uuid-7cf5bd55-4a62-4559-997f-bb64abe9cbfb"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-d2cce539-9e68-4611-9a3c-b59d8daf7865"
+        <annotation type="attribute" xml:id="uuid-e3773597-da46-481f-8f73-f8a4dbf20270">
+            <target type="element" layer="annotation"
+                >uuid-e95ad2c1-6d1f-4ad5-b936-a3d14f9e915d</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>bold</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-4abffc2e-1a9a-44a6-8081-e192d6fb8617">
+            <target type="element" layer="annotation"
+                >uuid-d7710a4f-017d-4214-b203-ed258f4a3fc4</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-f4ee67cd-5171-43ee-b1d7-c73736889f66" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>8</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000006"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-452f854c-608d-4616-ab0a-3d1622969fb9" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-f4ee67cd-5171-43ee-b1d7-c73736889f66</id>
+                    <order>1</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <hi xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-c5c9d69e-8f0d-4c24-95ab-15e916d8516b">Special to The New York
+                    Times.</hi>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-565f6a9e-3ae6-4a9d-aaf8-80d5b2208c03">
+            <target type="element" layer="annotation"
+                >uuid-452f854c-608d-4616-ab0a-3d1622969fb9</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>italic</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-63719db4-4b43-4352-9fcb-9c33d00cc662">
+            <target type="element" layer="annotation"
+                >uuid-f4ee67cd-5171-43ee-b1d7-c73736889f66</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>center</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-2b17f19a-eba9-4f76-b74a-e155c409a072" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>9</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-7991924e-0ff3-4717-9575-60f4ec836df3"
             status="string">
             <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000007</id>
+                    <id>uuid-2b17f19a-eba9-4f76-b74a-e155c409a072</id>
                     <start>354</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-abf689d2-550d-366b-87d7-b2435ecd0fd0</id>
-                    <start>354</start>
-                    <offset>0</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:id="nv0002"/>
             </body>
-            <layer-offset-difference>0</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e" status="token">
-            <target type="range" layer="edition">
+        <annotation type="attribute" xml:id="uuid-3d5061e7-b9a8-4358-99fb-450b72b2d65c">
+            <target type="element" layer="annotation"
+                >uuid-7991924e-0ff3-4717-9575-60f4ec836df3</target>
+            <body>
+                <attribute>
+                    <name>target</name>
+                    <value>#en0002</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-b6adcc6d-badb-4221-b099-29e26bccee2a">
+            <target type="element" layer="annotation"
+                >uuid-7991924e-0ff3-4717-9575-60f4ec836df3</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>an</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-b2a0873f-a9f9-4fad-a52e-a5e99931d90c">
+            <target type="element" layer="annotation"
+                >uuid-2b17f19a-eba9-4f76-b74a-e155c409a072</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-e75b6bbd-4e86-413e-afed-1cae134acfc7" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>10</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000008">Mr. Barnes is at present
+                    assistant secretary to the President. Only a short time ago he figured
+                    extensively in the newspapers for having ordered the forcible ejection from the
+                    White House of Mrs. Minor Morris, a Washington woman who had called to see the
+                    President. What attracted attention to the case was not the ejection itself, but
+                    the violence with which it was performed.</p>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-95dba642-a329-43d3-aca8-11dba709fc8a">
+            <target type="element" layer="annotation"
+                >uuid-e75b6bbd-4e86-413e-afed-1cae134acfc7</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-da15b837-52bc-4a8f-b002-0ab52d914ad6" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>11</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000009">Mrs. Morris, who had been
+                    talking to Barnes in an ordinary conversational tone, and with no indications of
+                    excitement, so far as the spectators observed, was seized by two policemen and
+                    dragged by the arms out of the building and across the asphalt walk in front of
+                    the White House, a distance corresponding to that of two ordinary city blocks.
+                    During a part of the journey a negro carried her by the feet. Her dress was torn
+                    and trampled.</p>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-511bb135-3321-4b9d-bbc0-86e1605099c7">
+            <target type="element" layer="annotation"
+                >uuid-da15b837-52bc-4a8f-b002-0ab52d914ad6</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-378eb451-f91e-46fd-ada0-8d624b3f5711" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>12</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0" xml:id="pa000010">She was locked up on a
+                    charge of disorderly conduct, and when it was learned that she would be released
+                    on that charge a policeman, a relative of Barnes’s, was sent to the House of
+                    Detention to prefer a charge of insanity against her so that she would have to
+                    be held. She was held accordingly until two physicians had examined her and
+                    pronounced her sane. He was denounced by Mrs. Morris, by various newspapers, and
+                    by Mr. Tillman in the Senate.</p>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-023bc89c-7cba-41ca-81e1-15b8c6594772">
+            <target type="element" layer="annotation"
+                >uuid-378eb451-f91e-46fd-ada0-8d624b3f5711</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-4d3ba6ce-8b0e-41eb-a168-cdb34a6d2e7c" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</id>
+                    <order>13</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <p xmlns="http://www.tei-c.org/ns/1.0"/>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="element" xml:id="uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e" status="token">
+            <target type="range" layer="feature">
                 <base-layer>
-                    <id>pa000011</id>
+                    <id>uuid-4d3ba6ce-8b0e-41eb-a168-cdb34a6d2e7c</id>
                     <start>44</start>
                     <offset>0</offset>
                 </base-layer>
-                <authoritative-layer>
-                    <id>uuid-0a5f32b8-0e18-3834-be21-89a8c7040364</id>
-                    <start>44</start>
-                    <offset>-5</offset>
-                </authoritative-layer>
             </target>
             <body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004"/>
             </body>
-            <layer-offset-difference>-5</layer-offset-difference>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-d426822f-dea0-4805-a2c6-bafc8c72def7" status="token">
+        <annotation type="element" xml:id="uuid-92c34ee8-f8c0-4d00-924c-d54f7201e917" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e</id>
+                    <id>uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e</id>
                     <order>1</order>
                 </annotation-layer>
             </target>
@@ -801,10 +1282,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-5135d1ac-78bc-45fb-9f8f-e63ef8bb51e9" status="token">
+        <annotation type="element" xml:id="uuid-76aacab5-1231-4083-94c3-e01b73f0f49b" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e</id>
+                    <id>uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e</id>
                     <order>2</order>
                 </annotation-layer>
             </target>
@@ -814,9 +1295,9 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-b8aeeee3-e3c0-4178-a59b-c3a78a7836ee">
+        <annotation type="attribute" xml:id="uuid-83ea41c0-aaac-4dc2-a13c-eee0d224aa93">
             <target type="element" layer="annotation"
-                >uuid-5135d1ac-78bc-45fb-9f8f-e63ef8bb51e9</target>
+                >uuid-76aacab5-1231-4083-94c3-e01b73f0f49b</target>
             <body>
                 <attribute>
                     <name>wit</name>
@@ -825,10 +1306,10 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="element" xml:id="uuid-2c10a699-6c53-4f99-962d-93c182ef1fba" status="token">
+        <annotation type="element" xml:id="uuid-18f7b000-e4af-4a04-9211-8a392dcc0f42" status="token">
             <target type="element" layer="annotation">
                 <annotation-layer>
-                    <id>uuid-fe334f50-b4a7-4f3b-8faf-27f90ff8dd5e</id>
+                    <id>uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e</id>
                     <order>3</order>
                 </annotation-layer>
             </target>
@@ -838,13 +1319,57 @@
             </body>
             <admin/>
         </annotation>
-        <annotation type="attribute" xml:id="uuid-6bdad298-2783-49d7-a2f3-088de07d7d2f">
+        <annotation type="attribute" xml:id="uuid-14f36c81-0b91-4700-81ff-9f73e03ae09b">
             <target type="element" layer="annotation"
-                >uuid-2c10a699-6c53-4f99-962d-93c182ef1fba</target>
+                >uuid-18f7b000-e4af-4a04-9211-8a392dcc0f42</target>
             <body>
                 <attribute>
                     <name>wit</name>
                     <value>TS2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-3a312ca4-85c9-460f-9503-a5e57daa7cc3">
+            <target type="element" layer="annotation"
+                >uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e</target>
+            <body>
+                <attribute>
+                    <name>from</name>
+                    <value>dg0005</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-9372444c-c2de-4009-bc15-20cb1ad4e4ed">
+            <target type="element" layer="annotation"
+                >uuid-e1ef6f70-7a2f-46b3-9cb2-4628ae483a2e</target>
+            <body>
+                <attribute>
+                    <name>type</name>
+                    <value>aet</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-ae35edf8-28cf-4380-84de-581b5903aa2d">
+            <target type="element" layer="annotation"
+                >uuid-4d3ba6ce-8b0e-41eb-a168-cdb34a6d2e7c</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>text-indent:2</value>
+                </attribute>
+            </body>
+            <admin/>
+        </annotation>
+        <annotation type="attribute" xml:id="uuid-825de6c6-2b84-4256-8ae2-3d76cff9461a">
+            <target type="element" layer="annotation"
+                >uuid-c833fa84-d911-4980-abe4-aabd2bd1144d</target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>blockquote</value>
                 </attribute>
             </body>
             <admin/>

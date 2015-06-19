@@ -381,12 +381,13 @@ declare function local:generate-text-layer($element as element(), $target as xs:
     }
 };
 
-declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as element()* {
+(:recurse through the document, extracting annotations when hitting blocl-level elements:)
+declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+, $block-element-names as xs:string+) as element()* {
     for $element in $elements/*
         return
-            if ($element/text())
+            if (local-name($element) = $block-element-names)
             then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
-            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
+            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names)
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
@@ -417,7 +418,7 @@ let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
 
-let $top-level-annotations := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements)
+let $top-level-annotations := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements, $block-element-names)
 let $top-level-annotations := local:insert-authoritative-layer-in-top-level-annotations($top-level-annotations)
 
 let $annotations :=
@@ -426,6 +427,7 @@ let $annotations :=
 
         return 
             <result>
+                <top-level-annotations>{$top-level-annotations}</top-level-annotations>
                 <input>{$doc-text}</input>
                 <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
                 <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
