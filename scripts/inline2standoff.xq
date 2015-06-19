@@ -175,7 +175,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                 case element(tei:lem) return 
                     if ($target eq 'base') 
                     then ()
-                    else $node
+                    else $node/*
                 
                 case element(tei:rdg) return
                     if ($node/preceding-sibling::tei:lem)
@@ -185,7 +185,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
                             (:TODO: an approach using tokenize() should be used instead:)
-                            then $node
+                            then $node/*
                             else ()
                         (:if there is a lem, choose a rdg for the base text:)
                         else ()
@@ -195,38 +195,38 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         if ($target eq 'base')
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
-                            then $node
+                            then $node/*
                             else ()
                             (:if there is no lem, choose a TS1 rdg for the base text if there is one:)
                         else
                             if ($node[contains(@wit/string(), 'TS2')])
-                            then $node
+                            then $node/*
                             else ()
                             (:if there is no lem, choose a TS2 rdg for the authoritative text:)
                 
                 case element(tei:reg) return
                     if ($target eq 'base')
                     then () 
-                    else $node
+                    else $node/*
                 case element(tei:corr) return
                     if ($target eq 'base') 
                     then () 
-                    else $node
+                    else $node/*
                 case element(tei:expan) return
                     if ($target eq 'base') 
                     then () 
-                    else $node
+                    else $node/*
                 case element(tei:orig) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/*
                     else ()
                 case element(tei:sic) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/*
                     else ()
                 case element(tei:abbr) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/*
                     else ()
 
                     default return local:separate-text-layers($node, $target)
