@@ -143,7 +143,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer, adding the previous offsets to the start position  :)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
-declare function local:insert-authoritative-layer($nodes as element()*) as element()* {
+declare function local:insert-authoritative-layer-in-top-level-annotations($nodes as element()*) as element()* {
     (
     $nodes[@type ne 'element']
     ,
@@ -348,7 +348,7 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
 };
 
 declare function local:generate-text-layer($element as element(), $target as xs:string) as element() 
-    (:reconstruct the passed element:)
+    (:reconstruct the passed element with xml attributes:)
     {
     element {node-name($element)}
     {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else (),
@@ -368,10 +368,10 @@ declare function local:generate-text-layer($element as element(), $target as xs:
                 (: if the node is an element which has a child text node, then reconstruct it and get its text layer. :)
                 then 
                     element {node-name($node)}
-                    {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else (),
-                    if ($element/@xml:base) then attribute{'xml:base'}{$element/@xml:base} else (),
-                    if ($element/@xml:space) then attribute{'xml:space'}{$element/@xml:space} else (),
-                    if ($element/@xml:lang) then attribute{'xml:lang'}{$element/@xml:lang} else ()
+                    {if ($node/@xml:id) then attribute{'xml:id'}{$node/@xml:id} else (),
+                    if ($node/@xml:base) then attribute{'xml:base'}{$node/@xml:base} else (),
+                    if ($node/@xml:space) then attribute{'xml:space'}{$node/@xml:space} else (),
+                    if ($node/@xml:lang) then attribute{'xml:lang'}{$node/@xml:lang} else ()
                     ,
                     local:separate-text-layers($node, $target)
                     }
@@ -382,12 +382,12 @@ declare function local:generate-text-layer($element as element(), $target as xs:
     }
 };
 
-declare function local:generate-top-level-annotations($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
+declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
     for $element in $elements/*
         return
             if ($element/text())
             then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
-            else local:generate-top-level-annotations($element, $edition-layer-elements)
+            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
@@ -418,8 +418,8 @@ let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
 
-let $top-level-annotations := local:generate-top-level-annotations($doc-text, $edition-layer-elements)
-let $top-level-annotations := local:insert-authoritative-layer($top-level-annotations)
+let $top-level-annotations := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements)
+let $top-level-annotations := local:insert-authoritative-layer-in-top-level-annotations($top-level-annotations)
 
 let $annotations :=
     for $node in $top-level-annotations
