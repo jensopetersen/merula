@@ -52,7 +52,7 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
                                 ,
                                 $new-nodes
                             }
-                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
+                        else () (:The $element-to-check is removed if none of the four options are used, e.g. if 'remove' is used.:)
         else
             if ($node instance of element()) 
             then
@@ -90,7 +90,8 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             if (local-name($node) = $edition-layer-elements) 
                             then 'edition' 
                             else 
-                                if (local-name($node) = ('milestone', 'pb', 'lb', 'hi')) (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
+                                if (local-name($node) = ('milestone', 'pb', 'lb')) 
+                                (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
                                 then 'document' 
                                 else 'feature'}">
                             <base-layer>
@@ -114,8 +115,8 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                             if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
                                             then string-length($node//tei:reg) - string-length($node//tei:orig)
                                             else
-                                                if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:expanded and $node//tei:expanded)
-                                                then string-length($node//tei:expanded) - string-length($node//tei:abbr)
+                                                if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:expan and $node//tei:expan)
+                                                then string-length($node//tei:expan) - string-length($node//tei:abbr)
                                                 else
                                                     if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
                                                     then string-length($node//tei:corr) - string-length($node//tei:sic)
@@ -123,15 +124,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                                 
                                 else 0            
                                     return $off-set-difference}</layer-offset-difference>
-                        <admin>
-                            <creation>
-                                <user>{xmldb:get-current-user()}</user>
-                                <time>{current-dateTime()}</time>
-                                <note/>
-                            </creation>
-                            <review><user/><time/><note/></review>
-                            <imprimatur><user/><time/></imprimatur>
-                        </admin>
+                        <admin/>
                     </annotation>
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
@@ -143,15 +136,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                     <value>{$attribute/string()}</value>
                                 </attribute>
                             </body>
-                            <admin>
-                                <creation>
-                                    <user>{xmldb:get-current-user()}</user>
-                                    <time>{current-dateTime()}</time>
-                                    <note/>
-                                </creation>
-                                <review><user/><time/><note/></review>
-                                <imprimatur><user/><time/></imprimatur>
-                            </admin>
+                            <admin/>
                             </annotation>
             return ($element-result, $attribute-result)
 };
@@ -182,59 +167,71 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                 
                 case text() return
                     if ($node/ancestor-or-self::element(tei:note)) 
-                    then () 
+                    then ()
                     else $node
                     (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
                     Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return 
                     if ($target eq 'base') 
-                    then () 
-                    else $node
+                    then ()
+                    else $node/text()
                 
                 case element(tei:rdg) return
-                    if (not($node/../tei:lem))
+                    if ($node/preceding-sibling::tei:lem)
                     then
+                    (:if the app has a lem along with the rdg:)
                         if ($target eq 'base')
-                        then $node[contains(@wit/string(), 'TS1')] (:if there is no lem, choose a rdg for the base text:)
-                        else
-                            if ($target ne 'base')
-                            then $node[contains(@wit/string(), 'TS2')] (:if there is no lem, choose a rdg for the target text:)
+                        then 
+                            if ($node[contains(@wit/string(), 'TS1')])
+                            (:TODO: an approach using tokenize() should be used instead:)
+                            then $node/text()
                             else ()
-                    else
-                        if ($target eq 'base')
-                        then $node[contains(@wit/string(), 'TS1')] (:if there is a lem, choose a rdg for the base text:)
+                        (:if there is a lem, choose a rdg for the base text:)
                         else ()
+                        (:disregard the rdg for the authoritative text if there is a lem:)
+                    else
+                    (:if the app has no lem along with the rdg:)
+                        if ($target eq 'base')
+                        then 
+                            if ($node[contains(@wit/string(), 'TS1')])
+                            then $node/text()
+                            else ()
+                            (:if there is no lem, choose a TS1 rdg for the base text if there is one:)
+                        else
+                            if ($node[contains(@wit/string(), 'TS2')])
+                            then $node/text()
+                            else ()
+                            (:if there is no lem, choose a TS2 rdg for the authoritative text:)
                 
                 case element(tei:reg) return
                     if ($target eq 'base')
                     then () 
-                    else $node
+                    else $node/text()
                 case element(tei:corr) return
                     if ($target eq 'base') 
                     then () 
-                    else $node
-                case element(tei:expanded) return
+                    else $node/text()
+                case element(tei:expan) return
                     if ($target eq 'base') 
                     then () 
-                    else $node
+                    else $node/text()
                 case element(tei:orig) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/text()
                     else ()
                 case element(tei:sic) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/text()
                     else ()
                 case element(tei:abbr) return
                     if ($target eq 'base') 
-                    then $node
+                    then $node/text()
                     else ()
 
                     default return local:separate-text-layers($node, $target)
 };
-
-(: This function removes inline elements from the result of separate-layers :)
+(: This function removes inline elements from the result of generate-text-layer() :)
 declare function local:remove-inline-elements($nodes as node()*, $block-element-names as xs:string+) as node()* {
     for $node in $nodes/node()
     return
@@ -242,11 +239,7 @@ declare function local:remove-inline-elements($nodes as node()*, $block-element-
         then
             if (local-name($node) = $block-element-names)
             then element {node-name($node)}
-                    {
-                    $node/@*
-                    ,
-                    local:remove-inline-elements($node, $block-element-names)
-                    }
+                    {$node/@*,local:remove-inline-elements($node, $block-element-names)}
             else $node/node()
         else $node
 };
@@ -354,19 +347,31 @@ declare function local:whittle-down-annotations($node as node()) as item()* {
                         else local:handle-element-only-annotations($node) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
 };
 
-declare function local:generate-text-layer($element as element(), $target as xs:string) as element() {
+declare function local:generate-text-layer($element as element(), $target as xs:string) as element() 
+    (:reconstruct the passed element:)
+    {
     element {node-name($element)}
-    {attribute{'xml:id'}{$element/@xml:id} (: all remaining attributes are saved as annotations :)(:NB: clean up - attribute declaration not needed:)
+    {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else (),
+    if ($element/@xml:base) then attribute{'xml:base'}{$element/@xml:base} else (),
+    if ($element/@xml:space) then attribute{'xml:space'}{$element/@xml:space} else (),
+    if ($element/@xml:lang) then attribute{'xml:lang'}{$element/@xml:lang} else ()
+    (: all remaining attributes are saved as annotations :)
     ,
+    (:and recurse through its element and text contents:)
     for $node in $element/node()
         return
-            if ($node instance of element() and not($node/text())) (: if the node is an element which does not have a child text node, then recurse. :)
+            if ($node instance of element() and not($node/text()))
+            (: if the node is an element which does not have a child text node, then recurse. :)
             then local:generate-text-layer($node, $target)
             else
-                if ($node instance of element() and exists($node/text())) (: if the node is an element which has a child text node, then reconstruct it with its @xml:id and get its text layer. :)
+                if ($node instance of element() and exists($node/text()))
+                (: if the node is an element which has a child text node, then reconstruct it and get its text layer. :)
                 then 
                     element {node-name($node)}
-                    {attribute{'xml:id'}{$node/@xml:id}(:NB: clean up - attribute declaration not needed:)
+                    {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else (),
+                    if ($element/@xml:base) then attribute{'xml:base'}{$element/@xml:base} else (),
+                    if ($element/@xml:space) then attribute{'xml:space'}{$element/@xml:space} else (),
+                    if ($element/@xml:lang) then attribute{'xml:lang'}{$element/@xml:lang} else ()
                     ,
                     local:separate-text-layers($node, $target)
                     }
@@ -386,16 +391,27 @@ declare function local:generate-top-level-annotations($elements as element()*, $
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
-let $doc := doc(concat('/db/test/out/', $doc-title))
+let $doc := doc(concat('/db/test/in/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
 
+let $admin-metadata :=
+<admin>
+	<creation>
+		<user>{xmldb:get-current-user()}</user>
+		<time>{current-dateTime()}</time>
+		<note/>
+	</creation>
+	<review><user/><time/><note/></review>
+	<imprimatur><user/><time/></imprimatur>
+</admin>
 
-let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expanded')
+let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
 let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $block-element-names := ('text', 'body', 'div', 'head', 'p', 'quote' )
-
+(:TODO: the idea is that an element all of whose ancestors are element-only-elements is a block-level element, so this has to be refined in terms of $element-only-element-names; empty elements have been filtered away:)
+let $element-only-element-names := ('TEI', 'abstract', 'accMat', 'acquisition', 'activity', 'additional', 'additions', 'addrLine', 'adminInfo', 'age', 'altIdent', 'altIdentifier', 'analytic', 'appInfo', 'application', 'arc', 'attDef', 'attList', 'attRef', 'authority', 'availability', 'back', 'bicond', 'binding', 'bindingDesc', 'birth', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castItem', 'catDesc', 'catRef', 'category', 'cell', 'change', 'channel', 'char', 'charDecl', 'charName', 'charProp', 'classCode', 'classDecl', 'classes', 'closer', 'collation', 'collection', 'colophon', 'cond', 'condition', 'constitution', 'constraint', 'constraintSpec', 'content', 'correction', 'creation', 'custEvent', 'custodialHist', 'datatype', 'death', 'decoDesc', 'decoNote', 'defaultVal', 'derivation', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docEdition', 'docImprint', 'docTitle', 'domain', 'eLeaf', 'editionStmt', 'editorialDecl', 'education', 'encodingDesc', 'entry', 'entryFree', 'epilogue', 'equipment', 'equiv', 'event', 'exemplum', 'explicit', 'f', 'fDecl', 'fDescr', 'facsimile', 'factuality', 'faith', 'figDesc', 'fileDesc', 'filiation', 'finalRubric', 'floruit', 'foliation', 'front', 'fsConstraints', 'fsDecl', 'fsDescr', 'fsdDecl', 'fsdLink', 'geoDecl', 'glyph', 'glyphName', 'group', 'handDesc', 'handNote', 'handNotes', 'head', 'headItem', 'headLabel', 'history', 'hyphenation', 'iNode', 'if', 'iff', 'imprimatur', 'imprint', 'incipit', 'institution', 'interaction', 'interpretation', 'item', 'keywords', 'langKnowledge', 'langKnown', 'langUsage', 'language', 'layout', 'layoutDesc', 'leaf', 'lem', 'licence', 'listPrefixDef', 'localName', 'locale', 'mapping', 'memberOf', 'metDecl', 'metSym', 'moduleRef', 'monogr', 'msContents', 'msItem', 'msItemStruct', 'msName', 'msPart', 'musicNotation', 'namespace', 'nationality', 'node', 'normalization', 'notesStmt', 'nym', 'objectDesc', 'occupation', 'opener', 'org', 'origin', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'postBox', 'postCode', 'postscript', 'prefixDef', 'preparedness', 'profileDesc', 'projectDesc', 'prologue', 'provenance', 'publicationStmt', 'purpose', 'quotation', 'rdg', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refState', 'refsDecl', 'relation', 'remarks', 'rendition', 'repository', 'residence', 'resp', 'revisionDesc', 'root', 'row', 'rubric', 'samplingDecl', 'scriptDesc', 'scriptNote', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sex', 'socecStatus', 'source', 'sourceDesc', 'sourceDoc', 'speaker', 'stdVals', 'street', 'styleDefDecl', 'summary', 'support', 'supportDesc', 'surfaceGrp', 'surrogates', 'tagUsage', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'text', 'textClass', 'then', 'titlePage', 'titlePart', 'titleStmt', 'trailer', 'transpose', 'triangle', 'typeDesc', 'typeNote', 'unicodeName', 'vDefault', 'vRange', 'valDesc', 'valItem', 'value', 'variantEncoding', 'when', 'witness')
 let $base-text := local:generate-text-layer($doc-text, 'base')
 let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 
@@ -411,6 +427,7 @@ let $annotations :=
 
         return 
             <result>
+                <input>{$doc-text}</input>
                 <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
                 <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
                 <annotations>{$annotations}</annotations>
