@@ -68,7 +68,7 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 };
 
 (: Extracts all upper-level element nodes from the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
-declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements) {
+declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) {
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
@@ -90,8 +90,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             if (local-name($node) = $edition-layer-elements) 
                             then 'edition' 
                             else 
-                                if (local-name($node) = ('milestone', 'pb', 'lb')) 
-                                (: NB: why can't $documentary-elements (down below) be used when $edition-layer-elements can be used?:)
+                                if (local-name($node) = $documentary-elements)
                                 then 'document' 
                                 else 'feature'}">
                             <base-layer>
@@ -175,7 +174,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                 case element(tei:lem) return 
                     if ($target eq 'base') 
                     then ()
-                    else $node/*
+                    else $node
                 
                 case element(tei:rdg) return
                     if ($node/preceding-sibling::tei:lem)
@@ -185,7 +184,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
                             (:TODO: an approach using tokenize() should be used instead:)
-                            then $node/*
+                            then $node
                             else ()
                         (:if there is a lem, choose a rdg for the base text:)
                         else ()
@@ -195,38 +194,38 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         if ($target eq 'base')
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
-                            then $node/*
+                            then $node
                             else ()
                             (:if there is no lem, choose a TS1 rdg for the base text if there is one:)
                         else
                             if ($node[contains(@wit/string(), 'TS2')])
-                            then $node/*
+                            then $node
                             else ()
                             (:if there is no lem, choose a TS2 rdg for the authoritative text:)
                 
                 case element(tei:reg) return
                     if ($target eq 'base')
                     then () 
-                    else $node/*
+                    else $node
                 case element(tei:corr) return
                     if ($target eq 'base') 
                     then () 
-                    else $node/*
+                    else $node
                 case element(tei:expan) return
                     if ($target eq 'base') 
                     then () 
-                    else $node/*
+                    else $node
                 case element(tei:orig) return
                     if ($target eq 'base') 
-                    then $node/*
+                    then $node
                     else ()
                 case element(tei:sic) return
                     if ($target eq 'base') 
-                    then $node/*
+                    then $node
                     else ()
                 case element(tei:abbr) return
                     if ($target eq 'base') 
-                    then $node/*
+                    then $node
                     else ()
 
                     default return local:separate-text-layers($node, $target)
@@ -244,7 +243,7 @@ declare function local:remove-inline-elements($nodes as node()*, $block-element-
         else $node
 };
 
-declare function local:handle-element-only-annotations($node as node()) as item()* {
+declare function local:handle-element-only-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
             let $layer-1-body-contents := $node//body/* (: get the element below body - this can ony be a single item :)
             let $layer-1-admin-contents := $node//admin/* (: get the elements below admin :)
             let $layer-1-id := $node/@xml:id/string() (: get id :)
@@ -303,13 +302,13 @@ declare function local:handle-element-only-annotations($node as node()) as item(
                         (
                         if (not($element-annotations//body/string()) or $element-annotations//body/*/node() instance of text() or $element-annotations//body/node() instance of text())
                         then $element-annotations 
-                        else local:whittle-down-annotations($element-annotations)
+                        else local:whittle-down-annotations($element-annotations, $documentary-elements)
                         ,
                         $attribute-annotations
                         )
 };
 
-declare function local:handle-mixed-content-annotations($node as node()) as item()* {
+declare function local:handle-mixed-content-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
     (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input, except that no edition-layer-elements are relevant:)
             let $layer-1-body-contents := $node//body/*(:get element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
@@ -319,7 +318,7 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
             let $layer-1 := local:insert-elements($layer-1, <body>{$layer-1-body-contents}</body>, 'target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
-            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//body/*, '')
+            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//body/*, '', $documentary-elements)
             let $layer-1-id := <id>{$node/@xml:id/string()}</id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
@@ -328,30 +327,30 @@ declare function local:handle-mixed-content-annotations($node as node()) as item
                         return
                             if (not($layer-2//body/string()) or $layer-2//body/*/node() instance of text() or $layer-2//body/node() instance of text())
                         then $layer-2
-                        else local:whittle-down-annotations($layer-2)
+                        else local:whittle-down-annotations($layer-2, $documentary-elements)
 };
 
 (: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element with a text node :)
-declare function local:whittle-down-annotations($node as node()) as item()* {
+declare function local:whittle-down-annotations($node as node(), $documentary-elements as xs:string+) as item()* {
             if (not($node//body/string())) (: there is no text anywhere, i.e it is an empty element, so extract its attributes:)
-            then local:handle-element-only-annotations($node)
+            then local:handle-element-only-annotations($node, $documentary-elements)
             else 
                 if (local-name($node//body/*) eq 'attribute') (: it is an attribute annotation, so do not split it up, but pass through. :)
                 then $node
                 else
                     if (count($node//body/*/*) ge 1 and $node//body/*[./text()]) (: there is mixed contents, so send on and receive back in reduced form:) (: if there is an element (the second '*') and if its parent (the first '*') is a text node, then we are dealing with mixed contents:)
-                    then local:handle-mixed-content-annotations($node)
+                    then local:handle-mixed-content-annotations($node, $documentary-elements)
                     else 
                         if ($node//body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
                         then $node
-                        else local:handle-element-only-annotations($node) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
+                        else local:handle-element-only-annotations($node, $documentary-elements) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
 };
 
 declare function local:generate-text-layer($element as element(), $target as xs:string) as element() 
     (:reconstruct the passed element with xml attributes:)
     {
     element {node-name($element)}
-    {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else (),
+    {if ($element/@xml:id) then attribute{'xml:id'}{$element/@xml:id} else attribute{'xml:id'}{concat('uuid-', util:uuid())},
     if ($element/@xml:base) then attribute{'xml:base'}{$element/@xml:base} else (),
     if ($element/@xml:space) then attribute{'xml:space'}{$element/@xml:space} else (),
     if ($element/@xml:lang) then attribute{'xml:lang'}{$element/@xml:lang} else ()
@@ -382,12 +381,12 @@ declare function local:generate-text-layer($element as element(), $target as xs:
     }
 };
 
-declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+) as element()* {
+declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as element()* {
     for $element in $elements/*
         return
             if ($element/text())
-            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
-            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements)
+            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
+            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
@@ -418,12 +417,12 @@ let $base-text := local:remove-inline-elements($base-text, $block-element-names)
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
 let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
 
-let $top-level-annotations := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements)
+let $top-level-annotations := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements)
 let $top-level-annotations := local:insert-authoritative-layer-in-top-level-annotations($top-level-annotations)
 
 let $annotations :=
     for $node in $top-level-annotations
-        return local:whittle-down-annotations($node)
+        return local:whittle-down-annotations($node, $documentary-elements)
 
         return 
             <result>
