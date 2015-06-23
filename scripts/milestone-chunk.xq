@@ -21,19 +21,23 @@ as element()
 declare function local:milestone-chunk(
   $node as node()*,
   $start-node as element(),
-  $end-node as element()
+  $end-node as element(),
+  $include-start-and-end as xs:boolean
 ) as node()*
 {
   typeswitch ($node)
     case element() return
       if ($node is $start-node or $node is $end-node) 
-      then $node (:should the milestones be returned at all?:)
+      then 
+          if ($include-start-and-end)
+          then $node
+          else ()
       else 
           if (some $node in $node/descendant::* satisfies ($node is $start-node or $node is $end-node))
           then
-              element {QName (namespace-uri($node), name($node))}
+              element { node-name($node) }
                 { for $i in ( $node/node() | $node/@* )
-                  return local:milestone-chunk($i, $start-node, $end-node) }
+                  return local:milestone-chunk($i, $start-node, $end-node, $include-start-and-end) }
                   else
                       if ( $node >> $start-node and $node << $end-node ) 
                       then $node
@@ -48,20 +52,21 @@ declare function local:get-chunk(
   $node as node()*,
   $start-node as element(),
   $end-node as element(),
-  $common-ancestor as xs:boolean
+  $common-ancestor-only as xs:boolean,
+  $include-start-and-end as xs:boolean
 ) as node()*
 {
   let $node :=
-    if ($common-ancestor)
+    if ($common-ancestor-only)
     then local:get-common-ancestor($node, $start-node, $end-node)
     else $node
     return
-        local:milestone-chunk($node, $start-node, $end-node)
+        local:milestone-chunk($node, $start-node, $end-node, $include-start-and-end)
 };
 
 let $input := doc('/db/eebo/A00283.xml')/tei:TEI
 
 return
-    local:get-chunk($input, $input//tei:pb[@n="7"], $input//tei:pb[@n="8"], true())
+    local:get-chunk($input, $input//tei:pb[@n="7"], $input//tei:pb[@n="8"], true(), true())
   
 (:    util:get-fragment-between($input//tei:pb[@n eq "7"], $input//tei:pb[@n eq "8"], true(), true()):)
