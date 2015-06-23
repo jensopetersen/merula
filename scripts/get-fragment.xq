@@ -27,15 +27,12 @@ as element()
             if ($child instance of element()) then 
                 (: if the start or end node is a descendants of the child, recurse; :)
                 (:NB: is end necessary?:)
-                if ($child/descendant::tei:*[. is $start-node]
-                    or $child/descendant::tei:*[. is $end-node])
-                then
-                    local:get-page-from-pb($child, $start-node, $end-node)
+                if (some $node in $child/descendant::* satisfies ($node is $start-node or $node is $end-node))
+                then local:get-page-from-pb($child, $start-node, $end-node)
                 (: if the start node precedes the child, recurse; if the end node follows the child, recurse :)
                 else 
-                    if ($child/preceding::tei:*[. is $start-node] and $child/following::tei:*[. is $end-node])
-                    then
-                        local:get-page-from-pb($child, $start-node, $end-node)
+                    if ((some $node in $child/preceding::* satisfies ($node is $start-node)) and (some $node in $child/following::* satisfies ($node is $end-node)))
+                    then local:get-page-from-pb($child, $start-node, $end-node)
                     else ()
             else
                 if ($child instance of text()) 
@@ -55,7 +52,7 @@ as element()
 };
 
 let $doc := doc('/db/eebo/A00283.xml')/tei:TEI
-let $doc := local:get-common-ancestor($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
+(:let $doc := local:get-common-ancestor($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"]):)
 
 return
     local:get-page-from-pb($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
