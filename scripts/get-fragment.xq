@@ -2,32 +2,22 @@ xquery version "3.0";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
-declare function local:get-common-ancestor( $element as element(),
-                                            $start-element-name as xs:string,
-                                            $start-attribute-name as xs:string,
-                                            $start-attribute-value as xs:string,
-                                            $end-element-name as xs:string,
-                                            $end-attribute-name as xs:string,
-                                            $end-attribute-value as xs:string)
+declare function local:get-common-ancestor($element as element(), $start-node as node(), $end-node as node())
 as element()
 {
     let $element :=
-        ($element//*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq $start-attribute-value]/ancestor::* 
-            intersect 
-        $element//*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq $end-attribute-value]/ancestor::*)
+        (
+            $element//*[. is $start-node]/ancestor::* 
+                intersect 
+            $element//*[. is $end-node]/ancestor::*
+        )
         [last()]
     return
         $element
 };
 
 (: the function return a fragment between two element nodes, wrapping it in the closest common ancestor (if local:get-common-ancestor() is run) or in all common ancestors:)
-declare function local:get-page-from-pb($element as element(), 
-                                        $start-element-name as xs:string,
-                                        $start-attribute-name as xs:string, 
-                                        $start-attribute-value as xs:string,
-                                        $end-element-name as xs:string, 
-                                        $end-attribute-name as xs:string,
-                                        $end-attribute-value as xs:string)
+declare function local:get-page-from-pb($element as element(), $start-node as node(), $end-node as node())
 as element()
 {
     element { node-name($element) } {
@@ -37,24 +27,24 @@ as element()
             if ($child instance of element()) then 
                 (: if the start or end node is a descendants of the child, recurse; :)
                 (:NB: is end necessary?:)
-                if ($child/descendant::tei:*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq $start-attribute-value]
-                    or $child/descendant::tei:*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq $end-attribute-value]) 
+                if ($child/descendant::tei:*[. is $start-node]
+                    or $child/descendant::tei:*[. is $end-node])
                 then
-                    local:get-page-from-pb($child, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
+                    local:get-page-from-pb($child, $start-node, $end-node)
                 (: if the start node precedes the child, recurse; if the end node follows the child, recurse :)
                 else 
-                    if ($child/preceding::tei:*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq $start-attribute-value] and $child/following::tei:*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq $end-attribute-value])
+                    if ($child/preceding::tei:*[. is $start-node] and $child/following::tei:*[. is $end-node])
                     then
-                        local:get-page-from-pb($child, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
+                        local:get-page-from-pb($child, $start-node, $end-node)
                     else ()
             else
                 if ($child instance of text()) 
                 then
                     (:if the text follows the start node or precedes the end node, include it:)
-                    if (($child/following-sibling::tei:*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq $start-attribute-value]) or ($child/preceding-sibling::tei:*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq $end-attribute-value]))
+                    if (($child/following-sibling::tei:*[. is $start-node]) or ($child/preceding-sibling::tei:*[. is $end-node]))
                     then ()
                 else
-                    if ($child/preceding::tei:*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq $start-attribute-value] or $child/following::tei:*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq $end-attribute-value]) 
+                    if ($child/preceding::tei:*[. is $start-node] or $child/following::tei:*[. is $end-node])
                     then
                         $child
                     else ()
@@ -64,18 +54,11 @@ as element()
     }
 };
 
-let $start-element-name := 'pb'
-let $start-attribute-name := 'n'
-let $start-attribute-value := '7'
-let $end-element-name := 'pb'
-let $end-attribute-name := 'n'
-let $end-attribute-value := '8'
-
 let $doc := doc('/db/eebo/A00283.xml')/tei:TEI
-let $doc := local:get-common-ancestor($doc, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
+let $doc := local:get-common-ancestor($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
 
 return
-    local:get-page-from-pb($doc, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
+    local:get-page-from-pb($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
 
 (:util:get-fragment-between($beginning-node as node()?, $ending-node as node()?, $make-fragment as xs:boolean?, $display-root-namespace as xs:boolean?) as xs:string:)
 
