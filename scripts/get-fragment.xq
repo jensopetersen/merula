@@ -52,7 +52,7 @@ as element()
 };
 
 let $doc := doc('/db/eebo/A00283.xml')/tei:TEI
-(:let $doc := local:get-common-ancestor($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"]):)
+let $doc := local:get-common-ancestor($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
 
 return
     local:get-page-from-pb($doc, $doc//tei:pb[@n eq "7"], $doc//tei:pb[@n eq "8"])
