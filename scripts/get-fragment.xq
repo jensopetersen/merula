@@ -2,18 +2,28 @@ xquery version "3.0";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
+declare function local:get-common-ancestor($element as element(), $start-element-name as xs:string,
+                                           $start-attribute-name as xs:string, $start-attribute-value as xs:string,
+                                           $end-element-name as xs:string, $end-attribute-name as xs:string,
+                                           $end-attribute-value as xs:string)
+as element()
+{
+    let $element :=
+        ($element//*[local-name(.) eq $start-element-name][@*[local-name(.) eq $start-attribute-name] eq
+            $start-attribute-value]/ancestor::* intersect $element//*[local-name(.) eq $end-element-name][@*[local-name(
+                                                                                                                            .
+                                                                                                                       )
+            eq $end-attribute-name] eq $end-attribute-value]/ancestor::*)[last()]
+    return
+        $element
+};
+
 declare function local:get-page-from-pb($element as element(), $start-element-name as xs:string,
                                         $start-attribute-name as xs:string, $start-attribute-value as xs:string,
                                         $end-element-name as xs:string, $end-attribute-name as xs:string,
                                         $end-attribute-value as xs:string)
 as element()
 {
-(:    let $element :=:)
-(:        ($element/descendant-or-self::tei:*[local-name(.) eq $start-element-name][@*[local-name(.) eq:)
-(:            $start-attribute-name] eq $start-attribute-value]/ancestor::* intersect:)
-(:            $element/descendant::tei:*[local-name(.) eq $end-element-name][@*[local-name(.) eq $end-attribute-name] eq:)
-(:            $end-attribute-value]/ancestor::*)[last()]:)
-(:    return:)
         element { node-name($element) } {
             $element/@*,
             for $child in $element/node()
@@ -55,21 +65,25 @@ as element()
 };
 
 
-
-(:
-Could also restrict to common ancestor:
-($v1/ancestor::* intersect $v2/ancestor::*)[last()]
-:)
-
 (:util:get-fragment-between($beginning-node as node()?, $ending-node as node()?, :)
 (:$make-fragment as xs:boolean?, $display-root-namespace as xs:boolean?) as xs:)
 (::string:)
 (:Obviously, it is assumed that the two nodes are in the same document!:)
 
 (:let $doc := doc('/db/common-ancestor.xml')/*:)
+ 
+let $start-element-name := 'pb'
+let $start-attribute-name := 'n'
+let $start-attribute-value := '7'
+let $end-element-name := 'pb'
+let $end-attribute-name := 'n'
+let $end-attribute-value := '8'
+
 let $doc := doc('/db/eebo/A00283.xml')/tei:TEI
+let $doc := local:get-common-ancestor($doc, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
 
 return
-    local:get-page-from-pb($doc, "pb", "n", "7", "pb", "n", "8")
-(:    local:get-page-from-pb($doc, "pb", "n", "7", "pb", "n", "8"):)
+    local:get-page-from-pb($doc, $start-element-name, $start-attribute-name, $start-attribute-value, $end-element-name, $end-attribute-name, $end-attribute-value)
+
+
 (:    parse-xml(util:get-fragment-between($doc//tei:pb[@n eq "6"], $doc//tei:pb[@n eq "7"], true(), true())):)
