@@ -17,7 +17,8 @@ declare function local:get-fragment(
     $node as node()*,
     $start-node as element(),
     $end-node as element(),
-    $include-start-and-end-nodes as xs:boolean
+    $include-start-and-end-nodes as xs:boolean,
+    $empty-ancestor-elements-to-include as xs:string+
 ) as node()*
 {
     typeswitch ($node)
@@ -53,9 +54,14 @@ declare function local:get-fragment(
                     then attribute{'xml:lang'}{$node/ancestor::*/@xml:lang[1]}
                     else ()
                 ,
+                (:carry over the nearest of preceding empty elements that have significance for the fragment; though amy element could be included here, the idea is to allow empty elements such as handShift to be carried over:)
+                for $empty-ancestor-element-to-include in $empty-ancestor-elements-to-include
+                return
+                    $node/preceding::*[local-name(.) = $empty-ancestor-element-to-include][1]
+                ,
                 (:recurse:)
                 for $node in $node/node()
-                return local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes) }
+                return local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes, $empty-ancestor-elements-to-include) }
         else
         (:if an element follows the start-node or precedes the end-note, carry it over:)
         if ($node >> $start-node and $node << $end-node)
@@ -72,21 +78,22 @@ declare function local:get-fragment-from-doc(
     $node as node()*,
     $start-node as element(),
     $end-node as element(),
-    $wrap-in-common-ancestor-only as xs:boolean,
-    $include-start-and-end-nodes as xs:boolean
+    $wrap-in-first-common-ancestor-only as xs:boolean,
+    $include-start-and-end-nodes as xs:boolean,
+    $empty-ancestor-elements-to-include as xs:string+
 ) as node()*
 {
     if ($node instance of element())
     then
         let $node :=
-            if ($wrap-in-common-ancestor-only)
+            if ($wrap-in-first-common-ancestor-only)
             then local:get-common-ancestor($node, $start-node, $end-node)
             else $node
             return
-                local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes)
+                local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes, $empty-ancestor-elements-to-include)
     else 
         if ($node instance of document-node())
-        then local:get-fragment-from-doc($node/element(), $start-node, $end-node, $wrap-in-common-ancestor-only, $include-start-and-end-nodes)
+        then local:get-fragment-from-doc($node/element(), $start-node, $end-node, $wrap-in-first-common-ancestor-only, $include-start-and-end-nodes, $empty-ancestor-elements-to-include)
         else ()
         
 };
@@ -94,6 +101,6 @@ declare function local:get-fragment-from-doc(
 let $input := doc('/db/eebo/A00283.xml')
 
 return
-    local:get-fragment-from-doc($input, $input//tei:pb[@n="7"], $input//tei:pb[@n="8"], true(), true())
+    local:get-fragment-from-doc($input, $input//tei:pb[@n="7"], $input//tei:pb[@n="8"], true(), true(), ('handShift'))
   
 (:    util:get-fragment-between($input//tei:pb[@n eq "7"], $input//tei:pb[@n eq "8"], true(), true()):)
