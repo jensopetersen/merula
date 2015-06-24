@@ -76,6 +76,10 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
         let $id := concat('uuid-', util:uuid())
         let $position-start := string-length($base-before-element) + string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
+        let $preceding-sibling-node := $node/preceding-sibling::node()[1]
+        let $following-sibling-node := $node/following-sibling::node()[1]
+(:        let $log := util:log("DEBUG", ("##$preceding-sibling-node): ", string-length($preceding-sibling-node))):)
+
             return
                 let $element-result :=
                     <annotation type="element" xml:id="{$id}" status="{
@@ -94,6 +98,35 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 then 'document' 
                                 else 'feature'}">
                             <base-layer>
+                                <parent-element-name>{local-name($node/parent::*)}</parent-element-name>
+                                <preceding-sibling-node>{
+                                    if ($preceding-sibling-node instance of element())
+                                    then (<node-type>element</node-type>, <node-name>{local-name($preceding-sibling-node)}</node-name>)
+                                    else 
+                                        if ($preceding-sibling-node instance of text())
+                                        then <node-type>text</node-type>
+                                        else
+                                            if ($preceding-sibling-node instance of comment())
+                                            then <node-type>comment</node-type>
+                                            else 
+                                                if ($preceding-sibling-node instance of processing-instruction())
+                                            then (<node-type>processing-instruction</node-type>, <node-name>{local-name($preceding-sibling-node)}</node-name>)
+                                            else ()
+                                }</preceding-sibling-node>
+                                <following-sibling-node>{
+                                    if ($following-sibling-node instance of element())
+                                    then (<node-type>element</node-type>, <node-name>{local-name($following-sibling-node)}</node-name>)
+                                    else 
+                                        if ($following-sibling-node instance of text())
+                                        then <node-type>text</node-type>
+                                        else
+                                            if ($following-sibling-node instance of comment())
+                                            then <node-type>comment</node-type>
+                                            else 
+                                                if ($following-sibling-node instance of processing-instruction())
+                                            then (<node-type>processing-instruction</node-type>, <node-name>{local-name($following-sibling-node)}</node-name>)
+                                            else ()
+                                }</following-sibling-node>
                                 <id>{string($node/../@xml:id)}</id>
                                 <start>{$position-start + 1}</start>
                                 <offset>{$position-end - $position-start}</offset>
