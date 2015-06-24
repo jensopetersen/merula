@@ -76,15 +76,22 @@ declare function local:get-fragment-from-doc(
     $include-start-and-end-nodes as xs:boolean
 ) as node()*
 {
-    let $node :=
-        if ($wrap-in-common-ancestor-only)
-        then local:get-common-ancestor($node, $start-node, $end-node)
-        else $node
-        return
-            local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes)
+    if ($node instance of element())
+    then
+        let $node :=
+            if ($wrap-in-common-ancestor-only)
+            then local:get-common-ancestor($node, $start-node, $end-node)
+            else $node
+            return
+                local:get-fragment($node, $start-node, $end-node, $include-start-and-end-nodes)
+    else 
+        if ($node instance of document-node())
+        then local:get-fragment-from-doc($node/element(), $start-node, $end-node, $wrap-in-common-ancestor-only, $include-start-and-end-nodes)
+        else ()
+        
 };
 
-let $input := doc('/db/eebo/A00283.xml')/*
+let $input := doc('/db/eebo/A00283.xml')
 
 return
     local:get-fragment-from-doc($input, $input//tei:pb[@n="7"], $input//tei:pb[@n="8"], true(), true())
