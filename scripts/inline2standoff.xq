@@ -1,5 +1,6 @@
 xquery version "3.0";
 
+declare namespace a8n="http://exist-db.org/xquery/a8n";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
@@ -72,7 +73,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
     for $node in $input/element()
         let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
-        let $marked-up-string := string-join(local:separate-text-layers(<annotation>{$node}</annotation>, 'base'))
+        let $marked-up-string := string-join(local:separate-text-layers(<a8n:annotation>{$node}</a8n:annotation>, 'base'))
         let $id := concat('uuid-', util:uuid())
         let $position-start := string-length($base-before-element) + string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
@@ -81,7 +82,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
 
             return
                 let $element-result :=
-                    <annotation type="element" xml:id="{$id}" status="{
+                    <a8n:annotation type="element" xml:id="{$id}" status="{
                             let $base-text := string-join(local:separate-text-layers($input, 'base'))
                             let $character-before := substring($base-text, $position-start, 1)
                             let $character-after := substring($base-text, $position-end + 1, 1)
@@ -158,11 +159,11 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 else 0            
                                     return $off-set-difference}</layer-offset-difference>
                         <admin/>
-                    </annotation>
+                    </a8n:annotation>
                 let $attribute-result := 
                         for $attribute in $node/(@* except @xml:id)
                             return 
-                                <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                                <a8n:annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                                     <target type="element" layer="annotation">
                                         <id>{$node/@xml:id/string()}</id>
                                         </target>
@@ -173,7 +174,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                         </attribute>
                                     </body>
                                     <admin/>
-                                </annotation>
+                                </a8n:annotation>
             return ($element-result, $attribute-result)
 };
 
@@ -287,7 +288,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
             let $layer-1-body-attributes :=
                 for $attribute in $layer-1-body-contents/(@* except @xml:id)
                     return 
-                        <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                        <a8n:annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                             <target type="element" layer="annotation">
                                 <id>{$layer-1-id}</id>
                                 </target>
@@ -298,7 +299,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                                 </attribute>
                             </body>
                             <admin>{$layer-1-admin-contents}</admin>
-                        </annotation>
+                        </a8n:annotation>
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{$layer-1-body-contents/@xml:id}
             (:construct empty element:)
             let $layer-1 := local:remove-elements($node, 'body') (:remove the old body,:)
@@ -316,7 +317,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                 let $attribute-annotations := 
                     for $attribute in $element/(@* except @xml:id)
                         return 
-                            <annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
+                            <a8n:annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                                 <target type="element" layer="annotation">
                                     <id>{$annotation-id}</id>
                                     </target>
@@ -327,9 +328,9 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                                     </attribute>
                                 </body>
                                 <admin>{$layer-1-admin-contents}</admin>
-                            </annotation>
+                            </a8n:annotation>
                 let $element-annotations :=
-                    <annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
+                    <a8n:annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <target type="element" layer="annotation">
                             <annotation-layer>
                                 <id>{$layer-1-id}</id>
@@ -338,7 +339,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                         </target>
                         <body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</body>
                         <admin>{$layer-1-admin-contents}</admin>
-                    </annotation>
+                    </a8n:annotation>
                     return
                         (
                         if (not($element-annotations//body/string()) or $element-annotations//body/*/node() instance of text() or $element-annotations//body/node() instance of text())
