@@ -74,7 +74,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
         let $base-before-element := string-join(local:separate-text-layers($node/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($node/preceding-sibling::text())
         let $marked-up-string := string-join(local:separate-text-layers(<a8n:annotation>{$node}</a8n:annotation>, 'base'))
-        let $id := concat('uuid-', util:uuid())
+        let $id := if ($node/@xml:id) then $node/@xml:id/string() else concat('uuidx-', util:uuid())
         let $position-start := string-length($base-before-element) + string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
         let $preceding-sibling-node := $node/preceding-sibling::node()[1]
@@ -423,11 +423,16 @@ declare function local:generate-text-layer($element as element(), $target as xs:
     }
 };
 
-(:recurse through the document, extracting annotations when hitting blocl-level elements:)
+(:recurse through the document, extracting annotations when hitting elements with text nodes; only elements with text nodes can serve as basis for annotations; all other elements will be block-level and occur in both base and target version.:)
+(:NB: this will not catch an element which could have had a text node, but which happens not to have, e.g. a <p> wholly filled up with a <hi>.:)
+(:There are 1) elements that can only have other elements as child nodes; 
+ : there are 2) elements that can have no child nodes; 
+ : there are 3) elements that can have text nodes;
+ : we can define the elements we are interested in as elements that can have text nodes, all of whose ancestors are element-only elements.:)
 declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+, $block-element-names as xs:string+) as element()* {
     for $element in $elements/*
         return
-            if (local-name($element) = $block-element-names)
+            if ($element/text())
             then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
             else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names)
 };
