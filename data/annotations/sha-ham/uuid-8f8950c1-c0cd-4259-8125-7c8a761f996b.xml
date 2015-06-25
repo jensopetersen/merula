@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="element" xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996b" status="token">
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996b" status="token">
     <target type="element" layer="annotation">
         <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
         <order>2</order>

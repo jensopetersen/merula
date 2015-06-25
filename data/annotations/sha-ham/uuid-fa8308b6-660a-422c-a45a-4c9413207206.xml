@@ -1,4 +1,4 @@
-<annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="attribute" xml:id="uuid-fa8308b6-660a-422c-a45a-4c9413207206" status="string">
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="attribute" xml:id="uuid-fa8308b6-660a-422c-a45a-4c9413207206" status="string">
     <target type="element" layer="annotation">
         <id>uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba</id>
     </target>

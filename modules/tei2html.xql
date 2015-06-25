@@ -5,7 +5,7 @@ module namespace tei2="http://exist-db.org/xquery/app/tei2html";
 import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare namespace a8n="http://www.betterform.de/projects/mopane/annotation";
+declare namespace a8n="http://exist-db.org/xquery/a8n";
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)

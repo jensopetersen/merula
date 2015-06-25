@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="element" xml:id="uuid-3a8308b6-660a-422c-a45a-4c9413207209" status="string">
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-3a8308b6-660a-422c-a45a-4c9413207209" status="string">
     <target type="range" layer="feature">
         <id>sha-ham101003</id>
         <start>12</start>
