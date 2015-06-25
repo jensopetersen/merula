@@ -78,7 +78,6 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
         let $position-end := $position-start + string-length($marked-up-string)
         let $preceding-sibling-node := $node/preceding-sibling::node()[1]
         let $following-sibling-node := $node/following-sibling::node()[1]
-(:        let $log := util:log("DEBUG", ("##$preceding-sibling-node): ", string-length($preceding-sibling-node))):)
 
             return
                 let $element-result :=
@@ -89,7 +88,9 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                             let $characters-before-and-after := concat($character-before, $character-after)
                             let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
                             return
-                            if ($characters-before-and-after) then "string" else "token"}">(: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                            if ($characters-before-and-after) then "string" else "token"
+                            (: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                        }">
                         <target type="range" layer="{
                             if (local-name($node) = $edition-layer-elements) 
                             then 'edition' 
