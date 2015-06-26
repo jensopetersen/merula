@@ -1,0 +1,13 @@
+<a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-35978609-2c95-4e23-be7d-f52ffc0a5358">
+            <target type="element" layer="annotation">
+                <id>uuid-d307e6df-ce8a-482f-b9f4-7eec73f0c6be</id>
+            </target>
+            <body>
+                <attribute>
+                    <name>rend</name>
+                    <value>italic</value>
+                </attribute>
+            </body>
+            <admin/>
+        </a8n:annotation>

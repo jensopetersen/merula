@@ -1,0 +1,28 @@
+<a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
+            xml:id="uuid-be99491b-31a3-47a8-bbea-c1b1bba908d8" status="string">
+            <target type="range" layer="document">
+                <base-layer>
+                    <parent-element-name>p</parent-element-name>
+                    <preceding-sibling-node>
+                        <node-type>text</node-type>
+                    </preceding-sibling-node>
+                    <following-sibling-node>
+                        <node-type>text</node-type>
+                    </following-sibling-node>
+                    <id>pa000001</id>
+                    <start>114</start>
+                    <offset>0</offset>
+                </base-layer>
+                <authoritative-layer>
+                    <id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</id>
+                    <start>114</start>
+                    <offset>0</offset>
+                </authoritative-layer>
+            </target>
+            <body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-50dea63f-c4c1-425c-b883-b9e06ea7d4a9"/>
+            </body>
+            <layer-offset-difference>0</layer-offset-difference>
+            <admin/>
+        </a8n:annotation>

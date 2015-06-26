@@ -1,0 +1,14 @@
+<a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
+            xml:id="uuid-d4f85034-3740-443f-b3e8-95101644d72a" status="token">
+            <target type="element" layer="annotation">
+                <annotation-layer>
+                    <id>uuid-349969be-104d-438d-8c9a-7ab383094c85</id>
+                    <order>3</order>
+                </annotation-layer>
+            </target>
+            <body>
+                <rdg xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58">$12,000</rdg>
+            </body>
+            <admin/>
+        </a8n:annotation>
