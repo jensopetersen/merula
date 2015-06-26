@@ -1,186 +1,18 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="sha-ham">
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Hamlet, Prince of Denmark</title>
-                <author>William Shakespeare</author>
-                <respStmt>
-                    <name>Craig A. Berry, Martin Mueller, and Clifford Wulfman</name>
-                    <resp>editors</resp>
-                </respStmt>
-                <respStmt>
-                    <name>Jeffrey Cousens and Bill Parod</name>
-                    <resp>technical editors</resp>
-                </respStmt>
-                <respStmt>
-                    <name>Lawrence Berland, Hilary Bina, Katherine Gould, Kreg Segal, Nicholas Terrell</name>
-                    <resp>editorial assistants</resp>
-                </respStmt>
+                <title>Title</title>
             </titleStmt>
             <publicationStmt>
-                <p>
-                    <title>The WordHoard Shakespeare</title>is a joint project of the Perseus Project at Tufts
-          University, The Northwestern University Library, and Northwestern University Academic
-          Technologies. It is derived from<title>The Globe Shakespeare</title>, the one-volume
-          version of the<title>Cambridge Shakespeare</title>, edited by W. G. Clark, J. Glover, and
-          W. A. Wright (1891-3). The<title>Internet Shakespeare</title>editions of the quartos and
-          folios have been consulted to create a modern text that observes as closely as possible
-          the morphological and prosodic practices of the earliest editions. Spellings, especially
-          of contracted and hyphenated forms, have been standardized across the corpus. The text has
-          been fully lemmatized and morphosyntactically tagged.</p>
-                <p>© 2003. The copyright to<title>The WordHoard Shakespeare</title>is owned jointly by
-          Northwestern University and Tufts University.<title>The WordHoard Shakespeare</title>is
-          provided for free solely for non-commercial use by students, scholars, and the public. Any
-          commercial use or publication of it, in whole or in part, without prior written
-          authorization of the copyright holders is strictly prohibited.</p>
+                <p>Publication Information</p>
             </publicationStmt>
-            <sourceDesc default="false">
-                <p>The Wordhoard Shakespeare is derived from, but not identical with,<title>The Globe
-            Shakespeare</title>, the one-volume version of the<title>Cambridge Shakespeare</title>
-          (1891-3) edited by W. G. Clark, J. Glover, and W. A. Wright.</p>
+            <sourceDesc>
+                <p>Information about the source</p>
             </sourceDesc>
         </fileDesc>
     </teiHeader>
     <text>
-        <front xml:id="uuid-f2a5c0fb-bc26-49d8-99f7-3ab9d956c998">
-            <div type="castList" xml:id="sha-hamcast">
-                <head xml:id="uuid-b590800e-8877-4491-9f3a-e162937ee668">Dramatis Personae</head>
-                <castList xml:id="uuid-258a0950-f03c-4443-bbb5-2258e9e789ab">
-                    <castItem type="role" xml:id="uuid-a71539ba-5ceb-425e-86ea-770180d6967d">
-                        <role xml:id="Claudius">Claudius</role>
-                        <roleDesc>king of Denmark</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-af2c25f0-9e46-49a3-953d-531729cfdfe4">
-                        <role xml:id="Hamlet">Hamlet</role>
-                        <roleDesc>son to the late and nephew to the present king</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-c9b30de7-f84f-4e71-8926-256a0ef0ae73">
-                        <role xml:id="Polonius">Polonius</role>
-                        <roleDesc>lord chamberlain</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-41e7732b-6e20-4a1e-b356-a179a2306cc9">
-                        <role xml:id="Horatio">Horatio</role>
-                        <roleDesc>friend to Hamlet</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-8e11603a-26b0-4051-a0cb-a9172b9dc9d7">
-                        <role xml:id="Laertes2">Laertes</role>
-                        <roleDesc>son to Polonius</roleDesc>
-                    </castItem>
-                    <castGroup xml:id="uuid-105148cc-b29a-4924-8850-0149ce9f17d3">
-                        <head xml:id="uuid-4045d27d-d286-434b-b738-2b04e71bba36">Courtiers</head>
-                        <castItem type="role" xml:id="uuid-ed131f65-8f30-45c9-8d72-ad08fbc8afd8">
-                            <role xml:id="Voltimand">Voltimand</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-5a89c73f-b6f8-4e88-bcf1-fe365bfae368">
-                            <role xml:id="Cornelius1">Cornelius</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-7f4462f6-fbce-48dd-9203-7a5ed96df735">
-                            <role xml:id="Rosencrantz">Rosencrantz</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-0faaa403-fbc2-4612-b3d8-0bb5ad74a1bc">
-                            <role xml:id="Guildenstern">Guildenstern</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-277b87a2-6192-4bba-8a91-f617dab008dd">
-                            <role xml:id="Osric">Osric</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-a44881fd-7b25-4ef4-9152-806b10d37487">
-                            <role xml:id="ham-gent.">A Gentleman</role>
-                        </castItem>
-                    </castGroup>
-                    <castItem type="role" xml:id="uuid-e756b8be-ada1-472a-903c-5eac1ff8bb9b">
-                        <role xml:id="ham-first-priest.">A Priest</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-e387ef01-0351-4591-9c0f-edf0de8fef19">
-                        <role xml:id="Marcellus1">Marcellus</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-b4f48e05-6f43-4fdd-a5a4-ae291665a070">
-                        <role xml:id="Barnardo">Bernardo</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-70561b6a-4faa-47ca-bde0-1e5d1514a7ba">
-                        <role xml:id="Francisco">Francisco</role>
-                        <roleDesc>a soldier</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-205efa9e-4e11-4e88-8fb6-0bdd5a6703a8">
-                        <role xml:id="Reynaldo">Reynaldo</role>
-                        <roleDesc>servant to Polonius</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-e93975e3-471f-4bbb-89e5-53cd2f033a6b">
-                        <role xml:id="sha-ham-role17">Players</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-a693183f-385f-4886-90cb-b4f4167e2d04">
-                        <role xml:id="ham-first-play.">First Player</role>
-                    </castItem>
-                    <castGroup xml:id="uuid-fb147883-4b9c-4a21-9289-aa34a7e5dba5">
-                        <head xml:id="uuid-2044a0a6-e7cd-43d3-84b8-9a6edefec5fb">Grave-diggers</head>
-                        <castItem type="role" xml:id="uuid-43590ac0-bcb5-42f0-bd7c-d82f41ca7bab">
-                            <role xml:id="ham-first-clo.">First Clown</role>
-                        </castItem>
-                        <castItem type="role" xml:id="uuid-5e979a1a-c07e-438f-ba5d-82acf9cd8a2c">
-                            <role xml:id="ham-sec.-clo.">Second Clown</role>
-                        </castItem>
-                    </castGroup>
-                    <castItem type="role" xml:id="uuid-db755044-98cf-4a20-9657-0f0645eb4db3">
-                        <role xml:id="Fortinbras">Fortinbras</role>
-                        <roleDesc>prince of Norway</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-d681df0c-d953-49fa-b04c-0d0e05da80fe">
-                        <role xml:id="ham-cap.">A Captain</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-ea330310-4b9c-4df5-8eba-1d61b115da56">
-                        <role xml:id="sha-ham-role23">English Ambassadors</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-c4583eee-dde6-4e2f-977a-0b993307a5ed">
-                        <role xml:id="ham-first-amb.">First Ambassador</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-2ee07c6b-17e8-4085-9892-8b99cd2ab7df">
-                        <role xml:id="Gertrude">Gertrude</role>
-                        <roleDesc>queen of Denmark and mother to Hamlet</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-4c366790-c426-44e7-a500-cc09e37cacef">
-                        <role xml:id="Ophelia">Ophelia</role>
-                        <roleDesc>daughter to Polonius</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-cceb37a6-11b7-486d-a1a8-a71834c9174f">
-                        <role xml:id="ham-all">All</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-c391033a-281b-4486-bbc1-671b05217771">
-                        <role xml:id="ham-danes.">Danes</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-5397e412-7fa2-43fa-ae70-c1a7f0fa8783">
-                        <role xml:id="ham-pro.">Prologue</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-37b88c0f-9a68-4bae-9760-f16f3709bd8e">
-                        <role xml:id="ham-p.-king.">Player King</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-1be2e0a6-02c8-4f25-af32-c93b2e0d7faf">
-                        <role xml:id="ham-p.-queen.">Player Queen</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-4787b3cd-d04a-4665-9b1f-07ec5fde2e41">
-                        <role xml:id="Lucianus">Lucianus</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-e037d6cc-5c1e-43c2-a65a-490d1c9d7f8b">
-                        <role xml:id="ham-serv.">Servant</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-99a897cc-97f0-4b4b-b4f3-f70ba9e873e8">
-                        <role xml:id="ham-sail.">Sailor</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-4e5568ab-0a5a-4ffc-8cc0-15150df3b9ca">
-                        <role xml:id="ham-mess.">Mess</role>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-5f9e7e60-2ae8-4feb-93ab-edbcaf5526b1">
-                        <role xml:id="ham-lord.">Lord</role>
-                    </castItem>
-                    <castItem type="list" xml:id="uuid-7efdf43c-00b2-4e11-82f6-fdfa2e5db15e">
-                        <roleDesc>Lords, Ladies, Officers, Soldiers, Sailors, Messengers and other
-              Attendants</roleDesc>
-                    </castItem>
-                    <castItem type="role" xml:id="uuid-1330b947-3186-442e-9788-f57d0f7ec43e">
-                        <role xml:id="ham-ghost.">Ghost of Hamlet's Father</role>
-                    </castItem>
-                </castList>
-            </div>
-        </front>
         <body xml:id="uuid-67f564c2-8f58-4b48-acfd-32af38964b6e">
             <div xml:id="sha-ham1">
                 <head xml:id="uuid-194c5baa-436b-42e4-b4b9-5738881cca97">Act 1</head>
@@ -189,6 +21,7 @@
                     <stage xml:id="uuid-bfab7904-fdc3-473c-a302-dfba1f6c53ea">Elsinore. A platform before the
             castle. FRANCISCO at his post.</stage>
                     <stage xml:id="uuid-6d28564d-b504-43f5-a3cc-357bfc23cfc5">Enter to him BERNARDO.</stage>
+                    <p xml:id="pa000001">Government of new Territory of Nevada—Governor Nye and the practical jokers—Mr. Clemens begins journalistic life on Virginia City Enterprise—Reports legislative sessions—He and Orion prosper—Orion builds $12,000. house— Gov. Nye turns Territory of Nevada into a State. (Miss Hobby, please paste this in at this point, in record of April 1st, but I may not comment on it until later.)</p>
                     <sp who="Barnardo" xml:id="uuid-9fcb5909-1ced-47ba-9f72-2729a0d77b7a">
                         <speaker xml:id="uuid-e7861c06-cc59-4e80-8210-12a1c005859d">Bernardo</speaker>
                         <l n="1" xml:id="sha-ham101001">Who's there?</l>
