@@ -2,7 +2,7 @@ xquery version "3.0";
 
 
 (: sample annotation, tbd: setup annotation dynamicaly and save it :)
-let $annotation := <annotation xmlns="http://www.betterform.de/projects/mopane/annotation" type="element" xml:id="" status="">
+let $annotation := <annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="" status="">
     <target type="element" layer="annotation">
         <id></id>
     </target>
