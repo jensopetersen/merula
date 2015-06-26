@@ -9,17 +9,17 @@ declare namespace a8n="http://exist-db.org/xquery/a8n";
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
-(:values used for $target-layer: 'base', 'feature', 'edition':) (:Should 'base' be moved to separate variable, target-text?:)
+(:values used for $target-layer: 'feature', 'edition'; add 'documentary' :) 
 (:values used for $target-format: 'tei', 'html':)
+(:This function should be named to something more appropriate - TEI is output in addition to html. :)
 declare function tei2:tei2html($nodes as node()*, $target-layer as xs:string, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
     (:Before recursion, $nodes is a single element.:) 
     let $doc-id := root($nodes)/*/@xml:id/string()
     
-    (:Get all annotations for the document in question.:)
-    (:NB: This is perhaps too much. One could collect annotations for each element being recursed instead. 
-    One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
+    (:Get all annotations for the document in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
+    (:NB: This is perhaps too much. One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
     Would the frequence of the collection calls be worth it, compared to moving around all annotations for the document?:)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
     
@@ -32,82 +32,91 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     (:Recurse though the document.:)
     let $node := tei2:tei2tei-recurser($nodes, $annotations, $target-layer, $target-format)
     
-    (:Get the top-level edition annotations for the element in question, that is, 
-    the edition annotations that connect to the base text through text ranges.:)
-    let $top-level-a8ns := 
+    (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
+    let $top-level-edition-a8ns := 
         if ($annotations)
-        then tei2:get-a8ns($node, $annotations, 'edition')
+        then $annotations[a8n:target/@type eq 'range'][a8n:target/@layer eq 'edition'][a8n:target/a8n:id eq $node/@xml:id]
         else ()
-    
+(:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
+
     (:Build up the top-level edition annotations, that is, 
-    insert annotations that reference the top-level edition annotations recursively into the top-level edition annotations.:)
-    let $built-up-a8ns := 
-        if ($top-level-a8ns) 
-        then tei2:build-up-annotations($top-level-a8ns, $annotations)
+    insert annotations that reference the top-level edition annotations, recursing until the whole annotation is assembled.:)
+    let $built-up-edition-a8ns := 
+        if ($top-level-edition-a8ns) 
+        then tei2:build-up-annotations($top-level-edition-a8ns, $annotations)
         else ()
+    (:let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
     
     (:Collapse the built-up edition annotations, that is, prepare them for insertion into the base text
     by removing all elements except the contents of body and attaching attributes.:)
-    let $collapsed-a8ns := 
-        if ($built-up-a8ns) 
-        then tei2:collapse-annotations($built-up-a8ns)
+    let $collapsed-edition-a8ns := 
+        if ($built-up-edition-a8ns) 
+        then tei2:collapse-annotations($built-up-edition-a8ns)
         else ()
+(:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
     (:Insert the collapsed annotations into the base-text.:)
-    let $text-with-merged-a8ns := 
-        if ($collapsed-a8ns) 
-        then tei2:merge-annotations($node, $collapsed-a8ns, 'edition', 'tei')
+    let $text-with-merged-edition-a8ns := 
+        if ($collapsed-edition-a8ns) 
+        then tei2:merge-annotations($node, $collapsed-edition-a8ns, 'edition', 'tei')
         else $node
     (:Result: base text with edition annotations inserted.:)
-    (:TODO: Transform to show target text with edition annotations inserted; use this a basis for generating target text?:)
+    (:TODO: Transform to show the authoritative text with edition annotations inserted; use this a basis for generating authoritative text?:)
+(:    let $log := util:log("DEBUG", ("##$text-with-merged-edition-a8ns): ", $text-with-merged-edition-a8ns)):)
     
-    (:On the basis of the inserted edition annotations, contruct the target text.:)
-    (:TODO: Into the target text, spans identifying the edition annotations should be inserted, 
+    (:On the basis of the inserted edition annotations, contruct the authoritative text.:)
+    (:TODO: Into the $text-with-merged-edition-a8ns, spans identifying the edition annotations should be inserted, 
     in order to provide hooks to these annotations in the HTML. 
-    Resurrect old code for layer-offset-difference and merge both edition and feature annotation with target text.:)  
+    Resurrect mopane code for layer-offset-difference and merge both edition and feature annotation with authoritative text.:)  
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
-    let $target-text := 
-        if ($text-with-merged-a8ns/text())
-        then tei2:tei2target($text-with-merged-a8ns, 'target')
-        else $text-with-merged-a8ns
-        
+    let $authoritative-text := 
+        if ($text-with-merged-edition-a8ns/text())
+        then tei2:tei2target($text-with-merged-edition-a8ns, 'authoritative-text')
+        else $text-with-merged-edition-a8ns
+(:    let $log := util:log("DEBUG", ("##$authoritative-text): ", $authoritative-text)):)
+
     (:Get the top-level feature annotations for the element in question, that is, 
-    the feature annotations that connect to the target text though text ranges.:)
-    let $top-level-a8ns := 
+    the feature annotations that connect to the authoritative text though text ranges.:)
+    let $top-level-feature-a8ns := 
         if ($annotations)
-        then tei2:get-a8ns($node, $annotations, 'feature')
+        then $annotations[a8n:target/@type eq 'range'][a8n:target/@layer eq 'feature'][a8n:target/a8n:id eq $node/@xml:id]
         else ()
+(:    let $log := util:log("DEBUG", ("##$top-level-feature-a8ns): ", $top-level-feature-a8ns)):)
     
     (:Build up the top-level feature annotations, that is, 
     insert annotations that reference the top-level feature annotations recursively into the top-level feature annotations.:)
-    let $built-up-a8ns := 
-        if ($top-level-a8ns) 
-        then tei2:build-up-annotations($top-level-a8ns, $annotations)
+    let $built-up-feature-a8ns := 
+        if ($top-level-feature-a8ns) 
+        then tei2:build-up-annotations($top-level-feature-a8ns, $annotations)
         else ()
+(:    let $log := util:log("DEBUG", ("##$built-up-feature-a8ns): ", $built-up-feature-a8ns)):)
     
-    (:Collapse the built-up feature annotations, that is, prepare them for insertion into the target text
+    (:Collapse the built-up feature annotations, that is, prepare them for insertion into the authoritative text
     by removing all elements except the contents of body.:) 
-    let $collapsed-a8ns := 
-        if ($built-up-a8ns) 
-        then tei2:collapse-annotations($built-up-a8ns)
+    let $collapsed-feature-a8ns := 
+        if ($built-up-feature-a8ns) 
+        then tei2:collapse-annotations($built-up-feature-a8ns)
         else ()
+(:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
-    (:Insert the collapsed annotations into the target text, producing the marked-up TEI document.:)
-    let $text-with-merged-a8ns := 
-        if ($collapsed-a8ns) 
-        then tei2:merge-annotations($target-text, $collapsed-a8ns, 'feature', $target-format)
+    (:Insert the collapsed annotations into the authoritative text, producing the marked-up TEI document.:)
+    let $text-with-merged-feature-a8ns := 
+        if ($collapsed-feature-a8ns) 
+        then tei2:merge-annotations($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
         else $node
+(:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
     (:Convert the TEI document to HTML: block-level elements become divs and inline element become spans.:)
     let $block-level-element-names := ('ab', 'body', 'castGroup', 'castItem', 'castList', 'div', 'front', 'head', 'l', 'lg', 'role', 'roleDesc', 'sp', 'speaker', 'stage', 'TEI', 'text', 'p', 'quote' )
-    let $html := tei2:tei2div($text-with-merged-a8ns, $block-level-element-names)
+    let $html := tei2:tei2div($text-with-merged-feature-a8ns, $block-level-element-names)
+(:    let $log := util:log("DEBUG", ("##$html): ", $html)):)
     
     return
         $html
 };
 
 (: Based on a list of TEI elements that alter the text, 
-construct the altered (target) or the unaltered (base) text :)
+construct the altered (authoritative) or the unaltered (base-text) text :)
 (:Only the value "base" is checked.:)
 (:TODO: This function must in some way be included in the TEI header, 
 or the choices must be expressed in a manner that can feed the function.:)
@@ -124,46 +133,46 @@ declare function tei2:separate-text-layers($input as node()*, $target-layer) as 
                 Here we strip out all notes from the text itself and put them into the annotations.:)
             
             case element(tei:lem) return 
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then () 
                 else $node/string()
             
             case element(tei:rdg) return
                 if (not($node/../tei:lem))
                 then
-                    if ($target-layer eq 'base')
+                    if ($target-layer eq 'base-text')
                     then $node[contains(@wit/string(), 'TS1')] (:if there is no lem, choose a rdg for the base text:)
                     else
-                        if ($target-layer ne 'base')
+                        if ($target-layer ne 'base-text')
                         then $node[contains(@wit/string(), 'TS2')] (:if there is no lem, choose a rdg for the target text:)
                         else ()
                 else
-                    if ($target-layer eq 'base')
+                    if ($target-layer eq 'base-text')
                     then $node[contains(@wit/string(), 'TS1')] (:if there is a lem, choose a rdg for the base text:)
                     else ()
             
             case element(tei:reg) return
-                if ($target-layer eq 'base')
+                if ($target-layer eq 'base-text')
                 then () 
                 else $node/string()
             case element(tei:corr) return
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then () 
                 else $node/string()
             case element(tei:expanded) return
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then () 
                 else $node/string()
             case element(tei:orig) return
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then $node/string()
                 else ()
             case element(tei:sic) return
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then $node/string()
                 else ()
             case element(tei:abbr) return
-                if ($target-layer eq 'base') 
+                if ($target-layer eq 'base-text') 
                 then $node/string()
                 else ()
 
@@ -201,15 +210,6 @@ declare function tei2:tei2tei-recurser($node as node(), $annotations as element(
             then tei2:annotate-text($child, $annotations, $target-layer, $target-format)
             else $child
         }
-};
-
-(:Among the annotations to the whole document, retrieve the annotations belonging to a particular element.:)
-(:The only $target-layer value that is checked is 'edition'.:)
-declare function tei2:get-a8ns($element as element(), $annotations as element()*, $target-layer as xs:string) {
-    let $element-id := $element/@xml:id/string()
-    let $top-level-edition-a8ns := $annotations[a8n:target/@type eq 'range'][a8n:target/@layer eq $target-layer][a8n:target/a8n:id eq $element-id]
-    return 
-        $top-level-edition-a8ns 
 };
 
 (:This function takes a sequence of top-level text-critical annotations, 
@@ -283,7 +283,7 @@ declare function tei2:collapse-annotation($element as element(), $strip as xs:st
       }
 };
 
-(:This function merges the collapsed annotations with the base or target text. 
+(:This function merges the collapsed annotations with the base-text or authoritative-text. 
 A sequence of slots (<segment/>), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
