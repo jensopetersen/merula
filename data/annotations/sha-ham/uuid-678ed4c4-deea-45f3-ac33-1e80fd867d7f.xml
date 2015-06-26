@@ -1,0 +1,13 @@
+<a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-678ed4c4-deea-45f3-ac33-1e80fd867d7f">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>uuid-e0cd53da-8a6e-4d1b-b529-ee99039f368b</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>wit</a8n:name>
+                    <a8n:value>TS1, TS2</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>

@@ -1,0 +1,28 @@
+<a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
+            xml:id="uuid-aa0039e2-6232-4f7e-970d-6178f26c1831" status="string">
+            <a8n:target type="range" layer="document">
+                <a8n:base-layer>
+                    <a8n:parent-element-name>p</a8n:parent-element-name>
+                    <a8n:preceding-sibling-node>
+                        <a8n:node-type>text</a8n:node-type>
+                    </a8n:preceding-sibling-node>
+                    <a8n:following-sibling-node>
+                        <a8n:node-type>text</a8n:node-type>
+                    </a8n:following-sibling-node>
+                    <a8n:id>pa000001</a8n:id>
+                    <a8n:start>114</a8n:start>
+                    <a8n:offset>0</a8n:offset>
+                </a8n:base-layer>
+                <a8n:authoritative-layer>
+                    <a8n:id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</a8n:id>
+                    <a8n:start>114</a8n:start>
+                    <a8n:offset>0</a8n:offset>
+                </a8n:authoritative-layer>
+            </a8n:target>
+            <a8n:body>
+                <lb xmlns="http://www.tei-c.org/ns/1.0"
+                    xml:id="uuid-50dea63f-c4c1-425c-b883-b9e06ea7d4a9"/>
+            </a8n:body>
+            <a8n:layer-offset-difference>0</a8n:layer-offset-difference>
+            <a8n:admin/>
+        </a8n:annotation>
