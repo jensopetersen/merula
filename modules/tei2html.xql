@@ -7,6 +7,11 @@ import module namespace config="http://exist-db.org/apps/shakes/config" at "conf
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace a8n="http://exist-db.org/xquery/a8n";
 
+(: TODO :)
+(:Every time an edition annotation is made, the offset difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new offset difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
+
+(:We have to find a way to allow multiple editorial targets, not just the base text and one authoritative text. This also means that each feature annotation must be keyed to one or more targets.:)
+
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
 (:values used for $target-layer: 'feature', 'edition'; add 'documentary' :) 
@@ -283,13 +288,13 @@ declare function tei2:collapse-annotation($element as element(), $strip as xs:st
       }
 };
 
-(:This function merges the collapsed annotations with the base-text or authoritative-text. 
+(:This function merges the collapsed annotations with the base text or authoritative text. 
 A sequence of slots (<segment/>), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
 are filled into the uneven slots. Uneven slots with empty strings can occur, 
 but even slots all have annotations (though they may consist of empty elements).:)
-(:TODO: check annotations for superimposition, containment, overlap.:)
+(:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
 declare function tei2:merge-annotations($base-text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
     let $segment-count := (count($annotations) * 2) + 1
     let $segments :=
@@ -317,7 +322,7 @@ declare function tei2:merge-annotations($base-text as element(), $annotations as
                                     {
                                     $annotation-body-child/@*
                                     ,
-                                    attribute xml:id {$annotation/@xml:id/string()}
+                                    if ($annotation-body-child/@xml:id) then () else attribute xml:id {$annotation/@xml:id/string()}
                                     ,
                                     $annotated-string}
                         (:If the edition layer is to be output, take the element from the built-up annotation.:)
