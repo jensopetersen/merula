@@ -5,6 +5,6 @@
         <order>2</order>
     </target>
     <body>
-        <rdg xmlns="http://www.tei-c.org/ns/1.0"/>
+        <rdg xmlns="http://www.tei-c.org/ns/1.0">Hail</rdg>
     </body>
 </annotation>
