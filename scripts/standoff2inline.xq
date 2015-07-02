@@ -140,22 +140,24 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                         <a8n:body>{element {node-name($node)}{$node/@xml:id, $node/node()}}</a8n:body>
                         <a8n:layer-offset-difference>{
                             let $off-set-difference :=
-                                if (local-name($node) = $edition-layer-elements or $node//tei:app or $node//tei:choice) 
+                                if (local-name($node) = $edition-layer-elements) 
                                 then
-                                    if (($node//tei:app or local-name($node) = 'app') and $node//tei:lem) 
+                                    if ((local-name($node) = 'app') and $node//tei:lem) 
                                     then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
+                                    (:NB: Bad idea to refer to witnesses here!:)
                                     else 
-                                        if (($node//tei:app or local-name($node) = 'app') and $node//tei:rdg)
+                                        if ((local-name($node) = 'app') and $node//tei:rdg)
                                         then 
                                             string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]) - string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
+                                            (:NB: Bad idea to refer to witnesses here!:)
                                         else
-                                            if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
+                                            if ((local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
                                             then string-length($node//tei:reg) - string-length($node//tei:orig)
                                             else
-                                                if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:expan and $node//tei:expan)
+                                                if ((local-name($node) = 'choice') and $node//tei:expan and $node//tei:expan)
                                                 then string-length($node//tei:expan) - string-length($node//tei:abbr)
                                                 else
-                                                    if (($node//tei:choice or local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
+                                                    if ((local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
                                                     then string-length($node//tei:corr) - string-length($node//tei:sic)
                                                     else 0
                                                 
@@ -183,6 +185,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
 };
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous offsets to the start position. :)
+(: This function moves all attribute annotations to the top and then handles the element annotations.:)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
 declare function local:insert-authoritative-layer-in-top-level-annotations($nodes as element()*) as element()* {
     (
