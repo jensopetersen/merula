@@ -278,14 +278,14 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     default return local:separate-text-layers($node, $target)
 };
 (: This function removes inline elements from the result of generate-text-layer() :)
-declare function local:remove-inline-elements($nodes as node()*, $block-element-names as xs:string+) as node()* {
+declare function local:remove-inline-elements($nodes as node()*, $block-element-names as xs:string+, $element-only-element-names as xs:string+) as node()* {
     for $node in $nodes/node()
     return
         if ($node instance of element())
         then
-            if (local-name($node) = $block-element-names)
+            if (local-name($node) = ($block-element-names, $element-only-element-names))
             then element {node-name($node)}
-                    {$node/@*,local:remove-inline-elements($node, $block-element-names)}
+                    {$node/@*,local:remove-inline-elements($node, $block-element-names, $element-only-element-names)}
             else $node/text()
         else $node
 };
@@ -486,16 +486,15 @@ let $admin-metadata :=
 
 let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
 let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
-let $block-element-names := ('p', 'quote' )
+let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
 (:TODO: the idea is that an element all of whose ancestors are element-only-elements is a block-level element, so this has to be refined in terms of $element-only-element-names; empty elements have been filtered away:)
 let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
 let $base-text := local:generate-text-layer($doc-text, 'base')
-let $base-text := local:remove-inline-elements($base-text, $block-element-names)
+let $base-text := local:remove-inline-elements($base-text, $block-element-names, $element-only-element-names)
 
 let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
-let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names)
-
+let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names, $element-only-element-names)
 
 let $annotations-1 := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names)
 let $annotations-2 := local:insert-authoritative-layer-in-top-level-annotations($annotations-1)
@@ -505,6 +504,7 @@ let $annotations-3 :=
 
 let $output-format := 'test'
 (:let $output-format := 'file':)
+
 let $annotations-4 :=
     if ($output-format eq 'test')
     then $annotations-3
