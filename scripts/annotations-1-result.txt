@@ -1,4 +1,4 @@
-<p rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.â€”President 
+<p rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.ÑPresident 
 2
 1<name type="person" xml:id="_1">Roosevelt</name> surprised the capital this afternoon by announcing that he would appoint 
 4
@@ -20,25 +20,25 @@
 8<hi xml:id="_8" rend="bold"> <name type="person">MERRITT</name> GETS NEW PLACE</hi>
 </p>
 
-<p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevadaâ€”Governor 
+<p rend="centerautosum" xml:id="pa000001">Government of new Territory of NevadaÑGovernor 
 19
 9<name xml:id="_9" type="person">Nye</name> 
 20
-10<lb xml:id="_10"/>and the practical jokersâ€”Mr. 
+10<lb xml:id="_10"/>and the practical jokersÑMr. 
 22
 11<name xml:id="_11" type="person">Clemens</name> begins journalistic life 
 23
 12<lb xml:id="_12"/>on Virginia City 
 26
-13<app from="dg0000" type="aet" xml:id="_13"><lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568"><hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi></lem><rdg xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2">Enterprise</rdg></app>â€”Reports legislative sessionsâ€”
+13<app from="dg0000" type="aet" xml:id="_13"><lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568"><hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi></lem><rdg xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2">Enterprise</rdg></app>ÑReports legislative sessionsÑ
 27
 14<lb xml:id="_14"/>He and 
 29
-15<name xml:id="_15" type="person">Orion</name> prosperâ€”
+15<name xml:id="_15" type="person">Orion</name> prosperÑ
 31
 16<name xml:id="_16" type="person">Orion</name> builds 
 34
-17<app from="dg0001" type="aet" xml:id="_17"><lem xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem><rdg xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg><rdg xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg></app> houseâ€” 
+17<app from="dg0001" type="aet" xml:id="_17"><lem xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem><rdg xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg><rdg xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg></app> houseÑ 
 37
 18<app from="dg0002" type="aet" xml:id="_18"><lem xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem><rdg xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2">Gov.</rdg></app> 
 39
