@@ -1,0 +1,53 @@
+<p rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.—President 
+2
+1<name type="person" xml:id="_1">Roosevelt</name> surprised the capital this afternoon by announcing that he would appoint 
+4
+2<name xml:id="_2" type="personality">Benjamin F. Barnes</name> as Postmaster of Washington, to succeed John A. Merritt of 
+6
+3<name xml:id="_3" type="place">New York</name>. 
+8
+4<name xml:id="_4" type="person">Mr. Merritt</name>, who for several years has been Postmaster here, has been chosen for Collector of the 
+10
+5<name xml:id="_5" type="place">Port of Niagara</name>, succeeding the late Major 
+12
+6<name xml:id="_6" type="person">James Low</name>
+15
+7<ptr target="#en0002" type="an" xml:id="_7"/>.
+</p>
+
+<p rend="center" xml:id="pa000004">
+17
+8<hi xml:id="_8" rend="bold"> <name type="person">MERRITT</name> GETS NEW PLACE</hi>
+</p>
+
+<p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor 
+19
+9<name xml:id="_9" type="person">Nye</name> 
+20
+10<lb xml:id="_10"/>and the practical jokers—Mr. 
+22
+11<name xml:id="_11" type="person">Clemens</name> begins journalistic life 
+23
+12<lb xml:id="_12"/>on Virginia City 
+26
+13<app from="dg0000" type="aet" xml:id="_13"><lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568"><hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi></lem><rdg xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0" wit="TS1, TS2">Enterprise</rdg></app>—Reports legislative sessions—
+27
+14<lb xml:id="_14"/>He and 
+29
+15<name xml:id="_15" type="person">Orion</name> prosper—
+31
+16<name xml:id="_16" type="person">Orion</name> builds 
+34
+17<app from="dg0001" type="aet" xml:id="_17"><lem xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem><rdg xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a" wit="TS1">$12,000.</rdg><rdg xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58" wit="TS2">$12,000</rdg></app> house— 
+37
+18<app from="dg0002" type="aet" xml:id="_18"><lem xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor</lem><rdg xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="TS1, TS2">Gov.</rdg></app> 
+39
+19<name xml:id="_19" type="person">Nye</name> turns Territory of 
+41
+20<name xml:id="_20" type="place">Nevada</name> into a 
+44
+21<app from="dg0003" type="aet" xml:id="_21"><lem xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem><rdg xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="TS1, TS2">State. <lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/> (Miss <name xml:id="_22" type="person">Hobby</name>, please paste this in at this point, in record of April 1st, but I may not comment on it until later.)</rdg></app>
+</p></div>
+        </body>
+    </text>
+</TEI>
