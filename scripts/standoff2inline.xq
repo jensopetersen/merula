@@ -143,24 +143,20 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 if (local-name($node) = $edition-layer-elements) 
                                 then
                                     if ((local-name($node) = 'app') and $node//tei:lem) 
-                                    then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]))
-                                    (:NB: Bad idea to refer to witnesses here!:)
-                                    else 
-                                        if ((local-name($node) = 'app') and $node//tei:rdg)
-                                        then 
-                                            string-length($node//tei:rdg[not(contains(@wit/string(), 'TS1'))]) - string-length($node//tei:rdg[contains(@wit/string(), 'TS1')])
-                                            (:NB: Bad idea to refer to witnesses here!:)
+                                    then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[1]))
+(:                                    then string-length(string-join($node//tei:lem)) - string-length(string-join($node//tei:rdg[not(contains(@wit/string(), 'TS1'))])):)
+                                    (:NB: Bad idea to refer to witnesses here! This should be handled by local:generate-text-layer():)
+                                    else
+                                        if ((local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
+                                        then string-length($node//tei:reg) - string-length($node//tei:orig)
                                         else
-                                            if ((local-name($node) = 'choice') and $node//tei:orig and $node//tei:reg)
-                                            then string-length($node//tei:reg) - string-length($node//tei:orig)
+                                            if ((local-name($node) = 'choice') and $node//tei:expan and $node//tei:expan)
+                                            then string-length($node//tei:expan) - string-length($node//tei:abbr)
                                             else
-                                                if ((local-name($node) = 'choice') and $node//tei:expan and $node//tei:expan)
-                                                then string-length($node//tei:expan) - string-length($node//tei:abbr)
-                                                else
-                                                    if ((local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
-                                                    then string-length($node//tei:corr) - string-length($node//tei:sic)
-                                                    else 0
-                                                
+                                                if ((local-name($node) = 'choice') and $node//tei:sic and $node//tei:corr)
+                                                then string-length($node//tei:corr) - string-length($node//tei:sic)
+                                                else 0
+                                            
                                 else 0            
                                     return $off-set-difference}</a8n:layer-offset-difference>
                         <a8n:admin/>
