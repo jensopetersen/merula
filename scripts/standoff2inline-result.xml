@@ -71,8 +71,34 @@
         </text>
     </authoritative-text>
     <annotations-1>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-f2890b0d-bee6-49cc-bb98-4299c01a3ede">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>dv0001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>type</a8n:name>
+                    <a8n:value>chapter</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-05303cf3-8745-4203-8e79-7a8df1e24574">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000007</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>text-indent:2</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-3cd49068-9b58-4594-a9aa-d76169fae462" status="token">
+            xml:id="uuid-5f4cde40-354b-40c0-a3ae-6be6b8ff2aa5" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -94,7 +120,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bec9690c-b968-4705-b073-053c990be8f4">
+            xml:id="uuid-a4800d15-ffe0-425b-b1b6-a1c941a86e1a">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_1</a8n:id>
             </a8n:target>
@@ -107,7 +133,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-892686f9-fb90-4a89-b612-e836d8bf456b" status="token">
+            xml:id="uuid-48d9803a-f271-40b1-bb33-713cb0fd7f13" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -129,7 +155,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-40558d56-35df-4c3f-aabe-7aa45ecdef20">
+            xml:id="uuid-e6d0d127-8162-4d70-b6c0-a034fa63dacc">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_2</a8n:id>
             </a8n:target>
@@ -142,7 +168,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8f5c447a-13cf-4e26-beb7-d6ae5835143f" status="token">
+            xml:id="uuid-53e6f31c-4e39-48d5-8f11-696d3b5b4997" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -164,7 +190,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-e32a3fae-281c-4ab9-8f11-d9771da854a6">
+            xml:id="uuid-61fd704c-6ea3-4082-9d5f-843fd4e7b595">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_3</a8n:id>
             </a8n:target>
@@ -177,7 +203,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-17e7c817-10b8-43ca-ae72-b6ea6d71ac78" status="token">
+            xml:id="uuid-50858514-c455-4fa9-8bf3-a695538c7f31" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -199,7 +225,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad6da6b6-f1fd-4541-a386-3dcd64545392">
+            xml:id="uuid-812409ae-19b8-4109-887c-d1957c7364c9">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_4</a8n:id>
             </a8n:target>
@@ -212,7 +238,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a15e9971-c790-4470-bdd4-6bafbb1c462b" status="token">
+            xml:id="uuid-d77a3dc3-24b7-476e-853c-8cbeb7404eea" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -234,7 +260,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-880c12e1-0407-4ed0-97c3-a5278e25d429">
+            xml:id="uuid-1a0a1f2e-973e-4d05-979b-805c4abea287">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_5</a8n:id>
             </a8n:target>
@@ -247,7 +273,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1fc56508-2dcc-41ff-b9ca-5b516db80d75" status="token">
+            xml:id="uuid-b8805bf1-07ab-4e98-8c53-6638f001c4c0" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -270,7 +296,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bde887f9-609a-48e9-8bc6-1314e733339d">
+            xml:id="uuid-de13b831-6d5b-4702-acc4-52dbec2354ca">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_6</a8n:id>
             </a8n:target>
@@ -283,7 +309,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-24b910f7-1a70-4af4-8770-e761e142923c" status="string">
+            xml:id="uuid-5b44aaca-e685-415a-9bc6-f6bd11f3b346" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -306,7 +332,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-4045fedb-7b56-4c83-a760-bfe31afa16b7">
+            xml:id="uuid-8d49c568-7f31-4e7c-ab39-d0786bf67683">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -319,7 +345,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-fc8854b8-279e-4dab-a507-45c72cc803e2">
+            xml:id="uuid-123edbb1-bb6a-4371-903b-c5fade32eb3c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -331,8 +357,21 @@
             </a8n:body>
             <a8n:admin/>
         </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-b9556508-0dea-4575-9e5f-566a71448a80">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000004</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>center</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-9e525956-df88-40de-8c8c-91808376f40b" status="token">
+            xml:id="uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -351,7 +390,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a7cca206-baf3-4513-958f-e249de9c1f1b">
+            xml:id="uuid-f20e63c8-8a97-4713-ac87-e4d38091aca8">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_8</a8n:id>
             </a8n:target>
@@ -363,8 +402,21 @@
             </a8n:body>
             <a8n:admin/>
         </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-d27de6a1-7263-4ff8-845c-fb38a840d2a4">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>centerautosum</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-962bbd47-6491-49ad-9c8a-1a42b8943874" status="string">
+            xml:id="uuid-78b8e519-f7d7-4582-a5c3-148eae434762" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -387,7 +439,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-34fdb4ea-2075-4884-a42f-c650a6c3e5ff">
+            xml:id="uuid-4a0b2d79-7119-4449-be61-6e61edf80140">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_9</a8n:id>
             </a8n:target>
@@ -400,7 +452,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-2fc88da3-5839-49d3-a6af-e22dbe76c768" status="string">
+            xml:id="uuid-3fb0206b-d09c-4b3b-9ac1-f7c40dfa52b5" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -423,7 +475,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d953659f-adad-4a01-ab04-1cb9833d2c1e" status="token">
+            xml:id="uuid-2c98044c-9766-4096-8461-4935f712f5aa" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -445,7 +497,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8683f98e-9097-4d10-94b9-fa04f38dddf8">
+            xml:id="uuid-965f2bde-46e1-4da3-ac13-5cfd5c3ffbfe">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_11</a8n:id>
             </a8n:target>
@@ -458,7 +510,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-34f528b1-d308-4f01-be85-0a224836bc33" status="string">
+            xml:id="uuid-0a25cc0d-bea4-412f-982c-5c4e30a5c008" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -480,7 +532,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6" status="token">
+            xml:id="uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -509,7 +561,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-395ad473-060f-46ac-8d33-c4dff73ec906">
+            xml:id="uuid-6fd665c4-51b8-4d0c-acf2-54b96611f81c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -522,7 +574,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b788ad5d-3569-48df-8ad7-04c292067375">
+            xml:id="uuid-77b7c786-f547-4433-ad8c-96f0407bc281">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -535,7 +587,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0be0fb46-1073-4c13-bb6a-c5846a3fb616" status="string">
+            xml:id="uuid-1934fc9b-dc94-4336-a960-8da9176c99dd" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -557,7 +609,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-6e8478c2-b817-4e5d-ac26-1c0b65734e28" status="token">
+            xml:id="uuid-b03ee9f5-dda6-4c2f-bbcd-80657b5d487f" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -579,7 +631,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c8f346fd-8599-4b6c-876e-92551facac84">
+            xml:id="uuid-bd670d97-a126-4088-9111-e6346cd8604d">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_15</a8n:id>
             </a8n:target>
@@ -592,7 +644,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-dc95cbae-26c2-4ee5-9c56-2e989565942a" status="token">
+            xml:id="uuid-ffe497b9-768a-41fc-9095-1445c69a94f6" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -614,7 +666,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8f931779-a35f-4a16-beab-26b6c3cc988f">
+            xml:id="uuid-4cc0fd70-4021-4fdb-b5f5-ddb81849f8b5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_16</a8n:id>
             </a8n:target>
@@ -627,7 +679,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b" status="token">
+            xml:id="uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -654,7 +706,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b8ce563a-04a1-4f66-946b-d920ddcd10f5">
+            xml:id="uuid-e3f3d1c0-5afc-4a5c-82cd-91ab78e7c3f5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -667,7 +719,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-d6237f8b-14ce-4d2a-94ca-03984138303a">
+            xml:id="uuid-50e56a26-ef52-4dcc-9b5b-47027adbeb3f">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -680,7 +732,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948" status="string">
+            xml:id="uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2" status="string">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -707,7 +759,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1138e103-d8b5-4a73-a96b-cd77eef59831">
+            xml:id="uuid-00d7c37e-b343-4178-989c-784376376cbd">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -720,7 +772,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-78f291c2-053c-4da3-af85-7a7711ec1263">
+            xml:id="uuid-99057626-4517-4d58-bee0-020d65e9fd37">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -733,7 +785,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-cdb5eeed-7f0e-4f64-9e21-092349e137df" status="token">
+            xml:id="uuid-2f2c85da-cdef-49fa-a772-c8b15702fe04" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -756,7 +808,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad7f6c9f-0d98-4623-be18-1dbcdfe7a59e">
+            xml:id="uuid-b1c77f2c-3b20-4b43-96ff-d3a9433fa260">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_19</a8n:id>
             </a8n:target>
@@ -769,7 +821,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a8734ab1-dd1f-4294-a85b-1d1381dcdc26" status="token">
+            xml:id="uuid-3b47df46-fe3d-4adc-be93-b992ed93e978" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -791,7 +843,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7a4e7b95-2127-4c9b-9d3a-d8300a71c443">
+            xml:id="uuid-0406caae-cdc4-4a6a-857d-ca67d215a89e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_20</a8n:id>
             </a8n:target>
@@ -804,7 +856,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-385418dc-b47c-48dd-b174-4f9b89e7955d" status="token">
+            xml:id="uuid-34838e00-f8c0-4065-baf5-440a923622c6" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -831,7 +883,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1e2a6c64-d1cd-4cae-8b72-dc1a449eda7b">
+            xml:id="uuid-08091bbe-aeab-4be4-a968-819deeecd04e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -844,7 +896,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-38fe2c83-fad5-441a-9891-dec343ec35da">
+            xml:id="uuid-1871f559-84d5-4cae-9cf6-0833d585b6e4">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -859,7 +911,33 @@
     </annotations-1>
     <annotations-2>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bec9690c-b968-4705-b073-053c990be8f4">
+            xml:id="uuid-f2890b0d-bee6-49cc-bb98-4299c01a3ede">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>dv0001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>type</a8n:name>
+                    <a8n:value>chapter</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-05303cf3-8745-4203-8e79-7a8df1e24574">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000007</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>text-indent:2</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-a4800d15-ffe0-425b-b1b6-a1c941a86e1a">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_1</a8n:id>
             </a8n:target>
@@ -872,7 +950,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-40558d56-35df-4c3f-aabe-7aa45ecdef20">
+            xml:id="uuid-e6d0d127-8162-4d70-b6c0-a034fa63dacc">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_2</a8n:id>
             </a8n:target>
@@ -885,7 +963,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-e32a3fae-281c-4ab9-8f11-d9771da854a6">
+            xml:id="uuid-61fd704c-6ea3-4082-9d5f-843fd4e7b595">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_3</a8n:id>
             </a8n:target>
@@ -898,7 +976,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad6da6b6-f1fd-4541-a386-3dcd64545392">
+            xml:id="uuid-812409ae-19b8-4109-887c-d1957c7364c9">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_4</a8n:id>
             </a8n:target>
@@ -911,7 +989,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-880c12e1-0407-4ed0-97c3-a5278e25d429">
+            xml:id="uuid-1a0a1f2e-973e-4d05-979b-805c4abea287">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_5</a8n:id>
             </a8n:target>
@@ -924,7 +1002,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bde887f9-609a-48e9-8bc6-1314e733339d">
+            xml:id="uuid-de13b831-6d5b-4702-acc4-52dbec2354ca">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_6</a8n:id>
             </a8n:target>
@@ -937,7 +1015,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-4045fedb-7b56-4c83-a760-bfe31afa16b7">
+            xml:id="uuid-8d49c568-7f31-4e7c-ab39-d0786bf67683">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -950,7 +1028,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-fc8854b8-279e-4dab-a507-45c72cc803e2">
+            xml:id="uuid-123edbb1-bb6a-4371-903b-c5fade32eb3c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -963,7 +1041,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a7cca206-baf3-4513-958f-e249de9c1f1b">
+            xml:id="uuid-b9556508-0dea-4575-9e5f-566a71448a80">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000004</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>center</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-f20e63c8-8a97-4713-ac87-e4d38091aca8">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_8</a8n:id>
             </a8n:target>
@@ -976,7 +1067,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-34fdb4ea-2075-4884-a42f-c650a6c3e5ff">
+            xml:id="uuid-d27de6a1-7263-4ff8-845c-fb38a840d2a4">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>centerautosum</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-4a0b2d79-7119-4449-be61-6e61edf80140">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_9</a8n:id>
             </a8n:target>
@@ -989,7 +1093,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8683f98e-9097-4d10-94b9-fa04f38dddf8">
+            xml:id="uuid-965f2bde-46e1-4da3-ac13-5cfd5c3ffbfe">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_11</a8n:id>
             </a8n:target>
@@ -1002,7 +1106,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-395ad473-060f-46ac-8d33-c4dff73ec906">
+            xml:id="uuid-6fd665c4-51b8-4d0c-acf2-54b96611f81c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -1015,7 +1119,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b788ad5d-3569-48df-8ad7-04c292067375">
+            xml:id="uuid-77b7c786-f547-4433-ad8c-96f0407bc281">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -1028,7 +1132,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c8f346fd-8599-4b6c-876e-92551facac84">
+            xml:id="uuid-bd670d97-a126-4088-9111-e6346cd8604d">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_15</a8n:id>
             </a8n:target>
@@ -1041,7 +1145,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8f931779-a35f-4a16-beab-26b6c3cc988f">
+            xml:id="uuid-4cc0fd70-4021-4fdb-b5f5-ddb81849f8b5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_16</a8n:id>
             </a8n:target>
@@ -1054,7 +1158,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b8ce563a-04a1-4f66-946b-d920ddcd10f5">
+            xml:id="uuid-e3f3d1c0-5afc-4a5c-82cd-91ab78e7c3f5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -1067,7 +1171,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-d6237f8b-14ce-4d2a-94ca-03984138303a">
+            xml:id="uuid-50e56a26-ef52-4dcc-9b5b-47027adbeb3f">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -1080,7 +1184,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1138e103-d8b5-4a73-a96b-cd77eef59831">
+            xml:id="uuid-00d7c37e-b343-4178-989c-784376376cbd">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -1093,7 +1197,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-78f291c2-053c-4da3-af85-7a7711ec1263">
+            xml:id="uuid-99057626-4517-4d58-bee0-020d65e9fd37">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -1106,7 +1210,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad7f6c9f-0d98-4623-be18-1dbcdfe7a59e">
+            xml:id="uuid-b1c77f2c-3b20-4b43-96ff-d3a9433fa260">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_19</a8n:id>
             </a8n:target>
@@ -1119,7 +1223,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7a4e7b95-2127-4c9b-9d3a-d8300a71c443">
+            xml:id="uuid-0406caae-cdc4-4a6a-857d-ca67d215a89e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_20</a8n:id>
             </a8n:target>
@@ -1132,7 +1236,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1e2a6c64-d1cd-4cae-8b72-dc1a449eda7b">
+            xml:id="uuid-08091bbe-aeab-4be4-a968-819deeecd04e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -1145,7 +1249,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-38fe2c83-fad5-441a-9891-dec343ec35da">
+            xml:id="uuid-1871f559-84d5-4cae-9cf6-0833d585b6e4">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -1158,7 +1262,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-3cd49068-9b58-4594-a9aa-d76169fae462" status="token">
+            xml:id="uuid-5f4cde40-354b-40c0-a3ae-6be6b8ff2aa5" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1185,7 +1289,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-892686f9-fb90-4a89-b612-e836d8bf456b" status="token">
+            xml:id="uuid-48d9803a-f271-40b1-bb33-713cb0fd7f13" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1212,7 +1316,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8f5c447a-13cf-4e26-beb7-d6ae5835143f" status="token">
+            xml:id="uuid-53e6f31c-4e39-48d5-8f11-696d3b5b4997" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1239,7 +1343,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-17e7c817-10b8-43ca-ae72-b6ea6d71ac78" status="token">
+            xml:id="uuid-50858514-c455-4fa9-8bf3-a695538c7f31" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1266,7 +1370,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a15e9971-c790-4470-bdd4-6bafbb1c462b" status="token">
+            xml:id="uuid-d77a3dc3-24b7-476e-853c-8cbeb7404eea" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1293,7 +1397,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1fc56508-2dcc-41ff-b9ca-5b516db80d75" status="token">
+            xml:id="uuid-b8805bf1-07ab-4e98-8c53-6638f001c4c0" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1321,7 +1425,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-24b910f7-1a70-4af4-8770-e761e142923c" status="string">
+            xml:id="uuid-5b44aaca-e685-415a-9bc6-f6bd11f3b346" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1349,7 +1453,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-9e525956-df88-40de-8c8c-91808376f40b" status="token">
+            xml:id="uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1373,7 +1477,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-962bbd47-6491-49ad-9c8a-1a42b8943874" status="string">
+            xml:id="uuid-78b8e519-f7d7-4582-a5c3-148eae434762" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1401,7 +1505,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-2fc88da3-5839-49d3-a6af-e22dbe76c768" status="string">
+            xml:id="uuid-3fb0206b-d09c-4b3b-9ac1-f7c40dfa52b5" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1429,7 +1533,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d953659f-adad-4a01-ab04-1cb9833d2c1e" status="token">
+            xml:id="uuid-2c98044c-9766-4096-8461-4935f712f5aa" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1456,7 +1560,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-34f528b1-d308-4f01-be85-0a224836bc33" status="string">
+            xml:id="uuid-0a25cc0d-bea4-412f-982c-5c4e30a5c008" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1483,7 +1587,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6" status="token">
+            xml:id="uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1517,7 +1621,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0be0fb46-1073-4c13-bb6a-c5846a3fb616" status="string">
+            xml:id="uuid-1934fc9b-dc94-4336-a960-8da9176c99dd" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1544,7 +1648,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-6e8478c2-b817-4e5d-ac26-1c0b65734e28" status="token">
+            xml:id="uuid-b03ee9f5-dda6-4c2f-bbcd-80657b5d487f" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1571,7 +1675,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-dc95cbae-26c2-4ee5-9c56-2e989565942a" status="token">
+            xml:id="uuid-ffe497b9-768a-41fc-9095-1445c69a94f6" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1598,7 +1702,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b" status="token">
+            xml:id="uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1630,7 +1734,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948" status="string">
+            xml:id="uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2" status="string">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1662,7 +1766,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-cdb5eeed-7f0e-4f64-9e21-092349e137df" status="token">
+            xml:id="uuid-2f2c85da-cdef-49fa-a772-c8b15702fe04" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1690,7 +1794,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a8734ab1-dd1f-4294-a85b-1d1381dcdc26" status="token">
+            xml:id="uuid-3b47df46-fe3d-4adc-be93-b992ed93e978" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1717,7 +1821,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-385418dc-b47c-48dd-b174-4f9b89e7955d" status="token">
+            xml:id="uuid-34838e00-f8c0-4065-baf5-440a923622c6" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -1751,7 +1855,33 @@
     </annotations-2>
     <annotations-3>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bec9690c-b968-4705-b073-053c990be8f4">
+            xml:id="uuid-f2890b0d-bee6-49cc-bb98-4299c01a3ede">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>dv0001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>type</a8n:name>
+                    <a8n:value>chapter</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-05303cf3-8745-4203-8e79-7a8df1e24574">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000007</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>text-indent:2</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-a4800d15-ffe0-425b-b1b6-a1c941a86e1a">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_1</a8n:id>
             </a8n:target>
@@ -1764,7 +1894,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-40558d56-35df-4c3f-aabe-7aa45ecdef20">
+            xml:id="uuid-e6d0d127-8162-4d70-b6c0-a034fa63dacc">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_2</a8n:id>
             </a8n:target>
@@ -1777,7 +1907,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-e32a3fae-281c-4ab9-8f11-d9771da854a6">
+            xml:id="uuid-61fd704c-6ea3-4082-9d5f-843fd4e7b595">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_3</a8n:id>
             </a8n:target>
@@ -1790,7 +1920,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad6da6b6-f1fd-4541-a386-3dcd64545392">
+            xml:id="uuid-812409ae-19b8-4109-887c-d1957c7364c9">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_4</a8n:id>
             </a8n:target>
@@ -1803,7 +1933,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-880c12e1-0407-4ed0-97c3-a5278e25d429">
+            xml:id="uuid-1a0a1f2e-973e-4d05-979b-805c4abea287">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_5</a8n:id>
             </a8n:target>
@@ -1816,7 +1946,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bde887f9-609a-48e9-8bc6-1314e733339d">
+            xml:id="uuid-de13b831-6d5b-4702-acc4-52dbec2354ca">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_6</a8n:id>
             </a8n:target>
@@ -1829,7 +1959,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-4045fedb-7b56-4c83-a760-bfe31afa16b7">
+            xml:id="uuid-8d49c568-7f31-4e7c-ab39-d0786bf67683">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -1842,7 +1972,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-fc8854b8-279e-4dab-a507-45c72cc803e2">
+            xml:id="uuid-123edbb1-bb6a-4371-903b-c5fade32eb3c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -1855,7 +1985,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a7cca206-baf3-4513-958f-e249de9c1f1b">
+            xml:id="uuid-b9556508-0dea-4575-9e5f-566a71448a80">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000004</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>center</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-f20e63c8-8a97-4713-ac87-e4d38091aca8">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_8</a8n:id>
             </a8n:target>
@@ -1868,7 +2011,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-34fdb4ea-2075-4884-a42f-c650a6c3e5ff">
+            xml:id="uuid-d27de6a1-7263-4ff8-845c-fb38a840d2a4">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>centerautosum</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-4a0b2d79-7119-4449-be61-6e61edf80140">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_9</a8n:id>
             </a8n:target>
@@ -1881,7 +2037,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8683f98e-9097-4d10-94b9-fa04f38dddf8">
+            xml:id="uuid-965f2bde-46e1-4da3-ac13-5cfd5c3ffbfe">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_11</a8n:id>
             </a8n:target>
@@ -1894,7 +2050,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-395ad473-060f-46ac-8d33-c4dff73ec906">
+            xml:id="uuid-6fd665c4-51b8-4d0c-acf2-54b96611f81c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -1907,7 +2063,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b788ad5d-3569-48df-8ad7-04c292067375">
+            xml:id="uuid-77b7c786-f547-4433-ad8c-96f0407bc281">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -1920,7 +2076,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c8f346fd-8599-4b6c-876e-92551facac84">
+            xml:id="uuid-bd670d97-a126-4088-9111-e6346cd8604d">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_15</a8n:id>
             </a8n:target>
@@ -1933,7 +2089,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8f931779-a35f-4a16-beab-26b6c3cc988f">
+            xml:id="uuid-4cc0fd70-4021-4fdb-b5f5-ddb81849f8b5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_16</a8n:id>
             </a8n:target>
@@ -1946,7 +2102,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b8ce563a-04a1-4f66-946b-d920ddcd10f5">
+            xml:id="uuid-e3f3d1c0-5afc-4a5c-82cd-91ab78e7c3f5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -1959,7 +2115,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-d6237f8b-14ce-4d2a-94ca-03984138303a">
+            xml:id="uuid-50e56a26-ef52-4dcc-9b5b-47027adbeb3f">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -1972,7 +2128,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1138e103-d8b5-4a73-a96b-cd77eef59831">
+            xml:id="uuid-00d7c37e-b343-4178-989c-784376376cbd">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -1985,7 +2141,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-78f291c2-053c-4da3-af85-7a7711ec1263">
+            xml:id="uuid-99057626-4517-4d58-bee0-020d65e9fd37">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -1998,7 +2154,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad7f6c9f-0d98-4623-be18-1dbcdfe7a59e">
+            xml:id="uuid-b1c77f2c-3b20-4b43-96ff-d3a9433fa260">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_19</a8n:id>
             </a8n:target>
@@ -2011,7 +2167,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7a4e7b95-2127-4c9b-9d3a-d8300a71c443">
+            xml:id="uuid-0406caae-cdc4-4a6a-857d-ca67d215a89e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_20</a8n:id>
             </a8n:target>
@@ -2024,7 +2180,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1e2a6c64-d1cd-4cae-8b72-dc1a449eda7b">
+            xml:id="uuid-08091bbe-aeab-4be4-a968-819deeecd04e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -2037,7 +2193,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-38fe2c83-fad5-441a-9891-dec343ec35da">
+            xml:id="uuid-1871f559-84d5-4cae-9cf6-0833d585b6e4">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -2050,7 +2206,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-3cd49068-9b58-4594-a9aa-d76169fae462" status="token">
+            xml:id="uuid-5f4cde40-354b-40c0-a3ae-6be6b8ff2aa5" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2077,7 +2233,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-892686f9-fb90-4a89-b612-e836d8bf456b" status="token">
+            xml:id="uuid-48d9803a-f271-40b1-bb33-713cb0fd7f13" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2104,7 +2260,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8f5c447a-13cf-4e26-beb7-d6ae5835143f" status="token">
+            xml:id="uuid-53e6f31c-4e39-48d5-8f11-696d3b5b4997" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2131,7 +2287,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-17e7c817-10b8-43ca-ae72-b6ea6d71ac78" status="token">
+            xml:id="uuid-50858514-c455-4fa9-8bf3-a695538c7f31" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2158,7 +2314,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a15e9971-c790-4470-bdd4-6bafbb1c462b" status="token">
+            xml:id="uuid-d77a3dc3-24b7-476e-853c-8cbeb7404eea" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2185,7 +2341,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1fc56508-2dcc-41ff-b9ca-5b516db80d75" status="token">
+            xml:id="uuid-b8805bf1-07ab-4e98-8c53-6638f001c4c0" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2213,7 +2369,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-24b910f7-1a70-4af4-8770-e761e142923c" status="string">
+            xml:id="uuid-5b44aaca-e685-415a-9bc6-f6bd11f3b346" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2241,7 +2397,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-9e525956-df88-40de-8c8c-91808376f40b" status="token">
+            xml:id="uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2264,7 +2420,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8adb81fd-3565-492a-b4eb-494a5b0241f9" status="token">
+            xml:id="uuid-4d21c80d-74b1-4742-b448-42cd563ee5dd" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>hi</a8n:parent-element-name>
@@ -2272,7 +2428,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-9e525956-df88-40de-8c8c-91808376f40b</a8n:id>
+                    <a8n:id>uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f</a8n:id>
                     <a8n:start>1</a8n:start>
                     <a8n:offset>7</a8n:offset>
                 </a8n:base-layer>
@@ -2283,7 +2439,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c5811587-53b0-497e-9b16-e064e9854deb">
+            xml:id="uuid-0c29b713-1a70-48d5-a4b8-95e166616d56">
             <a8n:target type="element" layer="annotation"> </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2294,7 +2450,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-962bbd47-6491-49ad-9c8a-1a42b8943874" status="string">
+            xml:id="uuid-78b8e519-f7d7-4582-a5c3-148eae434762" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2322,7 +2478,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-2fc88da3-5839-49d3-a6af-e22dbe76c768" status="string">
+            xml:id="uuid-3fb0206b-d09c-4b3b-9ac1-f7c40dfa52b5" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2350,7 +2506,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d953659f-adad-4a01-ab04-1cb9833d2c1e" status="token">
+            xml:id="uuid-2c98044c-9766-4096-8461-4935f712f5aa" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2377,7 +2533,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-34f528b1-d308-4f01-be85-0a224836bc33" status="string">
+            xml:id="uuid-0a25cc0d-bea4-412f-982c-5c4e30a5c008" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2404,7 +2560,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6" status="token">
+            xml:id="uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2431,10 +2587,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d6c700d0-a5ae-4a04-91b1-edeebe5b46b4" status="token">
+            xml:id="uuid-d21ab642-2d06-4b87-a5ef-acfec371a337" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6</a8n:id>
+                    <a8n:id>uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2445,10 +2601,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a84a655e-282e-492b-bcc5-f721df7ada9c" status="token">
+            xml:id="uuid-00a55ae2-0527-47d2-b0da-96360e5a3d0c" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d6c700d0-a5ae-4a04-91b1-edeebe5b46b4</a8n:id>
+                    <a8n:id>uuid-d21ab642-2d06-4b87-a5ef-acfec371a337</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2459,9 +2615,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-5984e2c4-9e97-4665-9537-8751f8611952">
+            xml:id="uuid-bd61d5d5-4a7c-4f70-8a74-2bd10eb06e9d">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-2a70c428-00da-452a-90f6-e6d459c7aa1c</a8n:id>
+                <a8n:id>uuid-6cc9dbf1-1e08-4652-a085-efad7e106f22</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2472,10 +2628,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-800b3eb3-ed45-4c0c-81e5-d2abca4e5354" status="token">
+            xml:id="uuid-850825e4-e5d1-46d7-8d4c-fbbc7f6db7ee" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6</a8n:id>
+                    <a8n:id>uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2486,9 +2642,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a3e4c63b-c18d-4cb5-9b5f-2a787eedd11c">
+            xml:id="uuid-94256f8e-0b66-4fdf-bbfb-0e250f3f5973">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-0f7ad8fa-7557-49c4-a58c-a460b2031d28</a8n:id>
+                <a8n:id>uuid-7c07faed-5fc0-489e-a802-d4f0a1ccfce8</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2499,7 +2655,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0be0fb46-1073-4c13-bb6a-c5846a3fb616" status="string">
+            xml:id="uuid-1934fc9b-dc94-4336-a960-8da9176c99dd" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2526,7 +2682,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-6e8478c2-b817-4e5d-ac26-1c0b65734e28" status="token">
+            xml:id="uuid-b03ee9f5-dda6-4c2f-bbcd-80657b5d487f" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2553,7 +2709,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-dc95cbae-26c2-4ee5-9c56-2e989565942a" status="token">
+            xml:id="uuid-ffe497b9-768a-41fc-9095-1445c69a94f6" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2580,7 +2736,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b" status="token">
+            xml:id="uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2607,10 +2763,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-37132e6b-efa5-4ef3-90ca-1262e9813e35" status="token">
+            xml:id="uuid-d3b36d42-245e-41af-8cd1-7d12efc25250" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2621,10 +2777,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-e4cf8e0e-a48c-4a40-a6ab-e94e8cd6c292" status="token">
+            xml:id="uuid-1115f0d1-a85a-4407-bc71-73d97ecf0d4d" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2635,9 +2791,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-02850d52-54f8-48a5-a6e9-d60ba78b18c7">
+            xml:id="uuid-c4d63ef1-7859-4cca-a4ef-8e9402613df7">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-22b7591c-23e5-4f06-9a6b-a55cd98084ee</a8n:id>
+                <a8n:id>uuid-8da8b73f-4170-4ee6-b72c-ecd47eac29b8</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2648,10 +2804,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-ec070b72-b0aa-41bc-9854-9891b504dfb0" status="token">
+            xml:id="uuid-2a34139d-97a7-4841-8e04-17023848380d" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>3</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2662,9 +2818,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-3c6f961d-10af-41b9-9c99-78d0f1543235">
+            xml:id="uuid-6b0f21a4-b633-48f6-8274-b73fe09bedf6">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-115b20e0-3b67-4b77-bd1f-a3807fc6e92f</a8n:id>
+                <a8n:id>uuid-432956b3-4560-465b-ba06-08d6b891e019</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2675,7 +2831,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948" status="string">
+            xml:id="uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2" status="string">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2703,10 +2859,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-bf90c37d-21d8-402c-8881-086ad02d8326" status="string">
+            xml:id="uuid-2514f75a-fd6a-4d37-9695-e8338a64bb2e" status="string">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948</a8n:id>
+                    <a8n:id>uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2717,10 +2873,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-ee48bddf-b245-4570-b049-17679524677a" status="string">
+            xml:id="uuid-03b1a8f6-2953-4a33-bc46-9750187af966" status="string">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948</a8n:id>
+                    <a8n:id>uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2731,9 +2887,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-36a4ac11-f608-4b11-a242-98b5fa5bf51e">
+            xml:id="uuid-318bf459-0b7f-4883-b241-24a854b427c1">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-b7296039-b87e-4a6a-8c80-78ddb9fc286d</a8n:id>
+                <a8n:id>uuid-f29be3ca-2a01-49c2-9a18-fe4795ee41cd</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2744,7 +2900,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-cdb5eeed-7f0e-4f64-9e21-092349e137df" status="token">
+            xml:id="uuid-2f2c85da-cdef-49fa-a772-c8b15702fe04" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2772,7 +2928,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a8734ab1-dd1f-4294-a85b-1d1381dcdc26" status="token">
+            xml:id="uuid-3b47df46-fe3d-4adc-be93-b992ed93e978" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2799,7 +2955,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-385418dc-b47c-48dd-b174-4f9b89e7955d" status="token">
+            xml:id="uuid-34838e00-f8c0-4065-baf5-440a923622c6" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -2824,10 +2980,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-c966bfaa-c134-48ae-9a62-c21a5eccb7da" status="token">
+            xml:id="uuid-bb4ddfd0-099d-4ceb-afd9-e83845f8f189" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-385418dc-b47c-48dd-b174-4f9b89e7955d</a8n:id>
+                    <a8n:id>uuid-34838e00-f8c0-4065-baf5-440a923622c6</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2838,10 +2994,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f" status="token">
+            xml:id="uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-385418dc-b47c-48dd-b174-4f9b89e7955d</a8n:id>
+                    <a8n:id>uuid-34838e00-f8c0-4065-baf5-440a923622c6</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -2851,7 +3007,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0ec0d565-e15f-4931-af35-34398632295c" status="token">
+            xml:id="uuid-bc51f877-8cfd-4536-b57b-009bd00f6f0a" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>rdg</a8n:parent-element-name>
@@ -2861,7 +3017,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f</a8n:id>
+                    <a8n:id>uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c</a8n:id>
                     <a8n:start>8</a8n:start>
                     <a8n:offset>0</a8n:offset>
                 </a8n:base-layer>
@@ -2873,7 +3029,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-c93910eb-e487-46d8-be1c-c4d9f343e2e7" status="token">
+            xml:id="uuid-22baf4b5-b7d2-4e36-86b0-4edfe369c9ad" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>rdg</a8n:parent-element-name>
@@ -2883,7 +3039,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f</a8n:id>
+                    <a8n:id>uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c</a8n:id>
                     <a8n:start>15</a8n:start>
                     <a8n:offset>5</a8n:offset>
                 </a8n:base-layer>
@@ -2894,7 +3050,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7721d84d-c2a7-4d76-9df6-1f7c026ef122">
+            xml:id="uuid-d199f840-6788-4908-99ce-7e3063a89a28">
             <a8n:target type="element" layer="annotation"> </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2905,9 +3061,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-3d09303b-01b0-4f56-9b8a-6779f61c5999">
+            xml:id="uuid-1213a04b-7b74-4d53-865e-7d46fd2d8bac">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-8acf37bb-5afd-43d2-a19e-74807b1a0f63</a8n:id>
+                <a8n:id>uuid-cb5edcc4-842a-4d39-8ddf-d82b880a6c63</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -2920,7 +3076,33 @@
     </annotations-3>
     <annotations-4>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bec9690c-b968-4705-b073-053c990be8f4">
+            xml:id="uuid-f2890b0d-bee6-49cc-bb98-4299c01a3ede">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>dv0001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>type</a8n:name>
+                    <a8n:value>chapter</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-05303cf3-8745-4203-8e79-7a8df1e24574">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000007</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>text-indent:2</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-a4800d15-ffe0-425b-b1b6-a1c941a86e1a">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_1</a8n:id>
             </a8n:target>
@@ -2933,7 +3115,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-40558d56-35df-4c3f-aabe-7aa45ecdef20">
+            xml:id="uuid-e6d0d127-8162-4d70-b6c0-a034fa63dacc">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_2</a8n:id>
             </a8n:target>
@@ -2946,7 +3128,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-e32a3fae-281c-4ab9-8f11-d9771da854a6">
+            xml:id="uuid-61fd704c-6ea3-4082-9d5f-843fd4e7b595">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_3</a8n:id>
             </a8n:target>
@@ -2959,7 +3141,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad6da6b6-f1fd-4541-a386-3dcd64545392">
+            xml:id="uuid-812409ae-19b8-4109-887c-d1957c7364c9">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_4</a8n:id>
             </a8n:target>
@@ -2972,7 +3154,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-880c12e1-0407-4ed0-97c3-a5278e25d429">
+            xml:id="uuid-1a0a1f2e-973e-4d05-979b-805c4abea287">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_5</a8n:id>
             </a8n:target>
@@ -2985,7 +3167,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-bde887f9-609a-48e9-8bc6-1314e733339d">
+            xml:id="uuid-de13b831-6d5b-4702-acc4-52dbec2354ca">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_6</a8n:id>
             </a8n:target>
@@ -2998,7 +3180,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-4045fedb-7b56-4c83-a760-bfe31afa16b7">
+            xml:id="uuid-8d49c568-7f31-4e7c-ab39-d0786bf67683">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -3011,7 +3193,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-fc8854b8-279e-4dab-a507-45c72cc803e2">
+            xml:id="uuid-123edbb1-bb6a-4371-903b-c5fade32eb3c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_7</a8n:id>
             </a8n:target>
@@ -3024,7 +3206,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a7cca206-baf3-4513-958f-e249de9c1f1b">
+            xml:id="uuid-b9556508-0dea-4575-9e5f-566a71448a80">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000004</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>center</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-f20e63c8-8a97-4713-ac87-e4d38091aca8">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_8</a8n:id>
             </a8n:target>
@@ -3037,7 +3232,20 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-34fdb4ea-2075-4884-a42f-c650a6c3e5ff">
+            xml:id="uuid-d27de6a1-7263-4ff8-845c-fb38a840d2a4">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>pa000001</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>rend</a8n:name>
+                    <a8n:value>centerautosum</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+        <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
+            xml:id="uuid-4a0b2d79-7119-4449-be61-6e61edf80140">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_9</a8n:id>
             </a8n:target>
@@ -3050,7 +3258,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8683f98e-9097-4d10-94b9-fa04f38dddf8">
+            xml:id="uuid-965f2bde-46e1-4da3-ac13-5cfd5c3ffbfe">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_11</a8n:id>
             </a8n:target>
@@ -3063,7 +3271,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-395ad473-060f-46ac-8d33-c4dff73ec906">
+            xml:id="uuid-6fd665c4-51b8-4d0c-acf2-54b96611f81c">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -3076,7 +3284,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b788ad5d-3569-48df-8ad7-04c292067375">
+            xml:id="uuid-77b7c786-f547-4433-ad8c-96f0407bc281">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_13</a8n:id>
             </a8n:target>
@@ -3089,7 +3297,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c8f346fd-8599-4b6c-876e-92551facac84">
+            xml:id="uuid-bd670d97-a126-4088-9111-e6346cd8604d">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_15</a8n:id>
             </a8n:target>
@@ -3102,7 +3310,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-8f931779-a35f-4a16-beab-26b6c3cc988f">
+            xml:id="uuid-4cc0fd70-4021-4fdb-b5f5-ddb81849f8b5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_16</a8n:id>
             </a8n:target>
@@ -3115,7 +3323,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-b8ce563a-04a1-4f66-946b-d920ddcd10f5">
+            xml:id="uuid-e3f3d1c0-5afc-4a5c-82cd-91ab78e7c3f5">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -3128,7 +3336,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-d6237f8b-14ce-4d2a-94ca-03984138303a">
+            xml:id="uuid-50e56a26-ef52-4dcc-9b5b-47027adbeb3f">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_17</a8n:id>
             </a8n:target>
@@ -3141,7 +3349,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1138e103-d8b5-4a73-a96b-cd77eef59831">
+            xml:id="uuid-00d7c37e-b343-4178-989c-784376376cbd">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -3154,7 +3362,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-78f291c2-053c-4da3-af85-7a7711ec1263">
+            xml:id="uuid-99057626-4517-4d58-bee0-020d65e9fd37">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_18</a8n:id>
             </a8n:target>
@@ -3167,7 +3375,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-ad7f6c9f-0d98-4623-be18-1dbcdfe7a59e">
+            xml:id="uuid-b1c77f2c-3b20-4b43-96ff-d3a9433fa260">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_19</a8n:id>
             </a8n:target>
@@ -3180,7 +3388,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7a4e7b95-2127-4c9b-9d3a-d8300a71c443">
+            xml:id="uuid-0406caae-cdc4-4a6a-857d-ca67d215a89e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_20</a8n:id>
             </a8n:target>
@@ -3193,7 +3401,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-1e2a6c64-d1cd-4cae-8b72-dc1a449eda7b">
+            xml:id="uuid-08091bbe-aeab-4be4-a968-819deeecd04e">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -3206,7 +3414,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-38fe2c83-fad5-441a-9891-dec343ec35da">
+            xml:id="uuid-1871f559-84d5-4cae-9cf6-0833d585b6e4">
             <a8n:target type="element" layer="annotation">
                 <a8n:id>_21</a8n:id>
             </a8n:target>
@@ -3219,7 +3427,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-3cd49068-9b58-4594-a9aa-d76169fae462" status="token">
+            xml:id="uuid-5f4cde40-354b-40c0-a3ae-6be6b8ff2aa5" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3246,7 +3454,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-892686f9-fb90-4a89-b612-e836d8bf456b" status="token">
+            xml:id="uuid-48d9803a-f271-40b1-bb33-713cb0fd7f13" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3273,7 +3481,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8f5c447a-13cf-4e26-beb7-d6ae5835143f" status="token">
+            xml:id="uuid-53e6f31c-4e39-48d5-8f11-696d3b5b4997" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3300,7 +3508,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-17e7c817-10b8-43ca-ae72-b6ea6d71ac78" status="token">
+            xml:id="uuid-50858514-c455-4fa9-8bf3-a695538c7f31" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3327,7 +3535,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a15e9971-c790-4470-bdd4-6bafbb1c462b" status="token">
+            xml:id="uuid-d77a3dc3-24b7-476e-853c-8cbeb7404eea" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3354,7 +3562,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1fc56508-2dcc-41ff-b9ca-5b516db80d75" status="token">
+            xml:id="uuid-b8805bf1-07ab-4e98-8c53-6638f001c4c0" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3382,7 +3590,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-24b910f7-1a70-4af4-8770-e761e142923c" status="string">
+            xml:id="uuid-5b44aaca-e685-415a-9bc6-f6bd11f3b346" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3410,7 +3618,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-9e525956-df88-40de-8c8c-91808376f40b" status="token">
+            xml:id="uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3433,7 +3641,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-8adb81fd-3565-492a-b4eb-494a5b0241f9" status="token">
+            xml:id="uuid-4d21c80d-74b1-4742-b448-42cd563ee5dd" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>hi</a8n:parent-element-name>
@@ -3441,7 +3649,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-9e525956-df88-40de-8c8c-91808376f40b</a8n:id>
+                    <a8n:id>uuid-8a0469aa-a7ce-428a-82e0-291a574ae66f</a8n:id>
                     <a8n:start>1</a8n:start>
                     <a8n:offset>7</a8n:offset>
                 </a8n:base-layer>
@@ -3452,7 +3660,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-c5811587-53b0-497e-9b16-e064e9854deb">
+            xml:id="uuid-0c29b713-1a70-48d5-a4b8-95e166616d56">
             <a8n:target type="element" layer="annotation"> </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3463,7 +3671,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-962bbd47-6491-49ad-9c8a-1a42b8943874" status="string">
+            xml:id="uuid-78b8e519-f7d7-4582-a5c3-148eae434762" status="string">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3491,7 +3699,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-2fc88da3-5839-49d3-a6af-e22dbe76c768" status="string">
+            xml:id="uuid-3fb0206b-d09c-4b3b-9ac1-f7c40dfa52b5" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3519,7 +3727,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d953659f-adad-4a01-ab04-1cb9833d2c1e" status="token">
+            xml:id="uuid-2c98044c-9766-4096-8461-4935f712f5aa" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3546,7 +3754,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-34f528b1-d308-4f01-be85-0a224836bc33" status="string">
+            xml:id="uuid-0a25cc0d-bea4-412f-982c-5c4e30a5c008" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3573,7 +3781,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6" status="token">
+            xml:id="uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3600,10 +3808,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d6c700d0-a5ae-4a04-91b1-edeebe5b46b4" status="token">
+            xml:id="uuid-d21ab642-2d06-4b87-a5ef-acfec371a337" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6</a8n:id>
+                    <a8n:id>uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3614,10 +3822,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a84a655e-282e-492b-bcc5-f721df7ada9c" status="token">
+            xml:id="uuid-00a55ae2-0527-47d2-b0da-96360e5a3d0c" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d6c700d0-a5ae-4a04-91b1-edeebe5b46b4</a8n:id>
+                    <a8n:id>uuid-d21ab642-2d06-4b87-a5ef-acfec371a337</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3628,9 +3836,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-5984e2c4-9e97-4665-9537-8751f8611952">
+            xml:id="uuid-bd61d5d5-4a7c-4f70-8a74-2bd10eb06e9d">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-2a70c428-00da-452a-90f6-e6d459c7aa1c</a8n:id>
+                <a8n:id>uuid-6cc9dbf1-1e08-4652-a085-efad7e106f22</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3641,10 +3849,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-800b3eb3-ed45-4c0c-81e5-d2abca4e5354" status="token">
+            xml:id="uuid-850825e4-e5d1-46d7-8d4c-fbbc7f6db7ee" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-f06327fc-5452-4cf0-bc70-f91264dc3ce6</a8n:id>
+                    <a8n:id>uuid-2293489d-d2d9-4b16-8fda-9b0b8a263e16</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3655,9 +3863,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-a3e4c63b-c18d-4cb5-9b5f-2a787eedd11c">
+            xml:id="uuid-94256f8e-0b66-4fdf-bbfb-0e250f3f5973">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-0f7ad8fa-7557-49c4-a58c-a460b2031d28</a8n:id>
+                <a8n:id>uuid-7c07faed-5fc0-489e-a802-d4f0a1ccfce8</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3668,7 +3876,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0be0fb46-1073-4c13-bb6a-c5846a3fb616" status="string">
+            xml:id="uuid-1934fc9b-dc94-4336-a960-8da9176c99dd" status="string">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3695,7 +3903,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-6e8478c2-b817-4e5d-ac26-1c0b65734e28" status="token">
+            xml:id="uuid-b03ee9f5-dda6-4c2f-bbcd-80657b5d487f" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3722,7 +3930,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-dc95cbae-26c2-4ee5-9c56-2e989565942a" status="token">
+            xml:id="uuid-ffe497b9-768a-41fc-9095-1445c69a94f6" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3749,7 +3957,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b" status="token">
+            xml:id="uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3776,10 +3984,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-37132e6b-efa5-4ef3-90ca-1262e9813e35" status="token">
+            xml:id="uuid-d3b36d42-245e-41af-8cd1-7d12efc25250" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3790,10 +3998,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-e4cf8e0e-a48c-4a40-a6ab-e94e8cd6c292" status="token">
+            xml:id="uuid-1115f0d1-a85a-4407-bc71-73d97ecf0d4d" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3804,9 +4012,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-02850d52-54f8-48a5-a6e9-d60ba78b18c7">
+            xml:id="uuid-c4d63ef1-7859-4cca-a4ef-8e9402613df7">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-22b7591c-23e5-4f06-9a6b-a55cd98084ee</a8n:id>
+                <a8n:id>uuid-8da8b73f-4170-4ee6-b72c-ecd47eac29b8</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3817,10 +4025,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-ec070b72-b0aa-41bc-9854-9891b504dfb0" status="token">
+            xml:id="uuid-2a34139d-97a7-4841-8e04-17023848380d" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-09eef847-3fef-4d2f-a7e0-2113a99a645b</a8n:id>
+                    <a8n:id>uuid-7fa5124b-6bce-4368-a609-b29a4bc107a0</a8n:id>
                     <a8n:order>3</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3831,9 +4039,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-3c6f961d-10af-41b9-9c99-78d0f1543235">
+            xml:id="uuid-6b0f21a4-b633-48f6-8274-b73fe09bedf6">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-115b20e0-3b67-4b77-bd1f-a3807fc6e92f</a8n:id>
+                <a8n:id>uuid-432956b3-4560-465b-ba06-08d6b891e019</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3844,7 +4052,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948" status="string">
+            xml:id="uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2" status="string">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3872,10 +4080,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-bf90c37d-21d8-402c-8881-086ad02d8326" status="string">
+            xml:id="uuid-2514f75a-fd6a-4d37-9695-e8338a64bb2e" status="string">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948</a8n:id>
+                    <a8n:id>uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3886,10 +4094,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-ee48bddf-b245-4570-b049-17679524677a" status="string">
+            xml:id="uuid-03b1a8f6-2953-4a33-bc46-9750187af966" status="string">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-d1a5ae33-7336-4504-b1b2-a223b1a30948</a8n:id>
+                    <a8n:id>uuid-b2722806-7523-4bbb-8bd7-1a86d1c0e7c2</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -3900,9 +4108,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-36a4ac11-f608-4b11-a242-98b5fa5bf51e">
+            xml:id="uuid-318bf459-0b7f-4883-b241-24a854b427c1">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-b7296039-b87e-4a6a-8c80-78ddb9fc286d</a8n:id>
+                <a8n:id>uuid-f29be3ca-2a01-49c2-9a18-fe4795ee41cd</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -3913,7 +4121,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-cdb5eeed-7f0e-4f64-9e21-092349e137df" status="token">
+            xml:id="uuid-2f2c85da-cdef-49fa-a772-c8b15702fe04" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3941,7 +4149,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-a8734ab1-dd1f-4294-a85b-1d1381dcdc26" status="token">
+            xml:id="uuid-3b47df46-fe3d-4adc-be93-b992ed93e978" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3968,7 +4176,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-385418dc-b47c-48dd-b174-4f9b89e7955d" status="token">
+            xml:id="uuid-34838e00-f8c0-4065-baf5-440a923622c6" status="token">
             <a8n:target type="range" layer="edition">
                 <a8n:base-layer>
                     <a8n:parent-element-name>p</a8n:parent-element-name>
@@ -3993,10 +4201,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-c966bfaa-c134-48ae-9a62-c21a5eccb7da" status="token">
+            xml:id="uuid-bb4ddfd0-099d-4ceb-afd9-e83845f8f189" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-385418dc-b47c-48dd-b174-4f9b89e7955d</a8n:id>
+                    <a8n:id>uuid-34838e00-f8c0-4065-baf5-440a923622c6</a8n:id>
                     <a8n:order>1</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -4007,10 +4215,10 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f" status="token">
+            xml:id="uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c" status="token">
             <a8n:target type="element" layer="annotation">
                 <a8n:annotation-layer>
-                    <a8n:id>uuid-385418dc-b47c-48dd-b174-4f9b89e7955d</a8n:id>
+                    <a8n:id>uuid-34838e00-f8c0-4065-baf5-440a923622c6</a8n:id>
                     <a8n:order>2</a8n:order>
                 </a8n:annotation-layer>
             </a8n:target>
@@ -4020,7 +4228,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-0ec0d565-e15f-4931-af35-34398632295c" status="token">
+            xml:id="uuid-bc51f877-8cfd-4536-b57b-009bd00f6f0a" status="token">
             <a8n:target type="range" layer="document">
                 <a8n:base-layer>
                     <a8n:parent-element-name>rdg</a8n:parent-element-name>
@@ -4030,7 +4238,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f</a8n:id>
+                    <a8n:id>uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c</a8n:id>
                     <a8n:start>8</a8n:start>
                     <a8n:offset>0</a8n:offset>
                 </a8n:base-layer>
@@ -4042,7 +4250,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="element"
-            xml:id="uuid-c93910eb-e487-46d8-be1c-c4d9f343e2e7" status="token">
+            xml:id="uuid-22baf4b5-b7d2-4e36-86b0-4edfe369c9ad" status="token">
             <a8n:target type="range" layer="feature">
                 <a8n:base-layer>
                     <a8n:parent-element-name>rdg</a8n:parent-element-name>
@@ -4052,7 +4260,7 @@
                     <a8n:following-sibling-node>
                         <a8n:node-type>text</a8n:node-type>
                     </a8n:following-sibling-node>
-                    <a8n:id>uuid-1da6f7e6-15f7-4a2a-b447-09ad87f5b16f</a8n:id>
+                    <a8n:id>uuid-a4b3c998-ccce-4f01-9f7c-1cfbb3914b8c</a8n:id>
                     <a8n:start>15</a8n:start>
                     <a8n:offset>5</a8n:offset>
                 </a8n:base-layer>
@@ -4063,7 +4271,7 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-7721d84d-c2a7-4d76-9df6-1f7c026ef122">
+            xml:id="uuid-d199f840-6788-4908-99ce-7e3063a89a28">
             <a8n:target type="element" layer="annotation"> </a8n:target>
             <a8n:body>
                 <a8n:attribute>
@@ -4074,9 +4282,9 @@
             <a8n:admin/>
         </a8n:annotation>
         <a8n:annotation xmlns:a8n="http://exist-db.org/xquery/a8n" type="attribute"
-            xml:id="uuid-3d09303b-01b0-4f56-9b8a-6779f61c5999">
+            xml:id="uuid-1213a04b-7b74-4d53-865e-7d46fd2d8bac">
             <a8n:target type="element" layer="annotation">
-                <a8n:id>uuid-8acf37bb-5afd-43d2-a19e-74807b1a0f63</a8n:id>
+                <a8n:id>uuid-cb5edcc4-842a-4d39-8ddf-d82b880a6c63</a8n:id>
             </a8n:target>
             <a8n:body>
                 <a8n:attribute>

@@ -146,14 +146,13 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                     return $off-set-difference}</a8n:layer-offset-difference>
                         <a8n:admin/>
                     </a8n:annotation>
-                let $attribute-result := local:make-attribute-annotation($node, false())
+                let $attribute-result := local:make-attribute-annotations($node, false())
             return 
                 ($element-result, $attribute-result)
 };
 
-declare function local:make-attribute-annotation($node as element(), $construct-id as xs:boolean)
-as element()*
-{
+declare function local:make-attribute-annotations($node as element(), $construct-id as xs:boolean)
+as element()* {
     for $attribute in $node/(@* except @xml:id)
     return
         <a8n:annotation type="attribute" xml:id="{ concat('uuid-', util:uuid()) }">
@@ -169,8 +168,6 @@ as element()*
             <a8n:admin/>
         </a8n:annotation>
 };
-
-
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous offsets to the start position. :)
 (: This function moves all attribute annotations to the top and then handles the element annotations.:)
@@ -315,7 +312,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
             for $element at $i in $layer-2-body-contents
                 let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
-                let $attribute-annotations := local:make-attribute-annotation($element, true())
+                let $attribute-annotations := local:make-attribute-annotations($element, true())
                 let $element-annotations :=
                     <a8n:annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <a8n:target type="element" layer="annotation">
@@ -410,19 +407,22 @@ declare function local:generate-text-layer($element as element(), $target as xs:
     }
 };
 
-(:recurse through the document, extracting annotations when visiting elements with text nodes.
- : Only elements with text nodes can serve as basis for annotations – all other elements will be block-level and occur in both base and target version.:)
-(:NB: this will not catch an element which could have had a text node, but which happens not to have, e.g. a <p> wholly filled up with a <hi>. :)
+(:recurse through the document, extracting annotations when visiting elements that can have text nodes.
+Only elements with text nodes can serve as basis for annotations – all other elements will be block-level and these will occur identically in base and target version.:)
+(:NB: be sure to catch an element which could have had a text node, but which happens not to have, e.g. a <p> wholly filled up with a <hi>. :)
 (:There are 1) elements that can only have other elements as child nodes; 
- : there are 2) elements that can have no child nodes; 
+ : there are 2) elements that can have no child nodes, only attributes; 
  : there are 3) elements that can have text nodes.:)
 (: NB: We can define the elements that we are interested in as elements that can have text nodes, all of whose ancestors are element-only elements.:)
 declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+, $block-element-names as xs:string+, $element-only-element-names as xs:string+) as element()* {
     for $element in $elements/element()
         return
+        (: if the element is a block-level element that can hold text and if all its ancestors are element-only elements. :)
         if ($element/local-name() = $block-element-names and not(distinct-values($element/ancestor::*/local-name()[not(. = $element-only-element-names)])))
-            then local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements)
-            else local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names)
+        (: then get its attributes and peel off its inline markup:)
+        then (local:make-attribute-annotations($element, false()), local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements))
+        (: otherwise get its attributes and descend one level:)
+        else (local:make-attribute-annotations($element, false()), local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names))
 };
 
 declare function local:prepare-annotations-for-output-to-file($element as element())
