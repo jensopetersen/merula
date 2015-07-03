@@ -146,24 +146,31 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                     return $off-set-difference}</a8n:layer-offset-difference>
                         <a8n:admin/>
                     </a8n:annotation>
-                let $attribute-result := 
-                        for $attribute in $node/(@* except @xml:id) (:NB: what about xml:base and xml:space?:)
-                            return 
-                                <a8n:annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                                    <a8n:target type="element" layer="annotation">
-                                        <a8n:id>{$node/@xml:id/string()}</a8n:id>
-                                    </a8n:target>
-                                    <a8n:body>
-                                        <a8n:attribute>
-                                            <a8n:name>{name($attribute)}</a8n:name>
-                                            <a8n:value>{$attribute/string()}</a8n:value>
-                                        </a8n:attribute>
-                                    </a8n:body>
-                                    <a8n:admin/>
-                                </a8n:annotation>
+                let $attribute-result := local:make-attribute-annotation($node, false())
             return 
                 ($element-result, $attribute-result)
 };
+
+declare function local:make-attribute-annotation($node as element(), $construct-id as xs:boolean)
+as element()*
+{
+    for $attribute in $node/(@* except @xml:id)
+    return
+        <a8n:annotation type="attribute" xml:id="{ concat('uuid-', util:uuid()) }">
+            <a8n:target type="element" layer="annotation">
+                <a8n:id>{if ($construct-id eq false()) then $node/@xml:id/string() else concat('uuid-', util:uuid())}</a8n:id>
+            </a8n:target>
+            <a8n:body>
+                <a8n:attribute>
+                    <a8n:name>{ name($attribute) }</a8n:name>
+                    <a8n:value>{ $attribute/string() }</a8n:value>
+                </a8n:attribute>
+            </a8n:body>
+            <a8n:admin/>
+        </a8n:annotation>
+};
+
+
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous offsets to the start position. :)
 (: This function moves all attribute annotations to the top and then handles the element annotations.:)
@@ -308,21 +315,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
             for $element at $i in $layer-2-body-contents
                 let $annotation-id := concat('uuid-', util:uuid())
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
-                let $attribute-annotations := 
-                    for $attribute in $element/(@* except @xml:id)
-                        return 
-                            <a8n:annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-                                <a8n:target type="element" layer="annotation">
-                                    <a8n:id>{$annotation-id}</a8n:id>
-                                </a8n:target>
-                                <a8n:body>
-                                    <a8n:attribute>
-                                        <a8n:name>{name($attribute)}</a8n:name>
-                                        <a8n:value>{$attribute/string()}</a8n:value>
-                                    </a8n:attribute>
-                                </a8n:body>
-                                <a8n:admin/>
-                            </a8n:annotation>
+                let $attribute-annotations := local:make-attribute-annotation($element, true())
                 let $element-annotations :=
                     <a8n:annotation type="element" xml:id="{$annotation-id}" status="{$layer-1-status}">
                         <a8n:target type="element" layer="annotation">
@@ -472,6 +465,7 @@ let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'o
 let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
 (:TODO: the idea is that an element all of whose ancestors are element-only-elements is a block-level element, so this has to be refined in terms of $element-only-element-names; empty elements have been filtered away:)
+let $attribute-only-element-names := ('cb', 'gb', 'lb', 'milestone', 'pb', 'ptr', 'oRef', 'pRef', 'move')
 let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
 let $base-text := local:generate-text-layer($doc-text, 'base')
