@@ -492,8 +492,8 @@ return
     if ($output-format eq 'test')
     then
     <result>
-        <base-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $base-text}}</base-text>
-        <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*}}{$doc-header}{element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}</authoritative-text>
+        <base-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}}</base-text>
+        <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}}</authoritative-text>        
         <annotations-1>{$annotations-1}</annotations-1>
         <annotations-2>{$annotations-2}</annotations-2>
         <annotations-3>{$annotations-3}</annotations-3>
