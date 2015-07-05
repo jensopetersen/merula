@@ -52,7 +52,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
         if ($top-level-edition-a8ns) 
         then tei2:build-up-annotations($top-level-edition-a8ns, $annotations)
         else ()
-    (:let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
+(:    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
     
     (:Collapse the built-up edition annotations, that is, prepare them for insertion into the base text
     by removing all elements except the contents of body and attaching attributes.:)
@@ -63,7 +63,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
-        order by $collapsed-edition-a8n//a8n:id, number($collapsed-edition-a8n//a8n:start)
+        order by $collapsed-edition-a8n/a8n:id, number($collapsed-edition-a8n//a8n:start) ascending, number($collapsed-edition-a8n//a8n:offset) descending
         return $collapsed-edition-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
@@ -112,11 +112,11 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
         for $collapsed-feature-a8n in $collapsed-feature-a8ns
-        order by $collapsed-feature-a8n//a8n:id, number($collapsed-feature-a8n//a8n:start)
+        order by $collapsed-feature-a8n//a8n:id, number($collapsed-feature-a8n//a8n:start) ascending, number($collapsed-feature-a8n//a8n:offset) descending
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
-    (:Insert the collapsed annotations into the authoritative text, producing the marked-up TEI document.:)
+    (:Insert the collapsed annotations into the authoritative text, producing a marked-up TEI document.:)
     let $text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
         then tei2:merge-annotations($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
@@ -124,8 +124,10 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
     (:Convert the TEI document to HTML: block-level elements become divs and inline element become spans.:)
-    let $block-level-element-names := ('ab', 'body', 'castGroup', 'castItem', 'castList', 'div', 'front', 'head', 'l', 'lg', 'role', 'roleDesc', 'sp', 'speaker', 'stage', 'TEI', 'text', 'p', 'quote' )
-    let $html := tei2:tei2div($text-with-merged-feature-a8ns, $block-level-element-names)
+    let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
+    let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
+
+    let $html := tei2:tei2div($text-with-merged-feature-a8ns, $block-element-names, $element-only-element-names)
 (:    let $log := util:log("DEBUG", ("##$html): ", $html)):)
     
     return
@@ -205,14 +207,14 @@ declare function tei2:tei2target($node as node()*, $target-layer as xs:string) {
 
 (:Convert TEI block-level elements into divs and inline elements into spans.:)
 (:The usual way of converting TEI into "quasi-semantic" HTML is avoided.:)
-declare function tei2:tei2div($node as node(), $block-level-element-names as xs:string+) {
-    element {if (local-name($node) = $block-level-element-names) then 'div' else 'span'}
+declare function tei2:tei2div($node as node(), $block-element-names as xs:string+, $element-only-element-names as xs:string+) {
+    element {if (local-name($node) = ($block-element-names, $element-only-element-names)) then 'div' else 'span'}
         {$node/@*, attribute {'class'}{local-name($node)}, attribute {'title'}{if ($node/@type) then concat($node/@type, '-', local-name($node)) else local-name($node)}
         , 
         for $child in $node/node()
         return 
             if ($child instance of element() and not($child/@class)) (:NB: Check! Class attributes come from above in the same function.:)
-            then tei2:tei2div($child, $block-level-element-names)
+            then tei2:tei2div($child, $block-element-names, $element-only-element-names)
             else $child
         }
 };
@@ -241,7 +243,8 @@ declare function tei2:build-up-annotations($top-level-critical-annotations as el
 declare function tei2:build-up-annotation($annotation as element(), $annotations as element()*) as element()* {
         let $annotation-id := $annotation/@xml:id/string()
         let $annotation-element-name := local-name($annotation//a8n:body/*)
-        let $children := $annotations[a8n:target/a8n:id eq $annotation-id]
+        let $children := $annotations[a8n:target//a8n:id eq $annotation-id]
+(:        let $log := util:log("DEBUG", ("##$children): ", $children)):)
         let $children :=
             tei2:build-up-annotations($children, $annotations)
         return 
@@ -305,10 +308,12 @@ A sequence of slots (<segment/>), double the number of annotations plus 1, are c
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
 are filled into the uneven slots. Uneven slots with empty strings can occur, 
-but even slots all have annotations (though they may consist of empty elements).:)
+but all even slots have annotations (though they may consist of an empty element).:)
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
-declare function tei2:merge-annotations($base-text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
+declare function tei2:merge-annotations($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
+    let $log := util:log("DEBUG", ("##$text): ", $text))
     let $segment-count := (count($annotations) * 2) + 1
+    let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count))
     let $segments :=
         for $segment at $i in 1 to $segment-count
         return
@@ -328,7 +333,7 @@ declare function tei2:merge-annotations($base-text as element(), $annotations as
                             then
                                 let $annotation-body-child := $annotation/(* except a8n:target)
                                 let $annotation-body-child-name := node-name($annotation-body-child) 
-                                let $annotated-string := substring($base-text, $annotation-start, $annotation-offset)
+                                let $annotated-string := substring($text, $annotation-start, $annotation-offset)
                                 return
                                     element {$annotation-body-child-name}
                                     {
@@ -361,7 +366,7 @@ declare function tei2:merge-annotations($base-text as element(), $annotations as
                                 start with the position of the previous annotation plus its offset plus 1:)
                         let $offset := 
                             if ($segment-n eq count($segments))  (:if it is the last text node:)
-                            then string-length($base-text) - ($annotations[$previous-annotation-n]/a8n:target/a8n:start/number() + $annotations[$previous-annotation-n]/a8n:target/a8n:offset/number()) + 1
+                            then string-length($text) - ($annotations[$previous-annotation-n]/a8n:target/a8n:start/number() + $annotations[$previous-annotation-n]/a8n:target/a8n:offset/number()) + 1
                             (:if it is the last text node, then the offset is the length of the base text minus the end position of the last annotation plus 1:)
                             else
                                 if ($segment-n eq 1) (:if it is the first text node:)
@@ -371,19 +376,21 @@ declare function tei2:merge-annotations($base-text as element(), $annotations as
                                 (:if it is not the first or the last text node, then the offset is the start position of the following annotation minus the end position of the previous annotation :)
                         return
                             if (number($start) and number($offset))
-                            then substring($base-text, $start, $offset)
+                            then substring($text, $start, $offset)
                             else ''
                         
                         }
                     </segment>
+(:    let $log := util:log("DEBUG", ("##$segments): ", $segments)):)
     let $segments :=
         for $segment in $segments
+(:        let $log := util:log("DEBUG", ("##$segment): ", $segment)):)
         return
             if ($segment/@n mod 2 eq 0)
             then $segment/*
             else $segment/string()
     return 
-        element {node-name($base-text)}{$base-text/@*, $segments}
+        element {node-name($text)}{$text/@*, $segments}
 };
 
 (: This function inserts elements supplied as $new-nodes at a certain position, 
