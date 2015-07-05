@@ -27,16 +27,18 @@ declare function tei2:tei2html($nodes as node()*, $target-layer as xs:string, $t
     (:NB: This is perhaps too much. One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
     Would the frequence of the collection calls be worth it, compared to moving around all annotations for the document?:)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
-    
+(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     return
         tei2:annotate-text($nodes, $annotations, $target-layer, $target-format)
 };
 
 declare function tei2:annotate-text($nodes as node()*, $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
-            
+
     (:Recurse though the document.:)
+(:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
     let $node := tei2:tei2tei-recurser($nodes, $annotations, $target-layer, $target-format)
-    
+(:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
+
     (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
     let $top-level-edition-a8ns := 
         if ($annotations)
@@ -58,6 +60,11 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
         if ($built-up-edition-a8ns) 
         then tei2:collapse-annotations($built-up-edition-a8ns)
         else ()
+(:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
+    let $collapsed-edition-a8ns := 
+        for $collapsed-edition-a8n in $collapsed-edition-a8ns
+        order by $collapsed-edition-a8n//a8n:id, number($collapsed-edition-a8n//a8n:start)
+        return $collapsed-edition-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
     (:Insert the collapsed annotations into the base-text.:)
@@ -102,6 +109,11 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
         if ($built-up-feature-a8ns) 
         then tei2:collapse-annotations($built-up-feature-a8ns)
         else ()
+(:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
+    let $collapsed-feature-a8ns := 
+        for $collapsed-feature-a8n in $collapsed-feature-a8ns
+        order by $collapsed-feature-a8n//a8n:id, number($collapsed-feature-a8n//a8n:start)
+        return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
     (:Insert the collapsed annotations into the authoritative text, producing the marked-up TEI document.:)
@@ -195,7 +207,7 @@ declare function tei2:tei2target($node as node()*, $target-layer as xs:string) {
 (:The usual way of converting TEI into "quasi-semantic" HTML is avoided.:)
 declare function tei2:tei2div($node as node(), $block-level-element-names as xs:string+) {
     element {if (local-name($node) = $block-level-element-names) then 'div' else 'span'}
-        {$node/@*, attribute {'class'}{local-name($node)}, attribute {'title'}{local-name($node)}
+        {$node/@*, attribute {'class'}{local-name($node)}, attribute {'title'}{if ($node/@type) then concat($node/@type, '-', local-name($node)) else local-name($node)}
         , 
         for $child in $node/node()
         return 
