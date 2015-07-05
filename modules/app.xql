@@ -4,7 +4,7 @@ module namespace app="http://exist-db.org/apps/";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
 import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
-import module namespace tei2="http://exist-db.org/xquery/app/tei2html" at "tei2html.xql";
+import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "tei2html.xql";
 import module namespace kwic="http://exist-db.org/xquery/kwic" at "resource:org/exist/xquery/lib/kwic.xql";
     
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -42,7 +42,7 @@ function app:work($node as node(), $model as map(*), $id as xs:string?) {
 };
 
 declare function app:header($node as node(), $model as map(*)) {
-    tei2:tei2html($model("work")/tei:teiHeader, 'feature', 'html')
+    so2il:standoff2inline($model("work")/tei:teiHeader, 'feature', 'html')
 };
 
 declare function app:outline($node as node(), $model as map(*), $details as xs:string) {
@@ -149,7 +149,7 @@ declare function app:view($node as node(), $model as map(*), $id as xs:string) {
     for $div in $model("work")/id($id)
     return
         <div xmlns="http://www.w3.org/1999/xhtml" class="play">
-        { tei2:tei2html($div, 'feature', 'html') }
+        { so2il:standoff2inline($div, 'feature', 'html') }
         </div>
 };
 

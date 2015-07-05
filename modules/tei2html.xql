@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-module namespace tei2="http://exist-db.org/xquery/app/tei2html";
+module namespace so2il="http://exist-db.org/xquery/app/standoff2inline";
 
 import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
 
@@ -17,7 +17,7 @@ declare namespace a8n="http://exist-db.org/xquery/a8n";
 (:values used for $target-layer: 'feature', 'edition'; add 'documentary' :) 
 (:values used for $target-format: 'tei', 'html':)
 (:This function should be named to something more appropriate - TEI is output in addition to html. :)
-declare function tei2:tei2html($nodes as node()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:standoff2inline($nodes as node()*, $target-layer as xs:string, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
     (:Before recursion, $nodes is a single element.:) 
@@ -29,14 +29,14 @@ declare function tei2:tei2html($nodes as node()*, $target-layer as xs:string, $t
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
 (:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     return
-        tei2:annotate-text($nodes, $annotations, $target-layer, $target-format)
+        so2il:annotate-text($nodes, $annotations, $target-layer, $target-format)
 };
 
-declare function tei2:annotate-text($nodes as node()*, $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:annotate-text($nodes as node()*, $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
 
     (:Recurse though the document.:)
 (:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $node := tei2:tei2tei-recurser($nodes, $annotations, $target-layer, $target-format)
+    let $node := so2il:standoff2inline-recurser($nodes, $annotations, $target-layer, $target-format)
 (:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
 
     (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
@@ -50,7 +50,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     insert annotations that reference the top-level edition annotations, recursing until the whole annotation is assembled.:)
     let $built-up-edition-a8ns := 
         if ($top-level-edition-a8ns) 
-        then tei2:build-up-annotations($top-level-edition-a8ns, $annotations)
+        then so2il:build-up-annotations($top-level-edition-a8ns, $annotations)
         else ()
 (:    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
     
@@ -58,7 +58,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     by removing all elements except the contents of body and attaching attributes.:)
     let $collapsed-edition-a8ns := 
         if ($built-up-edition-a8ns) 
-        then tei2:collapse-annotations($built-up-edition-a8ns)
+        then so2il:collapse-annotations($built-up-edition-a8ns)
         else ()
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     let $collapsed-edition-a8ns := 
@@ -70,7 +70,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     (:Insert the collapsed annotations into the base-text.:)
     let $text-with-merged-edition-a8ns := 
         if ($collapsed-edition-a8ns) 
-        then tei2:merge-annotations($node, $collapsed-edition-a8ns, 'edition', 'tei')
+        then so2il:merge-annotations($node, $collapsed-edition-a8ns, 'edition', 'tei')
         else $node
     (:Result: base text with edition annotations inserted.:)
     (:TODO: Transform to show the authoritative text with edition annotations inserted; use this a basis for generating authoritative text?:)
@@ -83,7 +83,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
     let $authoritative-text := 
         if ($text-with-merged-edition-a8ns/text())
-        then tei2:tei2target($text-with-merged-edition-a8ns, 'authoritative-text')
+        then so2il:tei2target($text-with-merged-edition-a8ns, 'authoritative-text')
         else $text-with-merged-edition-a8ns
 (:    let $log := util:log("DEBUG", ("##$authoritative-text): ", $authoritative-text)):)
 
@@ -99,7 +99,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     insert annotations that reference the top-level feature annotations recursively into the top-level feature annotations.:)
     let $built-up-feature-a8ns := 
         if ($top-level-feature-a8ns) 
-        then tei2:build-up-annotations($top-level-feature-a8ns, $annotations)
+        then so2il:build-up-annotations($top-level-feature-a8ns, $annotations)
         else ()
 (:    let $log := util:log("DEBUG", ("##$built-up-feature-a8ns): ", $built-up-feature-a8ns)):)
     
@@ -107,7 +107,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     by removing all elements except the contents of body.:) 
     let $collapsed-feature-a8ns := 
         if ($built-up-feature-a8ns) 
-        then tei2:collapse-annotations($built-up-feature-a8ns)
+        then so2il:collapse-annotations($built-up-feature-a8ns)
         else ()
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
@@ -119,7 +119,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     (:Insert the collapsed annotations into the authoritative text, producing a marked-up TEI document.:)
     let $text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
-        then tei2:merge-annotations($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
+        then so2il:merge-annotations($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
         else $node
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
@@ -127,7 +127,7 @@ declare function tei2:annotate-text($nodes as node()*, $annotations as element()
     let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
     let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
-    let $html := tei2:tei2div($text-with-merged-feature-a8ns, $block-element-names, $element-only-element-names)
+    let $html := so2il:tei2html($text-with-merged-feature-a8ns, $block-element-names, $element-only-element-names)
 (:    let $log := util:log("DEBUG", ("##$html): ", $html)):)
     
     return
@@ -139,7 +139,7 @@ construct the altered (authoritative) or the unaltered (base-text) text :)
 (:Only the value "base" is checked.:)
 (:TODO: This function must in some way be included in the TEI header, 
 or the choices must be expressed in a manner that can feed the function.:)
-declare function tei2:separate-text-layers($input as node()*, $target-layer) as item()* {
+declare function so2il:separate-text-layers($input as node()*, $target-layer) as item()* {
     for $node in $input/node()
     return
         typeswitch($node)
@@ -195,38 +195,39 @@ declare function tei2:separate-text-layers($input as node()*, $target-layer) as 
                 then $node/string()
                 else ()
 
-                default return tei2:separate-text-layers($node, $target-layer)
+                default return so2il:separate-text-layers($node, $target-layer)
 };
 
-declare function tei2:tei2target($node as node()*, $target-layer as xs:string) {
+declare function so2il:tei2target($node as node()*, $target-layer as xs:string) {
         (:If the element has a text node, separate the text node.:)
         (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
-        element {node-name($node)}{$node/@*,tei2:separate-text-layers($node, $target-layer)}
+        element {node-name($node)}{$node/@*,so2il:separate-text-layers($node, $target-layer)}
         
 };
 
 (:Convert TEI block-level elements into divs and inline elements into spans.:)
-(:The usual way of converting TEI into "quasi-semantic" HTML is avoided.:)
-declare function tei2:tei2div($node as node(), $block-element-names as xs:string+, $element-only-element-names as xs:string+) {
+(:For reasons of simplicity, te usual way of converting TEI into "quasi-semantic" HTML is avoided.:)
+declare function so2il:tei2html($node as node(), $block-element-names as xs:string+, $element-only-element-names as xs:string+) {
     element {if (local-name($node) = ($block-element-names, $element-only-element-names)) then 'div' else 'span'}
         {$node/@*, attribute {'class'}{local-name($node)}, attribute {'title'}{if ($node/@type) then concat($node/@type, '-', local-name($node)) else local-name($node)}
-        , 
+        ,
         for $child in $node/node()
-        return 
-            if ($child instance of element() and not($child/@class)) (:NB: Check! Class attributes come from above in the same function.:)
-            then tei2:tei2div($child, $block-element-names, $element-only-element-names)
+        return
+            if ($child instance of element() and not($child/@class))
+            (:NB: Check! Class attributes come from above in the same function, so elements will have more than one @class attached.:)
+            then so2il:tei2html($child, $block-element-names, $element-only-element-names)
             else $child
         }
 };
 
-declare function tei2:tei2tei-recurser($node as node(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:standoff2inline-recurser($node as node(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
     element {node-name($node)}
         {$node/@*
         , 
         for $child in $node/node()
         return
             if ($child instance of element())
-            then tei2:annotate-text($child, $annotations, $target-layer, $target-format)
+            then so2il:annotate-text($child, $annotations, $target-layer, $target-format)
             else $child
         }
 };
@@ -234,29 +235,29 @@ declare function tei2:tei2tei-recurser($node as node(), $annotations as element(
 (:This function takes a sequence of top-level text-critical annotations, 
 i.e annotations of @type 'range' and @layer 'edition', 
 and inserts as children all annotations that refer to them through their @xml:id, recursively:)
-declare function tei2:build-up-annotations($top-level-critical-annotations as element()*, $annotations as element()*) as element()* {
+declare function so2il:build-up-annotations($top-level-critical-annotations as element()*, $annotations as element()*) as element()* {
     for $annotation in $top-level-critical-annotations
     return
-        tei2:build-up-annotation($annotation, $annotations)
+        so2il:build-up-annotation($annotation, $annotations)
 };
 
-declare function tei2:build-up-annotation($annotation as element(), $annotations as element()*) as element()* {
+declare function so2il:build-up-annotation($annotation as element(), $annotations as element()*) as element()* {
         let $annotation-id := $annotation/@xml:id/string()
         let $annotation-element-name := local-name($annotation//a8n:body/*)
         let $children := $annotations[a8n:target//a8n:id eq $annotation-id]
 (:        let $log := util:log("DEBUG", ("##$children): ", $children)):)
         let $children :=
-            tei2:build-up-annotations($children, $annotations)
+            so2il:build-up-annotations($children, $annotations)
         return 
             local:insert-elements($annotation, $children, $annotation-element-name,  'first-child')            
 };
 
-(:Recurser for tei2:collapse-annotation().:)
-(:TODO: Clear up why tei2:collapse-annotation() has to be run three times.:) 
-declare function tei2:collapse-annotations($built-up-critical-annotations as element()*) {
+(:Recurser for so2il:collapse-annotation().:)
+(:TODO: Clear up why so2il:collapse-annotation() has to be run three times.:) 
+declare function so2il:collapse-annotations($built-up-critical-annotations as element()*) {
     for $annotation in $built-up-critical-annotations
     return 
-        tei2:collapse-annotation(tei2:collapse-annotation(tei2:collapse-annotation($annotation, 'annotation'), 'body'), 'base-layer')
+        so2il:collapse-annotation(so2il:collapse-annotation(so2il:collapse-annotation($annotation, 'annotation'), 'body'), 'base-layer')
         (:NB: 'base-layer' does not appear to be used.:)
 };
 
@@ -265,7 +266,7 @@ declare function tei2:collapse-annotations($built-up-critical-annotations as ele
 2) collapses it, i.e. removes levels from the hierarchy by substituting elements with their children, 
 3) removes unneeded elements, and 
 4) takes the string values of terminal text-critical elements that have child feature annotations. :)
-declare function tei2:collapse-annotation($element as element(), $strip as xs:string+) as element() {
+declare function so2il:collapse-annotation($element as element(), $strip as xs:string+) as element() {
     element {node-name($element)}
     {$element/@*, 
         if ($element/*/*/a8n:attribute)
@@ -285,7 +286,7 @@ declare function tei2:collapse-annotation($element as element(), $strip as xs:st
             then 
                 for $child in $child/*
                 return 
-                    tei2:collapse-annotation(($child), $strip)
+                    so2il:collapse-annotation(($child), $strip)
             else
                 if ($child instance of element() and local-name($child) = ('attribute', 'layer-offset-difference', 'authoritative-layer')) (:we have no need for these two elements - actually, they have been removed, but should they be introduced again?:)
                 then ()
@@ -299,7 +300,7 @@ declare function tei2:collapse-annotation($element as element(), $strip as xs:st
                         else
                             if ($child instance of text())
                             then $child
-                            else tei2:collapse-annotation($child, $strip)
+                            else so2il:collapse-annotation($child, $strip)
       }
 };
 
@@ -310,7 +311,7 @@ with ranges calculated from the previous and following annotations,
 are filled into the uneven slots. Uneven slots with empty strings can occur, 
 but all even slots have annotations (though they may consist of an empty element).:)
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
-declare function tei2:merge-annotations($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
+declare function so2il:merge-annotations($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
     let $log := util:log("DEBUG", ("##$text): ", $text))
     let $segment-count := (count($annotations) * 2) + 1
     let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count))
