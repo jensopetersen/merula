@@ -4,7 +4,7 @@ module namespace app="http://exist-db.org/apps/";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
 import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
-import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "tei2html.xql";
+import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "standoff2inline.xql";
 import module namespace kwic="http://exist-db.org/xquery/kwic" at "resource:org/exist/xquery/lib/kwic.xql";
     
 declare namespace tei="http://www.tei-c.org/ns/1.0";
