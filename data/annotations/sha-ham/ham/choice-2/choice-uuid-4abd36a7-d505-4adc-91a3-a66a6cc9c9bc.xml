@@ -1,0 +1,11 @@
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
+    xml:id="uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bd" status="token">
+    <target type="range" layer="edition">
+        <id>sha-ham101008</id>
+        <start>30</start>
+        <offset>4</offset>
+    </target>
+    <body>
+        <choice xmlns="http://www.tei-c.org/ns/1.0"/>
+    </body>
+</annotation>
