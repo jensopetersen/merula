@@ -16,7 +16,7 @@ module namespace epub = "http://exist-db.org/xquery/epub";
 
 import module namespace compression = "http://exist-db.org/xquery/compression";
 import module namespace tei2="http://exist-db.org/xquery/app/tei2html" at "tei2html.xql";
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 

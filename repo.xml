@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repo:meta xmlns="http://exist-db.org/xquery/repo" xmlns:repo="http://exist-db.org/xquery/repo">
-    <repo:description>Shakespeare Plays in TEI</repo:description>
+    <repo:description>Standoff Implementation of TEI</repo:description>
     <repo:author/>
     <repo:website/>
     <repo:status>alpha</repo:status>
     <repo:license>GNU-LGPL</repo:license>
     <repo:copyright>true</repo:copyright>
     <repo:type>application</repo:type>
-    <repo:target>shakespeare</repo:target>
+    <repo:target>merula</repo:target>
     <repo:prepare>pre-install.xql</repo:prepare>
     <repo:finish/>
     <deployed>2014-02-19T15:32:54.122+01:00</deployed>

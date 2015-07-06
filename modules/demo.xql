@@ -2,7 +2,7 @@ xquery version "3.0";
 
 module namespace demo="http://exist-db.org/apps/demo";
 
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 import module namespace test="http://exist-db.org/xquery/xqsuite" at "resource:org/exist/xquery/lib/xqsuite/xqsuite.xql";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
@@ -22,7 +22,7 @@ declare function demo:link-to-home($node as node(), $model as map(*)) {
 };
 
 declare function demo:run-tests($node as node(), $model as map(*)) {
-    let $results := test:suite(inspect:module-functions(xs:anyURI("../examples/tests/shakespeare-tests.xql")))
+    let $results := test:suite(inspect:module-functions(xs:anyURI("../examples/tests/merula-tests.xql")))
     return
         test:to-html($results)
 };

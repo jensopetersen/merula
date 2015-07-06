@@ -3,7 +3,7 @@ xquery version "3.0";
 module namespace app="http://exist-db.org/apps/";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "standoff2inline.xql";
 import module namespace kwic="http://exist-db.org/xquery/kwic" at "resource:org/exist/xquery/lib/kwic.xql";
     
@@ -19,7 +19,7 @@ declare function functx:contains-any-of
  } ;
  
 (:~
- : List Shakespeare works
+ : List Merula works
  :)
 declare 
     %templates:wrap
@@ -164,7 +164,7 @@ declare function app:query($node as node()*, $model as map(*)) {
         for $hit in collection($config:app-root)//tei:sp[ft:query(., $query)]
         order by ft:score($hit) descending
         return $hit
-    let $store := session:set-attribute("apps.shakespeare", $hits)
+    let $store := session:set-attribute("apps.merula", $hits)
     return
         (: Process nested templates :)
         map { "hits" := $hits }
@@ -246,7 +246,7 @@ declare %private function app:create-query() {
     in the $model parameter.
 :)
 declare function app:from-session($node as node()*, $model as map(*)) {
-    let $hits := session:get-attribute("apps.shakespeare")
+    let $hits := session:get-attribute("apps.merula")
     return
         map { "hits" := $hits }
 };

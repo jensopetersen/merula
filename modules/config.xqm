@@ -4,7 +4,7 @@ xquery version "3.0";
  : A set of helper functions to access the application context from
  : within a module.
  :)
-module namespace config="http://exist-db.org/apps/shakes/config";
+module namespace config="http://exist-db.org/apps/merula/config";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
 

@@ -2,7 +2,7 @@ xquery version "3.0";
 
 import module namespace templates="http://exist-db.org/xquery/templates";
 import module namespace site="http://exist-db.org/apps/site-utils";
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 
 import module namespace app="http://exist-db.org/apps/" at "app.xql";
 

@@ -2,7 +2,7 @@ xquery version "3.0";
 
 module namespace so2il="http://exist-db.org/xquery/app/standoff2inline";
 
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare namespace a8n="http://exist-db.org/xquery/a8n";

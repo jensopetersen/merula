@@ -1,2 +1,2 @@
-ShakespeareStandoff
+Standoff Implementation of TEI
 ===================

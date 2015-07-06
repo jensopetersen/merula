@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project default="xar" name="shakes">
+<project default="xar" name="merula">
     <property name="build.dir" value="build"/>
-    <property name="project.app" value="shakes"/>
+    <property name="project.app" value="merula"/>
     <property name="project.version" value="0.2.2"/>
     <property name="server.url" value="http://demo.exist-db.org/exist/apps/public-repo/public/"/>
     <target name="xar">

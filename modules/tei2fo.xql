@@ -1,6 +1,6 @@
 xquery version "3.0";
 
-import module namespace config="http://exist-db.org/apps/shakes/config" at "config.xqm";
+import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 
 declare namespace fo="http://www.w3.org/1999/XSL/Format";
 declare namespace tei="http://www.tei-c.org/ns/1.0";
@@ -64,7 +64,7 @@ declare function fo:speech($speech as element(tei:sp)) {
 };
 
 declare function fo:titlepage($header as element(tei:teiHeader))   {
-    <fo:page-sequence master-reference="Shakespeare">
+    <fo:page-sequence master-reference="Merula">
         <fo:flow flow-name="xsl-region-body" font-family="Times, Times New Roman, serif">
             <fo:block font-size="44pt" text-align="center">
             {                     
@@ -80,14 +80,14 @@ declare function fo:titlepage($header as element(tei:teiHeader))   {
             }
             </fo:block>
             <fo:block text-align="center" space-before="2em" space-after="2em">
-            <!--fo:external-graphic content-height="300pt" src="http://data.stonesutras.org:8600/exist/apps/shakes/resources/images/shakespeare-french.jpg"/-->    
+            <!--fo:external-graphic content-height="300pt" src="http://data.stonesutras.org:8600/exist/apps/merula/resources/images/merula-french.jpg"/-->    
             </fo:block>
         </fo:flow>                    
     </fo:page-sequence>
 };
 
 declare function fo:table-of-contents($work as element(tei:TEI)) {
-    <fo:page-sequence master-reference="Shakespeare">
+    <fo:page-sequence master-reference="Merula">
         <fo:flow flow-name="xsl-region-body" font-family="Times, Times New Roman, serif">
         <fo:block font-size="30pt" space-after="1em" font-family="Arial, Helvetica, sans-serif">Table of Contents</fo:block>
         {
@@ -142,7 +142,7 @@ declare function fo:cast($nodes as node()*) {
 declare function fo:cast-list($work as element(tei:TEI)) {
     let $cast := $work/tei:text/tei:front/tei:div[@type = "castList"]
     return
-        <fo:page-sequence master-reference="Shakespeare">
+        <fo:page-sequence master-reference="Merula">
             <fo:static-content flow-name="kopf">
                 <fo:block margin-bottom="0.7mm" text-align="left">
                     <fo:retrieve-marker retrieve-class-name="titel"/>
@@ -161,7 +161,7 @@ declare function fo:main($id as xs:string) {
     return
         <fo:root xmlns:fo="http://www.w3.org/1999/XSL/Format">
             <fo:layout-master-set>
-                <fo:simple-page-master master-name="Shakespeare" margin-top="10mm"
+                <fo:simple-page-master master-name="Merula" margin-top="10mm"
                         margin-bottom="10mm" margin-left="12mm"
                         margin-right="12mm">
                     <fo:region-body margin-bottom="10mm" margin-top="10mm"/>
@@ -172,7 +172,7 @@ declare function fo:main($id as xs:string) {
             { fo:titlepage($play/tei:teiHeader) }
             { fo:table-of-contents($play) }
             { fo:cast-list($play)}
-            <fo:page-sequence master-reference="Shakespeare">
+            <fo:page-sequence master-reference="Merula">
                 <fo:static-content flow-name="kopf">
                     <fo:block margin-bottom="0.7mm" text-align="left">
                         <fo:retrieve-marker retrieve-class-name="titel"/>
