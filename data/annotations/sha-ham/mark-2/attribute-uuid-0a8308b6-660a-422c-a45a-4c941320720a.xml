@@ -1,7 +1,7 @@
 <annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
-    xml:id="uuid-0a8308b6-660a-422c-a45a-4c9413207205" status="string">
+    xml:id="uuid-0a8308b6-660a-422c-a45a-4c941320720a" status="string">
     <target type="element" layer="annotation">
-        <id>uuid-3a8308b6-660a-422c-a45a-4c9413207207</id>
+        <id>uuid-3a8308b6-660a-422c-a45a-4c941320720a</id>
     </target>
     <body>
         <attribute>

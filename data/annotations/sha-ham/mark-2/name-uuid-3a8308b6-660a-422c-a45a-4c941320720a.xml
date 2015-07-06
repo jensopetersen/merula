@@ -1,0 +1,11 @@
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
+    xml:id="uuid-3a8308b6-660a-422c-a45a-4c941320720a" status="string">
+    <target type="range" layer="feature">
+        <id>pa000011</id>
+        <start>20</start>
+        <offset>6</offset>
+    </target>
+    <body>
+        <name xmlns="http://www.tei-c.org/ns/1.0"/>
+    </body>
+</annotation>
