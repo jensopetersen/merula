@@ -1,1 +1,9 @@
-<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f" status="token"><target type="element" layer="annotation"><id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id><order>1</order></target><body><reg>It is</reg></body></annotation>
+<a8n-annotation type="element" xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f" status="token">
+    <a8n-target type="element" layer="annotation">
+        <a8n-id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</a8n-id>
+        <order>1</order>
+    </a8n-target>
+    <a8n-body>
+        <reg xmlns="http://www.tei-c.org/ns/1.0">It is</reg>
+    </a8n-body>
+</a8n-annotation>
