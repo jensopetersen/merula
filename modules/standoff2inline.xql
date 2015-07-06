@@ -139,64 +139,78 @@ construct the altered (authoritative) or the unaltered (base-text) text :)
 (:Only the value "base" is checked.:)
 (:TODO: This function must in some way be included in the TEI header, 
 or the choices must be expressed in a manner that can feed the function.:)
-declare function so2il:separate-text-layers($input as node()*, $target-layer) as item()* {
+declare function so2il:separate-text-layers($input as node()*, $target) as item()* {
     for $node in $input/node()
-    return
-        typeswitch($node)
-            
-            case text() return
-                if ($node/ancestor-or-self::element(tei:note)) 
-                then () 
-                else $node
-                (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
-                Here we strip out all notes from the text itself and put them into the annotations.:)
-            
-            case element(tei:lem) return 
-                if ($target-layer eq 'base-text') 
-                then () 
-                else $node/string()
-            
-            case element(tei:rdg) return
-                if (not($node/../tei:lem))
-                then
-                    if ($target-layer eq 'base-text')
-                    then $node[contains(@wit/string(), 'TS1')] (:if there is no lem, choose a rdg for the base text:)
-                    else
-                        if ($target-layer ne 'base-text')
-                        then $node[contains(@wit/string(), 'TS2')] (:if there is no lem, choose a rdg for the target text:)
-                        else ()
-                else
-                    if ($target-layer eq 'base-text')
-                    then $node[contains(@wit/string(), 'TS1')] (:if there is a lem, choose a rdg for the base text:)
-                    else ()
-            
-            case element(tei:reg) return
-                if ($target-layer eq 'base-text')
-                then () 
-                else $node/string()
-            case element(tei:corr) return
-                if ($target-layer eq 'base-text') 
-                then () 
-                else $node/string()
-            case element(tei:expanded) return
-                if ($target-layer eq 'base-text') 
-                then () 
-                else $node/string()
-            case element(tei:orig) return
-                if ($target-layer eq 'base-text') 
-                then $node/string()
-                else ()
-            case element(tei:sic) return
-                if ($target-layer eq 'base-text') 
-                then $node/string()
-                else ()
-            case element(tei:abbr) return
-                if ($target-layer eq 'base-text') 
-                then $node/string()
-                else ()
+	return
+		typeswitch($node)
+			
+			case text() return
+				if ($node/ancestor-or-self::element(tei:note)) 
+				then ()
+				else $node
+				(:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
+				Here we strip out all notes from the text itself and put them into the annotations.:)
+			
+			case element(tei:lem) return 
+				if ($target eq 'base') 
+				then ()
+				else $node
+			
+			case element(tei:rdg) return
+				if ($node/preceding-sibling::tei:lem)
+				then
+				(:if the app has a lem along with the rdg:)
+					if ($target eq 'base')
+					then 
+						if ($node[contains(@wit/string(), 'TS1')])
+						(:TODO: an approach using tokenize() should be used instead:)
+						then $node
+						else ()
+					(:if there is a lem, choose a rdg for the base text:)
+					else ()
+					(:disregard the rdg for the authoritative text if there is a lem:)
+				else
+				(:if the app has no lem along with the rdg:)
+					if ($target eq 'base')
+					then 
+						if ($node[contains(@wit/string(), 'TS1')])
+						then $node
+						else ()
+						(:if there is no lem, choose a TS1 rdg for the base text if there is one:)
+					else
+						if ($node[contains(@wit/string(), 'TS2')])
+						then $node
+						else ()
+						(:if there is no lem, choose a TS2 rdg for the authoritative text:)
+			
+			case element(tei:reg) return
+				if ($target eq 'base')
+				then () 
+				else $node
+			case element(tei:corr) return
+				if ($target eq 'base') 
+				then () 
+				else $node
+			case element(tei:expan) return
+				if ($target eq 'base') 
+				then () 
+				else $node
+			case element(tei:orig) return
+				if ($target eq 'base') 
+				then $node
+				else ()
+			case element(tei:sic) return
+				if ($target eq 'base') 
+				then $node
+				else ()
+			case element(tei:abbr) return
+				if ($target eq 'base') 
+				then $node
+				else ()
 
-                default return so2il:separate-text-layers($node, $target-layer)
+				default return so2il:separate-text-layers($node, $target)
 };
+
 
 declare function so2il:tei2target($node as node()*, $target-layer as xs:string) {
         (:If the element has a text node, separate the text node.:)
