@@ -1,0 +1,10 @@
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
+    xml:id="uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba" status="token">
+    <target type="element" layer="annotation">
+        <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
+        <order>1</order>
+    </target>
+    <body>
+        <lem xmlns="http://www.tei-c.org/ns/1.0">Hail</lem>
+    </body>
+</annotation>

@@ -1,0 +1,10 @@
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
+    xml:id="uuid-018636fc-c659-4426-a2eb-11863365465d" status="token">
+    <target type="element" layer="annotation">
+        <id>uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94c</id>
+        <order>2</order>
+    </target>
+    <body>
+        <rdg xmlns="http://www.tei-c.org/ns/1.0">Death upon</rdg>
+    </body>
+</annotation>

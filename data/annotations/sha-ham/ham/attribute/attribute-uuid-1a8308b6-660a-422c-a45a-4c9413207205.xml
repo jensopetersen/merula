@@ -1,0 +1,12 @@
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
+    xml:id="uuid-1a8308b6-660a-422c-a45a-4c9413207205" status="string">
+    <target type="element" layer="annotation">
+        <id>uuid-3a8308b6-660a-422c-a45a-4c9413207208</id>
+    </target>
+    <body>
+        <attribute>
+            <name>type</name>
+            <value>person</value>
+        </attribute>
+    </body>
+</annotation>
