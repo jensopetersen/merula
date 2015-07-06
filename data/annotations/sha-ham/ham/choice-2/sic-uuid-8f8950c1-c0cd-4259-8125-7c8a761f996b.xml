@@ -1,10 +1,1 @@
-<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
-    xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996c" status="token">
-    <target type="element" layer="annotation">
-        <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bd</id>
-        <order>2</order>
-    </target>
-    <body>
-        <sic xmlns="http://www.tei-c.org/ns/1.0">'tis</sic>
-    </body>
-</annotation>
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996c" status="token"><target type="element" layer="annotation"><id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bd</id><order>2</order></target><body><sic xmlns="http://www.tei-c.org/ns/1.0">'tis</sic></body></annotation>

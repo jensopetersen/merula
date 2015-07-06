@@ -17,7 +17,10 @@
             <div xml:id="sha-ham1">
                 <head xml:id="uuid-194c5baa-436b-42e4-b4b9-5738881cca97">Act 1</head>
                 <div xml:id="sha-ham101">
-                    <head xml:id="uuid-a540ce6b-2585-4050-b83e-5b3cf289891f">Act 1, Scene 1</head>
+                    <div type="chapter" xml:id="dv0001">
+                        <p xml:id="pa000007">WASHINGTON, March 31.—President Roosevelt surprised the capital this afternoon by announcing that he would appoint Benjamin F. Barnes as Postmaster of Washington, to succeed John A. Merritt of New York.</p>
+                        <p xml:id="pa000001">Government of new Territory of Nevada—Governor Nye and the practical jokers—Mr. Clemens begins journalistic life on Virginia City —Reports legislative sessions—He and Orion prosper—Orion builds twelve-thousand-dollar house— Governor Nye turns Territory of Nevada into a State.</p>
+                    </div>
                     <stage xml:id="uuid-bfab7904-fdc3-473c-a302-dfba1f6c53ea">Elsinore. A platform before the
                         castle. FRANCISCO at his post.</stage>
                     <stage xml:id="uuid-6d28564d-b504-43f5-a3cc-357bfc23cfc5">Enter to him BERNARDO.</stage>

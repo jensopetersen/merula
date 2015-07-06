@@ -1,11 +1,1 @@
-<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
-    xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94d" status="token">
-    <target type="range" layer="edition">
-        <id>sha-ham101012</id>
-        <start>8</start>
-        <offset>2</offset>
-    </target>
-    <body>
-        <app xmlns="http://www.tei-c.org/ns/1.0"/>
-    </body>
-</annotation>
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-a17fe03e-ac7d-45d8-92ef-f0917164c94d" status="token"><target type="range" layer="edition"><id>sha-ham101012</id><start>8</start><offset>2</offset></target><body><app xmlns="http://www.tei-c.org/ns/1.0"/></body></annotation>

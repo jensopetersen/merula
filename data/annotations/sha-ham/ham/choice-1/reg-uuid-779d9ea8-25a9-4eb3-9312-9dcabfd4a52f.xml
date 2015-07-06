@@ -1,10 +1,1 @@
-<annotation xmlns="http://exist-db.org/xquery/a8n" type="element"
-    xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f" status="token">
-    <target type="element" layer="annotation">
-        <id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id>
-        <order>1</order>
-    </target>
-    <body>
-        <reg>It is</reg>
-    </body>
-</annotation>
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="element" xml:id="uuid-779d9ea8-25a9-4eb3-9312-9dcabfd4a52f" status="token"><target type="element" layer="annotation"><id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</id><order>1</order></target><body><reg>It is</reg></body></annotation>

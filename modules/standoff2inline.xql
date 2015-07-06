@@ -63,14 +63,14 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
-        order by $collapsed-edition-a8n/a8n:id, number($collapsed-edition-a8n//a8n:start) ascending, number($collapsed-edition-a8n//a8n:offset) descending
+        order by number($collapsed-edition-a8n//a8n:start) ascending, number($collapsed-edition-a8n//a8n:offset) descending
         return $collapsed-edition-a8n
-(:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
+    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns))
     
     (:Insert the collapsed annotations into the base-text.:)
     let $text-with-merged-edition-a8ns := 
         if ($collapsed-edition-a8ns) 
-        then so2il:merge-annotations($node, $collapsed-edition-a8ns, 'edition', 'tei')
+        then so2il:merge-annotations-with-text($node, $collapsed-edition-a8ns, 'edition', 'tei')
         else $node
     (:Result: base text with edition annotations inserted.:)
     (:TODO: Transform to show the authoritative text with edition annotations inserted; use this a basis for generating authoritative text?:)
@@ -112,14 +112,14 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
         for $collapsed-feature-a8n in $collapsed-feature-a8ns
-        order by $collapsed-feature-a8n//a8n:id, number($collapsed-feature-a8n//a8n:start) ascending, number($collapsed-feature-a8n//a8n:offset) descending
+        order by number($collapsed-feature-a8n//a8n:start) ascending, number($collapsed-feature-a8n//a8n:offset) descending
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
     (:Insert the collapsed annotations into the authoritative text, producing a marked-up TEI document.:)
     let $text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
-        then so2il:merge-annotations($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
+        then so2il:merge-annotations-with-text($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
         else $node
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
@@ -318,17 +318,17 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
       }
 };
 
-(:This function merges the collapsed annotations with the base text or authoritative text. 
+(:This function merges the collapsed annotations with the target text. 
 A sequence of slots (<segment/>), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
-are filled into the uneven slots. Uneven slots with empty strings can occur, 
+are filled into the uneven slots. Empty uneven slots can occur, 
 but all even slots have annotations (though they may consist of an empty element).:)
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
-declare function so2il:merge-annotations($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
-    let $log := util:log("DEBUG", ("##$text): ", $text))
+declare function so2il:merge-annotations-with-text($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
+(:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
     let $segment-count := (count($annotations) * 2) + 1
-    let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count))
+(:    let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count)):)
     let $segments :=
         for $segment at $i in 1 to $segment-count
         return

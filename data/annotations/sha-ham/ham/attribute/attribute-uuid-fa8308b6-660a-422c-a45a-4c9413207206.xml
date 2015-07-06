@@ -1,12 +1,1 @@
-<annotation xmlns="http://exist-db.org/xquery/a8n" type="attribute"
-    xml:id="uuid-fa8308b6-660a-422c-a45a-4c9413207206" status="string">
-    <target type="element" layer="annotation">
-        <id>uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba</id>
-    </target>
-    <body>
-        <attribute>
-            <name>wit</name>
-            <value>#A</value>
-        </attribute>
-    </body>
-</annotation>
+<annotation xmlns="http://exist-db.org/xquery/a8n" type="attribute" xml:id="uuid-fa8308b6-660a-422c-a45a-4c9413207206" status="string"><target type="element" layer="annotation"><id>uuid-7e50d3e0-f4e2-4a8d-89a0-1421c50032ba</id></target><body><attribute><name>wit</name><value>#A</value></attribute></body></annotation>
