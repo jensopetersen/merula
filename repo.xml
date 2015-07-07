@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <repo:meta xmlns="http://exist-db.org/xquery/repo" xmlns:repo="http://exist-db.org/xquery/repo">
-    <repo:description>Standoff Implementation of TEI</repo:description>
+    <repo:description>Merula – A Standoff Implementation of TEI</repo:description>
     <repo:author/>
     <repo:website/>
     <repo:status>alpha</repo:status>

@@ -6,8 +6,6 @@ import module namespace config="http://exist-db.org/apps/merula/config" at "conf
 
 import module namespace app="http://exist-db.org/apps/" at "app.xql";
 
-import module namespace demo="http://exist-db.org/apps/demo" at "demo.xql";
-
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
 declare option output:method "html5";

@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<package xmlns="http://expath.org/ns/pkg" name="http://exist-db.org/apps/merula" abbrev="merula" version="0.2.2" spec="1.0">
-    <title>Standoff Implementation of TEI</title>
+<package xmlns="http://expath.org/ns/pkg" name="http://exist-db.org/apps/merula" abbrev="merula" version="0.1" spec="1.0">
+    <title>Merula – A Standoff Implementation of TEI</title>
 </package>

@@ -10,7 +10,7 @@ if ($exist:path eq "/") then
         <redirect url="plays/"/>
     </dispatch>
 
-else if ($exist:resource = ("search.html", "demo-queries.html")) then
+else if ($exist:resource = ("search.html")) then
     (: the html page is run through view.xql to expand templates :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <forward url="{$exist:controller}/{$exist:resource}"/>

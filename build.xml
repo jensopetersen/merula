@@ -2,7 +2,7 @@
 <project default="xar" name="merula">
     <property name="build.dir" value="build"/>
     <property name="project.app" value="merula"/>
-    <property name="project.version" value="0.2.2"/>
+    <property name="project.version" value="0.1"/>
     <property name="server.url" value="http://demo.exist-db.org/exist/apps/public-repo/public/"/>
     <target name="xar">
         <mkdir dir="${build.dir}"/>
