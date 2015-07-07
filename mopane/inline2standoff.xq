@@ -6,6 +6,7 @@ declare boundary-space preserve;
 
 declare variable $in-collection := '/db/apps/merula/mopane';
 declare variable $out-collection := '/db/apps/merula/mopane/out';
+(:declare variable $out-collection := '/db/apps/merula/data/annotations/sha-ham';:)
 
 (: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
@@ -173,18 +174,21 @@ declare function local:make-attribute-annotations($node as element(), $target-id
 };
 
 (: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous ranges to the offset. :)
-(: This function moves all attribute annotations to the top and then handles the element annotations.:)
+(: This function moves all attribute annotations to the top and then handles element annotations.:)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
-declare function local:insert-authoritative-layer-in-top-level-annotations($nodes as element()*) as element()* {
+declare function local:insert-authoritative-layer-in-top-level-annotations($annotations as element()*) as element()* {
     (
-    $nodes[@type ne 'element']
+    (:here come the attribute annotations:)
+    $annotations[@type ne 'element']
     ,
-    for $node in $nodes[@type eq 'element']
-        let $id := $node/a8n-target/a8n-base-layer/a8n-id/string()
-        let $sum-of-previous-ranges := sum($node/preceding-sibling::a8n-annotation/a8n-layer-range-difference, 0)
-        let $base-level-offset := $node/a8n-target/a8n-base-layer/a8n-offset cast as xs:integer
+    (:now the element annotations:)
+    for $annotation in $annotations[@type eq 'element']
+        let $id := $annotation/a8n-target/a8n-base-layer/a8n-id/string()
+        let $log := util:log("DEBUG", ("##$id): ", $id))
+        let $sum-of-previous-ranges := sum($annotation/preceding-sibling::a8n-annotation/a8n-layer-range-difference, 0)
+        let $base-level-offset := $annotation/a8n-target/a8n-base-layer/a8n-offset cast as xs:integer
         let $authoritative-layer-offset := $base-level-offset + $sum-of-previous-ranges
-        let $layer-range := $node/a8n-target/a8n-base-layer/a8n-range + $node/a8n-layer-range-difference
+        let $layer-range := $annotation/a8n-target/a8n-base-layer/a8n-range + $annotation/a8n-layer-range-difference
         let $authoritative-layer := 
             <a8n-authoritative-layer>
                 <a8n-id>{$id}</a8n-id>
@@ -192,7 +196,7 @@ declare function local:insert-authoritative-layer-in-top-level-annotations($node
                 <a8n-range>{$layer-range}</a8n-range>
                 </a8n-authoritative-layer>
             return
-                local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
+                local:insert-elements($annotation, $authoritative-layer, 'a8n-base-layer', 'after')
     )
 };
 
@@ -304,8 +308,8 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                         </a8n-annotation>
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{$layer-1-body-contents/@xml:id}
             (:construct empty element:)
-            let $layer-1 := local:remove-elements($node, 'body') (:remove the old body,:)
-            let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'target', 'after') (: and insert the new body:)
+            let $layer-1 := local:remove-elements($node, 'a8n-body') (:remove the old body,:)
+            let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'a8n-target', 'after') (: and insert the new body:)
                 return ($layer-1, $layer-1-body-attributes)
                 (:return the old annotation, with an empty element below body:)
             ,
@@ -341,16 +345,16 @@ declare function local:handle-mixed-content-annotations($node as node(), $docume
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
                 for $attribute in $layer-1-body-contents/(@* except @xml:id)
                     return attribute {name($attribute)} {$attribute}} (:construct empty element with attributes:)
-            let $layer-1 := local:remove-elements($node, 'body')(:remove the body,:)
-            let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'target', 'after')(:and insert the new body:)
+            let $layer-1 := local:remove-elements($node, 'a8n-body')(:remove the body,:)
+            let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'a8n-target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
             let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//a8n-body/*, '', $documentary-elements)
             let $layer-1-id := <a8n-id>{$node/@xml:id/string()}</a8n-id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
-                    let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-range-difference'))
-                    let $layer-2 := local:insert-elements($layer-2-body-content, $layer-1-id, 'start', 'before')
+                    let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('a8n-id', 'a8n-layer-range-difference'))
+                    let $layer-2 := local:insert-elements($layer-2-body-content, $layer-1-id, 'a8n-offset', 'before')
                         return
                             if (not($layer-2//a8n-body/string()) or $layer-2//a8n-body/*/node() instance of text() or $layer-2//a8n-body/node() instance of text())
                         then $layer-2
