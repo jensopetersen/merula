@@ -4,8 +4,8 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
 
-declare variable $in-collection := '/db/test/in';
-declare variable $out-collection := '/db/test/out/annotations';
+declare variable $in-collection := '/db/apps/merula/mopane';
+declare variable $out-collection := '/db/apps/merula/mopane/out';
 
 (: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
