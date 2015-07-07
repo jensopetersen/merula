@@ -1,0 +1,51 @@
+<result>
+    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+        xml:id="uuid-4bd8138e-182e-4240-a38a-a30ecb55dbb8" status="block">
+        <target type="element" layer="hash">
+            <id>b</id>
+        </target>
+        <body>
+            <hash>ba185e991cb8094b5ed6e4cc97abb7f9a4c39460</hash>
+        </body>
+    </annotation>
+    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+        xml:id="uuid-ddcba4e4-7e47-4a82-a27f-fd72e8dba32c" status="block">
+        <target type="element" layer="hash">
+            <id>uuid-47b5356a-0d63-4916-8216-ae42f87423b6</id>
+        </target>
+        <body>
+            <hash>888e4eb1b296f4b14794461e06e2c8f2809dd1ab</hash>
+            <text>text-x1</text>
+        </body>
+    </annotation>
+    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+        xml:id="uuid-1721a834-2bd3-4fd3-aa44-8a6e0d7e5609" status="block">
+        <target type="element" layer="hash">
+            <id>uuid-b7043e57-bf75-4c2f-9c47-b6246ad8dc24</id>
+        </target>
+        <body>
+            <hash>141f25ad317ca51cf489c7d35c5e7d8fc8afc266</hash>
+            <text>text-y1</text>
+        </body>
+    </annotation>
+    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+        xml:id="uuid-2cdb693e-88ac-4c0d-9af7-bfd76f48461d" status="block">
+        <target type="element" layer="hash">
+            <id>uuid-bc8c5e77-60a5-43fa-8060-554cd3637169</id>
+        </target>
+        <body>
+            <hash>76ed1e39f2f4a1bc8ec31fe1a04558715eafe490</hash>
+            <text> text-b2 </text>
+        </body>
+    </annotation>
+    <annotation xmlns:xml="http://www.w3.org/XML/1998/namespace" type="element"
+        xml:id="uuid-87ad2a46-ca6f-4106-b240-4b1f281f2cd9" status="block">
+        <target type="element" layer="hash">
+            <id>uuid-97ab4519-9d9d-4832-a8f6-7e9f39309e52</id>
+        </target>
+        <body>
+            <hash>5483144d2f1265369f0e8070875a1fef9041f1cb</hash>
+            <text>text-b2</text>
+        </body>
+    </annotation>
+</result>

@@ -1,0 +1,117 @@
+<tei>
+    <versions>
+        <text n="x" xml:id="a">
+            <div xml:id="b">
+                <div xml:id="c">
+                    <p xml:id="d">a<inline>a</inline>a</p>
+                    <p xml:id="e">b<inline>b</inline>b</p>
+                </div>
+                <div xml:id="f">
+                    <lg xml:id="g">
+                        <l xml:id="h">c<inline>c</inline></l>
+                        <l xml:id="i"><inline>d</inline>d</l>
+                    </lg>
+                    <lg xml:id="j">
+                        <l xml:id="k">
+                            <inline>e</inline>
+                        </l>
+                        <l xml:id="l">f<inline>f</inline></l>
+                    </lg>
+                </div>
+            </div>
+        </text>
+        <text n="y" xml:id="a">
+            <div xml:id="b">
+                <div xml:id="c">
+                    <p xml:id="e">b<inline>b</inline>b</p>
+                    <p xml:id="d">a<inline>a</inline>a</p>
+                    <p xml:id="m">m<inline>m</inline>m</p>
+                </div>
+                <div xml:id="f">
+                    <lg xml:id="j">
+                        <l xml:id="k">
+                            <inline>e</inline>
+                        </l>
+                        <l xml:id="l">f<inline>f</inline></l>
+                    </lg>
+                </div>
+            </div>
+        </text>
+    </versions>
+    <appList>
+        <app target="a">
+            <rdg wit="x"><order>1</order><level>1</level><local-name>text</local-name></rdg>
+            <rdg wit="y"><order>1</order><level>1</level><local-name>text</local-name></rdg>
+        </app>
+        <app target="b">
+            <rdg wit="x"><order>2</order><level>2</level><local-name>div</local-name></rdg>
+            <rdg wit="y"><order>2</order><level>2</level><local-name>div</local-name></rdg>
+        </app>
+        <app target="c">
+            <rdg wit="x"><order>3</order><level>3</level><local-name>div</local-name></rdg>
+            <rdg wit="y"><order>3</order><level>3</level><local-name>div</local-name></rdg>
+        </app>
+        <app target="d">
+            <rdg wit="x"><order>4</order><level>4</level><local-name>p</local-name></rdg>
+            <rdg wit="y"><order>5</order><level>4</level><local-name>p</local-name></rdg>
+        </app>
+        <app target="e">
+            <rdg wit="x"><order>5</order><level>4</level><local-name>p</local-name></rdg>
+            <rdg wit="y"><order>4</order><level>4</level><local-name>p</local-name></rdg>
+        </app>
+        <app target="m">
+            <rdg wit="y"><order>6</order><level>4</level><contents><p xml:id="m">m<inline>m</inline>m</p></contents></rdg>
+        </app>
+        <app target="f">
+            <rdg wit="x"><order>6</order><level>3</level><local-name>div</local-name></rdg>
+            <rdg wit="y"><order>7</order><level>3</level><local-name>div</local-name></rdg>
+        </app>
+        <app target="g">
+            <rdg wit="x"><order>7</order><level>4</level><local-name>lg</local-name></rdg>
+        </app>
+        <app target="h">
+            <rdg wit="x"><order>8</order><level>5</level><local-name>l</local-name></rdg>
+        </app>
+        <app target="i">
+            <rdg wit="x"><order>9</order><level>5</level><local-name>l</local-name></rdg>
+        </app>
+        <app target="j">
+            <rdg wit="x"><order>10</order><level>4</level><local-name>lg</local-name></rdg>
+            <rdg wit="y"><order>8</order><level>4</level><local-name>lg</local-name></rdg>
+        </app>
+        <app target="k">
+            <rdg wit="x"><order>11</order><level>5</level><local-name>l</local-name></rdg>
+            <rdg wit="y"><order>9</order><level>5</level><local-name>l</local-name></rdg>
+        </app>
+        <app target="l">
+            <rdg wit="x"><order>12</order><level>5</level><local-name>l</local-name></rdg>
+            <rdg wit="y"><order>10</order><level>5</level><local-name>l</local-name></rdg>
+        </app>    
+    </appList>
+    <text wit="x">
+        <rdg><target>a</target><order>1</order><level>1</level><local-name>text</local-name></rdg>
+        <rdg><target>b</target><order>2</order><level>2</level><local-name>div</local-name></rdg>
+        <rdg><target>c</target><order>3</order><level>3</level><local-name>div</local-name></rdg>
+        <rdg><target>d</target><order>4</order><level>4</level><local-name>p</local-name></rdg>
+        <rdg><target>e</target><order>5</order><level>4</level><local-name>p</local-name></rdg>
+        <rdg><target>f</target><order>6</order><level>4</level><local-name>div</local-name></rdg>
+        <rdg><target>g</target><order>7</order><level>4</level><local-name>lg</local-name></rdg>
+        <rdg><target>h</target><order>8</order><level>5</level><local-name>l</local-name></rdg>
+        <rdg><target>i</target><order>9</order><level>5</level><local-name>l</local-name></rdg>
+        <rdg><target>j</target><order>10</order><level>4</level><local-name>lg</local-name></rdg>
+        <rdg><target>k</target><order>11</order><level>5</level><local-name>l</local-name></rdg>
+        <rdg><target>l</target><order>12</order><level>5</level><local-name>l</local-name></rdg>
+    </text>
+    <text wit="y">
+        <rdg><target>a</target><order>1</order><level>1</level><local-name>text</local-name></rdg>
+        <rdg><target>b</target><order>2</order><level>2</level><local-name>div</local-name></rdg>
+        <rdg><target>c</target><order>3</order><level>3</level><local-name>div</local-name></rdg>
+        <rdg><target>e</target><order>4</order><level>4</level><local-name>p</local-name></rdg>
+        <rdg><target>d</target><order>5</order><level>4</level><local-name>p</local-name></rdg>
+        <rdg><target>m</target><order>6</order><level>4</level><contents><p xml:id="m">m<inline>m</inline>m</p></contents></rdg>
+        <rdg><target>f</target><order>7</order><level>3</level><local-name>div</local-name></rdg>
+        <rdg><target>j</target><order>8</order><level>4</level><local-name>lg</local-name></rdg>
+        <rdg><target>k</target><order>9</order><level>5</level><local-name>l</local-name></rdg>
+        <rdg><target>l</target><order>10</order><level>5</level><local-name>l</local-name></rdg>
+    </text>
+</tei>
