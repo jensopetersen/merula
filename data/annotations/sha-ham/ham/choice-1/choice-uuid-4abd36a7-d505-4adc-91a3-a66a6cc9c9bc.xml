@@ -1,8 +1,8 @@
 <a8n-annotation type="element" xml:id="uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc" status="token">
     <a8n-target type="range" layer="edition">
         <a8n-id>sha-ham101007</a8n-id>
-        <a8n-start>1</a8n-start>
-        <a8n-offset>4</a8n-offset>
+        <a8n-offset>1</a8n-offset>
+        <a8n-range>4</a8n-range>
     </a8n-target>
     <a8n-body>
         <choice xmlns="http://www.tei-c.org/ns/1.0"/>

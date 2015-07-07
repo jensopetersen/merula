@@ -7,7 +7,7 @@ import module namespace config="http://exist-db.org/apps/merula/config" at "conf
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (: TODO :)
-(:Every time an edition annotation is made, the offset difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new offset difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
+(:Every time an edition annotation is made, the range difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new range difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
 
 (:We have to find a way to allow multiple editorial targets, not just the base text and one authoritative text. This also means that each feature annotation must be keyed to one or more targets.:)
 
@@ -21,7 +21,8 @@ declare function so2il:standoff2inline($nodes as node()*, $target-layer as xs:st
     (:Get the document's xml:id.:)
     (:Before recursion, $nodes is a single element.:) 
     let $doc-id := root($nodes)/*/@xml:id/string()
-    
+    let $log := util:log("DEBUG", ("##param-names: ", string-join(request:get-parameter-names(), ' || ')))
+
     (:Get all annotations for the document in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
     (:NB: This is perhaps too much. One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
     Would the frequence of the collection calls be worth it, compared to moving around all annotations for the document?:)
@@ -62,7 +63,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
-        order by number($collapsed-edition-a8n//a8n-start) ascending, number($collapsed-edition-a8n//a8n-offset) descending
+        order by number($collapsed-edition-a8n//a8n-offset) ascending, number($collapsed-edition-a8n//a8n-range) descending
         return $collapsed-edition-a8n
     let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns))
     
@@ -78,7 +79,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
     (:On the basis of the inserted edition annotations, contruct the authoritative text.:)
     (:TODO: Into the $text-with-merged-edition-a8ns, spans identifying the edition annotations should be inserted, 
     in order to provide hooks to these annotations in the HTML. 
-    Resurrect mopane code for layer-offset-difference and merge both edition and feature annotation with authoritative text.:)  
+    Resurrect mopane code for layer-range-difference and merge both edition and feature annotation with authoritative text.:)  
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
     let $authoritative-text := 
         if ($text-with-merged-edition-a8ns/text())
@@ -111,7 +112,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
         for $collapsed-feature-a8n in $collapsed-feature-a8ns
-        order by number($collapsed-feature-a8n//a8n-start) ascending, number($collapsed-feature-a8n//a8n-offset) descending
+        order by number($collapsed-feature-a8n//a8n-offset) ascending, number($collapsed-feature-a8n//a8n-range) descending
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
@@ -282,9 +283,9 @@ declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*
 declare function so2il:collapse-annotation($element as element(), $strip as xs:string+) as element() {
     element {node-name($element)}
     {$element/@*, 
-        if ($element/*/*/a8n-attribute)
+        if ($element/a8n-annotation/a8n-body/a8n-attribute)
         then 
-            for $attribute in $element/*/*/a8n-attribute
+            for $attribute in $element/a8n-annotation/a8n-body/a8n-attribute
             return
                 let $attribute-name := $attribute/a8n-name/string()
                 let $attribute-value := $attribute/a8n-value/string()
@@ -301,7 +302,7 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
                 return 
                     so2il:collapse-annotation(($child), $strip)
             else
-                if ($child instance of element() and local-name($child) = ('a8n-attribute', 'a8n-layer-offset-difference', 'a8n-authoritative-layer')) (:we have no need for these two elements - actually, they have been removed, but should they be introduced again?:)
+                if ($child instance of element() and local-name($child) = ('a8n-attribute', 'a8n-layer-range-difference', 'a8n-authoritative-layer')) (:we have no need for these two elements - actually, they have been removed, but should they be introduced again?:)
                 then ()
                 else
                     (:skip the attribute attached above:)
@@ -339,15 +340,15 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                 then
                     let $annotation-n := $segment/@n/number() div 2
                     let $annotation := $annotations[$annotation-n]
-                    let $annotation-start := number($annotation//a8n-start)
                     let $annotation-offset := number($annotation//a8n-offset)
+                    let $annotation-range := number($annotation//a8n-range)
                     let $annotation := 
                         (:Add the @xml:id of the annotation, making retrieval possible.:)
                         if ($target-layer eq 'feature')
                             then
                                 let $annotation-body-child := $annotation/(* except a8n-target)
                                 let $annotation-body-child-name := node-name($annotation-body-child) 
-                                let $annotated-string := substring($text, $annotation-start, $annotation-offset)
+                                let $annotated-string := substring($text, $annotation-offset, $annotation-range)
                                 return
                                     element {$annotation-body-child-name}
                                     {
@@ -368,29 +369,29 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                         let $segment-n := number($segment/@n)
                         let $previous-annotation-n := ($segment-n - 1) div 2
                         let $following-annotation-n := ($segment-n + 1) div 2
-                        let $start := 
+                        let $offset := 
                             if ($segment-n eq $segment-count) (:if it is the last text node:)
-                            then $annotations[$previous-annotation-n]/a8n-target/a8n-start/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
-                            (:the start position is the length of of the base text minus the end position of the previous annotation plus 1:)
+                            then $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
+                            (:the offset is the length of of the base text minus the end position of the previous annotation plus 1:)
                             else
                                 if (number($segment/@n) eq 1) (:if it is the first text node:)
                                 then 1 (:start with position 1:)
-                                else $annotations[$previous-annotation-n]/a8n-target/a8n-start/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                else $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                 (:if it is not the first or last text node, 
-                                start with the position of the previous annotation plus its offset plus 1:)
-                        let $offset := 
+                                start with the position of the previous annotation plus its range plus 1:)
+                        let $range := 
                             if ($segment-n eq count($segments))  (:if it is the last text node:)
-                            then string-length($text) - ($annotations[$previous-annotation-n]/a8n-target/a8n-start/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()) + 1
-                            (:if it is the last text node, then the offset is the length of the base text minus the end position of the last annotation plus 1:)
+                            then string-length($text) - ($annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()) + 1
+                            (:if it is the last text node, then the range is the length of the base text minus the end position of the last annotation plus 1:)
                             else
                                 if ($segment-n eq 1) (:if it is the first text node:)
-                                then $annotations[$following-annotation-n]/a8n-target/a8n-start/number() - 1
-                                (:if it is the first text node, the the offset is the start position of the following annotation minus 1:)
-                                else $annotations[$following-annotation-n]/a8n-target/a8n-start/number() - ($annotations[$previous-annotation-n]/a8n-target/a8n-start/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number())
-                                (:if it is not the first or the last text node, then the offset is the start position of the following annotation minus the end position of the previous annotation :)
+                                then $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - 1
+                                (:if it is the first text node, the the range is the offset of the following annotation minus 1:)
+                                else $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - ($annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number())
+                                (:if it is not the first or the last text node, then the range is the offset of the following annotation minus the end position of the previous annotation :)
                         return
-                            if (number($start) and number($offset))
-                            then substring($text, $start, $offset)
+                            if (number($offset) and number($range))
+                            then substring($text, $offset, $range)
                             else ''
                         
                         }

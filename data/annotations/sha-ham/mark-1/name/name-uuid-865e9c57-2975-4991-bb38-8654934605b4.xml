@@ -2,8 +2,8 @@
     xml:id="uuid-865e9c57-2975-4991-bb38-8654934605b3" status="token">
     <a8n-target type="range" layer="feature">
         <a8n-id n="3">pa000001</a8n-id>
-        <a8n-start>243</a8n-start>
-        <a8n-offset>3</a8n-offset>
+        <a8n-offset>243</a8n-offset>
+        <a8n-range>3</a8n-range>
     </a8n-target>
     <a8n-body>
         <name xmlns="http://www.tei-c.org/ns/1.0"/>

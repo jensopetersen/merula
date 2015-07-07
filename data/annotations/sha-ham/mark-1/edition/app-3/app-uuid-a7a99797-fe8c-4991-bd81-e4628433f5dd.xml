@@ -2,8 +2,8 @@
     xml:id="uuid-a7a99797-fe8c-4991-bd81-e4628433f5dd" status="token">
     <a8n-target type="range" layer="edition">
         <a8n-id n="3">pa000001</a8n-id>
-        <a8n-start>205</a8n-start>
-        <a8n-offset>7</a8n-offset>
+        <a8n-offset>205</a8n-offset>
+        <a8n-range>7</a8n-range>
     </a8n-target>
     <a8n-body>
         <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0001"/>
