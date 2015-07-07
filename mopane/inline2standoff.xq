@@ -133,7 +133,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                             then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($following-sibling-node)}</a8n-node-name>)
                                             else ()
                                 }</a8n-following-sibling-node>
-                                <a8n-id n="1">{$element/parent::element()/@xml:id/string()}</a8n-id>
+                                <a8n-id>{$element/parent::element()/@xml:id/string()}</a8n-id>
                                 <a8n-offset>{$position-start + 1}</a8n-offset>
                                 <a8n-range>{$position-end - $position-start}</a8n-range>
                             </a8n-base-layer>
@@ -160,7 +160,7 @@ declare function local:make-attribute-annotations($node as element(), $target-id
     return
         <a8n-annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
             <a8n-target type="element" layer="annotation">
-                <a8n-id n="2">{$target-id}</a8n-id>
+                <a8n-id>{$target-id}</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -187,7 +187,7 @@ declare function local:insert-authoritative-layer-in-top-level-annotations($node
         let $layer-range := $node/a8n-target/a8n-base-layer/a8n-range + $node/a8n-layer-range-difference
         let $authoritative-layer := 
             <a8n-authoritative-layer>
-                <a8n-id n="3">{$id}</a8n-id>
+                <a8n-id>{$id}</a8n-id>
                 <a8n-offset>{$authoritative-layer-offset}</a8n-offset>
                 <a8n-range>{$layer-range}</a8n-range>
                 </a8n-authoritative-layer>
@@ -292,7 +292,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                     return 
                         <a8n-annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
                             <a8n-target type="element" layer="annotation">
-                                <a8n-id n="4">{$layer-1-id}</a8n-id>
+                                <a8n-id>{$layer-1-id}</a8n-id>
                             </a8n-target>
                             <a8n-body>
                                 <a8n-attribute>
@@ -319,7 +319,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
                 let $element-annotations :=
                     <a8n-annotation type="element" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
                         <a8n-target type="element" layer="annotation">
-                                <a8n-id n="5">{$layer-1-id}</a8n-id>
+                                <a8n-id>{$layer-1-id}</a8n-id>
                                 <a8n-order>{$i}</a8n-order>
                         </a8n-target>
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
@@ -346,7 +346,7 @@ declare function local:handle-mixed-content-annotations($node as node(), $docume
                 return $layer-1
             ,
             let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//a8n-body/*, '', $documentary-elements)
-            let $layer-1-id := <a8n-id n="6">{$node/@xml:id/string()}</a8n-id>
+            let $layer-1-id := <a8n-id>{$node/@xml:id/string()}</a8n-id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
                     let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-range-difference'))
