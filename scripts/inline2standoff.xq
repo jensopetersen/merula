@@ -134,17 +134,17 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                             else ()
                                 }</a8n-following-sibling-node>
                                 <a8n-id n="1">{$element/parent::element()/@xml:id/string()}</a8n-id>
-                                <a8n-start>{$position-start + 1}</a8n-start>
-                                <a8n-offset>{$position-end - $position-start}</a8n-offset>
+                                <a8n-offset>{$position-start + 1}</a8n-offset>
+                                <a8n-range>{$position-end - $position-start}</a8n-range>
                             </a8n-base-layer>
                         </a8n-target>
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
-                        <a8n-layer-offset-difference>{
-                                let $off-set-difference :=
+                        <a8n-layer-range-difference>{
+                                let $range-difference :=
                                 if (local-name($element) = $edition-layer-elements) 
                                 then string-length(local:separate-text-layers($element, 'authoritative')) - string-length(local:separate-text-layers($element, 'base'))
                                 else 0
-                                    return $off-set-difference}</a8n-layer-offset-difference>
+                                    return $range-difference}</a8n-layer-range-difference>
                         <a8n-admin/>
                     </a8n-annotation>
                 let $attribute-result := local:make-attribute-annotations($element, $annotation-id)
@@ -172,7 +172,7 @@ declare function local:make-attribute-annotations($node as element(), $target-id
         </a8n-annotation>
 };
 
-(: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous offsets to the start position. :)
+(: For each annotation keyed to the base layer, insert its location in relation to the authoritative layer by adding the previous ranges to the offset. :)
 (: This function moves all attribute annotations to the top and then handles the element annotations.:)
 (: NB: this function could be moved inside local:get-top-level-annotations-keyed-to-base-text():)
 declare function local:insert-authoritative-layer-in-top-level-annotations($nodes as element()*) as element()* {
@@ -181,15 +181,15 @@ declare function local:insert-authoritative-layer-in-top-level-annotations($node
     ,
     for $node in $nodes[@type eq 'element']
         let $id := $node/a8n-target/a8n-base-layer/a8n-id/string()
-        let $sum-of-previous-offsets := sum($node/preceding-sibling::a8n-annotation/a8n-layer-offset-difference, 0)
-        let $base-level-start := $node/a8n-target/a8n-base-layer/a8n-start cast as xs:integer
-        let $authoritative-layer-start := $base-level-start + $sum-of-previous-offsets
-        let $layer-offset := $node/a8n-target/a8n-base-layer/a8n-offset + $node/a8n-layer-offset-difference
+        let $sum-of-previous-ranges := sum($node/preceding-sibling::a8n-annotation/a8n-layer-range-difference, 0)
+        let $base-level-offset := $node/a8n-target/a8n-base-layer/a8n-offset cast as xs:integer
+        let $authoritative-layer-offset := $base-level-offset + $sum-of-previous-ranges
+        let $layer-range := $node/a8n-target/a8n-base-layer/a8n-range + $node/a8n-layer-range-difference
         let $authoritative-layer := 
             <a8n-authoritative-layer>
                 <a8n-id n="3">{$id}</a8n-id>
-                <a8n-start>{$authoritative-layer-start}</a8n-start>
-                <a8n-offset>{$layer-offset}</a8n-offset>
+                <a8n-offset>{$authoritative-layer-offset}</a8n-offset>
+                <a8n-range>{$layer-range}</a8n-range>
                 </a8n-authoritative-layer>
             return
                 local:insert-elements($node, $authoritative-layer, 'base-layer', 'after')
@@ -314,7 +314,7 @@ declare function local:handle-element-only-annotations($node as node(), $documen
             let $layer-1-admin-contents := $node//a8n-admin/* (:get the elements below admin:)
             let $layer-2-body-contents := $node//a8n-body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
-            (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of start position and offset :)
+            (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of offset and range :)
                 let $attribute-annotations := local:make-attribute-annotations($element, $element/@xml:id/string())
                 let $element-annotations :=
                     <a8n-annotation type="element" xml:id="{concat('uuid-', util:uuid())}" status="{$layer-1-status}">
@@ -349,7 +349,7 @@ declare function local:handle-mixed-content-annotations($node as node(), $docume
             let $layer-1-id := <a8n-id n="6">{$node/@xml:id/string()}</a8n-id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
-                    let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-offset-difference'))
+                    let $layer-2-body-content := local:remove-elements($layer-2-body-content, ('id', 'layer-range-difference'))
                     let $layer-2 := local:insert-elements($layer-2-body-content, $layer-1-id, 'start', 'before')
                         return
                             if (not($layer-2//a8n-body/string()) or $layer-2//a8n-body/*/node() instance of text() or $layer-2//a8n-body/node() instance of text())
@@ -434,7 +434,7 @@ as element()
         for $child in $element/node()
         return
             if ($child instance of element(a8n-base-layer) or $child instance of element(a8n-admin) or $child instance
-                of element(a8n-layer-offset-difference)) then
+                of element(a8n-layer-range-difference)) then
                 ()
             else if ($child instance of element(a8n-authoritative-layer)) then
                 $child/*
