@@ -4,9 +4,9 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 declare boundary-space preserve;
 
-declare variable $in-collection := '/db/apps/merula/mopane';
-(:declare variable $out-collection := '/db/apps/merula/mopane/out';:)
-declare variable $out-collection := '/db/apps/merula/data/annotations/sha-ham/new';
+declare variable $text-in-collection := '/db/apps/merula/mopane';
+declare variable $annotation-out-collection := '/db/apps/merula/data/annotations/sha-ham';
+declare variable $text-out-collection := '/db/apps/merula/data/';
 
 (:TODO
 This still creates a problem, <p rend="center" xml:id="pa000004"><hi xml:id="_8" rend="bold"><name type="person">MERRITT</name> GETS NEW PLACE</hi></p>, but if a text node is inseted before <hi>, it is solved - find other way.
@@ -79,11 +79,10 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
 (:These elements are not required to have an xml:id, but their parent element is, being a block-level element. :)
 declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) {
     for $element in $input/element()
-(:        let $log := util:log("DEBUG", ("##$element): ", $element)):)
         let $base-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base'))
         let $base-before-text := string-join($element/preceding-sibling::text())
         (:NB: The elements appearing here are both defined in relation to the base text (editorial annotations) and the target text (feature annotations. If we wish to know how much text there is before an element, it depends on which kind of element it is: in case of an editorial element, we can read it off directly from the annootation; if it is a feature annotation, we have to first construct the target text (up to the point in question) and the reconstruct the base text and calculate how much text thee is. This also means that references to the base text in editorial annotations have to have a unique siglum. :)
-        let $marked-up-string := string-join(local:separate-text-layers(<a8n-annotation>{$element}</a8n-annotation>, 'base'))
+        let $marked-up-string := string-join(local:separate-text-layers($element, 'base'))
         let $position-start := string-length($base-before-element) + string-length($base-before-text)
         let $position-end := $position-start + string-length($marked-up-string)
         let $preceding-sibling-node := $element/preceding-sibling::node()[1]
@@ -184,7 +183,6 @@ declare function local:insert-authoritative-layer-in-top-level-annotations($anno
     ,
     (:then the element annotations:)
     for $annotation in $annotations[@type eq 'element']
-(:        let $log := util:log("DEBUG", ("##$id): ", $id)):)
         let $sum-of-previous-ranges := sum($annotation/preceding-sibling::a8n-annotation/a8n-layer-range-difference, 0)
         let $a8n-base-layer := $annotation/a8n-target/a8n-base-layer
         let $base-level-offset := $a8n-base-layer/a8n-offset cast as xs:integer
@@ -290,19 +288,19 @@ declare function local:remove-inline-elements($nodes as node()*, $block-element-
         else $node
 };
 
-declare function local:handle-element-only-annotations($node as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
-            let $layer-1-body-contents := $node//a8n-body/* (: get the element below body - this can ony be a single item :)
-            let $layer-1-admin-contents := $node//a8n-admin/* (: get the elements below admin :)
-            let $layer-1-id := $node/@xml:id/string()
+declare function local:handle-element-only-annotations($annotation as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
+            let $layer-1-body-contents := $annotation//a8n-body/* (: get the element below body - this can ony be a single item :)
+            let $layer-1-admin-contents := $annotation//a8n-admin/* (: get the elements below admin :)
+            let $layer-1-id := $annotation/@xml:id/string()
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{$layer-1-body-contents/@xml:id}
             (:construct empty element:)
-            let $layer-1 := local:remove-elements($node, 'a8n-body') (:remove the old body,:)
+            let $layer-1 := local:remove-elements($annotation, 'a8n-body') (:remove the old body,:)
             let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'a8n-target', 'after')
             (:insert the new body:)
-            let $layer-1-id := $node/@xml:id/string() (: get id :)
-            let $layer-1-status := $node/@status/string() (: get the status of original annotation :)
-            let $layer-1-admin-contents := $node//a8n-admin/* (:get the elements below admin:)
-            let $layer-2-body-contents := $node//a8n-body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
+            let $layer-1-id := $annotation/@xml:id/string() (: get id :)
+            let $layer-1-status := $annotation/@status/string() (: get the status of original annotation :)
+            let $layer-1-admin-contents := $annotation//a8n-admin/* (:get the elements below admin:)
+            let $layer-2-body-contents := $annotation//a8n-body/*/* (: get the contents of what is below the body - the empty element in layer-1; there may be multiple elements here.:)
             for $element at $i in $layer-2-body-contents
             (: returns the new annotations, with the contents from the old annotation below body split over several annotations; record their order instead of their offset and range :)
                 let $attribute-annotations := local:make-attribute-annotations($element, $element/@xml:id/string())
@@ -347,23 +345,26 @@ declare function local:handle-mixed-content-annotations($node as node(), $editio
                         else local:peel-off-annotations($layer-2, $edition-layer-elements, $documentary-elements)
 };
 
-(: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element, or an element with a text node :)
-declare function local:peel-off-annotations($node as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
-            if (not($node//a8n-body//text()) and $node/@*)
-            (: if it is an empty element and has attributes, peel off the attributes:)
-            then local:handle-element-only-annotations($node, $edition-layer-elements, $documentary-elements)
+(: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element with an xml:id, or an element with a text node with an xml:id:)
+declare function local:peel-off-annotations($annotation as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
+            if (not($annotation//a8n-body//text()))
+            (: if it is an empty element, peel off any attributes:)
+            then local:handle-element-only-annotations($annotation, $edition-layer-elements, $documentary-elements)
             else 
-                if ($node//a8n-body/a8n-attribute)
+                if ($annotation//a8n-body/a8n-attribute)
                 (: if it is an attribute annotation, pass it through. :)
-                then $node
+                then $annotation
                 else
-                    if (count($node//a8n-body/*//element()) and $node//a8n-body//text())
+                    if ($annotation/a8n-body/*/* and $annotation/a8n-body/*/text()[normalize-space(.) != ''])
                     (: if there is mixed contents, send it on and receive it back in reduced form:)
-                    then local:handle-mixed-content-annotations($node, $edition-layer-elements, $documentary-elements)
+                    then local:handle-mixed-content-annotations($annotation, $edition-layer-elements, $documentary-elements)
                     else 
-                        if ($node//a8n-body/*/node() instance of text()) (: there is one level until the text node (but no mixed contents), so pass through as an element with a text node. :)
-                        then $node
-                        else local:handle-element-only-annotations($node, $edition-layer-elements, $documentary-elements) (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be reduced :)
+                        if ($annotation/a8n-body/* and $annotation//a8n-body/*/text()[normalize-space(.) != ''])
+                        (: if there is one level until the text node (but no mixed contents), that is, if we have an ordinary element with text contents,
+                        pass it through. :)
+                        then $annotation
+                        else local:handle-element-only-annotations($annotation, $edition-layer-elements, $documentary-elements)
+                        (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be (further) reduced :)
 };
 
 declare function local:generate-text-layer($element as element(), $target as xs:string) as element() 
@@ -419,9 +420,10 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
         else (local:make-attribute-annotations($element, $element/@xml:id/string()), local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names))
 };
 
-declare function local:prepare-annotations-for-output-to-file($element as element())
-as element()
-{
+declare function local:prepare-annotations-for-output-to-file($element as element()*)
+as element()* {
+    for $element in $element 
+    return
     element { node-name($element) } {
         $element/@*,
         for $child in $element/node()
@@ -439,7 +441,7 @@ as element()
 };
 
 let $doc-title := 'sample_MTDP10363.xml'
-let $doc := doc(concat('/db/test/in/', $doc-title))
+let $doc := doc(concat($text-in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
@@ -475,15 +477,16 @@ let $annotations-3 :=
         return local:peel-off-annotations($node, $edition-layer-elements, $documentary-elements)
 
 let $output-format := 'test'
-(:let $output-format := 'file':)
+let $output-format := 'file'
 
-let $annotations-4 := local:prepare-annotations-for-output-to-file(<annotations>{$annotations-3}</annotations>)
-        
+let $annotations-4 := local:prepare-annotations-for-output-to-file($annotations-3)
+let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
+
 return
     if ($output-format eq 'test')
     then
     <result>
-        <base-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}}</base-text>
+        <base-text>{$base-text}</base-text>
         <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}}</authoritative-text>
         <annotations-1>{$annotations-1}</annotations-1>
         <annotations-2>{$annotations-2}</annotations-2>
@@ -491,6 +494,9 @@ return
         <annotations-4>{$annotations-4}</annotations-4>
     </result>
     else
-    for $annotation in $annotations-4/*
+    (for $annotation in $annotations-4
     return
-        xmldb:store($out-collection,  concat($annotation/@xml:id, '.xml'), $annotation)
+        xmldb:store($annotation-out-collection,  concat($annotation/@xml:id, '.xml'), $annotation)
+    ,
+        xmldb:store($text-out-collection, $doc-title, $base-text)
+    )

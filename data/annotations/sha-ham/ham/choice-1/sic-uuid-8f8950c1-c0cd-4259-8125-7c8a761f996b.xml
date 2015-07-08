@@ -1,9 +1,0 @@
-<a8n-annotation type="element" xml:id="uuid-8f8950c1-c0cd-4259-8125-7c8a761f996b" status="token">
-    <a8n-target type="element" layer="annotation">
-        <a8n-id>uuid-4abd36a7-d505-4adc-91a3-a66a6cc9c9bc</a8n-id>
-        <order>2</order>
-    </a8n-target>
-    <a8n-body>
-        <sic xmlns="http://www.tei-c.org/ns/1.0">'Tis</sic>
-    </a8n-body>
-</a8n-annotation>

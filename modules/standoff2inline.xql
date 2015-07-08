@@ -21,7 +21,6 @@ declare function so2il:standoff2inline($nodes as node()*, $target-layer as xs:st
     (:Get the document's xml:id.:)
     (:Before recursion, $nodes is a single element.:) 
     let $doc-id := root($nodes)/*/@xml:id/string()
-    let $log := util:log("DEBUG", ("##param-names: ", string-join(request:get-parameter-names(), ' || ')))
 
     (:Get all annotations for the document in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
     (:NB: This is perhaps too much. One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
@@ -65,7 +64,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
         order by number($collapsed-edition-a8n//a8n-offset) ascending, number($collapsed-edition-a8n//a8n-range) descending
         return $collapsed-edition-a8n
-    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns))
+(:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
     (:Insert the collapsed annotations into the base-text.:)
     let $text-with-merged-edition-a8ns := 
@@ -281,11 +280,12 @@ declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*
 3) removes unneeded elements, and 
 4) takes the string values of terminal text-critical elements that have child feature annotations. :)
 declare function so2il:collapse-annotation($element as element(), $strip as xs:string+) as element() {
-    element {node-name($element)}
+    let $log := util:log("DEBUG", ("##$element): ", $element)) return
+        element {node-name($element)}
     {$element/@*, 
-        if ($element/a8n-annotation/a8n-body/a8n-attribute)
+        if ($element/*/*/a8n-attribute/*)
         then 
-            for $attribute in $element/a8n-annotation/a8n-body/a8n-attribute
+            for $attribute in $element/*/*/a8n-attribute
             return
                 let $attribute-name := $attribute/a8n-name/string()
                 let $attribute-value := $attribute/a8n-value/string()
