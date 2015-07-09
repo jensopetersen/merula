@@ -1,0 +1,2170 @@
+<TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id="MTDP10363">
+    <teiHeader type="CDL-TEI:MTP">
+        <fileDesc>
+            <titleStmt>
+                <title>Autobiography of Mark Twain, Volume 2 : an electronic text</title>
+                <author><name ref="#bioCL028">Mark Twain</name></author>
+                <editor><name ref="#bioGR365">Benjamin Griffin</name></editor>
+                <editor><name ref="#bioSM656">Harriet Elinor Smith</name></editor>
+                <editor><name ref="#bioFI102">Victor Fischer</name></editor>
+                <editor><name ref="#bioFR644">Michael B. Frank</name></editor>
+                <editor><name ref="#bioGO790">Sharon K. Goetz</name></editor>
+                <editor><name ref="#bioMY004">Leslie Myrick</name></editor>
+                <principal><name ref="#bioHI202">Robert H. Hirst</name></principal>
+                <sponsor>University of California</sponsor>
+                <funder>National Endowment for the Humanities, an independent federal
+                    agency</funder>
+                <funder>Generous contributions from individuals, foundations, and other
+                    institutions</funder>
+                <respStmt>
+                    <resp>Encoded by</resp>
+                    <name ref="#bioGO790">Sharon K. Goetz</name>
+                    <name ref="#bioMY004">Leslie Myrick</name>
+                </respStmt>
+            </titleStmt>
+            <extent>ca. 4.8 Mb ; ca. 140 images</extent>
+            <publicationStmt>
+                <publisher>Mark Twain Project, The Bancroft Library, University of
+                    California</publisher>
+                <publisher>University of California Press</publisher>
+                <publisher>California Digital Library</publisher>
+                <pubPlace>Berkeley, Calif.</pubPlace>
+                <date type="pub" when-iso="2013-10-05">2013</date>
+                <idno type="ARK"/>
+                <idno type="LOCAL">MTDP10363</idno>
+                <availability>
+                    <p>All words written or dictated by Samuel L. Clemens (Mark Twain) are in the
+                        public domain if they were first published before 1924. All words written or
+                        dictated by Mark Twain which were published between 1924 and 2002, and their
+                        copyrights renewed where required by law, are copyright © by Richard A.
+                        Watson and J.P. Morgan Chase Manhattan Bank as trustees of the Mark Twain
+                        Foundation, which reserves all reproduction or dramatization rights in every
+                        medium. All editorial transcriptions, reconstructions, decipherments,
+                        explanatory comments, identifications of correspondents, places, and dates
+                        are copyright © 1988, 1990, 1992, 1995, 1997, 2002, 2006, 2007, and 2009 by
+                        The Regents of the University of California.</p>
+                </availability>
+            </publicationStmt>
+            <seriesStmt>
+                <title level="s">Mark Twain Project Online</title>
+                <respStmt>
+                    <resp>General Editor</resp>
+                    <name ref="#bioHI202">Robert H. Hirst</name>
+                </respStmt>
+                <respStmt>
+                    <resp>Editors</resp>
+                    <name ref="#bioFI102">Victor Fischer</name>
+                    <name ref="#bioFR644">Michael B. Frank</name>
+                    <name ref="#bio16088">Amanda Gagel</name>
+                    <name ref="#bioGO790">Sharon K. Goetz</name>
+                    <name ref="#bioGR365">Benjamin Griffin</name>
+                    <name ref="#bioMY004">Leslie Myrick</name>
+                    <name ref="#bioSM656">Harriet Elinor Smith</name>
+                </respStmt>
+            </seriesStmt>
+            <sourceDesc>
+                <biblStruct n="conv">
+                    <monogr>
+                        <title>Autobiography of Mark Twain, Volume 2</title>
+                        <respStmt>
+                            <resp>General Editor</resp>
+                            <name ref="#bioHI202">Robert H. Hirst</name>
+                        </respStmt>
+                        <respStmt>
+                            <resp>Editors</resp>
+                            <name ref="#bioGR365">Benjamin Griffin</name>
+                            <name ref="#bioSM656">Harriet Elinor Smith</name>
+                        </respStmt>
+                        <respStmt>
+                            <resp>Associate Editors</resp>
+                            <name ref="#bioFI102">Victor Fischer</name>
+                            <name ref="#bioFR644">Michael B. Frank</name>
+                            <name ref="#bioGO790">Sharon K. Goetz</name>
+                            <name ref="#bioMY004">Leslie Diane Myrick</name>
+                        </respStmt>
+                        <edition>1st ed.</edition>
+                        <imprint>
+                            <publisher>University of California Press</publisher>
+                            <pubPlace>Berkeley, Calif.</pubPlace>
+                            <date when-iso="2013-10-05">2013</date>
+                            <biblScope type="pages">xix + 736</biblScope>
+                        </imprint>
+                    </monogr>
+                    <series><title level="s">The Mark Twain Papers</title><respStmt>
+                            <resp>General Editor</resp>
+                            <name ref="#bioHI202">Robert H. Hirst</name>
+                        </respStmt><respStmt>
+                            <resp>Editors</resp>
+                            <name ref="#bioAN086">Frederick Anderson</name>
+                            <name ref="#bioAR201">Dahlia Armon</name>
+                            <name ref="#bioBA527">Paul Baender</name>
+                            <name ref="#bioBA528">Howard G. Baetzhold</name>
+                            <name ref="#bioBL251">Walter Blair</name>
+                            <name ref="#bioBR900">Edgar Marquess Branch</name>
+                            <name ref="#bioBR901">Robert Pack Browning</name>
+                            <name ref="#bioBU351">Richard Bucci</name>
+                            <name ref="#bioBU352">Louis J. Budd</name>
+                            <name ref="#bioBU353">Anh Q. Bui</name>
+                            <name ref="#bioCA503">Gregg Camfield</name>
+                            <name ref="#bioCO370">Hennig Cohen</name>
+                            <name ref="#bioDI018">Leon T. Dickinson</name>
+                            <name ref="#bioFI101">Terry Firkins</name>
+                            <name ref="#bioFI102">Victor Fischer</name>
+                            <name ref="#bioFR644">Michael B. Frank</name>
+                            <name ref="#bio16088">Amanda Gagel</name>
+                            <name ref="#bioGE756">John C. Gerber</name>
+                            <name ref="#bioGI044">William M. Gibson</name>
+                            <name ref="#bioGO790">Sharon K. Goetz</name>
+                            <name ref="#bioGR365">Benjamin Griffin</name>
+                            <name ref="#bioHI201">Hamlin Hill</name>
+                            <name ref="#bioHI202">Robert H. Hirst</name>
+                            <name ref="#bioJO301">Mary Jane Jones</name>
+                            <name ref="#bioLE656">Lewis Leary</name>
+                            <name ref="#bioMA251">Paul Machlis</name>
+                            <name ref="#bioMA252">Francis V. Madigan</name>
+                            <name ref="#bioMY004">Leslie Myrick</name>
+                            <name ref="#bioPA600">Hershel Parker</name>
+                            <name ref="#bioRE900">Robert Regan</name>
+                            <name ref="#bioRO568">Franklin R. Rogers</name>
+                            <name ref="#bioSA514">Lin Salamo</name>
+                            <name ref="#bioSA515">Kenneth M. Sanderson</name>
+                            <name ref="#bioSM656">Harriet Elinor Smith</name>
+                            <name ref="#bioSM300">Henry Nash Smith</name>
+                            <name ref="#bioST401">Bernard L. Stein</name>
+                            <name ref="#bioST402">Albert E. Stone</name>
+                            <name ref="#bioTU013">John S. Tuckey</name>
+                        </respStmt><respStmt>
+                            <resp>Board of Directors</resp>
+                            <name ref="#bioCR301">Frederick Crews</name>
+                            <name ref="#bio16116">Mary C. Francis</name>
+                            <name ref="#bioHA202">Peter E. Hanff</name>
+                            <name key="#bioLE201">Thomas C. Leonard</name>
+                            <name ref="#bioMI201">Michael Millgate</name>
+                            <name ref="#bio16114">Alison Mudditt</name>
+                            <name ref="#bioST403">George A. Starr</name>
+                            <name ref="#bioTA101">G. Thomas Tanselle</name>
+                            <name ref="#bio16115">Elaine Tennant</name>
+                        </respStmt></series>
+                    <note>Editorial work for this volume has been supported by a generous gift to
+                        the Mark Twain Project of The Bancroft Library from the Koret Foundation and
+                        by matching and outright grants from the National Endowment for the
+                        Humanities, an independent federal agency. Without that support, this volume
+                        could not have been produced.</note>
+                </biblStruct>
+                <listPerson>
+                    <person>
+                        <persName key="bioCL028" type="reg">Twain, Mark, 1835-1910</persName>
+                    </person>
+                    <person>
+                        <persName key="bioAN086" type="reg">Anderson, Frederick, 1926-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioAR201" type="reg">Armon, Dahlia</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBA527" type="reg">Baender, Paul</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBA528" type="reg">Baetzhold, Howard G.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBL251" type="reg">Blair, Walter, 1900-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBO516" type="reg">Boydston, Jo Ann, 1924-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBR900" type="reg">Branch, Edgar Marquess, 1913-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBR901" type="reg">Browning, Robert Pack</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBU351" type="reg">Bucci, Richard</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBU352" type="reg">Budd, Louis J.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioBU353" type="reg">Bui, Anh Q.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioCA503" type="reg">Camfield, Gregg</persName>
+                    </person>
+                    <person>
+                        <persName key="bioCE006" type="reg">Cerruti, Laura</persName>
+                    </person>
+                    <person>
+                        <persName key="bioCO370" type="reg">Cohen, Hennig</persName>
+                    </person>
+                    <person>
+                        <persName key="bioCO371" type="reg">Cook, Don L.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioCR301" type="reg">Crews, Frederick C.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioDI018" type="reg">Dickinson, Leon T. (Leon Townsend),
+                            1912-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioFA201" type="reg">Faulhaber, Charles</persName>
+                    </person>
+                    <person>
+                        <persName key="bioFI101" type="reg">Firkins, Terry</persName>
+                    </person>
+                    <person>
+                        <persName key="bioFI102" type="reg">Fischer, Victor, 1942-</persName>
+                    </person>
+                    <person>
+                        <persName key="bio16116" type="reg">Francis, Mary C.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioFR644" type="reg">Frank, Michael B.</persName>
+                    </person>
+                    <person>
+                        <persName key="bio16088" type="reg">Gagel, Amanda</persName>
+                    </person>
+                    <person>
+                        <persName key="bioGE756" type="reg">Gerber, John C.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioGI044" type="reg">Gibson, William Merriam,
+                            1912-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioGO790" type="reg">Goetz, Sharon K.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioGR201" type="reg">Gregor, Dorothy, 1939-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioGR365" type="reg">Griffin, Benjamin, 1968-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioHA202" type="reg">Hanff, Peter E.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioHA352" type="reg">Hart, James David, 1911-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioHI201" type="reg">Hill, Hamlin Lewis, 1931-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioHI202" type="reg">Hirst, Robert H.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioJO301" type="reg">Jones, Mary Jane, 1938-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioLA301" type="reg">Laue, Andrea K.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioLE656" type="reg">Leary, Lewis Gaston, 1906-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioLE201" type="reg">Leonard, Thomas C., 1944-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioMA251" type="reg">Machlis, Paul</persName>
+                    </person>
+                    <person>
+                        <persName key="bioMA252" type="reg">Madigan, Francis V.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioMC301" type="reg">McClung, William J.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioMI201" type="reg">Millgate, Michael</persName>
+                    </person>
+                    <person>
+                        <persName key="bio16114" type="reg">Mudditt, Alison</persName>
+                    </person>
+                    <person>
+                        <persName key="bioMY004" type="reg">Myrick, Leslie</persName>
+                    </person>
+                    <person>
+                        <persName key="bioPA600" type="reg">Parker, Hershel</persName>
+                    </person>
+                    <person>
+                        <persName key="bioRA566" type="reg">Ray, Gordon Norton, 1915-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioRE900" type="reg">Regan, Robert</persName>
+                    </person>
+                    <person>
+                        <persName key="bioRO567" type="reg">Robertson, Charlotte</persName>
+                    </person>
+                    <person>
+                        <persName key="bioRO568" type="reg">Rogers, Franklin R.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioRO569" type="reg">Rosenthal, Joseph A.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioSA514" type="reg">Salamo, Lin</persName>
+                    </person>
+                    <person>
+                        <persName key="bioSA515" type="reg">Sanderson, Kenneth M.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioSM656" type="reg">Smith, Harriet Elinor</persName>
+                    </person>
+                    <person>
+                        <persName key="bioSM300" type="reg">Smith, Henry Nash</persName>
+                    </person>
+                    <person>
+                        <persName key="bioST403" type="reg">Starr, G. A. (George A.)</persName>
+                    </person>
+                    <person>
+                        <persName key="bioST401" type="reg">Stein, Bernard L.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioST402" type="reg">Stone, Albert E.</persName>
+                    </person>
+                    <person>
+                        <persName key="bioTA101" type="reg">Tanselle, G. Thomas (George Thomas),
+                            1934-</persName>
+                    </person>
+                    <person>
+                        <persName key="bio16115" type="reg">Tennant, Elaine</persName>
+                    </person>
+                    <person>
+                        <persName key="bioTU013" type="reg">Tuckey, John Sutton, 1921-</persName>
+                    </person>
+                    <person>
+                        <persName key="bioWI201" type="reg">Witherell, Elizabeth Hall</persName>
+                    </person>
+                    <person>
+                        <persName key="bio15050" type="reg">Withey, Lynne</persName>
+                    </person>
+                </listPerson>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <projectDesc>
+                <p>This digital document was produced as part of Mark Twain Project Online (MTPO), a
+                    digital critical edition of all of Mark Twain’s writings. It was encoded in
+                    accordance with the Mark Twain Project TEI DTD version 4.0, a modified version
+                    of Text Encoding Initiative (TEI) P5 DTD (&lt;http://www.tei-c.org/&gt;).
+                    Initial transcription of the text was performed in Corel WordPerfect X5. XML
+                    encoding was performed using &lt;oXygen/&gt; XML Editor.</p>
+            </projectDesc>
+            <editorialDecl>
+                <p>For information about the editorial policy of the Mark Twain Project, see the
+                    guide to editorial practice published with this text.</p>
+            </editorialDecl>
+            <variantEncoding location="internal" method="double-end-point"/>
+        </encodingDesc>
+        <revisionDesc>
+            <listChange>
+                <change when="2013-11-14" who="#bioGO790">Enhanced explanatory notes through 13 Aug
+                    1906 with cross-reference links; corrected minor errors.</change>
+                <change/>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <text xml:id="MT">
+        <front xml:id="MT-front">
+            <!-- . . . -->
+            <div1 type="edsec" xml:id="fr0007">
+                <head rend="toc" xml:id="fr0007-head-1">List of Contents</head>
+                <head xml:id="fr0007-head-2"><lb xml:id="fr0007-head-2-lb"/>CONTENTS</head>
+                <p rend="blockindent" xml:id="fr0007-p-1"><ref target="#fr0008" type="chapterref"
+                        xml:id="fr0007-p-1-ref">List of Dictations</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-1-hi">xiv</hi></p>
+                <p rend="blockindent" xml:id="fr0007-p-2"><ref target="#fr0009" type="chapterref"
+                        xml:id="fr0007-p-2-ref">Acknowledgments</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-2-hi">xvii</hi></p>
+                <lb xml:id="fr0007-lb-1"/>
+                <p rend="blockindent" xml:id="fr0007-p-3"><hi rend="bold" xml:id="fr0007-p-3-hi-1"
+                            ><ref target="#dv0001" type="chapterref" xml:id="fr0007-p-3-hi-1-ref"
+                            >AUTOBIOGRAPHY OF MARK TWAIN</ref></hi><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-3-hi-2">1</hi></p>
+                <lb xml:id="fr0007-lb-2"/>
+                <p rend="blockindent" xml:id="fr0007-p-4"><ref target="#bm0010" type="chapterref"
+                        xml:id="fr0007-p-4-ref">Explanatory Notes</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-4-hi">457</hi></p>
+                <lb xml:id="fr0007-lb-3"/>
+                <p rend="blockindent" xml:id="fr0007-p-5"><ref target="#bm0011" type="chapterref"
+                        xml:id="fr0007-p-5-ref">Appendixes</ref></p>
+                <p rend="text-indent:5" xml:id="fr0007-p-6"><ref target="#bm0012" type="chapterref"
+                        xml:id="fr0007-p-6-ref">Samuel L. Clemens: A Brief Chronology</ref><space
+                        extent="1"/><hi rend="italic" xml:id="fr0007-p-6-hi">649</hi></p>
+                <p rend="text-indent:5" xml:id="fr0007-p-7"><ref target="#bm0009" type="chapterref"
+                        xml:id="fr0007-p-7-ref">Family Biographies</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-7-hi">652</hi></p>
+                <p rend="text-indent:5" xml:id="fr0007-p-8"><ref target="#bm0008" type="chapterref"
+                        xml:id="fr0007-p-8-ref">Previous Publication</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-8-hi">656</hi></p>
+                <lb xml:id="fr0007-lb-4"/>
+                <p rend="blockindent" xml:id="fr0007-p-9"><ref target="#bm0017" type="chapterref"
+                        xml:id="fr0007-p-9-ref">Note on the Text</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-9-hi">661</hi></p>
+                <p rend="blockindent" xml:id="fr0007-p-10"><ref target="#bm0023" type="chapterref"
+                        xml:id="fr0007-p-10-ref">Word Division in This Volume</ref><space extent="1"
+                        /><hi rend="italic" xml:id="fr0007-p-10-hi">663</hi></p>
+                <p rend="blockindent" xml:id="fr0007-p-11"><ref target="#bm0023" type="chapterref"
+                        xml:id="fr0007-p-11-ref">References</ref><space extent="1"/><hi
+                        rend="italic" xml:id="fr0007-p-11-hi">665</hi></p>
+                <p rend="blockindent" xml:id="fr0007-p-12"><ref target="#bm0021" type="chapterref"
+                        xml:id="fr0007-p-12-ref">Index</ref><space extent="1"/><hi rend="italic"
+                        xml:id="fr0007-p-12-hi">697</hi></p>
+                <lb xml:id="fr0007-lb-5"/>
+                <p rend="blockindent" xml:id="fr0007-p-13"><hi rend="italic"
+                        xml:id="fr0007-p-13-hi-1"><ref target="#bd0012" type="chapterref"
+                            xml:id="fr0007-p-13-hi-1-ref">Photographs</ref>follow page</hi><space
+                        extent="1"/><hi rend="italic" xml:id="fr0007-p-13-hi-2">300</hi></p>
+            </div1>
+            <div1 type="edsec" xml:id="fr0008">
+                <head rend="toc" xml:id="fr0008-head-1">List of Dictations</head>
+                <head xml:id="fr0008-head-2"><lb xml:id="fr0008-head-2-lb"/>LIST OF
+                    DICTATIONS</head>
+                <list type="glossTOC">
+                    <label><hi rend="bold">1906</hi></label>
+                    <item><hi rend="bold">Autobiographical Dictations, April–December</hi></item>
+                    <label/>
+                    <item><table rend="tight">
+                            <row>
+                                <cell>2 April</cell>
+                                <cell><hi rend="italic">3</hi>&#160;&#160;</cell>
+                                <cell>25 June</cell>
+                                <cell><hi rend="italic">140</hi>&#160;&#160;</cell>
+                                <cell>12 October</cell>
+                                <cell><hi rend="italic">256</hi></cell>
+                            </row>
+                            <row>
+                                <cell>3 April</cell>
+                                <cell><hi rend="italic">6</hi>&#160;&#160;</cell>
+                                <cell>17 July</cell>
+                                <cell><hi rend="italic">143</hi>&#160;&#160;</cell>
+                                <cell>15 October</cell>
+                                <cell><hi rend="italic">257</hi></cell>
+                            </row>
+                            <row>
+                                <cell>4 April</cell>
+                                <cell><hi rend="italic">11</hi>&#160;&#160;</cell>
+                                <cell>30 July</cell>
+                                <cell><hi rend="italic">148</hi>&#160;&#160;</cell>
+                                <cell>16 October</cell>
+                                <cell><hi rend="italic">260</hi></cell>
+                            </row>
+                            <!-- . . . -->
+                        </table></item>
+                </list>
+            </div1>
+            <!-- . . . -->
+        </front>
+        <body xml:id="MT-body">
+            <div1 type="chapter" xml:id="dv0001">
+                <head rend="toc" xml:id="dv0001-head-1">2 April 1906</head>
+                <pb n="1" rend="silent" xml:id="pb0001"/>
+                <pb n="2" rend="silent" xml:id="pb0002"/>
+                <pb n="3" xml:id="pb0003"/>
+                <head xml:id="dv0001-head-2">Monday, April 2, 1906</head>
+                <p rend="centerautosum" xml:id="pa000001">Government of new Territory of
+                    Nevada—Governor Nye <lb xml:id="pa000001-lb-1"/>and the practical jokers—Mr.
+                    Clemens begins journalistic life <lb xml:id="pa000001-lb-2"/>on Virginia City
+                        <anchor type="aet" xml:id="dg0000"/><hi rend="italic" xml:id="pa000001-hi"
+                        >Enterprise</hi><app from="dg0000" type="aet" xml:id="ap0000">
+                        <lem><hi rend="italic">Enterprise</hi></lem>
+                        <rdg wit="TS1, TS2">Enterprise</rdg>
+                    </app>—Reports legislative sessions—<lb xml:id="pa000001-lb-3"/>He and Orion
+                    prosper—Orion builds <anchor type="aet" xml:id="dg0001"
+                        />twelve-thousand-dollar<app from="dg0001" type="aet" xml:id="ap0001">
+                        <lem>twelve-thousand-dollar</lem>
+                        <rdg wit="TS1">$12,000.</rdg>
+                        <rdg wit="TS2">$12,000</rdg>
+                    </app>house—<anchor type="aet" xml:id="dg0002"/>Governor<app from="dg0002"
+                        type="aet" xml:id="ap0002">
+                        <lem>Governor</lem>
+                        <rdg wit="TS1, TS2">Gov.</rdg>
+                    </app>Nye turns Territory of Nevada into a <anchor type="aet" xml:id="dg0003"
+                        />State.<app from="dg0003" type="aet" xml:id="ap0003">
+                        <lem>State.</lem>
+                        <rdg wit="TS1, TS2">State. <lb/>(Miss Hobby, please paste this in at this
+                            point, in record of April 1st, but I may not comment on it until
+                            later.)</rdg>
+                    </app></p>
+                <quote rend="blockquote" xml:id="dv0001-quote"><p rend="center" xml:id="pa000002"
+                            ><anchor type="an" xml:id="vn0001"/><hi rend="bold" xml:id="pa000002-hi"
+                            >PROMOTION FOR BARNES, WHOM TILLMAN&#160;BERATED</hi><ptr
+                            target="#en0001" type="an" xml:id="nv0001"/></p><milestone
+                        rend="lightrule" unit="section"/><p rend="center" xml:id="pa000003"><hi
+                            rend="bold" xml:id="pa000003-hi">Had Woman Ejected from White House; to
+                            be Postmaster.</hi></p><milestone rend="lightrule" unit="section"/><p
+                        rend="center" xml:id="pa000004"><hi rend="bold" xml:id="pa000004-hi"><anchor
+                                type="an" xml:id="vn0002"/>MERRITT GETS NEW PLACE</hi></p><milestone
+                        rend="lightrule" unit="section"/><p rend="center" xml:id="pa000005"><hi
+                            rend="bold" xml:id="pa000005-hi">Present Postmaster at Washington to be
+                                Made<lb xml:id="pa000005-hi-lb"/>Collector at Niagara—Platt Not
+                            Consulted.</hi></p><p rend="center" xml:id="pa000006"><hi rend="italic"
+                            xml:id="pa000006-hi">Special to The New York Times.</hi></p><p
+                        rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.—President
+                        Roosevelt surprised the capital this afternoon by announcing that he would
+                        appoint Benjamin F. Barnes as Postmaster of Washington, to succeed John A.
+                        Merritt of New York. Mr. Merritt, who for several years has been Postmaster
+                        here, has been chosen for Collector of the Port of Niagara, succeeding the
+                        late Major James Low<ptr target="#en0002" type="an" xml:id="nv0002"/>.</p><p
+                        rend="text-indent:2" xml:id="pa000008">Mr. Barnes is at present assistant
+                        secretary to the President. Only a short time ago he figured extensively in
+                        the newspapers for having ordered the forcible ejection from the White House
+                        of Mrs. Minor Morris, a Washington woman who had called to see the
+                        President. What attracted attention to the case was not the ejection itself,
+                        but the violence with which it was performed.</p><p rend="text-indent:2"
+                        xml:id="pa000009">Mrs. Morris, who had been talking to Barnes in an ordinary
+                        conversational tone, and with no indications of excitement, so far as the
+                        spectators observed, was seized by two policemen and dragged by the arms out
+                        of the building and across the asphalt walk in front of the White House, a
+                        distance corresponding to that of two ordinary city blocks. During a part of
+                        the journey a negro carried her by the feet. Her dress was torn and
+                        trampled.</p><p rend="text-indent:2" xml:id="pa000010">She was locked up on
+                        a charge of disorderly conduct, and when it was learned that she would be
+                        released on that charge a policeman, a relative of Barnes’s, was sent to the
+                        House of Detention to prefer a charge of insanity against her so that she
+                        would have to be held. She was held accordingly until two physicians had
+                        examined her and pronounced her sane. He was denounced by Mrs. Morris, by
+                        various newspapers, and by Mr. Tillman in the Senate.</p><p
+                        rend="text-indent:2" xml:id="pa000011">The appointment of Barnes to be
+                        Postmaster <anchor type="aet" xml:id="dg0005"/>so<app from="dg0005"
+                            type="aet" xml:id="ap0004">
+                            <lem>so</lem>
+                            <rdg wit="Times">so so</rdg>
+                            <rdg wit="TS2">so</rdg>
+                        </app>soon after this incident has created endless talk here. It is taken to
+                        be the President’s way of expressing confidence in Barnes and repaying him
+                        for the pain he suffered as a result of the newspaper criticisms of his
+                        course.</p></quote>
+                <p rend="text-indent:2" xml:id="pa000012">Orion Clemens again. To continue.</p>
+                <p rend="text-indent:2" xml:id="pa000013">The Government of the new Territory of
+                    Nevada was an interesting menagerie. <pb n="4" xml:id="pb0004"/><anchor
+                        type="an" xml:id="vn0003"/>Governor Nye was an old and seasoned politician
+                    from New York—politician, not statesman<ptr target="#en0003" type="an"
+                        xml:id="nv0003"/>. <hi rend="floatleft" xml:id="pa000013-hi"><anchor
+                            type="aet" xml:id="dg0008"/><hi rend="italic" xml:id="pa000013-hi-hi"
+                            >1861</hi><app from="dg0008" type="aet" xml:id="ap0005">
+                            <lem><hi rend="italic">1861</hi></lem>
+                            <rdg wit="TS1-SLC"><add>1861</add><note place="inline" resp="MTP"
+                                    type="ed" xml:id="de0000"><hi rend="italic">inserted in the
+                                        margin</hi></note></rdg>
+                            <rdg wit="TS2">(1861) <note place="inline" resp="MTP" type="ed"
+                                    xml:id="de0001">typed in the margin</note></rdg>
+                        </app></hi>He had white <anchor type="aet" xml:id="dg0011"/>hair; he<app
+                        from="dg0011" type="aet" xml:id="ap0006">
+                        <lem>hair; he</lem>
+                        <rdg wit="TS1">hair. He</rdg>
+                        <rdg wit="TS2-SLC">hair<add>;</add><del>. H</del><add>h</add>e <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0002">period mended to
+                                a semicolon</note></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">hair; he</rdg>
+                    </app>was in fine physical <anchor type="aet" xml:id="dg0012"/>condition; he<app
+                        from="dg0012" type="aet" xml:id="ap0007">
+                        <lem>condition; he</lem>
+                        <rdg wit="TS1">condition. He</rdg>
+                        <rdg wit="TS2-SLC">condition<add>;</add><del>. H</del><add>h</add>e <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0003">period mended to
+                                a semicolon</note></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">condition; he</rdg>
+                    </app>had a winningly friendly face and deep lustrous brown eyes that could talk
+                    as a native language the tongue of every feeling, every passion, every <anchor
+                        type="aet" xml:id="dg0013"/>emotion<app from="dg0013" type="aet"
+                        xml:id="ap0008">
+                        <lem>emotion</lem>
+                        <rdg wit="TS1, TS2, NAR 11">emotion</rdg>
+                        <rdg wit="NAR 11pf-SLC"><add>e</add>motion</rdg>
+                    </app>. His eyes could <anchor type="aet" xml:id="dg0014"/>out-talk<app
+                        from="dg0014" type="aet" xml:id="ap0009">
+                        <lem>out-talk</lem>
+                        <rdg wit="TS1, TS2">out-talk</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">outtalk</rdg>
+                    </app>his tongue, and this is saying a good deal, for he was a very remarkable
+                    talker, both in private and on the stump. He was a shrewd <anchor type="aet"
+                        xml:id="dg0015"/>man; he<app from="dg0015" type="aet" xml:id="ap0010">
+                        <lem>man; he</lem>
+                        <rdg wit="TS1">man. He</rdg>
+                        <rdg wit="TS2-SLC">man<add>;</add><del>. H</del><add>h</add>e <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0004">period mended to
+                                a semicolon</note></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">man; he</rdg>
+                    </app>generally saw through surfaces and perceived what <anchor type="aet"
+                        xml:id="dg0016"/>was<app from="dg0016" type="aet" xml:id="ap0011">
+                        <lem>was</lem>
+                        <rdg wit="TS1">might be</rdg>
+                        <rdg wit="TS2-SLC"><del>might be</del><add>was</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">was</rdg>
+                    </app>going on inside without being suspected of having an eye on the
+                    matter.</p>
+                <p rend="text-indent:2" xml:id="pa000014">When grown-up persons indulge in practical
+                        <anchor type="aet" xml:id="dg0018"/>jokes,<app from="dg0018" type="aet"
+                        xml:id="ap0012">
+                        <lem>jokes,</lem>
+                        <rdg wit="TS1-SLC">jokes<add>,</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">jokes,</rdg>
+                    </app>the fact gauges them. They have lived narrow, obscure, and ignorant lives,
+                    and at full manhood they still retain and cherish a <anchor type="aet"
+                        xml:id="dg0019"/>job lot<app from="dg0019" type="aet" xml:id="ap0013">
+                        <lem>job lot</lem>
+                        <rdg wit="TS1, TS2, NAR 11pf, NAR 11">job-lot</rdg>
+                    </app>of left-over standards and ideals that would have been discarded with
+                    their boyhood if they had then moved out into the world and a broader life.
+                    There were many practical jokers in the new Territory. I do not take pleasure in
+                    exposing this fact, for I liked those people; but what I am saying is true. I
+                    wish I could say a kindlier thing about them <anchor type="aet" xml:id="dg0020"
+                        />instead—that<app from="dg0020" type="aet" xml:id="ap0014">
+                        <lem>instead—that</lem>
+                        <rdg wit="TS1, TS2">instead. If I could say</rdg>
+                        <rdg wit="NAR 11pf-SLC">instead<del>. If I could
+                            say</del><add>—that</add></rdg>
+                        <rdg wit="NAR 11">instead—that</rdg>
+                    </app>they were burglars, or hat-rack thieves, or something like that, that
+                        <anchor type="aet" xml:id="dg0021"/>wouldn’t be<app from="dg0021" type="aet"
+                        xml:id="ap0015">
+                        <lem>wouldn’t be</lem>
+                        <rdg wit="TS1-SLC"><del>not be</del>would<add>n’t be</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">wouldn’t be</rdg>
+                    </app>utterly uncomplimentary. I would prefer it, but I can’t say those <anchor
+                        type="aet" xml:id="dg0022"/>things, they<app from="dg0022" type="aet"
+                        xml:id="ap0016">
+                        <lem>things, they</lem>
+                        <rdg wit="TS1">things. They</rdg>
+                        <rdg wit="TS2-SLC">things<add>,</add><del>. T</del><add>t</add>hey</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">things, they</rdg>
+                    </app>would not be true. These people were practical jokers, and I will not try
+                    to disguise it. In other respects they were plenty <anchor type="aet"
+                        xml:id="dg0023"/>good enough<app from="dg0023" type="aet" xml:id="ap0017">
+                        <lem>good enough</lem>
+                        <rdg wit="TS1, TS2">good enough</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">good-enough</rdg>
+                    </app>people; honest people; reputable and <anchor type="aet" xml:id="dg0024"
+                        />likable<app from="dg0024" type="aet" xml:id="ap0018">
+                        <lem>likable</lem>
+                        <rdg wit="TS1-SLC">lik<del>e</del>able <note place="inline" resp="MTP"
+                                type="ed" xml:id="de0005"><hi rend="normal">‘e’</hi>canceled with
+                                typed slash by Hobby and marked to close up by SLC</note></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">likable</rdg>
+                    </app>. They played practical jokes upon each other with success, and got the
+                    admiration and applause and also the envy of the rest of the community.
+                    Naturally they were eager to try their arts on big game, and that was what the
+                    Governor was. But they were not able to score. They made several efforts, but
+                    the Governor defeated these efforts without any trouble and went on smiling his
+                    pleasant smile as if nothing had happened. Finally the <anchor type="aet"
+                        xml:id="dg0025"/>joker-chiefs<app from="dg0025" type="aet" xml:id="ap0019">
+                        <lem>joker-chiefs</lem>
+                        <rdg wit="TS1, TS2">joker-<lb/>chiefs</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">joker chiefs</rdg>
+                    </app>of Carson City and Virginia City conspired together to see if their
+                    combined talent couldn’t win a victory, for the jokers were getting into a very
+                    uncomfortable <anchor type="aet" xml:id="dg0026"/>place. The<app from="dg0026"
+                        type="aet" xml:id="ap0020">
+                        <lem>place. The</lem>
+                        <rdg wit="TS1">place. The</rdg>
+                        <rdg wit="TS2-SLC">place<add>:</add><del>. T</del><add>t</add>he <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0006">period mended to
+                                a colon</note></rdg>
+                        <rdg wit="NAR 11 pf, NAR 11">place: the</rdg>
+                    </app>people were laughing at them, instead of at their proposed victim. They
+                    banded themselves together to the number of ten and invited the Governor to what
+                    was a most extraordinary attention in those days—pickled <anchor type="aet"
+                        xml:id="dg0027"/>oyster-stew<app from="dg0027" type="aet" xml:id="ap0021">
+                        <lem>oyster-stew</lem>
+                        <rdg wit="TS1, TS2">oyster-stew</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">oyster stew</rdg>
+                    </app>and <anchor type="aet" xml:id="dg0028"/>champagne—<app from="dg0028"
+                        type="aet" xml:id="ap0022">
+                        <lem>champagne—</lem>
+                        <rdg wit="TS1-SLC">champagne<del>,</del><add>—</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">champagne—</rdg>
+                    </app>luxuries very seldom seen in that region, and existing rather as fabrics
+                    of the imagination than as facts.</p>
+                <p rend="text-indent:2" xml:id="pa000015">The Governor took me with him. He said
+                        <anchor type="aet" xml:id="dg0030"/>disparagingly,</p>
+                <p rend="text-indent:2" xml:id="pa000016">“It’s<app from="dg0030" type="aet"
+                        xml:id="ap0023">
+                        <lem>disparagingly, [¶] “It’s</lem>
+                        <rdg wit="TS1-SLC">disparagingly<add>,</add><note place="inline" resp="MTP"
+                                type="ed" xml:id="de0007">no <hi rend="normal"
+                            >¶</hi></note>“It’s</rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">disparagingly, [¶] “It’s</rdg>
+                    </app>a poor invention. It doesn’t deceive. Their idea is to get me drunk and
+                    leave me under the table, and from their standpoint this will be very funny. But
+                    they don’t know me. I am familiar with champagne and have no prejudices against
+                    it.”</p>
+                <p rend="text-indent:2" xml:id="pa000017">The fate of the joke was not decided until
+                    two o’clock in the morning. At that hour the Governor was serene, genial,
+                    comfortable, contented, <anchor type="aet" xml:id="dg0034"/>happy,<app
+                        from="dg0034" type="aet" xml:id="ap0024">
+                        <lem>happy,</lem>
+                        <rdg wit="TS1-SLC">happy<add>,</add></rdg>
+                        <rdg wit="TS2">happy,</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">happy</rdg>
+                    </app>and sober, although he was so full that he couldn’t laugh without shedding
+                    champagne tears. Also, at that hour the last joker joined his comrades under the
+                    table, drunk to the last perfection. The Governor <anchor type="aet"
+                        xml:id="dg0035"/>remarked,</p>
+                <p rend="text-indent:2" xml:id="pa000018">“This<app from="dg0035" type="aet"
+                        xml:id="ap0025">
+                        <lem>remarked, [¶] “This</lem>
+                        <rdg wit="TS1">remarked <note place="inline" resp="MTP" type="ed"
+                                xml:id="de0008">no <hi rend="normal">¶</hi></note>“This</rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">remarked, [¶] “This</rdg>
+                    </app>is a dry place, Sam, let’s go and get something to drink and go to
+                    bed.”</p>
+                <p rend="text-indent:2" xml:id="pa000019"><anchor type="an" xml:id="vn0004"/>The
+                    Governor’s official menagerie had been drawn from the humblest ranks of his
+                    constituents at home—<anchor type="aet" xml:id="dg0039"/>harmless<app
+                        from="dg0039" type="aet" xml:id="ap0026">
+                        <lem>harmless</lem>
+                        <rdg wit="TS1-SLC">harmless<del>,</del></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">harmless</rdg>
+                    </app>good <anchor type="aet" xml:id="dg0040"/>fellows<app from="dg0040"
+                        type="aet" xml:id="ap0027">
+                        <lem>fellows</lem>
+                        <rdg wit="TS1-SLC">fellows<del>,</del></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">fellows</rdg>
+                    </app>who had helped in his <anchor type="aet" xml:id="dg0041"/>campaigns,<app
+                        from="dg0041" type="aet" xml:id="ap0028">
+                        <lem>campaigns,</lem>
+                        <rdg wit="TS1">campaigns<add>,</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">campaigns,</rdg>
+                    </app>and now they had their reward in petty salaries payable in greenbacks that
+                    were worth next <pb n="5" xml:id="pb0005"/>to nothing. Those boys had a hard
+                    time to make both ends meet. Orion’s salary was eighteen hundred dollars a year,
+                    and he couldn’t even support his dictionary on it. But the Irishwoman who had
+                    come out on the Governor’s staff charged the menagerie only ten dollars a week
+                    apiece for board and lodging. Orion and I were of her boarders and <anchor
+                        type="aet" xml:id="dg0042"/>lodgers<ptr target="#en0004" type="an"
+                        xml:id="nv0004"/>;<app from="dg0042" type="aet" xml:id="ap0029">
+                        <lem>lodgers;</lem>
+                        <rdg wit="TS1-SLC">lodgers<del>,</del><add>;</add><note place="inline"
+                                resp="MTP" type="ed" xml:id="de0009">comma mended to a
+                                semicolon</note></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">lodgers;</rdg>
+                    </app>and <anchor type="aet" xml:id="dg0043"/>so,<app from="dg0043" type="aet"
+                        xml:id="ap0030">
+                        <lem>so,</lem>
+                        <rdg wit="TS1-SLC">so<add>,</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">so,</rdg>
+                    </app>on these cheap terms <anchor type="an" xml:id="vn0005"/>the silver I had
+                    brought from home<ptr target="#en0005" type="an" xml:id="nv0005"/>held out
+                    very&#160;well.</p>
+                <p rend="text-indent:2" xml:id="pa000020">At first I roamed about the country
+                    seeking silver, but at the end of ’62 or the beginning of ’63 when I came up
+                    from Aurora to begin <anchor type="an" xml:id="vn0006"/>a journalistic life on
+                    the Virginia City <anchor type="aet" xml:id="dg0046"/><hi rend="italic"
+                        xml:id="pa000020-hi-1">Enterprise,</hi><app from="dg0046" type="aet"
+                        xml:id="ap0032">
+                        <lem><hi rend="italic">Enterprise,</hi></lem>
+                        <rdg wit="TS1, TS2"><hi rend="italic">Enterprise,</hi></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">“Enterprise,”</rdg>
+                    </app><hi rend="floatright" xml:id="pa000020-hi-2"><anchor type="aet"
+                            xml:id="ee0000"/><hi rend="italic" xml:id="pa000020-hi-2-hi">1862 or
+                            ’63</hi><app from="ee0000" type="aet" xml:id="ap0031">
+                            <lem><hi rend="italic">1862 or ’63</hi></lem>
+                            <rdg wit="TS1, TS2">(’62 or ’63) <note place="inline" resp="MTP"
+                                    type="ed" xml:id="de0010">typed in the margin</note></rdg>
+                            <rdg wit="NAR 11pf, NAR 11">(’62 or ’63.) <note place="inline"
+                                    resp="MTP" type="ed" xml:id="de0011">inset</note></rdg>
+                        </app></hi>I was presently sent down to Carson City to report the
+                    legislative session<ptr target="#en0006" type="an" xml:id="nv0006"/>. Orion was
+                    soon very popular with the members of the legislature, because they found that
+                    whereas they couldn’t usually trust each other, nor anybody else, they could
+                    trust him. He easily held the belt for honesty in that country, but it didn’t do
+                    him any good in a pecuniary way, because he had no talent for either persuading
+                    or scaring legislators. But I was differently situated. I was there every day in
+                    the legislature to distribute compliment and censure with evenly balanced
+                    justice and spread the same over half a page of the <anchor type="aet"
+                        xml:id="dg0047"/><hi rend="italic" xml:id="pa000020-hi-3"
+                        >Enterprise</hi><app from="dg0047" type="aet" xml:id="ap0033">
+                        <lem><hi rend="italic">Enterprise</hi></lem>
+                        <rdg wit="TS1, TS2"><hi rend="italic">Enterprise</hi></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">“Enterprise”</rdg>
+                    </app>every morning, consequently I was an influence. <anchor type="an"
+                        xml:id="vn0007"/>I got the legislature to pass a <anchor type="aet"
+                        xml:id="dg0048"/>wise and very necessary<app from="dg0048" type="aet"
+                        xml:id="ap0034">
+                        <lem>wise and very necessary</lem>
+                        <rdg wit="TS1"><note place="inline" resp="MTP" type="ed" xml:id="de0012">not
+                                in</note></rdg>
+                        <rdg wit="TS2-SLC"><add>wise and very necessary</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">wise and very necessary</rdg>
+                    </app>law requiring every corporation doing business in the Territory to record
+                    its charter in full, without skipping a word, in a record to be kept by the
+                    Secretary of the Territory—my brother. <anchor type="aet" xml:id="dg0049"/>All
+                    the charters were framed in exactly the same words. For<app from="dg0049"
+                        type="aet" xml:id="ap0035">
+                        <lem>All the charters were framed in exactly the same words. For</lem>
+                        <rdg wit="TS1-SLC"><add>All the charters were framed in exactly the same
+                                words.</add><del>And f</del><add>F</add>or</rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">All the charters were framed in exactly the
+                            same words. For</rdg>
+                    </app>this <anchor type="aet" xml:id="dg0050"/>record-service<app from="dg0050"
+                        type="aet" xml:id="ap0036">
+                        <lem>record-service</lem>
+                        <rdg wit="TS1">record service</rdg>
+                        <rdg wit="TS2-SLC">record<add>-</add>service</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">record-service</rdg>
+                    </app>he was authorized to charge forty cents a folio <anchor type="aet"
+                        xml:id="dg0051"/>of a hundred words<app from="dg0051" type="aet"
+                        xml:id="ap0037">
+                        <lem>of a hundred words</lem>
+                        <rdg wit="TS1-SLC"><add>of 100 words</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">of one hundred words</rdg>
+                    </app>for making the record; <anchor type="aet" xml:id="dg0052"/>also<app
+                        from="dg0052" type="aet" xml:id="ap0038">
+                        <lem>also</lem>
+                        <rdg wit="TS1"><note place="inline" resp="MTP" type="ed" xml:id="de0013">not
+                                in</note></rdg>
+                        <rdg wit="TS2-SLC"><add>also</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">also</rdg>
+                    </app>five dollars for furnishing a certificate of each record<ptr
+                        target="#en0007" type="an" xml:id="nv0007"/>, and so on. Everybody had a
+                    toll-road franchise but no toll-road. But the franchise had to be recorded and
+                    paid for. Everybody was a mining corporation, and had to have himself recorded
+                    and pay for it. <anchor type="an" xml:id="vn0008"/>Very well, we prospered. The
+                        <anchor type="aet" xml:id="dg0053"/>record-service<app from="dg0053"
+                        type="aet" xml:id="ap0039">
+                        <lem>record-service</lem>
+                        <rdg wit="TS1">record service</rdg>
+                        <rdg wit="TS2-SLC">record<add>-</add>service</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">record-service</rdg>
+                    </app>paid an average of <anchor type="aet" xml:id="dg0054"/>a<app from="dg0054"
+                        type="aet" xml:id="ap0040">
+                        <lem>a</lem>
+                        <rdg wit="TS1">one</rdg>
+                        <rdg wit="TS2-SLC"><del>one</del><add>a</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">a</rdg>
+                    </app>thousand dollars a month, in gold<ptr target="#en0008" type="an"
+                        xml:id="nv0008"/>.</p>
+                <p rend="text-indent:2" xml:id="pa000021"><anchor type="an" xml:id="vn0009"
+                    />Governor Nye was often absent from the Territory. He liked to run down to San
+                    Francisco every little while and enjoy a rest from Territorial civilization.
+                    Nobody complained, for he was prodigiously popular. He had been a stage-driver
+                    in his early days in New York or New England, and had acquired the habit of
+                    remembering names and faces, and of making himself agreeable to his passengers.
+                    As a politician this had been valuable to him, and he kept his arts in good
+                    condition by practice. By the time he had been Governor a year, he had shaken
+                    hands with every human being in the Territory of Nevada, and after that he
+                    always knew these people instantly at sight and could call them by name. The
+                    whole <anchor type="aet" xml:id="dg0056"/>population, of twenty thousand
+                        persons,<app from="dg0056" type="aet" xml:id="ap0041">
+                        <lem>population, of twenty thousand persons,</lem>
+                        <rdg wit="TS1-SLC">population<add>, of 20,000 persons,</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">population, of 20,000 persons,</rdg>
+                    </app>were his personal friends, and he could do anything he chose to do and
+                    count upon their being contented with it. Whenever he was absent from the
+                    Territory—which was generally—Orion served his office in his place, as <anchor
+                        type="aet" xml:id="dg0057"/>Acting<app from="dg0057" type="aet"
+                        xml:id="ap0042">
+                        <lem>Acting</lem>
+                        <rdg wit="TS1-SLC"><del>a</del><add>A</add>cting</rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">Acting</rdg>
+                    </app>Governor<ptr target="#en0009" type="an" xml:id="nv0009"/>, a title which
+                    was soon and easily shortened to <anchor type="aet" xml:id="dg0058"
+                        />“Governor.”<app from="dg0058" type="aet" xml:id="ap0043">
+                        <lem>“Governor.”</lem>
+                        <rdg wit="TS1-SLC"><add>“</add>Governor.<add>”</add></rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">“Governor.”</rdg>
+                    </app><anchor type="aet" xml:id="dg0059"/>Mrs. Governor Clemens enjoyed being a
+                    Governor’s wife. No one on this planet ever enjoyed a distinction more than she
+                    enjoyed that one. Her delight in being the head of society was so frank that it
+                    disarmed criticism, and even envy. Being the Governor’s wife and head of
+                    society, she looked for a proper kind of house to live in—a house commensurate
+                    with these dignities—and she easily persuaded Orion to build that house. Orion
+                    could be persuaded to do anything.<app from="dg0059" type="aet" xml:id="ap0044">
+                        <lem>Mrs. Governor .&#160;.&#160;. dignities—and .&#160;.&#160;. do
+                            anything.</lem>
+                        <rdg wit="TS1">Mrs. Governor .&#160;.&#160;.
+                                dignities<del>,</del><add>—</add>and .&#160;.&#160;. do
+                            anything.</rdg>
+                        <rdg wit="TS2"><del>Mrs. Governor .&#160;.&#160;. dignities—and
+                                .&#160;.&#160;. do anything.</del></rdg>
+                        <rdg wit="NAR 11pf, NAR 11"><note place="inline" resp="MTP" type="ed"
+                                xml:id="de0014">not in</note></rdg>
+                    </app><anchor type="an" xml:id="vn0010"/>He <anchor type="aet" xml:id="dg0060"
+                        />recklessly<app from="dg0060" type="aet" xml:id="ap0045">
+                        <lem>recklessly</lem>
+                        <rdg wit="TS1"><note place="inline" resp="MTP" type="ed" xml:id="de0015">not
+                                in</note></rdg>
+                        <rdg wit="TS2-SLC"><add>recklessly</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">recklessly</rdg>
+                    </app>built and furnished <anchor type="aet" xml:id="dg0061"/>a<app
+                        from="dg0061" type="aet" xml:id="ap0046">
+                        <lem>a</lem>
+                        <rdg wit="TS1">the</rdg>
+                        <rdg wit="TS2-SLC"><del>the</del><add>a</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">a</rdg>
+                    </app><pb n="6" xml:id="pb0006"/>house at a cost of twelve thousand dollars<ptr
+                        target="#en0010" type="an" xml:id="nv0010"/>, and there was no other house
+                    in <anchor type="aet" xml:id="dg0062"/>that sage-brush capital<app from="dg0062"
+                        type="aet" xml:id="ap0047">
+                        <lem>that sage-brush capital</lem>
+                        <rdg wit="TS1">that capitol</rdg>
+                        <rdg wit="TS2-SLC">that <add>sage-brush</add>capitol</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">the sage-brush capital</rdg>
+                    </app>that could approach this property for style and cost.</p>
+                <p rend="text-indent:2" xml:id="pa000022">When Governor Nye’s four-year term was
+                    drawing to a close, the mystery of why he had ever consented to leave the great
+                    State of New York and help inhabit that <anchor type="aet" xml:id="dg0064"
+                        />jack-rabbit<app from="dg0064" type="aet" xml:id="ap0048">
+                        <lem>jack-rabbit</lem>
+                        <rdg wit="TS1">sage-brush</rdg>
+                        <rdg wit="TS2"><del>sage-brush</del><add>jack-rabbit</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">jack-rabbit</rdg>
+                    </app>desert was <anchor type="aet" xml:id="dg0065"/>solved: he<app
+                        from="dg0065" type="aet" xml:id="ap0049">
+                        <lem>solved: he</lem>
+                        <rdg wit="TS1">solved. He</rdg>
+                        <rdg wit="TS2-SLC">solved<add>:</add><del>. H</del><add>h</add>e <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0016">period mended to
+                                a colon</note></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">solved: he</rdg>
+                    </app>had gone out there in order to become a United States <anchor type="aet"
+                        xml:id="dg0066"/>Senator<app from="dg0066" type="aet" xml:id="ap0050">
+                        <lem>Senator</lem>
+                        <rdg wit="TS1, TS2">senator</rdg>
+                        <rdg wit="NAR 11pf, NAR 11">Senator</rdg>
+                    </app>. All that was now necessary was to turn the Territory into a State. He
+                    did it without any difficulty. That <anchor type="aet" xml:id="dg0067"/>patch of
+                    sand and<app from="dg0067" type="aet" xml:id="ap0051">
+                        <lem>patch of sand and</lem>
+                        <rdg wit="TS1">patch of sand and</rdg>
+                        <rdg wit="TS2-SLC"><del>patch of sand and</del><add>undeveloped country
+                                and</add></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">undeveloped country and</rdg>
+                    </app>that sparse population were not well fitted for the heavy burden of a
+                        <anchor type="aet" xml:id="df0052"/>state government<app from="df0052"
+                        type="aet" xml:id="ap0052">
+                        <lem>state government</lem>
+                        <rdg wit="TS1, TS2, NAR 11pf, NAR 11">State Government</rdg>
+                    </app>, but no <anchor type="aet" xml:id="dg0069"/>matter, <anchor type="an"
+                        xml:id="vn0011"/>the<app from="dg0069" type="aet" xml:id="ap0053">
+                        <lem>matter, the</lem>
+                        <rdg wit="TS1-SLC">matter<add>,</add><del>. T</del><add>t</add>he</rdg>
+                        <rdg wit="TS2, NAR 11pf, NAR 11">matter, the</rdg>
+                    </app>people were willing to have the change, and so the Governor’s game was
+                        made<ptr target="#en0011" type="an" xml:id="nv0011"/>.</p>
+                <p rend="text-indent:2" xml:id="pa000023"><anchor type="an" xml:id="vn0012"/>Orion’s
+                    game was made too, apparently, for he was as popular because of his honesty as
+                    the Governor was for more substantial <anchor type="aet" xml:id="dg0071"
+                    />reasons; but<app from="dg0071" type="aet" xml:id="ap0054">
+                        <lem>reasons; but</lem>
+                        <rdg wit="TS1">reasons. But</rdg>
+                        <rdg wit="TS2-SLC">reasons<add>;</add><del>. B</del><add>b</add>ut <note
+                                place="inline" resp="MTP" type="ed" xml:id="de0017">period mended to
+                                a semicolon</note></rdg>
+                        <rdg wit="NAR 11pf, NAR 11">reasons; but</rdg>
+                    </app>at the critical moment the inborn capriciousness of his character rose up
+                    without warning, and disaster followed<ptr target="#en0012" type="an"
+                        xml:id="nv0012"/>.</p>
+            </div1>
+            <!-- . . . -->
+            <div1 type="chapter" xml:id="bd0012">
+                <head rend="toc" xml:id="bd0012-head">Photographs</head>
+                <p xml:id="bd0012-p"/>
+                <!--36 total-->
+                <figure rend="block" xml:id="o00092">
+                    <graphic url="o00092.jpg"/>
+                    <ab type="caption" xml:id="o00092-ab">The Clemenses’ house on Farmington Avenue,
+                        Hartford, winter 1880.</ab>
+                </figure>
+                <figure rend="block" xml:id="o00093">
+                    <graphic url="o00093.jpg"/>
+                    <ab type="caption" xml:id="o00093-ab">Clara as Lady Jane Grey and Margaret
+                        (Daisy) Warner as the pauper in the prince’s clothing for the <hi
+                            rend="italic" xml:id="o00093-ab-hi">Prince and the Pauper</hi>play,
+                        Hartford, March 1886. Photograph by Horace L. Bundy.</ab>
+                </figure>
+                <!-- . . . -->
+            </div1>
+            <div1 type="chapter" xml:id="dv0073">
+                <head rend="toc" xml:id="dv0073-head-1">2 December 1906</head>
+                <pb n="301" xml:id="pb0301"/>
+                <head xml:id="dv0073-head-2"><anchor type="aet" xml:id="ah4011"/>December 2,
+                        1906<app from="ah4011" type="aet" xml:id="ap3990">
+                        <lem>December 2, 1906</lem>
+                        <rdg wit="MS"><add><hi rend="italic">Dec.</hi>2, 1906</add><note
+                                place="inline" resp="MTP" type="ed" xml:id="de1030"
+                            >circled</note></rdg>
+                        <rdg wit="TS1 ribbon-SLC"><add><hi rend="italic">Dictated</hi></add><hi
+                                rend="italic">Dec. 2, 1906.</hi><note place="inline" resp="MTP"
+                                type="ed" xml:id="de1031"><hi rend="normal">‘Dictated Dec. 2,
+                                    1906.’</hi>underscored</note></rdg>
+                        <rdg wit="TS1 carbon-SLC"><add><hi rend="italic">Dictated</hi></add>Dec. 2,
+                            1906.</rdg>
+                        <rdg wit="NAR 9pf, NAR 9">[<hi rend="italic">Dictated December 2,
+                            1906.</hi>]</rdg>
+                    </app></head>
+                <p rend="centerautosum" xml:id="pa002111"><anchor type="an" xml:id="vn0660"/><anchor
+                        type="aet" xml:id="ah4012"/>Mr. Clemens’s experiments in mesmerism,
+                        continued<ptr target="#en0660" type="an" xml:id="nv0660"/>.<app
+                        from="ah4012" type="aet" xml:id="ap3991">
+                        <lem>[¶] Mr. Clemens’s experiments in mesmerism, continued.</lem>
+                        <rdg wit="MS"><note place="inline" resp="MTP" type="ed" xml:id="de1032">not
+                                in</note></rdg>
+                        <rdg wit="TS1 ribbon">(Copied from Mr. Clemens’s notes). [¶] Mr. Clemens’s
+                            experiments in mesmerism, continued.</rdg>
+                        <rdg wit="TS1 carbon-SLC?"><del>(Copied from Mr. Clemens’s notes).</del>[¶]
+                                <del>Mr. Clemens’s early experiments in mesmerism,
+                                continued.</del><note place="inline" resp="MTP" type="ed"
+                                xml:id="de1033"><hi rend="normal">‘out’</hi>written in the margin in
+                                ink</note></rdg>
+                    </app></p>
+                <p rend="text-indent:2" xml:id="pa002112">In 1847 we were living in a <anchor
+                        type="an" xml:id="vn0661"/>large white house on the corner of Hill and Main
+                    streets—a house that still stands, <hi rend="floatright" xml:id="pa002112-hi"
+                            ><anchor type="aet" xml:id="ah4013"/><hi rend="italic"
+                            xml:id="pa002112-hi-hi">1847</hi><app from="ah4013" type="aet"
+                            xml:id="ap3992">
+                            <lem><hi rend="italic">1847</hi></lem>
+                            <rdg wit="MS"><note place="inline" resp="MTP" type="ed" xml:id="de1034"
+                                    >not in</note></rdg>
+                            <rdg wit="TS1 ribbon, TS1 carbon">(1847) <note place="inline" resp="MTP"
+                                    type="ed" xml:id="de1035">typed in the margin</note></rdg>
+                            <rdg wit="NAR 9pf, NAR 9">(1847.) <note place="inline" resp="MTP"
+                                    type="ed" xml:id="de1036">inset</note></rdg>
+                        </app></hi>but isn’t large now, although it hasn’t lost a plank; I saw it a
+                    year ago and noticed that shrinkage. My father died in it in March of the year
+                    mentioned, but our family did not move out of it until some months <anchor
+                        type="aet" xml:id="df4014"/>afterward.<app from="df4014" type="aet"
+                        xml:id="ap3993">
+                        <lem>afterward.</lem>
+                        <rdg wit="MS">afterward<add>.</add><del>b</del></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">afterward.</rdg>
+                    </app>Ours was not the only family in the house, there was another—Dr.
+                        Grant’s<ptr target="#en0661" type="an" xml:id="nv0661"/>. One day <anchor
+                        type="an" xml:id="vn0662"/>Dr. Grant and Dr. Reyburn argued a matter on the
+                    street with sword-canes<ptr target="#en0662" type="an" xml:id="nv0662"/>, and
+                    Grant was brought home multifariously <anchor type="aet" xml:id="df4015"
+                        />punctured.<app from="df4015" type="aet" xml:id="ap3994">
+                        <lem>punctured.</lem>
+                        <rdg wit="MS"><del>wounded.</del><add>punctured.</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">punctured.</rdg>
+                    </app>Old Dr. Peake calked the leaks, and came every day for a while, to look
+                    after him. The Grants were Virginians, like Peake, and one day when Grant was
+                    getting well enough to be on his feet and sit around in the parlor and talk, the
+                    conversation fell upon Virginia and old times. I was present, but the group were
+                    probably quite unconscious of me, I being only a lad and a negligeable quantity.
+                    Two of the group—Dr. Peake and <anchor type="an" xml:id="vn0663"/>Mrs. Crawford,
+                        <anchor type="aet" xml:id="df4016"/>Mrs.<app from="df4016" type="aet"
+                        xml:id="ap3995">
+                        <lem>Mrs.</lem>
+                        <rdg wit="MS"><del>Dr</del>Mrs.</rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">Mrs.</rdg>
+                    </app>Grant’s mother<ptr target="#en0663" type="an" xml:id="nv0663"/>—had been
+                    of the audience when <anchor type="an" xml:id="vn0664"/>the Richmond theatre
+                    burned down thirty-six years before, and they talked over the frightful details
+                    of that memorable tragedy<ptr target="#en0664" type="an" xml:id="nv0664"/>.
+                    These were eye-witnesses, and with their eyes I saw it all with an intolerable
+                    vividness: I saw the black smoke rolling and tumbling toward the sky, I saw the
+                    flames burst through it and turn it red, I heard the shrieks of the despairing,
+                    I glimpsed their faces at the windows, caught fitfully through the veiling
+                    smoke, I saw them jump to their death, or to mutilation worse than death. The
+                    picture is before me yet, and can never fade.</p>
+                <p rend="text-indent:2" xml:id="pa002113">In due course they talked of the colonial
+                    mansion of the Peakes, with its stately columns and its spacious grounds, and by
+                    odds and ends I picked up a clearly defined idea of the place. I was strongly
+                    interested, for I had not before heard of such palatial things from the lips of
+                    people who had seen them with their own eyes. One detail, casually dropped, hit
+                    my imagination hard. In the wall, by the great front door, there was a round
+                    hole as big as a saucer—a <anchor type="aet" xml:id="df4017"/>British<app
+                        from="df4017" type="aet" xml:id="ap3996">
+                        <lem>British</lem>
+                        <rdg wit="MS"><add>British</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">British</rdg>
+                    </app>cannon ball had made it, in the <anchor type="aet" xml:id="df4018"
+                        />War<app from="df4018" type="aet" xml:id="ap3997">
+                        <lem>War</lem>
+                        <rdg wit="MS">wars</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC">war<del>s</del></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">war</rdg>
+                    </app>of the Revolution. It was breath-taking; it made history real; history had
+                    never been real to me before.</p>
+                <p rend="text-indent:2" xml:id="pa002114">Very well, three or four years <anchor
+                        type="aet" xml:id="df4019"/>later, as already mentioned,<app from="df4019"
+                        type="aet" xml:id="ap3998">
+                        <lem>later, as already mentioned,</lem>
+                        <rdg wit="MS">later</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC">later<add>, as already
+                                mentioned,</add></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">later, as already mentioned,</rdg>
+                    </app>I was king-bee and sole “subject” in the mesmeric show; it was the
+                    beginning of the second week; the performance was half over; just then the
+                    majestic Dr. Peake, with his ruffled bosom and wristbands and his gold-headed
+                    cane, entered, and a deferential citizen vacated his seat beside the Grants and
+                    made the great chief take it. This happened while I was trying to invent
+                    something fresh in the way of a vision, in response to the professor’s
+                    remark—</p>
+                <p rend="text-indent:2" xml:id="pa002115">“Concentrate your powers. Look—look
+                    attentively. There—don’t you see something? Concentrate—<anchor type="aet"
+                        xml:id="df4020"/>concentrate!<app from="df4020" type="aet" xml:id="ap3999">
+                        <lem>concentrate!</lem>
+                        <rdg wit="MS">concentrate.</rdg>
+                        <rdg wit="TS1 ribbon-SLC">concentrate<del>.</del><add>!</add><note
+                                place="inline" resp="MTP" type="ed" xml:id="de1037">period mended to
+                                an exclamation point</note></rdg>
+                        <rdg wit="TS1 carbon, NAR 9pf, NAR 9">concentrate.</rdg>
+                    </app>Now then—describe it.”</p>
+                <p rend="text-indent:2" xml:id="pa002116">Without suspecting it, Dr. <anchor
+                        type="aet" xml:id="df4021"/>Peake, by entering the place,<app from="df4021"
+                        type="aet" xml:id="ap4000">
+                        <lem>Peake, by entering the place,</lem>
+                        <rdg wit="MS">Peake</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC">Peake<add>, by entering the
+                                place,</add></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">Peake, by entering the place,</rdg>
+                    </app>had reminded me of the talk of three years before. He had also furnished
+                    me capital and <anchor type="aet" xml:id="df4022"/>was become<app from="df4022"
+                        type="aet" xml:id="ap4001">
+                        <lem>was become</lem>
+                        <rdg wit="MS">became</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC"
+                                ><add>was</add>bec<del>a</del><add>o</add>me</rdg>
+                        <rdg wit="NAR 9pf, NAR 9">was become</rdg>
+                    </app>my confederate, an accomplice in my frauds. I began on a vision, a vague
+                    and dim one <anchor type="aet" xml:id="df4023"/>(that<app from="df4023"
+                        type="aet" xml:id="ap4002">
+                        <lem>(that</lem>
+                        <rdg wit="MS">—that</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC"><del>—</del><add>(</add>that</rdg>
+                        <rdg wit="NAR 9pf, NAR 9">(that</rdg>
+                    </app>was part of the game at the beginning of a vision, it isn’t best to see it
+                    too clearly at first, it might <pb n="302" xml:id="pb0302"/>look as if you had
+                    come loaded with <anchor type="aet" xml:id="df4024"/>it.)<app from="df4024"
+                        type="aet" xml:id="ap4003">
+                        <lem>it.)</lem>
+                        <rdg wit="MS">it.</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC">it.<add>)</add></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">it).</rdg>
+                    </app>The vision developed, by degrees, and gathered swing, momentum, energy! It
+                    was the Richmond fire. Dr. Peake was cold, at first, and his fine face had a
+                    trace of polite scorn in it; but when he began to recognize that fire, that
+                        <anchor type="aet" xml:id="df4025"/>expression<app from="df4025" type="aet"
+                        xml:id="ap4004">
+                        <lem>expression</lem>
+                        <rdg wit="MS"><del>all</del><add>expression</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">expression</rdg>
+                    </app>changed, and his eyes began to light up. As soon as I saw that, I threw
+                    the valves wide open and turned on all the steam, and gave those people a supper
+                    of fire and horrors that was calculated to last them one while! They couldn’t
+                    gasp, when I got through—they were petrified. Dr. Peake had risen, and was
+                    standing,—and breathing hard. He said, in a great voice—</p>
+                <p rend="text-indent:2" xml:id="pa002117">“My doubts are ended. No collusion could
+                    produce that miracle. It was totally impossible for him to know those details,
+                    yet he has described them with the <anchor type="aet" xml:id="df4026"
+                        />clarity<app from="df4026" type="aet" xml:id="ap4005">
+                        <lem>clarity</lem>
+                        <rdg wit="MS"><del>accuracy</del><add>clarity</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">clarity</rdg>
+                    </app>of an eye-witness—and with what unassailable truthfulness God knows I
+                    know!”</p>
+                <p rend="text-indent:2" xml:id="pa002118">I saved the colonial mansion for the last
+                    night, and solidified and perpetuated Dr. Peake’s conversion with the <anchor
+                        type="aet" xml:id="df4027"/>cannon ball<app from="df4027" type="aet"
+                        xml:id="ap4006">
+                        <lem>cannon ball</lem>
+                        <rdg wit="MS, TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">cannon-ball</rdg>
+                    </app>hole. He explained to the house that I could never have heard of that
+                    small detail, which differentiated this mansion from all other Virginian <anchor
+                        type="aet" xml:id="df4028"/>mansions<app from="df4028" type="aet"
+                        xml:id="ap4007">
+                        <lem>mansions</lem>
+                        <rdg wit="MS">mansions<del>,</del></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">mansions</rdg>
+                    </app><anchor type="aet" xml:id="df4029"/>and<app from="df4029" type="aet"
+                        xml:id="ap4008">
+                        <lem>and</lem>
+                        <rdg wit="MS"><del>nor</del>and</rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">and</rdg>
+                    </app>perfectly identified it, therefore the fact stood <anchor type="aet"
+                        xml:id="df4030"/>proven<app from="df4030" type="aet" xml:id="ap4009">
+                        <lem>proven</lem>
+                        <rdg wit="MS">proven <note place="inline" resp="MTP" type="ed"
+                                xml:id="de1038">originally <hi rend="normal">‘<hi rend="italic"
+                                        >proven</hi>’</hi>; underscore canceled</note></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">proven</rdg>
+                    </app>that I had <hi rend="italic" xml:id="pa002118-hi">seen</hi>it in my
+                    vision. Lawks!</p>
+                <p rend="text-indent:2" xml:id="pa002119">It is curious. When the magician’s
+                    engagement closed there was but one person in the village who did not believe in
+                    mesmerism, and I was the one. All the others were converted, but I was to remain
+                    an implacable and unpersuadable disbeliever in mesmerism and hypnotism for close
+                    upon fifty years. This was because I never would examine them, in after life.
+                        <anchor type="aet" xml:id="ah4031"/>I couldn’t<app from="ah4031" type="aet"
+                        xml:id="ap4010">
+                        <lem>I couldn’t</lem>
+                        <rdg wit="MS"><del>The s</del>I couldn’t</rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">I couldn’t</rdg>
+                    </app>. The subject revolted me. Perhaps because it brought back to me a passage
+                    in my life which for pride’s sake I wished to forget; though I thought—or
+                    persuaded myself I thought—I should never come across a “proof” which wasn’t
+                    thin and cheap, and probably had a fraud like me behind it.</p>
+                <p rend="text-indent:2" xml:id="pa002120">The truth is, I did not have to wait long
+                    to get tired of my triumphs. Not thirty days, I think. The glory which is built
+                    upon <anchor type="aet" xml:id="df4032"/>a<app from="df4032" type="aet"
+                        xml:id="ap4011">
+                        <lem>a</lem>
+                        <rdg wit="MS"><add>a</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">a</rdg>
+                    </app>lie soon becomes a most unpleasant incumbrance. No doubt for a while I
+                    enjoyed having my exploits told and retold and told again <anchor type="aet"
+                        xml:id="df4033"/>in my presence<app from="df4033" type="aet" xml:id="ap4012">
+                        <lem>in my presence</lem>
+                        <rdg wit="MS"><add>in my presence</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">in my presence</rdg>
+                    </app>and wondered over and exclaimed about, but I quite distinctly remember
+                    that there presently came a time <anchor type="aet" xml:id="df4034"/>when<app
+                        from="df4034" type="aet" xml:id="ap4013">
+                        <lem>when</lem>
+                        <rdg wit="MS"><del>t</del>when</rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">when</rdg>
+                    </app>the subject was wearisome <anchor type="aet" xml:id="df4035"/>and
+                        odious<app from="df4035" type="aet" xml:id="ap4014">
+                        <lem>and odious</lem>
+                        <rdg wit="MS"><del>and hateful</del><add>and odious</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">and odious</rdg>
+                    </app>to me and I could not endure the disgusting discomfort of <anchor
+                        type="aet" xml:id="df4036"/>it.<app from="df4036" type="aet" xml:id="ap4015">
+                        <lem>it.</lem>
+                        <rdg wit="MS">it. <del><add>It scorched me, it blistered me, to be gazed
+                                    upon so devouringly, so admiringly, <del>so worshipfully
+                                        by</del>so trustingly by those honest eyes, and I a cheap
+                                    and shabby fraud and worthy of nothing but their
+                                contempt.</add></del><note place="inline" resp="MTP" type="ed"
+                                xml:id="de1039">inserted on the verso with instructions to turn
+                                over</note></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">it.</rdg>
+                    </app>I am well aware that the world-glorified doer of a deed of great and real
+                    splendor has just my experience; I know that he deliciously enjoys hearing about
+                    it for three or four weeks, and that pretty soon after that he begins to dread
+                    the mention of it, and by and by wishes he had been with the damned before he
+                    ever thought of doing that deed; I remember how <anchor type="an"
+                        xml:id="vn0665"/>General Sherman used to rage and swear <anchor type="aet"
+                        xml:id="df4037"/>over<app from="df4037" type="aet" xml:id="ap4016">
+                        <lem>over</lem>
+                        <rdg wit="MS"><del>of</del>over</rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">over</rdg>
+                    </app>“When we were marching through Georgia,”<ptr target="#en0665" type="an"
+                        xml:id="nv0665"/>which was played at him and sung at him everywhere he went;
+                    still, I think I suffered a shade more than the legitimate hero does, he being
+                    privileged to soften his misery with the reflection that his glory was at any
+                    rate golden and reproachless in its origin, whereas I had no such privilege,
+                    there being no possible way to make mine respectable.</p>
+                <p rend="text-indent:2" xml:id="pa002121">How easy it is to make people believe a
+                    lie, and <anchor type="aet" xml:id="df4038"/>how<app from="df4038" type="aet"
+                        xml:id="ap4017">
+                        <lem>how</lem>
+                        <rdg wit="MS"><add>how</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">how</rdg>
+                    </app>hard it is to undo that work again! <anchor type="an" xml:id="vn0666"
+                    />Thirty-five years after those evil exploits of mine I visited my old mother,
+                    whom I had not seen for ten years<ptr target="#en0666" type="an" xml:id="nv0666"
+                    />; and being moved by what seemed to me a rather noble and perhaps <pb n="303"
+                        xml:id="pb0303"/>heroic impulse, I thought I would humble myself and confess
+                    my ancient fault. It cost me a great effort to make up my mind; I dreaded the
+                    sorrow that would rise in her face, and the shame that would look out of her
+                    eyes; but after long and troubled reflection, the sacrifice seemed due and
+                    right, and I gathered my resolution together and made the confession.</p>
+                <p rend="text-indent:2" xml:id="pa002122">To my astonishment there were no
+                    sentimentalities, no dramatics, no George Washington effects; she was not moved
+                    in the least degree; she simply did not believe me, and said so! I was not
+                    merely disappointed, I was nettled, to have my costly truthfulness flung out of
+                    the market in this placid and confident way when I was expecting to get a profit
+                    out of it. I asserted, and <anchor type="aet" xml:id="df4039"/>re-asserted, with
+                    rising heat,<app from="df4039" type="aet" xml:id="ap4018">
+                        <lem>re-asserted, with rising heat,</lem>
+                        <rdg wit="MS">re-asserted<add>, with rising heat,</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon">re-asserted, with rising heat,</rdg>
+                        <rdg wit="NAR 9pf, NAR 9">reasserted, with rising heat,</rdg>
+                    </app>my statement that every single thing I had done on those long-vanished
+                    nights was a lie and a swindle; and when she shook her head tranquilly and said
+                    she knew better, I put up my hand and <hi rend="italic" xml:id="pa002122-hi-1"
+                        >swore</hi>to it—adding a triumphant “<hi rend="italic"
+                        xml:id="pa002122-hi-2">Now</hi>what do you say!”</p>
+                <p rend="text-indent:2" xml:id="pa002123">It did not affect her at all; it did not
+                    budge her the fraction of an inch from her position. If this was hard <anchor
+                        type="aet" xml:id="df4040"/>for me<app from="df4040" type="aet"
+                        xml:id="ap4019">
+                        <lem>for me</lem>
+                        <rdg wit="MS"><add>for me</add></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">for me</rdg>
+                    </app>to endure, it did not begin with the blister she put upon the raw when she
+                    began to put my sworn oath out of court with <hi rend="italic"
+                        xml:id="pa002123-hi">arguments</hi>to prove that I was under a delusion and
+                    did not know what I was talking about. Arguments! Arguments to show that a
+                    person on a man’s outside can know better what is on his inside than he does
+                        <anchor type="aet" xml:id="df4041"/>himself!<app from="df4041" type="aet"
+                        xml:id="ap4020">
+                        <lem>himself!</lem>
+                        <rdg wit="MS">himself.</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC"
+                                >himself<del>,</del><add>!</add><note place="inline" resp="MTP"
+                                type="ed" xml:id="de1040">period mended to an exclamation
+                                point</note></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">himself!</rdg>
+                    </app>I had cherished some contempt for arguments before, I have not enlarged my
+                    respect for them since. She refused to believe that I had invented my visions
+                    myself; she said it was folly: that I was only a child at the time and could not
+                    have done it. She cited the Richmond fire and the colonial mansion and said they
+                    were quite beyond my capacities. Then I saw my chance! I said she was right—I
+                    didn’t invent those, I got them from Dr. Peake. Even this great shot did no
+                    damage. She said Dr. Peake’s evidence was better than mine, and he had said in
+                    plain words that it was impossible for me to have heard about those things.
+                        <anchor type="aet" xml:id="ah4042"/>Dear, dear, what a grotesque and
+                    unthinkable situation: a confessed swindler convicted of honesty and condemned
+                    to acquittal by circumstantial evidence furnished by the swindled!<app
+                        from="ah4042" type="aet" xml:id="ap4021">
+                        <lem>Dear, dear .&#160;.&#160;. swindled!</lem>
+                        <rdg wit="MS"><add>Dear, dear .&#160;.&#160;. swindled!</add><note
+                                place="inline" resp="MTP" type="ed" xml:id="de1041">inserted on the
+                                verso with instructions to turn over</note></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9"><add>Dear, dear
+                                .&#160;.&#160;. swindled!</add></rdg>
+                    </app></p>
+                <p rend="text-indent:2" xml:id="pa002124">I realized, with shame and with impotent
+                    vexation, that I was defeated all along the line. I had but one card left, but
+                    it was a formidable one. I played it—and stood from under. It seemed ignoble to
+                    demolish her fortress, after she had defended it so <anchor type="aet"
+                        xml:id="df4043"/>valiantly; but<app from="df4043" type="aet" xml:id="ap4022">
+                        <lem>valiantly; but</lem>
+                        <rdg wit="MS">valiantly<del>.</del><add>;</add>But <note place="inline"
+                                resp="MTP" type="ed" xml:id="de1042">period mended to a
+                                semicolon</note></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">valiantly; but</rdg>
+                    </app>the defeated know not mercy. I played that master card. It was the
+                    pin-sticking. I said solemnly—</p>
+                <p rend="text-indent:2" xml:id="pa002125">“I give you my honor, a pin was never
+                    stuck into me without causing me cruel pain.”</p>
+                <p rend="text-indent:2" xml:id="pa002126">She only said—</p>
+                <p rend="text-indent:2" xml:id="pa002127">“It is thirty-five years. I believe you do
+                    think that, <hi rend="italic" xml:id="pa002127-hi">now,</hi>but I was there, and
+                    I know better. You never winced.”</p>
+                <p rend="text-indent:2" xml:id="pa002128">She was so <anchor type="aet"
+                        xml:id="df4044"/>calm!<app from="df4044" type="aet" xml:id="ap4023">
+                        <lem>calm!</lem>
+                        <rdg wit="MS">calm,</rdg>
+                        <rdg wit="TS1 ribbon-SLC, TS1 carbon-SLC">calm<del>,</del><add>!</add></rdg>
+                        <rdg wit="NAR 9pf, NAR 9">calm!</rdg>
+                    </app>and I was so far from it, so nearly frantic.</p>
+                <p rend="text-indent:2" xml:id="pa002129">“Oh, my goodness!” I said, “let me <hi
+                        rend="italic" xml:id="pa002129-hi">show</hi>you that I am speaking the
+                    truth. Here is my arm; drive a pin into it—drive it to the head—I shall not
+                    wince.”</p>
+                <p rend="text-indent:2" xml:id="pa002130">She only shook her gray head and said with
+                    simplicity and conviction—</p>
+                <p rend="text-indent:2" xml:id="pa002131">“You are a man, now, and could dissemble
+                    the hurt; but you were only a child then, and could not have done it.”</p>
+                <p rend="text-indent:2" xml:id="pa002132"><pb n="304" xml:id="pb0304"/>And so the
+                    lie which I played upon her in my youth remained with her as an unchallengeable
+                    truth to the day of her death. <anchor type="an" xml:id="vn0667"/>Carlyle said
+                    “a lie cannot live.”<ptr target="#en0667" type="an" xml:id="nv0667"/>It shows
+                    that he did not know how to tell them. If I had taken out a life policy on this
+                    one the premiums would have bankrupted me ages <anchor type="aet"
+                        xml:id="df4045"/>ago.<app from="df4045" type="aet" xml:id="ap4024">
+                        <lem>ago.</lem>
+                        <rdg wit="MS">ago. <lb/>* * * * * <note place="inline" resp="MTP" type="ed"
+                                xml:id="de1043">line of stars</note></rdg>
+                        <rdg wit="TS1 ribbon, TS1 carbon, NAR 9pf, NAR 9">ago.</rdg>
+                    </app></p>
+            </div1>
+            <!-- . . . -->
+        </body>
+        <back>
+            <div1 type="edsec" xml:id="bm0010">
+                <head rend="toc">Explanatory Notes</head>
+                <pb n="457" xml:id="pb0457"/>
+                <head>EXPLANATORY NOTES</head>
+                <div2 type="edsec" xml:id="mb0001">
+                    <p rend="noindent" xml:id="np0001">These notes are intended to clarify and
+                        supplement the Autobiographical Dictations in this volume by identifying
+                        people, places, and incidents, and by explaining topical references and
+                        literary allusions. In addition, they attempt to point out which of
+                        Clemens’s statements are contradicted by historical evidence, <anchor
+                            type="ov" xml:id="ov0700"/>providing a way to understand more fully how
+                        his memories of long-past events and experiences were affected by his
+                        imagination and the passage of time. Although some of the notes contain
+                        cross-references to texts or notes elsewhere in this volume and in Volume 1,
+                        the Index is an indispensable tool for finding information about a
+                        previously identified person or event.</p>
+                    <p rend="noindent" xml:id="np0002">All references in the notes are keyed to this
+                        volume by page and line: for example, 1.1 means page 1, line 1 of the text.
+                        All of Clemens’s text is included in the line count except for the date
+                        titles of the dictations. Most of the source works are cited by an author’s
+                        name and a date, a short title, or an abbreviation. Works by members of the
+                        Clemens family may be found under the writer’s initials: SLC, OSC (Susy), CC
+                        (Clara), and JC (Jean). All abbreviations, authors, and short titles used in
+                        citations are fully defined in References. Most citations include a page
+                        number (“<ref corresp="bib00005" rend="new" type="dbquery"><hi rend="italic"
+                                >L1,</hi></ref>74,” or “<ref corresp="bib33266" rend="new"
+                            type="dbquery">Derby 1884</ref>, 182–84”), but citations to works
+                        available in numerous editions may instead supply a chapter number or its
+                        equivalent, such as a book or act number. All quotations from holograph
+                        documents are transcribed verbatim from the originals (or photocopies
+                        thereof), even when a published form—a more readily available source—is also
+                        cited for the reader’s convenience. The location of every unique document or
+                        manuscript is identified by the standard Library of Congress abbreviation,
+                        or the last name of the owner, all of which are defined in References.</p>
+                    <lb/>
+                </div2>
+                <div2 type="edsec" xml:id="mb0003">
+                    <head rend="toc">AD, 2 April 1906</head>
+                    <head>Autobiographical Dictation, 2 April 1906</head>
+                    <note n="3.6–7" place="end" resp="MTP" target="#vn0001" targetEnd="#nv0001"
+                        type="an" xml:id="en0001"><p rend="text-indent:2" xml:id="np0004">PROMOTION
+                            FOR BARNES, WHOM TILLMAN BERATED] The article that begins here was
+                            published in the New York <hi rend="italic">Times</hi>on 1 April.
+                            Clemens provided his stenographer with a (partial) clipping of it and
+                            dictated the following instructions: <anchor type="ov" xml:id="ov0001"
+                            />“Miss Hobby, please paste this in at this point, in record of April
+                            1st, but I may not comment on it until later.” The clipping itself did
+                            not include the last two paragraphs of the original article, which
+                            contained background information about Benjamin Barnes and a comment
+                            about Senator Platt (see the note at 3.11–20). Clemens had discussed
+                            Mrs. Minor Morris’s ejection from the White House, Barnes’s part in it,
+                            and Senator Benjamin Tillman’s response in his Autobiographical
+                            Dictations of 10 January, 15 January, and 18 <pb n="458" xml:id="pb0458"
+                            />January 1906 (<ref corresp="bib33010" rend="new" type="dbquery"><hi
+                                    rend="italic">AutoMT1</hi></ref>, 256–59, 279–81, 292–93). He
+                            takes up his discussion of the incident in the next dictation, of 3
+                            April.</p></note>
+                    <note n="3.11–20" place="end" resp="MTP" target="#vn0002" targetEnd="#nv0002"
+                        type="an" xml:id="en0002"><p rend="text-indent:2" xml:id="np0005">MERRITT
+                            GETS NEW PLACE .&#160;.&#160;. succeeding the late Major James Low]
+                            President William McKinley appointed John A. Merritt (1851–1919) as
+                            postmaster of Washington in 1899, the same year that he made James Low
+                            collector of customs for the district of Niagara. <anchor type="ov"
+                                xml:id="ov0002"/>Thomas Collier Platt (1833–1910), who had
+                            recommended Merritt for the postmastership, was a senator from New York
+                            and former Republican party leader (“New City Postmaster,” Washington
+                                <hi rend="italic">Post,</hi>28 May 1899, 3; New York <hi
+                                rend="italic">Times:</hi>“Presidential Nominations,” 21 Jan 1899, 4;
+                            “John A. Merritt,” 17 Oct 1919, 17).</p></note>
+                    <note n="4.1–2" place="end" resp="MTP" target="#vn0003" targetEnd="#nv0003"
+                        type="an" xml:id="en0003"><p rend="text-indent:2" xml:id="np0006">Governor
+                            Nye was .&#160;.&#160;. politician, not statesman] James W. Nye
+                            (1815–76) had been a district attorney and judge in Madison County (New
+                            York), a lawyer in Syracuse, and <anchor type="ov" xml:id="ov0003"
+                            />president of the New York City Metropolitan Police Commission before
+                            Abraham Lincoln appointed him governor of Nevada Territory in 1861
+                            (“Obituary. Gen. James W. Nye,” New York <hi rend="italic">Times,</hi>28
+                            Dec 1876, 4; see also the notes at 5.25–36 and 6.8–9).</p></note>
+                    <note n="4.40–5.5" place="end" resp="MTP" target="#vn0004" targetEnd="#nv0004"
+                        type="an" xml:id="en0004"><p rend="text-indent:2" xml:id="np0007">The
+                            Governor’s official menagerie .&#160;.&#160;. boarders and lodgers] In
+                            the first four chapters of <hi rend="italic">Roughing It</hi>Clemens
+                            recalls Orion’s appointment as secretary of Nevada Territory, and the
+                            “six pounds of Unabridged Dictionary” he brought along on their
+                            stagecoach trip west from Missouri. <anchor type="ov" xml:id="ov0004"
+                            />In chapter 21, he describes the Carson City boardinghouse at which he
+                            and Orion and Nye’s “menagerie”—that is, his “Irish Brigade” of
+                            retainers—lived. It was run by “a worthy French lady by the name of
+                            Bridget O’Flannigan, a camp follower of his Excellency the Governor.”
+                            Her real name was Margret Murphy (see <hi rend="italic"><ref
+                                    corresp="bib00151" rend="new" type="dbquery">RI
+                            1993</ref>,</hi>1–19, 141–46, 613).</p></note>
+                    <note n="5.5" place="end" resp="MTP" target="#vn0005" targetEnd="#nv0005"
+                        type="an" xml:id="en0005"><p rend="text-indent:2" xml:id="np0008">the silver
+                            I had brought from home] Out of his earnings as a Mississippi River
+                            steamboat pilot, Clemens had paid his and Orion’s $200 stagecoach fares
+                            from St. Joseph, Missouri, to Carson City, and had also provided about
+                            $800 for expenses (<hi rend="italic"><ref corresp="bib00151" rend="new"
+                                    type="dbquery">RI 1993</ref>,</hi>notes on 574–76).</p></note>
+                    <note n="5.7–8" place="end" resp="MTP" target="#vn0006" targetEnd="#nv0006"
+                        type="an" xml:id="en0006"><p rend="text-indent:2" xml:id="np0009">a
+                            journalistic life on the Virginia City Enterprise .&#160;.&#160;. Carson
+                            City to report the legislative session] After about six weeks on the
+                            staff of the Virginia City <hi rend="italic">Territorial
+                                Enterprise,</hi>Clemens was assigned to report the second session of
+                            the Nevada Territorial Legislature, held in Carson City from 11 November
+                            until 20 December 1862. <anchor type="ov" xml:id="ov0005"/>None of his
+                            legislative dispatches has been recovered, but two of the weekly general
+                            letters he sent to the paper at the time survive (see <ref
+                                corresp="bib33010" rend="new" type="dbquery"><hi rend="italic"
+                                    >AutoMT1</hi></ref>, 251, 543 n. 251.31–38, and <ref
+                                corresp="bib00015" rend="new" type="dbquery"><hi rend="italic"
+                                    >MTEnt,</hi></ref>9–10, 33–41).</p></note>
+                    <note n="5.15–21" place="end" resp="MTP" target="#vn0007" targetEnd="#nv0007"
+                        type="an" xml:id="en0007"><p rend="text-indent:2" xml:id="np0010">I got the
+                            legislature to pass a wise and very necessary law .&#160;.&#160;.
+                            furnishing a certificate of each record] Clemens may be conflating two
+                            sessions of the Nevada Territorial Legislature. During the first session
+                            he served as Orion’s clerk, and <anchor type="ov" xml:id="ov0006"/>it is
+                            likely that he influenced the passage of a law on 29 November 1861 that
+                            permitted Orion to collect certain fees: thirty cents per hundred words
+                            for copying documents, one dollar for sealing and for filing them, and
+                            five dollars for appointing a commissioner of deeds <pb n="459"
+                                xml:id="pb0459"/>(notary public). Another law was approved during
+                            the second session, on 19 December 1862, that required corporations to
+                            file official certificates (with no fee stated) and raised the copying
+                            fee to forty cents—the amount Clemens recalls here. No evidence has been
+                            found, however, that he was involved in the enactment of this second law
+                            (William C. <ref corresp="bib00669" rend="new" type="dbquery">Miller
+                                1973</ref>, 3–5; <ref corresp="bib10206" rend="new" type="dbquery"
+                                    ><hi rend="italic">Laws</hi>1862</ref>, 310–11; <ref
+                                corresp="bib10207" rend="new" type="dbquery"><hi rend="italic"
+                                    >Laws</hi>1863</ref>, 94).</p></note>
+                    <note n="5.23–24" place="end" resp="MTP" target="#vn0008" targetEnd="#nv0008"
+                        type="an" xml:id="en0008"><p rend="text-indent:2" xml:id="np0011">Very well,
+                            we prospered. The record-service paid .&#160;.&#160;. a thousand dollars
+                            a month, in gold] Orion’s salary was $1,800 a year, paid quarterly, as
+                            set by the congressional act of 2 March 1861 which organized the Nevada
+                            Territory. Clemens earned $480 as Orion’s clerk during the first session
+                            of the legislature, and <anchor type="ov" xml:id="ov0007"/>evidently
+                            planned to do so in the second (1862) session. It is highly unlikely
+                            that the record-service was so lucrative. In fact, the Clemens brothers
+                            were frequently pressed for funds, in part because they were spending
+                            much of what they did have on working their several mining claims and
+                            speculating in mining stock (see 25 Oct 1861 to <ref corresp="bib10327"
+                                rend="new" type="dbquery">PAM</ref>and <ref corresp="bib10172"
+                                rend="new" type="dbquery">JLC</ref>through 26 May 1864 to OC, <ref
+                                corresp="bib00005" rend="new" type="dbquery"><hi rend="italic"
+                                    >L1,</hi></ref>129–301 passim; <ref corresp="bib10206"
+                                rend="new" type="dbquery"><hi rend="italic">Laws</hi>1862</ref>, ix,
+                            xiv).</p></note>
+                    <note n="5.25–36" place="end" resp="MTP" target="#vn0009" targetEnd="#nv0009"
+                        type="an" xml:id="en0009"><p rend="text-indent:2" xml:id="np0012">Governor
+                            Nye was often absent .&#160;.&#160;. as Acting Governor] For four years
+                            Nye was a driver for his brother’s stagecoach line, hauling passengers
+                            and express on its Syracuse-Albany run, before studying law in Troy, New
+                            York, and being admitted to the New York State bar in 1839. <anchor
+                                type="ov" xml:id="ov0008"/>Orion’s longest stint as acting governor
+                            was between December 1862 and July 1863, while Nye was on one of his
+                            frequent political forays outside Nevada (<ref corresp="bib33246"
+                                rend="new" type="dbquery">Samon 1979</ref>, 16; OC and SLC to <ref
+                                corresp="bib10056" rend="new" type="dbquery">MEC</ref>, 29, 30, and
+                            31 Jan 1862, <ref corresp="bib00005" rend="new" type="dbquery"><hi
+                                    rend="italic">L1,</hi></ref>145–46 n. 2).</p></note>
+                    <note n="5.42–6.1" place="end" resp="MTP" target="#vn0010" targetEnd="#nv0010"
+                        type="an" xml:id="en0010"><p rend="text-indent:2" xml:id="np0013">He
+                            recklessly built and furnished a house at a cost of twelve thousand
+                            dollars] In November 1863 Orion paid George B. Cowing $1,100 for the
+                            plot of land at the northwest corner of Spear and Division streets in
+                            Carson City. <anchor type="ov" xml:id="ov0009"/>There he built the
+                            two-story clapboard house which, somewhat renovated, still stands today.
+                            Shortly after it was completed in early 1864, the house and its
+                            furnishings were assessed at a taxable value of $3,250. Orion and his
+                            wife, Mollie, sold the property on 14 August 1866, after they had
+                            already left Nevada (<ref corresp="bib33710" rend="new" type="dbquery"
+                                >Rocha 2000</ref>; Jeffrey M. Kintop [Nevada state archivist],
+                            personal communication, 3 Jan 2012, <ref corresp="bib10074" rend="new"
+                                type="dbquery">CU-MARK</ref>).</p></note>
+                    <note n="6.8–9" place="end" resp="MTP" target="#vn0011" targetEnd="#nv0011"
+                        type="an" xml:id="en0011"><p rend="text-indent:2" xml:id="np0014">the people
+                            were willing .&#160;.&#160;. the Governor’s game was made] Nevada voters
+                            approved statehood on 2 September 1863, and Nevada became the
+                            thirty-sixth state in late 1864. <anchor type="ov" xml:id="ov0010"/>Nye
+                            was elected a Republican senator and served from 1864 to 1873 (19 Aug
+                            1863 to <ref corresp="bib10172" rend="new" type="dbquery">JLC</ref>and
+                                <ref corresp="bib10327" rend="new" type="dbquery">PAM</ref>, <ref
+                                corresp="bib00005" rend="new" type="dbquery"><hi rend="italic"
+                                    >L1,</hi></ref>265 n. 5).</p></note>
+                    <note n="6.10–12" place="end" resp="MTP" target="#vn0012" targetEnd="#nv0012"
+                        type="an" xml:id="en0012"><p rend="text-indent:2" xml:id="np0015">Orion’s
+                            game .&#160;.&#160;. disaster followed] For the details, see the
+                            Autobiographical Dictation of <ref target="#dv0004" type="chapterref">5
+                                April 1906</ref>. Clemens also describes Orion’s personality in the
+                            Autobiographical Dictations of 28 March and 29 March 1906 (<ref
+                                corresp="bib33010" rend="new" type="dbquery"><hi rend="italic"
+                                    >AutoMT1</hi></ref>451–62).</p></note>
+                    <lb/>
+                </div2>
+                <!-- . . . -->
+                <div2 type="edsec" xml:id="mb0073">
+                    <head rend="toc">AD, 2 Dec 1906</head>
+                    <head>Autobiographical Dictation, 2 December 1906</head>
+                    <note n="301.1" place="end" resp="MTP" target="#vn0660" targetEnd="#nv0660"
+                        type="an" xml:id="en0660"><p rend="text-indent:2" xml:id="np0918">Mr.
+                            Clemens’s experiments in mesmerism, continued] Like the previous day’s
+                            text, this one and the next are in fact 1903 manuscripts inserted in
+                            1906.</p></note>
+                    <note n="301.2–6" place="end" resp="MTP" target="#vn0661" targetEnd="#nv0661"
+                        type="an" xml:id="en0661"><p rend="text-indent:2" xml:id="np0919">large
+                            white house on the corner of Hill and Main .&#160;.&#160;. Dr. Grant’s]
+                            The Clemens family moved in with Dr. Orville R. Grant (1815–?54) and his
+                            family in 1846, occupying the flat above his drugstore. <anchor
+                                type="ov" xml:id="ov0403"/>They boarded the Grant family in exchange
+                            for their lodging, after it became clear that all of the Clemens
+                            property would be sold to pay a debt (see <ref corresp="bib33010"
+                                rend="new" type="dbquery"><hi rend="italic">AutoMT1</hi></ref>,
+                            62–63, 454). John Marshall Clemens died several months later, in March
+                            1847. Grant was born in Kentucky, received his Doctor of Medicine “on
+                            the Modus Operandi of Medicines” at the Louisville Medical Institute in
+                            March 1838, and evidently spent time in Virginia before setting up shop
+                            in Hannibal, where he served as a physician, surgeon, and pharmacist for
+                            nearly a decade (<ref corresp="bib33812" rend="new" type="dbquery"
+                                >Yandell 1838</ref>). In 1845 he attended the dying Sam Smarr, who
+                            had been shot in the street in front of the drugstore by William
+                            Owsley—an incident that Clemens used in chapter 21 of <hi rend="italic"
+                                >Huckleberry Finn.</hi>And Clemens remembered, in 1867, that when
+                            Jimmy Finn, one of the town’s drunkards, died the same year, “his body
+                            went to Dr. Grant” (<ref corresp="bib10903" rend="new" type="dbquery"
+                                >SLC 1867b</ref>). Clemens had seen the house when he was last in
+                            Hannibal, from 29 May to 3 June 1902, a year before writing this
+                            manuscript (<ref corresp="bib00197" rend="new" type="dbquery">Wecter
+                                1952</ref>, 133; <hi rend="italic">Inds,</hi>318–19, 339–40; <ref
+                                corresp="bib33528" rend="new" type="dbquery"><hi rend="italic"
+                                    >Kanawha Census</hi>1850</ref>, 954:101A).</p></note>
+                    <note n="301.6–7" place="end" resp="MTP" target="#vn0662" targetEnd="#nv0662"
+                        type="an" xml:id="en0662"><p rend="text-indent:2" xml:id="np0920">Dr. Grant
+                            and Dr. Reyburn argued a matter on the street with sword-canes] In
+                            August 1845, a report on the incident appeared in the newspaper
+                            exchanges, which named another assailant: <anchor type="ov"
+                                xml:id="ov0404"/>“An affray took place in Hannibal on last Friday
+                            week, in which a man by the name of Railey stabbed Dr. Orville R. Grant
+                            through the left lung, with a spear attached to his cane” (“Affray at
+                            Hannibal, Mo.,” Philadelphia <hi rend="italic">North American,</hi>26
+                            Aug 1845, 1).</p></note>
+                    <note n="301.13" place="end" resp="MTP" target="#vn0663" targetEnd="#nv0663"
+                        type="an" xml:id="en0663"><p rend="text-indent:2" xml:id="np0921">Mrs.
+                            Crawford, Mrs. Grant’s mother] Orville Grant married Miriam M. McFarland
+                            (1820–53) in 1837 in Charleston, West Virginia. <anchor type="ov"
+                                xml:id="ov0405"/>Her mother, Lethe Reynolds <pb n="591"
+                                xml:id="pb0591"/>McFarland (1800–1882), was the first of her
+                            father’s four wives. No confirmation has been found that she ever took
+                            the name Crawford (<ref corresp="bib33811" rend="new" type="dbquery"
+                                >Little 1893</ref>, 149–50; <ref corresp="bib33810" rend="new"
+                                type="dbquery">Atkinson 1876</ref>, 273).</p></note>
+                    <note n="301.14–15" place="end" resp="MTP" target="#vn0664" targetEnd="#nv0664"
+                        type="an" xml:id="en0664"><p rend="text-indent:2" xml:id="np0922">the
+                            Richmond theatre burned down thirty-six years before .&#160;.&#160;.
+                            that memorable tragedy] On the night of 26 December 1811, during a
+                            pantomime after-piece entitled “Raymond and Agness, or the Bleeding
+                            Nun,” fire engulfed the Richmond Theatre “with electric velocity,”
+                            spreading from a chandelier onstage to the entire building in only ten
+                            minutes. <anchor type="ov" xml:id="ov0406"/>Despite all efforts to
+                            rescue those who were trapped inside, fifty-four women and eighteen men
+                            died out of an audience of six hundred (<ref corresp="bib33527"
+                                rend="new" type="dbquery">Richmond Then and
+                        Now</ref>2011).</p></note>
+                    <note n="302.34–35" place="end" resp="MTP" target="#vn0665" targetEnd="#nv0665"
+                        type="an" xml:id="en0665"><p rend="text-indent:2" xml:id="np0923">General
+                            Sherman used to rage and swear over “When we were marching through
+                            Georgia,”] In 1865 Henry Clay Work wrote “Marching through Georgia” to
+                            celebrate Major General William Tecumseh Sherman’s March to the Sea at
+                            the end of 1864, which left a wide path of destruction and hastened the
+                            end of the Civil War.</p></note>
+                    <note n="302.41–42" place="end" resp="MTP" target="#vn0666" targetEnd="#nv0666"
+                        type="an" xml:id="en0666"><p rend="text-indent:2" xml:id="np0924"
+                            >Thirty-five years after those evil exploits .&#160;.&#160;. I had not
+                            seen for ten years] Clemens probably confessed his deception to his
+                            mother in January 1885, when he stopped in Keokuk on his reading tour
+                            with George Washington Cable. <anchor type="ov" xml:id="ov0407"/>The
+                            last time he had seen her was in August 1874, when he and Olivia visited
+                            her in Fredonia, New York, where she was living with Pamela Moffett (14
+                            Jan 1885 to <ref corresp="bib10850" rend="new" type="dbquery">OLC</ref>,
+                                <ref corresp="bib10074" rend="new" type="dbquery">CU-MARK</ref>;
+                            link note following 1–3 Aug 1874 to Dickinson, <ref corresp="bib00010"
+                                rend="new" type="dbquery"><hi rend="italic"
+                        >L6,</hi></ref>205).</p></note>
+                    <note n="304.2" place="end" resp="MTP" target="#vn0667" targetEnd="#nv0667"
+                        type="an" xml:id="en0667"><p rend="text-indent:2" xml:id="np0925">Carlyle
+                            said “a lie cannot live.”] Thomas Carlyle’s <hi rend="italic">French
+                                Revolution</hi>was one of Clemens’s favorite books, but he was
+                            familiar with other works as well. <anchor type="ov" xml:id="ov0408"
+                            />“Nature admits no lie,” Carlyle wrote in “The Stump-Orator,” but no
+                            closer version of the quotation has been found (<ref corresp="bib00701"
+                                rend="new" type="dbquery">Gribben 1980</ref>, 1:128–29; <ref
+                                corresp="bib33687" rend="new" type="dbquery">Carlyle 1864</ref>,
+                            180).</p></note>
+                    <lb/>
+                </div2>
+                <!-- . . . -->
+            </div1>
+            <div1 type="bmsec" xml:id="bm0011">
+                <head rend="toc">Appendixes</head>
+                <pb n="649" xml:id="pb0649"/>
+                <head>APPENDIXES</head>
+                <div2 type="edsec" xml:id="bm0012">
+                    <head rend="toc">Samuel L. Clemens: A Brief Chronology</head>
+                    <head><lb/>SAMUEL L. CLEMENS: A BRIEF CHRONOLOGY</head>
+                    <list>
+                        <label>1835</label>
+                        <item>Born 30 November in Florida, Mo., the sixth child of John Marshall and
+                            Jane Lampton Clemens. Of his six siblings, only Orion, Pamela, and Henry
+                            lived into adulthood. (For details, see “<ref target="#bm0009"
+                                type="chapterref">Family Biographies</ref>.”)</item>
+                        <label>1839–40</label>
+                        <item>Moves to Hannibal, Mo., on the west bank of the Mississippi River;
+                            enters typical western common school in Hannibal (1840).</item>
+                        <label>1842–47</label>
+                        <item>Spends summers at his uncle John Quarles’s farm, near Florida,
+                            Mo.</item>
+                        <label>1847</label>
+                        <item>On 24 March his father dies. Leaves school to work as an errand boy
+                            and apprentice typesetter for Henry La Cossitt’s Hannibal <hi
+                                rend="italic">Gazette.</hi></item>
+                        <label>1848</label>
+                        <item>Apprenticed to Joseph P. Ament, the new editor and owner of the
+                            Hannibal <hi rend="italic">Missouri Courier.</hi>Works for and lives
+                            with Ament until the end of 1850.</item>
+                        <label>1851</label>
+                        <item>In January joins Orion’s newspaper, the Hannibal <hi rend="italic"
+                                >Western Union,</hi>where he soon prints “A Gallant Fireman,” his
+                            earliest known published work.</item>
+                        <label>1853–57</label>
+                        <item>After almost three years as Orion’s apprentice, leaves Hannibal in
+                            June 1853. Works as a journeyman typesetter in St. Louis, New York,
+                            Philadelphia, Muscatine (Iowa), Keokuk (Iowa), and Cincinnati.</item>
+                        <label>1857</label>
+                        <item>On 16 February departs Cincinnati on the <hi rend="italic">Paul
+                                Jones,</hi>piloted by Horace E. Bixby, who agrees to train him as a
+                            Mississippi River pilot.</item>
+                        <label>1858</label>
+                        <item>Henry Clemens dies of injuries from the explosion of the <hi
+                                rend="italic">Pennsylvania.</hi></item>
+                        <label>1859</label>
+                        <item>On 9 April officially licensed to pilot steamboats “to and from St.
+                            Louis and New Orleans.” By 1861 has served as “a good average” pilot on
+                            at least a dozen boats.</item>
+                        <label>1861</label>
+                        <item>Becomes a Freemason (resigns from his lodge in 1869). Works as a
+                            commercial pilot until the outbreak of the Civil War. Joins the Hannibal
+                            Home Guard, a small band of volunteers with Confederate sympathies.
+                            Resigns after two weeks and accompanies Orion to Nevada Territory, where
+                            Orion will serve until 1864 as the territorial secretary. Works briefly
+                            for Orion, then prospects for silver.</item>
+                        <label>1862</label>
+                        <item>Prospects in the Humboldt and Esmeralda mining districts. Sends
+                            contributions signed “Josh” (now lost) to the Virginia City <hi
+                                rend="italic">Territorial Enterprise,</hi>and in October becomes its
+                            local reporter.</item>
+                        <label><pb n="650" xml:id="pb0650"/>1863–64</label>
+                        <item>On 3 February 1863 first signs himself “Mark Twain.” While writing for
+                            the <hi rend="italic">Enterprise</hi>he becomes Nevada correspondent for
+                            the San Francisco <hi rend="italic">Morning Call.</hi>To escape
+                            prosecution for dueling, moves to San Francisco about 1 June 1864 and
+                            for four months works as local reporter for the <hi rend="italic"
+                                >Call.</hi>Writes for the <hi rend="italic">Californian</hi>and the
+                                <hi rend="italic">Golden Era.</hi>In early December visits Jackass
+                            Hill in Tuolumne County, Calif.</item>
+                        <label>1865</label>
+                        <item>Visits Angels Camp in Calaveras County, Calif. Returns to San
+                            Francisco and begins writing a daily letter for the <hi rend="italic"
+                                >Enterprise.</hi>Continues to write for the <hi rend="italic"
+                                >Californian.</hi>“Jim Smiley and His Jumping Frog” published in the
+                            New York <hi rend="italic">Saturday Press</hi>on 18 November.</item>
+                        <label>1866</label>
+                        <item>Travels to the Sandwich Islands (Hawaii) as correspondent for the
+                            Sacramento <hi rend="italic">Union,</hi>to which he writes twenty-five
+                            letters. In October gives his first lecture in San Francisco.</item>
+                        <label>1867</label>
+                        <item>His first book, <hi rend="italic">The Celebrated Jumping Frog of
+                                Calaveras County, and Other Sketches,</hi>published in May. Gives
+                            first lecture in New York City. Sails on <hi rend="italic">Quaker
+                                City</hi>to Europe and the Holy Land. Meets Olivia (Livy) Langdon in
+                            New York City on 27 December. In Washington, D.C., serves briefly as
+                            private secretary to Senator William M. Stewart of Nevada.</item>
+                        <label>1868</label>
+                        <item>Lectures widely in eastern and midwestern states. Courts and proposes
+                            to Livy, winning her consent in November.</item>
+                        <label>1869</label>
+                        <item><hi rend="italic">The Innocents Abroad</hi>published. With Jervis
+                            Langdon’s help, buys one-third interest in the Buffalo <hi rend="italic"
+                                >Express.</hi></item>
+                        <label>1870</label>
+                        <item>Marries Olivia on 2 February; they settle in Buffalo in a house
+                            purchased for them by Jervis Langdon. Son, Langdon, born prematurely on
+                            7&#160;November.</item>
+                        <label>1871</label>
+                        <item>Sells <hi rend="italic">Express</hi>and the house and moves to
+                            Hartford, Conn. For the next two decades the family will live in
+                            Hartford and spend summers at Quarry Farm, in Elmira, N.Y.</item>
+                        <label>1872</label>
+                        <item>Daughter Olivia Susan (Susy) Clemens born 19 March; son Langdon dies 2
+                            June. <hi rend="italic">Roughing It</hi>published in London (securing
+                            British copyright) and Hartford. Visits London to lecture in the
+                            fall.</item>
+                        <label>1873</label>
+                        <item>Takes family to England and Scotland for five months. Escorts them
+                            home (Livy is pregnant) and returns to England alone in November. <hi
+                                rend="italic">The Gilded Age,</hi>written with Charles Dudley
+                            Warner, published in London and Hartford.</item>
+                        <label>1874</label>
+                        <item>Returns home in January; daughter Clara Langdon Clemens born 8 June.
+                            The family moves into the house they have built in Hartford.</item>
+                        <label>1875–76</label>
+                        <item><hi rend="italic">Mark Twain’s Sketches, New and Old</hi>(1875) and
+                                <hi rend="italic">The Adventures of Tom Sawyer</hi>(1876)
+                            published.</item>
+                        <label>1878–79</label>
+                        <item>Travels with family in Europe.</item>
+                        <label><pb n="651" xml:id="pb0651"/>1880</label>
+                        <item><hi rend="italic">A Tramp Abroad</hi>published. Daughter Jane (Jean)
+                            Lampton Clemens born 26 July.</item>
+                        <label>1881</label>
+                        <item>Begins to invest in Paige typesetting machine. <hi rend="italic">The
+                                Prince and the Pauper</hi>published.</item>
+                        <label>1882</label>
+                        <item>Revisits the Mississippi to gather material for <hi rend="italic">Life
+                                on the Mississippi,</hi>published 1883.</item>
+                        <label>1884–85</label>
+                        <item>Founds publishing house, Charles L. Webster and Co., named for his
+                            nephew by marriage, its chief officer. Reading tour with George
+                            Washington Cable (November–February). <hi rend="italic">Adventures of
+                                Huckleberry Finn</hi>published in London (1884) and New York (1885).
+                            Publishes Ulysses S. Grant’s <hi rend="italic"
+                            >Memoirs</hi>(1885).</item>
+                        <label>1889</label>
+                        <item><hi rend="italic">A Connecticut Yankee in King Arthur’s
+                            Court</hi>published.</item>
+                        <label>1891–94</label>
+                        <item>Travels and lives in France, Switzerland, Germany, and Italy, with
+                            frequent business trips to the United States. Henry H. Rogers,
+                            vice-president of Standard Oil, undertakes to salvage Clemens’s
+                            fortunes. In 1894 Webster and Co. declares bankruptcy, and on Rogers’s
+                            advice Clemens abandons the Paige machine. <hi rend="italic">The Tragedy
+                                of Pudd’nhead Wilson </hi>published serially and as a book in
+                            1894.</item>
+                        <label>1895</label>
+                        <item>In August starts an around-the-world lecture tour to raise money,
+                            accompanied by Olivia and Clara; lectures en route to the Pacific Coast
+                            and then in Australia and New Zealand.</item>
+                        <label>1896</label>
+                        <item>Lectures in India, Ceylon, and South Africa. <hi rend="italic"
+                                >Personal Recollections of Joan of Arc</hi>published. On 18 August
+                            Susy dies from meningitis in Hartford. Jean is diagnosed with epilepsy.
+                            Resides in London.</item>
+                        <label>1897</label>
+                        <item><hi rend="italic">Following the Equator</hi>published in London and
+                                Hartford<hi rend="italic">.</hi>Lives in Weggis (Switzerland) and
+                            Vienna.</item>
+                        <label>1898</label>
+                        <item>Pays his creditors in full. Lives in Vienna and nearby
+                            Kaltenleutgeben.</item>
+                        <label>1899–1901</label>
+                        <item>Resides in London, with stays at European spas. The family returns to
+                            the United States in October 1900, living at 14 West 10th Street, New
+                            York, then in Riverdale in the Bronx. Publishes “To the Person Sitting
+                            in Darkness” (February 1901).</item>
+                        <label>1902</label>
+                        <item>Makes last visit to Hannibal and St. Louis. Olivia’s health
+                            deteriorates severely. Isabel V. Lyon, hired as her secretary, is soon
+                            secretary to Clemens.</item>
+                        <label>1903</label>
+                        <item>Moves family to rented Villa di Quarto in Florence. Harper and
+                            Brothers acquires exclusive rights to all Mark Twain’s work.</item>
+                        <label>1904</label>
+                        <item>Begins dictating autobiography to Lyon; Jean types up her copy. Olivia
+                            dies of heart failure in Florence on 5 June. Family returns to the
+                            United States. Clemens leases a house at 21 Fifth Avenue, New
+                            York.</item>
+                        <label>1905</label>
+                        <item>Spends summer in Dublin, New Hampshire, with Jean. Writes “The
+                            War-Prayer.”</item>
+                        <label><pb n="652" xml:id="pb0652"/>1906</label>
+                        <item>Begins Autobiographical Dictations in January. Excerpts will appear in
+                            the <hi rend="italic">North American Review,</hi>1906–7<hi rend="italic"
+                                >.</hi>Rents Upton House, Dublin. Commissions John Mead Howells to
+                            design a house to be built at Redding, Conn. <hi rend="italic">What Is
+                                Man?</hi>printed anonymously for private distribution.</item>
+                        <label>1907</label>
+                        <item><hi rend="italic">Christian Science</hi>published. Hires Ralph W.
+                            Ashcroft as business assistant. Travels to England to receive honorary
+                            degree from Oxford University.</item>
+                        <label>1908</label>
+                        <item>Moves into the Redding house (called first “Innocence at Home,” then
+                            “Stormfield”).</item>
+                        <label>1909</label>
+                        <item>Dismisses Lyon and Ashcroft. Jean rejoins Clemens at Stormfield. Clara
+                            marries Ossip Gabrilowitsch, pianist and conductor, on 6 October. Jean
+                            dies of heart failure on 24 December.</item>
+                        <label>1910</label>
+                        <item>Suffers severe angina while in Bermuda; with Paine leaves for New York
+                            on 12 April. Dies at Stormfield on 21 April.</item>
+                    </list>
+                    <p rend="noindent">For a much more detailed chronology, see <hi rend="italic"
+                            >Mark Twain: Collected Tales, Sketches, Speeches, &amp; Essays,
+                            1852–1890</hi>(Budd 1992a, 949–97).</p>
+                    <lb/>
+                </div2>
+                <!-- . . . -->
+            </div1>
+            <!-- . . . -->
+            <div1 type="textsec" xml:id="mb0002">
+                <head rend="toc">Textual Commentaries</head>
+                <div2 type="textsec" xml:id="ts0002">
+                    <head rend="toc">AD, 2 Apr 1906</head>
+                    <head>Autobiographical Dictation, 2 April 1906</head>
+                    <p rend="noindent"><hi rend="italic">Source documents.</hi></p>
+                    <list>
+                        <label>TS1</label>
+                        <item>Typescript, leaves numbered 618–25 (altered in pencil to 627–34), made
+                            from Hobby’s notes and revised.</item>
+                        <label><hi rend="italic">Times</hi></label>
+                        <item>Clipping from the New York <hi rend="italic">Times,</hi>1 April 1906,
+                            1, attached to TS1: ‘PROMOTION FOR .&#160;.&#160;. his course.’
+                            (3.5–41).</item>
+                        <label>TS2</label>
+                        <item>Typescript, leaves numbered 772–80, made from the revised TS1 with the
+                            attached <hi rend="italic">Times</hi>clipping and further
+                            revised.</item>
+                        <label>NAR 11pf</label>
+                        <item>Galley proofs of (projected) NAR 10–11, typeset from the revised TS2
+                            and further revised (the same extent as NAR 11), <ref corresp="bib10492"
+                                rend="new" type="dbquery">ViU</ref>.</item>
+                        <label>NAR 11</label>
+                        <item><hi rend="italic">North American Review</hi>184 (1 February 1907),
+                            229–32: ‘The Government .&#160;.&#160;. disaster followed.’
+                            (3.43–6.12).</item>
+                    </list>
+                    <figure rend="diag" xml:id="n00001">
+                        <graphic url="o00001.gif"/>
+                    </figure>
+                    <p rend="noindent">TS1 begins with Clemens’s dictated request that the <hi
+                            rend="italic">Times</hi>clipping be pasted in at the beginning of the
+                        dictation, which has been treated here as an authorial direction rather than
+                        as text (see entry at 3.5). Clemens revised TS1 and his changes are
+                        incorporated in TS2. Clemens further revised TS2 to serve as copy for NAR,
+                        deleting the opening section (up to ‘To continue.’ at 3.42) in blue
+                        pencil.</p>
+                    <p rend="text-indent:2">NAR 10 was originally to comprise excerpts from the ADs
+                        of 28 March, 29 March, and 2 April 1906; the galley proofs were typeset as a
+                        consecutive batch, and this proof was revised by Clemens. Starting with the
+                        issue of 4 January 1907, however, the issue length of the <hi rend="italic"
+                            >North American Review</hi>was changed from 128 pages to 112. The
+                        autobiography installments, which had generally run between 10 and 14 pages,
+                        had to be shorter, and the proposed installment was split: in consequence,
+                        NAR 11 is made up of an excerpt from the present dictation, coupled with
+                        excerpts from the AD of 29 March 1906 (misdated 28 March in NAR).</p>
+                    <lb/>
+                    <p rend="noindent"><hi rend="italic">Revisions, variants adopted or rejected,
+                            and textual notes.</hi></p>
+                    <lb/>
+                    <div3>
+                        <ab><note rend="silent" target="dg0000" targetEnd="ap0054" type="ed"
+                                xml:id="tn0002"/></ab>
+                    </div3>
+                </div2>
+                <!-- . . . -->
+                <div2 type="textsec" xml:id="ts0074">
+                    <head rend="toc">AD, 2 Dec 1906</head>
+                    <head>Autobiographical Dictation, 2 December 1906</head>
+                    <p rend="noindent"><hi rend="italic">Source documents.</hi></p>
+                    <list>
+                        <label>MS</label>
+                        <item>Manuscript, leaves numbered 15–28, from a manuscript of thirty-eight
+                            leaves written in 1903.</item>
+                        <label>TS1 ribbon</label>
+                        <item>Typescript, leaves numbered 1465–74, made from the MS and
+                            revised.</item>
+                        <label>TS1 carbon</label>
+                        <item>Typescript carbon, leaves numbered 1465–74, revised.</item>
+                        <label>NAR 9pf</label>
+                        <item>Galley proofs of NAR 9, typeset from the revised TS1 carbon (the same
+                            extent as NAR 9), <ref corresp="bib10492" rend="new" type="dbquery"
+                                >ViU</ref>.</item>
+                        <label>NAR 9</label>
+                        <item><hi rend="italic">North American Review</hi>184 (4 January 1907),
+                            9–14: ‘December .&#160;.&#160;. 1906 (301 <hi rend="italic">title</hi>);
+                            ‘In 1847 .&#160;.&#160;. ages ago.’ (301.2–304.4).</item>
+                    </list>
+                    <figure rend="diag" xml:id="n00065">
+                        <graphic url="o00065.gif"/>
+                    </figure>
+                    <p rend="noindent">This “dictation” and the two before and after it have their
+                        origins in a manuscript—actually an amalgamation of two manuscripts, both
+                        evidently written around 1903. The first, from which the present dictation
+                        is drawn, has leaves numbered 1–28; it was originally entitled ‘Scraps from
+                        my Autobiography. From Chapter IV’. The second is headed ‘From Chapter XVII’
+                        and has leaves originally numbered 1–10; it has been renumbered by Clemens
+                        to follow on directly from the first. The MS is written on sheets of
+                        buff-colored wove paper, measuring 5¾ by 9 inches. It can be dated to 1903
+                        by Clemens’s statement that he visited Hannibal ‘a year ago’ (MS page 15,
+                        which became a part of the “AD” of 2 December 1906, 301.3–4). In 1906
+                        Clemens canceled the original title and retitled it as part of his <hi
+                            rend="italic">Autobiography</hi>, adding a date of ‘Dec. 1, 1906’ and
+                        arranging for Hobby to type the text as a series of three “autobiographical
+                        dictations” carrying the dates 1, 2, and 3 December 1906.</p>
+                    <p rend="text-indent:2">Hobby typed TS1 ribbon from MS, and Paine reviewed it
+                        for possible publication in NAR; marking and querying several passages for
+                        possible omission. Clemens revised TS1 ribbon and transferred most of his
+                        changes to TS1 carbon, which he sent to the <hi rend="italic">North American
+                            Review</hi>for publication without further revision. The dictation was
+                        published there together with the ADs of 13 December and 1 December
+                        1906.</p>
+                    <p rend="centerhead">Marginal Notes on TS1 ribbon Concerning Publication in
+                        NAR</p>
+                    <table rend="automargnote">
+                        <row role="label">
+                            <cell>Location on TS</cell>
+                            <cell>Writer, Medium</cell>
+                            <cell>Exact Inscription</cell>
+                            <cell>Explanation</cell>
+                        </row>
+                        <row>
+                            <cell>TS1 ribbon, p. 1470</cell>
+                            <cell>Paine, pencil</cell>
+                            <cell><note place="inline" resp="MTP" type="ed">passage bracketed,
+                                    marked for deletion in the margin</note></cell>
+                            <cell>possibly omit the text from ‘I am’ (302.30) to ‘that deed;’
+                                (302.34) </cell>
+                        </row>
+                        <row>
+                            <cell>TS1 ribbon, p. 1470</cell>
+                            <cell>Paine, pencil</cell>
+                            <cell><note place="inline" resp="MTP" type="ed">passage bracketed,
+                                    marked for deletion in the margin</note></cell>
+                            <cell>possibly omit the text from ‘still, I’ (302.36) to ‘mine
+                                respectable.’ (302.39)</cell>
+                        </row>
+                        <row>
+                            <cell>TS1 ribbon, p. 1472</cell>
+                            <cell>Paine, pencil</cell>
+                            <cell><note place="inline" resp="MTP" type="ed">passage bracketed,
+                                    marked for deletion in the margin</note></cell>
+                            <cell>possibly omit the text from ‘Arguments!’ (303.16) to ‘them since.’
+                                (303.19)</cell>
+                        </row>
+                        <row>
+                            <cell>TS1 ribbon, pp. 1472–73</cell>
+                            <cell>Paine, pencil</cell>
+                            <cell><note place="inline" resp="MTP" type="ed">passage bracketed,
+                                    marked for deletion in the margin</note></cell>
+                            <cell>possibly omit the text from ‘Dear, dear’ (303.25) to ‘the
+                                swindled!’ (303.27)</cell>
+                        </row>
+                    </table>
+                    <lb/>
+                    <p rend="noindent"><hi rend="italic">Revisions, variants adopted or rejected,
+                            and textual notes.</hi></p>
+                    <div3>
+                        <ab><note rend="silent" target="ah4011" targetEnd="ap4024" type="ed"
+                                xml:id="tn0074"/></ab>
+                    </div3>
+                </div2>
+                <!-- . . . -->
+            </div1>
+            <!-- . . . -->
+            <div1 type="edsec" xml:id="bm0023">
+                <head rend="toc">References</head>
+                <pb n="664" rend="silent" xml:id="pb0664"/>
+                <pb n="665" xml:id="pb0665"/>
+                <head>REFERENCES</head>
+                <p rend="noindent">This list defines the abbreviations used in this volume and
+                    provides full bibliographic information for works cited by an author’s name and
+                    a date, a short title, or an abbreviation. Works by members of the Clemens
+                    family may be found under the writer’s initials: SLC, OSC (Susy), CC (Clara),
+                    and JC (Jean).</p>
+                <lb/>
+                <p rend="hangbib1">AD. Autobiographical Dictation.</p>
+                <p rend="hangbib1">Ade, George. 1939. <hi rend="italic">One Afternoon with Mark
+                        Twain.</hi>Chicago: Mark Twain Society of Chicago.</p>
+                <p rend="hangbib1">Alfonso Carlos, Prince of Bourbon and Austria-Este. 1902. “The
+                    Effort to Abolish the Duel.” <hi rend="italic">North American Review</hi>175
+                    (August): 194–200.</p>
+                <p rend="hangbib1">American Bible Society. 1872. <hi rend="italic">Fifty-sixth
+                        Annual Report of the American Bible Society, Presented May 9, 1872.</hi>New
+                    York: American Bible Society.</p>
+                <p rend="hangbib1"><hi rend="italic">AMT.</hi>1959. <hi rend="italic">The
+                        Autobiography of Mark Twain.</hi>Edited by Charles Neider. New York: Harper
+                    and Brothers.</p>
+                <p rend="hangbib1">Anderson, Frederick, and Kenneth M. Sanderson, eds. 1971. <hi
+                        rend="italic">Mark Twain: The Critical Heritage.</hi>New York: Barnes and
+                    Noble.</p>
+                <p rend="hangbib1">Andrews, Kenneth R. 1950. <hi rend="italic">Nook Farm: Mark
+                        Twain’s Hartford Circle.</hi>Cambridge: Harvard University Press.</p>
+                <p rend="hangbib1">Antrobus, Augustine M. 1915. <hi rend="italic">History of Des
+                        Moines County Iowa and Its People.</hi>2 vols. Chicago: S. J. Clarke
+                    Publishing Company.</p>
+                <p rend="hangbib1">APC (American Publishing Company). 1866–79. “Books received from
+                    the Binderies, Dec 1<hi rend="superscript">st</hi><hi rend="italic">1866</hi>to
+                    Dec 31. <hi rend="italic">1879,</hi>” the company’s stock ledger, NN-BGC.</p>
+                <p rend="hangbib1">Archives Hub. 2011. “Frederic Whyte Papers.”
+                    http://archiveshub.ac.uk/data/gb186fw. Accessed 8 December 2011.</p>
+                <!-- . . . -->
+                <p rend="hangbib1">Campbell, Ballard C.</p>
+                <p rend="hangbib2">2008a. <hi rend="italic">American Disasters: 201 Calamities That
+                        Shook the Nation.</hi>Edited by Ballard C. Campbell. New York: Checkmark
+                    Books.</p>
+                <p rend="hangbib2">2008b. “1893: Financial Panic and Depression.” In Campbell 2008a,
+                    168–71.</p>
+                <p rend="hangbib1">Carlyle, Thomas. 1864. <hi rend="italic">Collected
+                    Works.</hi>Volume 13, <hi rend="italic">Latter-Day Pamphlets.</hi>London:
+                    Chapman and Hall.</p>
+                <p rend="hangbib1">Carnegie Endowment. 1919. <hi rend="italic">A Manual of the
+                        Public Benefactions of Andrew Carnegie.</hi>Washington, D.C.: Carnegie
+                    Endowment for International Peace.</p>
+                <p rend="hangbib1">CC (Clara Langdon Clemens, later Gabrilowitsch and
+                    Samossoud).</p>
+                <p rend="hangbib2">1931. <hi rend="italic">My Father, Mark Twain.</hi>New York:
+                    Harper and Brothers.</p>
+                <p rend="hangbib2">1938. <hi rend="italic">My Husband, Gabrilowitsch.</hi>New York:
+                    Harper and Brothers.</p>
+                <p rend="hangbib2">1956. <hi rend="italic">Awake to a Perfect Day: My Experience
+                        with Christian Science.</hi>New York: Citadel Press.</p>
+                <!-- . . . -->
+            </div1>
+            <div1 type="edsec" xml:id="bm0021">
+                <head rend="toc">Index</head>
+                <pb n="696" rend="silent" xml:id="pb0696"/>
+                <pb n="697" xml:id="pb0697"/>
+                <head>INDEX</head>
+                <p rend="noindent">Boldfaced page numbers indicate principal identifications or
+                    short biographies. All literary works are by Clemens unless otherwise noted: his
+                    major writings are listed only by title; the minor ones are listed both by title
+                    and under “Clemens, Samuel Langhorne: <hi rend="smallcaps">works.</hi>” Other
+                    literary works are found only under their authors’ names. Place names are
+                    indexed only when they refer to locations SLC lived in, visited, or commented
+                    upon. Newspapers are listed by city, other periodicals by title. Bullets (•)
+                    designate people and places represented in the <ref target="#bd0012"
+                        type="chapterref">photographs</ref>following page 300.</p>
+                <lb/>
+                <p rend="center"><ref target="#in0001" type="chapterref">A</ref>| <ref
+                        target="#in0002" type="chapterref">B</ref>| <ref target="#in0003"
+                        type="chapterref">C</ref>| <ref target="#in0005" type="chapterref">D</ref>|
+                        <ref target="#in0006" type="chapterref">E</ref>| <ref target="#in0007"
+                        type="chapterref">F</ref>| <ref target="#in0008" type="chapterref">G</ref>|
+                        <ref target="#in0009" type="chapterref">H</ref>| <ref target="#in0010"
+                        type="chapterref">I</ref>| <ref target="#in0011" type="chapterref">J</ref>|
+                        <ref target="#in0012" type="chapterref">K</ref>| <ref target="#in0013"
+                        type="chapterref">L</ref></p>
+                <p rend="center"><ref target="#in0014" type="chapterref">M</ref>| <ref
+                        target="#in0015" type="chapterref">N</ref>| <ref target="#in0016"
+                        type="chapterref">O</ref>| <ref target="#in0017" type="chapterref">P</ref>|
+                        <ref target="#in0018" type="chapterref">Q</ref>| <ref target="#in0019"
+                        type="chapterref">R</ref>| <ref target="#in0020" type="chapterref">S</ref>|
+                        <ref target="#in0021" type="chapterref">T</ref>| <ref target="#in0022"
+                        type="chapterref">U</ref>| <ref target="#in0023" type="chapterref">V</ref>|
+                        <ref target="#in0024" type="chapterref">W</ref>| X | <ref target="#in0025"
+                        type="chapterref">Y</ref>| <ref target="#in0026" type="chapterref"
+                    >Z</ref></p>
+                <lb/>
+                <div2 type="edsec" xml:id="in0001">
+                    <p rend="noindent">Adams, Charles Follen, 153, <hi rend="bold">534</hi></p>
+                    <p rend="noindent">Adams, Maude, 475, 564–65</p>
+                    <p rend="noindent">Ade, George, 152, <hi rend="bold">534</hi></p>
+                    <p rend="noindent"><hi rend="italic">Adelaide</hi>(clipper ship), 549</p>
+                    <p rend="noindent">“The Adventures of a Microbe” (“Three Thousand Years Among
+                        the Microbes”), 196, 552</p>
+                    <p rend="noindent"><hi rend="italic">Adventures of Huckleberry Finn:</hi>banned
+                        by libraries, 28, 29–33, 473–76; contract and publication, 58–59, 492–93,
+                        651; deleted passages, 273, 580; inspiration for, 332; mesmerist episode
+                        considered, 590; Mississippi River description, 477; praised, 30–31, 33,
+                        265, 347, 475, 477, 577; praised by SLC, 355; sales and royalties, 59, 528;
+                        shooting episode, 590</p>
+                    <p rend="noindent"><hi rend="smallcaps">characters</hi>: Mary Jane Wilks, 356,
+                        609; prototypes, 626, 653–54; SLC’s defense of Huck, 30–31, 476</p>
+                    <!-- . . . -->
+                    <p rend="noindent">Austria: dueling, 98, 507; Clemenses’ stay in Marienbad,
+                        227–28, 559; Clemenses’ stay in Kaltenleutgeben, 602, 651. <hi rend="italic"
+                            >See also</hi>Vienna</p>
+                    <p rend="noindent">Autobiography (SLC): daily dictation time, 621; remarks about
+                        form and content, 12, 127, 162, 172, 229–30, 243, 522, 640; written as from
+                        the grave, 68–69, 116, 121, 153, 158, 169–70, 172, 344, 357, 430, 522. <hi
+                            rend="italic">See also</hi>Florentine Dictations; “Chapters from My
+                        Autobiography”</p>
+                    <lb/>
+                </div2>
+                <div2 type="edsec" xml:id="in0002">
+                    <p rend="noindent">B., Mr. (unidentified), 304–6</p>
+                    <p rend="noindent"><hi rend="italic">Babyhood</hi>(periodical), 600</p>
+                    <p rend="noindent">Backus, Charles, 293–94, <hi rend="bold">588</hi></p>
+                    <!-- . . . -->
+                </div2>
+                <!-- . . . -->
+                <div2 type="edsec" xml:id="in0026">
+                    <p rend="noindent">Zodiac (astrology), 226, 558–59</p>
+                </div2>
+            </div1>
+        </back>
+    </text>
+</TEI>
