@@ -9,7 +9,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 (: TODO :)
 (:Every time an edition annotation is made, the range difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new range difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
 
-(:We have to find a way to allow multiple editorial targets, not just the base text and one authoritative text. This also means that each feature annotation must be keyed to one or more targets.:)
+(:We have to find a way to allow multiple editorial targets, not just the base text and one target text. This also means that each feature annotation must be keyed to one or more targets.:)
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
@@ -72,22 +72,22 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
         then so2il:merge-annotations-with-text($node, $collapsed-edition-a8ns, 'edition', 'tei')
         else $node
     (:Result: base text with edition annotations inserted.:)
-    (:TODO: Transform to show the authoritative text with edition annotations inserted; use this a basis for generating authoritative text?:)
+    (:TODO: Transform to show the target text with edition annotations inserted; use this a basis for generating target text?:)
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-edition-a8ns): ", $text-with-merged-edition-a8ns)):)
     
-    (:On the basis of the inserted edition annotations, contruct the authoritative text.:)
+    (:On the basis of the inserted edition annotations, contruct the target text.:)
     (:TODO: Into the $text-with-merged-edition-a8ns, spans identifying the edition annotations should be inserted, 
     in order to provide hooks to these annotations in the HTML. 
-    Resurrect mopane code for layer-range-difference and merge both edition and feature annotation with authoritative text.:)  
+    Resurrect mopane code for layer-range-difference and merge both edition and feature annotation with target text.:)  
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
-    let $authoritative-text := 
+    let $target-text := 
         if ($text-with-merged-edition-a8ns/text())
-        then so2il:tei2target($text-with-merged-edition-a8ns, 'authoritative-text')
+        then so2il:tei2target($text-with-merged-edition-a8ns, 'target-text')
         else $text-with-merged-edition-a8ns
-(:    let $log := util:log("DEBUG", ("##$authoritative-text): ", $authoritative-text)):)
+(:    let $log := util:log("DEBUG", ("##$target-text): ", $target-text)):)
 
     (:Get the top-level feature annotations for the element in question, that is, 
-    the feature annotations that connect to the authoritative text though text ranges.:)
+    the feature annotations that connect to the target text though text ranges.:)
     let $top-level-feature-a8ns := 
         if ($annotations)
         then $annotations[a8n-target/@type eq 'range'][a8n-target/@layer eq 'feature'][a8n-target/a8n-id eq $node/@xml:id]
@@ -102,7 +102,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
         else ()
 (:    let $log := util:log("DEBUG", ("##$built-up-feature-a8ns): ", $built-up-feature-a8ns)):)
     
-    (:Collapse the built-up feature annotations, that is, prepare them for insertion into the authoritative text
+    (:Collapse the built-up feature annotations, that is, prepare them for insertion into the target text
     by removing all elements except the contents of body.:) 
     let $collapsed-feature-a8ns := 
         if ($built-up-feature-a8ns) 
@@ -115,10 +115,10 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
-    (:Insert the collapsed annotations into the authoritative text, producing a marked-up TEI document.:)
+    (:Insert the collapsed annotations into the target text, producing a marked-up TEI document.:)
     let $text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
-        then so2il:merge-annotations-with-text($authoritative-text, $collapsed-feature-a8ns, 'feature', $target-format)
+        then so2il:merge-annotations-with-text($target-text, $collapsed-feature-a8ns, 'feature', $target-format)
         else $node
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
@@ -134,7 +134,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
 };
 
 (: Based on a list of TEI elements that alter the text, 
-construct the altered (authoritative) or the unaltered (base-text) text :)
+construct the altered (target) or the unaltered (base-text) text :)
 (:Only the value "base" is checked.:)
 (:TODO: This function must in some way be included in the TEI header, 
 or the choices must be expressed in a manner that can feed the function.:)
@@ -167,7 +167,7 @@ declare function so2il:separate-text-layers($input as node()*, $target) as item(
 						else ()
 					(:if there is a lem, choose a rdg for the base text:)
 					else ()
-					(:disregard the rdg for the authoritative text if there is a lem:)
+					(:disregard the rdg for the target text if there is a lem:)
 				else
 				(:if the app has no lem along with the rdg:)
 					if ($target eq 'base')
@@ -180,7 +180,7 @@ declare function so2il:separate-text-layers($input as node()*, $target) as item(
 						if ($node[contains(@wit/string(), 'TS2')])
 						then $node
 						else ()
-						(:if there is no lem, choose a TS2 rdg for the authoritative text:)
+						(:if there is no lem, choose a TS2 rdg for the target text:)
 			
 			case element(tei:reg) return
 				if ($target eq 'base')
@@ -302,7 +302,7 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
                 return 
                     so2il:collapse-annotation(($child), $strip)
             else
-                if ($child instance of element() and local-name($child) = ('a8n-attribute', 'a8n-layer-range-difference', 'a8n-authoritative-layer')) (:we have no need for these two elements - actually, they have been removed, but should they be introduced again?:)
+                if ($child instance of element() and local-name($child) = ('a8n-attribute', 'a8n-layer-range-difference', 'a8n-target-layer')) (:we have no need for these two elements - actually, they have been removed, but should they be introduced again?:)
                 then ()
                 else
                     (:skip the attribute attached above:)

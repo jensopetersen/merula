@@ -149,7 +149,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
                                 <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
                             </a8n-base-layer>
-                            <a8n-authoritative-layer>
+                            <a8n-target-layer>
                                 <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
                                 <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
                                 <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
@@ -163,13 +163,13 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                     if (local-name($element) = $edition-layer-elements)
                                     then $base-text-position-end - $base-text-position-start
                                     else $target-text-position-end - $target-text-position-start}</a8n-range>
-                            </a8n-authoritative-layer>
+                            </a8n-target-layer>
                         </a8n-target>
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                         <a8n-layer-range-difference>{
                                 let $range-difference :=
                                 if (local-name($element) = $edition-layer-elements) 
-                                then string-length(local:separate-text-layers($element, 'authoritative')) - string-length(local:separate-text-layers($element, 'base'))
+                                then string-length(local:separate-text-layers($element, 'target')) - string-length(local:separate-text-layers($element, 'base'))
                                 else 0
                                     return $range-difference}</a8n-layer-range-difference>
                         <a8n-admin/>
@@ -197,7 +197,7 @@ declare function local:make-attribute-annotations($node as element(), $target-id
 };
 
 
-(: Based on a list of TEI elements that alter the text, construct the altered (target, authoritative) or the unaltered (base) text :)
+(: Based on a list of TEI elements that alter the text, construct the altered (target) or the unaltered (base) text :)
 declare function local:separate-text-layers($input as node()*, $target) as item()* {
         for $node in $input/node()
         return
@@ -227,7 +227,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                             else ()
                         (:if there is a lem, choose a rdg for the base text:)
                         else ()
-                        (:disregard the rdg for the authoritative text if there is a lem:)
+                        (:disregard the rdg for the target text if there is a lem:)
                     else
                     (:if the app has no lem along with the rdg:)
                         if ($target eq 'base')
@@ -240,7 +240,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                             if ($node[contains(@wit/string(), 'TS2')])
                             then $node
                             else ()
-                            (:if there is no lem, choose a TS2 rdg for the authoritative text:)
+                            (:if there is no lem, choose a TS2 rdg for the target text:)
                 
                 case element(tei:reg) return
                     if ($target eq 'base')
@@ -433,7 +433,7 @@ as element()* {
             if ($child instance of element(a8n-base-layer) or $child instance of element(a8n-admin) or $child instance
                 of element(a8n-layer-range-difference)) then
                 ()
-            else if ($child instance of element(a8n-authoritative-layer)) then
+            else if ($child instance of element(a8n-target-layer)) then
                 $child/*
             else if ($child instance of text()) then
                 $child
@@ -469,8 +469,8 @@ let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 
 let $base-text := local:generate-text-layer($doc-text, 'base')
 let $base-text := local:remove-inline-elements($base-text, $block-element-names, $element-only-element-names)
 
-let $authoritative-text := local:generate-text-layer($doc-text, 'authoritative')
-let $authoritative-text := local:remove-inline-elements($authoritative-text, $block-element-names, $element-only-element-names)
+let $target-text := local:generate-text-layer($doc-text, 'target')
+let $target-text := local:remove-inline-elements($target-text, $block-element-names, $element-only-element-names)
 
 let $annotations-1 := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names)
 let $annotations-2 :=
@@ -488,7 +488,7 @@ return
     then
     <result>
         <base-text>{$base-text}</base-text>
-        <authoritative-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $authoritative-text}}}</authoritative-text>
+        <target-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $target-text}}}</target-text>
         <annotations-1>{$annotations-1}</annotations-1>
         <annotations-2>{$annotations-2}</annotations-2>
         <annotations-3>{$annotations-3}</annotations-3>
