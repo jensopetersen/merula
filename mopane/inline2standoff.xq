@@ -8,26 +8,21 @@ declare variable $text-in-collection := '/db/apps/merula/mopane/';
 declare variable $annotation-out-collection := '/db/apps/merula/data/annotations/sha-ham';
 declare variable $text-out-collection := '/db/apps/merula/data/';
 
-(:TODO
-This still creates a problem, <p rend="center" xml:id="pa000004"><hi xml:id="_8" rend="bold"><name type="person">MERRITT</name> GETS NEW PLACE</hi></p>, but if a text node is inseted before <hi>, it is solved - find other way.
-:)
-
 (: Removes elements named :)
-declare function local:remove-elements($nodes as node()*, $remove as xs:anyAtomicType+)  as node()* {
-   for $node in $nodes
-   return
-     if ($node instance of element())
-     then 
-        if ((local-name($node) = $remove))
-        then ()
-        else element {node-name($node)}
-                {$node/@*,
-                  local:remove-elements($node/node(), $remove)}
-     else 
-        if ($node instance of document-node())
-        then local:remove-elements($node/node(), $remove)
-        else $node
-} ;
+declare function local:remove-elements($nodes as node()*, $names-of-elements-to-remove as xs:anyAtomicType+)  as node()* {
+    for $node in $nodes
+    return
+        if ($node instance of element())
+        then
+            if ((local-name($node) = $names-of-elements-to-remove))
+            then ()
+            else element {node-name($node)}
+            {$node/@*, local:remove-elements($node/node(), $names-of-elements-to-remove)}
+        else
+            if ($node instance of document-node())
+            then local:remove-elements($node/node(), $names-of-elements-to-remove)
+            else $node
+};
 
 (: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
 declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
@@ -75,20 +70,21 @@ declare function local:insert-elements($node as node(), $new-nodes as node()*, $
             else $node
 };
 
-(: Extracts all upper-level element nodes from the input element and records their position in relation to the base layer; extracts all attributes of the input element. :)
-(:These elements are not required to have an xml:id, but their parent element is, being a block-level element. :)
-declare function local:get-top-level-annotations-keyed-to-base-text($input as element(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) {
-    for $element in $input/element()
+(: Extracts all inline elements from the text-block element and records their position in relation to the base text and target text, and extracts all attributes of the text-block element. The text-block elements are required to have an xml:id. :)
+declare function local:get-top-level-annotations-keyed-to-base-text($text-block-element as element(), $edition-layer-element-names as xs:string+, $documentary-element-names as xs:string+) {
+    (:TODO: comments and PIs should also be handled as annotations:)
+    for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
-        let $base-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base'))
+        
+        let $base-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base-text'))
         let $base-text-before-text := string-join($element/preceding-sibling::text())
-        let $base-text-marked-up-string := string-join(local:separate-text-layers($element, 'base'))
+        let $base-text-marked-up-string := string-join(local:separate-text-layers($element, 'base-text'))
         let $base-text-position-start := string-length($base-text-before-element) + string-length($base-text-before-text)
         let $base-text-position-end := $base-text-position-start + string-length($base-text-marked-up-string)
         
-        let $target-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'target'))
+        let $target-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'target-text'))
         let $target-text-before-text := string-join($element/preceding-sibling::text()) (:NB: same as base:)
-        let $target-text-marked-up-string := string-join(local:separate-text-layers($element, 'target'))
+        let $target-text-marked-up-string := string-join(local:separate-text-layers($element, 'target-text'))
         let $target-text-position-start := string-length($target-text-before-element) + string-length($target-text-before-text)
         let $target-text-position-end := $target-text-position-start + string-length($target-text-marked-up-string)
         
@@ -123,22 +119,23 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                         else ()
         let $annotation-id := concat('uuid-', util:uuid())
             return
-                let $element-result :=
+                let $element-annotation-result :=
                     <a8n-annotation type="element" xml:id="{$annotation-id}" status="{
-                        let $base-text := string-join(local:separate-text-layers($input, 'base'))
-                        let $character-before := substring($base-text, $base-text-position-start, 1)
-                        let $character-after := substring($base-text, $base-text-position-end + 1, 1)
-                        let $characters-before-and-after := concat($character-before, $character-after)
-                        let $characters-before-and-after := replace($characters-before-and-after, '\s|\p{P}', '')
+                        let $base-text := string-join(local:separate-text-layers($text-block-element, 'base-text'))
+                        let $character-before-element := substring($base-text, $base-text-position-start, 1)
+                        let $character-after-element := substring($base-text, $base-text-position-end + 1, 1)
+                        let $characters-before-and-after-element := concat($character-before-element, $character-after-element)
+                        let $characters-before-and-after-element := replace($characters-before-and-after-element, '\s|\p{P}', '')
                         return
-                            if ($characters-before-and-after) then "string" else "token"
-                            (: If the targeted text is a word, i.e. has either space or punctuation on both sides, label it as "token" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words. NB: think of a better label than "string":)
+                            if ($characters-before-and-after-element) then "string" else "word"
+                            (: If the content of the inline element is a whole word, i.e. if it has either space or punctuation on both sides, label it as "word" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words.:)
+                            (:Below, the information for locating the inline element in relation to the base text and target text are gathered. The edition annotations point to the base text, whereas feature annotations point to the target text. The information regarding parent and sibling nodes makes possible the resolution of overlap problems. :)
                         }">
                         <a8n-target type="range" layer="{
-                            if (local-name($element) = $edition-layer-elements) 
+                            if (local-name($element) = $edition-layer-element-names) 
                             then 'edition' 
                             else 
-                                if (local-name($element) = $documentary-elements)
+                                if (local-name($element) = $documentary-element-names)
                                 then 'document' 
                                 else 'feature'}">
                             <a8n-base-layer>
@@ -155,28 +152,22 @@ declare function local:get-top-level-annotations-keyed-to-base-text($input as el
                                 <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
                                 <a8n-id>{$a8n-id}</a8n-id>
                                 <a8n-offset>{
-                                    if (local-name($element) = $edition-layer-elements)
+                                    if (local-name($element) = $edition-layer-element-names)
                                     then $base-text-position-start + 1
                                     else $target-text-position-start + 1
                                 }</a8n-offset>
                                 <a8n-range>{
-                                    if (local-name($element) = $edition-layer-elements)
+                                    if (local-name($element) = $edition-layer-element-names)
                                     then $base-text-position-end - $base-text-position-start
                                     else $target-text-position-end - $target-text-position-start}</a8n-range>
                             </a8n-target-layer>
                         </a8n-target>
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
-                        <a8n-layer-range-difference>{
-                                let $range-difference :=
-                                if (local-name($element) = $edition-layer-elements) 
-                                then string-length(local:separate-text-layers($element, 'target')) - string-length(local:separate-text-layers($element, 'base'))
-                                else 0
-                                    return $range-difference}</a8n-layer-range-difference>
                         <a8n-admin/>
                     </a8n-annotation>
-                let $attribute-result := local:make-attribute-annotations($element, $annotation-id)
+                let $attribute-annotation-result := local:make-attribute-annotations($element, $annotation-id)
             return 
-                ($element-result, $attribute-result)
+                ($element-annotation-result, $attribute-annotation-result)
 };
 
 declare function local:make-attribute-annotations($node as element(), $target-id as xs:string) as element()* {
@@ -211,7 +202,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return 
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then ()
                     else $node
                 
@@ -219,7 +210,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     if ($node/preceding-sibling::tei:lem)
                     then
                     (:if the app has a lem along with the rdg:)
-                        if ($target eq 'base')
+                        if ($target eq 'base-text')
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
                             (:TODO: an approach using tokenize() should be used instead:)
@@ -230,7 +221,7 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                         (:disregard the rdg for the target text if there is a lem:)
                     else
                     (:if the app has no lem along with the rdg:)
-                        if ($target eq 'base')
+                        if ($target eq 'base-text')
                         then 
                             if ($node[contains(@wit/string(), 'TS1')])
                             then $node
@@ -243,27 +234,27 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                             (:if there is no lem, choose a TS2 rdg for the target text:)
                 
                 case element(tei:reg) return
-                    if ($target eq 'base')
+                    if ($target eq 'base-text')
                     then () 
                     else $node
                 case element(tei:corr) return
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then () 
                     else $node
                 case element(tei:expan) return
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then () 
                     else $node
                 case element(tei:orig) return
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then $node
                     else ()
                 case element(tei:sic) return
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then $node
                     else ()
                 case element(tei:abbr) return
-                    if ($target eq 'base') 
+                    if ($target eq 'base-text') 
                     then $node
                     else ()
 
@@ -284,7 +275,7 @@ declare function local:remove-inline-elements($nodes as node()*, $block-element-
 };
 
 (:This functions is fed empty elements and elements with element-only contents. In the case of empty elements, it return the emepty element with its xml:id and peels off any attributes it may have. In the case of elements with element-only contents, it returns the top element with its xml:id and recurses through it contents, having the annotation children refer to the xml:id of their parent. :)
-declare function local:handle-element-only-annotations($annotation as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
+declare function local:handle-element-only-annotations($annotation as node(), $edition-layer-element-names as xs:string+, $documentary-element-names as xs:string+) as item()* {
             let $layer-1-body-contents := $annotation//a8n-body/element() (: get the element below body.:)
             let $layer-1-attribute-annotations := local:make-attribute-annotations($layer-1-body-contents, $layer-1-body-contents/@xml:id/string()) (:peel off its attributes:)
             let $layer-1-admin-contents := $annotation//a8n-admin/element() (: get the elements below admin :)
@@ -318,13 +309,13 @@ declare function local:handle-element-only-annotations($annotation as node(), $e
                         (: if the annotation body has no text node, it is an empty element, so let it pass through:)
                         if (not($layer-2-element-annotation/aa8n-body//text()))
                         then $layer-2-element-annotation 
-                        else local:peel-off-annotations($layer-2-element-annotation, $edition-layer-elements, $documentary-elements)
+                        else local:peel-off-annotations($layer-2-element-annotation, $edition-layer-element-names, $documentary-element-names)
                         ,
                         ($layer-2-attribute-annotations)
                         )
 };
 
-declare function local:handle-mixed-content-annotations($node as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
+declare function local:handle-mixed-content-annotations($node as node(), $edition-layer-element-names as xs:string+, $documentary-element-names as xs:string+) as item()* {
     (:An annotation with mixed contents should be split up into text annotations and element annotations, in the same manner that the top-level annotations were extracted from the input, except that no edition-layer-elements are relevant:)
             let $layer-1-body-contents := $node//a8n-body/*(:get element below body - this can ony be a single element:)
             let $layer-1-body-contents := element {node-name($layer-1-body-contents)}{
@@ -334,7 +325,7 @@ declare function local:handle-mixed-content-annotations($node as node(), $editio
             let $layer-1 := local:insert-elements($layer-1, <a8n-body>{$layer-1-body-contents}</a8n-body>, 'a8n-target', 'after')(:and insert the new body:)
                 return $layer-1
             ,
-            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//a8n-body/*, '', $documentary-elements)
+            let $layer-2-body-contents := local:get-top-level-annotations-keyed-to-base-text($node//a8n-body/*, '', $documentary-element-names)
             let $layer-1-id := <a8n-id>{$node/@xml:id/string()}</a8n-id>
             for $layer-2-body-content in $layer-2-body-contents
                 return
@@ -343,14 +334,14 @@ declare function local:handle-mixed-content-annotations($node as node(), $editio
                         return
                             if (not($layer-2//a8n-body/string()) or $layer-2//a8n-body/*/node() instance of text() or $layer-2//a8n-body/node() instance of text())
                         then $layer-2
-                        else local:peel-off-annotations($layer-2, $edition-layer-elements, $documentary-elements)
+                        else local:peel-off-annotations($layer-2, $edition-layer-element-names, $documentary-element-names)
 };
 
 (: Removes one layer at a time from the upper-level annotations, reducing them, if neccesary, until they consist either of an empty element with an xml:id, or an element with a text node with an xml:id:)
-declare function local:peel-off-annotations($annotation as node(), $edition-layer-elements as xs:string+, $documentary-elements as xs:string+) as item()* {
+declare function local:peel-off-annotations($annotation as node(), $edition-layer-element-names as xs:string+, $documentary-element-names as xs:string+) as item()* {
             if (not($annotation//a8n-body/*/node()))
             (: if the body contents is an empty element, peel off any attributes it may have:)
-            then local:handle-element-only-annotations($annotation, $edition-layer-elements, $documentary-elements)
+            then local:handle-element-only-annotations($annotation, $edition-layer-element-names, $documentary-element-names)
             else 
                 if ($annotation//a8n-body/a8n-attribute)
                 (: if it is an attribute annotation, pass it through. :)
@@ -358,14 +349,14 @@ declare function local:peel-off-annotations($annotation as node(), $edition-laye
                 else
                     if ($annotation/a8n-body/*/* and $annotation/a8n-body/*/text()[normalize-space(.) != ''])
                     (: if there is mixed contents, send it on and receive it back in reduced form:)
-                    then local:handle-mixed-content-annotations($annotation, $edition-layer-elements, $documentary-elements)
+                    then local:handle-mixed-content-annotations($annotation, $edition-layer-element-names, $documentary-element-names)
                     else 
                         if ($annotation/a8n-body/* and $annotation//a8n-body/*/text()[normalize-space(.) != ''])
                         (: if there is one level until the text node (but no mixed contents), that is, if we have an ordinary element with text contents,
                         pass it through. :)
                         then $annotation
                         else 
-                            local:handle-element-only-annotations($annotation, $edition-layer-elements, $documentary-elements)
+                            local:handle-element-only-annotations($annotation, $edition-layer-element-names, $documentary-element-names)
                         (:if it is not an empty element, if it is not an attribute, and if it is not mixed contents, then it is a nested element node, so send it on to be (further) reduced :)
 };
 
@@ -411,15 +402,15 @@ Only elements with text nodes can serve as basis for annotations – all other e
  : there are 2) elements that can have no child nodes, only attributes; 
  : there are 3) elements that can have text nodes.:)
 (: NB: We can define the elements that we are interested in as elements that can have text nodes, all of whose ancestors are element-only elements.:)
-declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-elements as xs:string+, $documentary-elements as xs:string+, $block-element-names as xs:string+, $element-only-element-names as xs:string+) as element()* {
+declare function local:generate-top-level-annotations-keyed-to-base-text($elements as element()*, $edition-layer-element-names as xs:string+, $documentary-element-names as xs:string+, $block-element-names as xs:string+, $element-only-element-names as xs:string+) as element()* {
     for $element in $elements/element()
         return
         (: if the element is a block-level element that can hold text and if all its ancestors are element-only elements. :)
         if ($element/local-name() = $block-element-names and not($element/ancestor::*/local-name()[not(. = $element-only-element-names)]))
         (: then get its attributes and peel off its inline markup:)
-        then (local:make-attribute-annotations($element, $element/@xml:id/string()), local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements))
+        then (local:make-attribute-annotations($element, $element/@xml:id/string()), local:get-top-level-annotations-keyed-to-base-text($element, $edition-layer-element-names, $documentary-element-names))
         (: otherwise get its attributes and descend one level:)
-        else (local:make-attribute-annotations($element, $element/@xml:id/string()), local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names))
+        else (local:make-attribute-annotations($element, $element/@xml:id/string()), local:generate-top-level-annotations-keyed-to-base-text($element, $edition-layer-element-names, $documentary-element-names, $block-element-names, $element-only-element-names))
 };
 
 declare function local:prepare-annotations-for-output-to-file($element as element()*)
@@ -459,26 +450,26 @@ let $admin-metadata :=
 	<imprimatur><user/><time/></imprimatur>
 </admin>
 
-let $edition-layer-elements := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
-let $documentary-elements := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
+let $edition-layer-element-names := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
+let $documentary-element-names := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
 (:TODO: the idea is that an element that can hold text, all of whose ancestors are element-only-elements, is a block-level element, so use of $block-element-names has to be dropped in favour of using in terms of $element-only-element-names.:)
 let $barren-element-names := ('cb', 'gb', 'lb', 'milestone', 'pb', 'ptr', 'oRef', 'pRef', 'move', 'catRef', 'refState', 'binary', 'default', 'fsdLink', 'iff', 'numeric', 'symbol', 'then', 'alt', 'anchor', 'link', 'when', 'pause', 'shift', 'attRef', 'classRef', 'elementRef', 'equiv', 'macroRef', 'specDesc', 'specGrpRef', 'textNode', 'lacunaEnd', 'lacunaStart', 'variantEncoding', 'witEnd', 'witStart', 'addSpan', 'damageSpan', 'delSpan', 'handShift', 'redo', 'undo', 'caesura')
 let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
-let $base-text := local:generate-text-layer($doc-text, 'base')
+let $base-text := local:generate-text-layer($doc-text, 'base-text')
 let $base-text := local:remove-inline-elements($base-text, $block-element-names, $element-only-element-names)
 
-let $target-text := local:generate-text-layer($doc-text, 'target')
+let $target-text := local:generate-text-layer($doc-text, 'target-text')
 let $target-text := local:remove-inline-elements($target-text, $block-element-names, $element-only-element-names)
 
-let $annotations-1 := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-elements, $documentary-elements, $block-element-names, $element-only-element-names)
+let $annotations-1 := local:generate-top-level-annotations-keyed-to-base-text($doc-text, $edition-layer-element-names, $documentary-element-names, $block-element-names, $element-only-element-names)
 let $annotations-2 :=
     for $node in $annotations-1
-        return local:peel-off-annotations($node, $edition-layer-elements, $documentary-elements)
+        return local:peel-off-annotations($node, $edition-layer-element-names, $documentary-element-names)
 
 let $output-format := 'test'
-let $output-format := 'file'
+(:let $output-format := 'file':)
 
 let $annotations-3 := local:prepare-annotations-for-output-to-file($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
