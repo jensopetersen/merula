@@ -171,17 +171,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                 </a8n-target>
             return
                 let $element-annotation-result :=
-                    <a8n-annotation type="element" xml:id="{$annotation-id}" status="{
-                        let $base-text := string-join(local:separate-text-layers($text-block-element, 'base-text'))
-                        let $character-before-element := substring($base-text, $base-text-position-start, 1)
-                        let $character-after-element := substring($base-text, $base-text-position-end + 1, 1)
-                        let $characters-before-and-after-element := concat($character-before-element, $character-after-element)
-                        let $characters-before-and-after-element := replace($characters-before-and-after-element, '\s|\p{P}', '')
-                        return
-                            if ($characters-before-and-after-element) then "string" else "word"
-                            (: If the content of the inline element is a whole word, i.e. if it has either space or punctuation on both sides, label it as "word" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words.:)
-                            (:Below, the information for locating the inline element in relation to the base text and target text are gathered. The edition annotations point to the base text, whereas feature annotations point to the target text. The information regarding parent and sibling nodes makes possible the resolution of overlap problems. :)
-                        }">
+                    <a8n-annotation type="element" xml:id="{$annotation-id}" status="string">
                         {$target}
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                         <a8n-admin/>
