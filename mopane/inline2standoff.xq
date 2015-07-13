@@ -75,6 +75,13 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
     (:TODO: comments and PIs should also be handled as annotations:)
     for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
+        let $layer := 
+            if (local-name($element) = $editiorial-element-names)
+            then 'edition'
+            else
+                if (local-name($element) = $documentary-element-names)
+                then 'document'
+                else 'feature'
         
         let $base-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base-text'))
         let $base-text-before-text := string-join($element/preceding-sibling::text())
@@ -118,6 +125,50 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                         then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($following-sibling-node)}</a8n-node-name>)
                         else ()
         let $annotation-id := concat('uuid-', util:uuid())
+        let $target :=
+            if ($layer eq 'edition')
+            then
+                <a8n-target type="range" layer="edition">
+                    <a8n-base-layer>
+                        <a8n-id>{$a8n-id}</a8n-id>
+                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
+                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
+                    </a8n-base-layer>
+                    <a8n-target-layer>
+                        <a8n-id>{$a8n-id}</a8n-id>
+                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
+                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
+                    </a8n-target-layer>
+                </a8n-target>
+            else
+                <a8n-target type="range" layer="{
+                    if (local-name($element) = $documentary-element-names)
+                    then 'document' 
+                    else 'feature'}">
+                    <a8n-base-layer>
+                        <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
+                        <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
+                        <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
+                        <a8n-id>{$a8n-id}</a8n-id>
+                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
+                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
+                    </a8n-base-layer>
+                    <a8n-target-layer>
+                        <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
+                        <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
+                        <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
+                        <a8n-id>{$a8n-id}</a8n-id>
+                        <a8n-offset>{
+                            if (local-name($element) = $editiorial-element-names)
+                            then $base-text-position-start + 1
+                            else $target-text-position-start + 1
+                        }</a8n-offset>
+                        <a8n-range>{
+                            if (local-name($element) = $editiorial-element-names)
+                            then $base-text-position-end - $base-text-position-start
+                            else $target-text-position-end - $target-text-position-start}</a8n-range>
+                    </a8n-target-layer>
+                </a8n-target>
             return
                 let $element-annotation-result :=
                     <a8n-annotation type="element" xml:id="{$annotation-id}" status="{
@@ -131,37 +182,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                             (: If the content of the inline element is a whole word, i.e. if it has either space or punctuation on both sides, label it as "word" - in the editor tokens have to be labeled, since adding or removing a word has to take into consideration its isolation from neighbouring words.:)
                             (:Below, the information for locating the inline element in relation to the base text and target text are gathered. The edition annotations point to the base text, whereas feature annotations point to the target text. The information regarding parent and sibling nodes makes possible the resolution of overlap problems. :)
                         }">
-                        <a8n-target type="range" layer="{
-                            if (local-name($element) = $editiorial-element-names) 
-                            then 'edition' 
-                            else 
-                                if (local-name($element) = $documentary-element-names)
-                                then 'document' 
-                                else 'feature'}">
-                            <a8n-base-layer>
-                                <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
-                                <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
-                                <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
-                                <a8n-id>{$a8n-id}</a8n-id>
-                                <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                                <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                            </a8n-base-layer>
-                            <a8n-target-layer>
-                                <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
-                                <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
-                                <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
-                                <a8n-id>{$a8n-id}</a8n-id>
-                                <a8n-offset>{
-                                    if (local-name($element) = $editiorial-element-names)
-                                    then $base-text-position-start + 1
-                                    else $target-text-position-start + 1
-                                }</a8n-offset>
-                                <a8n-range>{
-                                    if (local-name($element) = $editiorial-element-names)
-                                    then $base-text-position-end - $base-text-position-start
-                                    else $target-text-position-end - $target-text-position-start}</a8n-range>
-                            </a8n-target-layer>
-                        </a8n-target>
+                        {$target}
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                         <a8n-admin/>
                     </a8n-annotation>
