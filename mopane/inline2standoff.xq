@@ -5,7 +5,6 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare boundary-space preserve;
 
 declare variable $text-in-collection := '/db/apps/merula/mopane/';
-declare variable $annotation-out-collection := '/db/apps/merula/data/annotations/sha-ham';
 declare variable $text-out-collection := '/db/apps/merula/data/';
 
 (: Removes elements named :)
@@ -447,6 +446,10 @@ as element()* {
     }
 };
 
+let $doc-id := 'sha-ham'
+let $annotation-out-path := '/db/apps/merula/data/annotations'
+let $annotation-out-collection-path := concat($annotation-out-path, "/", $doc-id)
+
 let $doc-title := 'sample_MTDP10363.xml'
 let $doc := doc(concat($text-in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
@@ -483,10 +486,15 @@ let $annotations-2 :=
         return local:peel-off-annotations($node, $editiorial-element-names, $documentary-element-names)
 
 let $output-format := 'test'
-(:let $output-format := 'file':)
+let $output-format := 'file'
 
 let $annotations-3 := local:prepare-annotations-for-output-to-file($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
+
+let $annotation-out-collection := 
+    if (not(xmldb:collection-available($annotation-out-collection-path)) and $output-format eq 'file')
+    then xmldb:create-collection(xmldb:encode-uri($annotation-out-path), xmldb:encode-uri($doc-id))
+    else ()
 
 return
     if ($output-format eq 'test')
@@ -500,8 +508,14 @@ return
     </result>
     else
     (for $annotation in $annotations-3
+    let $annotation-home-name := $annotation//a8n-id
+    let $annotation-home-path := concat($annotation-out-collection-path, "/", $annotation-home-name)
+    let $annotation-home-collection := 
+        if (not(xmldb:collection-available($annotation-home-path)))
+        then xmldb:create-collection(xmldb:encode-uri($annotation-out-collection-path), xmldb:encode-uri($annotation-home-name))
+        else ()
     return
-        xmldb:store($annotation-out-collection,  concat($annotation/@xml:id, '.xml'), $annotation)
+        xmldb:store($annotation-home-path,  concat($annotation/@xml:id, '.xml'), $annotation)
     ,
         xmldb:store($text-out-collection, $doc-title, $base-text)
     )
