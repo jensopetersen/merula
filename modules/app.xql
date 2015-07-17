@@ -42,7 +42,7 @@ function app:work($node as node(), $model as map(*), $id as xs:string?) {
 };
 
 declare function app:header($node as node(), $model as map(*)) {
-    so2il:standoff2inline($model("work")/tei:teiHeader, 'feature', 'html')
+    so2il:standoff2inline($model("work")/tei:teiHeader, ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del'), 'html')
 };
 
 declare function app:outline($node as node(), $model as map(*), $details as xs:string) {
@@ -149,7 +149,7 @@ declare function app:view($node as node(), $model as map(*), $id as xs:string) {
     for $div in $model("work")/id($id)
     return
         <div xmlns="http://www.w3.org/1999/xhtml" class="play">
-        { so2il:standoff2inline($div, 'feature', 'html') }
+        { so2il:standoff2inline($div, ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del'), 'html') }
         </div>
 };
 

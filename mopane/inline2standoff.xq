@@ -74,14 +74,6 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
     (:TODO: comments and PIs should also be handled as annotations:)
     for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
-        let $layer := 
-            if (local-name($element) = $editiorial-element-names)
-            then 'edition'
-            else
-                if (local-name($element) = $documentary-element-names)
-                then 'document'
-                else 'feature'
-        
         let $base-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base-text'))
         let $base-text-before-text := string-join($element/preceding-sibling::text())
         let $base-text-marked-up-string := string-join(local:separate-text-layers($element, 'base-text'))
@@ -125,18 +117,15 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                         else ()
         let $annotation-id := concat('uuid-', util:uuid())
         let $target :=
-            if ($layer eq 'edition')
+            if (local-name($element) = $editiorial-element-names)
             then
-                <a8n-target layer="edition">
+                <a8n-target>
                     <a8n-id>{$a8n-id}</a8n-id>
                     <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
                     <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
                 </a8n-target>
             else
-                <a8n-target layer="{
-                    if (local-name($element) = $documentary-element-names)
-                    then 'document' 
-                    else 'feature'}">
+                <a8n-target>
                         <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
                         <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
                         <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
@@ -153,7 +142,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                 </a8n-target>
             return
                 let $element-annotation-result :=
-                    <a8n-annotation xml:id="{$annotation-id}" status="string">
+                    <a8n-annotation xml:id="{$annotation-id}">
                         {$target}
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                         <a8n-admin/>
@@ -168,7 +157,7 @@ declare function local:make-attribute-annotations($element as element(), $parent
     for $attribute in $element/(@* except @xml:id)
     return
         <a8n-annotation xml:id="{concat('uuid-', util:uuid())}">
-            <a8n-target layer="annotation">
+            <a8n-target>
                 <a8n-id>{$parent-element-id}</a8n-id>
             </a8n-target>
             <a8n-body>
@@ -283,15 +272,14 @@ declare function local:handle-element-only-annotations($annotation as node(), $e
             return ($parent-annotation, $parent-attribute-annotations)
             ,
             (:this has taken the contents out of the annotation's parent element - now we will deal with the contents it had :)
-            let $parent-status := $annotation/@status/string() (: get the status of original annotation :)
             let $parent-id := $annotation/@xml:id/string() (: get the annotation id :)
             let $child-body-contents := $annotation//a8n-body/*/* (: get the contents of what is below the top element; there may be multiple elements here.:)
             for $element at $i in $child-body-contents
             (: return the new annotations, with the elements below the parent element of the old annotation split over as many annotations, recording their order (instead of their offset and range) and making them refer to the parent annotation:)
                 let $child-attribute-annotations := local:make-attribute-annotations($element, $element/@xml:id/string())
                 let $child-element-annotation :=
-                    <a8n-annotation xml:id="{concat('uuid-', util:uuid())}" status="{$parent-status}">
-                        <a8n-target layer="annotation">
+                    <a8n-annotation xml:id="{concat('uuid-', util:uuid())}">
+                        <a8n-target>
                                 <a8n-id>{$parent-id}</a8n-id>
                                 <a8n-order>{$i}</a8n-order>
                         </a8n-target>
@@ -469,7 +457,7 @@ let $annotations-2 :=
         return local:peel-off-annotations($node, $editiorial-element-names, $documentary-element-names)
 
 let $output-format := 'exide'
-(:let $output-format := 'doc':)
+let $output-format := 'doc'
 
 let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
