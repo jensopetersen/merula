@@ -41,7 +41,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
     (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
     let $top-level-edition-a8ns := 
         if ($annotations)
-        then $annotations[a8n-target/@type eq 'range'][a8n-target/@layer eq 'edition'][a8n-target/a8n-id eq $node/@xml:id]
+        then $annotations[a8n-target/a8n-offset][a8n-target/@layer eq 'edition'][a8n-target/a8n-id eq $node/@xml:id]
         else ()
 (:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
 
@@ -90,7 +90,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
     the feature annotations that connect to the target text though text ranges.:)
     let $top-level-feature-a8ns := 
         if ($annotations)
-        then $annotations[a8n-target/@type eq 'range'][a8n-target/@layer eq 'feature'][a8n-target/a8n-id eq $node/@xml:id]
+        then $annotations[a8n-target/a8n-offset][a8n-target/@layer eq 'feature'][a8n-target/a8n-id eq $node/@xml:id]
         else ()
 (:    let $log := util:log("DEBUG", ("##$top-level-feature-a8ns): ", $top-level-feature-a8ns)):)
     
@@ -245,11 +245,9 @@ declare function so2il:standoff2inline-recurser($node as node(), $annotations as
         }
 };
 
-(:This function takes a sequence of top-level text-critical annotations, 
-i.e annotations of @type 'range' and @layer 'edition', 
-and inserts as children all annotations that refer to them through their @xml:id, recursively:)
-declare function so2il:build-up-annotations($top-level-critical-annotations as element()*, $annotations as element()*) as element()* {
-    for $annotation in $top-level-critical-annotations
+(:This function takes a sequence of top-level annotations and inserts as children all annotations that refer to them through their @xml:id, recursively:)
+declare function so2il:build-up-annotations($top-level-annotations as element()*, $annotations as element()*) as element()* {
+    for $annotation in $top-level-annotations
     return
         so2il:build-up-annotation($annotation, $annotations)
 };

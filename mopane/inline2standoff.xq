@@ -127,13 +127,13 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
         let $target :=
             if ($layer eq 'edition')
             then
-                <a8n-target type="range" layer="edition">
+                <a8n-target layer="edition">
                     <a8n-id>{$a8n-id}</a8n-id>
                     <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
                     <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
                 </a8n-target>
             else
-                <a8n-target type="range" layer="{
+                <a8n-target layer="{
                     if (local-name($element) = $documentary-element-names)
                     then 'document' 
                     else 'feature'}">
@@ -153,7 +153,7 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                 </a8n-target>
             return
                 let $element-annotation-result :=
-                    <a8n-annotation type="element" xml:id="{$annotation-id}" status="string">
+                    <a8n-annotation xml:id="{$annotation-id}" status="string">
                         {$target}
                         <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                         <a8n-admin/>
@@ -167,8 +167,8 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
 declare function local:make-attribute-annotations($element as element(), $parent-element-id as xs:string) as element()* {
     for $attribute in $element/(@* except @xml:id)
     return
-        <a8n-annotation type="attribute" xml:id="{concat('uuid-', util:uuid())}">
-            <a8n-target type="element" layer="annotation">
+        <a8n-annotation xml:id="{concat('uuid-', util:uuid())}">
+            <a8n-target layer="annotation">
                 <a8n-id>{$parent-element-id}</a8n-id>
             </a8n-target>
             <a8n-body>
@@ -290,8 +290,8 @@ declare function local:handle-element-only-annotations($annotation as node(), $e
             (: return the new annotations, with the elements below the parent element of the old annotation split over as many annotations, recording their order (instead of their offset and range) and making them refer to the parent annotation:)
                 let $child-attribute-annotations := local:make-attribute-annotations($element, $element/@xml:id/string())
                 let $child-element-annotation :=
-                    <a8n-annotation type="element" xml:id="{concat('uuid-', util:uuid())}" status="{$parent-status}">
-                        <a8n-target type="element" layer="annotation">
+                    <a8n-annotation xml:id="{concat('uuid-', util:uuid())}" status="{$parent-status}">
+                        <a8n-target layer="annotation">
                                 <a8n-id>{$parent-id}</a8n-id>
                                 <a8n-order>{$i}</a8n-order>
                         </a8n-target>
