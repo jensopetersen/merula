@@ -13,10 +13,8 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
-(:values used for $target-layer: 'feature', 'edition'; add 'documentary' :) 
 (:values used for $target-format: 'tei', 'html':)
-(:This function should be named to something more appropriate - TEI is output in addition to html. :)
-declare function so2il:standoff2inline($nodes as node()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:standoff2inline($nodes as node()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
     (:Before recursion, $nodes is a single element.:) 
@@ -28,20 +26,20 @@ declare function so2il:standoff2inline($nodes as node()*, $target-layer as xs:st
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
 (:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     return
-        so2il:annotate-text($nodes, $annotations, $target-layer, $target-format)
+        so2il:annotate-text($nodes, $annotations, $editiorial-element-names, $target-format)
 };
 
-declare function so2il:annotate-text($nodes as node()*, $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:annotate-text($nodes as node()*, $annotations as element()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
 
     (:Recurse though the document.:)
 (:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $node := so2il:standoff2inline-recurser($nodes, $annotations, $target-layer, $target-format)
+    let $node := so2il:standoff2inline-recurser($nodes, $annotations, $editiorial-element-names, $target-format)
 (:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
 
     (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
     let $top-level-edition-a8ns := 
         if ($annotations)
-        then $annotations[a8n-target/a8n-offset][a8n-target/@layer eq 'edition'][a8n-target/a8n-id eq $node/@xml:id]
+        then $annotations[a8n-target/a8n-offset][a8n-body/*/local-name() = $editiorial-element-names][a8n-target/a8n-id eq $node/@xml:id]
         else ()
 (:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
 
@@ -90,7 +88,7 @@ declare function so2il:annotate-text($nodes as node()*, $annotations as element(
     the feature annotations that connect to the target text though text ranges.:)
     let $top-level-feature-a8ns := 
         if ($annotations)
-        then $annotations[a8n-target/a8n-offset][a8n-target/@layer eq 'feature'][a8n-target/a8n-id eq $node/@xml:id]
+        then $annotations[a8n-target/a8n-offset][not(a8n-body/*/local-name() = ($editiorial-element-names))][a8n-target/a8n-id eq $node/@xml:id]
         else ()
 (:    let $log := util:log("DEBUG", ("##$top-level-feature-a8ns): ", $top-level-feature-a8ns)):)
     
@@ -233,14 +231,14 @@ declare function so2il:tei2html($node as node(), $block-element-names as xs:stri
         }
 };
 
-declare function so2il:standoff2inline-recurser($node as node(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) {
+declare function so2il:standoff2inline-recurser($node as node(), $annotations as element()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
     element {node-name($node)}
         {$node/@*
         , 
         for $child in $node/node()
         return
             if ($child instance of element())
-            then so2il:annotate-text($child, $annotations, $target-layer, $target-format)
+            then so2il:annotate-text($child, $annotations, $editiorial-element-names, $target-format)
             else $child
         }
 };
@@ -340,24 +338,7 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                     let $annotation := $annotations[$annotation-n]
                     let $annotation-offset := number($annotation//a8n-offset)
                     let $annotation-range := number($annotation//a8n-range)
-                    let $annotation := 
-                        (:Add the @xml:id of the annotation, making retrieval possible.:)
-                        if ($target-layer eq 'feature')
-                            then
-                                let $annotation-body-child := $annotation/(* except a8n-target)
-                                let $annotation-body-child-name := node-name($annotation-body-child) 
-                                let $annotated-string := substring($text, $annotation-offset, $annotation-range)
-                                return
-                                    element {$annotation-body-child-name}
-                                    {
-                                    $annotation-body-child/@*
-                                    ,
-                                    if ($annotation-body-child/@xml:id) then () else attribute xml:id {$annotation/@xml:id/string()}
-                                    ,
-                                    $annotated-string}
-                        (:If the edition layer is to be output, take the element from the built-up annotation.:)
-                        (:TODO: It should also be possible to output the edition layer as HTML.:)
-                        else $annotation/(* except a8n-target)
+                    let $annotation := $annotation/(* except a8n-target)
                     return
                         local:insert-elements($segment, $annotation, 'segment', 'first-child')
                 (:A text node is being processed.:)
