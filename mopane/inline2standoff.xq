@@ -128,31 +128,15 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
             if ($layer eq 'edition')
             then
                 <a8n-target type="range" layer="edition">
-                    <a8n-base-layer>
-                        <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                    </a8n-base-layer>
-                    <a8n-target-layer>
-                        <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                    </a8n-target-layer>
+                    <a8n-id>{$a8n-id}</a8n-id>
+                    <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
+                    <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
                 </a8n-target>
             else
                 <a8n-target type="range" layer="{
                     if (local-name($element) = $documentary-element-names)
                     then 'document' 
                     else 'feature'}">
-                    <a8n-base-layer>
-                        <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
-                        <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
-                        <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
-                        <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                    </a8n-base-layer>
-                    <a8n-target-layer>
                         <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
                         <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
                         <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
@@ -166,7 +150,6 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
                             if (local-name($element) = $editiorial-element-names)
                             then $base-text-position-end - $base-text-position-start
                             else $target-text-position-end - $target-text-position-start}</a8n-range>
-                    </a8n-target-layer>
                 </a8n-target>
             return
                 let $element-annotation-result :=
@@ -426,7 +409,7 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
         else (local:make-attribute-annotations($element, $element/@xml:id/string()), local:generate-top-level-annotations-keyed-to-base-text($element, $editiorial-element-names, $documentary-element-names, $text-block-element-names, $element-only-element-names))
 };
 
-declare function local:prepare-annotations-for-output-to-file($element as element()*)
+declare function local:prepare-annotations-for-output-to-doc($element as element()*)
 as element()* {
     for $element in $element 
     return
@@ -442,7 +425,7 @@ as element()* {
             else if ($child instance of text()) then
                 $child
             else
-                local:prepare-annotations-for-output-to-file($child)
+                local:prepare-annotations-for-output-to-doc($child)
     }
 };
 
@@ -485,19 +468,19 @@ let $annotations-2 :=
     for $node in $annotations-1
         return local:peel-off-annotations($node, $editiorial-element-names, $documentary-element-names)
 
-let $output-format := 'test'
-let $output-format := 'file'
+let $output-format := 'exide'
+(:let $output-format := 'doc':)
 
-let $annotations-3 := local:prepare-annotations-for-output-to-file($annotations-2)
+let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
 
 let $annotation-out-collection := 
-    if (not(xmldb:collection-available($annotation-out-collection-path)) and $output-format eq 'file')
+    if (not(xmldb:collection-available($annotation-out-collection-path)) and $output-format eq 'doc')
     then xmldb:create-collection(xmldb:encode-uri($annotation-out-path), xmldb:encode-uri($doc-id))
     else ()
 
 return
-    if ($output-format eq 'test')
+    if ($output-format eq 'exide')
     then
     <result>
         <base-text>{$base-text}</base-text>
