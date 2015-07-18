@@ -17,25 +17,20 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare function so2il:standoff2inline($nodes as node()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
-    (:Before recursion, $nodes is a single element.:) 
     let $doc-id := root($nodes)/*/@xml:id/string()
-
-    (:Get all annotations for the document in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
-    (:NB: This is perhaps too much. One could also store annotations in collections created for each xml:id, in the hierarchy of their elements. 
-    Would the frequence of the collection calls be worth it, compared to moving around all annotations for the document?:)
-    let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
-(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
-    return
-        so2il:annotate-text($nodes, $annotations, $editiorial-element-names, $target-format)
+    
+    return so2il:annotate-text($nodes, $doc-id, $editiorial-element-names, $target-format)
 };
 
-declare function so2il:annotate-text($nodes as node()*, $annotations as element()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
+declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string) {
 
     (:Recurse though the document.:)
 (:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $node := so2il:standoff2inline-recurser($nodes, $annotations, $editiorial-element-names, $target-format)
+    let $node := so2il:standoff2inline-recurser($nodes, $doc-id, $editiorial-element-names, $target-format)
 (:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
-
+    let $doc-id := root($nodes)/*/@xml:id/string()
+    (:Get all annotations for the block-level element in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
+    let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node/@xml:id)/*
     (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
     let $top-level-edition-a8ns := 
         if ($annotations)
@@ -231,14 +226,14 @@ declare function so2il:tei2html($node as node(), $block-element-names as xs:stri
         }
 };
 
-declare function so2il:standoff2inline-recurser($node as node(), $annotations as element()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
+declare function so2il:standoff2inline-recurser($node as node(), $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string) {
     element {node-name($node)}
         {$node/@*
         , 
         for $child in $node/node()
         return
             if ($child instance of element())
-            then so2il:annotate-text($child, $annotations, $editiorial-element-names, $target-format)
+            then so2il:annotate-text($child, $doc-id, $editiorial-element-names, $target-format)
             else $child
         }
 };
