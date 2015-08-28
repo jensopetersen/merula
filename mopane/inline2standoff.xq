@@ -6,7 +6,8 @@ declare boundary-space preserve;
 
 declare variable $text-in-collection := '/db/apps/merula/mopane/';
 declare variable $text-out-collection := '/db/apps/merula/data/';
-declare variable $base-text-wit := 'TS1';
+(:declare variable $base-text-wit := '#禮記注疏-1816';:)
+declare variable $base-text-wit := '#TS1';
 
 (: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $names-of-elements-to-remove as xs:anyAtomicType+)  as node()* {
@@ -182,28 +183,24 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
         return
             typeswitch($node)
                 
-                case text() return
-                    if ($node/ancestor-or-self::element(tei:note)) 
-                    then ()
-                    else $node
+                case element(tei:note) return
+                    ()
                     (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur in the text stream, but should occur outside of it.)
                     Here we strip out all notes from the text itself and put them into the annotations.:)
                 
-                case element(tei:lem) return 
+                case element(tei:lem) return
                     if ($target eq 'base-text') 
                     then 
-                        if ($node[contains(@wit/string(), $base-text-wit)])
-                        (:TODO: an approach using tokenize() should be used instead:)
-                        then $node
+                        if ($node[tokenize(@wit/string(), " ") = $base-text-wit])
+                        then local:separate-text-layers($node, $target)
                         else ()
                     else $node
                 
                 case element(tei:rdg) return
                     if ($target eq 'base-text')
                     then 
-                        if ($node[contains(@wit/string(), $base-text-wit)])
-                        (:TODO: an approach using tokenize() should be used instead:)
-                        then $node
+                        if ($node[tokenize(@wit/string(), " ") = $base-text-wit])
+                        then local:separate-text-layers($node, $target)
                         else ()
                     else ()
 
@@ -211,29 +208,30 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                 case element(tei:reg) return
                     if ($target eq 'base-text')
                     then () 
-                    else $node
+                    else local:separate-text-layers($node, $target)
                 case element(tei:corr) return
                     if ($target eq 'base-text') 
                     then () 
-                    else $node
+                    else local:separate-text-layers($node, $target)
                 case element(tei:expan) return
                     if ($target eq 'base-text') 
                     then () 
-                    else $node
+                    else local:separate-text-layers($node, $target)
                 case element(tei:orig) return
                     if ($target eq 'base-text') 
-                    then $node
+                    then local:separate-text-layers($node, $target)
                     else ()
                 case element(tei:sic) return
                     if ($target eq 'base-text') 
-                    then $node
+                    then local:separate-text-layers($node, $target)
                     else ()
                 case element(tei:abbr) return
                     if ($target eq 'base-text') 
-                    then $node
+                    then local:separate-text-layers($node, $target)
                     else ()
-
-                    default return local:separate-text-layers($node, $target)
+                case text() return
+                    $node
+                default return local:separate-text-layers($node, $target)
 };
 
 (: This function removes inline elements from the result of generate-text-layer() :)
@@ -388,7 +386,14 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
         (: then get its attributes and peel off its inline markup:)
         then (local:make-attribute-annotations($element, 'structuring', $element/@xml:id/string()), local:get-top-level-annotations-keyed-to-base-text($element, $editorial-element-names, $documentary-element-names))
         (: otherwise get its attributes and descend one level:)
-        else (local:make-attribute-annotations($element, 'structuring', $element/@xml:id/string()), local:generate-top-level-annotations-keyed-to-base-text($element, $editorial-element-names, $documentary-element-names, $text-block-element-names, $element-only-element-names))
+        else 
+            if ($element/(attribute() except @xml:id))
+            then (
+                local:make-attribute-annotations($element, 'structuring', $element/@xml:id/string())
+                ,
+                local:generate-top-level-annotations-keyed-to-base-text($element, $editorial-element-names, $documentary-element-names, $text-block-element-names, $element-only-element-names)
+                )
+            else local:generate-top-level-annotations-keyed-to-base-text($element, $editorial-element-names, $documentary-element-names, $text-block-element-names, $element-only-element-names)
 };
 
 declare function local:prepare-annotations-for-output-to-doc($element as element()*)
@@ -433,6 +438,7 @@ let $annotation-out-path := '/db/apps/merula/data/annotations'
 let $annotation-out-collection-path := concat($annotation-out-path, "/", $doc-id)
 
 let $doc-title := 'sample_MTDP10363.xml'
+(:let $doc-title := 'CHANT-0874-clean-head-app-ref-wit.xml':)
 let $doc := doc(concat($text-in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
