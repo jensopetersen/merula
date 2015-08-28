@@ -6,8 +6,13 @@ declare boundary-space preserve;
 
 declare variable $text-in-collection := '/db/apps/merula/mopane/';
 declare variable $text-out-collection := '/db/apps/merula/data/';
-(:declare variable $base-text-wit := '#禮記注疏-1816';:)
-declare variable $base-text-wit := '#TS1';
+declare variable $base-text-wit := '#禮記注疏-1816';
+(:declare variable $base-text-wit := '#TS1';:)
+
+declare function local:download-xml($node, $filename) { 
+response:set-header("Content-Disposition", concat("attachment; 
+filename=", $filename)), response:stream($node, 'indent=yes') 
+};
 
 (: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $names-of-elements-to-remove as xs:anyAtomicType+)  as node()* {
@@ -438,7 +443,7 @@ let $annotation-out-path := '/db/apps/merula/data/annotations'
 let $annotation-out-collection-path := concat($annotation-out-path, "/", $doc-id)
 
 let $doc-title := 'sample_MTDP10363.xml'
-(:let $doc-title := 'CHANT-0874-clean-head-app-ref-wit.xml':)
+let $doc-title := 'CHANT-0874-clean-head-app-ref-wit.xml'
 let $doc := doc(concat($text-in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
@@ -475,6 +480,7 @@ let $annotations-2 :=
 
 let $output-format := 'exide'
 (:let $output-format := 'doc':)
+let $output-format := 'download'
 
 let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
@@ -483,10 +489,7 @@ let $annotation-out-collection :=
     if (not(xmldb:collection-available($annotation-out-collection-path)) and $output-format eq 'doc')
     then xmldb:create-collection(xmldb:encode-uri($annotation-out-path), xmldb:encode-uri($doc-id))
     else ()
-
-return
-    if ($output-format eq 'exide')
-    then
+let $result :=
     <result>
         <base-text>{$base-text}</base-text>
         <target-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $target-text}}}</target-text>
@@ -494,18 +497,31 @@ return
         <annotations-2>{$annotations-2}</annotations-2>
         <annotations-3>{$annotations-3}</annotations-3>
     </result>
+return
+    if ($output-format eq 'exide')
+    then
+    <result>{$result}</result>
     else
-    (for $annotation in $annotations-3
-    let $log := util:log("DEBUG", ("##$annotation): ", $annotation))
-    let $annotation-home-name := local:find-annotation-home($annotations-3, $annotation//a8n-id)
-    let $log := util:log("DEBUG", ("##$annotation-home-name): ", $annotation-home-name))
-    let $annotation-home-path := concat($annotation-out-collection-path, "/", $annotation-home-name)
-    let $annotation-home-collection := 
-        if (not(xmldb:collection-available($annotation-home-path)))
-        then xmldb:create-collection(xmldb:encode-uri($annotation-out-collection-path), xmldb:encode-uri($annotation-home-name))
-        else ()
+        if ($output-format eq 'doc')
+        then
+            (for $annotation in $annotations-3
+            let $annotation-home-name := local:find-annotation-home($annotations-3, $annotation//a8n-id)
+            let $annotation-home-path := concat($annotation-out-collection-path, "/", $annotation-home-name)
+            let $annotation-home-collection := 
+                if (not(xmldb:collection-available($annotation-home-path)))
+                then xmldb:create-collection(xmldb:encode-uri($annotation-out-collection-path), xmldb:encode-uri($annotation-home-name))
+            else ()
     return
         xmldb:store($annotation-home-path,  concat($annotation/@xml:id, '.xml'), $annotation)
     ,
         xmldb:store($text-out-collection, $doc-title, $base-text)
-    )
+    ) else
+        if ($output-format eq 'download')
+                then
+                    let $timestamp := datetime:timestamp-to-datetime(datetime:timestamp())
+                    let $timestamp := substring-before(string($timestamp), '.')
+                    let $file-name := ('results-' || $timestamp || '.xml')
+                    return 
+                        local:download-xml($result, $file-name) 
+
+            else ()
