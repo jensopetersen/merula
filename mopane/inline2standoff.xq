@@ -6,8 +6,8 @@ declare boundary-space preserve;
 
 declare variable $text-in-collection := '/db/apps/merula/mopane/';
 declare variable $text-out-collection := '/db/apps/merula/data/';
-declare variable $base-text-wit := '#禮記注疏-1816';
-(:declare variable $base-text-wit := '#TS1';:)
+
+import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "../modules/standoff2inline.xql";
 
 declare function local:download-xml($node, $filename) { 
 response:set-header("Content-Disposition", concat("attachment; 
@@ -81,15 +81,15 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
     (:TODO: comments and PIs should also be handled as annotations:)
     for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
-        let $base-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'base-text'))
+        let $base-text-before-element := string-join(so2il:separate-text-layers($element/preceding-sibling::node(), 'base-text'))
         let $base-text-before-text := string-join($element/preceding-sibling::text())
-        let $base-text-marked-up-string := string-join(local:separate-text-layers($element, 'base-text'))
+        let $base-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'base-text'))
         let $base-text-position-start := string-length($base-text-before-element) + string-length($base-text-before-text)
         let $base-text-position-end := $base-text-position-start + string-length($base-text-marked-up-string)
         
-        let $target-text-before-element := string-join(local:separate-text-layers($element/preceding-sibling::node(), 'target-text'))
+        let $target-text-before-element := string-join(so2il:separate-text-layers($element/preceding-sibling::node(), 'target-text'))
         let $target-text-before-text := string-join($element/preceding-sibling::text()) (:NB: same as base:)
-        let $target-text-marked-up-string := string-join(local:separate-text-layers($element, 'target-text'))
+        let $target-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'target-text'))
         let $target-text-position-start := string-length($target-text-before-element) + string-length($target-text-before-text)
         let $target-text-position-end := $target-text-position-start + string-length($target-text-marked-up-string)
         
@@ -182,62 +182,6 @@ declare function local:make-attribute-annotations($element as element(), $motiva
 };
 
 
-(: Based on a list of TEI elements that alter the text, construct the altered (target) or the unaltered (base) text. This leaves non-edition inline elements in the text to be removed by local:remove-inline-elements(). :)
-declare function local:separate-text-layers($input as node()*, $target) as item()* {
-        for $node in $input/node()
-        return
-            typeswitch($node)
-                
-                case element(tei:note) return
-                    ()
-                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur in the text stream, but should occur outside of it.)
-                    Here we strip out all notes from the text itself and put them into the annotations.:)
-                
-                case element(tei:lem) return
-                    if ($target eq 'base-text') 
-                    then 
-                        if ($node[tokenize(@wit/string(), " ") = $base-text-wit])
-                        then local:separate-text-layers($node, $target)
-                        else ()
-                    else $node
-                
-                case element(tei:rdg) return
-                    if ($target eq 'base-text')
-                    then 
-                        if ($node[tokenize(@wit/string(), " ") = $base-text-wit])
-                        then local:separate-text-layers($node, $target)
-                        else ()
-                    else ()
-
-                
-                case element(tei:reg) return
-                    if ($target eq 'base-text')
-                    then () 
-                    else local:separate-text-layers($node, $target)
-                case element(tei:corr) return
-                    if ($target eq 'base-text') 
-                    then () 
-                    else local:separate-text-layers($node, $target)
-                case element(tei:expan) return
-                    if ($target eq 'base-text') 
-                    then () 
-                    else local:separate-text-layers($node, $target)
-                case element(tei:orig) return
-                    if ($target eq 'base-text') 
-                    then local:separate-text-layers($node, $target)
-                    else ()
-                case element(tei:sic) return
-                    if ($target eq 'base-text') 
-                    then local:separate-text-layers($node, $target)
-                    else ()
-                case element(tei:abbr) return
-                    if ($target eq 'base-text') 
-                    then local:separate-text-layers($node, $target)
-                    else ()
-                case text() return
-                    $node
-                default return local:separate-text-layers($node, $target)
-};
 
 (: This function removes inline elements from the result of generate-text-layer() :)
 declare function local:remove-inline-elements($nodes as node()*, $text-block-element-names as xs:string+, $element-only-element-names as xs:string+) as node()* {
@@ -367,7 +311,7 @@ declare function local:generate-text-layer($element as element(), $target as xs:
                     if ($node/@xml:space) then attribute{'xml:space'}{$node/@xml:space} else (),
                     if ($node/@xml:lang) then attribute{'xml:lang'}{$node/@xml:lang} else ()
                     ,
-                    local:separate-text-layers($node, $target)
+                    so2il:separate-text-layers($node, $target)
                     }
                 else 
                     if ($node instance of comment()) (: pass through comments. :)
@@ -463,7 +407,10 @@ let $admin-metadata :=
 let $editorial-element-names := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
 let $documentary-element-names := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $text-block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
-(:TODO: the idea is that an element that can hold text, all of whose ancestors are element-only-elements, is a block-level element, so use of $text-block-element-names has to be dropped in favour of using in terms of $element-only-element-names.:)
+(: adding seg – though it is not a $text-block-element – to handle CHANT documents :)
+let $text-block-element-names := ($text-block-element-names, 'seg')
+(:TODO: the idea is that an element that can hold text, all of whose ancestors are element-only-elements, is a block-level element, 
+so use of $text-block-element-names has to be dropped in favour of using in terms of $element-only-element-names.:)
 let $barren-element-names := ('cb', 'gb', 'lb', 'milestone', 'pb', 'ptr', 'oRef', 'pRef', 'move', 'catRef', 'refState', 'binary', 'default', 'fsdLink', 'iff', 'numeric', 'symbol', 'then', 'alt', 'anchor', 'link', 'when', 'pause', 'shift', 'attRef', 'classRef', 'elementRef', 'equiv', 'macroRef', 'specDesc', 'specGrpRef', 'textNode', 'lacunaEnd', 'lacunaStart', 'variantEncoding', 'witEnd', 'witStart', 'addSpan', 'damageSpan', 'delSpan', 'handShift', 'redo', 'undo', 'caesura')
 let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
