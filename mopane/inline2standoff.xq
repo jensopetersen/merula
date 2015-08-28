@@ -6,6 +6,7 @@ declare boundary-space preserve;
 
 declare variable $text-in-collection := '/db/apps/merula/mopane/';
 declare variable $text-out-collection := '/db/apps/merula/data/';
+declare variable $base-text-wit := 'TS1';
 
 (: Removes elements named :)
 declare function local:remove-elements($nodes as node()*, $names-of-elements-to-remove as xs:anyAtomicType+)  as node()* {
@@ -185,40 +186,27 @@ declare function local:separate-text-layers($input as node()*, $target) as item(
                     if ($node/ancestor-or-self::element(tei:note)) 
                     then ()
                     else $node
-                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions)
+                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur in the text stream, but should occur outside of it.)
                     Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return 
                     if ($target eq 'base-text') 
-                    then ()
+                    then 
+                        if ($node[contains(@wit/string(), $base-text-wit)])
+                        (:TODO: an approach using tokenize() should be used instead:)
+                        then $node
+                        else ()
                     else $node
                 
                 case element(tei:rdg) return
-                    if ($node/preceding-sibling::tei:lem)
-                    then
-                    (:if the app has a lem along with the rdg:)
-                        if ($target eq 'base-text')
-                        then 
-                            if ($node[contains(@wit/string(), 'TS1')])
-                            (:TODO: an approach using tokenize() should be used instead:)
-                            then $node
-                            else ()
-                        (:if there is a lem, choose a rdg for the base text:)
+                    if ($target eq 'base-text')
+                    then 
+                        if ($node[contains(@wit/string(), $base-text-wit)])
+                        (:TODO: an approach using tokenize() should be used instead:)
+                        then $node
                         else ()
-                        (:disregard the rdg for the target text if there is a lem:)
-                    else
-                    (:if the app has no lem along with the rdg:)
-                        if ($target eq 'base-text')
-                        then 
-                            if ($node[contains(@wit/string(), 'TS1')])
-                            then $node
-                            else ()
-                            (:if there is no lem, choose a TS1 rdg for the base text if there is one:)
-                        else
-                            if ($node[contains(@wit/string(), 'TS2')])
-                            then $node
-                            else ()
-                            (:if there is no lem, choose a TS2 rdg for the target text:)
+                    else ()
+
                 
                 case element(tei:reg) return
                     if ($target eq 'base-text')
@@ -367,7 +355,7 @@ declare function local:generate-text-layer($element as element(), $target as xs:
             then local:generate-text-layer($node, $target)
             else
                 if ($node instance of element() and exists($node/text()))
-                (:NB: here the different kinds of elements should be referred to:)
+                (:NB: here the different kinds of elements should be referred to instead of checking for actual occurrence of text node:)
                 (: if the node is an element which has a child text node, then reconstruct it and get its text layer. :)
                 then 
                     element {node-name($node)}
