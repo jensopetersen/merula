@@ -17,16 +17,18 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare function so2il:standoff2inline($nodes as node()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
-    let $doc-id := root($nodes)/*/@xml:id/string()
-    
-    return so2il:annotate-text($nodes, $doc-id, $editiorial-element-names, $target-format)
+    let $doc := root($nodes)/*
+    let $doc-id := $doc/@xml:id/string()
+    let $wit := $nodes/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
+    return
+        so2il:annotate-text($nodes, $doc-id, $editiorial-element-names, $target-format, $wit)
 };
 
-declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string) {
+declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string, $wit as xs:string?) {
 
     (:Recurse though the document.:)
 (:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $node := so2il:standoff2inline-recurser($nodes, $doc-id, $editiorial-element-names, $target-format)
+    let $node := so2il:standoff2inline-recurser($nodes, $doc-id, $editiorial-element-names, $target-format, $wit)
 (:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
     let $doc-id := root($nodes)/*/@xml:id/string()
     (:Get all annotations for the block-level element in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
@@ -209,14 +211,14 @@ declare function so2il:tei2html($node as node(), $block-element-names as xs:stri
         }
 };
 
-declare function so2il:standoff2inline-recurser($node as node(), $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string) {
+declare function so2il:standoff2inline-recurser($node as node(), $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string, $wit as xs:string?) {
     element {node-name($node)}
         {$node/@*
         , 
         for $child in $node/node()
         return
             if ($child instance of element())
-            then so2il:annotate-text($child, $doc-id, $editiorial-element-names, $target-format)
+            then so2il:annotate-text($child, $doc-id, $editiorial-element-names, $target-format, $wit)
             else $child
         }
 };
@@ -254,7 +256,7 @@ declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*
 3) removes unneeded elements, and 
 4) takes the string values of terminal text-critical elements that have child feature annotations. :)
 declare function so2il:collapse-annotation($element as element(), $strip as xs:string+) as element() {
-    let $log := util:log("DEBUG", ("##$element): ", $element)) return
+(:    let $log := util:log("DEBUG", ("##$element): ", $element)) return:)
         element {node-name($element)}
     {$element/@*, 
         if ($element/*/*/a8n-attribute/*)
@@ -302,7 +304,6 @@ but all even slots have annotations (though they may consist of an empty element
 declare function so2il:merge-annotations-with-text($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
 (:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
     let $segment-count := (count($annotations) * 2) + 1
-(:    let $log := util:log("DEBUG", ("##$segment-count): ", $segment-count)):)
     let $segments :=
         for $segment at $i in 1 to $segment-count
         return
