@@ -8,7 +8,7 @@
                 <p>Publication Information</p>
             </publicationStmt>
             <sourceDesc>
-                <p>Information about the source</p>
+                <listWit><witness n="1">#TS1</witness></listWit>
             </sourceDesc>
         </fileDesc>
     </teiHeader>

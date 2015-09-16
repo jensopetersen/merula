@@ -5,9 +5,6 @@ module namespace so2il="http://exist-db.org/xquery/app/standoff2inline";
 import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
-declare variable $so2il:base-text-wit := '#禮記注疏-1816';
-(:declare variable $so2il:base-text-wit := '#TS1';:)
-
 
 (: TODO :)
 (:Every time an edition annotation is made, the range difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new range difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
@@ -78,7 +75,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
     let $target-text := 
         if ($text-with-merged-edition-a8ns/text())
-        then so2il:tei2target($text-with-merged-edition-a8ns, 'target-text')
+        then so2il:tei2target($text-with-merged-edition-a8ns, 'target-text', $wit)
         else $text-with-merged-edition-a8ns
 (:    let $log := util:log("DEBUG", ("##$target-text): ", $target-text)):)
 
@@ -134,7 +131,7 @@ construct the altered (target) or the unaltered (base-text) text :)
 (:Only the value "base" is checked.:)
 (:TODO: This function must in some way be included in the TEI header, 
 or the choices must be expressed in a manner that can feed the function.:)
-declare function so2il:separate-text-layers($input as node()*, $target) as item()* {
+declare function so2il:separate-text-layers($input as node()*, $target as xs:string, $wit as xs:string?) as item()* {
         for $node in $input/node()
         return
             typeswitch($node)
@@ -147,16 +144,16 @@ declare function so2il:separate-text-layers($input as node()*, $target) as item(
                 case element(tei:lem) return
                     if ($target eq 'base-text') 
                     then 
-                        if ($node[tokenize(@wit/string(), " ") = $so2il:base-text-wit])
-                        then so2il:separate-text-layers($node, $target)
+                        if ($node[tokenize(@wit/string(), " ") = $wit])
+                        then so2il:separate-text-layers($node, $target, $wit)
                         else ()
                     else $node
                 
                 case element(tei:rdg) return
                     if ($target eq 'base-text')
                     then 
-                        if ($node[tokenize(@wit/string(), " ") = $so2il:base-text-wit])
-                        then so2il:separate-text-layers($node, $target)
+                        if ($node[tokenize(@wit/string(), " ") = $wit])
+                        then so2il:separate-text-layers($node, $target, $wit)
                         else ()
                     else ()
 
@@ -164,36 +161,36 @@ declare function so2il:separate-text-layers($input as node()*, $target) as item(
                 case element(tei:reg) return
                     if ($target eq 'base-text')
                     then () 
-                    else so2il:separate-text-layers($node, $target)
+                    else so2il:separate-text-layers($node, $target, $wit)
                 case element(tei:corr) return
                     if ($target eq 'base-text') 
                     then () 
-                    else so2il:separate-text-layers($node, $target)
+                    else so2il:separate-text-layers($node, $target, $wit)
                 case element(tei:expan) return
                     if ($target eq 'base-text') 
                     then () 
-                    else so2il:separate-text-layers($node, $target)
+                    else so2il:separate-text-layers($node, $target, $wit)
                 case element(tei:orig) return
                     if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target)
+                    then so2il:separate-text-layers($node, $target, $wit)
                     else ()
                 case element(tei:sic) return
                     if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target)
+                    then so2il:separate-text-layers($node, $target, $wit)
                     else ()
                 case element(tei:abbr) return
                     if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target)
+                    then so2il:separate-text-layers($node, $target, $wit)
                     else ()
                 case text() return
                     $node
-                default return so2il:separate-text-layers($node, $target)
+                default return so2il:separate-text-layers($node, $target, $wit)
 };
 
-declare function so2il:tei2target($node as node()*, $target-layer as xs:string) {
+declare function so2il:tei2target($node as node()*, $target-layer as xs:string, $wit as xs:string?) {
         (:If the element has a text node, separate the text node.:)
         (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
-        element {node-name($node)}{$node/@*,so2il:separate-text-layers($node, $target-layer)}
+        element {node-name($node)}{$node/@*,so2il:separate-text-layers($node, $target-layer, $wit)}
         
 };
 
