@@ -132,16 +132,9 @@ declare function local:get-top-level-annotations-keyed-to-base-text($text-block-
             if (local-name($element) = $editorial-element-names)
             then
                 <a8n-target>
-                    <base-text>
-                        <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                    </base-text>
-                    <target-text>
-                        <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$target-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$target-text-position-end - $target-text-position-start}</a8n-range>
-                    </target-text>
+                    <a8n-id>{$a8n-id}</a8n-id>
+                    <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
+                    <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
                 </a8n-target>
             else
                 <a8n-target>
@@ -456,7 +449,7 @@ let $result :=
 return
     if ($output-format eq 'exide')
     then
-    <result>{$result}</result>
+        $result
     else
         if ($output-format eq 'doc')
         then

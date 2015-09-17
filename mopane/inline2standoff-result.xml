@@ -139,7 +139,7 @@
         </TEI>
     </target-text>
     <annotations-1>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8af66e28-f2a0-4f79-af62-bf77b6fc2c62">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-5b37ee58-678e-4e38-87ea-f80d6980616f">
             <a8n-target>
                 <a8n-id>sha-ham101</a8n-id>
             </a8n-target>
@@ -151,7 +151,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-73fb0d1f-cced-4b61-ab54-d6b29d568ec6">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-fb797061-57a3-4f4c-b01d-cd6e2a86c68f">
             <a8n-target>
                 <a8n-id>pa000001</a8n-id>
             </a8n-target>
@@ -163,7 +163,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-11df287f-ea45-40af-8e87-9d4882ad89d3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -182,9 +182,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-287f4c26-776d-41b1-a91f-39794d0b961e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-04f14078-75e7-4318-9a53-e73e7df94dbd">
             <a8n-target>
-                <a8n-id>uuid-11df287f-ea45-40af-8e87-9d4882ad89d3</a8n-id>
+                <a8n-id>uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -194,7 +194,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-15b94971-c631-4212-be73-31c1cec136eb">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-d7db5db7-5291-4a8d-b63f-7dcb9b24f4c7">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -213,7 +213,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c756fe11-c607-47da-b6bd-36cbed84c702">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -231,9 +231,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-97ff9249-b93a-4d36-b362-925ac9244ee6">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-869ba277-90aa-4e36-ba21-6e4d70ada684">
             <a8n-target>
-                <a8n-id>uuid-c756fe11-c607-47da-b6bd-36cbed84c702</a8n-id>
+                <a8n-id>uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -243,7 +243,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-e65efed1-f52c-4ad2-bba7-7d94f48a5b9f">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fa8f048e-06a7-4178-89e7-e3dd69efdd7b">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -261,18 +261,11 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>131</a8n-offset>
+                <a8n-range>10</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_13">
@@ -286,9 +279,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-4dd769b7-8542-404c-a1de-18dbe85b60bd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-bb25387b-f86b-460c-804e-1183215db994">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -298,9 +291,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-391c4274-d011-4a71-88f6-695a71a0c693">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-016583d1-0923-411c-b39d-dce9e8bf355b">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -310,7 +303,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-cafedb61-f4ae-4fe6-95f4-95151cf1f9f8">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-da58c3ef-eff1-4f07-9430-276f942f2c68">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -328,7 +321,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -346,9 +339,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b3df2f7a-e288-4790-8f62-ef3489ce6ea0">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-c43b499e-2794-407f-bea3-705fa7d696d1">
             <a8n-target>
-                <a8n-id>uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc</a8n-id>
+                <a8n-id>uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -358,7 +351,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4457491d-fb28-47ff-8dfe-0c9509795d85">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -376,9 +369,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b452daa7-6290-4928-a9ff-22d783103819">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0f1144dd-b852-4f71-8b4e-1a86510a5816">
             <a8n-target>
-                <a8n-id>uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298</a8n-id>
+                <a8n-id>uuid-4457491d-fb28-47ff-8dfe-0c9509795d85</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -388,18 +381,11 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16199d39-d502-4e92-9f35-daebffa11b06">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>8</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>22</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>205</a8n-offset>
+                <a8n-range>8</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_17">
@@ -412,9 +398,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-1b369ee1-6cd7-4ab4-9433-ab056e1978b9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c21fa795-c0b5-4c47-b3e7-29ca1fd2773f">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -424,9 +410,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ee075eb9-a121-492a-910d-8a7ecf687243">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-fe053752-0266-4331-93c5-c9b789fdcf11">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -436,18 +422,11 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ff50bd25-8f1d-416d-8689-07eea3772f35">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>220</a8n-offset>
-                    <a8n-range>5</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>234</a8n-offset>
-                    <a8n-range>9</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>220</a8n-offset>
+                <a8n-range>5</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_18">
@@ -458,9 +437,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-35baed98-fdd0-42fb-b178-59332087642a">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-aaee8a58-4cf2-4f5b-b33f-ed87ea7eee21">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -470,9 +449,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-146a5876-261c-45cc-ae4b-af2994af1b20">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-21e99b23-6bc5-4c8b-8b61-e23eff83f509">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -482,7 +461,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b737c02f-cb77-4062-9d57-495e4785c5cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -501,9 +480,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-28c6f17b-8ae3-40da-89fa-ca9f4c83a2db">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-50909a49-51a3-4521-81fa-51394b5d2fab">
             <a8n-target>
-                <a8n-id>uuid-b737c02f-cb77-4062-9d57-495e4785c5cc</a8n-id>
+                <a8n-id>uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -513,7 +492,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5f5dd281-79b7-440c-89c3-cc17f7616678">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -531,9 +510,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-8d0aee85-f35b-431f-a70e-ef2755e770c5">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-ba4692f4-c4dc-4d2b-b77f-f3d7568bfc6c">
             <a8n-target>
-                <a8n-id>uuid-5f5dd281-79b7-440c-89c3-cc17f7616678</a8n-id>
+                <a8n-id>uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -543,18 +522,11 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>262</a8n-offset>
-                    <a8n-range>122</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>280</a8n-offset>
-                    <a8n-range>6</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>262</a8n-offset>
+                <a8n-range>122</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_21">
@@ -568,9 +540,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-428e3ce6-6cbd-4016-a221-72beee9d6470">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-8bd61c4e-3c7b-440b-a172-ac7d10984745">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -580,9 +552,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16851eb4-e7f5-414d-b9ae-4ae4adc68aa0">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f0b887c6-196c-4847-84b9-33322d3e0656">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -592,7 +564,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-9ed925b8-fef4-4c90-b79b-628d8070f9e4">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-920672e5-8556-44a9-82ba-9ea12473bf28">
             <a8n-target>
                 <a8n-id>pa000002</a8n-id>
             </a8n-target>
@@ -604,7 +576,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a5f347a2-863a-466f-8e43-306793b9aedf">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-630afb37-8aa1-411f-8d60-03af2a78219c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -623,9 +595,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5b4f23c3-6734-4774-885e-5b6d5c0224ac">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6787bec4-c3f6-4c89-90d1-9ee4336ec65b">
             <a8n-target>
-                <a8n-id>uuid-a5f347a2-863a-466f-8e43-306793b9aedf</a8n-id>
+                <a8n-id>uuid-630afb37-8aa1-411f-8d60-03af2a78219c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -635,7 +607,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -652,9 +624,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1055dc60-b9dd-4836-b719-8f7c250ac537">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-8b47be6e-615d-4fcc-b1f6-1e668426dad5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -664,9 +636,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1769ab6a-6d13-4f6c-9f6a-ed6c125cab0d">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-314f0b2e-eb59-4c89-a5b4-df0b2564f8e5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -676,7 +648,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aba1269-5327-4a56-80b4-4805c6326ec1">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-cd437876-88f2-4ee1-9fcf-3823f7cbb87e">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -688,7 +660,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d1419cda-491f-4c4a-a382-667e1ca99bd2">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-978a6f2a-6462-4afe-99ed-298fcd557655">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -700,7 +672,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-0c773d71-c6d9-476d-89ac-a85252618a03">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-09af91b4-3cc0-4742-a76a-8fb54058778f">
             <a8n-target>
                 <a8n-id>pa000003</a8n-id>
             </a8n-target>
@@ -712,7 +684,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -728,9 +700,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf91cf9d-2c18-4dfc-ac78-84444f3839f3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-959ac096-5cd7-4eb0-95c5-446ed9b953b3">
             <a8n-target>
-                <a8n-id>uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e</a8n-id>
+                <a8n-id>uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -740,7 +712,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66250982-e8b1-4198-be88-857b40428356">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7e20487a-b4c6-4be7-81c7-e105ea606c68">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -752,7 +724,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-a3bf9098-c320-4bcd-938f-835d3be8cc85">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6a273a2d-f404-4aac-9657-3f17707d4297">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -764,7 +736,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8fd717c1-a115-4b59-bc0f-8147172aedc0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66679af0-d3c7-48d4-9686-6dafc53dea00">
             <a8n-target>
                 <a8n-id>pa000004</a8n-id>
             </a8n-target>
@@ -776,7 +748,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-321a1637-4813-4aa4-8381-b66988eee5d9">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-596e5fbb-1991-4985-908d-0b675961f6dd">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -791,9 +763,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-9097a9d3-0e56-4c47-9c61-208bcdd306da">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-60ec2fb7-af4a-4e4f-b900-2a3ebf97fe7c">
             <a8n-target>
-                <a8n-id>uuid-321a1637-4813-4aa4-8381-b66988eee5d9</a8n-id>
+                <a8n-id>uuid-596e5fbb-1991-4985-908d-0b675961f6dd</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -803,7 +775,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d41425b1-5b4e-48bc-a5b7-f02e994fd6a0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-3bd3067c-e8c3-4a28-8cbc-9e758d3e0a6b">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -815,7 +787,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-76fc10d6-ed46-4db5-b4f9-cc4c03ac5767">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-28e62740-015c-4f06-b87b-e04eadd90f03">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -827,7 +799,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-ef0ee682-0ddf-4919-851a-964e5f544bc7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-484da6aa-3a63-4045-b325-1c2017ee518e">
             <a8n-target>
                 <a8n-id>pa000005</a8n-id>
             </a8n-target>
@@ -839,7 +811,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -856,9 +828,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4b437862-e154-4237-b585-7943efa1672b">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0e011374-ef57-42a1-b95a-cac36ce5e1e7">
             <a8n-target>
-                <a8n-id>uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072</a8n-id>
+                <a8n-id>uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -868,7 +840,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7d543313-8bf1-47ff-987e-ac9f5e48022e">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d6c45e0e-365a-46a0-abd9-cc0732e4552d">
             <a8n-target>
                 <a8n-id>pa000006</a8n-id>
             </a8n-target>
@@ -880,7 +852,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -896,9 +868,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-773c41de-6c94-40e0-a234-b557b85d0d86">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0dd6bc1e-120d-4c88-96b1-b3a6aafcdb5b">
             <a8n-target>
-                <a8n-id>uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57</a8n-id>
+                <a8n-id>uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -908,7 +880,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-48c6cbf6-4990-441c-868f-47a62ceaeca7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-90970904-e44d-46ba-b0ae-688707e6a0d1">
             <a8n-target>
                 <a8n-id>pa000007</a8n-id>
             </a8n-target>
@@ -920,7 +892,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-825b1d99-b842-471f-b0e7-8b438b951c4a">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-13e9cc92-945c-4919-b52f-59bf89e671cc">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -938,9 +910,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4cab7e45-1f65-4e32-9b26-865ffc64e61e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0807238a-cdba-42aa-8c56-bd32d8354089">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -950,9 +922,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-7fd36e11-ad11-41b5-8452-39b79073546e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5fb57dea-fe13-48bf-adf1-6ad65c147316">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -962,7 +934,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-e6b9e04a-42a0-4494-9785-b6af6001053a">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-472cadd6-ddf9-471c-acd1-76b0c75e889e">
             <a8n-target>
                 <a8n-id>pa000008</a8n-id>
             </a8n-target>
@@ -974,7 +946,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6139cda8-f5a7-452d-9f37-77ec5a80ab3d">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-13887c71-991f-4322-a8e5-5c287495125a">
             <a8n-target>
                 <a8n-id>pa000009</a8n-id>
             </a8n-target>
@@ -986,7 +958,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-4374e9f8-9a66-4c1a-9921-9220801ece48">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-65409048-40d9-4067-9a4e-7319cd1cd7e2">
             <a8n-target>
                 <a8n-id>pa000010</a8n-id>
             </a8n-target>
@@ -998,7 +970,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-b7c2568a-f1b3-42df-b55f-9ac0011ed486">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aa5bc98-f3d1-428b-80ae-fbf5e6c2e92b">
             <a8n-target>
                 <a8n-id>pa000011</a8n-id>
             </a8n-target>
@@ -1010,18 +982,11 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </target-text>
+                <a8n-id>pa000011</a8n-id>
+                <a8n-offset>44</a8n-offset>
+                <a8n-range>2</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004">
@@ -1032,9 +997,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-fc90c483-8dc7-48ca-9ea2-1ef1edff5360">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-b94d7ca2-6186-401d-9905-2599cb101120">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1044,9 +1009,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-0c502e17-e247-4ca5-ad4e-7077b6ac6511">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-48097f90-f482-41ed-adaf-cd1647885453">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1058,7 +1023,7 @@
         </a8n-annotation>
     </annotations-1>
     <annotations-2>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8af66e28-f2a0-4f79-af62-bf77b6fc2c62">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-5b37ee58-678e-4e38-87ea-f80d6980616f">
             <a8n-target>
                 <a8n-id>sha-ham101</a8n-id>
             </a8n-target>
@@ -1070,7 +1035,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-73fb0d1f-cced-4b61-ab54-d6b29d568ec6">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-fb797061-57a3-4f4c-b01d-cd6e2a86c68f">
             <a8n-target>
                 <a8n-id>pa000001</a8n-id>
             </a8n-target>
@@ -1082,7 +1047,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-11df287f-ea45-40af-8e87-9d4882ad89d3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1101,9 +1066,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-287f4c26-776d-41b1-a91f-39794d0b961e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-04f14078-75e7-4318-9a53-e73e7df94dbd">
             <a8n-target>
-                <a8n-id>uuid-11df287f-ea45-40af-8e87-9d4882ad89d3</a8n-id>
+                <a8n-id>uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1113,7 +1078,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-15b94971-c631-4212-be73-31c1cec136eb">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-d7db5db7-5291-4a8d-b63f-7dcb9b24f4c7">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1132,7 +1097,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c756fe11-c607-47da-b6bd-36cbed84c702">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1150,9 +1115,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-97ff9249-b93a-4d36-b362-925ac9244ee6">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-869ba277-90aa-4e36-ba21-6e4d70ada684">
             <a8n-target>
-                <a8n-id>uuid-c756fe11-c607-47da-b6bd-36cbed84c702</a8n-id>
+                <a8n-id>uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1162,7 +1127,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-e65efed1-f52c-4ad2-bba7-7d94f48a5b9f">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fa8f048e-06a7-4178-89e7-e3dd69efdd7b">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1180,27 +1145,20 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>131</a8n-offset>
+                <a8n-range>10</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_13"/>
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-4dd34f7c-a238-4b24-b0dc-040365aa3541">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f1aceb81-8a1b-4509-9fc8-2437c296ea71">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1212,9 +1170,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-d0f61b76-1e34-4671-9ad3-dc40cb90de58">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-5a74ecd4-4aab-4c5e-ae03-82c744f8f655">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1223,7 +1181,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-72242786-8e19-424f-8841-80af96c70d0d">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-e12cadc9-b03c-4c61-8443-7a2b4ad52fb2">
             <a8n-target>
                 <a8n-id>uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0</a8n-id>
             </a8n-target>
@@ -1235,9 +1193,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-4dd769b7-8542-404c-a1de-18dbe85b60bd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-bb25387b-f86b-460c-804e-1183215db994">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1247,9 +1205,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-391c4274-d011-4a71-88f6-695a71a0c693">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-016583d1-0923-411c-b39d-dce9e8bf355b">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1259,7 +1217,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-cafedb61-f4ae-4fe6-95f4-95151cf1f9f8">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-da58c3ef-eff1-4f07-9430-276f942f2c68">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1277,7 +1235,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1295,9 +1253,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b3df2f7a-e288-4790-8f62-ef3489ce6ea0">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-c43b499e-2794-407f-bea3-705fa7d696d1">
             <a8n-target>
-                <a8n-id>uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc</a8n-id>
+                <a8n-id>uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1307,7 +1265,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4457491d-fb28-47ff-8dfe-0c9509795d85">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1325,9 +1283,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b452daa7-6290-4928-a9ff-22d783103819">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0f1144dd-b852-4f71-8b4e-1a86510a5816">
             <a8n-target>
-                <a8n-id>uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298</a8n-id>
+                <a8n-id>uuid-4457491d-fb28-47ff-8dfe-0c9509795d85</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1337,27 +1295,20 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16199d39-d502-4e92-9f35-daebffa11b06">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>8</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>22</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>205</a8n-offset>
+                <a8n-range>8</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_17"/>
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-e0f06932-6973-44bd-b44c-fe4aa2fc92b8">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c61e8e3d-91b2-4910-9a24-ca9c57a63ba5">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1366,9 +1317,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-8dc1eef6-5613-470a-8b8d-25c563699066">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-eaa5aaf0-e68c-4d09-82b4-dde7aa3a8fe3">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1377,7 +1328,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-c6bbc860-a3a9-4ca1-b2ee-67070c465559">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-9165981a-ddfd-4dae-9ac1-d59cce65a98f">
             <a8n-target>
                 <a8n-id>uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a</a8n-id>
             </a8n-target>
@@ -1389,9 +1340,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-6881b4a4-e6b0-4631-be1d-bdf2f78c5e97">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-913af568-288b-41ec-b224-8583c0308efa">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1400,7 +1351,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-811efe77-cada-40f4-81ea-ad97513218d2">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-7f7e84b3-c11b-4069-bff6-a5dccf1331cd">
             <a8n-target>
                 <a8n-id>uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58</a8n-id>
             </a8n-target>
@@ -1412,9 +1363,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-1b369ee1-6cd7-4ab4-9433-ab056e1978b9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c21fa795-c0b5-4c47-b3e7-29ca1fd2773f">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1424,9 +1375,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ee075eb9-a121-492a-910d-8a7ecf687243">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-fe053752-0266-4331-93c5-c9b789fdcf11">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1436,27 +1387,20 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ff50bd25-8f1d-416d-8689-07eea3772f35">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>220</a8n-offset>
-                    <a8n-range>5</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>234</a8n-offset>
-                    <a8n-range>9</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>220</a8n-offset>
+                <a8n-range>5</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_18"/>
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-d3131a6c-6073-4b2c-82aa-d2398ec0e35c">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-77cd4b96-db73-4eb9-aebd-cec281420880">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1465,9 +1409,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-fd70b4c7-24a2-4b24-8a70-167a520320bd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-cea10d3f-c7c8-433f-b41f-59e89382ef54">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1476,7 +1420,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-be26c412-1bc7-4dfd-bd34-0259802e3744">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-528e5817-be33-4107-836a-a43b8cab5143">
             <a8n-target>
                 <a8n-id>uuid-7c692127-56e0-4730-a978-f7e1d4ab697a</a8n-id>
             </a8n-target>
@@ -1488,9 +1432,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-35baed98-fdd0-42fb-b178-59332087642a">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-aaee8a58-4cf2-4f5b-b33f-ed87ea7eee21">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1500,9 +1444,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-146a5876-261c-45cc-ae4b-af2994af1b20">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-21e99b23-6bc5-4c8b-8b61-e23eff83f509">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1512,7 +1456,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b737c02f-cb77-4062-9d57-495e4785c5cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1531,9 +1475,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-28c6f17b-8ae3-40da-89fa-ca9f4c83a2db">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-50909a49-51a3-4521-81fa-51394b5d2fab">
             <a8n-target>
-                <a8n-id>uuid-b737c02f-cb77-4062-9d57-495e4785c5cc</a8n-id>
+                <a8n-id>uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1543,7 +1487,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5f5dd281-79b7-440c-89c3-cc17f7616678">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1561,9 +1505,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-8d0aee85-f35b-431f-a70e-ef2755e770c5">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-ba4692f4-c4dc-4d2b-b77f-f3d7568bfc6c">
             <a8n-target>
-                <a8n-id>uuid-5f5dd281-79b7-440c-89c3-cc17f7616678</a8n-id>
+                <a8n-id>uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1573,27 +1517,20 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>262</a8n-offset>
-                    <a8n-range>122</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>280</a8n-offset>
-                    <a8n-range>6</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>262</a8n-offset>
+                <a8n-range>122</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_21"/>
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ea07fe7a-c614-470b-bb23-b75e970ad8dc">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-755a3c51-fb25-4b96-99e1-50a49e69203b">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1602,9 +1539,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-15f47bfb-32af-48aa-87ad-6c9ee6310490">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-ca3e7d17-9e79-4483-ad29-dd99605beb5f">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -1616,7 +1553,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-90d144b0-d7b9-442a-b78f-1b360c153893">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-e8520e6c-c7f8-4374-b393-9cf7d1ec3d2f">
             <a8n-target>
                 <a8n-id>uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae</a8n-id>
             </a8n-target>
@@ -1628,9 +1565,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-428e3ce6-6cbd-4016-a221-72beee9d6470">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-8bd61c4e-3c7b-440b-a172-ac7d10984745">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1640,9 +1577,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16851eb4-e7f5-414d-b9ae-4ae4adc68aa0">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f0b887c6-196c-4847-84b9-33322d3e0656">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1652,7 +1589,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-9ed925b8-fef4-4c90-b79b-628d8070f9e4">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-920672e5-8556-44a9-82ba-9ea12473bf28">
             <a8n-target>
                 <a8n-id>pa000002</a8n-id>
             </a8n-target>
@@ -1664,7 +1601,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a5f347a2-863a-466f-8e43-306793b9aedf">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-630afb37-8aa1-411f-8d60-03af2a78219c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -1683,9 +1620,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5b4f23c3-6734-4774-885e-5b6d5c0224ac">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6787bec4-c3f6-4c89-90d1-9ee4336ec65b">
             <a8n-target>
-                <a8n-id>uuid-a5f347a2-863a-466f-8e43-306793b9aedf</a8n-id>
+                <a8n-id>uuid-630afb37-8aa1-411f-8d60-03af2a78219c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1695,7 +1632,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1712,9 +1649,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1055dc60-b9dd-4836-b719-8f7c250ac537">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-8b47be6e-615d-4fcc-b1f6-1e668426dad5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1724,9 +1661,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1769ab6a-6d13-4f6c-9f6a-ed6c125cab0d">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-314f0b2e-eb59-4c89-a5b4-df0b2564f8e5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1736,7 +1673,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aba1269-5327-4a56-80b4-4805c6326ec1">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-cd437876-88f2-4ee1-9fcf-3823f7cbb87e">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -1748,7 +1685,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d1419cda-491f-4c4a-a382-667e1ca99bd2">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-978a6f2a-6462-4afe-99ed-298fcd557655">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -1760,7 +1697,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-0c773d71-c6d9-476d-89ac-a85252618a03">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-09af91b4-3cc0-4742-a76a-8fb54058778f">
             <a8n-target>
                 <a8n-id>pa000003</a8n-id>
             </a8n-target>
@@ -1772,7 +1709,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -1788,9 +1725,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf91cf9d-2c18-4dfc-ac78-84444f3839f3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-959ac096-5cd7-4eb0-95c5-446ed9b953b3">
             <a8n-target>
-                <a8n-id>uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e</a8n-id>
+                <a8n-id>uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1800,7 +1737,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66250982-e8b1-4198-be88-857b40428356">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7e20487a-b4c6-4be7-81c7-e105ea606c68">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -1812,7 +1749,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-a3bf9098-c320-4bcd-938f-835d3be8cc85">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6a273a2d-f404-4aac-9657-3f17707d4297">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -1824,7 +1761,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8fd717c1-a115-4b59-bc0f-8147172aedc0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66679af0-d3c7-48d4-9686-6dafc53dea00">
             <a8n-target>
                 <a8n-id>pa000004</a8n-id>
             </a8n-target>
@@ -1836,7 +1773,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-321a1637-4813-4aa4-8381-b66988eee5d9">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-596e5fbb-1991-4985-908d-0b675961f6dd">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -1850,14 +1787,14 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-fa070bbc-ee56-483c-81d0-0b477c1b9392">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-ffe31a1b-87f0-4596-b449-62a17b5a5d63">
             <a8n-target>
                 <a8n-parent-element-name>hi</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
                 <a8n-following-sibling-node>
                     <a8n-node-type>text</a8n-node-type>
                 </a8n-following-sibling-node>
-                <a8n-id>uuid-321a1637-4813-4aa4-8381-b66988eee5d9</a8n-id>
+                <a8n-id>uuid-596e5fbb-1991-4985-908d-0b675961f6dd</a8n-id>
                 <a8n-offset>1</a8n-offset>
                 <a8n-range>7</a8n-range>
             </a8n-target>
@@ -1866,7 +1803,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b348ec24-24d5-4065-9020-62100a658d67">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-858e3a63-052c-4cdc-8195-356210ae8a81">
             <a8n-target> </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1876,9 +1813,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-9097a9d3-0e56-4c47-9c61-208bcdd306da">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-60ec2fb7-af4a-4e4f-b900-2a3ebf97fe7c">
             <a8n-target>
-                <a8n-id>uuid-321a1637-4813-4aa4-8381-b66988eee5d9</a8n-id>
+                <a8n-id>uuid-596e5fbb-1991-4985-908d-0b675961f6dd</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1888,7 +1825,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d41425b1-5b4e-48bc-a5b7-f02e994fd6a0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-3bd3067c-e8c3-4a28-8cbc-9e758d3e0a6b">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -1900,7 +1837,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-76fc10d6-ed46-4db5-b4f9-cc4c03ac5767">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-28e62740-015c-4f06-b87b-e04eadd90f03">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -1912,7 +1849,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-ef0ee682-0ddf-4919-851a-964e5f544bc7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-484da6aa-3a63-4045-b325-1c2017ee518e">
             <a8n-target>
                 <a8n-id>pa000005</a8n-id>
             </a8n-target>
@@ -1924,7 +1861,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -1938,7 +1875,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-ac742ab4-dc44-4646-817b-8c72f4f70fca">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-841b4be0-81ae-4248-a578-411b0d813614">
             <a8n-target>
                 <a8n-parent-element-name>hi</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -1947,7 +1884,7 @@
                 <a8n-following-sibling-node>
                     <a8n-node-type>text</a8n-node-type>
                 </a8n-following-sibling-node>
-                <a8n-id>uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072</a8n-id>
+                <a8n-id>uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8</a8n-id>
                 <a8n-offset>44</a8n-offset>
                 <a8n-range>0</a8n-range>
             </a8n-target>
@@ -1957,9 +1894,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4b437862-e154-4237-b585-7943efa1672b">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0e011374-ef57-42a1-b95a-cac36ce5e1e7">
             <a8n-target>
-                <a8n-id>uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072</a8n-id>
+                <a8n-id>uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -1969,7 +1906,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7d543313-8bf1-47ff-987e-ac9f5e48022e">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d6c45e0e-365a-46a0-abd9-cc0732e4552d">
             <a8n-target>
                 <a8n-id>pa000006</a8n-id>
             </a8n-target>
@@ -1981,7 +1918,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -1997,9 +1934,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-773c41de-6c94-40e0-a234-b557b85d0d86">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0dd6bc1e-120d-4c88-96b1-b3a6aafcdb5b">
             <a8n-target>
-                <a8n-id>uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57</a8n-id>
+                <a8n-id>uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2009,7 +1946,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-48c6cbf6-4990-441c-868f-47a62ceaeca7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-90970904-e44d-46ba-b0ae-688707e6a0d1">
             <a8n-target>
                 <a8n-id>pa000007</a8n-id>
             </a8n-target>
@@ -2021,7 +1958,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-825b1d99-b842-471f-b0e7-8b438b951c4a">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-13e9cc92-945c-4919-b52f-59bf89e671cc">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2039,9 +1976,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4cab7e45-1f65-4e32-9b26-865ffc64e61e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0807238a-cdba-42aa-8c56-bd32d8354089">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2051,9 +1988,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-7fd36e11-ad11-41b5-8452-39b79073546e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5fb57dea-fe13-48bf-adf1-6ad65c147316">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2063,7 +2000,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-e6b9e04a-42a0-4494-9785-b6af6001053a">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-472cadd6-ddf9-471c-acd1-76b0c75e889e">
             <a8n-target>
                 <a8n-id>pa000008</a8n-id>
             </a8n-target>
@@ -2075,7 +2012,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6139cda8-f5a7-452d-9f37-77ec5a80ab3d">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-13887c71-991f-4322-a8e5-5c287495125a">
             <a8n-target>
                 <a8n-id>pa000009</a8n-id>
             </a8n-target>
@@ -2087,7 +2024,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-4374e9f8-9a66-4c1a-9921-9220801ece48">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-65409048-40d9-4067-9a4e-7319cd1cd7e2">
             <a8n-target>
                 <a8n-id>pa000010</a8n-id>
             </a8n-target>
@@ -2099,7 +2036,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-b7c2568a-f1b3-42df-b55f-9ac0011ed486">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aa5bc98-f3d1-428b-80ae-fbf5e6c2e92b">
             <a8n-target>
                 <a8n-id>pa000011</a8n-id>
             </a8n-target>
@@ -2111,27 +2048,20 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </target-text>
+                <a8n-id>pa000011</a8n-id>
+                <a8n-offset>44</a8n-offset>
+                <a8n-range>2</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004"/>
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-b1d24e87-29ff-4d44-b6e8-ac2b8179b18c">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-6510ed05-b440-46fd-8afe-bf198a392fba">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2140,7 +2070,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-90dd54bf-6b11-4827-b0db-496e284f3b00">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-cbeeb58b-fede-4559-a433-171546332c39">
             <a8n-target>
                 <a8n-id>uuid-db312f17-7f15-4041-99f7-6a96b3e60fba</a8n-id>
             </a8n-target>
@@ -2152,9 +2082,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-c0dba296-536e-47a9-a170-fb6d382bd860">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c4c7b53d-2a8f-4c4e-8033-a7b58c3f1e3c">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2163,7 +2093,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-efb94aa0-0f31-4470-a268-96ecd5c3fab9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-3695ae15-6d0d-42e1-a5a1-37d8c8d82105">
             <a8n-target>
                 <a8n-id>uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb</a8n-id>
             </a8n-target>
@@ -2175,9 +2105,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-61dcad6c-34e3-4d57-9930-b1613a428344">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f55666ce-7283-4152-b943-c6d4a60c7941">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2186,7 +2116,7 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-6865ac87-5366-4b46-90b5-70f6991d3cea">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-1fb2c8cf-8acb-4473-a48c-aa003c65eb67">
             <a8n-target>
                 <a8n-id>uuid-37300be1-2a22-4621-b292-e672fa264a5d</a8n-id>
             </a8n-target>
@@ -2198,9 +2128,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-fc90c483-8dc7-48ca-9ea2-1ef1edff5360">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-b94d7ca2-6186-401d-9905-2599cb101120">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2210,9 +2140,9 @@
             </a8n-body>
             <a8n-admin/>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-0c502e17-e247-4ca5-ad4e-7077b6ac6511">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-48097f90-f482-41ed-adaf-cd1647885453">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2224,7 +2154,7 @@
         </a8n-annotation>
     </annotations-2>
     <annotations-3>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8af66e28-f2a0-4f79-af62-bf77b6fc2c62">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-5b37ee58-678e-4e38-87ea-f80d6980616f">
             <a8n-target>
                 <a8n-id>sha-ham101</a8n-id>
             </a8n-target>
@@ -2235,7 +2165,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-73fb0d1f-cced-4b61-ab54-d6b29d568ec6">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-fb797061-57a3-4f4c-b01d-cd6e2a86c68f">
             <a8n-target>
                 <a8n-id>pa000001</a8n-id>
             </a8n-target>
@@ -2246,7 +2176,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-11df287f-ea45-40af-8e87-9d4882ad89d3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2264,9 +2194,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_9">Nye</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-287f4c26-776d-41b1-a91f-39794d0b961e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-04f14078-75e7-4318-9a53-e73e7df94dbd">
             <a8n-target>
-                <a8n-id>uuid-11df287f-ea45-40af-8e87-9d4882ad89d3</a8n-id>
+                <a8n-id>uuid-5e2329b3-3799-41d8-b07e-6f6a18bb8f89</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2275,7 +2205,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-15b94971-c631-4212-be73-31c1cec136eb">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-d7db5db7-5291-4a8d-b63f-7dcb9b24f4c7">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2293,7 +2223,7 @@
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_10"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c756fe11-c607-47da-b6bd-36cbed84c702">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2310,9 +2240,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_11">Clemens</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-97ff9249-b93a-4d36-b362-925ac9244ee6">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-869ba277-90aa-4e36-ba21-6e4d70ada684">
             <a8n-target>
-                <a8n-id>uuid-c756fe11-c607-47da-b6bd-36cbed84c702</a8n-id>
+                <a8n-id>uuid-6c3e3854-0e70-4170-8ec5-fb1008f4fd69</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2321,7 +2251,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-e65efed1-f52c-4ad2-bba7-7d94f48a5b9f">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fa8f048e-06a7-4178-89e7-e3dd69efdd7b">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2338,26 +2268,19 @@
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_12"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>131</a8n-offset>
-                    <a8n-range>10</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>131</a8n-offset>
+                <a8n-range>10</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_13"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-4dd34f7c-a238-4b24-b0dc-040365aa3541">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f1aceb81-8a1b-4509-9fc8-2437c296ea71">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2368,9 +2291,9 @@
                 </lem>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-d0f61b76-1e34-4671-9ad3-dc40cb90de58">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-5a74ecd4-4aab-4c5e-ae03-82c744f8f655">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2378,7 +2301,7 @@
                     xml:id="uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0">Enterprise</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-72242786-8e19-424f-8841-80af96c70d0d">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-e12cadc9-b03c-4c61-8443-7a2b4ad52fb2">
             <a8n-target>
                 <a8n-id>uuid-ee95a0c8-a4df-4a47-b957-c49613eab3f0</a8n-id>
             </a8n-target>
@@ -2389,9 +2312,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-4dd769b7-8542-404c-a1de-18dbe85b60bd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-bb25387b-f86b-460c-804e-1183215db994">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2400,9 +2323,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-391c4274-d011-4a71-88f6-695a71a0c693">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-016583d1-0923-411c-b39d-dce9e8bf355b">
             <a8n-target>
-                <a8n-id>uuid-2cebf483-809f-427e-b8b1-5bfed3a86bdd</a8n-id>
+                <a8n-id>uuid-a01cad5d-dbcb-4712-b029-8035e54cb06f</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2411,7 +2334,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-cafedb61-f4ae-4fe6-95f4-95151cf1f9f8">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-da58c3ef-eff1-4f07-9430-276f942f2c68">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2428,7 +2351,7 @@
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_14"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2445,9 +2368,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_15">Orion</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b3df2f7a-e288-4790-8f62-ef3489ce6ea0">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-c43b499e-2794-407f-bea3-705fa7d696d1">
             <a8n-target>
-                <a8n-id>uuid-a4ed1345-b9bf-4f2a-9091-ff61bb8b89cc</a8n-id>
+                <a8n-id>uuid-bf9873c7-769c-40be-8f12-51888d8ca7e5</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2456,7 +2379,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4457491d-fb28-47ff-8dfe-0c9509795d85">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2473,9 +2396,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_16">Orion</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b452daa7-6290-4928-a9ff-22d783103819">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0f1144dd-b852-4f71-8b4e-1a86510a5816">
             <a8n-target>
-                <a8n-id>uuid-1a96a9ac-8590-4a2d-be8e-67592e79f298</a8n-id>
+                <a8n-id>uuid-4457491d-fb28-47ff-8dfe-0c9509795d85</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2484,26 +2407,19 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16199d39-d502-4e92-9f35-daebffa11b06">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>8</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>205</a8n-offset>
-                    <a8n-range>22</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>205</a8n-offset>
+                <a8n-range>8</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_17"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-e0f06932-6973-44bd-b44c-fe4aa2fc92b8">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c61e8e3d-91b2-4910-9a24-ca9c57a63ba5">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2511,9 +2427,9 @@
                     xml:id="uuid-270b34bd-3b59-4a5c-935d-c4790682f1aa">twelve-thousand-dollar</lem>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-8dc1eef6-5613-470a-8b8d-25c563699066">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-eaa5aaf0-e68c-4d09-82b4-dde7aa3a8fe3">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2521,7 +2437,7 @@
                     xml:id="uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a">$12,000.</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-c6bbc860-a3a9-4ca1-b2ee-67070c465559">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-9165981a-ddfd-4dae-9ac1-d59cce65a98f">
             <a8n-target>
                 <a8n-id>uuid-5a3e0774-13d5-45f2-ac87-08f98eb0341a</a8n-id>
             </a8n-target>
@@ -2532,9 +2448,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-6881b4a4-e6b0-4631-be1d-bdf2f78c5e97">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-913af568-288b-41ec-b224-8583c0308efa">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
                 <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2542,7 +2458,7 @@
                     xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58">$12,000</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-811efe77-cada-40f4-81ea-ad97513218d2">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-7f7e84b3-c11b-4069-bff6-a5dccf1331cd">
             <a8n-target>
                 <a8n-id>uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58</a8n-id>
             </a8n-target>
@@ -2553,9 +2469,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-1b369ee1-6cd7-4ab4-9433-ab056e1978b9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c21fa795-c0b5-4c47-b3e7-29ca1fd2773f">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2564,9 +2480,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ee075eb9-a121-492a-910d-8a7ecf687243">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-fe053752-0266-4331-93c5-c9b789fdcf11">
             <a8n-target>
-                <a8n-id>uuid-16199d39-d502-4e92-9f35-daebffa11b06</a8n-id>
+                <a8n-id>uuid-ae6b915b-d23c-4bd8-ad6d-b7a03d8af186</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2575,26 +2491,19 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ff50bd25-8f1d-416d-8689-07eea3772f35">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>220</a8n-offset>
-                    <a8n-range>5</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>234</a8n-offset>
-                    <a8n-range>9</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>220</a8n-offset>
+                <a8n-range>5</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_18"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-d3131a6c-6073-4b2c-82aa-d2398ec0e35c">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-77cd4b96-db73-4eb9-aebd-cec281420880">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2602,9 +2511,9 @@
                     xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor </lem>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-fd70b4c7-24a2-4b24-8a70-167a520320bd">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-cea10d3f-c7c8-433f-b41f-59e89382ef54">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2612,7 +2521,7 @@
                     xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a">Gov. </rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-be26c412-1bc7-4dfd-bd34-0259802e3744">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-528e5817-be33-4107-836a-a43b8cab5143">
             <a8n-target>
                 <a8n-id>uuid-7c692127-56e0-4730-a978-f7e1d4ab697a</a8n-id>
             </a8n-target>
@@ -2623,9 +2532,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-35baed98-fdd0-42fb-b178-59332087642a">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-aaee8a58-4cf2-4f5b-b33f-ed87ea7eee21">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2634,9 +2543,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-146a5876-261c-45cc-ae4b-af2994af1b20">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-21e99b23-6bc5-4c8b-8b61-e23eff83f509">
             <a8n-target>
-                <a8n-id>uuid-ff50bd25-8f1d-416d-8689-07eea3772f35</a8n-id>
+                <a8n-id>uuid-305dfc2b-98ee-40cf-a12b-d4d5e200bda4</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2645,7 +2554,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b737c02f-cb77-4062-9d57-495e4785c5cc">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2663,9 +2572,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_19">Nye</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-28c6f17b-8ae3-40da-89fa-ca9f4c83a2db">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-50909a49-51a3-4521-81fa-51394b5d2fab">
             <a8n-target>
-                <a8n-id>uuid-b737c02f-cb77-4062-9d57-495e4785c5cc</a8n-id>
+                <a8n-id>uuid-4455b9fd-9b20-4e75-b417-72201fb4c41e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2674,7 +2583,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5f5dd281-79b7-440c-89c3-cc17f7616678">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2691,9 +2600,9 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_20">Nevada</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-8d0aee85-f35b-431f-a70e-ef2755e770c5">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-ba4692f4-c4dc-4d2b-b77f-f3d7568bfc6c">
             <a8n-target>
-                <a8n-id>uuid-5f5dd281-79b7-440c-89c3-cc17f7616678</a8n-id>
+                <a8n-id>uuid-f98a7398-5bd7-4dc8-b2f5-96ae83f11c1d</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2702,26 +2611,19 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>262</a8n-offset>
-                    <a8n-range>122</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000001</a8n-id>
-                    <a8n-offset>280</a8n-offset>
-                    <a8n-range>6</a8n-range>
-                </target-text>
+                <a8n-id>pa000001</a8n-id>
+                <a8n-offset>262</a8n-offset>
+                <a8n-range>122</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_21"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-ea07fe7a-c614-470b-bb23-b75e970ad8dc">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-755a3c51-fb25-4b96-99e1-50a49e69203b">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2729,9 +2631,9 @@
                     xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-15f47bfb-32af-48aa-87ad-6c9ee6310490">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-ca3e7d17-9e79-4483-ad29-dd99605beb5f">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -2742,7 +2644,7 @@
                     point, in record of April 1st, but I may not comment on it until later.)</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-90d144b0-d7b9-442a-b78f-1b360c153893">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-e8520e6c-c7f8-4374-b393-9cf7d1ec3d2f">
             <a8n-target>
                 <a8n-id>uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae</a8n-id>
             </a8n-target>
@@ -2753,9 +2655,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-428e3ce6-6cbd-4016-a221-72beee9d6470">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-8bd61c4e-3c7b-440b-a172-ac7d10984745">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2764,9 +2666,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-16851eb4-e7f5-414d-b9ae-4ae4adc68aa0">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f0b887c6-196c-4847-84b9-33322d3e0656">
             <a8n-target>
-                <a8n-id>uuid-694c4c33-19dd-419f-bf3e-c2db31f2760d</a8n-id>
+                <a8n-id>uuid-3858cdc5-46e1-4f60-bb79-2fd616be513e</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2775,7 +2677,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-9ed925b8-fef4-4c90-b79b-628d8070f9e4">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-920672e5-8556-44a9-82ba-9ea12473bf28">
             <a8n-target>
                 <a8n-id>pa000002</a8n-id>
             </a8n-target>
@@ -2786,7 +2688,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-a5f347a2-863a-466f-8e43-306793b9aedf">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-630afb37-8aa1-411f-8d60-03af2a78219c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -2804,9 +2706,9 @@
                     TILLMAN BERATED</hi>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-5b4f23c3-6734-4774-885e-5b6d5c0224ac">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-6787bec4-c3f6-4c89-90d1-9ee4336ec65b">
             <a8n-target>
-                <a8n-id>uuid-a5f347a2-863a-466f-8e43-306793b9aedf</a8n-id>
+                <a8n-id>uuid-630afb37-8aa1-411f-8d60-03af2a78219c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2815,7 +2717,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -2831,9 +2733,9 @@
                 <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:id="nv0001"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1055dc60-b9dd-4836-b719-8f7c250ac537">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-8b47be6e-615d-4fcc-b1f6-1e668426dad5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2842,9 +2744,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-1769ab6a-6d13-4f6c-9f6a-ed6c125cab0d">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-314f0b2e-eb59-4c89-a5b4-df0b2564f8e5">
             <a8n-target>
-                <a8n-id>uuid-24227f99-09aa-4ecd-a0f9-8a36b5c62015</a8n-id>
+                <a8n-id>uuid-fbeaac83-7620-4b82-8a54-bb5055e6185c</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2853,7 +2755,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aba1269-5327-4a56-80b4-4805c6326ec1">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-cd437876-88f2-4ee1-9fcf-3823f7cbb87e">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -2864,7 +2766,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d1419cda-491f-4c4a-a382-667e1ca99bd2">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-978a6f2a-6462-4afe-99ed-298fcd557655">
             <a8n-target>
                 <a8n-id>uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284</a8n-id>
             </a8n-target>
@@ -2875,7 +2777,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-0c773d71-c6d9-476d-89ac-a85252618a03">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-09af91b4-3cc0-4742-a76a-8fb54058778f">
             <a8n-target>
                 <a8n-id>pa000003</a8n-id>
             </a8n-target>
@@ -2886,7 +2788,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -2901,9 +2803,9 @@
                     House; to be Postmaster.</hi>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-bf91cf9d-2c18-4dfc-ac78-84444f3839f3">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-959ac096-5cd7-4eb0-95c5-446ed9b953b3">
             <a8n-target>
-                <a8n-id>uuid-c2bbf12f-126e-4d30-9e91-6e6722ea434e</a8n-id>
+                <a8n-id>uuid-161f7f25-dd3a-4d21-a912-7d0b22d478ea</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2912,7 +2814,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66250982-e8b1-4198-be88-857b40428356">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7e20487a-b4c6-4be7-81c7-e105ea606c68">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -2923,7 +2825,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-a3bf9098-c320-4bcd-938f-835d3be8cc85">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6a273a2d-f404-4aac-9657-3f17707d4297">
             <a8n-target>
                 <a8n-id>uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2</a8n-id>
             </a8n-target>
@@ -2934,7 +2836,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-8fd717c1-a115-4b59-bc0f-8147172aedc0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-66679af0-d3c7-48d4-9686-6dafc53dea00">
             <a8n-target>
                 <a8n-id>pa000004</a8n-id>
             </a8n-target>
@@ -2945,7 +2847,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-321a1637-4813-4aa4-8381-b66988eee5d9">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-596e5fbb-1991-4985-908d-0b675961f6dd">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -2958,14 +2860,14 @@
                 <hi xmlns="http://www.tei-c.org/ns/1.0"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-fa070bbc-ee56-483c-81d0-0b477c1b9392">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-ffe31a1b-87f0-4596-b449-62a17b5a5d63">
             <a8n-target>
                 <a8n-parent-element-name>hi</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
                 <a8n-following-sibling-node>
                     <a8n-node-type>text</a8n-node-type>
                 </a8n-following-sibling-node>
-                <a8n-id>uuid-321a1637-4813-4aa4-8381-b66988eee5d9</a8n-id>
+                <a8n-id>uuid-596e5fbb-1991-4985-908d-0b675961f6dd</a8n-id>
                 <a8n-offset>1</a8n-offset>
                 <a8n-range>7</a8n-range>
             </a8n-target>
@@ -2973,7 +2875,7 @@
                 <name xmlns="http://www.tei-c.org/ns/1.0">MERRITT</name>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-b348ec24-24d5-4065-9020-62100a658d67">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-858e3a63-052c-4cdc-8195-356210ae8a81">
             <a8n-target> </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2982,9 +2884,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-9097a9d3-0e56-4c47-9c61-208bcdd306da">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-60ec2fb7-af4a-4e4f-b900-2a3ebf97fe7c">
             <a8n-target>
-                <a8n-id>uuid-321a1637-4813-4aa4-8381-b66988eee5d9</a8n-id>
+                <a8n-id>uuid-596e5fbb-1991-4985-908d-0b675961f6dd</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -2993,7 +2895,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d41425b1-5b4e-48bc-a5b7-f02e994fd6a0">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-3bd3067c-e8c3-4a28-8cbc-9e758d3e0a6b">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -3004,7 +2906,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-76fc10d6-ed46-4db5-b4f9-cc4c03ac5767">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-28e62740-015c-4f06-b87b-e04eadd90f03">
             <a8n-target>
                 <a8n-id>uuid-704f3350-0d90-4718-a011-f5a9cd96f412</a8n-id>
             </a8n-target>
@@ -3015,7 +2917,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-ef0ee682-0ddf-4919-851a-964e5f544bc7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-484da6aa-3a63-4045-b325-1c2017ee518e">
             <a8n-target>
                 <a8n-id>pa000005</a8n-id>
             </a8n-target>
@@ -3026,7 +2928,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -3039,7 +2941,7 @@
                 <hi xmlns="http://www.tei-c.org/ns/1.0"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-ac742ab4-dc44-4646-817b-8c72f4f70fca">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-841b4be0-81ae-4248-a578-411b0d813614">
             <a8n-target>
                 <a8n-parent-element-name>hi</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -3048,7 +2950,7 @@
                 <a8n-following-sibling-node>
                     <a8n-node-type>text</a8n-node-type>
                 </a8n-following-sibling-node>
-                <a8n-id>uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072</a8n-id>
+                <a8n-id>uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8</a8n-id>
                 <a8n-offset>44</a8n-offset>
                 <a8n-range>0</a8n-range>
             </a8n-target>
@@ -3057,9 +2959,9 @@
                     xml:id="uuid-7cf5bd55-4a62-4559-997f-bb64abe9cbfb"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4b437862-e154-4237-b585-7943efa1672b">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0e011374-ef57-42a1-b95a-cac36ce5e1e7">
             <a8n-target>
-                <a8n-id>uuid-d454db12-7bd6-492d-b4a1-24bb0fa71072</a8n-id>
+                <a8n-id>uuid-3b3aed19-c02b-4faa-861b-44f6ed3d97a8</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -3068,7 +2970,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-7d543313-8bf1-47ff-987e-ac9f5e48022e">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-d6c45e0e-365a-46a0-abd9-cc0732e4552d">
             <a8n-target>
                 <a8n-id>pa000006</a8n-id>
             </a8n-target>
@@ -3079,7 +2981,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node/>
@@ -3094,9 +2996,9 @@
                     Times.</hi>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-773c41de-6c94-40e0-a234-b557b85d0d86">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0dd6bc1e-120d-4c88-96b1-b3a6aafcdb5b">
             <a8n-target>
-                <a8n-id>uuid-d06e3c10-f349-4ac2-ac2c-f084d88e8c57</a8n-id>
+                <a8n-id>uuid-a9e9a08c-9121-4c24-9b4d-41cf7d631baf</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -3105,7 +3007,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-48c6cbf6-4990-441c-868f-47a62ceaeca7">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-90970904-e44d-46ba-b0ae-688707e6a0d1">
             <a8n-target>
                 <a8n-id>pa000007</a8n-id>
             </a8n-target>
@@ -3116,7 +3018,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-825b1d99-b842-471f-b0e7-8b438b951c4a">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-13e9cc92-945c-4919-b52f-59bf89e671cc">
             <a8n-target>
                 <a8n-parent-element-name>p</a8n-parent-element-name>
                 <a8n-preceding-sibling-node>
@@ -3133,9 +3035,9 @@
                 <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:id="nv0002"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-4cab7e45-1f65-4e32-9b26-865ffc64e61e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-0807238a-cdba-42aa-8c56-bd32d8354089">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -3144,9 +3046,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="describing" xml:id="uuid-7fd36e11-ad11-41b5-8452-39b79073546e">
+        <a8n-annotation motivatedBy="describing" xml:id="uuid-5fb57dea-fe13-48bf-adf1-6ad65c147316">
             <a8n-target>
-                <a8n-id>uuid-825b1d99-b842-471f-b0e7-8b438b951c4a</a8n-id>
+                <a8n-id>uuid-13e9cc92-945c-4919-b52f-59bf89e671cc</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -3155,7 +3057,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-e6b9e04a-42a0-4494-9785-b6af6001053a">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-472cadd6-ddf9-471c-acd1-76b0c75e889e">
             <a8n-target>
                 <a8n-id>pa000008</a8n-id>
             </a8n-target>
@@ -3166,7 +3068,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-6139cda8-f5a7-452d-9f37-77ec5a80ab3d">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-13887c71-991f-4322-a8e5-5c287495125a">
             <a8n-target>
                 <a8n-id>pa000009</a8n-id>
             </a8n-target>
@@ -3177,7 +3079,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-4374e9f8-9a66-4c1a-9921-9220801ece48">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-65409048-40d9-4067-9a4e-7319cd1cd7e2">
             <a8n-target>
                 <a8n-id>pa000010</a8n-id>
             </a8n-target>
@@ -3188,7 +3090,7 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="structuring" xml:id="uuid-b7c2568a-f1b3-42df-b55f-9ac0011ed486">
+        <a8n-annotation motivatedBy="structuring" xml:id="uuid-2aa5bc98-f3d1-428b-80ae-fbf5e6c2e92b">
             <a8n-target>
                 <a8n-id>pa000011</a8n-id>
             </a8n-target>
@@ -3199,26 +3101,19 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459">
             <a8n-target>
-                <base-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </base-text>
-                <target-text>
-                    <a8n-id>pa000011</a8n-id>
-                    <a8n-offset>44</a8n-offset>
-                    <a8n-range>2</a8n-range>
-                </target-text>
+                <a8n-id>pa000011</a8n-id>
+                <a8n-offset>44</a8n-offset>
+                <a8n-range>2</a8n-range>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004"/>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-b1d24e87-29ff-4d44-b6e8-ac2b8179b18c">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-6510ed05-b440-46fd-8afe-bf198a392fba">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -3226,7 +3121,7 @@
                     xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba">so</lem>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-90dd54bf-6b11-4827-b0db-496e284f3b00">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-cbeeb58b-fede-4559-a433-171546332c39">
             <a8n-target>
                 <a8n-id>uuid-db312f17-7f15-4041-99f7-6a96b3e60fba</a8n-id>
             </a8n-target>
@@ -3237,9 +3132,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-c0dba296-536e-47a9-a170-fb6d382bd860">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-c4c7b53d-2a8f-4c4e-8033-a7b58c3f1e3c">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -3247,7 +3142,7 @@
                     xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb">so so</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-efb94aa0-0f31-4470-a268-96ecd5c3fab9">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-3695ae15-6d0d-42e1-a5a1-37d8c8d82105">
             <a8n-target>
                 <a8n-id>uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb</a8n-id>
             </a8n-target>
@@ -3258,9 +3153,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-61dcad6c-34e3-4d57-9930-b1613a428344">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-f55666ce-7283-4152-b943-c6d4a60c7941">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
                 <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
@@ -3268,7 +3163,7 @@
                     xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d">so</rdg>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-6865ac87-5366-4b46-90b5-70f6991d3cea">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-1fb2c8cf-8acb-4473-a48c-aa003c65eb67">
             <a8n-target>
                 <a8n-id>uuid-37300be1-2a22-4621-b292-e672fa264a5d</a8n-id>
             </a8n-target>
@@ -3279,9 +3174,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-fc90c483-8dc7-48ca-9ea2-1ef1edff5360">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-b94d7ca2-6186-401d-9905-2599cb101120">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>
@@ -3290,9 +3185,9 @@
                 </a8n-attribute>
             </a8n-body>
         </a8n-annotation>
-        <a8n-annotation motivatedBy="editing" xml:id="uuid-0c502e17-e247-4ca5-ad4e-7077b6ac6511">
+        <a8n-annotation motivatedBy="editing" xml:id="uuid-48097f90-f482-41ed-adaf-cd1647885453">
             <a8n-target>
-                <a8n-id>uuid-861eafb0-6c2d-44c0-a767-6dfcb406b7c9</a8n-id>
+                <a8n-id>uuid-37d3f79b-fcc5-4849-813a-c06e6a3d8459</a8n-id>
             </a8n-target>
             <a8n-body>
                 <a8n-attribute>

@@ -57,7 +57,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
-        order by number($collapsed-edition-a8n//a8n-offset) ascending, number($collapsed-edition-a8n//a8n-range) descending
+        order by number($collapsed-edition-a8n/a8n-target/a8n-offset) ascending, number($collapsed-edition-a8n/a8n-target/a8n-range) descending
         return $collapsed-edition-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
@@ -106,7 +106,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
         for $collapsed-feature-a8n in $collapsed-feature-a8ns
-        order by number($collapsed-feature-a8n//a8n-offset) ascending, number($collapsed-feature-a8n//a8n-range) descending
+        order by number($collapsed-feature-a8n/a8n-target/a8n-offset) ascending, number($collapsed-feature-a8n/a8n-target/a8n-range) descending
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
@@ -233,7 +233,7 @@ declare function so2il:build-up-annotations($top-level-annotations as element()*
 declare function so2il:build-up-annotation($annotation as element(), $annotations as element()*) as element()* {
         let $annotation-id := $annotation/@xml:id/string()
         let $annotation-element-name := local-name($annotation//a8n-body/*)
-        let $children := $annotations[a8n-target//a8n-id eq $annotation-id]
+        let $children := $annotations[a8n-target/a8n-id eq $annotation-id]
 (:        let $log := util:log("DEBUG", ("##$children): ", $children)):)
         let $children :=
             so2il:build-up-annotations($children, $annotations)
@@ -315,8 +315,8 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                 then
                     let $annotation-n := $segment/@n/number() div 2
                     let $annotation := $annotations[$annotation-n]
-                    let $annotation-offset := number($annotation//a8n-offset)
-                    let $annotation-range := number($annotation//a8n-range)
+                    let $annotation-offset := number($annotation/a8n-target/a8n-offset)
+                    let $annotation-range := number($annotation/a8n-target/a8n-range)
                     let $annotation := $annotation/(* except a8n-target)
                     return
                         local:insert-elements($segment, $annotation, 'segment', 'first-child')
