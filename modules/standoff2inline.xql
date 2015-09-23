@@ -7,8 +7,7 @@ import module namespace config="http://exist-db.org/apps/merula/config" at "conf
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (: TODO :)
-(:Every time an edition annotation is made, the range difference in relation to any previous annotation should be calculated and time stamped. More than one difference will then be stored in the annotation, the total difference being the sum of all differences. Each edition and feature annotation referencing a range that is subsequent in the text stream to the new annotation should then have the new range difference inserted into their annotation with the same time stamp. We have a 50 characters long text. 40-45 is a <name>. An editorial annotation expands characters 30-35 to 10 characters. This means that the <name> moves 5 characters to the right. If the editorial annotation concerned 46-50, there would be no consequences. If it concerned 40-45, human intervention would be required.:)
-
+(: Separate header and text. :)
 (:We have to find a way to allow multiple editorial targets, not just the base text and one target text. This also means that each feature annotation must be keyed to one or more targets.:)
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
@@ -17,7 +16,9 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 declare function so2il:standoff2inline($nodes as node()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
+(:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
     let $doc := root($nodes)/*
+(:    let $log := util:log("DEBUG", ("##$doc): ", $doc)):)
     let $doc-id := $doc/@xml:id/string()
     let $wit := $nodes/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
     return
@@ -30,13 +31,19 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
 (:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
     let $node := so2il:standoff2inline-recurser($nodes, $doc-id, $editiorial-element-names, $target-format, $wit)
 (:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
-    let $doc-id := root($nodes)/*/@xml:id/string()
-    (:Get all annotations for the block-level element in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced.:)
+    (:Get all annotations for the block-level element in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced. Feature annotations are required here as well, since editorial annotations may contain feature annotations. :)
+    (: NB: Later, all annotations for a whole document are to be gathered here, since placing annotations in collections for each block-level is perhaps not feasible. It is however very handy when debugging. :)
+(:    let $log := util:log("DEBUG", ("##$node-id): ", $node/@xml:id/string())):)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node/@xml:id)/*
-    (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id and belong to the 'edition' layer.:)
+(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
+    (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id. :)
     let $top-level-edition-a8ns := 
-        if ($annotations)
-        then $annotations[a8n-target/a8n-offset][a8n-body/*/local-name() = $editiorial-element-names][a8n-target/a8n-id eq $node/@xml:id]
+        (: Do not look for top-level-edition-a8ns if the node being processed has no xml:id - all top-level-edition-a8ns refer to an xml:id. :)
+        if ($node/@xml:id)
+        then
+            if ($annotations)
+            then $annotations[a8n-target/a8n-offset][a8n-body/*/local-name() = $editiorial-element-names][a8n-target/a8n-id eq $node/@xml:id]
+            else ()
         else ()
 (:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
 
@@ -46,7 +53,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
         if ($top-level-edition-a8ns) 
         then so2il:build-up-annotations($top-level-edition-a8ns, $annotations)
         else ()
-(:    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
+    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns))
     
     (:Collapse the built-up edition annotations, that is, prepare them for insertion into the base text
     by removing all elements except the contents of body and attaching attributes.:)
@@ -55,6 +62,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
         then so2il:collapse-annotations($built-up-edition-a8ns)
         else ()
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
+(:    Order the collapsed annotations according to offset and range. :)
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
         order by number($collapsed-edition-a8n/a8n-target/a8n-offset) ascending, number($collapsed-edition-a8n/a8n-target/a8n-range) descending
@@ -62,23 +70,23 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
     (:Insert the collapsed annotations into the base-text.:)
-    let $text-with-merged-edition-a8ns := 
+    let $base-text-with-merged-edition-a8ns := 
         if ($collapsed-edition-a8ns) 
         then so2il:merge-annotations-with-text($node, $collapsed-edition-a8ns, 'edition', 'tei')
         else $node
     (:Result: base text with edition annotations inserted.:)
     (:TODO: Transform to show the target text with edition annotations inserted; use this a basis for generating target text?:)
-(:    let $log := util:log("DEBUG", ("##$text-with-merged-edition-a8ns): ", $text-with-merged-edition-a8ns)):)
+(:    let $log := util:log("DEBUG", ("##$base-text-with-merged-edition-a8ns): ", $base-text-with-merged-edition-a8ns)):)
     
     (:On the basis of the inserted edition annotations, contruct the target text.:)
-    (:TODO: Into the $text-with-merged-edition-a8ns, spans identifying the edition annotations should be inserted, 
+    (:TODO: Into the $base-text-with-merged-edition-a8ns, spans identifying the edition annotations should be inserted, 
     in order to provide hooks to these annotations in the HTML. 
     Resurrect mopane code for layer-range-difference and merge both edition and feature annotation with target text.:)  
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
     let $target-text := 
-        if ($text-with-merged-edition-a8ns/text())
-        then so2il:tei2target($text-with-merged-edition-a8ns, 'target-text', $wit)
-        else $text-with-merged-edition-a8ns
+        if ($base-text-with-merged-edition-a8ns/text())
+        then so2il:tei2target($base-text-with-merged-edition-a8ns, 'target-text', $wit)
+        else $base-text-with-merged-edition-a8ns
 (:    let $log := util:log("DEBUG", ("##$target-text): ", $target-text)):)
 
     (:Get the top-level feature annotations for the element in question, that is, 
@@ -140,8 +148,7 @@ declare function so2il:separate-text-layers($input as node()*, $target as xs:str
                 
                 case element(tei:note) return
                     ()
-                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur in the text stream, but should occur outside of it.)
-                    Here we strip out all notes from the text itself and put them into the annotations.:)
+                    (:NB: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur at essentially arbitrary positions in the text stream, but probably should occur outside of it. Here we strip out all notes from the text itself and put them into the annotations.:)
                 
                 case element(tei:lem) return
                     if ($target eq 'base-text') 
@@ -224,27 +231,26 @@ declare function so2il:standoff2inline-recurser($node as node(), $doc-id as xs:s
 };
 
 (:This function takes a sequence of top-level annotations and inserts as children all annotations that refer to them through their @xml:id, recursively:)
-declare function so2il:build-up-annotations($top-level-annotations as element()*, $annotations as element()*) as element()* {
-    for $annotation in $top-level-annotations
+declare function so2il:build-up-annotations($parent-annotations as element()*, $annotations as element()*) as element()* {
+    for $parent-annotation in $parent-annotations
     return
-        so2il:build-up-annotation($annotation, $annotations)
+        so2il:build-up-annotation($parent-annotation, $annotations)
 };
 
-declare function so2il:build-up-annotation($annotation as element(), $annotations as element()*) as element()* {
-        let $annotation-id := $annotation/@xml:id/string()
-        let $annotation-element-name := local-name($annotation//a8n-body/*)
-        let $children := $annotations[a8n-target/a8n-id eq $annotation-id]
-(:        let $log := util:log("DEBUG", ("##$children): ", $children)):)
-        let $children :=
-            so2il:build-up-annotations($children, $annotations)
-        return 
-            local:insert-elements($annotation, $children, $annotation-element-name,  'first-child')            
+declare function so2il:build-up-annotation($parent-annotation as element(), $annotations as element()*) as element()* {
+    let $parent-annotation-id := $parent-annotation/@xml:id/string()
+    let $parent-annotation-element-name := local-name($parent-annotation/a8n-body/*)
+    let $children := $annotations[a8n-target/a8n-id eq $parent-annotation-id]
+    return 
+        (local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child'),
+        so2il:build-up-annotations($children, $annotations))
 };
 
 (:Recurser for so2il:collapse-annotation().:)
 (:TODO: Clear up why so2il:collapse-annotation() has to be run three times.:) 
 declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*) {
     for $annotation in $built-up-edition-a8ns
+(:    let $log := util:log("DEBUG", ("##$annotation): ", $annotation)):)
     return 
         so2il:collapse-annotation(so2il:collapse-annotation(so2il:collapse-annotation($annotation, 'a8n-annotation'), 'a8n-body'), 'a8n-base-layer')
         (:NB: 'base-layer' does not appear to be used.:)
