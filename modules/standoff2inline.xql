@@ -8,61 +8,58 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (: TODO :)
 (: Separate header and text. :)
-(:We have to find a way to allow multiple editorial targets, not just the base text and one target text. This also means that each feature annotation must be keyed to one or more targets.:)
+(:We have to find a way to allow multiple editorial targets, not just the base text and one target text. This also means that each feature annotation must be keyed to one or more targets defined in a clear and stable way.:)
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
 (:values used for $target-format: 'tei', 'html':)
-declare function so2il:standoff2inline($nodes as node()*, $editiorial-element-names as xs:string+, $target-format as xs:string) {
+(: The $node is the node from the base text with the xml:id that is passed in the url :)
+(: $target-format and $editiorial-element-names are fed from app.xql:)
+(: NB: $editiorial-element-names should not be set in app.xql, but in some general place.:)
+declare function so2il:standoff2inline($node as node()?, $editiorial-element-names as xs:string+, $target-format as xs:string) {
         
     (:Get the document's xml:id.:)
-(:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $doc := root($nodes)/*
-(:    let $log := util:log("DEBUG", ("##$doc): ", $doc)):)
+    let $doc := root($node)/*
     let $doc-id := $doc/@xml:id/string()
-    let $wit := $nodes/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
+    (: Get the value for the witness defining the base text, app/(rdg | lem)[@wit eq $wit].:)
+    (: NB: the value for the target text should be passed here as well, but for the time being it is simply app/lem.:)
+    let $wit := $doc/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
     return
-        so2il:annotate-text($nodes, $doc-id, $editiorial-element-names, $target-format, $wit)
+        so2il:annotate-text($node, $doc-id, $editiorial-element-names, $target-format, $wit)
 };
 
-declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string, $wit as xs:string?) {
+declare function so2il:annotate-text($node as node()?, $doc-id as xs:string, $editiorial-element-names as xs:string+, $target-format as xs:string, $wit as xs:string?) {
 
-    (:Recurse though the document.:)
-(:    let $log := util:log("DEBUG", ("##$nodes): ", $nodes)):)
-    let $node := so2il:standoff2inline-recurser($nodes, $doc-id, $editiorial-element-names, $target-format, $wit)
-(:    let $log := util:log("DEBUG", ("##$node): ", $node)):)
-    (:Get all annotations for the block-level element in question. At first, only the top-level annotations are needed, but when the annotations are later built up, all annotations need to be referenced. Feature annotations are required here as well, since editorial annotations may contain feature annotations. :)
-    (: NB: Later, all annotations for a whole document are to be gathered here, since placing annotations in collections for each block-level is perhaps not feasible. It is however very handy when debugging. :)
-(:    let $log := util:log("DEBUG", ("##$node-id): ", $node/@xml:id/string())):)
+    (:Recurse though the node.:)
+    (: $node will here first be the node passed from so2il:standoff2inline(), that is the base text node called in the url, but will then recurse through it, annotating as it goes along. :)
+    let $node := so2il:standoff2inline-recurser($node, $doc-id, $editiorial-element-names, $target-format, $wit)
+    (:Get all annotations for the text block element in question. At first, only the top-level annotations are needed, but when the annotations are built up, all annotations need to be referenced. :)
+    (: TODO: All annotations for a whole document are to be gathered here, since placing annotations in collections for each text block is probably not feasible. This would mean using
+    let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
+The presnt approach is however very handy when debugging. :)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node/@xml:id)/*
-(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
-    (:Get all top-level edition annotations for the element in question, that is, all annotations that target its id. :)
+    (:Get all top-level edition annotations for the base text element in question, that is, all editorial annotations that target its id. :)
     let $top-level-edition-a8ns := 
-        (: Do not look for top-level-edition-a8ns if the node being processed has no xml:id - all top-level-edition-a8ns refer to an xml:id. :)
-        if ($node/@xml:id)
-        then
             if ($annotations)
             then $annotations[a8n-target/a8n-offset][a8n-body/*/local-name() = $editiorial-element-names][a8n-target/a8n-id eq $node/@xml:id]
             else ()
-        else ()
-(:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
 
-    (:Build up the top-level edition annotations, that is, 
-    insert annotations that reference the top-level edition annotations, recursing until the whole annotation is assembled.:)
+    (:Build up the top-level edition annotations, that is, insert annotations that reference the top-level edition annotations, recursing until the whole annotation is assembled. The built-up annotation at this stage consist of nested a8n-annotation elements, where an annotation (an attribute or a child element) that refers to another annotation is inserted into the body of the annotation in question, that is, following the element that the annotation consists of. :)
     let $built-up-edition-a8ns := 
         if ($top-level-edition-a8ns) 
         then so2il:build-up-annotations($top-level-edition-a8ns, $annotations)
         else ()
-    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns))
+(:    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
     
-    (:Collapse the built-up edition annotations, that is, prepare them for insertion into the base text
-    by removing all elements except the contents of body and attaching attributes.:)
+    (:Collapse the nested built-up edition annotations, that is, prepare them for insertion into the base text
+    by removing all elements except the contents of body and attaching attributes, that is, reconstituting the elements as TEI elements below a8n-target.:)
     let $collapsed-edition-a8ns := 
         if ($built-up-edition-a8ns) 
         then so2il:collapse-annotations($built-up-edition-a8ns)
         else ()
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
 (:    Order the collapsed annotations according to offset and range. :)
+
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
         order by number($collapsed-edition-a8n/a8n-target/a8n-offset) ascending, number($collapsed-edition-a8n/a8n-target/a8n-range) descending
@@ -125,7 +122,7 @@ declare function so2il:annotate-text($nodes as node()*, $doc-id as xs:string, $e
         else $node
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
-    (:Convert the TEI document to HTML: block-level elements become divs and inline element become spans.:)
+    (:Convert the TEI document to HTML: text block elements become divs and inline element become spans.:)
     let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
     let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
@@ -203,7 +200,7 @@ declare function so2il:tei2target($node as node()*, $target-layer as xs:string, 
         
 };
 
-(:Convert TEI block-level elements into divs and inline elements into spans.:)
+(:Convert TEI text block elements into divs and inline elements into spans.:)
 (:For reasons of simplicity, te usual way of converting TEI into "quasi-semantic" HTML is avoided.:)
 declare function so2il:tei2html($node as node(), $block-element-names as xs:string+, $element-only-element-names as xs:string+) {
     element {if (local-name($node) = ($block-element-names, $element-only-element-names)) then 'div' else 'span'}
@@ -237,23 +234,34 @@ declare function so2il:build-up-annotations($parent-annotations as element()*, $
         so2il:build-up-annotation($parent-annotation, $annotations)
 };
 
+(:This function recursively inserts annotations into their parent annotations.:)
 declare function so2il:build-up-annotation($parent-annotation as element(), $annotations as element()*) as element()* {
+    let $log := util:log("DEBUG", ("##$parent-annotation): ", $parent-annotation))
     let $parent-annotation-id := $parent-annotation/@xml:id/string()
     let $parent-annotation-element-name := local-name($parent-annotation/a8n-body/*)
     let $children := $annotations[a8n-target/a8n-id eq $parent-annotation-id]
+    let $log := util:log("DEBUG", ("##$children): ", $children))
+    (: TODO: somehow, a8n-order should be taken into consideration:)
     return 
-        (local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child'),
-        so2il:build-up-annotations($children, $annotations))
+        (
+            local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
+            ,
+            so2il:build-up-annotations($children, $annotations)
+        )
 };
 
 (:Recurser for so2il:collapse-annotation().:)
 (:TODO: Clear up why so2il:collapse-annotation() has to be run three times.:) 
-declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*) {
-    for $annotation in $built-up-edition-a8ns
-(:    let $log := util:log("DEBUG", ("##$annotation): ", $annotation)):)
+declare function so2il:collapse-annotations($built-up-edition-annotations as element()*) {
+    for $annotation in $built-up-edition-annotations
+(:    let $log := util:log("DEBUG", ("##$collapsed-annotation-0): ", $annotation)):)
+    let $collapsed-annotation := so2il:collapse-annotation($annotation, 'a8n-annotation')
+(:    let $log := util:log("DEBUG", ("##$collapsed-annotation-1): ", $collapsed-annotation)):)
+    let $collapsed-annotation := so2il:collapse-annotation($collapsed-annotation, 'a8n-body')
+(:    let $log := util:log("DEBUG", ("##$collapsed-annotation-2): ", $collapsed-annotation)):)
     return 
-        so2il:collapse-annotation(so2il:collapse-annotation(so2il:collapse-annotation($annotation, 'a8n-annotation'), 'a8n-body'), 'a8n-base-layer')
-        (:NB: 'base-layer' does not appear to be used.:)
+        $collapsed-annotation
+(:        so2il:collapse-annotation(so2il:collapse-annotation($annotation, 'a8n-annotation'), 'a8n-body'):)
 };
 
 (: This function takes a built-up annotation and 
@@ -263,7 +271,7 @@ declare function so2il:collapse-annotations($built-up-edition-a8ns as element()*
 4) takes the string values of terminal text-critical elements that have child feature annotations. :)
 declare function so2il:collapse-annotation($element as element(), $strip as xs:string+) as element() {
 (:    let $log := util:log("DEBUG", ("##$element): ", $element)) return:)
-        element {node-name($element)}
+    element {node-name($element)}
     {$element/@*, 
         if ($element/*/*/a8n-attribute/*)
         then 
