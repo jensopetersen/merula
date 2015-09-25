@@ -8,7 +8,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 
 (: TODO :)
 (: Separate header and text. :)
-(:We have to find a way to allow multiple editorial targets, not just the base text and one target text. This also means that each feature annotation must be keyed to one or more targets defined in a clear and stable way.:)
+(: Multiple editorial targets must be made possible, not just the base text and one target text. This means that each feature annotation must be keyed to the target text it is based on.:)
 
 (:values for $action: 'store', 'display':)(:NB: not used yet:)
 (:values for $base: 'stored', 'generated':)(:NB: not used yet:)
@@ -36,14 +36,15 @@ declare function so2il:annotate-text($node as node()?, $doc-id as xs:string, $ed
     (:Get all annotations for the text block element in question. At first, only the top-level annotations are needed, but when the annotations are built up, all annotations need to be referenced. :)
     (: TODO: All annotations for a whole document are to be gathered here, since placing annotations in collections for each text block is probably not feasible. This would mean using
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
-The presnt approach is however very handy when debugging. :)
+The present approach is however very handy when debugging. :)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node/@xml:id)/*
     (:Get all top-level edition annotations for the base text element in question, that is, all editorial annotations that target its id. :)
     let $top-level-edition-a8ns := 
             if ($annotations)
             then $annotations[a8n-target/a8n-offset][a8n-body/*/local-name() = $editiorial-element-names][a8n-target/a8n-id eq $node/@xml:id]
             else ()
-
+(:    let $log := util:log("DEBUG", ("##$top-level-edition-a8ns): ", $top-level-edition-a8ns)):)
+    
     (:Build up the top-level edition annotations, that is, insert annotations that reference the top-level edition annotations, recursing until the whole annotation is assembled. The built-up annotation at this stage consist of nested a8n-annotation elements, where an annotation (an attribute or a child element) that refers to another annotation is inserted into the body of the annotation in question, that is, following the element that the annotation consists of. :)
     let $built-up-edition-a8ns := 
         if ($top-level-edition-a8ns) 
@@ -51,14 +52,14 @@ The presnt approach is however very handy when debugging. :)
         else ()
 (:    let $log := util:log("DEBUG", ("##$built-up-edition-a8ns): ", $built-up-edition-a8ns)):)
     
-    (:Collapse the nested built-up edition annotations, that is, prepare them for insertion into the base text
+    (:Collapse the nested built-up editorial annotations, that is, prepare them for insertion into the base text
     by removing all elements except the contents of body and attaching attributes, that is, reconstituting the elements as TEI elements below a8n-target.:)
     let $collapsed-edition-a8ns := 
         if ($built-up-edition-a8ns) 
         then so2il:collapse-annotations($built-up-edition-a8ns)
         else ()
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
-(:    Order the collapsed annotations according to offset and range. :)
+(:    Order the collapsed editorial annotations according to offset and range. :)
 
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
@@ -235,19 +236,15 @@ declare function so2il:build-up-annotations($parent-annotations as element()*, $
 };
 
 (:This function recursively inserts annotations into their parent annotations.:)
+(: TODO: when an annotation has been nested into another annotation, it should be removed. :)
+(: Somehow, this function ought to begin at the bottom, that is,  :)
 declare function so2il:build-up-annotation($parent-annotation as element(), $annotations as element()*) as element()* {
-    let $log := util:log("DEBUG", ("##$parent-annotation): ", $parent-annotation))
     let $parent-annotation-id := $parent-annotation/@xml:id/string()
     let $parent-annotation-element-name := local-name($parent-annotation/a8n-body/*)
-    let $children := $annotations[a8n-target/a8n-id eq $parent-annotation-id]
-    let $log := util:log("DEBUG", ("##$children): ", $children))
-    (: TODO: somehow, a8n-order should be taken into consideration:)
-    return 
-        (
-            local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
-            ,
-            so2il:build-up-annotations($children, $annotations)
-        )
+    let $children := so2il:build-up-annotations($annotations[a8n-target/a8n-id eq $parent-annotation-id], $annotations)
+(: TODO: somehow, a8n-order should be taken into consideration here. :)
+    return
+        local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
 };
 
 (:Recurser for so2il:collapse-annotation().:)
