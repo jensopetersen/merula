@@ -81,7 +81,6 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
     (:TODO: comments and PIs should also be handled as annotations:)
     for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
-        
         let $base-text-before-element := string-join(so2il:separate-text-layers($element/preceding-sibling::node(), 'base-text', $wit))
         let $base-text-before-text := string-join($element/preceding-sibling::text())
         let $base-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'base-text', $wit))
@@ -145,12 +144,13 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                         <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
                         <a8n-offset>{$target-text-position-start + 1}</a8n-offset>
                         <a8n-range>{$target-text-position-end - $target-text-position-start}</a8n-range>
+                        <a8n-exact>{$element/text()}</a8n-exact>
                 </a8n-target>
             return
                 let $element-annotation-result :=
                     <a8n-annotation motivatedBy="{$motivatedBy}" xml:id="{$annotation-id}">
                         {$target}
-                        <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
+                        <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/element()}}</a8n-body>
                         <a8n-admin/>
                     </a8n-annotation>
                 let $attribute-annotation-result := local:make-attribute-annotations($element, $motivatedBy, $annotation-id)
@@ -247,7 +247,7 @@ declare function local:handle-mixed-content-annotations($annotation as node(), $
             let $parent-id := <a8n-id>{$annotation/@xml:id/string()}</a8n-id>
             for $child-body-content in $child-body-contents
                 return
-                    let $child-body-content := local:remove-elements($child-body-content, ('a8n-id', 'a8n-layer-range-difference'))
+                    let $child-body-content := local:remove-elements($child-body-content, ('a8n-id'))
                     let $child-annotation := local:insert-elements($child-body-content, $parent-id, 'a8n-offset', 'before')
                         return
                             if (not($child-annotation//a8n-body//text()))
@@ -399,6 +399,7 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
                 )
 };
 
+(: Removes elements that are not needed in the output. :)
 declare function local:prepare-annotations-for-output-to-doc($element as element()*)
 as element()* {
     for $element in $element 
@@ -407,11 +408,8 @@ as element()* {
         $element/@*,
         for $child in $element/node()
         return
-            if ($child instance of element(a8n-base-layer) or $child instance of element(a8n-admin) or $child instance
-                of element(a8n-layer-range-difference)) then
+            if ($child instance of element(a8n-admin) or $child instance of element(a8n-exact)) then
                 ()
-            else if ($child instance of element(a8n-target-layer)) then
-                $child/*
             else if ($child instance of text()) then
                 $child
             else
@@ -479,12 +477,12 @@ let $annotations-1 := local:generate-top-level-annotations-keyed-to-base-text($d
 let $annotations-2 :=
     for $node in $annotations-1
         return local:peel-off-annotations($node, $editorial-element-names, $documentary-element-names, $wit)
+let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 
 let $output-format := 'exide'
 (:let $output-format := 'doc':)
 (:let $output-format := 'download':)
 
-let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        
 
 let $annotation-out-collection := 
@@ -496,7 +494,6 @@ let $result :=
         <base-text>{$base-text}</base-text>
         <target-text>{element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $target-text}}}</target-text>
         <annotations-1>{$annotations-1}</annotations-1>
-        <annotations-2>{$annotations-2}</annotations-2>
         <annotations-3>{$annotations-3}</annotations-3>
     </result>
 return
