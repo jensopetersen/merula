@@ -2,7 +2,7 @@
     <teiHeader>
         <fileDesc>
             <titleStmt>
-                <title>Title</title>
+                <title>Mark Twain</title>
             </titleStmt>
             <publicationStmt>
                 <p>Publication Information</p>
@@ -15,7 +15,7 @@
     <text><!-- Double End-Point Attachment Method changed to Parallel Segmentation Method -->
         <body xml:id="uuid-fcc7ddd8-7e39-4032-ba3f-ba2dfc1f0eee">
             <div type="chapter" xml:id="sha-ham101">
-                <p rend="centerautosum" xml:id="pa000001">Government of new Territory of Nevada—Governor <name xml:id="_9" type="person">Nye</name>
+                <p rend="centerautosum" xml:id="pa000001">Government of new <choice><abbr>Terr.</abbr><expan>Territory</expan></choice> of Nevada—Governor <name xml:id="_9" type="person">Nye</name>
                     <lb xml:id="_10"/> and the practical jokers—Mr. <name xml:id="_11" type="person">Clemens</name> begins journalistic life <lb xml:id="_12"/>on Virginia City <app from="dg0000" type="aet" xml:id="_13">
                         <lem xml:id="uuid-f3fc4683-b570-403f-ae10-3d976c8f4568">
                             <hi xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523" rend="italic">Enterprise</hi>
@@ -29,40 +29,21 @@
                         <lem xml:id="uuid-54d08490-608c-402a-a0e3-4ddaab0be26c">Governor </lem>
                         <rdg xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a" wit="#TS1 #TS2">Gov. </rdg>
                     </app>
-                    <name xml:id="_19" type="person">Nye</name> turns Territory of <name xml:id="_20" type="place">Nevada</name> into a <app from="dg0003" type="aet" xml:id="_21">
-                        <lem xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299ba">State.</lem>
-                        <rdg xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61ae" wit="#TS1 #TS2">State. <lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/> (Miss <name xml:id="_22" type="person">Hobby</name>, please paste this in at this point, in record of April 1st, but I may not comment on it until later.)</rdg>
+                    <name xml:id="_19" type="person">Nye</name> turns Territory of <name xml:id="_20" type="place">Nevada</name> into a State. <app from="dg0003" type="aet" xml:id="_22">
+                        <lem xml:id="uuid-cee18fca-11cc-4316-a0d6-55be002299bb"></lem>
+                        <rdg xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61af" wit="#TS1 #TS2"><lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/>(Miss <name xml:id="_24" type="person">Hobby</name>, please paste this in at this point, in record of April 1st, but I may not comment on it until later.)</rdg>
                     </app>
                 </p>
                 <p rend="center" xml:id="pa000002">
-                    <hi xml:id="uuid-f391061f-7329-481f-8db8-ad1f42572a6f" rend="bold">PROMOTION FOR BARNES, WHOM TILLMAN&#160;BERATED</hi>
+                    <hi xml:id="uuid-f391061f-7329-481f-8db8-ad1f42572a6f" rend="bold">PROMOTION FOR <name>BARNES</name>, <choice><orig>WHO</orig><reg>WHOM</reg></choice> <name>TILLMAN</name> BERATED</hi>
                     <ptr target="#en0001" type="an" xml:id="nv0001"/>
                 </p>
                 <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284" rend="lightrule" unit="section"/>
-                <p rend="center" xml:id="pa000003">
-                    <hi xml:id="uuid-5888d6b7-48df-4d76-b01c-579cfbf2728d" rend="bold">Had Woman Ejected from White House; to be Postmaster.</hi>
-                </p>
-                <milestone xml:id="uuid-da7c0f15-25cf-4faa-9381-97650a7cc6f2" rend="lightrule" unit="section"/>
-                <p rend="center" xml:id="pa000004">
-                    <hi xml:id="_8" rend="bold">
-                        <name type="person">MERRITT</name> GETS NEW PLACE</hi>
-                </p>
-                <milestone xml:id="uuid-704f3350-0d90-4718-a011-f5a9cd96f412" rend="lightrule" unit="section"/>
-                <p rend="center" xml:id="pa000005">
-                    <hi xml:id="uuid-602b35c7-b4cf-472e-b1ba-a31e62be3998" rend="bold">Present Postmaster at Washington to be Made<lb xml:id="uuid-7cf5bd55-4a62-4559-997f-bb64abe9cbfb"/> Collector at Niagara—Platt Not Consulted.</hi>
-                </p>
-                <p rend="center" xml:id="pa000006">
-                    <hi xml:id="uuid-c5c9d69e-8f0d-4c24-95ab-15e916d8516b" rend="italic">Special to The New York Times.</hi>
-                </p>
-                <p rend="text-indent:2" xml:id="pa000007">WASHINGTON, March 31.—President Roosevelt surprised the capital this afternoon by announcing that he would appoint Benjamin F. Barnes as Postmaster of Washington, to succeed John A. Merritt of New York. Mr. Merritt, who for several years has been Postmaster here, has been chosen for Collector of the Port of Niagara, succeeding the late Major James Low<ptr target="#en0002" type="an" xml:id="nv0002"/>.</p>
-                <p rend="text-indent:2" xml:id="pa000008">Mr. Barnes is at present assistant secretary to the President. Only a short time ago he figured extensively in the newspapers for having ordered the forcible ejection from the White House of Mrs. Minor Morris, a Washington woman who had called to see the President. What attracted attention to the case was not the ejection itself, but the violence with which it was performed.</p>
-                <p rend="text-indent:2" xml:id="pa000009">Mrs. Morris, who had been talking to Barnes in an ordinary conversational tone, and with no indications of excitement, so far as the spectators observed, was seized by two policemen and dragged by the arms out of the building and across the asphalt walk in front of the White House, a distance corresponding to that of two ordinary city blocks. During a part of the journey a negro carried her by the feet. Her dress was torn and trampled.</p>
-                <p rend="text-indent:2" xml:id="pa000010">She was locked up on a charge of disorderly conduct, and when it was learned that she would be released on that charge a policeman, a relative of Barnes’s, was sent to the House of Detention to prefer a charge of insanity against her so that she would have to be held. She was held accordingly until two physicians had examined her and pronounced her sane. He was denounced by Mrs. Morris, by various newspapers, and by Mr. Tillman in the Senate.</p>
-                <p rend="text-indent:2" xml:id="pa000011">The appointment of Barnes to be Postmaster <app from="dg0005" type="aet" xml:id="ap0004">
+                <p rend="text-indent:2" xml:id="pa000003">The appointment of <choice><corr>Barnes</corr><sic>Branes</sic></choice> to be Postmaster <app from="dg0005" type="aet" xml:id="ap0004">
                     <lem xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fba" wit="#TS1">so</lem>
                     <rdg xml:id="uuid-ea3d9d83-8371-48cb-b9c1-1eabaa8867eb" wit="#Times">so so</rdg>
                     <rdg xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5d" wit="#TS2">so</rdg>
-                </app> soon after this incident has created endless talk here. It is taken to be the President’s way of expressing confidence in Barnes and repaying him for the pain he suffered as a result of the newspaper criticisms of his course.</p>
+                </app> soon after this incident has created endless talk here. It is taken to be the <rs type="person">President</rs>’s way of expressing confidence in <name xml:id="_23" type="person"><hi rend="bold">Barnes</hi></name> and repaying him for the pain he suffered as a result of the newspaper criticisms of his course.</p>
             </div>
         </body>
     </text>
