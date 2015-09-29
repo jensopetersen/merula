@@ -33,11 +33,13 @@ declare function so2il:annotate-text($node as node()?, $doc-id as xs:string, $ed
     (:Recurse though the node.:)
     (: $node will here first be the node passed from so2il:standoff2inline(), that is the base text node called in the url, but will then recurse through it, annotating as it goes along. :)
     let $node := so2il:standoff2inline-recurser($node, $doc-id, $editiorial-element-names, $target-format, $wit)
+    let $node-id := $node/@xml:id/string()
+(:    let $log := util:log("DEBUG", ("##$node-id): ", $node-id)):)
     (:Get all annotations for the text block element in question. At first, only the top-level annotations are needed, but when the annotations are built up, all annotations need to be referenced. :)
     (: TODO: All annotations for a whole document are to be gathered here, since placing annotations in collections for each text block is probably not feasible. This would mean using
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
 The present approach is however very handy when debugging. :)
-    let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node/@xml:id)/*
+    let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node-id)/*
     (:Get all top-level edition annotations for the base text element in question, that is, all editorial annotations that target its id. :)
     let $top-level-edition-a8ns := 
             if ($annotations)
@@ -242,7 +244,10 @@ declare function so2il:build-up-annotation($parent-annotation as element(), $ann
     let $parent-annotation-id := $parent-annotation/@xml:id/string()
     let $parent-annotation-element-name := local-name($parent-annotation/a8n-body/*)
     let $children := so2il:build-up-annotations($annotations[a8n-target/a8n-id eq $parent-annotation-id], $annotations)
-(: TODO: somehow, a8n-order should be taken into consideration here. :)
+    let $children := 
+        for $child in $children
+        order by $child/a8n-target/a8n-order
+        return $child
     return
         local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
 };
