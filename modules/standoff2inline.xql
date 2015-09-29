@@ -155,7 +155,7 @@ declare function so2il:separate-text-layers($input as node()*, $target as xs:str
                         if (tokenize($node/@wit/string(), " ") = $wit)
                         then so2il:separate-text-layers($node, $target, $wit)
                         else ()
-                    else $node
+                    else so2il:separate-text-layers($node, $target, $wit)
                 
                 case element(tei:rdg) return
                     if ($target eq 'base-text')

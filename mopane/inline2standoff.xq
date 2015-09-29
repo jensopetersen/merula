@@ -81,17 +81,24 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
     (:TODO: comments and PIs should also be handled as annotations:)
     for $element in $text-block-element/element()
         let $a8n-id := $element/parent::element()/@xml:id/string()
-        let $base-text-before-element := string-join(so2il:separate-text-layers($element/preceding-sibling::node(), 'base-text', $wit))
-        let $base-text-before-text := string-join($element/preceding-sibling::text())
-        let $base-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'base-text', $wit))
-        let $base-text-position-start := string-length($base-text-before-element) + string-length($base-text-before-text)
-        let $base-text-position-end := $base-text-position-start + string-length($base-text-marked-up-string)
         
-        let $target-text-before-element := string-join(so2il:separate-text-layers($element/preceding-sibling::node(), 'target-text', ''))
-        let $target-text-before-text := string-join($element/preceding-sibling::text()) (:NB: same as base:)
+        (: Get the the text before the editorial markup in quetion, by constructing the base text version of it. :)
+        let $base-text-before-element := string-join(so2il:separate-text-layers(<base>{$element/preceding-sibling::node()}</base>, 'base-text', $wit))
+        (: Add 1 to the length of this to get the markup offset. :)
+        let $base-text-offset := string-length($base-text-before-element) + 1
+        (: Get the base-text version of the editorial markup in question. :)
+        let $base-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'base-text', $wit))
+        (: The length of this is the markup range. :)
+        let $base-text-range := string-length($base-text-marked-up-string)
+        
+        (: Get the the text before the feature markup in quetion, by constructing the target text version of it. Add 1 to get the offset. :)
+        let $target-text-before-element := string-join(so2il:separate-text-layers(<target>{$element/preceding-sibling::node()}</target>, 'target-text', ''))
+        (: Add 1 to the length of this to get the markup offset. :)
+        let $target-text-offset := string-length($target-text-before-element) + 1
+        (: Get the target-text version of the feature markup in question. :)
         let $target-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'target-text', ''))
-        let $target-text-position-start := string-length($target-text-before-element) + string-length($target-text-before-text)
-        let $target-text-position-end := $target-text-position-start + string-length($target-text-marked-up-string)
+        (: The length of this is the markup range. :)
+        let $target-text-range := string-length($target-text-marked-up-string)
         
         let $preceding-sibling-node := $element/preceding-sibling::node()[1]
         let $following-sibling-node := $element/following-sibling::node()[1]
@@ -125,15 +132,15 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
             then
                 <a8n-target>
                     <a8n-id>{$a8n-id}</a8n-id>
-                    <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
-                    <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
+                    <a8n-offset>{$base-text-offset}</a8n-offset>
+                    <a8n-range>{$base-text-range}</a8n-range>
                     <a8n-order>{$order}</a8n-order>
                 </a8n-target>
             else
                 <a8n-target>
                         <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-offset>{$target-text-position-start + 1}</a8n-offset>
-                        <a8n-range>{$target-text-position-end - $target-text-position-start}</a8n-range>
+                        <a8n-offset>{$target-text-offset}</a8n-offset>
+                        <a8n-range>{$target-text-range}</a8n-range>
                         <a8n-order>{$order}</a8n-order>
                         <a8n-exact>{$element/text()}</a8n-exact>
                 </a8n-target>
