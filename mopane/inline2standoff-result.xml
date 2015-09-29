@@ -104,7 +104,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>19</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <choice xmlns="http://www.tei-c.org/ns/1.0">
@@ -119,7 +119,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>48</a8n-offset>
                 <a8n-range>3</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>Nye</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -144,7 +144,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>51</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
                 <a8n-exact/>
             </a8n-target>
             <a8n-body>
@@ -157,7 +157,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>81</a8n-offset>
                 <a8n-range>7</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>Clemens</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -182,7 +182,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>114</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact/>
             </a8n-target>
             <a8n-body>
@@ -195,7 +195,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>127</a8n-offset>
                 <a8n-range>10</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_13">
@@ -238,7 +238,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>171</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact/>
             </a8n-target>
             <a8n-body>
@@ -251,7 +251,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>178</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>Orion</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -276,7 +276,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>192</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>Orion</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -301,7 +301,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>201</a8n-offset>
                 <a8n-range>8</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_17">
@@ -343,7 +343,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>216</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_18">
@@ -383,7 +383,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>243</a8n-offset>
                 <a8n-range>3</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
                 <a8n-exact>Nye</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -408,7 +408,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>266</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>Nevada</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -433,7 +433,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>265</a8n-offset>
                 <a8n-range>114</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_22">
@@ -488,7 +488,7 @@
                 <a8n-id>pa000002</a8n-id>
                 <a8n-offset>1</a8n-offset>
                 <a8n-range>42</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>PROMOTION FOR BARNES, TILLMAN BERATED</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -519,7 +519,7 @@
                 <a8n-id>pa000002</a8n-id>
                 <a8n-offset>43</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
                 <a8n-exact/>
             </a8n-target>
             <a8n-body>
@@ -554,7 +554,7 @@
         <a8n-annotation motivatedBy="milestone" xml:id="uuid-cff4ca29-6ce6-4014-aa3e-7c2d4a5ccb77">
             <a8n-target>
                 <a8n-id>sha-ham101</a8n-id>
-                <a8n-order-4>3</a8n-order-4>
+                <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
                 <milestone xmlns="http://www.tei-c.org/ns/1.0"
@@ -603,7 +603,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>20</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <choice xmlns="http://www.tei-c.org/ns/1.0">
@@ -618,7 +618,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>44</a8n-offset>
                 <a8n-range>2</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004">
@@ -658,7 +658,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>125</a8n-offset>
                 <a8n-range>9</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact>President</a8n-exact>
             </a8n-target>
             <a8n-body>
@@ -683,7 +683,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>169</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
                 <a8n-exact/>
             </a8n-target>
             <a8n-body>
@@ -734,7 +734,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>19</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <choice xmlns="http://www.tei-c.org/ns/1.0"/>
@@ -743,7 +743,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-dd355d42-cdf8-48cf-abe9-e0eddbbcaf5e">
             <a8n-target>
                 <a8n-id>uuid-64312aeb-67da-439e-98f4-6bb988c8fc7d</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <abbr xmlns="http://www.tei-c.org/ns/1.0">Terr.</abbr>
@@ -752,7 +752,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-65910ab8-c475-4499-98b7-bf41b01d2415">
             <a8n-target>
                 <a8n-id>uuid-64312aeb-67da-439e-98f4-6bb988c8fc7d</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <expan xmlns="http://www.tei-c.org/ns/1.0">Territory</expan>
@@ -763,7 +763,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>48</a8n-offset>
                 <a8n-range>3</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_9"/>
@@ -785,7 +785,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>51</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_10"/>
@@ -796,7 +796,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>81</a8n-offset>
                 <a8n-range>7</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_11"/>
@@ -818,7 +818,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>114</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_12"/>
@@ -829,7 +829,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>127</a8n-offset>
                 <a8n-range>10</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_13"/>
@@ -838,7 +838,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-da701236-670b-4ebe-9975-79f070da3d93">
             <a8n-target>
                 <a8n-id>uuid-9d413d05-0997-4b83-9897-a451d664a2f4</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lem xmlns="http://www.tei-c.org/ns/1.0"
@@ -848,7 +848,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-5c191387-6312-4d88-9bc5-86106078781f">
             <a8n-target>
                 <a8n-id>uuid-da701236-670b-4ebe-9975-79f070da3d93</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <hi xmlns="http://www.tei-c.org/ns/1.0"
@@ -869,7 +869,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-d95757ea-6f95-438e-90f9-7908451a9d46">
             <a8n-target>
                 <a8n-id>uuid-9d413d05-0997-4b83-9897-a451d664a2f4</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -914,7 +914,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>171</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lb xmlns="http://www.tei-c.org/ns/1.0" xml:id="_14"/>
@@ -925,7 +925,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>178</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_15"/>
@@ -947,7 +947,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>192</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_16"/>
@@ -969,7 +969,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>201</a8n-offset>
                 <a8n-range>8</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_17"/>
@@ -978,7 +978,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-19526887-d0da-4d7a-8658-c0bcd435c2b9">
             <a8n-target>
                 <a8n-id>uuid-c8485ec8-5da4-4aaa-81cc-aaabaf3cde26</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lem xmlns="http://www.tei-c.org/ns/1.0"
@@ -988,7 +988,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-25e8d6dd-5d47-4c68-9b75-50d0336f1026">
             <a8n-target>
                 <a8n-id>uuid-c8485ec8-5da4-4aaa-81cc-aaabaf3cde26</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1009,7 +1009,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-abbc9116-c36a-40fd-bf86-fc6bcfc50b73">
             <a8n-target>
                 <a8n-id>uuid-c8485ec8-5da4-4aaa-81cc-aaabaf3cde26</a8n-id>
-                <a8n-order-3>3</a8n-order-3>
+                <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1054,7 +1054,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>216</a8n-offset>
                 <a8n-range>5</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_18"/>
@@ -1063,7 +1063,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-2f12b6b1-a1ef-41df-b6d1-d649bac66eba">
             <a8n-target>
                 <a8n-id>uuid-9783aa64-cbbc-4e37-bbd4-cc6eba35816c</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lem xmlns="http://www.tei-c.org/ns/1.0"
@@ -1073,7 +1073,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-b0433234-0173-46e6-b004-5d9b77c89d03">
             <a8n-target>
                 <a8n-id>uuid-9783aa64-cbbc-4e37-bbd4-cc6eba35816c</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1118,7 +1118,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>243</a8n-offset>
                 <a8n-range>3</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_19"/>
@@ -1140,7 +1140,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>266</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_20"/>
@@ -1162,7 +1162,7 @@
                 <a8n-id>pa000001</a8n-id>
                 <a8n-offset>265</a8n-offset>
                 <a8n-range>114</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="_22"/>
@@ -1171,7 +1171,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-b6777e8a-f7a9-4439-b601-7c1a34e29e25">
             <a8n-target>
                 <a8n-id>uuid-db904d16-2acf-4a21-a08e-dcec1773b2f5</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lem xmlns="http://www.tei-c.org/ns/1.0"
@@ -1181,7 +1181,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-9c4b403d-6b24-4c9a-b45e-fa974999edac">
             <a8n-target>
                 <a8n-id>uuid-db904d16-2acf-4a21-a08e-dcec1773b2f5</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1240,7 +1240,7 @@
                 <a8n-id>pa000002</a8n-id>
                 <a8n-offset>1</a8n-offset>
                 <a8n-range>42</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <hi xmlns="http://www.tei-c.org/ns/1.0"
@@ -1250,7 +1250,7 @@
         <a8n-annotation motivatedBy="describing" xml:id="uuid-f1a043f7-4dcb-4da2-91aa-06f6ce6f3ba4">
             <a8n-target>
                 <a8n-id>uuid-43a146c8-4481-4f14-aa81-51b80671f629</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <choice xmlns="http://www.tei-c.org/ns/1.0"/>
@@ -1259,7 +1259,7 @@
         <a8n-annotation motivatedBy="describing" xml:id="uuid-be2d96f8-59ca-4067-9725-ac860926f86f">
             <a8n-target>
                 <a8n-id>uuid-f1a043f7-4dcb-4da2-91aa-06f6ce6f3ba4</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <orig xmlns="http://www.tei-c.org/ns/1.0">WHO</orig>
@@ -1268,7 +1268,7 @@
         <a8n-annotation motivatedBy="describing" xml:id="uuid-ce12a4f9-a781-4101-ae91-5af00c289e6e">
             <a8n-target>
                 <a8n-id>uuid-f1a043f7-4dcb-4da2-91aa-06f6ce6f3ba4</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <reg xmlns="http://www.tei-c.org/ns/1.0">WHOM</reg>
@@ -1290,7 +1290,7 @@
                 <a8n-id>pa000002</a8n-id>
                 <a8n-offset>43</a8n-offset>
                 <a8n-range>0</a8n-range>
-                <a8n-order-2>2</a8n-order-2>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <ptr xmlns="http://www.tei-c.org/ns/1.0" xml:id="nv0001"/>
@@ -1321,7 +1321,7 @@
         <a8n-annotation motivatedBy="milestone" xml:id="uuid-cff4ca29-6ce6-4014-aa3e-7c2d4a5ccb77">
             <a8n-target>
                 <a8n-id>sha-ham101</a8n-id>
-                <a8n-order-4>3</a8n-order-4>
+                <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
                 <milestone xmlns="http://www.tei-c.org/ns/1.0"
@@ -1366,7 +1366,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>20</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <choice xmlns="http://www.tei-c.org/ns/1.0"/>
@@ -1375,7 +1375,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-dfb972cb-43e0-4385-b2a9-aff320df07a5">
             <a8n-target>
                 <a8n-id>uuid-98df5280-3cef-4c84-84a8-0b7e7ec5c49c</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <corr xmlns="http://www.tei-c.org/ns/1.0">Barnes</corr>
@@ -1384,7 +1384,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-4a076d30-bed6-4f57-9679-3d9ef02c461e">
             <a8n-target>
                 <a8n-id>uuid-98df5280-3cef-4c84-84a8-0b7e7ec5c49c</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <sic xmlns="http://www.tei-c.org/ns/1.0">Branes</sic>
@@ -1395,7 +1395,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>44</a8n-offset>
                 <a8n-range>2</a8n-range>
-                <a8n-order-1>1</a8n-order-1>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004"/>
@@ -1404,7 +1404,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-5aeb7053-5ffe-419d-b710-61c44003eb95">
             <a8n-target>
                 <a8n-id>uuid-ed5f4098-0819-43da-909a-8697712f4a46</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <lem xmlns="http://www.tei-c.org/ns/1.0"
@@ -1425,7 +1425,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-7ce4b626-0fd9-4719-8bfe-b72bd3b95a1f">
             <a8n-target>
                 <a8n-id>uuid-ed5f4098-0819-43da-909a-8697712f4a46</a8n-id>
-                <a8n-order-3>2</a8n-order-3>
+                <a8n-order>2</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1446,7 +1446,7 @@
         <a8n-annotation motivatedBy="editing" xml:id="uuid-41a48267-fc94-4c27-a5ae-7609b0a32ff5">
             <a8n-target>
                 <a8n-id>uuid-ed5f4098-0819-43da-909a-8697712f4a46</a8n-id>
-                <a8n-order-3>3</a8n-order-3>
+                <a8n-order>3</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rdg xmlns="http://www.tei-c.org/ns/1.0"
@@ -1491,7 +1491,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>125</a8n-offset>
                 <a8n-range>9</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <rs xmlns="http://www.tei-c.org/ns/1.0"/>
@@ -1513,7 +1513,7 @@
                 <a8n-id>pa000003</a8n-id>
                 <a8n-offset>169</a8n-offset>
                 <a8n-range>6</a8n-range>
-                <a8n-order-2>1</a8n-order-2>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_23"/>
@@ -1522,7 +1522,7 @@
         <a8n-annotation motivatedBy="describing" xml:id="uuid-e01f81cc-6677-4d29-b517-a1924b27c88f">
             <a8n-target>
                 <a8n-id>uuid-a665eac4-d337-49ec-b76e-e5690e42df6e</a8n-id>
-                <a8n-order-3>1</a8n-order-3>
+                <a8n-order>1</a8n-order>
             </a8n-target>
             <a8n-body>
                 <hi xmlns="http://www.tei-c.org/ns/1.0">Barnes</hi>
