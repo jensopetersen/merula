@@ -127,14 +127,14 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                     <a8n-id>{$a8n-id}</a8n-id>
                     <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
                     <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
-                    <a8n-order-1>{$order}</a8n-order-1>
+                    <a8n-order>{$order}</a8n-order>
                 </a8n-target>
             else
                 <a8n-target>
                         <a8n-id>{$a8n-id}</a8n-id>
                         <a8n-offset>{$target-text-position-start + 1}</a8n-offset>
                         <a8n-range>{$target-text-position-end - $target-text-position-start}</a8n-range>
-                        <a8n-order-2>{$order}</a8n-order-2>
+                        <a8n-order>{$order}</a8n-order>
                         <a8n-exact>{$element/text()}</a8n-exact>
                 </a8n-target>
             return
@@ -207,7 +207,7 @@ declare function local:peel-off-element-only-annotations($annotation as node(), 
                     <a8n-annotation motivatedBy="{$parent-motivatedBy}" xml:id="{$child-annotation-id}">
                         <a8n-target>
                                 <a8n-id>{$parent-annotation-id}</a8n-id>
-                                <a8n-order-3>{$i}</a8n-order-3>
+                                <a8n-order>{$i}</a8n-order>
                         </a8n-target>
                         <a8n-body>{element {node-name($child-body-content)}{$child-body-content/@xml:id, $child-body-content/node()}}</a8n-body>
                         <a8n-admin/>
@@ -350,7 +350,7 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
                 <a8n-annotation motivatedBy="milestone" xml:id="{$annotation-id}">
                     <a8n-target>
                         <a8n-id>{$element/parent::element()/@xml:id/string()}</a8n-id>
-                        <a8n-order-4>{$order}</a8n-order-4>
+                        <a8n-order>{$order}</a8n-order>
                     </a8n-target>
                     <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                     <a8n-admin/>
