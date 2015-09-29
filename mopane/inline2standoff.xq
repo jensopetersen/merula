@@ -135,6 +135,7 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                     <a8n-offset>{$base-text-offset}</a8n-offset>
                     <a8n-range>{$base-text-range}</a8n-range>
                     <a8n-order>{$order}</a8n-order>
+                    <a8n-exact>{string-join(so2il:separate-text-layers(<base>{$element}</base>, 'base-text', $wit))}</a8n-exact>
                 </a8n-target>
             else
                 <a8n-target>
@@ -142,7 +143,7 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                         <a8n-offset>{$target-text-offset}</a8n-offset>
                         <a8n-range>{$target-text-range}</a8n-range>
                         <a8n-order>{$order}</a8n-order>
-                        <a8n-exact>{$element/text()}</a8n-exact>
+                        <a8n-exact>{string-join(so2il:separate-text-layers(<target>{$element}</target>, 'target-text', $wit))}</a8n-exact>
                 </a8n-target>
             return
                 let $element-annotation-result :=
