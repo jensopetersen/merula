@@ -95,38 +95,30 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
         
         let $preceding-sibling-node := $element/preceding-sibling::node()[1]
         let $following-sibling-node := $element/following-sibling::node()[1]
-        let $a8n-parent-element-name := local-name($element/parent::*)
-        let $a8n-preceding-sibling-node :=
-            if ($preceding-sibling-node instance of element())
-            then (<a8n-node-type>element</a8n-node-type>, <a8n-node-name>{local-name($preceding-sibling-node)}</a8n-node-name>)
-            else
-                if ($preceding-sibling-node instance of text())
-                then <a8n-node-type>text</a8n-node-type>
-                else
-                    if ($preceding-sibling-node instance of comment())
-                    then <a8n-node-type>comment</a8n-node-type>
-                    else
-                        if ($preceding-sibling-node instance of processing-instruction())
-                        then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($preceding-sibling-node)}</a8n-node-name>)
-                        else ()
-        let $a8n-following-sibling-node :=
-            if ($following-sibling-node instance of element())
-            then (<a8n-node-type>element</a8n-node-type>, <a8n-node-name>{local-name($following-sibling-node)}</a8n-node-name>)
-            else
-                if ($following-sibling-node instance of text())
-                then <a8n-node-type>text</a8n-node-type>
-                else
-                    if ($following-sibling-node instance of comment())
-                    then <a8n-node-type>comment</a8n-node-type>
-                    else
-                        if ($following-sibling-node instance of processing-instruction())
-                        then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($following-sibling-node)}</a8n-node-name>)
-                        else ()
         let $motivatedBy :=
             if (local-name($element) = $editorial-element-names)
             then 'editing'
             else 'describing'
         let $annotation-id := concat('uuid-', util:uuid())
+        let $order := 
+            if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element)
+            then 1
+            else 
+                if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element)
+                then 2
+                else
+                    if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element)
+                    then 3
+                    else 
+                        if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element)
+                        then 4
+                        else
+                            if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element)
+                            then 5
+                            else
+                                if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element)
+                                then 6
+                                else '?'
         (: Whereas editorial annotations target the base text, all other annotations target the target text. Editorial annotations are surrounded by text nodes (possibly empty, if the beginning and end of a text block is referred to) and refer only to the text block xml:id and an offset and a range. Other annotations can have siblings that are not text nodes. The precise sibling nodes that a non-editorial annotation is positioned in relation to must be registered if the correct sequence of empty elements is to be maintained. :)
         let $target :=
             if (local-name($element) = $editorial-element-names)
@@ -135,15 +127,14 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                     <a8n-id>{$a8n-id}</a8n-id>
                     <a8n-offset>{$base-text-position-start + 1}</a8n-offset>
                     <a8n-range>{$base-text-position-end - $base-text-position-start}</a8n-range>
+                    <a8n-order-1>{$order}</a8n-order-1>
                 </a8n-target>
             else
                 <a8n-target>
                         <a8n-id>{$a8n-id}</a8n-id>
-                        <a8n-parent-element-name>{$a8n-parent-element-name}</a8n-parent-element-name>
-                        <a8n-preceding-sibling-node>{$a8n-preceding-sibling-node}</a8n-preceding-sibling-node>
-                        <a8n-following-sibling-node>{$a8n-following-sibling-node}</a8n-following-sibling-node>
                         <a8n-offset>{$target-text-position-start + 1}</a8n-offset>
                         <a8n-range>{$target-text-position-end - $target-text-position-start}</a8n-range>
+                        <a8n-order-2>{$order}</a8n-order-2>
                         <a8n-exact>{$element/text()}</a8n-exact>
                 </a8n-target>
             return
@@ -216,7 +207,7 @@ declare function local:peel-off-element-only-annotations($annotation as node(), 
                     <a8n-annotation motivatedBy="{$parent-motivatedBy}" xml:id="{$child-annotation-id}">
                         <a8n-target>
                                 <a8n-id>{$parent-annotation-id}</a8n-id>
-                                <a8n-order>{$i}</a8n-order>
+                                <a8n-order-3>{$i}</a8n-order-3>
                         </a8n-target>
                         <a8n-body>{element {node-name($child-body-content)}{$child-body-content/@xml:id, $child-body-content/node()}}</a8n-body>
                         <a8n-admin/>
@@ -260,8 +251,11 @@ declare function local:peel-off-annotations($annotation as node(), $editorial-el
         (: if it is an attribute annotation, pass it through, since it has nothing to be peeled off. :)
         then $annotation
         else
+            if (not($annotation/a8n-body/*/text()))
+            then
             local:peel-off-element-only-annotations($annotation, $editorial-element-names, $documentary-element-names, $wit)
             (: send it on to be (further) peeled off :)
+            else $annotation
 };
 
 declare function local:generate-text-layer($element as element(), $target as xs:string, $wit as xs:string?) as element() 
@@ -331,40 +325,32 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
             then
                 (:NB: here we need to capture barren elements among text block elements, such as milestone, lb, pb:)
                 let $annotation-id := concat('uuid-', util:uuid())
-                let $preceding-sibling-node := $element/preceding-sibling::node()[1]
-                let $following-sibling-node := $element/following-sibling::node()[1]
-                let $a8n-preceding-sibling-node :=
-                    if ($preceding-sibling-node instance of element())
-                    then (<a8n-node-type>element</a8n-node-type>, <a8n-node-id>{$preceding-sibling-node/@xml:id/string()}</a8n-node-id>)
-                    else
-                        if ($preceding-sibling-node instance of comment())
-                        then <a8n-node-type>comment</a8n-node-type>
+                let $order := 
+                    if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element)
+                    then 1
+                    else 
+                        if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element)
+                        then 2
                         else
-                            if ($preceding-sibling-node instance of processing-instruction())
-                            then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($preceding-sibling-node)}</a8n-node-name>)
-                            else ()
-                let $a8n-following-sibling-node :=
-                    if ($following-sibling-node instance of element())
-                    then (<a8n-node-type>element</a8n-node-type>, <a8n-node-id>{$following-sibling-node/@xml:id/string()}</a8n-node-id>)
-                    else
-                        if ($following-sibling-node instance of comment())
-                        then <a8n-node-type>comment</a8n-node-type>
-                        else
-                            if ($following-sibling-node instance of processing-instruction())
-                            then (<a8n-node-type>processing-instruction</a8n-node-type>, <a8n-node-name>{local-name($following-sibling-node)}</a8n-node-name>)
-                            else ()
+                            if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element)
+                            then 3
+                            else 
+                                if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element)
+                                then 4
+                                else
+                                    if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element)
+                                    then 5
+                                    else
+                                        if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element)
+                                        then 6
+                                        else '?'
+
                 return
                 (
                 <a8n-annotation motivatedBy="milestone" xml:id="{$annotation-id}">
                     <a8n-target>
                         <a8n-id>{$element/parent::element()/@xml:id/string()}</a8n-id>
-                        <a8n-parent-element-name>{local-name($element/parent::*)}</a8n-parent-element-name>
-                        <a8n-preceding-sibling-node>
-                            {$a8n-preceding-sibling-node}
-                        </a8n-preceding-sibling-node>
-                        <a8n-following-sibling-node>
-                            {$a8n-following-sibling-node}
-                        </a8n-following-sibling-node>
+                        <a8n-order-4>{$order}</a8n-order-4>
                     </a8n-target>
                     <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
                     <a8n-admin/>
