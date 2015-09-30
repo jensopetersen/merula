@@ -35,7 +35,7 @@
                     </app>
                 </p>
                 <p rend="center" xml:id="pa000002">
-                    <hi xml:id="uuid-f391061f-7329-481f-8db8-ad1f42572a6f" rend="bold">PROMOTION FOR <name>BARNES</name>, <choice><orig>WHO</orig><reg>WHOM</reg></choice> <name>TILLMAN</name> BERATED</hi>
+                    <hi rend="bold">PROMOTION FOR <name>BARNES</name>,</hi> <choice><orig><hi rend="bold">WHO</hi></orig><reg><hi rend="bold">WHOM</hi></reg></choice><hi rend="bold"> <name>TILLMAN</name> BERATED</hi>
                     <ptr target="#en0001" type="an" xml:id="nv0001"/>
                 </p>
                 <milestone xml:id="uuid-b0ba1da0-4f9b-44af-b404-dd097eb2b284" rend="lightrule" unit="section"/>
