@@ -99,9 +99,6 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
         let $target-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'target-text', ''))
         (: The length of this is the markup range. :)
         let $target-text-range := string-length($target-text-marked-up-string)
-        
-        let $preceding-sibling-node := $element/preceding-sibling::node()[1]
-        let $following-sibling-node := $element/following-sibling::node()[1]
         let $motivatedBy :=
             if (local-name($element) = $editorial-element-names)
             then 'editing'
@@ -210,9 +207,13 @@ declare function local:peel-off-element-only-annotations($annotation as node(), 
                 for $child-body-content at $i in $child-body-contents
             (: return the new annotations, with the elements below the parent element of the old annotation split over as many annotations, recording their order (instead of their offset and range) and making them refer to the parent annotation:)
                 let $child-annotation-id := concat('uuid-', util:uuid())
+                let $motivatedBy :=
+                    if (local-name($child-body-content) = $editorial-element-names)
+                    then 'editing'
+                    else 'describing'
                 let $child-attribute-annotations := local:make-attribute-annotations($child-body-content, $parent-motivatedBy, $child-annotation-id)
                 let $child-element-annotation :=
-                    <a8n-annotation motivatedBy="{$parent-motivatedBy}" xml:id="{$child-annotation-id}">
+                    <a8n-annotation motivatedBy="{$motivatedBy}" xml:id="{$child-annotation-id}">
                         <a8n-target>
                                 <a8n-id>{$parent-annotation-id}</a8n-id>
                                 <a8n-order>{$i}</a8n-order>
