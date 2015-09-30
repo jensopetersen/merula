@@ -104,25 +104,7 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
             then 'editing'
             else 'describing'
         let $annotation-id := concat('uuid-', util:uuid())
-        let $order := 
-            if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element)
-            then 1
-            else 
-                if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element)
-                then 2
-                else
-                    if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element)
-                    then 3
-                    else 
-                        if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element)
-                        then 4
-                        else
-                            if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element)
-                            then 5
-                            else
-                                if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element)
-                                then 6
-                                else '?'
+        let $order := local:get-order($element)
         (: Whereas editorial annotations target the base text, all other annotations target the target text. Editorial annotations are surrounded by text nodes (possibly empty, if the beginning and end of a text block is referred to) and refer only to the text block xml:id and an offset and a range. Other annotations can have siblings that are not text nodes. The precise sibling nodes that a non-editorial annotation is positioned in relation to must be registered if the correct sequence of empty elements is to be maintained. :)
         let $target :=
             if (local-name($element) = $editorial-element-names)
@@ -334,26 +316,7 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
             then
                 (:NB: here we need to capture barren elements among text block elements, such as milestone, lb, pb:)
                 let $annotation-id := concat('uuid-', util:uuid())
-                let $order := 
-                    if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element)
-                    then 1
-                    else 
-                        if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element)
-                        then 2
-                        else
-                            if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element)
-                            then 3
-                            else 
-                                if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element)
-                                then 4
-                                else
-                                    if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element)
-                                    then 5
-                                    else
-                                        if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element)
-                                        then 6
-                                        else '?'
-
+                let $order := local:get-order($element)
                 return
                 (
                 <a8n-annotation motivatedBy="milestone" xml:id="{$annotation-id}">
@@ -380,7 +343,28 @@ declare function local:generate-top-level-annotations-keyed-to-base-text($elemen
                 )
 };
 
-(: Removes elements that are not needed in the output. :)
+(: Calculates how many preceding element nodes have to be traversed in order to reach a text node sibling of the context node or what number child of its parent the context node is. :)
+declare function local:get-order($element as element()*)
+as xs:integer
+{
+    if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element) 
+        then 1
+    else if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element) 
+    then 2
+    else if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element) 
+    then 3
+    else if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element) 
+    then 4
+    else if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element) 
+    then 5
+    else if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element) 
+    then 6
+    else 999
+};
+
+
+
+
 declare function local:prepare-annotations-for-output-to-doc($element as element()*)
 as element()* {
     for $element in $element 
