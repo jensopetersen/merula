@@ -128,7 +128,11 @@ declare function local:get-inline-annotations-keyed-to-base-text($text-block-ele
                 let $element-annotation-result :=
                     <a8n-annotation motivatedBy="{$motivatedBy}" xml:id="{$annotation-id}">
                         {$target}
-                        <a8n-body>{element {node-name($element)}{$element/@xml:id, $element/node()}}</a8n-body>
+                        <a8n-body>{element {node-name($element)}{$element/@xml:id, 
+                            if ($element/text() and not($element/element()) and not(local-name($element) = $editorial-element-names))
+                            then ()
+                            else $element/node()
+                        }}</a8n-body>
                         <a8n-admin/>
                     </a8n-annotation>
                 let $attribute-annotation-result := local:make-attribute-annotations($element, $motivatedBy, $annotation-id)
@@ -452,7 +456,7 @@ let $annotations-2 :=
 let $annotations-3 := local:prepare-annotations-for-output-to-doc($annotations-2)
 
 let $output-format := 'exide'
-let $output-format := 'doc'
+(:let $output-format := 'doc':)
 (:let $output-format := 'download':)
 
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}        

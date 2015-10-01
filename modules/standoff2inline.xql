@@ -72,7 +72,7 @@ The present approach is however very handy when debugging. :)
     (:Insert the collapsed annotations into the base-text.:)
     let $base-text-with-merged-edition-a8ns := 
         if ($collapsed-edition-a8ns) 
-        then so2il:merge-annotations-with-text($node, $collapsed-edition-a8ns, 'edition', 'tei')
+        then so2il:merge-annotations-with-text($node, $collapsed-edition-a8ns, 'edition', 'tei', $wit)
         else $node
     (:Result: base text with edition annotations inserted.:)
     (:TODO: Transform to show the target text with edition annotations inserted; use this a basis for generating target text?:)
@@ -121,7 +121,7 @@ The present approach is however very handy when debugging. :)
     (:Insert the collapsed annotations into the target text, producing a marked-up TEI document.:)
     let $text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
-        then so2il:merge-annotations-with-text($target-text, $collapsed-feature-a8ns, 'feature', $target-format)
+        then so2il:merge-annotations-with-text($target-text, $collapsed-feature-a8ns, 'feature', $target-format, $wit)
         else $node
 (:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
     
@@ -317,9 +317,12 @@ with ranges calculated from the previous and following annotations,
 are filled into the uneven slots. Empty uneven slots can occur, 
 but all even slots have annotations (though they may consist of an empty element).:)
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
-declare function so2il:merge-annotations-with-text($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
-(:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
+declare function so2il:merge-annotations-with-text($text-element as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string, $wit as xs:string) as node()+ {
+(:    let $log := util:log("DEBUG", ("##$text-element): ", $text-element)):)
 (:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
+(:    let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer)):)
+    let $text := so2il:separate-text-layers($text-element, $target-layer, $wit)
+(:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
     let $segment-count := (count($annotations) * 2) + 1
     let $segments :=
         for $segment at $i in 1 to $segment-count
@@ -335,9 +338,19 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                     let $annotation-offset := number($annotation/a8n-target/a8n-offset)
                     let $annotation-range := number($annotation/a8n-target/a8n-range)
                     let $annotation := $annotation/(* except a8n-target)
+(:                    let $log := util:log("DEBUG", ("##$annotation-1): ", $annotation)):)
+                    let $annotation := 
+                        (: if we are dealing with a simple offset and range annotation which does not have element children, :)
+                        if (not($annotation/element()))
+                        (: get the element text contents from the constructed text version, :)
+                        then 
+                            element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
+                        (: otherwise, just pass the annotation. :)
+                        else $annotation
+(:                    let $log := util:log("DEBUG", ("##$annotation-2): ", $annotation)):)
                     return
                         local:insert-elements($segment, $annotation, 'segment', 'first-child')
-                (:A text node is being processed.:)
+                (: A text node is being processed.:)
                 else
                     <segment n="{$segment/@n/string()}">
                         {
@@ -364,7 +377,7 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                             (:if it is the last text node, then the range is the length of the base text minus the end position of the last annotation plus 1:)
                             if ($segment-n eq count($segments))
                             then 
-                                string-length($text)
+                                string-length($text-element)
                                 -
                                 (
                                     $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
@@ -387,7 +400,7 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                                 (:if it is not the first or the last text node, then the range is the offset of the following annotation minus the end position of the previous annotation :)
                         return
                             if (number($offset) and number($range))
-                            then substring($text, $offset, $range)
+                            then substring($text-element, $offset, $range)
                             else ''
                         }
                     </segment>
@@ -401,7 +414,7 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
             else $segment/string()
 (:    let $log := util:log("DEBUG", ("##$segments-2): ", $segments)):)
     return 
-        element {node-name($text)}{$text/@*, $segments}
+        element {node-name($text-element)}{$text-element/@*, $segments}
 };
 
 (: This function inserts elements supplied as $new-nodes at a certain position, 
