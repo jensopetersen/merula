@@ -84,7 +84,7 @@ The present approach is however very handy when debugging. :)
     Resurrect mopane code for layer-range-difference and merge both edition and feature annotation with target text.:)  
     (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
     let $target-text := 
-        if ($base-text-with-merged-edition-a8ns/text())
+        if ($base-text-with-merged-edition-a8ns)
         then so2il:tei2target($base-text-with-merged-edition-a8ns, 'target-text', $wit)
         else $base-text-with-merged-edition-a8ns
 (:    let $log := util:log("DEBUG", ("##$target-text): ", $target-text)):)
@@ -311,7 +311,7 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
 };
 
 (:This function merges the collapsed annotations with the target text. 
-A sequence of slots (<segment/>), double the number of annotations plus 1, are created; 
+A sequence of slots (<segment/>s), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
 are filled into the uneven slots. Empty uneven slots can occur, 
@@ -319,6 +319,7 @@ but all even slots have annotations (though they may consist of an empty element
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
 declare function so2il:merge-annotations-with-text($text as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string) as node()+ {
 (:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
+(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     let $segment-count := (count($annotations) * 2) + 1
     let $segments :=
         for $segment at $i in 1 to $segment-count
@@ -345,32 +346,52 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
                         let $following-annotation-n := ($segment-n + 1) div 2
                         let $offset := 
                             if ($segment-n eq $segment-count) (:if it is the last text node:)
-                            then $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
-                            (:the offset is the length of of the base text minus the end position of the previous annotation plus 1:)
+                            then 
+                                $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                +
+                                $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
+                                (:the offset is the length of of the base text minus the end position of the previous annotation plus 1:)
                             else
                                 if (number($segment/@n) eq 1) (:if it is the first text node:)
                                 then 1 (:start with position 1:)
-                                else $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
-                                (:if it is not the first or last text node, 
-                                start with the position of the previous annotation plus its range plus 1:)
+                                else 
+                                    $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                    +
+                                    $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
+                                    (:if it is not the first or last text node, 
+                                    start with the position of the previous annotation plus its range plus 1:)
                         let $range := 
-                            if ($segment-n eq count($segments))  (:if it is the last text node:)
-                            then string-length($text) - ($annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()) + 1
                             (:if it is the last text node, then the range is the length of the base text minus the end position of the last annotation plus 1:)
+                            if ($segment-n eq count($segments))
+                            then 
+                                string-length($text)
+                                -
+                                (
+                                    $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                    +
+                                    $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
+                                )
+                                +
+                                1
                             else
-                                if ($segment-n eq 1) (:if it is the first text node:)
-                                then $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - 1
                                 (:if it is the first text node, the the range is the offset of the following annotation minus 1:)
-                                else $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - ($annotations[$previous-annotation-n]/a8n-target/a8n-offset/number() + $annotations[$previous-annotation-n]/a8n-target/a8n-range/number())
+                                if ($segment-n eq 1)
+                                then $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - 1
+                                else $annotations[$following-annotation-n]/a8n-target/a8n-offset/number()
+                                -
+                                    (
+                                        $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                        +
+                                        $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
+                                    )
                                 (:if it is not the first or the last text node, then the range is the offset of the following annotation minus the end position of the previous annotation :)
                         return
                             if (number($offset) and number($range))
                             then substring($text, $offset, $range)
                             else ''
-                        
                         }
                     </segment>
-(:    let $log := util:log("DEBUG", ("##$segments): ", $segments)):)
+(:    let $log := util:log("DEBUG", ("##$segments-1): ", $segments)):)
     let $segments :=
         for $segment in $segments
 (:        let $log := util:log("DEBUG", ("##$segment): ", $segment)):)
@@ -378,6 +399,7 @@ declare function so2il:merge-annotations-with-text($text as element(), $annotati
             if ($segment/@n mod 2 eq 0)
             then $segment/*
             else $segment/string()
+(:    let $log := util:log("DEBUG", ("##$segments-2): ", $segments)):)
     return 
         element {node-name($text)}{$text/@*, $segments}
 };
