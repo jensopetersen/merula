@@ -65,7 +65,7 @@ The present approach is however very handy when debugging. :)
 
     let $collapsed-edition-a8ns := 
         for $collapsed-edition-a8n in $collapsed-edition-a8ns
-        order by number($collapsed-edition-a8n/a8n-target/a8n-offset) ascending, number($collapsed-edition-a8n/a8n-target/a8n-range) descending
+        order by sum($collapsed-edition-a8n/a8n-target/a8n-offset) ascending, number($collapsed-edition-a8n/a8n-target/a8n-range) descending
         return $collapsed-edition-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-edition-a8ns): ", $collapsed-edition-a8ns)):)
     
@@ -114,7 +114,7 @@ The present approach is however very handy when debugging. :)
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     let $collapsed-feature-a8ns := 
         for $collapsed-feature-a8n in $collapsed-feature-a8ns
-        order by number($collapsed-feature-a8n/a8n-target/a8n-offset) ascending, number($collapsed-feature-a8n/a8n-target/a8n-range) descending
+        order by sum($collapsed-feature-a8n/a8n-target/a8n-offset) ascending, number($collapsed-feature-a8n/a8n-target/a8n-range) descending
         return $collapsed-feature-a8n
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns): ", $collapsed-feature-a8ns)):)
     
@@ -335,7 +335,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                 then
                     let $annotation-n := $segment/@n/number() div 2
                     let $annotation := $annotations[$annotation-n]
-                    let $annotation-offset := number($annotation/a8n-target/a8n-offset)
+                    let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
                     let $annotation-range := number($annotation/a8n-target/a8n-range)
                     let $annotation := $annotation/(* except a8n-target)
 (:                    let $log := util:log("DEBUG", ("##$annotation-1): ", $annotation)):)
@@ -360,7 +360,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                         let $offset := 
                             if ($segment-n eq $segment-count) (:if it is the last text node:)
                             then 
-                                $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
                                 +
                                 $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                 (:the offset is the length of of the base text minus the end position of the previous annotation plus 1:)
@@ -368,7 +368,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 if (number($segment/@n) eq 1) (:if it is the first text node:)
                                 then 1 (:start with position 1:)
                                 else 
-                                    $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                    sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
                                     +
                                     $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                     (:if it is not the first or last text node, 
@@ -380,7 +380,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 string-length($text-element)
                                 -
                                 (
-                                    $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                    sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
                                     +
                                     $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                 )
@@ -389,11 +389,11 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                             else
                                 (:if it is the first text node, the the range is the offset of the following annotation minus 1:)
                                 if ($segment-n eq 1)
-                                then $annotations[$following-annotation-n]/a8n-target/a8n-offset/number() - 1
-                                else $annotations[$following-annotation-n]/a8n-target/a8n-offset/number()
+                                then sum($annotations[$following-annotation-n]/a8n-target/a8n-offset) - 1
+                                else sum($annotations[$following-annotation-n]/a8n-target/a8n-offset)
                                 -
                                     (
-                                        $annotations[$previous-annotation-n]/a8n-target/a8n-offset/number()
+                                        sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
                                         +
                                         $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                     )
