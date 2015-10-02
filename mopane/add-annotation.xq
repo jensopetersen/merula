@@ -1,14 +1,102 @@
 xquery version "3.0";
 
+declare namespace tei="http://www.tei-c.org/ns/1.0";
+
+import module namespace so2il="http://exist-db.org/xquery/app/standoff2inline" at "../modules/standoff2inline.xql";
+
+declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
+        if ($node instance of element() and local-name($node) = $element-names-to-check)
+        then
+            if ($location eq 'before')
+            then ($new-nodes, $node) 
+            else 
+                if ($location eq 'after')
+                then ($node, $new-nodes)
+                else
+                    if ($location eq 'first-child')
+                    then element {node-name($node)}
+                        {
+                            $node/@*
+                            ,
+                            $new-nodes
+                            ,
+                            for $child in $node/node()
+                                return $child
+                        }
+                    else
+                        if ($location eq 'last-child')
+                        then element {node-name($node)}
+                            {
+                                $node/@*
+                                ,
+                                for $child in $node/node()
+                                    return $child 
+                                ,
+                                $new-nodes
+                            }
+                        else () (:The $element-to-check is removed if none of the four options are used, e.g. if 'remove' is used.:)
+        else
+            if ($node instance of element()) 
+            then
+                element {node-name($node)} 
+                {
+                    $node/@*
+                    ,
+                    for $child in $node/node()
+                        return 
+                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
+                }
+            else $node
+};
+
 let $new-annotation :=
-<a8n-annotation motivatedBy="editing" xml:id="uuid-79545eb1-8b75-4451-a72f-80bd0f1a6cbc">
+<a8n-annotation motivatedBy="editing" xml:id="uuid-79545eb1-8b75-4451-a72f-80bd0f1a6cbd">
     <a8n-target>
         <a8n-id>pa000001</a8n-id>
-        <a8n-offset>150</a8n-offset>
-        <a8n-range>0</a8n-range>
+        <a8n-offset>85</a8n-offset>
+        <a8n-range>6</a8n-range>
+        <a8n-order>1</a8n-order>
     </a8n-target>
-    <app xmlns="http://www.tei-c.org/ns/1.0" xml:id="ap0004" type="aet" from="dg0005">
-        <lem xml:id="uuid-db312f17-7f15-4041-99f7-6a96b3e60fbb" wit="#TS2">from</lem>
-        <rdg xml:id="uuid-37300be1-2a22-4621-b292-e672fa264a5e" wit="#TS1"></rdg>
+    <a8n-body>
+    <app xmlns="http://www.tei-c.org/ns/1.0">
+        <lem wit="#TS2">commences</lem>
+        <rdg wit="#TS1">begins</rdg>
     </app>
+    </a8n-body>
 </a8n-annotation>
+
+let $data-collection := '/db/apps/merula/data'
+let $annotation-collection := $data-collection || "/" || 'annotations/sha-ham'
+let $target-id := $new-annotation/a8n-target/a8n-id
+let $annotation-collection-path := $annotation-collection || "/" || $target-id
+let $annotation-collection := collection($annotation-collection-path)
+let $base-text := $data-collection || "/" || 'sample_MTDP10363.xml'
+let $base-text := doc($base-text)/element()
+let $wit := $base-text/tei:teiHeader/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
+let $base-text := $base-text//id($target-id)
+let $offset := sum($new-annotation/a8n-target/a8n-offset)
+let $range := $new-annotation/a8n-target/a8n-range/number()
+let $base-text := substring($base-text, 1, $offset + $range)
+let $base-text-length := string-length($base-text)
+let $base-text-version := so2il:separate-text-layers($new-annotation/(* except a8n-target), 'base-text', $wit)
+let $target-text-version := so2il:separate-text-layers($new-annotation/(* except a8n-target), 'target-text', $wit)
+let $base-text-version-length := string-length($base-text-version)
+let $target-text-version-length := string-length($target-text-version)
+let $version-difference := $target-text-version-length - $base-text-version-length
+let $version-difference := <a8n-offset timestamp="{datetime:timestamp-to-datetime(datetime:timestamp())}" cause="{$new-annotation/@xml:id}">{$version-difference}</a8n-offset>
+let $editorial-element-names := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
+let $feature-annotations := $annotation-collection[not(local-name(a8n-annotation/a8n-body/*) = $editorial-element-names)]
+let $feature-annotations := $feature-annotations/a8n-annotation[a8n-target/a8n-offset/number() gt $offset]
+
+    
+return
+    
+    (xmldb:store($annotation-collection-path,  concat($new-annotation/@xml:id, '.xml'), $new-annotation)
+    ,
+    for $feature-annotation in $feature-annotations
+    let $revised-annotation := local:insert-elements($feature-annotation, $version-difference, 'a8n-offset', 'after')
+    return
+        (
+            xmldb:store($annotation-collection-path,  concat($feature-annotation/@xml:id, '.xml'), $revised-annotation)
+        )
+    )
