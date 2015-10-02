@@ -3,6 +3,7 @@ xquery version "3.0";
 module namespace so2il="http://exist-db.org/xquery/app/standoff2inline";
 
 import module namespace config="http://exist-db.org/apps/merula/config" at "config.xqm";
+import module namespace il2so="http://exist-db.org/xquery/app/inline2standoff" at "../mopane/inline2standoff.xql";
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
@@ -40,6 +41,7 @@ declare function so2il:annotate-text($node as node()?, $doc-id as xs:string, $ed
     let $annotations := collection(($config:a8ns) || "/" || $doc-id)/*
 The present approach is however very handy when debugging. :)
     let $annotations := collection(($config:a8ns) || "/" || $doc-id || "/" || $node-id)/*
+(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     (:Get all top-level edition annotations for the base text element in question, that is, all editorial annotations that target its id. :)
     let $top-level-edition-a8ns := 
             if ($annotations)
@@ -249,7 +251,7 @@ declare function so2il:build-up-annotation($parent-annotation as element(), $ann
         order by $child/a8n-target/a8n-order
         return $child
     return
-        local:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
+        il2so:insert-elements($parent-annotation, $children, $parent-annotation-element-name,  'first-child')
 };
 
 (:Recurser for so2il:collapse-annotation().:)
@@ -349,7 +351,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                         else $annotation
 (:                    let $log := util:log("DEBUG", ("##$annotation-2): ", $annotation)):)
                     return
-                        local:insert-elements($segment, $annotation, 'segment', 'first-child')
+                        il2so:insert-elements($segment, $annotation, 'segment', 'first-child')
                 (: A text node is being processed.:)
                 else
                     <segment n="{$segment/@n/string()}">
@@ -415,53 +417,4 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
 (:    let $log := util:log("DEBUG", ("##$segments-2): ", $segments)):)
     return 
         element {node-name($text-element)}{$text-element/@*, $segments}
-};
-
-(: This function inserts elements supplied as $new-nodes at a certain position, 
-determined by $element-names-to-check and $location, 
-or removes the $element-names-to-check globally :)
-(:NB: Unused portions of function are commented out.:)
-declare function local:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
-        if ($node instance of element() and local-name($node) = $element-names-to-check)
-        then
-            (:if ($location eq 'before')
-            then ($new-nodes, $node) 
-            else 
-                if ($location eq 'after')
-                then ($node, $new-nodes)
-                else:)
-                    if ($location eq 'first-child')
-                    then element {node-name($node)}
-                        {
-                            $node/@*
-                            ,
-                            $new-nodes
-                            ,
-                            for $child in $node/node()
-                            return $child
-                        }
-                    (:else
-                        if ($location eq 'last-child')
-                        then element {node-name($node)}
-                            {
-                                $node/@*
-                                ,
-                                for $child in $node/node()
-                                return $child 
-                                ,
-                                $new-nodes
-                            }:)
-                        else () (:The $element-to-check is removed if none of the four options, e.g. 'remove', are used.:)
-        else
-            if ($node instance of element()) 
-            then
-                element {node-name($node)} 
-                {
-                    $node/@*
-                    ,
-                    for $child in $node/node()
-                    return 
-                            local:insert-elements($child, $new-nodes, $element-names-to-check, $location) 
-                }
-            else $node
 };
