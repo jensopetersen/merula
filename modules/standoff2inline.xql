@@ -198,10 +198,27 @@ declare function so2il:separate-text-layers($input as node()*, $target as xs:str
                 default return so2il:separate-text-layers($node, $target, $wit)
 };
 
+declare function so2il:generate-target-text($input as node()*) as item()* {
+        for $node in $input/node()
+        return
+            typeswitch($node)
+                case element(tei:note) return ()
+                case element(tei:lem) return so2il:generate-target-text($node)
+                case element(tei:rdg) return ()
+                case element(tei:corr) return so2il:generate-target-text($node)
+                case element(tei:sic) return ()
+                case element(tei:expan) return so2il:generate-target-text($node)
+                case element(tei:abbr) return ()
+                case element(tei:reg) return so2il:generate-target-text($node)
+                case element(tei:orig) return ()
+                case text() return $node
+                default return so2il:generate-target-text($node)
+};
+
 declare function so2il:tei2target($node as node()*, $target-layer as xs:string, $wit as xs:string?) {
         (:If the element has a text node, separate the text node.:)
         (:TODO: Make it possible for the whole text node to be wrapped up in an (inline) element.:)
-        element {node-name($node)}{$node/@*,so2il:separate-text-layers($node, $target-layer, $wit)}
+        element {node-name($node)}{$node/@*,so2il:generate-target-text($node)}
         
 };
 
@@ -323,7 +340,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
 (:    let $log := util:log("DEBUG", ("##$text-element): ", $text-element)):)
 (:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
 (:    let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer)):)
-    let $text := so2il:separate-text-layers($text-element, $target-layer, $wit)
+    let $text := so2il:generate-target-text($text-element)
 (:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
     let $segment-count := (count($annotations) * 2) + 1
     let $segments :=
