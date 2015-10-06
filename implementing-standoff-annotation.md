@@ -6,37 +6,41 @@
 
 There are two kinds of annotation:
 
-* Annotations that affect the text stream; these consist of editorial annotations, typified by <app> and <choice>. By means of these annotations, TEI encodes several text versions at the same time, making the text fork each time the text stream passes through them.
-* The remaining annotations that do not affect the text stream, but "decorate" text spans; these consist of
-  * inline feature markup
-  * attributes
+* Annotations that affect the text stream; these consist of editorial annotations, typified by `<app>` and `<choice>`. By means of these annotations, TEI encodes several text versions at the same time, making the text fork each time the text stream passes through them.
+* The remaining annotations that do not affect the text either
+	* "decorate" text spans, as inline feature markup, 	* empty elements such as milestone elements, or
+	* attributes attached to elements.
+
+The present implementation does not address structural markup, only inline markup (and attributes, also on text block structural markup). Empty elements that are siblings of structural markup are also not handled. The beginnings of a standoff approach to structural markup can be found in block-app.xq and block-app-notes.xml.
 
 ###Text layers
 
-A TEI project using the projected standoff editor starts with the transcription of a text. This transcription is, in the framework of the standoff editor, fixed and immutable. Since the idea behind the standoff editor is to encode all inline markup in standoff annotations, the transcription consists of text in block-level markup with @xml:ids as the only "inline" annotation.
+A TEI project using the projected standoff editor starts with the transcription of a text. This transcription is, in the framework of the standoff editor, fixed and immutable. Since the idea behind the standoff editor is to encode all inline markup in standoff annotations, the transcription consists of text in block-level markup with @xml:ids.
 
-The transcription is stored as canonicalized XML. The stability of the transcription is guaranteed by (automatically applied) hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through text-critical annotations.
+The transcription is stored as canonicalized and Unicode-normalized XML. The stability of the transcription is guaranteed by hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through text-critical annotations. If the transcription aims to represent a definite edition and mistakes of transcription are found, these are corrected by text-critical annotations in which the TEI text is referred to as a witness.
 
-The transcription is called "the base text" and a text established through text-critical annotations is called "the target text."
+The transcription is called "the base text" and a text established through text-critical annotations is called a "target text." The standoff editor can operate with more than one target text.
 
-A target text is virtual, constructed on the fly by applying the text-critical annotations to the base text. Like the base text, it consists of text in block-level TEI elements only, with @xml:ids as the only attributes.
+A target text is virtual, constructed on the fly by applying the text-critical annotations to the base text. Like the base text, it consists of text in block-level TEI elements only, with @xml:ids as the only attributes. For reasons of indexing and search, it may be necessary to store target texts, but the editor should not require this to be done.
 
-Text-critical annotations always target the base text. Different target texts are possible, so each feature annotation must refer to a specification of how the target text is constructed.
+Text-critical annotations always target the base text, whereas feature annotations always target a target text (the terminology here needs more thought here …). It may well be that only one target text is operated with, but as different target texts are possible, each feature annotation must refer to a specification of how the target text is constructed. 
+
+The different target texts that a document make possible are specified in the document's header in the form of an XQuery function that transforms base-text plus text-critical annotations into the target text in question.
 
 This means that the first choice the annotator has to make is whether
 
-* to view the base text in order to make text-critical annotations, or
-* to view a target text in order to make feature annotations
+* to view the base text (side by side with existing text-critical annotations) in order to a new make text-critical annotation, or
+* to view a target text (alongside existing feature annotations) in order to make a new feature annotation.
 
-If additional text-critical annotations affect the already existing feature annotations, they will be kept in sync.
+If additional text-critical annotations affect the already existing feature annotations, they should be kept in sync. To a large extent, this can be done automatically, but human intervention is required to solve certain hard cases.
 
 ###Annotation targets
 
 There are the following targets of annotation:
 
 * element annotations which either
-	* target a span of text (in the base text or the target text) by means of offset, range and distance from preceding text node
-	* target another element, localised by document order
+	* target a span of text (in the base text or a target text) by means of an offset, a range and the element's node distance from the nearest preceding text node or its position in its parent's child node sequence
+	* target an element located in this way, through its annotation, with contents consisting of text or mixed contents (a way of handling mixed contents in annotations is being worked out)
 * attribute annotations
 
 ###Annotation formats
@@ -65,9 +69,9 @@ A feature annotation targeting a text range looks like this:
 
 The attribute @target-text "#lem" identifies the layer annotated; a definition of "lem" is found in the header of the document, in the form of an XQuery function which produces the target text by applying the text-critical annotations to the base text.
 
-The target specifies that the annotation targets the base text element with the xml:id stated, from the offset to the range, and that it occurs first (in case there are multiple annotations targeting the same span).
+The target specifies that the annotation targets the text element with the xml:id stated, from the offset to the range, and that it occurs first (in case there are multiple annotations targeting the same span).
 
-The body here specifies what is to be added to the target text span: it is to be wrapped inside the TEI element specified.
+The body here specifies what is to be added to the target text span: it is to be wrapped inside the TEI element specified (empty elements "wrap" around a span of zero).
 
 The annotation thus tells that the TEI <name> element is to be wrapped around characters 178-182 of the text of the element identified by the @xml:id "uuid-4f71d797-0d51-35cb-86b0-e283afdf889a" (and that its first preceding sibling is a text node).
 
@@ -93,144 +97,101 @@ A text-critical annotation targeting the base text looks like this:
 		</a8n-body>
 	</a8n-annotation>
 
-This only establishes the link to the text range, telling where the text-critical annotation is: the actual annotations that report on variations target this annotation, using its xml:id. The <lem> is thus introduced in this way:
+The annotation is, however, not stored in this form. Si nce it should be possible to have administrative data relating to each act of annotation, it is decomposed by creating annotations out of the contents of the top-level element of its body, `<app>`, thusly:
 
-<annotation type="element"
+	<a8n-annotation
+		xml:id="uuid-ab22e71e-0956-4498-a028-9fd0aaedc473">
+		<a8n-target>
+			<a8n-id>uuid-4f71d797-0d51-35cb-86b0-e283afdf889a</a8n-id>
+			<a8n-offset>216</a8n-offset>
+			<a8n-range>4</a8n-range>
+			<a8n-order>1</a8n-order>
+		</a8n-target>
+		<a8n-body>
+			<app xmlns="http://www.tei-c.org/ns/1.0"/>
+		</a8n-body>
+	</a8n-annotation>
 
-    xml:id="uuid-5989f048-8adc-48da-9854-f45f1ae25003" status="string">
+In addition to this, we get one annotation for the `<lem>`, one for the `<rdg>` and one for the `@wit` attribute on `<rdg>`. Let us look at the two last ones.
 
-    <target type="element" layer="annotation">
+	<a8n-annotation motivatedBy="editing" xml:id="uuid-dcc85279-3159-4db7-8a48-8b53535755ea">
+		<a8n-target>
+			<a8n-id>uuid-ab22e71e-0956-4498-a028-9fd0aaedc473</a8n-id>
+			<a8n-order>2</a8n-order>
+		</a8n-target>
+		<a8n-body>
+			<rdg xmlns="http://www.tei-c.org/ns/1.0"/>
+		</a8n-body>
+	</a8n-annotation>
 
-        <annotation-layer>
+This annotation tell that it targets another annotation, since it has no offset and range. The target id thus points to another annotation, the one with the xml:id in question, which is the `<app>` annotation. Whereas annotations with offset and range wrap around text spans, annotations that target other annotations (that are not attribute annotations - see below) are inserted as children into the target's body element, so we know from this that the `<rdg>` is to be inserted as the second element inside the `<app>` element (the `<lem>`element being the first). 
 
-            <id>uuid-79ac3c8c-6e4a-4be8-8f5b-92cbd1883fd7</id>
+The attribute on `<rdg>` gets annotated in the following way:
 
-            <order>1</order>
+	<a8n-annotation motivatedBy="editing" xml:id="uuid-4107ccb4-2f32-4492-88ac-ee80cfe37aee">
+		<a8n-target>
+			<a8n-id>uuid-ab22e71e-0956-4498-a028-9fd0aaedc473</a8n-id>
+		</a8n-target>
+		<a8n-body>
+			<a8n-attribute>
+				<a8n-name>wit</a8n-name>
+				<a8n-value>#TS1 #TS2</a8n-value>
+			</a8n-attribute>
+		</a8n-body>
+	</a8n-annotation>
 
-        </annotation-layer>
+This tells that an attribute with the stated name and value is to be attached to the element (oe yoin thbod the anotation) referred to by its target id.
 
-    </target>
+Annotations are automatically "peeled off" for storage and further annotation and "built up" to be inserted into base and target text for presentation and further annotation.
 
-    <body>
+#Unedited below this!
 
-        <lem xmlns="http://www.tei-c.org/ns/1.0">Enterprise</lem>
+###Schema-derived information
 
-    </body>
+Ideally speaking, it should be possible to derive information about which elements and attributes can be inserted at which point from a transform of a customised TEI schema, but a customised schema for the SARIT project does not exist yet, and the problems involved with making such a transform are considerable, especially seen in relation to the limited use of TEI tags in SARIT (probably as few as 10% of the options given in the official "minimal" TEI tag set are used.) 
 
-</annotation>
+###Milestones
 
-And likewise for any <rdg> and <note>, etc.
+* Discussion about issues related to standoff markup, writeup of Google Doc
 
-All text-critical annotations are either element-only or mixed-contents. The outer ones are element-only, that is, text range does not apply, but order is important, so the order is specified.
+* Proof-of-concept of script for converting TEI inline markup to base text, authoritative text and standoff annotations
 
-(more to come …)
+* Discussion about issues related to standoff markup, revision of Google Doc
 
-Schema-derived information
+* Proof-of-concept of the use of web components for creating and editing standoff annotations
 
-Ideally speaking, it should be possible to derive information about which elements and attributes can be inserted at which point from a transform of a customised TEI schema, but a customised schema for the SARIT project does not exist yet, and the problems involved with making such a transform are considerable, especially seen in relation to the limited use of TEI tags in SARIT (probably as few as 10% of the options given in the official "minimal" TEI tag set are used.) A
-#
-[ANNOTATION:
+1. For the proof-of-concept, render base text and selected semantic annotations to HTML. Use web components technology to implement the HTML tags representing basic semantic annotations like persName or placeName. Clicking on a tag opens the corresponding, component-specific UI for modifications.
+2. Allow users to add further semantic annotations to a span of text.
+3. Implement server-side services to store and retrieve annotations.
 
+* Proof-of-concept of script for converting base text and standoff annotations to TEI document with inline markup
 
-BY 'Joern Turner'
-ON '2013-07-30T19:11:16'
-NOTE: 'fully agree with is said in this paragraph but what exactly is the interims solutions? How do we generate the lists of options (elements, attributes, cardinalities)?']
-n interim solution appears better which informs the annotator about which elements can fit into which elements and which attributes are carried on which elements, and their cardinality, position, datatype and any value lists.
-#
-[ANNOTATION:
+* Editor milestone 1
+1. Distinguish between text-critical and semantic annotation layer in user interface. Let user switch between the layers. Decide on general workflow model to be used.
+2. Implement the most important annotation types as web components. Design general look and feel of components as well as basic user interaction.
+3. Keep track of modified/added annotations and save them to db when user commits changes.
+4. Test and improve rendering performance: annotated TEI to HTML.
 
+* Editor milestone 2
+1. Handle nested annotations in the user interface: if multiple annotations are defined on a given span of text, user needs to be able to select an annotation for editing.
+2. Implement client-side validation: while there may be conflicts between the annotations on different layers, we may want to avoid certain combinations.
+3. Add remaining annotation types as components.
+4. Streamline the editing workflow, improve usability, test all editor components
 
-BY 'Jens Østergaard Petersen'
-ON '2013-07-30T19:11:16'
-NOTE: 'I have a preliminary mock-up, but I have to work it over (and study some XML Schema).']
+* Editor milestone 3
+1. Multi user support: properly handle locking of documents
+2. Versioning (optional): allow user to see history of edits and display older versions
+3. Collaborative editing (optional): allow concurrent edits instead of placing an exclusive lock on a document while it is being edited by a user. Concurrent edits will be shown in real time.
 
-Milestones
+* Possible additional milestones
 
-Discussion about issues related to standoff markup, writeup of Google Doc
+	* authentication of base text
+	* integration of NLP tools
+	* user generation of concordance
 
- 2013-07-30
+	* block-level critical apparatus
+	* variant search capability
 
- Wolfgang, Joern, Jens
-
-< [https://docs.google.com/a/existsolutions.com/document/d/1-YVYkQGQAWrPw5l0OGVaiz4Itx3sJ6iZyH9ltkCcb8E/edit?usp=sharing](https://docs.google.com/a/existsolutions.com/document/d/1-YVYkQGQAWrPw5l0OGVaiz4Itx3sJ6iZyH9ltkCcb8E/edit?usp=sharing)>
-
-Proof-of-concept of script for converting TEI inline markup to base text, authoritative text and standoff annotations
-
- 2013-10-08
-
- Jens
-
- < [https://github.com/jensopetersen/mopane/blob/master/scripts/inline2standoff.xq](https://github.com/jensopetersen/mopane/blob/master/scripts/inline2standoff.xq)>
-
-Discussion about issues related to standoff markup, revision of Google Doc
-
- 2013-10-08
-
- Christian Wittern, Wolfgang, Jens
-
-< [https://docs.google.com/a/existsolutions.com/document/d/1-YVYkQGQAWrPw5l0OGVaiz4Itx3sJ6iZyH9ltkCcb8E/edit?usp=sharing](https://docs.google.com/a/existsolutions.com/document/d/1-YVYkQGQAWrPw5l0OGVaiz4Itx3sJ6iZyH9ltkCcb8E/edit?usp=sharing)>
-
-Future:
-
-Proof-of-concept of the use of web components for creating and editing standoff annotations
-
- 2013-11-01
-
- Wolfgang
-
- Time estimate: 4 days (full work days)
-
-1. 1.For the proof-of-concept, render base text and selected semantic annotations to HTML. Use web components technology to implement the HTML tags representing basic semantic annotations like persName or placeName. Clicking on a tag opens the corresponding, component-specific UI for modifications.
-2. 2.Allow users to add further semantic annotations to a span of text.
-3. 3.Implement server-side services to store and retrieve annotations.
-
-Proof-of-concept of script for converting base text and standoff annotations to TEI document with inline markup
-
- 2013-11-01
-
- Jens
-
-Editor milestone 1
-
- 2013-12-31
-
- Jens, Joern, Wolfgang
-
- Time estimate: 8 days
-
-1. 1.Distinguish between text-critical and semantic annotation layer in user interface. Let user switch between the layers. Decide on general workflow model to be used.
-2. 2.Implement the most important annotation types as web components. Design general look and feel of components as well as basic user interaction.
-3. 3.Keep track of modified/added annotations and save them to db when user commits changes.
-4. 4.Test and improve rendering performance: annotated TEI to HTML.
-
-Editor milestone 2
-
- 2014-02-01
-
- Jens, Joern, Wolfgang
-
- Time estimate: 10 days
-
-1. 1.Handle nested annotations in the user interface: if multiple annotations are defined on a given span of text, user needs to be able to select an annotation for editing.
-2. 2.Implement client-side validation: while there may be conflicts between the annotations on different layers, we may want to avoid certain combinations.
-3. 3.Add remaining annotation types as components.
-4. 4.Streamline the editing workflow, improve usability, test all editor components
-
-Editor milestone 3
-
-1. 1.Multi user support: properly handle locking of documents
-2. 2.Versioning (optional): allow user to see history of edits and display older versions
-3. 3.Collaborative editing (optional): allow concurrent edits instead of placing an exclusive lock on a document while it is being edited by a user. Concurrent edits will be shown in real time.
-
-Possible milestones
-
-- ¢ÂÂ¢ÂÂauthentication of base text
-- ¢ÂÂ¢ÂÂintegration of NLP tools
-  - ¢ÂÂ¢ÂÂuser generation of concordance
-
-- ¢ÂÂ¢ÂÂblock-level critical apparatus
-- ¢ÂÂ¢ÂÂvariant search capability
-- ¢ÂÂ¢ÂÂmine Deutsches Textarchiv, TCP/ECCO, WordHoard, Perseus, (TLS?!?), TXM ¢ÂÂ¦ for features to implement
 
 Repositories
 
