@@ -2,19 +2,25 @@
 
 ##Layers and Perspectives
 
+The goal of the projected standoff editor is to make it possible to implement an online distributed collaborative editor for TEI documents, compatible with the Open Annotation Collaboration framework, which addresses concerns that have long vexed the TEI community, such as the possibility of editing TEI documents online, the possibility of operating with overlapping markup, the possibly of separating markup with different concerns, the possibility of editorial management of individual markup contributions, and so on. 
+
+The different layers of text produced by the editor must all result in valid TEI, but in the present implementation the standoff markup is stored in an XML format that facilitates export to a Open Annotation Collaboration format, not in (an extension of) TEI, just as the standoff annotations (for that reason) are not stored in the document that is annotated.
+
 A TEI text in the project normally consists of a `<teiHeader>` element and a `<text>` element. The target for the standoff editor is the contents of the `<text>` element. The header is edited in an XML editor.
 
-The base text stored in the `<text>` element is defined as what the editing process begins with, the base for any subsequent annotations. In principle, any text can be used as base text, but basing oneself on a carefully proofread transcription is obviously to be preferred since this minimises the need for editorial annotations. The standoff editor's concept of a base text is different from the philological, being defined in relation to the markup process, which obviously has to have a beginning. 
+The base text stored in the `<text>` element is defined as what the editing process begins with, the base for any subsequent annotations. In principle, any text can be used as base text, but basing oneself on a carefully proofread transcription is obviously to be preferred since this minimises the need for editorial annotations. The standoff editor's concept of a base text is different from the philological, being defined in relation to the markup process, which obviously has to have a beginning - in other words, a project's rendering of a (philological) base text, with all the interpretations this implies, will, in the parlance of the standoff editor, be a target text (but, for practical reasons, it is an advantage for the two to be very close).
 
-The base text is required to be [canonical XML](http://www.w3.org/TR/xml-c14n) in order to secure a standard representation which can be kept stable. The base text is also required to be Unicode-normalized (strangely, this is not a requiremenet of canonical XML); the form used should be recorded in the TEI header. The (canonical, normalized) base text will be authenticated by digests, using standoff markup, in order to guarantee the stability of the base text. 
+The base text is required to be [canonical XML](http://www.w3.org/TR/xml-c14n) in order to secure a standard representation which can be kept stable. The base text is also required to be Unicode-normalized (strangely, this is not a requirement of canonical XML); the form used should be recorded in the TEI header. The (canonical, normalised) base text will be authenticated by digests, using standoff markup, in order to guarantee the stability of the base text. 
 
-The base text is marked up with block-level markup. All block-level elements are required to have xml:ids that are unique throughout the repository (ideally, universally unique). A block-level element is here defined as an element all of whose ancestors are element-only elements. In a TEI document, this thus includes the first layer of elements which contain text, such as text-block `<p>` and `<l>`. Elements that can be both inline and block-level, such as `<figure>`, belong to one of these two groups according to their position in a concrete TEI document. 
+The base text is marked up with block-level markup. All block-level elements are required to have xml:ids that are unique throughout the repository (ideally, universally unique). A block-level element is here defined as an element all of whose ancestors are element-only elements. In a TEI document, this thus includes the first layer of elements which contain text, such as the text-block elements `<p>` and `<l>`. Elements that can be both inline and block-level, such as `<figure>`, belong to one of these two groups according to their position in a concrete TEI document. 
 
 The base text contains no inline markup – all inline markup is supplied through standoff annotations. [When inputting of the base text, it will be helpful for proofreading to include (empty) milestone elements, and they actually would not obstruct the application of standoff markup if left where they are, but in order to adopt a consistent standoff approach, they should probably be standoff'ed when proofreading has finished.]
 
 Why not make the standoff editor handle all TEI markup? The main reason for the restriction to inline markup is that, if the process started off with pure text, all "scaffolding" of the text would have to be constructed on the fly, whereas if only inline markup is involved, only "decorations" of the text have to be taken care of. The problem here is that any one change to the scaffolding has to result in well-formed XML. One could apply the `<TEI>` element to the whole span of text, but one would then e.g. have to apply the two elements `<teiHeader>` and `<text>` at the same time to its contents in order to achieve well-formed XML, and this creates complications for making an XML-based standoff editor. Applying inline markup does not bring problems of this sort, since if one applies inline markup only, this does not require making any changes to any other markup, because text nodes can be siblings of it. The main reason for not including block-level markup is thus that this is more difficult – a standoff editor that was to handle this kind of markup would have to be built on different principles. Since we use a layered approach to the construction of different text layers, it will be possible eventually to insert a layer dealing with the construction of a text with block-level elements. The standoff editor will in a later version handle editorial annotations targeting block-level elements, but the point of departure will be a base text which is fully marked-up (and well-formed), not pure text.
 
-The base text will not be modified in the annotation process, only referenced. It serves as the ultimate target for all annotations. 
+The base text will not be modified in the annotation process, only referenced. It serves as the ultimate target for all annotations, since these target the text-block by xml:id and the text selected by its offset and range.
+
+Tokenising text into words automatically based on whitespace, wrapping words into `<w>` elements supplied with xml:ids, and then targeting standoff annotations to such `w`s is an approach that not adopted (though TEI presently has the mechanisms to implement it), since the linguistic concept of word-hood is much more complex than this for European languages and since it is largely inapplicable to the languages that the project targets (where the existence of words are in doubt, due to overlaps between syntactic and morphological analyses, as in the case of Chinese). In order to supply a support for annotations that does not implicate assumptions that may not be valid, the Unicode string serves as target for standoff annotations, with offset and range being the main parameters, but (in order to address concerns addressed by XPointer) also involving node order information (to be described below).
 
 There are two kinds of inline annotation: annotations that concern the constitution of the text itself (the text stream itself) and annotations that concern its interpretation and its physical manifestation in particular documents.
 
@@ -57,7 +63,7 @@ The present implementation does not address structural markup, only inline marku
 
 A TEI project using the projected standoff editor starts with the transcription of a text. This transcription is, in the framework of the standoff editor, fixed and immutable. Since the idea behind the standoff editor is to encode all inline markup in standoff annotations, the transcription consists of text in block-level markup with @xml:ids.
 
-The transcription is stored as canonicalized and Unicode-normalized XML. The stability of the transcription is guaranteed by hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through editorial annotations. If the transcription aims to represent a definite edition and mistakes of transcription are found, these are corrected by editorial annotations in which the TEI text is referred to as a witness.
+The transcription is stored as canonicalised and Unicode-normalised XML. The stability of the transcription is guaranteed by hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through editorial annotations. If the transcription aims to represent a definite edition and mistakes of transcription are found, these are corrected by editorial annotations in which the TEI text is referred to as a witness.
 
 The transcription is called "the base text" and a text established through editorial annotations is called a "target text." The standoff editor can operate with more than one target text.
 
@@ -137,7 +143,7 @@ An editorial annotation targeting the base text looks like this:
 		</a8n-body>
 	</a8n-annotation>
 
-The annotation is, however, not stored in this form. Si nce it should be possible to have administrative data relating to each act of annotation, it is decomposed by creating annotations out of the contents of the top-level element of its body, `<app>`, thusly:
+The annotation is, however, not stored in this form. Since it should be possible to have administrative data relating to each act of annotation, it is decomposed by creating annotations out of the contents of the top-level element of its body, `<app>`, thusly:
 
 	<a8n-annotation
 		xml:id="uuid-ab22e71e-0956-4498-a028-9fd0aaedc473">
@@ -180,9 +186,9 @@ The attribute on `<rdg>` gets annotated in the following way:
 		</a8n-body>
 	</a8n-annotation>
 
-This tells that an attribute with the stated name and value is to be attached to the element (oe yoin thbod the anotation) referred to by its target id.
+This tells that an attribute with the stated name and value is to be attached to the element (the body of the annotation) referred to by its target id.
 
-Annotations are automatically "peeled off" for storage and further annotation and "built up" to be inserted into base and target text for presentation and further annotation.
+Annotations are automatically "torn down" for storage and further annotation and "built up" to be inserted into base and target text for presentation and further annotation.
 
 #Unedited below this!
 
@@ -251,7 +257,7 @@ ON '2013-08-07T17:42:18'
 NOTE: 'Handling the variations on the normal text structure should present no problems, but we stick to the common model here.']
 normally consists of a <teiHeader> element and a <text> element. The TEI header is not here assumed to be edited using the standoff editor; it can either be composed in an XML editor or (if it is sufficiently standardised) it can be composed using a separate forms-based approach.
 
-The **base text** stored in the <text> element is what the editing process begins with, the base for any subsequent annotations. Beginning with a good text is obviously to be preferred since this minimizes the need for text-altering edits and there the base text ideally consists of a carefully proofread transcription that renders the text stream of a specific exemplar of the
+The **base text** stored in the <text> element is what the editing process begins with, the base for any subsequent annotations. Beginning with a good text is obviously to be preferred since this minimises the need for text-altering edits and there the base text ideally consists of a carefully proofread transcription that renders the text stream of a specific exemplar of the
 #
 [ANNOTATION:
 
@@ -298,8 +304,8 @@ inline markup. The base text is required to be [canonical XML](http://www.w3.org
 
 BY 'Jens Østergaard Petersen'
 ON '2015-06-27T20:21:46'
-NOTE: 'Strangely, this is not a requiremenet of canonical XML. It does not matter which normalization form is chosen, but the form used should be recorded in the TEI header.']
-Unicode-normalized. The (canonical, normalized) base text will be authenticated by hashes, using standoff markup, and in order to guarantee its stability.
+NOTE: 'Strangely, this is not a requirement of canonical XML. It does not matter which normalisation form is chosen, but the form used should be recorded in the TEI header.']
+Unicode-normalised. The (canonical, normalised) base text will be authenticated by hashes, using standoff markup, and in order to guarantee its stability.
 #
 [ANNOTATION:
 
@@ -690,7 +696,7 @@ a nunnery: why wouldst thou be a breeder of sinners?
 
 Rendering of Text and Annotations
 
-All block-level TEI elements will be rendered as block-level (~ flow content in HTML5 palance) HTML elements, whereas all feature annotations will be rendered as inline  (~ phrase content) HTML elements and popups.
+All block-level TEI elements will be rendered as block-level (~ flow content in HTML5 parlance) HTML elements, whereas all feature annotations will be rendered as inline  (~ phrase content) HTML elements and popups.
 
  When the functions generating the merge of the base text and the text-critical annotations and the authoritative text and semantic annotations encounter overlaps, these can be of several kinds:
 
@@ -740,7 +746,7 @@ Links
 
 Questions
 
-The editor code needs to make sure that the resulting, serialized TEI remains well-formed and valid. To some extent, the serialization process could probably deal with conflicting markup, e.g. by splitting an inline element which span across other tag boundaries. We have to make explicit which conflicts can be handled though.
+The editor code needs to make sure that the resulting, serialised TEI remains well-formed and valid. To some extent, the serialisation process could probably deal with conflicting markup, e.g. by splitting an inline element which span across other tag boundaries. We have to make explicit which conflicts can be handled though.
 
 It is thus not allowed for an annotation to include only parts of another annotation on the same perspective. For example, if an author annotates a span of text as a term and then wants to include this span inside an app annotation,
 #
@@ -782,7 +788,7 @@ Technology
 
 BY 'Joern Turner'
 ON '2013-07-23T18:20:46'
-NOTE: 'Though this approach is surely possible to a certain extend it also makes us quite dependent on the choosen editor - most of the framework i've seen seem to be to fat and inflexible to base a complete set of extension upon them.'
+NOTE: 'Though this approach is surely possible to a certain extend it also makes us quite dependent on the chosen editor - most of the framework i've seen seem to be to fat and inflexible to base a complete set of extension upon them.'
 NOTE: ''
 NOTE: 'I see an alternative approach in using the native DOM of the browser directly, 'activating' a certain range and creating the appropriate toolbox and controls just in time.'
 NOTE: ''
