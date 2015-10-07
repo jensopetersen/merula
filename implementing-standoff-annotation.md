@@ -1,6 +1,8 @@
-#Concepts
+#Implementing Standoff Annotations
 
-##Layers and Perspectives
+##Concepts
+
+###Layers and Perspectives
 
 The goal of the projected standoff editor is to make it possible to implement an online distributed collaborative editor for TEI documents, compatible with the Open Annotation Collaboration framework, which addresses concerns that have long vexed the TEI community, such as the possibility of editing TEI documents online, the possibility of operating with overlapping markup, the possibly of separating markup with different concerns, the possibility of editorial management of individual markup contributions, and so on. 
 
@@ -20,7 +22,7 @@ Why not make the standoff editor handle all TEI markup? The main reason for the 
 
 The base text will not be modified in the annotation process, only referenced. It serves as the ultimate target for all annotations, since these target the text-block by xml:id and the text selected by its offset and range.
 
-Tokenising text into words automatically based on whitespace, wrapping words into `<w>` elements supplied with xml:ids, and then targeting standoff annotations to such `w`s is an approach that not adopted (though TEI presently has the mechanisms to implement it), since the linguistic concept of word-hood is much more complex than this for European languages and since it is largely inapplicable to the languages that the project targets (where the existence of words are in doubt, due to overlaps between syntactic and morphological analyses, as in the case of Chinese). In order to supply a support for annotations that does not implicate assumptions that may not be valid, the Unicode string serves as target for standoff annotations, with offset and range being the main parameters, but (in order to address concerns addressed by XPointer) also involving node order information (to be described below).
+Tokenising text into words automatically based on whitespace, wrapping words into `<w>` elements supplied with xml:ids, and then targeting standoff annotations to such `w`s is an approach that not adopted (though TEI presently has the mechanisms to implement it), since the linguistic concept of word-hood is much more complex than this for European languages and since it is largely inapplicable to the languages that the project targets (where the existence of words are in doubt, due to overlaps between syntactic and morphological analyses, as in the case of Chinese, or where there are porous boundaries between words, as in Sanskrit). In order to supply a support for annotations that does not implicate assumptions that may not be valid, the Unicode string serves as target for standoff annotations, with offset and range being the main parameters, but (in order to address concerns addressed by XPointer) also involving node order information, to be described below).
 
 There are two kinds of inline annotation: annotations that concern the constitution of the text itself (the text stream itself) and annotations that concern its interpretation and its physical manifestation in particular documents.
 
@@ -44,11 +46,11 @@ The annotations made in the feature layer are divided in perspectives. All annot
 
 We can expect it to be possible to merge the annotations belonging to one perspective with the target text, producing an inline TEI document with feature markup, but no guarantee should be made that it is possible to merge the annotations belonging to more than one perspective with a target text: instead, separate merges of different perspectives will be offered. This of course also holds for the display: if the user wishes to view several perspectives at the same time, the text blocks would be multiplied, each with its own perspective, in the case that overlaps were encountered. 
 
-#TEI standoff annotation
+##TEI standoff annotation
 
-##Annotation and Text
+###Annotation and Text
 
-###Kinds of annotation
+####Kinds of annotation
 
 There are two kinds of annotation:
 
