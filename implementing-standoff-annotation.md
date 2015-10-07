@@ -1,3 +1,43 @@
+#Concepts
+
+##Layers and Perspectives
+
+A TEI text in the project normally consists of a `<teiHeader>` element and a `<text>` element. The target for the standoff editor is the contents of the `<text>` element. The header is edited in an XML editor.
+
+The base text stored in the `<text>` element is defined as what the editing process begins with, the base for any subsequent annotations. In principle, any text can be used as base text, but basing oneself on a carefully proofread transcription is obviously to be preferred since this minimises the need for editorial annotations. The standoff editor's concept of a base text is different from the philological, being defined in relation to the markup process, which obviously has to have a beginning. 
+
+The base text is required to be [canonical XML](http://www.w3.org/TR/xml-c14n) in order to secure a standard representation which can be kept stable. The base text is also required to be Unicode-normalized (strangely, this is not a requiremenet of canonical XML); the form used should be recorded in the TEI header. The (canonical, normalized) base text will be authenticated by digests, using standoff markup, in order to guarantee the stability of the base text. 
+
+The base text is marked up with block-level markup. All block-level elements are required to have xml:ids that are unique throughout the repository (ideally, universally unique). A block-level element is here defined as an element all of whose ancestors are element-only elements. In a TEI document, this thus includes the first layer of elements which contain text, such as text-block `<p>` and `<l>`. Elements that can be both inline and block-level, such as `<figure>`, belong to one of these two groups according to their position in a concrete TEI document. 
+
+The base text contains no inline markup – all inline markup is supplied through standoff annotations. [When inputting of the base text, it will be helpful for proofreading to include (empty) milestone elements, and they actually would not obstruct the application of standoff markup if left where they are, but in order to adopt a consistent standoff approach, they should probably be standoff'ed when proofreading has finished.]
+
+Why not make the standoff editor handle all TEI markup? The main reason for the restriction to inline markup is that, if the process started off with pure text, all "scaffolding" of the text would have to be constructed on the fly, whereas if only inline markup is involved, only "decorations" of the text have to be taken care of. The problem here is that any one change to the scaffolding has to result in well-formed XML. One could apply the `<TEI>` element to the whole span of text, but one would then e.g. have to apply the two elements `<teiHeader>` and `<text>` at the same time to its contents in order to achieve well-formed XML, and this creates complications for making an XML-based standoff editor. Applying inline markup does not bring problems of this sort, since if one applies inline markup only, this does not require making any changes to any other markup, because text nodes can be siblings of it. The main reason for not including block-level markup is thus that this is more difficult – a standoff editor that was to handle this kind of markup would have to be built on different principles. Since we use a layered approach to the construction of different text layers, it will be possible eventually to insert a layer dealing with the construction of a text with block-level elements. The standoff editor will in a later version handle editorial annotations targeting block-level elements, but the point of departure will be a base text which is fully marked-up (and well-formed), not pure text.
+
+The base text will not be modified in the annotation process, only referenced. It serves as the ultimate target for all annotations. 
+
+There are two kinds of inline annotation: annotations that concern the constitution of the text itself (the text stream itself) and annotations that concern its interpretation and its physical manifestation in particular documents.
+
+The first kind is called "editorial annotation"; it is typified by the use of the `<app>` and `<choice>` elements: `<app>` concerns the evidence for the text and `<choice>` its presentation in the edition. Every change here implies a change in the graphemes to be represented in the different versions of the text that are simultaneously encoded in one TEI document. 
+
+The second kind comprises all other kinds of markup; since they concern features of the text and the document containing the text, it is called "feature annotation". 
+
+Feature annotation can concern the physical makeup of the document digitised; this will be called "document annotation". Ideally speaking, such diplomatic markup should have its own layer or base text (as in e.g. the [Faust Edition](http://jtei.revues.org/697), but since such markup is not a major concern for the project that supply use cases for the present development, markup of this kind, such as that noting the various breaks and font face changes in the text as rendered in a specific document (typified by `<pb>` and `<hi>`), will be mixed up with other feature markup.
+
+The larger part of feature annotation will concern the interpretation of the text and will be termed "semantic annotation". It is typified by the use of the `<name>` and `<emph>` elements.
+
+Editorial annotation allows one to transform the base text according to a list of criteria, creating a target text. It is assumed that every difference between the base text and the readings that go into making a target text are registered.
+
+Each target text is defined as a unique combination of selections of the possibilities for registering textual variation found in the editorial elements, `<app>`, with `<rdg>` and `<lem>`, `<choice>`, with `<corr>`/`<sic>`, `<orig>`/`<reg>` and `<abbr>`/`<expan>` [How to deal with `<mod>` and `<subst>` with `<add>` and `<del>` needs to be discussed]. Each TEI document is required to contain information in its header about which target text algorithms can serve as basis for the text's feature annotation; each feature annotation refers to the unique name of the target text algorithm it builds upon. In practice, it may of course be the case that only a single target is used, as in the projects that now supply use cases, since these are concerned with texts for which the "traditional" idea of reconstituting an original edition is held to be adequate.
+
+There is the problem with the traditional approach that it may the case that an editor does not feel comfortable, given a number of different readings, to elevate one of them to the status of authoritative reading. In such cases, a fallback witness will take the place of the lemma. This means that the information about the approach used in generating the target text will not just point out e.g. that `<lem>` is preferred, but employs conditional logic.
+
+In this way, there is a "text layer" consisting of the base text, the editorial annotations, and the target text that results from the application of editorial annotations to the base text, and a "feature layer" consisting of all other annotations, that is, document annotation and semantic annotation.
+
+The annotations made in the feature layer are divided in perspectives. All annotations concerning names (of people, organisations and places) and dates may thus belong to one perspective and all linguistic annotations to another. One or more perspectives may be selected for display in a given situation. This also allows for separating annotations which would create skewed overlaps if imposed at the same time, resulting in a document that is not well-formed.
+
+We can expect it to be possible to merge the annotations belonging to one perspective with the target text, producing an inline TEI document with feature markup, but no guarantee should be made that it is possible to merge the annotations belonging to more than one perspective with a target text: instead, separate merges of different perspectives will be offered. This of course also holds for the display: if the user wishes to view several perspectives at the same time, the text blocks would be multiplied, each with its own perspective, in the case that overlaps were encountered. 
+
 #TEI standoff annotation
 
 ##Annotation and Text
@@ -17,22 +57,22 @@ The present implementation does not address structural markup, only inline marku
 
 A TEI project using the projected standoff editor starts with the transcription of a text. This transcription is, in the framework of the standoff editor, fixed and immutable. Since the idea behind the standoff editor is to encode all inline markup in standoff annotations, the transcription consists of text in block-level markup with @xml:ids.
 
-The transcription is stored as canonicalized and Unicode-normalized XML. The stability of the transcription is guaranteed by hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through text-critical annotations. If the transcription aims to represent a definite edition and mistakes of transcription are found, these are corrected by text-critical annotations in which the TEI text is referred to as a witness.
+The transcription is stored as canonicalized and Unicode-normalized XML. The stability of the transcription is guaranteed by hash annotations that first target each text node and then target the hashes of the block-level hash annotations in document order. This ensures that no changes can occur unnoticed. Once a transcription has been established, the text can only change through editorial annotations. If the transcription aims to represent a definite edition and mistakes of transcription are found, these are corrected by editorial annotations in which the TEI text is referred to as a witness.
 
-The transcription is called "the base text" and a text established through text-critical annotations is called a "target text." The standoff editor can operate with more than one target text.
+The transcription is called "the base text" and a text established through editorial annotations is called a "target text." The standoff editor can operate with more than one target text.
 
-A target text is virtual, constructed on the fly by applying the text-critical annotations to the base text. Like the base text, it consists of text in block-level TEI elements only, with @xml:ids as the only attributes. For reasons of indexing and search, it may be necessary to store target texts, but the editor should not require this to be done.
+A target text is virtual, constructed on the fly by applying the editorial annotations to the base text. Like the base text, it consists of text in block-level TEI elements only, with @xml:ids as the only attributes. For reasons of indexing and search, it may be necessary to store target texts, but the editor should not require this to be done.
 
-Text-critical annotations always target the base text, whereas feature annotations always target a target text (the terminology here needs more thought here …). It may well be that only one target text is operated with, but as different target texts are possible, each feature annotation must refer to a specification of how the target text is constructed. 
+Editorial annotations always target the base text, whereas feature annotations always target a target text (the terminology here needs more thought here …). It may well be that only one target text is operated with, but as different target texts are possible, each feature annotation must refer to a specification of how the target text is constructed. 
 
-The different target texts that a document make possible are specified in the document's header in the form of an XQuery function that transforms base-text plus text-critical annotations into the target text in question.
+The different target texts that a document make possible are specified in the document's header in the form of an XQuery function that transforms base-text plus editorial annotations into the target text in question.
 
 This means that the first choice the annotator has to make is whether
 
-* to view the base text (side by side with existing text-critical annotations) in order to a new make text-critical annotation, or
+* to view the base text (side by side with existing editorial annotations) in order to a new make editorial annotation, or
 * to view a target text (alongside existing feature annotations) in order to make a new feature annotation.
 
-If additional text-critical annotations affect the already existing feature annotations, they should be kept in sync. To a large extent, this can be done automatically, but human intervention is required to solve certain hard cases.
+If additional editorial annotations affect the already existing feature annotations, they should be kept in sync. To a large extent, this can be done automatically, but human intervention is required to solve certain hard cases.
 
 ###Annotation targets
 
@@ -67,7 +107,7 @@ A feature annotation targeting a text range looks like this:
 	</a8n-annotation>
 
 
-The attribute @target-text "#lem" identifies the layer annotated; a definition of "lem" is found in the header of the document, in the form of an XQuery function which produces the target text by applying the text-critical annotations to the base text.
+The attribute @target-text "#lem" identifies the layer annotated; a definition of "lem" is found in the header of the document, in the form of an XQuery function which produces the target text by applying the editorial annotations to the base text.
 
 The target specifies that the annotation targets the text element with the xml:id stated, from the offset to the range, and that it occurs first (in case there are multiple annotations targeting the same span).
 
@@ -77,9 +117,9 @@ The annotation thus tells that the TEI <name> element is to be wrapped around ch
 
 It is assumed that references to text elements are universally unique.
 
-####Text-critical annotations
+####Editorial annotations
 
-A text-critical annotation targeting the base text looks like this:
+An editorial annotation targeting the base text looks like this:
 
 	<a8n-annotation
 		xml:id="uuid-ab22e71e-0956-4498-a028-9fd0aaedc473">
@@ -167,7 +207,7 @@ Ideally speaking, it should be possible to derive information about which elemen
 * Proof-of-concept of script for converting base text and standoff annotations to TEI document with inline markup
 
 * Editor milestone 1
-1. Distinguish between text-critical and semantic annotation layer in user interface. Let user switch between the layers. Decide on general workflow model to be used.
+1. Distinguish between editorial and feature annotation layer in user interface. Let user switch between the layers. Decide on general workflow model to be used.
 2. Implement the most important annotation types as web components. Design general look and feel of components as well as basic user interaction.
 3. Keep track of modified/added annotations and save them to db when user commits changes.
 4. Test and improve rendering performance: annotated TEI to HTML.
