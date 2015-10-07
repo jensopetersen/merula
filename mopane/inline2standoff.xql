@@ -32,6 +32,30 @@ declare function il2so:remove-elements($nodes as node()*, $names-of-elements-to-
             else $node
 };
 
+declare function il2so:generate-base-text($input as node()*, $wit as xs:string) as item()* {
+    for $node in $input/node()
+    return
+        typeswitch($node)
+            case element(tei:note) return
+                ()
+            case element(tei:lem) return
+                if (tokenize($node/@wit/string(), " ") = $wit)
+                then il2so:generate-base-text($node, $wit)
+                else ()
+            case element(tei:rdg) return
+                if (tokenize($node/@wit/string(), " ") = $wit)
+                then il2so:generate-base-text($node, $wit)
+                else ()
+            case element(tei:sic) return il2so:generate-base-text($node, $wit)
+            case element(tei:corr) return ()
+            case element(tei:abbr) return il2so:generate-base-text($node, $wit)
+            case element(tei:expan) return ()
+            case element(tei:orig) return il2so:generate-base-text($node, $wit)
+            case element(tei:reg) return ()
+            case text() return $node
+            default return il2so:generate-base-text($node, $wit)
+};
+
 (: This function inserts elements supplied as $new-nodes at a certain position, determined by $element-names-to-check and $location, or removes the $element-names-to-check globally :)
 declare function il2so:insert-elements($node as node(), $new-nodes as node()*, $element-names-to-check as xs:string+, $location as xs:string) {
         if ($node instance of element() and local-name($node) = $element-names-to-check)
@@ -85,20 +109,20 @@ declare function il2so:get-inline-annotations-keyed-to-base-text($text-block-ele
         let $a8n-id := $element/parent::element()/@xml:id/string()
         
         (: Get the the text before the editorial markup in question, by constructing the base text version of it. :)
-        let $base-text-before-element := string-join(so2il:separate-text-layers(<base>{$element/preceding-sibling::node()}</base>, 'base-text', $wit))
+        let $base-text-before-element := string-join(il2so:generate-base-text(<base>{$element/preceding-sibling::node()}</base>, $wit))
         (: Add 1 to the length of this to get the markup offset. :)
         let $base-text-offset := string-length($base-text-before-element) + 1
         (: Get the base-text version of the editorial markup in question. :)
-        let $base-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'base-text', $wit))
+        let $base-text-marked-up-string := string-join(il2so:generate-base-text($element, $wit))
         (: The length of this is the markup range. :)
         let $base-text-range := string-length($base-text-marked-up-string)
         
         (: Get the the text before the feature markup in quetion, by constructing the target text version of it. Add 1 to get the offset. :)
-        let $target-text-before-element := string-join(so2il:separate-text-layers(<target>{$element/preceding-sibling::node()}</target>, 'target-text', ''))
+        let $target-text-before-element := string-join(so2il:generate-target-text(<target>{$element/preceding-sibling::node()}</target>))
         (: Add 1 to the length of this to get the markup offset. :)
         let $target-text-offset := string-length($target-text-before-element) + 1
         (: Get the target-text version of the feature markup in question. :)
-        let $target-text-marked-up-string := string-join(so2il:separate-text-layers($element, 'target-text', ''))
+        let $target-text-marked-up-string := string-join(so2il:generate-target-text($element))
         (: The length of this is the markup range. :)
         let $target-text-range := string-length($target-text-marked-up-string)
         let $motivatedBy :=
@@ -116,7 +140,7 @@ declare function il2so:get-inline-annotations-keyed-to-base-text($text-block-ele
                     <a8n-offset>{$base-text-offset}</a8n-offset>
                     <a8n-range>{$base-text-range}</a8n-range>
                     <a8n-order>{$order}</a8n-order>
-                    <a8n-exact>{string-join(so2il:separate-text-layers(<base>{$element}</base>, 'base-text', $wit))}</a8n-exact>
+                    <a8n-exact>{string-join(il2so:generate-base-text(<base>{$element}</base>, $wit))}</a8n-exact>
                 </a8n-target>
             else
                 <a8n-target>
@@ -124,7 +148,7 @@ declare function il2so:get-inline-annotations-keyed-to-base-text($text-block-ele
                         <a8n-offset>{$target-text-offset}</a8n-offset>
                         <a8n-range>{$target-text-range}</a8n-range>
                         <a8n-order>{$order}</a8n-order>
-                        <a8n-exact>{string-join(so2il:separate-text-layers(<target>{$element}</target>, 'target-text', $wit))}</a8n-exact>
+                        <a8n-exact>{string-join(so2il:generate-target-text(<target>{$element}</target>))}</a8n-exact>
                 </a8n-target>
             return
                 let $element-annotation-result :=
@@ -284,7 +308,11 @@ declare function il2so:generate-text-layer($element as element(), $target as xs:
                     if ($node/@xml:space) then attribute{'xml:space'}{$node/@xml:space} else (),
                     if ($node/@xml:lang) then attribute{'xml:lang'}{$node/@xml:lang} else ()
                     ,
-                    so2il:separate-text-layers($node, $target, $wit)
+                    if ($target eq 'base-text')
+                    then 
+                        il2so:generate-base-text($node, $wit)
+                        else
+                        so2il:generate-target-text($node)
                     }
                 else 
                     if ($node instance of comment()) (: pass through comments. :)
@@ -411,4 +439,3 @@ declare function il2so:find-annotation-home($annotations as element()+, $a8n-id 
                 il2so:find-annotation-home($annotations, $home-id)
         else $a8n-id
 };
-

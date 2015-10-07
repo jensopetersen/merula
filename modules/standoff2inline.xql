@@ -138,65 +138,6 @@ The present approach is however very handy when debugging. :)
         $html
 };
 
-(: Based on a list of TEI elements that alter the text, 
-construct the altered (target) or the unaltered (base-text) text :)
-(:Only the value "base" is checked.:)
-(:TODO: This function must in some way be included in the TEI header, 
-or the choices must be expressed in a manner that can feed the function.:)
-declare function so2il:separate-text-layers($input as node()*, $target as xs:string, $wit as xs:string?) as item()* {
-        
-        for $node in $input/node()
-        return
-            typeswitch($node)
-                
-                case element(tei:note) return
-                    ()
-                    (:TODO: it is not clear what to do with "original annotations", e.g. notes in the original. Probably they should be collected on the same level as "edition" and "feature" (along with other instances of "misplaced text", such as figure captions, which occur at essentially arbitrary positions in the text stream, but probably should occur outside of it. Here we strip out all notes from the text itself, assuming they occur on the form of annotations.:)
-                
-                case element(tei:lem) return
-                    if ($target eq 'base-text') 
-                    then 
-                        if (tokenize($node/@wit/string(), " ") = $wit)
-                        then so2il:separate-text-layers($node, $target, $wit)
-                        else ()
-                    else so2il:separate-text-layers($node, $target, $wit)
-                
-                case element(tei:rdg) return
-                    if ($target eq 'base-text')
-                    then 
-                        if (tokenize($node/@wit/string(), " ") = $wit)
-                        then so2il:separate-text-layers($node, $target, $wit)
-                        else ()
-                    else ()
-                
-                case element(tei:sic) return
-                    if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target, $wit)
-                    else ()
-                case element(tei:corr) return
-                    if ($target eq 'base-text') 
-                    then () 
-                    else so2il:separate-text-layers($node, $target, $wit)
-                case element(tei:abbr) return
-                    if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target, $wit)
-                    else ()
-                case element(tei:expan) return
-                    if ($target eq 'base-text') 
-                    then () 
-                    else so2il:separate-text-layers($node, $target, $wit)
-                case element(tei:orig) return
-                    if ($target eq 'base-text') 
-                    then so2il:separate-text-layers($node, $target, $wit)
-                    else ()
-                case element(tei:reg) return
-                    if ($target eq 'base-text')
-                    then () 
-                    else so2il:separate-text-layers($node, $target, $wit)
-                case text() return
-                    $node
-                default return so2il:separate-text-layers($node, $target, $wit)
-};
 
 declare function so2il:generate-target-text($input as node()*) as item()* {
         for $node in $input/node()
