@@ -388,19 +388,13 @@ declare function il2so:generate-top-level-annotations-keyed-to-base-text($elemen
 declare function il2so:get-order($element as element()*)
 as xs:integer
 {
-    if ($element/preceding-sibling::node()[1] instance of text() or $element/parent::element()/child::node()[1] is $element) 
-        then 1
-    else if ($element/preceding-sibling::node()[2] instance of text() or $element/parent::element()/child::node()[2] is $element) 
-    then 2
-    else if ($element/preceding-sibling::node()[3] instance of text() or $element/parent::element()/child::node()[3] is $element) 
-    then 3
-    else if ($element/preceding-sibling::node()[4] instance of text() or $element/parent::element()/child::node()[4] is $element) 
-    then 4
-    else if ($element/preceding-sibling::node()[5] instance of text() or $element/parent::element()/child::node()[5] is $element) 
-    then 5
-    else if ($element/preceding-sibling::node()[6] instance of text() or $element/parent::element()/child::node()[6] is $element) 
-    then 6
-    else 999
+    if ($element/preceding-sibling::text())
+        then
+            for $node at $i in $element/preceding-sibling::text()[1]/following-sibling::node()
+            return
+                if ($node is $element) then $i else ()
+        else 
+            count($element/preceding-sibling::node()) + 1
 };
 
 
