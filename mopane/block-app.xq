@@ -154,7 +154,7 @@ let $base-text :=
     </tei>
 
 (:let $base-text := doc('/db/test/dilthey.xml'):)
-
+(:http://www.deutschestextarchiv.de/book/download_xml/dilthey_geisteswissenschaften_1883:)
 let $block-app := 
 <text wit="y">
         <rdg><target>a</target><order>1</order><level>1</level><local-name>text</local-name></rdg>
