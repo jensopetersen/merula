@@ -1,5 +1,7 @@
 xquery version "3.0";
 
+(:Finds identical a8ns:)
+
 let $a8ns := 
 <a8ns>
     <a8n n="a"><offset>10</offset><range>5</range></a8n>
