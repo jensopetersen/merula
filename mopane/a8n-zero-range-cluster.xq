@@ -95,7 +95,7 @@ let $a8ns :=
 </a8n-annotation><a8n-annotation motivatedBy="describing" xml:id="uuid-2c2a23b7-2df1-48b3-9819-4f4df2b7c572">
     <a8n-target>
         <a8n-id>pa000001</a8n-id>
-        <a8n-offset>1780</a8n-offset>
+        <a8n-offset>178</a8n-offset>
         <a8n-offset timestamp="2015-10-07T17:53:13.644+02:00" cause="uuid-79545eb1-8b75-4451-a72f-80bd0f1a6cbd">3</a8n-offset>
         <a8n-range>5</a8n-range>
         <a8n-order>2</a8n-order>
