@@ -138,16 +138,16 @@ declare function il2so:get-inline-annotations-keyed-to-base-text($text-block-ele
                 <a8n-target>
                     <a8n-id>{$a8n-id}</a8n-id>
                     <a8n-offset>{$base-text-offset}</a8n-offset>
-                    <a8n-range>{$base-text-range}</a8n-range>
                     <a8n-order>{$order}</a8n-order>
+                    <a8n-range>{$base-text-range}</a8n-range>
                     <a8n-exact>{string-join(il2so:generate-base-text(<base>{$element}</base>, $wit))}</a8n-exact>
                 </a8n-target>
             else
                 <a8n-target>
                         <a8n-id>{$a8n-id}</a8n-id>
                         <a8n-offset>{$target-text-offset}</a8n-offset>
-                        <a8n-range>{$target-text-range}</a8n-range>
                         <a8n-order>{$order}</a8n-order>
+                        <a8n-range>{$target-text-range}</a8n-range>
                         <a8n-exact>{string-join(so2il:generate-target-text(<target>{$element}</target>))}</a8n-exact>
                 </a8n-target>
             return
