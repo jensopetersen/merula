@@ -275,58 +275,30 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
 declare function so2il:wrap-up-a8ns-with-non-nesting-overlap($a8ns as element()+) as element() {
 let $a8ns := 
     <a8ns>{
-    for $a8n in $a8ns
-    order by sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-range/number(), $a8n/a8n-target/a8n-order/number()
-    return $a8n
-    }</a8ns>
-let $a8ns := 
-    <a8ns>{
-        for $a8n in $a8ns/a8n-annotation
-    return
-    if (sum($a8n/a8n-target/a8n-offset) + $a8n/a8n-target/a8n-range/number() <= sum($a8n/following-sibling::a8n-annotation[1]/a8n-target/a8n-offset))
-    then $a8n
-    else 
-        if (sum($a8n/a8n-target/a8n-offset) = sum($a8n/following-sibling::a8n-annotation[1]/a8n-target/a8n-offset) and $a8n/a8n-target/a8n-range/number() = $a8n/following-sibling::a8n-annotation[1]/a8n-target/a8n-range/number())
-        then $a8n
-        else
-            if (not($a8n/following-sibling::a8n-annotation))
-            then $a8n
-            else
-                <cloistered>{$a8n}</cloistered>
-    }</a8ns>
-return 
-    $a8ns
+        for $a8n in $a8ns
+        let $a8n-offset := sum($a8n/a8n-target/a8n-offset)
+        let $a8n-range := $a8n/a8n-target/a8n-range/number()
+        return
+            if (
+                $a8n/following-sibling::a8n-annotation
+                [sum(a8n-target/a8n-offset) > $a8n-offset]
+                [sum(a8n-target/a8n-offset) + a8n-target/a8n-range/number() > $a8n-offset + $a8n-range]
+                [(sum(a8n-target/a8n-offset) - $a8n-offset) > (a8n-target/a8n-range/number() - $a8n-range)]
+                [sum(a8n-target/a8n-offset) < $a8n-offset + $a8n-range]
+                or
+                $a8n/following-sibling::a8n-annotation
+                [sum(a8n-target/a8n-offset) < $a8n-offset]
+                [sum(a8n-target/a8n-offset) + a8n-target/a8n-range/number() < $a8n-offset + $a8n-range]
+                [$a8n-offset + $a8n-range > $a8n-offset - sum(a8n-target/a8n-offset)]
+                [sum(a8n-target/a8n-offset) + a8n-target/a8n-range/number() > $a8n-offset]
+                )
+            then <quarantine>{$a8n}</quarantine>
+            else $a8n
+}</a8ns>
+
+return $a8ns
 };
 
-(: Collects all a8ns with zero range (empty elements) and same position in <zero-range-cluster>s. :)
-(: NB: Since this happens before checking for containment, this mean that an empty element will never be able to occur inside a non-empty element with the same offset. :)
-(: TODO: consider if this is really necessary:)
-declare function so2il:wrap-up-zero-range-a8ns($a8ns as element()+) as element()+ {
-let $a8ns := 
-    <a8ns>{$a8ns}</a8ns>
-let $a8ns :=
-    for $a8n in $a8ns/a8n-annotation
-    return
-        if (
-            $a8n/a8n-target/a8n-range/number() = 0 
-                and 
-            $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()] 
-                and
-            not($a8n/preceding-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()])
-        )
-        then 
-            <zero-range-cluster>{$a8n, $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = 0]}</zero-range-cluster>
-        else 
-            if (
-                $a8n/preceding-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()]
-                    or
-                $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()]
-            )
-            then ()
-            else $a8n
-return
-    $a8ns
-};
 
 (: Orders a8ns according to range, descending, and collects all instances where an a8n contains one or more following a8ns. :)
 declare function so2il:wrap-up-contained-a8ns($a8ns as element()+) as element()* {
@@ -343,23 +315,23 @@ let $a8ns :=
             [sum(a8n-target/a8n-offset) >= $a8n-offset]
             [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
             )
-        then <containment>
+        then (util:log("ERROR", ("##MESSAGE-3")), <containment>
                 <container>{$a8n}</container>
                 <contained>
                     {$a8n/following-sibling::a8n-annotation
                     [sum(a8n-target/a8n-offset) >= $a8n-offset]
                     [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]}
                 </contained>
-            </containment>
+            </containment>)
         else 
             if (
             $a8n/preceding-sibling::a8n-annotation
             [sum(a8n-target/a8n-offset) <= $a8n-offset]
             [a8n-target/a8n-range/number() > $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
             )
-            then ()
+            then (util:log("ERROR", ("##MESSAGE-4")), ())
             else
-                $a8n
+                (util:log("ERROR", ("##MESSAGE-5")), $a8n)
 let $a8ns := 
     for $a8n in $a8ns
     order by sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-range/number(), $a8n/a8n-target/a8n-order/number()
@@ -380,25 +352,25 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
     let $log := util:log("DEBUG", ("##$text-element-id): ", $text-element/@xml:id/string()))
     let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer))
 (:    let $log := util:log("DEBUG", ("##$text-element): ", $text-element)):)
-(:    let $log := util:log("DEBUG", ("##$annotations-1): ", $annotations)):)
+    let $log := util:log("DEBUG", ("##$annotations-1): ", $annotations))
     let $annotations := so2il:wrap-up-a8ns-with-non-nesting-overlap($annotations)
 (:    results in <a8ns><a8n-annotation/></a8ns>:)
-(:    let $log := util:log("DEBUG", ("##$annotations-2): ", $annotations)):)
+    let $log := util:log("DEBUG", ("##$annotations-2): ", $annotations))
     (: For now, a8ns without non-nesting overlaps are removed. ::)
-    (: TODO: add "cloistered" a8ns to alternate text :)
-(:    let $cloistered-annotations := $annotations/cloistered:)
-(:    let $log := if ($cloistered-annotations) then util:log("DEBUG", ("##$cloistered-annotations): ", $cloistered-annotations)) else ():)
+    (: TODO: add "quarantined" a8ns to alternate text :)
+    let $quarantined-annotations := $annotations/quarantine
+    let $log := if ($quarantined-annotations) then util:log("DEBUG", ("##$quarantined-annotations): ", $quarantined-annotations)) else ()
     let $annotations := $annotations/(* except cloistered)
 (:    let $log := util:log("DEBUG", ("##$annotations-3): ", $annotations)):)
-(:    let $annotations := so2il:wrap-up-zero-range-a8ns($annotations):)
-    let $log := util:log("DEBUG", ("##$annotations-4): ", $annotations))
     let $annotations := 
         if ($target-layer eq 'feature')
-        then so2il:wrap-up-contained-a8ns($annotations)
-        else $annotations
+        then <a8ns>{so2il:wrap-up-contained-a8ns($annotations)}</a8ns>
+        else <a8ns>{$annotations}</a8ns>
+    let $log := util:log("DEBUG", ("##$annotations-4): ", $annotations))
     let $contained-annotations := $annotations/containment
     let $log := if ($contained-annotations) then util:log("DEBUG", ("##$contained-annotations): ", $contained-annotations)) else ()
     let $log := util:log("DEBUG", ("##$annotations-5): ", $annotations))
+    let $annotations := $annotations/*
     let $text := 
         if ($target-layer eq 'edition')
         then il2so:generate-base-text($text-element, $wit)
