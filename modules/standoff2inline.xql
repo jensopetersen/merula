@@ -270,17 +270,18 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
       }
 };
 
-declare function so2il:wrap-up-overlapping-annotations($a8ns as element()+) as element() {
+(: Order the a8ns according to position and wraps up an a8n in <cloistered> if the following a8n has a non-nesting overlap relationship with it. :)
+(: TODO: see that the cloistered a8ns are feed to a repetition of the text, outputting both the a8ns that were accepted and rejected. :)
+declare function so2il:wrap-up-a8ns-with-non-nesting-overlap($a8ns as element()+) as element() {
 let $a8ns := 
     <a8ns>{
     for $a8n in $a8ns
     order by sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-range/number(), $a8n/a8n-target/a8n-order/number()
     return $a8n
     }</a8ns>
-
 let $a8ns := 
     <a8ns>{
-        for $a8n at $i in $a8ns/a8n-annotation
+        for $a8n in $a8ns/a8n-annotation
     return
     if (sum($a8n/a8n-target/a8n-offset) + $a8n/a8n-target/a8n-range/number() <= sum($a8n/following-sibling::a8n-annotation[1]/a8n-target/a8n-offset))
     then $a8n
@@ -297,45 +298,131 @@ return
     $a8ns
 };
 
+(: Collects all a8ns with zero range (empty elements) and same position in <zero-range-cluster>s. :)
+(: NB: Since this happens before checking for containment, this mean that an empty element will never be able to occur inside a non-empty element with the same offset. :)
+(: TODO: consider if this is really necessary:)
+declare function so2il:wrap-up-zero-range-a8ns($a8ns as element()+) as element()+ {
+let $a8ns := 
+    <a8ns>{$a8ns}</a8ns>
+let $a8ns :=
+    for $a8n in $a8ns/a8n-annotation
+    return
+        if (
+            $a8n/a8n-target/a8n-range/number() = 0 
+                and 
+            $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()] 
+                and
+            not($a8n/preceding-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()])
+        )
+        then 
+            <zero-range-cluster>{$a8n, $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = 0]}</zero-range-cluster>
+        else 
+            if (
+                $a8n/preceding-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()]
+                    or
+                $a8n/following-sibling::a8n-annotation[a8n-target/a8n-offset/number() = $a8n/a8n-target/a8n-offset/number()][a8n-target/a8n-range/number() = $a8n/a8n-target/a8n-range/number()]
+            )
+            then ()
+            else $a8n
+return
+    $a8ns
+};
+
+(: Orders a8ns according to range, descending, and collects all instances where an a8n contains one or more following a8ns. :)
+declare function so2il:wrap-up-contained-a8ns($a8ns as element()+) as element()* {
+let $a8ns := 
+    <a8ns>{$a8ns}</a8ns>
+let $a8ns := 
+    for $a8n in $a8ns/a8n-annotation
+    order by $a8n/a8n-target/a8n-range/number() descending, sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-order/number()
+    let $a8n-offset := sum($a8n/a8n-target/a8n-offset)
+    let $a8n-range := $a8n/a8n-target/a8n-range/number()
+    return
+        if (
+            $a8n/following-sibling::a8n-annotation
+            [sum(a8n-target/a8n-offset) >= $a8n-offset]
+            [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
+            )
+        then <containment>
+                <container>{$a8n}</container>
+                <contained>
+                    {$a8n/following-sibling::a8n-annotation
+                    [sum(a8n-target/a8n-offset) >= $a8n-offset]
+                    [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]}
+                </contained>
+            </containment>
+        else 
+            if (
+            $a8n/preceding-sibling::a8n-annotation
+            [sum(a8n-target/a8n-offset) <= $a8n-offset]
+            [a8n-target/a8n-range/number() > $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
+            )
+            then ()
+            else
+                $a8n
+let $a8ns := 
+    for $a8n in $a8ns
+    order by sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-range/number(), $a8n/a8n-target/a8n-order/number()
+    return
+        $a8n
+return 
+    $a8ns
+};
+
 (:This function merges the collapsed annotations with the target text. 
-A sequence of slots (<segment/>s), double the number of annotations plus 1, are created; 
+A sequence of slots (<slot/>s), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
 with ranges calculated from the previous and following annotations, 
 are filled into the uneven slots. Empty uneven slots can occur, 
 but all even slots have annotations (though they may consist of an empty element).:)
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
 declare function so2il:merge-annotations-with-text($text-element as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string, $wit as xs:string, $editiorial-element-names as xs:string+) as node()+ {
+    let $log := util:log("DEBUG", ("##$text-element-id): ", $text-element/@xml:id/string()))
+    let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer))
 (:    let $log := util:log("DEBUG", ("##$text-element): ", $text-element)):)
 (:    let $log := util:log("DEBUG", ("##$annotations-1): ", $annotations)):)
-    let $annotations := so2il:wrap-up-overlapping-annotations($annotations)
+    let $annotations := so2il:wrap-up-a8ns-with-non-nesting-overlap($annotations)
+(:    results in <a8ns><a8n-annotation/></a8ns>:)
 (:    let $log := util:log("DEBUG", ("##$annotations-2): ", $annotations)):)
-    (: For now, a8ns without skewed overlaps are removed. ::)
+    (: For now, a8ns without non-nesting overlaps are removed. ::)
     (: TODO: add "cloistered" a8ns to alternate text :)
+(:    let $cloistered-annotations := $annotations/cloistered:)
+(:    let $log := if ($cloistered-annotations) then util:log("DEBUG", ("##$cloistered-annotations): ", $cloistered-annotations)) else ():)
     let $annotations := $annotations/(* except cloistered)
-(:    let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer)):)
+(:    let $log := util:log("DEBUG", ("##$annotations-3): ", $annotations)):)
+(:    let $annotations := so2il:wrap-up-zero-range-a8ns($annotations):)
+    let $log := util:log("DEBUG", ("##$annotations-4): ", $annotations))
+    let $annotations := 
+        if ($target-layer eq 'feature')
+        then so2il:wrap-up-contained-a8ns($annotations)
+        else $annotations
+    let $contained-annotations := $annotations/containment
+    let $log := if ($contained-annotations) then util:log("DEBUG", ("##$contained-annotations): ", $contained-annotations)) else ()
+    let $log := util:log("DEBUG", ("##$annotations-5): ", $annotations))
     let $text := 
         if ($target-layer eq 'edition')
         then il2so:generate-base-text($text-element, $wit)
         else so2il:generate-target-text($text-element)
 (:    let $log := util:log("DEBUG", ("##$text): ", $text)):)
-    let $segment-count := (count($annotations) * 2) + 1
-    let $segments :=
-        for $segment at $i in 1 to $segment-count
+    let $slot-count := (count($annotations) * 2) + 1
+(:    let $log := util:log("DEBUG", ("##$slot-count): ", $slot-count)):)
+    let $slots :=
+        for $slot at $i in 1 to $slot-count
         return
-            <segment>{attribute n {$i}}</segment>
-    let $segments := 
-            for $segment in $segments
+            <slot n="{$i}"/>
+    let $slots := 
+            for $slot in $slots
             return
-                if (number($segment/@n) mod 2 eq 0) (:An annotation is being processed.:)
+                if (number($slot/@n) mod 2 eq 0) (:An annotation is being processed.:)
                 then
-                    let $annotation-n := $segment/@n/number() div 2
+                    let $annotation-n := $slot/@n/number() div 2
                     let $annotation := $annotations[$annotation-n]
 (:                    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
 (:                    let $log := util:log("DEBUG", ("##$annotation-1): ", $annotation)):)
                     let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
-                    let $annotation-range := number($annotation/a8n-target/a8n-range)
+                    let $annotation-range := $annotation/a8n-target/a8n-range/number()
                     let $annotation := $annotation/(* except a8n-target)
-(:                    let $log := util:log("DEBUG", ("##$annotation): ", $annotation)):)
+(:                    let $log := util:log("DEBUG", ("##$annotation-2): ", $annotation)):)
                     let $annotation := 
                         (: if we are dealing with a simple offset and range annotation which does not have element children, :)
                         if (not($annotation/element()))
@@ -346,23 +433,23 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                         else $annotation
 (:                    let $log := util:log("DEBUG", ("##$annotation-3): ", $annotation)):)
                     return
-                        il2so:insert-elements($segment, $annotation, 'segment', 'first-child')
+                        il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
                 (: A text node is being processed.:)
                 else
-                    <segment n="{$segment/@n/string()}">
+                    <slot n="{$slot/@n/string()}">
                         {
-                        let $segment-n := number($segment/@n)
-                        let $previous-annotation-n := ($segment-n - 1) div 2
-                        let $following-annotation-n := ($segment-n + 1) div 2
+                        let $slot-n := number($slot/@n)
+                        let $previous-annotation-n := ($slot-n - 1) div 2
+                        let $following-annotation-n := ($slot-n + 1) div 2
                         let $offset := 
-                            if ($segment-n eq $segment-count) (:if it is the last text node:)
+                            if ($slot-n eq $slot-count) (:if it is the last text node:)
                             then 
                                 sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
                                 +
                                 $annotations[$previous-annotation-n]/a8n-target/a8n-range/number()
                                 (:the offset is the length of of the base text minus the end position of the previous annotation plus 1:)
                             else
-                                if (number($segment/@n) eq 1) (:if it is the first text node:)
+                                if (number($slot/@n) eq 1) (:if it is the first text node:)
                                 then 1 (:start with position 1:)
                                 else 
                                     sum($annotations[$previous-annotation-n]/a8n-target/a8n-offset)
@@ -372,7 +459,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                     start with the position of the previous annotation plus its range plus 1:)
                         let $range := 
                             (:if it is the last text node, then the range is the length of the base text minus the end position of the last annotation plus 1:)
-                            if ($segment-n eq count($segments))
+                            if ($slot-n eq count($slots))
                             then 
                                 string-length($text-element)
                                 -
@@ -385,7 +472,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 1
                             else
                                 (:if it is the first text node, the the range is the offset of the following annotation minus 1:)
-                                if ($segment-n eq 1)
+                                if ($slot-n eq 1)
                                 then sum($annotations[$following-annotation-n]/a8n-target/a8n-offset) - 1
                                 else sum($annotations[$following-annotation-n]/a8n-target/a8n-offset)
                                 -
@@ -400,16 +487,16 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                             then substring($text-element, $offset, $range)
                             else ''
                         }
-                    </segment>
-(:    let $log := util:log("DEBUG", ("##$segments-1): ", $segments)):)
-    let $segments :=
-        for $segment in $segments
-(:        let $log := util:log("DEBUG", ("##$segment): ", $segment)):)
+                    </slot>
+(:    let $log := util:log("DEBUG", ("##$slots-1): ", $slots)):)
+    let $slots :=
+        for $slot in $slots
+(:        let $log := util:log("DEBUG", ("##$slot): ", $slot)):)
         return
-            if ($segment/@n mod 2 eq 0)
-            then $segment/*
-            else $segment/string()
-(:    let $log := util:log("DEBUG", ("##$segments-2): ", $segments)):)
+            if ($slot/@n mod 2 eq 0)
+            then $slot/*
+            else $slot/string()
+(:    let $log := util:log("DEBUG", ("##$slots-2): ", $slots)):)
     return 
-        element {node-name($text-element)}{$text-element/@*, $segments}
+        element {node-name($text-element)}{$text-element/@*, $slots}
 };
