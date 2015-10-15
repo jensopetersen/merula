@@ -270,8 +270,8 @@ declare function so2il:collapse-annotation($element as element(), $strip as xs:s
       }
 };
 
-(: Order the a8ns according to position and wraps up an a8n in <cloistered> if the following a8n has a non-nesting overlap relationship with it. :)
-(: TODO: see that the cloistered a8ns are feed to a repetition of the text, outputting both the a8ns that were accepted and rejected. :)
+(: Order the a8ns according to position and wraps up an a8n in <quarantine> if the following a8n has a non-nesting overlap relationship with it. :)
+(: TODO: see that the quarantined a8ns are feed to a repetition of the text, outputting both the a8ns that were accepted and rejected. :)
 declare function so2il:wrap-up-a8ns-with-non-nesting-overlap($a8ns as element()+) as element() {
 let $a8ns := 
     <a8ns>{
@@ -315,23 +315,23 @@ let $a8ns :=
             [sum(a8n-target/a8n-offset) >= $a8n-offset]
             [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
             )
-        then (util:log("ERROR", ("##MESSAGE-3")), <containment>
+        then <containment>
                 <container>{$a8n}</container>
                 <contained>
                     {$a8n/following-sibling::a8n-annotation
                     [sum(a8n-target/a8n-offset) >= $a8n-offset]
                     [a8n-target/a8n-range/number() < $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]}
                 </contained>
-            </containment>)
+            </containment>
         else 
             if (
             $a8n/preceding-sibling::a8n-annotation
             [sum(a8n-target/a8n-offset) <= $a8n-offset]
             [a8n-target/a8n-range/number() > $a8n-range - (sum(a8n-target/a8n-offset) - $a8n-offset)]
             )
-            then (util:log("ERROR", ("##MESSAGE-4")), ())
+            then ()
             else
-                (util:log("ERROR", ("##MESSAGE-5")), $a8n)
+                $a8n
 let $a8ns := 
     for $a8n in $a8ns
     order by sum($a8n/a8n-target/a8n-offset), $a8n/a8n-target/a8n-range/number(), $a8n/a8n-target/a8n-order/number()
@@ -341,6 +341,9 @@ return
     $a8ns
 };
 
+declare function so2il:add-body($annotation as element()) as element() {
+    element {node-name($annotation)}{$annotation/@*, ($annotation/a8n-target, <a8n-body>{$annotation/(* except a8n-target)}</a8n-body>)}
+};
 (:This function merges the collapsed annotations with the target text. 
 A sequence of slots (<slot/>s), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
@@ -352,24 +355,24 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
     let $log := util:log("DEBUG", ("##$text-element-id): ", $text-element/@xml:id/string()))
     let $log := util:log("DEBUG", ("##$target-layer): ", $target-layer))
 (:    let $log := util:log("DEBUG", ("##$text-element): ", $text-element)):)
-    let $log := util:log("DEBUG", ("##$annotations-1): ", $annotations))
+(:    let $log := util:log("DEBUG", ("##$annotations-1): ", $annotations)):)
     let $annotations := so2il:wrap-up-a8ns-with-non-nesting-overlap($annotations)
 (:    results in <a8ns><a8n-annotation/></a8ns>:)
-    let $log := util:log("DEBUG", ("##$annotations-2): ", $annotations))
+(:    let $log := util:log("DEBUG", ("##$annotations-2): ", $annotations)):)
     (: For now, a8ns without non-nesting overlaps are removed. ::)
     (: TODO: add "quarantined" a8ns to alternate text :)
-    let $quarantined-annotations := $annotations/quarantine
-    let $log := if ($quarantined-annotations) then util:log("DEBUG", ("##$quarantined-annotations): ", $quarantined-annotations)) else ()
-    let $annotations := $annotations/(* except cloistered)
+(:    let $quarantined-annotations := $annotations/quarantine:)
+(:    let $log := if ($quarantined-annotations) then util:log("DEBUG", ("##$quarantined-annotations): ", $quarantined-annotations)) else ():)
+    let $annotations := $annotations/(* except quarantine)
 (:    let $log := util:log("DEBUG", ("##$annotations-3): ", $annotations)):)
     let $annotations := 
         if ($target-layer eq 'feature')
         then <a8ns>{so2il:wrap-up-contained-a8ns($annotations)}</a8ns>
         else <a8ns>{$annotations}</a8ns>
-    let $log := util:log("DEBUG", ("##$annotations-4): ", $annotations))
-    let $contained-annotations := $annotations/containment
-    let $log := if ($contained-annotations) then util:log("DEBUG", ("##$contained-annotations): ", $contained-annotations)) else ()
-    let $log := util:log("DEBUG", ("##$annotations-5): ", $annotations))
+(:    let $log := util:log("DEBUG", ("##$annotations-4): ", $annotations)):)
+(:    let $contained-annotations := $annotations/containment:)
+(:    let $log := if ($contained-annotations) then util:log("DEBUG", ("##$contained-annotations): ", $contained-annotations)) else ():)
+(:    let $log := util:log("DEBUG", ("##$annotations-5): ", $annotations)):)
     let $annotations := $annotations/*
     let $text := 
         if ($target-layer eq 'edition')
@@ -391,18 +394,40 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                     let $annotation := $annotations[$annotation-n]
 (:                    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
 (:                    let $log := util:log("DEBUG", ("##$annotation-1): ", $annotation)):)
-                    let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
-                    let $annotation-range := $annotation/a8n-target/a8n-range/number()
-                    let $annotation := $annotation/(* except a8n-target)
+                    let $annotation-offset := 
+                        if ($annotation//container)
+                        then sum($annotation//container/a8n-annotation/a8n-target[1]/a8n-offset)
+                        else sum($annotation/a8n-target/a8n-offset)
+(:                    let $log := util:log("DEBUG", ("##$annotation-offset): ", $annotation-offset)):)
+                    let $annotation-range := 
+                        if ($annotation//container)
+                        then $annotation//container/a8n-annotation/a8n-target[1]/a8n-range/number()
+                        else $annotation/a8n-target/a8n-range/number()
+(:                    let $log := util:log("DEBUG", ("##$annotation-range): ", $annotation-range)):)
 (:                    let $log := util:log("DEBUG", ("##$annotation-2): ", $annotation)):)
                     let $annotation := 
                         (: if we are dealing with a simple offset and range annotation which does not have element children, :)
-                        if (not($annotation/element()))
-                        (: get the element text contents from the constructed text version, :)
-                        then 
+                        if ($annotation//container)
+                        then
+                            let $contained-annotations := $annotation//contained/*
+                            let $log := util:log("DEBUG", ("##$contained-annotations-1): ", $contained-annotations))  
+                            let $contained-annotations := 
+                                for $contained-annotation in $contained-annotations
+                                return
+                                    element {node-name($contained-annotation)}{$contained-annotation/@*, ($contained-annotation/a8n-target, <a8n-body>{$contained-annotation/(* except a8n-target)}</a8n-body>)}
+                            let $log := util:log("DEBUG", ("##$contained-annotations-2): ", $contained-annotations))  
+                            let $annotation := $annotation//container/a8n-annotation/(* except a8n-target)
+                            return
                             element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
-                        (: otherwise, just pass the annotation. :)
-                        else $annotation
+                            else
+                                if (not($annotation/(* except a8n-target)/element()))
+                                (: get the element text contents from the constructed text version, :)
+                                then 
+                                    let $annotation := $annotation/(* except a8n-target)
+                                    return
+                                    element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
+                                (: otherwise, just pass the annotation. :)
+                                else $annotation/(* except a8n-target)
 (:                    let $log := util:log("DEBUG", ("##$annotation-3): ", $annotation)):)
                     return
                         il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
