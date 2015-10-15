@@ -394,19 +394,6 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                 then
                     let $annotation-n := $slot/@n/number() div 2
                     let $annotation := $annotations[$annotation-n]
-(:                    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
-(:                    let $log := util:log("DEBUG", ("##$annotation-1): ", $annotation)):)
-(:                    let $annotation-offset := :)
-(:                        if ($annotation//container):)
-(:                        then sum($annotation//container/a8n-annotation/a8n-target[1]/a8n-offset):)
-(:                        else sum($annotation/a8n-target/a8n-offset):)
-(:(:                    let $log := util:log("DEBUG", ("##$annotation-offset): ", $annotation-offset)):):)
-(:                    let $annotation-range := :)
-(:                        if ($annotation//container):)
-(:                        then $annotation//container/a8n-annotation/a8n-target[1]/a8n-range/number():)
-(:                        else $annotation/a8n-target/a8n-range/number():)
-(:                    let $log := util:log("DEBUG", ("##$annotation-range): ", $annotation-range)):)
-(:                    let $log := util:log("DEBUG", ("##$annotation-2): ", $annotation)):)
                     let $annotation := 
                     (:if we are dealing with a case of containment, recurse the contained a8ns inside their container:)
                         if ($annotation//container)
@@ -426,7 +413,6 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 return
                                     il2so:insert-elements($contained-annotation, $version-difference, 'a8n-offset', 'after')
 (:                            let $log := util:log("DEBUG", ("##$contained-annotations-3): ", $contained-annotations)):)
-(:                            so2il:merge-annotations-with-text($text-element as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string, $wit as xs:string, $editiorial-element-names as xs:string+):)
                             return
                                 let $annotation-offset := sum($annotation//container/a8n-annotation/a8n-target[1]/a8n-offset)
                                 let $log := util:log("DEBUG", ("##$annotation-offset): ", $annotation-offset))
@@ -434,16 +420,11 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 let $log := util:log("DEBUG", ("##$annotation-range): ", $annotation-range))
                                 let $annotation := $annotation//container/a8n-annotation/(* except a8n-target)
                                 let $log := util:log("DEBUG", ("##$annotation-x): ", $annotation))
-                                let $text-element := <span>{substring($text, $annotation-offset, $annotation-range)}</span>
-                                let $log := util:log("DEBUG", ("##$text-element): ", $text-element))
                                 let $result :=
-                                element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
-                                (:element {node-name($annotation)}{$annotation/@*, 
-                                    substring(
-                                        so2il:merge-annotations-with-text($text-element, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
-                                        , $annotation-offset, $annotation-range)}:)
+                                    element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
                                 let $log := util:log("DEBUG", ("##$result-1): ", $result))
-                                let $result := so2il:merge-annotations-with-text($result, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
+                                let $result := 
+                                    so2il:merge-annotations-with-text($result, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
                                 let $log := util:log("DEBUG", ("##$result-2): ", $result))
                                 return
                                     $result
@@ -455,11 +436,12 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
                                 let $annotation-range :=  $annotation/a8n-target/a8n-range/number()
                                 let $annotation := $annotation/(* except a8n-target)
+                                let $log := util:log("DEBUG", ("##$annotation-y): ", $annotation))
                                 return
                                     element {node-name($annotation)}{$annotation/@*, substring($text, $annotation-offset, $annotation-range)}
-                            (: otherwise, just pass the annotation. :)
+                            (: otherwise, just pass on the annotation. :)
                             else $annotation/(* except a8n-target)
-(:                    let $log := util:log("DEBUG", ("##$annotation-3): ", $annotation)):)
+                    let $log := util:log("DEBUG", ("##$annotation-3): ", $annotation))
                     return
                         il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
                 (: A text node is being processed.:)
@@ -516,7 +498,7 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                             else ''
                         }
                     </slot>
-(:    let $log := util:log("DEBUG", ("##$slots-1): ", $slots)):)
+    let $log := util:log("DEBUG", ("##$slots-1): ", $slots))
     let $slots :=
         for $slot in $slots
 (:        let $log := util:log("DEBUG", ("##$slot): ", $slot)):)
