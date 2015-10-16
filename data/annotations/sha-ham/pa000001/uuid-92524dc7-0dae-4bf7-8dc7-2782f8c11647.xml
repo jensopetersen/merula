@@ -1,0 +1,11 @@
+<a8n-annotation motivatedBy="describing" xml:id="uuid-92524dc7-0dae-4bf7-8dc7-2782f8c11647">
+    <a8n-target>
+        <a8n-id>uuid-3fc5061b-eb11-48c3-acae-1a1ff881e351</a8n-id>
+    </a8n-target>
+    <a8n-body>
+        <a8n-attribute>
+            <a8n-name>type</a8n-name>
+            <a8n-value>place</a8n-value>
+        </a8n-attribute>
+    </a8n-body>
+</a8n-annotation>

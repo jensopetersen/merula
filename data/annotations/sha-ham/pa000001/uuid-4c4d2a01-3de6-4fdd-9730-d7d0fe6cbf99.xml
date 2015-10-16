@@ -1,0 +1,12 @@
+<a8n-annotation motivatedBy="editing" xml:id="uuid-4c4d2a01-3de6-4fdd-9730-d7d0fe6cbf99">
+    <a8n-target>
+        <a8n-id>uuid-902ae10f-3989-42ee-be9a-746b7e02d7dd</a8n-id>
+        <a8n-order>2</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <rdg xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-a9ee968e-1f5b-4bc6-907c-f18d141d61af"
+                ><lb xml:id="uuid-913f9666-6549-4d6b-b499-f5275431e97b"/>(Miss <name xml:id="_24"
+                type="person">Hobby</name>, please paste this in at this point, in record of April
+            1st, but I may not comment on it until later.)</rdg>
+    </a8n-body>
+</a8n-annotation>

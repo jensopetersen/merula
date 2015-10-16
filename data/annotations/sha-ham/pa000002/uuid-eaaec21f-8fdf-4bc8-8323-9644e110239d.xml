@@ -1,0 +1,11 @@
+<a8n-annotation motivatedBy="describing" xml:id="uuid-eaaec21f-8fdf-4bc8-8323-9644e110239d">
+    <a8n-target>
+        <a8n-id>uuid-e8d2083a-7448-4a39-80d8-da78ccb4a9e6</a8n-id>
+    </a8n-target>
+    <a8n-body>
+        <a8n-attribute>
+            <a8n-name>rend</a8n-name>
+            <a8n-value>bold</a8n-value>
+        </a8n-attribute>
+    </a8n-body>
+</a8n-annotation>

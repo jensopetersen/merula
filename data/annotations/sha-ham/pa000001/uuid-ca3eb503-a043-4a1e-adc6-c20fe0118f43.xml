@@ -1,0 +1,10 @@
+<a8n-annotation motivatedBy="describing" xml:id="uuid-ca3eb503-a043-4a1e-adc6-c20fe0118f43">
+    <a8n-target>
+        <a8n-id>uuid-8d69ae4a-62fd-40ba-a17d-7d02338f6710</a8n-id>
+        <a8n-order>1</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <hi xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-98b78c33-a06c-4760-9f62-ff46166c8523"
+            >Enterprise</hi>
+    </a8n-body>
+</a8n-annotation>

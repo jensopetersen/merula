@@ -1,0 +1,9 @@
+<a8n-annotation motivatedBy="editing" xml:id="uuid-8192771f-a61c-4029-ab2d-cbaf144def69">
+    <a8n-target>
+        <a8n-id>uuid-21c289a3-2a97-457b-b021-64a4876e2cfa</a8n-id>
+        <a8n-order>1</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <abbr xmlns="http://www.tei-c.org/ns/1.0">Terr.</abbr>
+    </a8n-body>
+</a8n-annotation>

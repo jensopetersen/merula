@@ -1,0 +1,13 @@
+<a8n-annotation motivatedBy="describing" xml:id="uuid-a49179ad-c44e-4cab-a2ea-96e7946a4ed2">
+    <a8n-target>
+        <a8n-id>pa000001</a8n-id>
+        <a8n-offset>243</a8n-offset>
+        <a8n-offset timestamp="2015-10-07T17:53:13.644+02:00"
+            cause="uuid-79545eb1-8b75-4451-a72f-80bd0f1a6cbd">3</a8n-offset>
+        <a8n-range>3</a8n-range>
+        <a8n-order>2</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <name xmlns="http://www.tei-c.org/ns/1.0" xml:id="_19"/>
+    </a8n-body>
+</a8n-annotation>

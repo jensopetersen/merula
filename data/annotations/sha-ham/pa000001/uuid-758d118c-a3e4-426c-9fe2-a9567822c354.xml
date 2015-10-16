@@ -1,0 +1,11 @@
+<a8n-annotation motivatedBy="structuring" xml:id="uuid-758d118c-a3e4-426c-9fe2-a9567822c354">
+    <a8n-target>
+        <a8n-id>pa000001</a8n-id>
+    </a8n-target>
+    <a8n-body>
+        <a8n-attribute>
+            <a8n-name>rend</a8n-name>
+            <a8n-value>centerautosum</a8n-value>
+        </a8n-attribute>
+    </a8n-body>
+</a8n-annotation>

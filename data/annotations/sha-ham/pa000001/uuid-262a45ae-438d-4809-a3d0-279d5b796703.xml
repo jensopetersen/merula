@@ -1,0 +1,10 @@
+<a8n-annotation motivatedBy="editing" xml:id="uuid-262a45ae-438d-4809-a3d0-279d5b796703">
+    <a8n-target>
+        <a8n-id>uuid-43389d23-7878-49c7-90fb-0ecd1301200e</a8n-id>
+        <a8n-order>3</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <rdg xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-f662b333-0ff0-4b08-b1cf-aabb3ef37c58"
+            >$12,000</rdg>
+    </a8n-body>
+</a8n-annotation>

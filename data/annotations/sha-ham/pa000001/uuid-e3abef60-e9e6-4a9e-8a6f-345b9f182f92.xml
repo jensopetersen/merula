@@ -1,0 +1,10 @@
+<a8n-annotation motivatedBy="editing" xml:id="uuid-e3abef60-e9e6-4a9e-8a6f-345b9f182f92">
+    <a8n-target>
+        <a8n-id>uuid-2f90b6cb-8c64-40b0-8c40-a31d34f4075f</a8n-id>
+        <a8n-order>2</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <rdg xmlns="http://www.tei-c.org/ns/1.0" xml:id="uuid-7c692127-56e0-4730-a978-f7e1d4ab697a"
+            >Gov. </rdg>
+    </a8n-body>
+</a8n-annotation>
