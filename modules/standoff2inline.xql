@@ -144,7 +144,6 @@ The present approach is however very handy when debugging. :)
         $html
 };
 
-
 declare function so2il:generate-target-text($input as node()*) as item()* {
         for $node in $input/node()
         return
@@ -429,9 +428,10 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                             return
                                 let $annotation-offset := sum($container-annotation/a8n-target/a8n-offset)
                                 let $annotation-range := number($container-annotation/a8n-target/a8n-range)
+                                let $a8n-id := string($annotation/@xml:id)
                                 let $annotation := $container-annotation/(* except a8n-target)
                                 let $result :=
-                                    element {node-name($annotation)}{$annotation/@*, substring($text-string, $annotation-offset, $annotation-range)}
+                                    element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
                                 let $result := 
                                     so2il:merge-annotations-with-text($result, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
                                 return
@@ -443,12 +443,18 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                             then 
                                 let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
                                 let $annotation-range :=  number($annotation/a8n-target/a8n-range)
+                                let $a8n-id := string($annotation/@xml:id)
                                 let $annotation := $annotation/(* except a8n-target)
                                 return
-                                    element {node-name($annotation)}{$annotation/@*, substring($text-string, $annotation-offset, $annotation-range)}
+                                    element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
                             (: otherwise, if there is element contents, just pass on the annotation. :)
                             (: in pracice, these a8ns will all be editorial:)
-                            else $annotation/(* except a8n-target)
+                            else 
+                                let $a8n-id := string($annotation/@xml:id)
+                                let $annotation := $annotation/(* except a8n-target)
+                                return
+                                element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), $annotation/node()}
+                                
                     return
                         il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
                 (: A text node is being processed.:)
