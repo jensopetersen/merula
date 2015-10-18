@@ -1,1 +1,9 @@
-<a8n-annotation motivatedBy="describing" xml:id="uuid-34a031e0-19c5-46b1-97fb-3ecaf240dfa9"><a8n-target><a8n-id>uuid-d67e9fb3-d4b1-4b74-bb64-ae60b7a028ef</a8n-id><a8n-order>1</a8n-order></a8n-target><a8n-body><hi xmlns="http://www.tei-c.org/ns/1.0">Barnes</hi></a8n-body></a8n-annotation>
+<a8n-annotation motivatedBy="describing" xml:id="uuid-34a031e0-19c5-46b1-97fb-3ecaf240dfa9">
+    <a8n-target>
+        <a8n-id>uuid-d67e9fb3-d4b1-4b74-bb64-ae60b7a028ef</a8n-id>
+        <a8n-order>1</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <hi xmlns="http://www.tei-c.org/ns/1.0">Barnes</hi>
+    </a8n-body>
+</a8n-annotation>

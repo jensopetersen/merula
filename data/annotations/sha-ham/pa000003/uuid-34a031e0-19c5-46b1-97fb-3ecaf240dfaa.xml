@@ -1,4 +1,4 @@
-<a8n-annotation motivatedBy="editing" xml:id="uuid-15b656fc-26b0-4c6a-a985-8d27f24d0176">
+<a8n-annotation motivatedBy="describing" xml:id="uuid-34a031e0-19c5-46b1-97fb-3ecaf240dfaa">
     <a8n-target>
         <a8n-id>pa000003</a8n-id>
         <a8n-offset>20</a8n-offset>
@@ -6,6 +6,6 @@
         <a8n-order>1</a8n-order>
     </a8n-target>
     <a8n-body>
-        <choice xmlns="http://www.tei-c.org/ns/1.0"/>
+        <name xmlns="http://www.tei-c.org/ns/1.0"/>
     </a8n-body>
 </a8n-annotation>
