@@ -127,17 +127,18 @@ The present approach is however very handy when debugging. :)
 (:    let $log := util:log("DEBUG", ("##$collapsed-feature-a8ns-2): ", $collapsed-feature-a8ns)):)
     
     (:Insert the collapsed annotations into the target text, producing a marked-up TEI document.:)
-    let $text-with-merged-feature-a8ns := 
+    let $target-text-with-merged-feature-a8ns := 
         if ($collapsed-feature-a8ns) 
         then so2il:merge-annotations-with-text($target-text, $collapsed-feature-a8ns, 'feature', $target-format, $wit, $editiorial-element-names)
         else $node
-(:    let $log := util:log("DEBUG", ("##$text-with-merged-feature-a8ns): ", $text-with-merged-feature-a8ns)):)
+    (: NB: if there are no a8ns, the base text is shown:)
+    let $log := util:log("DEBUG", ("##$target-text-with-merged-feature-a8ns): ", $target-text-with-merged-feature-a8ns))
     
     (:Convert the TEI document to HTML: text block elements become divs and inline element become spans.:)
     let $block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
     let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
 
-    let $html := so2il:tei2html($text-with-merged-feature-a8ns, $block-element-names, $element-only-element-names)
+    let $html := so2il:tei2html($target-text-with-merged-feature-a8ns, $block-element-names, $element-only-element-names)
 (:    let $log := util:log("DEBUG", ("##$html): ", $html)):)
     
     return
@@ -420,12 +421,11 @@ but all even slots have annotations (though they may consist of an empty element
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
 declare function so2il:merge-annotations-with-text($text-element as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string, $wit as xs:string, $editiorial-element-names as xs:string+) as node()+ {
     let $annotations := so2il:wrap-up-a8ns-with-non-nesting-overlap($annotations)
-(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     let $annotations := $annotations/(* except quarantine)
-    let $annotations := 
-        if ($target-layer eq 'feature')
-        then so2il:wrap-up-a8ns-with-identical-position($annotations)
-        else $annotations
+(:    let $annotations := :)
+(:        if ($target-layer eq 'feature'):)
+(:        then so2il:wrap-up-a8ns-with-identical-position($annotations):)
+(:        else $annotations:)
     let $annotations := 
         if ($target-layer eq 'feature')
         then so2il:wrap-up-contained-a8ns($annotations)
@@ -482,15 +482,21 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                                 return
                                     $annotation
                             let $inner-element := $cluster[1]
+                            let $inner-element-id := string($inner-element/@xml:id)
                             let $offset := sum($inner-element/a8n-target/a8n-offset)
                             let $range := number($inner-element/a8n-target/a8n-range)
                             let $inner-element := $inner-element/(* except a8n-target)
                             let $inner-element := 
-                                element{node-name($inner-element)}{$inner-element/@*, (attribute{'a8n-id'}{$inner-element/@xml:id}), substring($text-string, $offset, $range)}
+                                element{node-name($inner-element)}{$inner-element/@*, (attribute{'a8n-id'}{$inner-element-id}), substring($text-string, $offset, $range)}
                             let $outer-elements := $cluster[position() > 1]
                             let $outer-elements := 
                                 for $outer-element in $outer-elements
-                                return $outer-element/(* except a8n-target)
+                                let $outer-element-id := string($outer-element/@xml:id)
+                                let $outer-element := $outer-element/(* except a8n-target)
+(:                                let $outer-element := :)
+(:                                    element{node-name($inner-element)}{$inner-element/@*, (attribute{'a8n-id'}{$outer-element-id}), substring($text-string, $offset, $range)}:)
+                                return
+                                    $outer-element
                             let $wrapped := so2il:wrap-up-elements(($outer-elements, $inner-element))
                             return
                                 $wrapped
