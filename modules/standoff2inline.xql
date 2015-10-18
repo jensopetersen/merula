@@ -310,7 +310,7 @@ let $a8ns :=
     <a8ns>{$a8ns}</a8ns>
 let $a8ns := 
     <a8ns>{
-    for $a8n in $a8ns/a8n-annotation
+    for $a8n in $a8ns/*
     order by 
         number($a8n/a8n-target/a8n-range) descending, 
         sum($a8n/a8n-target/a8n-offset)
@@ -318,7 +318,7 @@ let $a8ns :=
             $a8n
     }</a8ns>
 let $a8ns := 
-    for $a8n in $a8ns/a8n-annotation
+    for $a8n in $a8ns/*
     let $a8n-offset := sum($a8n/a8n-target/a8n-offset)
     let $a8n-range := number($a8n/a8n-target/a8n-range)
     return
@@ -361,6 +361,56 @@ return
     $a8ns
 };
 
+declare function so2il:wrap-up-a8ns-with-identical-position($a8ns as element()+) as element()* {
+let $a8ns := <a8ns>{$a8ns}</a8ns>
+let $a8ns := 
+    for $a8n in $a8ns/*
+    return
+        if
+        (
+        number($a8n/a8n-target/a8n-range) > 0 
+        and
+        $a8n/following-sibling::a8n-annotation[sum(a8n-target/a8n-offset) = sum($a8n/a8n-target/a8n-offset)][number(a8n-target/a8n-range) = number($a8n/a8n-target/a8n-range)]
+        and
+        not($a8n/preceding-sibling::a8n-annotation[sum(a8n-target/a8n-offset) = sum($a8n/a8n-target/a8n-offset)][number(a8n-target/a8n-range) = number($a8n/a8n-target/a8n-range)])
+        )
+        then <identical-position-cluster>{$a8n, $a8n/following-sibling::a8n-annotation[sum(a8n-target/a8n-offset) = sum($a8n/a8n-target/a8n-offset)][number(a8n-target/a8n-range) = number($a8n/a8n-target/a8n-range)]}</identical-position-cluster>
+        else 
+            if (number($a8n/a8n-target/a8n-range) = 0 )
+            then $a8n
+            else
+                if (
+                ($a8n/preceding-sibling::a8n-annotation[sum(a8n-target/a8n-offset) = sum($a8n/a8n-target/a8n-offset)] and
+                $a8n/preceding-sibling::a8n-annotation[number(a8n-target/a8n-range) = number($a8n/a8n-target/a8n-range)]
+                or
+                ($a8n/following-sibling::a8n-annotation[sum(a8n-target/a8n-offset) = sum($a8n/a8n-target/a8n-offset)] and $a8n/following-sibling::a8n-annotation[number(a8n-target/a8n-range) = number($a8n/a8n-target/a8n-range)])
+                ))
+                then ()
+                else $a8n
+return 
+    $a8ns
+};
+
+(:~
+: @author Jens Erat
+: @param 
+: @param 
+: @return 
+: @see https://stackoverflow.com/questions/33186967
+:)
+declare function so2il:wrap-up-elements($elements as element()+) as element()+ {
+  let $head := head($elements)
+  let $tail := tail($elements)
+  return
+    element { name($head) } { (
+      $head/@*,
+      $head/node(),
+      if ($tail)
+      then so2il:wrap-up-elements($tail)
+      else ()
+    ) }
+};
+
 (:This function merges the collapsed annotations with the target text. 
 A sequence of slots (<slot/>s), double the number of annotations plus 1, are created; 
 annotations are filled into the even slots, whereas the text, 
@@ -370,7 +420,12 @@ but all even slots have annotations (though they may consist of an empty element
 (:TODO: check annotations for superimposition, containment, overlap. Use parent element and preceding-sibling nodes to get the correct hierarchical and sequential order:)
 declare function so2il:merge-annotations-with-text($text-element as element(), $annotations as element()*, $target-layer as xs:string, $target-format as xs:string, $wit as xs:string, $editiorial-element-names as xs:string+) as node()+ {
     let $annotations := so2il:wrap-up-a8ns-with-non-nesting-overlap($annotations)
+(:    let $log := util:log("DEBUG", ("##$annotations): ", $annotations)):)
     let $annotations := $annotations/(* except quarantine)
+    let $annotations := 
+        if ($target-layer eq 'feature')
+        then so2il:wrap-up-a8ns-with-identical-position($annotations)
+        else $annotations
     let $annotations := 
         if ($target-layer eq 'feature')
         then so2il:wrap-up-contained-a8ns($annotations)
@@ -380,15 +435,24 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
         let $offset := 
             if ($annotation//container)
             then sum($annotation//container/a8n-annotation/a8n-target/a8n-offset)
-            else sum($annotation/a8n-target/a8n-offset)
+            else 
+                if (local-name($annotation) eq 'identical-position-cluster')
+                then sum($annotation/a8n-annotation[1]/a8n-target/a8n-offset)
+                else sum($annotation/a8n-target/a8n-offset)
         let $order := 
             if ($annotation//container)
             then number($annotation//container/a8n-annotation/a8n-target/a8n-order)
-            else number($annotation/a8n-target/a8n-order)
+            else 
+                if (local-name($annotation) eq 'identical-position-cluster')
+                then number($annotation/a8n-annotation[1]/a8n-target/a8n-order)
+                else number($annotation/a8n-target/a8n-order)
         let $range := 
             if ($annotation//container)
             then number($annotation//container/a8n-annotation/a8n-target/a8n-range)
-            else number($annotation/a8n-target/a8n-range)
+            else 
+                if (local-name($annotation) eq 'identical-position-cluster')
+                then number($annotation/a8n-annotation[1]/a8n-target/a8n-range)
+                else number($annotation/a8n-target/a8n-range)
         order by $offset, $order, $range
         return $annotation
     let $text-string := 
@@ -408,55 +472,78 @@ declare function so2il:merge-annotations-with-text($text-element as element(), $
                     let $annotation-n := number($slot/@n) div 2
                     let $annotation := $annotations[$annotation-n]
                     let $annotation := 
-                    (: if we are dealing with a case of containment, treat the container as the text element and apply the contained a8ns to it as if they were top level a8ns. :)
-                        if ($annotation//container)
+                        (: we are dealing with a cluster of a8ns with identical position:)
+                        if (local-name($annotation) eq 'identical-position-cluster')
                         then
-                            let $container-annotation := $annotation//container/a8n-annotation
-                            let $contained-annotations := 
-                                for $annotation in $annotation//contained/a8n-annotation
-                                order by 
-                                    sum($annotation/a8n-target/a8n-offset), 
-                                    number($annotation/a8n-target/a8n-order), 
-                                    number($annotation/a8n-target/a8n-range)
-                                return $annotation
-                            (: modify the offset of the contained a8ns by inserting an offset subtracting the container offset. :)
-                            let $contained-annotations := 
-                                for $contained-annotation in $contained-annotations
-                                let $version-difference := <a8n-offset>{-sum($container-annotation/a8n-target[1]/a8n-offset) + 1}</a8n-offset>
+                            let $cluster := $annotation/*
+                            let $cluster := 
+                                for $annotation in $cluster
+                                order by $annotation/a8n-target/a8n-order descending
                                 return
-                                    il2so:insert-elements($contained-annotation, $version-difference, 'a8n-offset', 'after')
+                                    $annotation
+                            let $inner-element := $cluster[1]
+                            let $offset := sum($inner-element/a8n-target/a8n-offset)
+                            let $range := number($inner-element/a8n-target/a8n-range)
+                            let $inner-element := $inner-element/(* except a8n-target)
+                            let $inner-element := 
+                                element{node-name($inner-element)}{$inner-element/@*, (attribute{'a8n-id'}{$inner-element/@xml:id}), substring($text-string, $offset, $range)}
+                            let $outer-elements := $cluster[position() > 1]
+                            let $outer-elements := 
+                                for $outer-element in $outer-elements
+                                return $outer-element/(* except a8n-target)
+                            let $wrapped := so2il:wrap-up-elements(($outer-elements, $inner-element))
                             return
-                                let $annotation-offset := sum($container-annotation/a8n-target/a8n-offset)
-                                let $annotation-range := number($container-annotation/a8n-target/a8n-range)
-                                let $a8n-id := string($annotation/@xml:id)
-                                let $annotation := $container-annotation/(* except a8n-target)
-                                let $result :=
-                                    element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
-                                let $result := 
-                                    so2il:merge-annotations-with-text($result, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
-                                return
-                                    $result
+                                $wrapped
                         else
-                            (: if we are dealing with a simple offset and range annotation which does not have element children, :)
-                            if (not($annotation/(* except a8n-target)/element()))
-                            (: get the element text contents from the constructed text version, :)
-                            then 
-                                let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
-                                let $annotation-range :=  number($annotation/a8n-target/a8n-range)
-                                let $a8n-id := string($annotation/@xml:id)
-                                let $annotation := $annotation/(* except a8n-target)
+                        (: if we are dealing with a case of containment, treat the container as the text element and apply the contained a8ns to it as if they were top level a8ns. :)
+                            if ($annotation//container)
+                            then
+                                let $container-annotation := $annotation//container/a8n-annotation
+                                let $contained-annotations := 
+                                    for $annotation in $annotation//contained/a8n-annotation
+                                    order by 
+                                        sum($annotation/a8n-target/a8n-offset), 
+                                        number($annotation/a8n-target/a8n-order), 
+                                        number($annotation/a8n-target/a8n-range)
+                                    return $annotation
+                                (: modify the offset of the contained a8ns by inserting an offset subtracting the container offset. :)
+                                let $contained-annotations := 
+                                    for $contained-annotation in $contained-annotations
+                                    let $version-difference := <a8n-offset>{-sum($container-annotation/a8n-target[1]/a8n-offset) + 1}</a8n-offset>
+                                    return
+                                        il2so:insert-elements($contained-annotation, $version-difference, 'a8n-offset', 'after')
                                 return
-                                    element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
-                            (: otherwise, if there is element contents, just pass on the annotation. :)
-                            (: in pracice, these a8ns will all be editorial:)
-                            else 
-                                let $a8n-id := string($annotation/@xml:id)
-                                let $annotation := $annotation/(* except a8n-target)
-                                return
-                                element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), $annotation/node()}
-                                
-                    return
-                        il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
+                                    let $annotation-offset := sum($container-annotation/a8n-target/a8n-offset)
+                                    let $annotation-range := number($container-annotation/a8n-target/a8n-range)
+                                    let $a8n-id := string($annotation/@xml:id)
+                                    let $annotation := $container-annotation/(* except a8n-target)
+                                    let $result :=
+                                        element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
+                                    let $result := 
+                                        so2il:merge-annotations-with-text($result, $contained-annotations, $target-layer, $target-format, $wit, $editiorial-element-names)
+                                    return
+                                        $result
+                            else
+                                (: if we are dealing with a simple offset and range annotation which does not have element children, :)
+                                if (not($annotation/(* except a8n-target)/element()))
+                                (: get the element text contents from the constructed text version, :)
+                                then 
+                                    let $annotation-offset := sum($annotation/a8n-target/a8n-offset)
+                                    let $annotation-range :=  number($annotation/a8n-target/a8n-range)
+                                    let $a8n-id := string($annotation/@xml:id)
+                                    let $annotation := $annotation/(* except a8n-target)
+                                    return
+                                        element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), substring($text-string, $annotation-offset, $annotation-range)}
+                                (: otherwise, if there is element contents, just pass on the annotation. :)
+                                (: in pracice, these a8ns will all be editorial:)
+                                else 
+                                    let $a8n-id := string($annotation/@xml:id)
+                                    let $annotation := $annotation/(* except a8n-target)
+                                    return
+                                    element {node-name($annotation)}{$annotation/@*, (attribute{'a8n-id'}{$a8n-id}), $annotation/node()}
+                                    
+                        return
+                            il2so:insert-elements($slot, $annotation, 'slot', 'first-child')
                 (: A text node is being processed.:)
                 else
                     <slot n="{$slot/@n/string()}">
