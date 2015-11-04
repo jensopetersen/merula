@@ -10,12 +10,13 @@ let $annotation-out-path := '/db/apps/merula/data/annotations'
 let $annotation-out-collection-path := concat($annotation-out-path, "/", $doc-id)
 
 let $doc-title := 'sample_MTDP10363.xml'
-(:let $doc-title := 'CHANT-0874-clean-head-app-ref-wit.xml':)
+let $doc-title := 'CHANT-0874-clean-head-app-ref-wit.xml'
 let $doc := doc(concat($il2so:text-in-collection, '/', $doc-title))
 let $doc-element := $doc/element()
 let $doc-header := $doc-element/tei:teiHeader
 let $doc-text := $doc-element/tei:text
-let $wit := $doc-header/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/string()
+let $wit := $doc-header/tei:fileDesc/tei:sourceDesc/tei:listWit/tei:witness[@n eq '1']/@xml:id/string()
+let $wit := '#' || $wit
 
 let $admin-metadata :=
 <admin>
@@ -31,12 +32,16 @@ let $admin-metadata :=
 let $editorial-element-names := ('app', 'rdg', 'lem', 'choice', 'corr', 'sic', 'orig', 'reg', 'abbr', 'expan', 'ex', 'mod', 'subst', 'add', 'del')
 let $documentary-element-names := ('milestone', 'pb', 'lb', 'cb', 'hi', 'gap', 'damage', 'unclear', 'supplied', 'restore', 'space', 'handShift')
 let $text-block-element-names := ('ab', 'castItem', 'l', 'role', 'roleDesc', 'speaker', 'stage', 'p', 'quote')
-(: adding seg – though it is not a $text-block-element – to handle CHANT documents :)
+(: NB: adding seg – though it is not a $text-block-element – to handle CHANT documents :)
 let $text-block-element-names := ($text-block-element-names, 'seg')
+(: NB: removing p – though it is a $text-block-element – to handle CHANT documents :)
+let $text-block-element-names := remove($text-block-element-names, index-of($text-block-element-names, 'p'))
 (:TODO: the idea is that an element that can hold text, all of whose ancestors are element-only-elements, is a block-level element, 
 so use of $text-block-element-names has to be dropped in favour of using in terms of $element-only-element-names.:)
 let $barren-element-names := ('cb', 'gb', 'lb', 'milestone', 'pb', 'ptr', 'oRef', 'pRef', 'move', 'catRef', 'refState', 'binary', 'default', 'fsdLink', 'iff', 'numeric', 'symbol', 'then', 'alt', 'anchor', 'link', 'when', 'pause', 'shift', 'attRef', 'classRef', 'elementRef', 'equiv', 'macroRef', 'specDesc', 'specGrpRef', 'textNode', 'lacunaEnd', 'lacunaStart', 'variantEncoding', 'witEnd', 'witStart', 'addSpan', 'damageSpan', 'delSpan', 'handShift', 'redo', 'undo', 'caesura')
 let $element-only-element-names := ('TEI', 'abstract', 'additional', 'address', 'adminInfo', 'altGrp', 'altIdentifier', 'alternate', 'analytic', 'app', 'appInfo', 'application', 'arc', 'argument', 'attDef', 'attList', 'availability', 'back', 'biblFull', 'biblStruct', 'bicond', 'binding', 'bindingDesc', 'body', 'broadcast', 'cRefPattern', 'calendar', 'calendarDesc', 'castGroup', 'castList', 'category', 'certainty', 'char', 'charDecl', 'charProp', 'choice', 'cit', 'classDecl', 'classSpec', 'classes', 'climate', 'cond', 'constraintSpec', 'correction', 'correspAction', 'correspContext', 'correspDesc', 'custodialHist', 'datatype', 'decoDesc', 'dimensions', 'div', 'div1', 'div2', 'div3', 'div4', 'div5', 'div6', 'div7', 'divGen', 'docTitle', 'eLeaf', 'eTree', 'editionStmt', 'editorialDecl', 'elementSpec', 'encodingDesc', 'entry', 'epigraph', 'epilogue', 'equipment', 'event', 'exemplum', 'fDecl', 'fLib', 'facsimile', 'figure', 'fileDesc', 'floatingText', 'forest', 'front', 'fs', 'fsConstraints', 'fsDecl', 'fsdDecl', 'fvLib', 'gap', 'glyph', 'graph', 'graphic', 'group', 'handDesc', 'handNotes', 'history', 'hom', 'hyphenation', 'iNode', 'if', 'imprint', 'incident', 'index', 'interpGrp', 'interpretation', 'join', 'joinGrp', 'keywords', 'kinesic', 'langKnowledge', 'langUsage', 'layoutDesc', 'leaf', 'lg', 'linkGrp', 'list', 'listApp', 'listBibl', 'listChange', 'listEvent', 'listForest', 'listNym', 'listOrg', 'listPerson', 'listPlace', 'listPrefixDef', 'listRef', 'listRelation', 'listTranspose', 'listWit', 'location', 'locusGrp', 'macroSpec', 'media', 'metDecl', 'moduleRef', 'moduleSpec', 'monogr', 'msContents', 'msDesc', 'msIdentifier', 'msItem', 'msItemStruct', 'msPart', 'namespace', 'node', 'normalization', 'notatedMusic', 'notesStmt', 'nym', 'objectDesc', 'org', 'particDesc', 'performance', 'person', 'personGrp', 'physDesc', 'place', 'population', 'postscript', 'precision', 'prefixDef', 'profileDesc', 'projectDesc', 'prologue', 'publicationStmt', 'punctuation', 'quotation', 'rdgGrp', 'recordHist', 'recording', 'recordingStmt', 'refsDecl', 'relatedItem', 'relation', 'remarks', 'respStmt', 'respons', 'revisionDesc', 'root', 'row', 'samplingDecl', 'schemaSpec', 'scriptDesc', 'scriptStmt', 'seal', 'sealDesc', 'segmentation', 'sequence', 'seriesStmt', 'set', 'setting', 'settingDesc', 'sourceDesc', 'sourceDoc', 'sp', 'spGrp', 'space', 'spanGrp', 'specGrp', 'specList', 'state', 'stdVals', 'styleDefDecl', 'subst', 'substJoin', 'superEntry', 'supportDesc', 'surface', 'surfaceGrp', 'table', 'tagsDecl', 'taxonomy', 'teiCorpus', 'teiHeader', 'terrain', 'text', 'textClass', 'textDesc', 'timeline', 'titlePage', 'titleStmt', 'trait', 'transpose', 'tree', 'triangle', 'typeDesc', 'vAlt', 'vColl', 'vDefault', 'vLabel', 'vMerge', 'vNot', 'vRange', 'valItem', 'valList', 'vocal')
+(: NB: adding p – though it is not a $element-only-element – to handle CHANT documents :)
+let $element-only-element-names := ($element-only-element-names, 'p')
 
 let $base-text := il2so:generate-text-layer($doc-text, 'base-text', $wit)
 let $base-text := il2so:remove-inline-elements($base-text, $text-block-element-names, $element-only-element-names)
@@ -51,7 +56,7 @@ let $annotations-2 :=
 let $annotations-3 := il2so:prepare-annotations-for-output-to-doc($annotations-2)
 
 let $output-format := 'exide'
-let $output-format := 'doc'
+(:let $output-format := 'doc':)
 (:let $output-format := 'download':)
 
 let $base-text := element {node-name($doc-element)}{$doc-element/@*, $doc-header, element {node-name($doc-text)}{$doc-text/@*, $base-text}}   
