@@ -1,0 +1,11 @@
+<a8n-annotation motivatedBy="describing" xml:id="uuid-ba852c66-90a9-4d66-9f80-7ac916aba5b1">
+    <a8n-target>
+        <a8n-id>pa000001</a8n-id>
+        <a8n-offset>48</a8n-offset>
+        <a8n-range>3</a8n-range>
+        <a8n-order>2</a8n-order>
+    </a8n-target>
+    <a8n-body>
+        <hi xmlns="http://www.tei-c.org/ns/1.0"/>
+    </a8n-body>
+</a8n-annotation>
